@@ -1,0 +1,325 @@
+@charset "UTF-8";
+
+/*  SELETORES */
+.coll-sidenav {
+position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    margin: 0;
+    font-size: 1em;
+    background-color: transparent;
+}
+
+.coll-sidenav[open] {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    margin: 0;
+}
+
+.coll-sidenav[open] + .conteudo-pagina {
+    margin-left: 300px; /* Mesma largura da sua Sidenav */
+    width: calc(100% - 300px); /* Ajusta a largura para não criar scroll horizontal */
+}
+
+.coll-sidenav > summary {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 1000; 
+    list-style-type: none;
+    outline: none;
+}
+
+
+.coll-sidenav > summary::-webkit-details-marker {
+    display: none;
+}
+
+.coll-sidenav > summary > span {
+    position: fixed;
+    font-size: 2rem;
+    margin-left: 10px;
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    background-color: whitesmoke;
+
+    transition: rotate 0.5s ease-in-out;
+    rotate: 0deg; 
+
+}
+
+.coll-sidenav > summary > span:hover {
+    cursor: pointer;
+
+    transition: rotate 0.5s ease-in-out;
+    rotate: 180deg; 
+
+}
+
+.sidenav {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 300px;
+    position: relative;
+    background-color: var(--lightGreen);
+    padding-top: 80px;
+    padding-left: 28px;
+    padding-right: 25px;
+    border-right: 4px solid black;
+    /* box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.3); */
+}
+
+
+#btn-sair {
+    justify-content: center;
+    background-color: transparent;
+
+    color: var(--darkGreen);
+    border: 2.8px solid transparent;
+    box-shadow: none;
+
+    margin-top: auto;
+    bottom: 10px;
+    padding: 0.1rem;
+
+}
+
+#btn-sair:hover {
+    border: var(--border);
+    color: black;
+    background-color: whitesmoke;
+
+}
+
+.header-mobile{
+    background-color: var(--lightGreen);
+    margin-top: 0px;
+    
+}
+
+/* Navs internas */
+
+.internal-nav {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    margin: 1em 0;
+    gap: 1em;
+}
+
+.internal-nav a {
+    text-decoration: none;
+    border: 1px solid black;
+    box-shadow: var(--box-shadow);
+    padding: 0.3em;
+    background-color: var(--lighterPurple);
+    color: white;
+    width: 10em;
+    text-align: center;
+}
+
+.internal-nav a:hover {
+    background-color: var(--softGreen);
+    color: black;
+    box-shadow: -2px 3px 5px black;
+    text-decoration: none;
+}
+
+.internal-nav h1 {
+    padding: 0;
+    color: var(--darkGreen);
+    text-align: left;
+    margin-right: 10rem;
+
+}
+
+.internal-nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+#tituloInicial {
+  padding: 1em;
+  /* background-color: var(--lighterPurple); */
+  text-shadow: -1px 1px 0px rgb(0, 0, 0);
+  color: var(--normalPurple);
+  font-size: 2.8em;
+  text-align: center;
+  text-decoration: underline;
+  
+}
+
+/* Index */
+
+/* #main-index,  */
+.main {
+    background-color: var(--lightGreen);
+    display: flex;
+}
+
+.container
+/* #container-index */
+ {
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    margin: auto auto;
+    background-color: whitesmoke;
+    justify-self: center;
+
+    padding: 2rem;
+
+    display: grid;
+
+    width: 456;
+    height: 355;
+    
+}
+
+
+.container > img
+/* #container-index > img */
+ {
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 35px;
+    /* align-self: center; */
+}
+
+.container > a
+/* #container-index > a */
+ {
+    margin: 20px;
+}
+
+#subtitulo-index {
+    text-align: center;
+}
+
+/* Tela de cadastro */
+
+.div-cadastro, .div-login {
+    padding-left: 2em;
+    padding-right: 2em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.container-cadastro {
+    margin-top: 4em;
+}
+
+
+#titulo-cadastro {
+    padding-top: 0.2em;
+    text-align: center;
+}
+
+#form-cadastro, #form-login { 
+    display: grid;
+    grid-template-columns: 1;
+}
+
+#form-cadastro > label, #form-login > label {
+    font-size: 18px;
+    margin: 0.8em 0 0.5em 0;
+}
+
+#form-cadastro > p, #form-login > p {
+    font-size: 12px;
+    margin-bottom: 0.3em;
+    margin-top: 0.3em;
+}
+
+#btn-cad-usuario {
+    align-self: center;
+    margin: 1rem auto;
+}
+
+#btn-login {
+    align-self: center;
+}
+
+/* Produtos */
+
+.lista-produtos {
+    /* display: block; */
+    border: 2px solid var(--darkGreen);
+    padding: 10px;
+    /* background-color: var(--lighterGreen); */
+    background-color: thistle;
+}
+
+.product-view {
+    display: inline-block;
+    /* flex-wrap: nowrap; */
+
+    background-color: whitesmoke;
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    padding: 10px;
+    margin: 10px;
+    margin-bottom: 25px;
+}
+
+.product-view > p {
+    margin: 10px;
+}
+
+.product-btns {
+    /* position: fixed; */
+    margin: 10px;
+}
+
+/* Tabela */
+
+/* Cor de fundo para as linhas ímpares */
+.tabela-produtos {
+    width: 80%;
+    height: 50vh; /* 1. Defina uma altura fixa */
+    /* border: var(--border); */
+    overflow-y: auto;
+}
+
+
+
+table {
+    margin: 1rem 0;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid var(--darkerPurple);
+    /* box-shadow: var(--border); */
+    text-align: left;
+}
+
+th {
+    background-color: var(--normalPurple);
+    color: whitesmoke;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: white;
+}
+
+/* Cor de fundo para as linhas pares */
+table tbody tr:nth-child(even) {
+    background-color: rgb(202, 202, 202);
+}
+
+/* Imagem de produtos na view produtos */
+
+.img-produtos {
+    width: 500px;
+    /* height: 100px; */
+}

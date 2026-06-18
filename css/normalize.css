@@ -1,0 +1,243 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*
+    "Open Sans", sans-serif;
+    "Roboto", sans-serif;
+    "Roboto", sans-serif;
+*/
+
+@font-face {
+    font-family: 'OpenSans';
+    src: url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+  }
+
+:root {
+    --darkerPurple: #3f1970;
+    --darkPurple: #571FA6;
+    --normalPurple: #853fcb;
+    --lighterPurple: #bd87f4;
+    --lightPurple: #9373d973;
+
+    --blue: #50ACE8;
+
+    --darkGreen: #294008;
+    --normalGreen: #365902;
+    --lightGreen: #99d669;
+    --lighterGreen: #A9E879;
+    --softGreen: #b4e290;
+
+    --font-serif: 'Roboto Slab', sans-serif;
+    --font-sans-serif: "Open Sans", sans-serif;
+
+    --box-shadow: -3px 3px 0px black;
+    --box-shadow-hover: -3px 3px 0px rgba(0, 0, 0, 0.80);
+    
+    --border: 2.8px solid black;
+    --border-hover: 0.5px solid rgba(0, 0, 0, 0.516);
+    
+    --border-focus: 2.8px solid #3f1970;
+    --box-shadow-focus: -3px 3px 0px #3f1970;
+
+    --transition-background: margin-left 0.2s ease, width 0.2s ease;
+}
+
+/* NORMALIZAÇÕES INICIAIS */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-serif);
+    box-sizing: border-box;
+}
+
+
+html, body, main {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+    /* padding-top: 10px; */
+}
+
+
+body {
+    display: flex;
+    flex-direction: row; /* Alinha a Sidenav e o Conteúdo lado a lado */
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+main {
+    flex: 1 0 auto;
+    /* margin: 20px 10px; */
+    padding: 0px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.conteudo-pagina {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    margin-left: 0; 
+    transition: margin-left 0.2s ease, width 0.2s ease;
+}
+
+footer {
+    text-align: right;
+    padding: 20px;
+    bottom: 0;
+    font-size: 0.8rem;
+    margin-top: auto;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+/* NORMALIZAÇÕES ITENS */
+
+#logo-sidenav {
+    width: 150px;
+    margin: 10px;
+    align-self: center;
+    justify-content: center;
+    /* text-shadow: 3px 3px 3px black; */
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24,
+}
+
+.botoes-index{
+    align-items: center;
+    display: flex;
+}
+
+a, button,
+.sidenav > a, 
+.product-btns > a,
+.botoes-index > a {
+    font-size: 1em;
+    padding: 0.5em;
+    margin: 0.8em;
+    background-color: var(--normalPurple);
+    color: white;
+    font-family: var(--font-serif);
+    text-align: center;
+    text-decoration: none;
+
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+
+    width: 200px;
+
+    /* margin: 10px 10px 10px 10px; */
+
+}
+
+
+
+a:hover, button:hover,
+.sidenav > a:hover,
+.botoes-index > a:hover,
+#container-produtos > button:hover, 
+#form-products-buttons > button:hover, 
+.product-btns > button:hover, 
+.product-btns > a:hover {
+    background-color: var(--darkPurple);
+    box-shadow: var(--box-shadow-hover);
+    cursor: pointer;
+
+}
+/* 
+ {
+    background-color: var(--darkerPurple);
+    color: whitesmoke;
+} */
+
+
+h1 {
+    padding: 1em;
+    color: var(--darkGreen);
+    font-size: 2em;
+}
+
+h2 {
+    text-align: center;
+    padding: 1em;
+    color: var(--normalGreen);
+}
+
+
+p {
+    font-size: 18px;
+}
+
+p > strong {
+    font-weight: bolder;
+    color: var(--darkGreen);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"] {
+    padding: 0.5em;
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    font-size: 14px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border: var(--border-focus);
+    box-shadow: var(--box-shadow-focus);
+    outline: none;
+}
+
+select {
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    border-radius: 0px;
+    border: 1px solid var(--lightGreen);
+    font-size: 0.8em;
+    padding: 0.5em;
+    background-color: white;
+}
+
+select:hover {
+    background-color: whitesmoke    ;
+    cursor: pointer;
+}
+
+
+.error-msg {
+    background-color: brown;
+    color: whitesmoke;
+    border: 2px solid black;
+    box-shadow: var(--box-shadow);
+    width: 50%;
+    padding: 1rem;
+}
+
+.success-msg{
+    background-color: var(--normalGreen);
+    color: white;
+    border: 2px solid black;
+    box-shadow: var(--box-shadow);
+    width: 200px;
+    padding: 1rem;
+}

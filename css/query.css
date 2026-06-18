@@ -1,0 +1,31 @@
+#hamburguer {
+  display: none;
+  position: relative;
+  z-index: 10;
+}
+
+/* 
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+} */
+
+@media screen and (max-width: 768px) {
+  .header-mobile{
+    display: block;
+  }
+  .aside-desktop {
+    display: none;
+}
+  
+}
+
+@media screen and (min-width: 768px){
+  .header-mobile{
+    display: none;
+  }
+
+  main {
+    /* margin-left: 320px; */
+  }
+}
