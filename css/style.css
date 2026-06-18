@@ -158,6 +158,13 @@ position: absolute;
 
 /* Index */
 
+.logo-inicio {
+    top: 50px;
+    left: 60px;
+    width: 150px;
+    position: absolute;
+}
+
 /* #main-index,  */
 .main {
     background-color: var(--lightGreen);

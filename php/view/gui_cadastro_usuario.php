@@ -27,6 +27,9 @@
                 unset($_SESSION["msg"]);
             }
         ?>
+
+        <img src="../../img/logo/nize_border.png" alt="Nize" class="logo-inicio">
+
         
         <div class="container container-cadastro">
             <h1 id="titulo-cadastro">

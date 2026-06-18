@@ -26,7 +26,7 @@
 
         <div id="container-index" class="container">
 
-            <img src="../../img/logo/nize-new.png" alt="Nize">
+            <img src="../../img/logo/nize_border.png" alt="Nize">
             
             <h1 id="subtitulo-index">Orga<em>nize</em> suas vendas</h1>
             

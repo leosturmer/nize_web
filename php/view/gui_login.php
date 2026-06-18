@@ -22,6 +22,9 @@
             }
         ?>
 
+        <img src="../../img/logo/nize_border.png" alt="Nize" class="logo-inicio">
+
+
         <div class="container container-login">
             <h1>
                 Bora logar?

@@ -40,8 +40,8 @@ $id_produto = $_GET['id'] ?? null;
     <details class="coll-sidenav" open>
         <summary><span class="material-symbols-outlined">dehaze</span></summary>
         <div class="sidenav">
-            <img src="../../img/logo/nize-new.png" alt="Nize" id="logo-sidenav">
-            <a href="tela-inicial.php">Tela inicial</a>
+            <img src="../../img/logo/nize_border.png" alt="Nize" id="logo-sidenav">
+            <a href="tela_inicial.php">Tela inicial</a>
             <a href="gui_visualizacao_produtos.php">Produtos</a>
             <a href="gui_visualizacao_pedidos.php">Pedidos</a>
             <a href="gui_minha_area.php">Minha área</a>

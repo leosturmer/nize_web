@@ -39,7 +39,7 @@ if (password_verify($senha_digitada, $dados['senha'])) {
     $lojaURL = $usuario->loja;
 
 
-    header("location:../view/tela-inicial.php?nome=$nomeURL&loja=$lojaURL");
+    header("location:../view/tela_inicial.php?nome=$nomeURL&loja=$lojaURL");
     exit;
 } else {
     $_SESSION['msg'] = "<p class='error-msg'>Usuário ou senha inválidos.</p>";
@@ -61,7 +61,7 @@ if (password_verify($senha_digitada, $dados['senha'])) {
 //     $lojaURL = $usuario->loja;
 
 
-//     header("location:../view/tela-inicial.php?nome=$nomeURL&loja=$lojaURL");
+//     header("location:../view/tela_inicial.php?nome=$nomeURL&loja=$lojaURL");
 //     exit;
 
 // } else {
@@ -82,7 +82,7 @@ if (password_verify($senha_digitada, $dados['senha'])) {
 //             $nomeURL = $usuario->nome;
 //             $lojaURL = $usuario->loja;
 
-//             header("location:../view/tela-inicial.php?nome=$nomeURL&loja=$lojaURL");
+//             header("location:../view/tela_inicial.php?nome=$nomeURL&loja=$lojaURL");
 //             exit;
 
 //         }
