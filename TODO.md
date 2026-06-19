@@ -1,6 +1,9 @@
 ### Ideias não são essenciais:
 
 -------- Fazer a visualização de produtos como link
+
+--- Ver como gerar pelo ID um número aleatório para o link e/ou ver se vai pela NOME do usuário/loja
+
 ---- Para isso, colocar no MINHA ÁREA um botão de "disponibilizar produtos para visualização"
 ---- Nos produtos, colocar este botão também
 ---- Tem que colocar nas tabelas de produto & fazer uma tabela/view de visualização de produto com os produtos que tem marcado o "disponibilizar para visualização"
