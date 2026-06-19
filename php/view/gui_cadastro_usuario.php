@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="../../../img/nize_favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../img/favicon/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/query.css">
@@ -28,7 +28,7 @@
             }
         ?>
 
-        <img src="../../img/logo/nize_border.png" alt="Nize" class="logo-inicio">
+        <img src="../../img/logo/nize_new.png" alt="Nize" class="logo-inicio">
 
         
         <div class="container container-cadastro">

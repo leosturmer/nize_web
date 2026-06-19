@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nize</title>
 
-    <link rel="shortcut icon" href="../img/nize_favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/query.css">
@@ -26,7 +26,7 @@
 
         <div id="container-index" class="container">
 
-            <img src="../../img/logo/nize_border.png" alt="Nize">
+            <img src="../../img/logo/nize_new.png" alt="Nize">
             
             <h1 id="subtitulo-index">Orga<em>nize</em> suas vendas</h1>
             

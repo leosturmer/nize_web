@@ -224,7 +224,7 @@ position: absolute;
 }
 
 
-#titulo-cadastro {
+#titulo-cadastro, #titulo-login {
     padding-top: 0.2em;
     text-align: center;
 }
@@ -251,6 +251,7 @@ position: absolute;
 }
 
 #btn-login {
+    /* top: 10px; */
     align-self: center;
 }
 
