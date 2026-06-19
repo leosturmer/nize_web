@@ -45,7 +45,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     <main>
         <?php
         if (isset($_SESSION["msg"])) {
-        echo $_SESSION['msg'];
+        echo "<div id='session-msg'>" . $_SESSION['msg'].  "</div>";
         unset($_SESSION["msg"]);
         }
         ?>
@@ -72,5 +72,15 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
 
     </div>
+
+    <script>
+    const msgElement = document.getElementById('session-msg');
+
+        if (msgElement) {
+            setTimeout(() => {
+                msgElement.style.display = 'none'; 
+            }, 6000);
+        }
+    </script>
 </body>
 </html>

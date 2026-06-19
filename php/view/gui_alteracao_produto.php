@@ -61,7 +61,7 @@ $id_produto = $_GET['id'] ?? null;
 
         <?php
             if (isset($_SESSION["msg"])) {
-            echo $_SESSION['msg'];
+            echo "<div id='session-msg'>" . $_SESSION['msg'].  "</div>";
             unset($_SESSION["msg"]);
             }
         ?>
@@ -144,6 +144,16 @@ document.getElementById('imagemProduto').addEventListener('change', function() {
         }
     }
 });
+</script>
+
+<script>
+const msgElement = document.getElementById('session-msg');
+
+    if (msgElement) {
+        setTimeout(() => {
+            msgElement.style.display = 'none'; 
+        }, 6000);
+    }
 </script>
 
 </body>

@@ -23,7 +23,7 @@
     session_start();
     
             if (isset($_SESSION["msg"])) {
-                echo $_SESSION['msg'];
+                echo "<div id='session-msg'>" . $_SESSION['msg'].  "</div>";
                 unset($_SESSION["msg"]);
             }
         ?>
@@ -64,6 +64,14 @@
         <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
     </main>
 
-    
+    <script>
+    const msgElement = document.getElementById('session-msg');
+
+        if (msgElement) {
+            setTimeout(() => {
+                msgElement.style.display = 'none'; 
+            }, 6000);
+        }
+    </script>
 </body>
 </html>

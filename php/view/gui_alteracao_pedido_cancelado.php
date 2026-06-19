@@ -52,7 +52,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
     <main>
         <?php
             if (isset($_SESSION["msg"])) {
-                echo $_SESSION['msg'];
+                echo "<div id='session-msg'>" . $_SESSION['msg'].  "</div>";
             unset($_SESSION["msg"]);
             }
         ?>
@@ -145,6 +145,16 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
             // 2. Executa uma vez ao carregar a página (importante para telas de ALTERAÇÃO)
             gerenciarCheckboxes();
         });
+    </script>
+
+    <script>
+    const msgElement = document.getElementById('session-msg');
+
+        if (msgElement) {
+            setTimeout(() => {
+                msgElement.style.display = 'none'; 
+            }, 6000);
+        }
     </script>
 </body>
 </html>

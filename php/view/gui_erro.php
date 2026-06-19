@@ -24,5 +24,16 @@
     ?>
 </div>
 
+<script>
+const msgElement = document.getElementById('session-msg');
+
+    if (msgElement) {
+        setTimeout(() => {
+            msgElement.style.display = 'none'; 
+        }, 6000);
+    }
+
+</script>
+
 </body>
 </html>

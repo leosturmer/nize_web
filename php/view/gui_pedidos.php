@@ -61,7 +61,7 @@ if (isset($_SESSION['encomendaSelecionada'])){
     <main>
         <?php
             if (isset($_SESSION["msg"])) {
-                echo $_SESSION['msg'];
+                echo "<div id='session-msg'>" . $_SESSION['msg'].  "</div>";
                 unset($_SESSION["msg"]);
             }
         ?>
@@ -94,7 +94,12 @@ if (isset($_SESSION['encomendaSelecionada'])){
                                         <p><strong>Aceita encomenda:</strong> <?php if ($item['aceita_encomenda']) {echo "Sim";} else {echo "Não"; } ?></p>
                                     
                                         <p><strong>Descrição:</strong> <?php if (htmlspecialchars($item['descricao'])) { echo htmlspecialchars($item['descricao']); } else { echo 'Sem informações';}?></p>
-                                        <img src="uploads/<?php echo htmlspecialchars($item['imagem']) ?>" alt="imagem do produto" class="img-produtos">
+
+                                        <?php if($item['imagem']){
+                                                echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                                            } else {
+                                                echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
+                                            } ?>
                         
                                         <form action="../controller/pedidoControle.php" method="get" class="product-btns">
                                             <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Digite a quantidade" autocomplete="off">
@@ -217,6 +222,14 @@ if (isset($_SESSION['encomendaSelecionada'])){
             statusPedido.addEventListener("change", gerenciarCheckboxes);
             gerenciarCheckboxes();
         });
+
+        const msgElement = document.getElementById('session-msg');
+
+            if (msgElement) {
+                setTimeout(() => {
+                    msgElement.style.display = 'none'; 
+                }, 6000);
+            }
     </script>
 
 </body>

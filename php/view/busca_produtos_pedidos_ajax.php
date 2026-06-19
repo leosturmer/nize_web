@@ -9,13 +9,16 @@ Seguranca::verificarAcesso();
 header('Content-Type: text/html; charset=utf-8');
 
 $pesquisa = trim($_GET['pesquisaProdutos'] ?? '');
+$estoqueProduto = trim($_GET['filtroEstoque'] ?? '');
+$encomendaProduto = trim($_GET['filtroEncomenda'] ?? '');
+
 $produtoDAO = new ProdutoDAO();
 
 $usuario = unserialize($_SESSION['usuario_logado']);
 $idUsuarioLogado = $usuario->id_usuario;
 
 if (!empty($pesquisa)) {
-    $lista = $produtoDAO->buscarProdutoFiltro($pesquisa, $idUsuarioLogado);
+    $lista = $produtoDAO->buscarProdutoFiltro($pesquisa, $idUsuarioLogado, $encomendaProduto, $estoqueProduto);
 } else {
     $lista = $produtoDAO->listarTodosProdutos($idUsuarioLogado);
 }
