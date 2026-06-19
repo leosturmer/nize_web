@@ -106,22 +106,9 @@ position: absolute;
 /* Navs internas */
 
 .internal-nav {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    align-items: center;
-    margin: 1em 0;
-    gap: 1em;
-}
-
-.internal-nav a {
-    text-decoration: none;
-    border: 1px solid black;
-    box-shadow: var(--box-shadow);
-    padding: 0.3em;
-    background-color: var(--lighterPurple);
-    color: white;
-    width: 10em;
-    text-align: center;
+    display: inline-block;
+    margin-bottom: 2em 0;
+    gap: 20px;
 }
 
 .internal-nav a:hover {
@@ -140,9 +127,91 @@ position: absolute;
 }
 
 .internal-nav-links {
+    margin: 1em 0;
     display: flex;
-    justify-content: center;
+    justify-content: baseline;
+    align-items: center;
     gap: 20px;
+
+}
+
+.internal-nav-links > a {
+    text-decoration: none;
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    background-color: var(--darkerPurple);
+    padding: 0.8em;
+    color: white;
+    width: fit-content;
+    text-align: center;
+}
+
+.internal-nav-links > a:hover {
+    background-color: var(--normalPurple);
+    color: white;
+    box-shadow: var(--box-shadow);
+}
+
+.internal-nav-inputs {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1em;
+}
+
+#filtro-estoque,
+#filtro-encomenda {
+    width: 20%;
+}
+
+#btn-limpar-filtros {
+    width: fit-content;
+    font-size: 14px;
+    padding: 0.8em;
+    color: black;
+    background-color: var(--lightGreen);
+    margin-right: 0;
+}
+
+#btn-limpar-filtros:hover{
+    background-color: var(--softGreen);
+
+}
+
+#form-pesquisa-produtos {
+    position: relative;
+    display: inline-block;
+    margin-top: 0.8em;
+
+    width: 40%;
+    background-color: white;
+
+}
+
+
+
+#pesquisa-produtos {
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+
+    padding: 0.8em;
+    font-size: 16px;
+    width: 100%;
+}
+
+
+#pesquisa-produtos:focus{
+    border: var(--border-focus-purple);
+    box-shadow: var(--shadow-focus-purple);
+    outline: none;
+}
+
+#search-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.5rem;
 }
 
 /* Tela inicial */
@@ -156,7 +225,7 @@ position: absolute;
     font-size: 2.8em;
     align-self: center;
 
-    margin-top: 2em;
+    margin-top: 1em;
     padding: 0.5em 1em;
     width: fit-content;
 }
@@ -165,7 +234,8 @@ position: absolute;
     border: var(--border);
     box-shadow: var(--box-shadow);
     background-color: white;
-    width: 50%;
+    /* width: fit-content; */
+    width: 40rem;
     text-align: left;
     align-self: center;
     margin-top: 3em;
@@ -174,6 +244,7 @@ position: absolute;
 
 .container-inicial > p {
     margin-top: 0.8em;
+    /* margin-right: 3em; */
 }
 
 /* Index */
@@ -278,76 +349,61 @@ position: absolute;
 /* Produtos */
 
 .lista-produtos {
-    /* display: block; */
-    border: 2px solid var(--darkGreen);
+    display: flex;
+    flex-wrap: wrap;
+    border: var(--border-thin);
     padding: 10px;
-    /* background-color: var(--lighterGreen); */
     background-color: thistle;
+    justify-content: space-evenly;
 }
 
 .product-view {
-    display: inline-block;
-    /* flex-wrap: nowrap; */
-
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     background-color: whitesmoke;
     border: var(--border);
     box-shadow: var(--box-shadow);
-    padding: 10px;
+
+    padding: 15px;
     margin: 10px;
+
     margin-bottom: 25px;
+    box-sizing: border-box;
+    width: 45%;
+    min-height: fit-content;
+}
+
+.product-view > img {
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    margin-left: 10px;
+    margin-bottom: 10px;
+    max-width: 95%;
 }
 
 .product-view > p {
     margin: 10px;
 }
 
+
 .product-btns {
-    /* position: fixed; */
+    display: flex;
+    justify-content: center;
     margin: 10px;
+    margin-top: auto;
 }
 
-/* Tabela */
-
-/* Cor de fundo para as linhas ímpares */
-.tabela-produtos {
-    width: 80%;
-    height: 50vh; /* 1. Defina uma altura fixa */
-    /* border: var(--border); */
-    overflow-y: auto;
+.product-btns > a {
+    width: 120px;
+    
 }
 
 
-
-table {
-    margin: 1rem 0;
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 12px;
-    border: 1px solid var(--darkerPurple);
-    /* box-shadow: var(--border); */
-    text-align: left;
-}
-
-th {
-    background-color: var(--normalPurple);
-    color: whitesmoke;
-}
-
-table tbody tr:nth-child(odd) {
-    background-color: white;
-}
-
-/* Cor de fundo para as linhas pares */
-table tbody tr:nth-child(even) {
-    background-color: rgb(202, 202, 202);
-}
 
 /* Imagem de produtos na view produtos */
 
 .img-produtos {
-    width: 500px;
+    /* width: 500px; */
     /* height: 100px; */
 }

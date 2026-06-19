@@ -37,6 +37,8 @@
     
     --border: 2.8px solid black;
     --border-hover: 0.5px solid rgba(0, 0, 0, 0.516);
+
+    --border-thin: 2px solid black;
     
     --border-focus-purple: 2.8px solid #853fcb;
     --border-focus-green: 2.8px solid #99d669;
@@ -90,12 +92,13 @@ main {
     position: relative;
     z-index: 1;
     margin-left: 0; 
+    padding: 2rem 3.2rem;
     transition: margin-left 0.2s ease, width 0.2s ease;
 }
 
 footer {
     text-align: right;
-    padding: 20px;
+    padding: 20px 0px;
     bottom: 0;
     font-size: 0.8rem;
     margin-top: auto;
@@ -214,7 +217,7 @@ p > strong {
 .input-produto,
 input[type="date"], 
 textarea {
-    padding: 0.5em;
+    padding: 0.3em;
     border: var(--border-focus-green);
     font-size: 14px;
 
@@ -236,18 +239,19 @@ input[type="date"]:hover{
 /* Selects */
 select, ::picker(select) {
     appearance: base-select;
-    padding: 0.5em;
+    padding: 0.8em;
   }
 
 
 select {
-    padding: 0.5em;
+    padding: 0.8em;
     border: var(--border-focus-green);
-    font-size: 14px;
+    font-size: 16px;
     background-color: white;
 }
 
 select:hover {
+    border: var(--border-focus-purple);
     cursor: pointer;
 }
 
@@ -263,13 +267,18 @@ input[type=number] {
 }
 
 /* Mensagens padrão */
+
 .error-msg {
     background-color: brown;
     color: whitesmoke;
     border: 2px solid black;
     box-shadow: var(--box-shadow);
-    width: 50%;
+    width: 30%;
     padding: 1rem;
+
+    position: absolute;
+    top: 3em;
+    right: 1.5em;
 }
 
 .success-msg{
@@ -277,6 +286,10 @@ input[type=number] {
     color: white;
     border: 2px solid black;
     box-shadow: var(--box-shadow);
-    width: 200px;
+    width: 30%;
     padding: 1rem;
+
+    position: absolute;
+    top: 3em;
+    right: 1.5em;
 }
