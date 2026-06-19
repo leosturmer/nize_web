@@ -145,17 +145,35 @@ position: absolute;
     gap: 20px;
 }
 
+/* Tela inicial */
 #tituloInicial {
     border: var(--border);
-    margin-top: 2em;
-    padding: 1em;
-    /* background-color: var(--lighterPurple); */
-    text-shadow: -1px 1px 0px rgb(0, 0, 0);
-    color: var(--normalPurple);
+    box-shadow: var(--box-shadow);
+    background-color: var(--lighterPurple);
+    color: whitesmoke;
+
+    font-weight: 400;
     font-size: 2.8em;
-    text-align: center;
-    text-decoration: underline;
-  
+    align-self: center;
+
+    margin-top: 2em;
+    padding: 0.5em 1em;
+    width: fit-content;
+}
+
+.container-inicial {
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    background-color: white;
+    width: 50%;
+    text-align: left;
+    align-self: center;
+    margin-top: 3em;
+    padding: 2em;
+}
+
+.container-inicial > p {
+    margin-top: 0.8em;
 }
 
 /* Index */

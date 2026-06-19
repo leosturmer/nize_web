@@ -52,15 +52,24 @@ $usuario = unserialize($_SESSION['usuario_logado']);
                 Orga<em>nize</em> seus pedidos
             </h1>
 
-            <p>
-                <?php
-                if (!empty($usuario->loja)){
-                    echo "Olá, <strong>$usuario->nome</strong>, da loja <strong>$usuario->loja</strong>.";
-                } else {
-                    echo "Olá, " . $usuario->nome . ".";
-                }            
-                ?>
-            </p>
+            <div class="container-inicial">
+                <p>
+                    <?php
+                    if (!empty($usuario->loja)){
+                        echo "Olá, <strong>$usuario->nome</strong>, da loja <strong>$usuario->loja</strong>.";
+                    } else {
+                        echo "Olá, <strong>" . $usuario->nome . "</strong>.";
+                    }
+                    ?>
+                </p>
+                <p>Utilize o menu para navegar pelo site!</p>
+                <p>Aqui vai um resumo do que você pode fazer:</p>
+                <p><strong>Produtos</strong>: faça o cadastro dos produtos que você produz e/ou vende. Visualize e altere todos eles!</p>
+                <p><strong>Pedidos</strong>: organize seus pedidos, encomendas e vendas com os produtos cadastrados.</p>
+                <p><strong>Minha área</strong>: acesse esta área para alterar os seus dados.</p>
+
+                <h2 style="text-align: center;">Boas vendas!</h2>
+            </div>
             <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
         </main>
 
