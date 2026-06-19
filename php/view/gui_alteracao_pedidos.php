@@ -70,7 +70,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                     <div class="adicionar-produtos">
 
                         <form onsubmit="return false;">
-                            <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição" autocomplete="off">
+                            <input type="text" id="pesquisa-produtos" class="input-pesquisa" placeholder="Busque pelo nome ou descrição" autocomplete="off">
                         </form>
 
                         <p>Adicione os produtos ao pedido</p>
@@ -88,10 +88,10 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                                         <p><strong>Descrição:</strong> <?php if ($item['descricao']) {echo htmlspecialchars($item['descricao']); } else { echo "Não informada";}?></p>
                         
                                         <form action="../controller/pedidoControle.php" method="get" class="product-btns">
-                                            <input type="number" name="quantidadeVendida" id="quantidadeVendida" maxlength="3" placeholder="Digite a quantidade" autocomplete="off">
+                                            <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Digite a quantidade" autocomplete="off">
                                             <input type="hidden" name="op" value="adicionarQuantidade">
                                             <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
-                                            <input type="submit" value="Adicionar ao pedido">
+                                            <input type="submit" class="btn-add" value="Adicionar ao pedido">
                                         </form>
                                     </div>
                                     <?php endforeach; ?>
@@ -152,7 +152,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                 <div>
                     <label for="prazopedido">
                         Prazo de entrega
-                        <input type="date" name="prazoPedido" id="prazoPedido" required value="<?php echo $infoPedido['data'] ?>">
+                        <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required value="<?php echo $infoPedido['data'] ?>">
                     </label>
                     <label for="statusPedido">
                         Status da Pedido

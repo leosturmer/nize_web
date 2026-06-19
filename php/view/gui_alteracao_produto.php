@@ -70,7 +70,7 @@ $id_produto = $_GET['id'] ?? null;
             <fieldset id="products-form">
                 <legend>Informações do produto</legend>
                 <label>Nome do produto*:
-                    <input type="text" id="nomeProduto" name="nomeProduto" value="<?php echo htmlspecialchars($produto['nome']); ?>" autocomplete="off">
+                    <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" value="<?php echo htmlspecialchars($produto['nome']); ?>" autocomplete="off">
                 </label>
 
                 <?php if ($produto['aceita_encomenda'] !== 1) {
@@ -82,19 +82,19 @@ $id_produto = $_GET['id'] ?? null;
                 <label class="checkbox-acc-encomenda" for="">
                     Aceita encomendas*:
 
-                    <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" value="1" <?php echo " $checkEncomenda"; ?>>
+                    <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto" value="1" <?php echo " $checkEncomenda"; ?>>
                 </label>
 
                 <label>Quantidade:
-                    <input type="number" inputmode="" id="quantidadeProduto" name="quantidadeProduto" value="<?php echo htmlspecialchars($produto['quantidade']); ?>" maxlength="3" autocomplete="off">
+                    <input type="number" inputmode="" id="quantidadeProduto" name="quantidadeProduto" class="input-produto" value="<?php echo htmlspecialchars($produto['quantidade']); ?>" maxlength="3" autocomplete="off">
                 </label>
 
                 <label>Valor unitário:
-                    <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" value="<?php echo htmlspecialchars($produto['valor_unitario']); ?>" autocomplete="off">
+                    <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_unitario']); ?>" autocomplete="off">
                 </label>
 
                 <label>Valor de custo:
-                    <input type="number" id="valorCusto" name="valorCusto" step="0.01" value="<?php echo htmlspecialchars($produto['valor_custo']); ?>" autocomplete="off">
+                    <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_custo']); ?>" autocomplete="off">
                 </label>
 
                 <label>Imagem: (max. 2mb)
@@ -108,7 +108,7 @@ $id_produto = $_GET['id'] ?? null;
 
                 <label class="descricao-produtos" for="descricaoProduto"> 
                     Descrição do produto
-                    <textarea name="descricaoProduto" id="descricaoProduto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" autocomplete="off"><?php echo htmlspecialchars($produto['descricao']); ?></textarea>
+                    <textarea name="descricaoProduto" id="descricaoProduto" class="input-produto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" autocomplete="off"><?php echo htmlspecialchars($produto['descricao']); ?></textarea>
                 </label>
                 
             </fieldset>

@@ -49,7 +49,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
             ?>
 
             <h1 id="tituloInicial">
-                Orga<em>nize</em> suas vendas
+                Orga<em>nize</em> seus pedidos
             </h1>
 
             <p>

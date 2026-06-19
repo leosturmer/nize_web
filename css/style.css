@@ -146,13 +146,15 @@ position: absolute;
 }
 
 #tituloInicial {
-  padding: 1em;
-  /* background-color: var(--lighterPurple); */
-  text-shadow: -1px 1px 0px rgb(0, 0, 0);
-  color: var(--normalPurple);
-  font-size: 2.8em;
-  text-align: center;
-  text-decoration: underline;
+    border: var(--border);
+    margin-top: 2em;
+    padding: 1em;
+    /* background-color: var(--lighterPurple); */
+    text-shadow: -1px 1px 0px rgb(0, 0, 0);
+    color: var(--normalPurple);
+    font-size: 2.8em;
+    text-align: center;
+    text-decoration: underline;
   
 }
 

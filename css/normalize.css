@@ -38,8 +38,10 @@
     --border: 2.8px solid black;
     --border-hover: 0.5px solid rgba(0, 0, 0, 0.516);
     
-    --border-focus: 2.8px solid #3f1970;
-    --box-shadow-focus: -3px 3px 0px #3f1970;
+    --border-focus-purple: 2.8px solid #853fcb;
+    --border-focus-green: 2.8px solid #99d669;
+    --shadow-focus-purple: -3px 3px 0px #853fcb;
+    --shadow-focus-green: -3px 3px 0px #99d669;
 
     --transition-background: margin-left 0.2s ease, width 0.2s ease;
 }
@@ -127,7 +129,8 @@ footer {
 a, button,
 .sidenav > a, 
 .product-btns > a,
-.botoes-index > a {
+.botoes-index > a,
+.btn-add {
     font-size: 1em;
     padding: 0.5em;
     margin: 0.8em;
@@ -142,8 +145,6 @@ a, button,
 
     width: 200px;
 
-    /* margin: 10px 10px 10px 10px; */
-
 }
 
 
@@ -154,7 +155,8 @@ a:hover, button:hover,
 #container-produtos > button:hover, 
 #form-products-buttons > button:hover, 
 .product-btns > button:hover, 
-.product-btns > a:hover {
+.product-btns > a:hover,
+.btn-add:hover {
     background-color: var(--darkPurple);
     box-shadow: var(--box-shadow-hover);
     cursor: pointer;
@@ -189,41 +191,78 @@ p > strong {
     color: var(--darkGreen);
 }
 
-input[type="text"],
-input[type="number"],
-input[type="email"],
-input[type="password"] {
+/* Tipos de inputs */
+
+.input-pesquisa{
+
+}
+
+.input-login{
     padding: 0.5em;
     border: var(--border);
     box-shadow: var(--box-shadow);
     font-size: 14px;
 }
 
-input[type="text"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-    border: var(--border-focus);
-    box-shadow: var(--box-shadow-focus);
+.input-login:focus {
+    border: var(--border-focus-purple);
+    box-shadow: var(--shadow-focus-purple);
     outline: none;
 }
 
-select {
-    margin-bottom: 0.5em;
-    margin-top: 0.5em;
-    border-radius: 0px;
-    border: 1px solid var(--lightGreen);
-    font-size: 0.8em;
+.input-pedido, 
+.input-produto,
+input[type="date"], 
+textarea {
     padding: 0.5em;
+    border: var(--border-focus-green);
+    font-size: 14px;
+
+}
+
+.input-pedido:focus, 
+.input-produto:focus,
+input[type="date"]:focus, 
+textarea:focus,
+select:focus {
+    border: var(--border-focus-purple);
+    outline: none;
+}
+
+input[type="date"]:hover{
+    cursor: pointer;
+}
+
+/* Selects */
+select, ::picker(select) {
+    appearance: base-select;
+    padding: 0.5em;
+  }
+
+
+select {
+    padding: 0.5em;
+    border: var(--border-focus-green);
+    font-size: 14px;
     background-color: white;
 }
 
 select:hover {
-    background-color: whitesmoke    ;
     cursor: pointer;
 }
 
+/* Remover setas dos inputs number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
 
+input[type=number] {
+-moz-appearance: textfield;
+}
+
+/* Mensagens padrão */
 .error-msg {
     background-color: brown;
     color: whitesmoke;

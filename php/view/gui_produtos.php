@@ -64,33 +64,33 @@ $usuario = unserialize($_SESSION['usuario_logado']);
             <fieldset id="products-form">
                 <legend>Informações do produto</legend>
                 <label>Nome do produto*:
-                    <input type="text" id="nomeProduto" name="nomeProduto" autocomplete="off">
+                    <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" autocomplete="off">
                 </label>
 
                 <label class="checkbox-acc-encomenda" for="">
                     Aceita encomendas*:
-                    <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" value='1'>
+                    <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto" value='1'>
                 </label>
 
                 <label>Quantidade:
-                    <input type="number" inputmode="" id="quantidadeProduto" name="quantidadeProduto" maxlength="3" autocomplete="off">
+                    <input type="number" inputmode="" id="quantidadeProduto" name="quantidadeProduto" class="input-produto" maxlength="3" autocomplete="off">
                 </label>
 
                 <label>Valor unitário*:
-                    <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" autocomplete="off" required>
+                    <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" autocomplete="off" required>
                 </label>
 
                 <label>Valor de custo:
-                    <input type="number" id="valorCusto" name="valorCusto" step="0.01" autocomplete="off">
+                    <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" autocomplete="off">
                 </label>
 
                 <label>Imagem: (max. 2mb)
-                    <input type="file" name="imagemProduto" id="imagemProduto" accept=".png, .jpg">
+                    <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
                 </label>
 
                 <label class="descricao-produtos" for="descricaoProduto"> 
                     Descrição do produto
-                    <textarea name="descricaoProduto" id="descricaoProduto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" autocomplete="off"></textarea>
+                    <textarea name="descricaoProduto" id="descricaoProduto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" class="input-produto" autocomplete="off"></textarea>
                 </label>
                 
             </fieldset>
