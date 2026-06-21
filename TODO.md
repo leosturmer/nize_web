@@ -1,13 +1,19 @@
-### Ideias não são essenciais:
+### Página de visualização de loja
 
--------- Fazer a visualização de produtos como link
+- Gerar um link de visualização da loja
+    - Para isso, a loja tem que ter selecionado o "ACEITA VISUALIZAÇÃO" na tela da minha área
+    - Pode ter um link redirecionando quando colocar algum produto
+    - Pra fazer isso, o movimento vai ter que ser: 
+    
+    1) adicionar o checkbox na tela de minha área e salvar no banco pela DAO. 
+    2) Adicionar o nome_visualizacao para gerar o link com o nome da loja 
+    3) if (aceita_visualizacao) aí tem um link /loja/nome_visuzliacao 
+    4) tendo isso, a tela de visualizacao da loja tem que puxar todos os produtos do ID do vendedor 
+    5) mas os produtos tem que estar marcados com o aceita_visualizacao em si
+    6) Ou seja, tem que alterar as páginas de cadastro e alteração de produtos, bem como a de visualização de produtos para mostrar pro vendedor se o produto aceita ser exposto ou não
 
---- Ver como gerar pelo ID um número aleatório para o link e/ou ver se vai pela NOME do usuário/loja
 
----- Para isso, colocar no MINHA ÁREA um botão de "disponibilizar produtos para visualização"
----- Nos produtos, colocar este botão também
----- Tem que colocar nas tabelas de produto & fazer uma tabela/view de visualização de produto com os produtos que tem marcado o "disponibilizar para visualização"
-
+#### Outras coisas para fazer
 
 --- Fazer a GUI ERRO.
 
