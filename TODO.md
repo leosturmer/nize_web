@@ -8,12 +8,6 @@
 ---- Nos produtos, colocar este botão também
 ---- Tem que colocar nas tabelas de produto & fazer uma tabela/view de visualização de produto com os produtos que tem marcado o "disponibilizar para visualização"
 
--------- Pode ter botão de duplicar pedido e/ou duplicar produto (?)
---- Tem que clicar nele na respectiva tela de ALTERAÇÃO
---- Ele tem que ir pra uma tela de CADASTRO de produto, trocando o produto do carrinho pra um PRODUTO NOVO
---- Tem que fazer as validações de cadastro de produto novo, não de alteração
-
-
 
 --- Fazer a GUI ERRO.
 
