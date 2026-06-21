@@ -66,7 +66,7 @@ $lista = $produtoDAO->listarTodosProdutos($id_usuario);
                             <option value="sem-encomenda">Não aceita encomenda</option>
                     </select>
 
-                    <button type="button" id="btn-limpar-filtros">Limpar Filtros</button>
+                    <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
 
                 </details>
 

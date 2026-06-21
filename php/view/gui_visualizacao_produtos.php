@@ -69,7 +69,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
                         <option value="com-encomenda">Aceita encomenda</option>
                         <option value="sem-encomenda">Não aceita encomenda</option>
                 </select>
-                <button type="button" id="btn-limpar-filtros">Limpar Filtros</button>
+                <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
             </div>
 
             <!-- <div class="internal-nav-links"> -->
