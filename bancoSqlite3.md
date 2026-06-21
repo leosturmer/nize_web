@@ -28,7 +28,9 @@ USE nize_database;
             login TEXT NOT NULL UNIQUE,
             senha TEXT NOT NULL, 
             nome TEXT NOT NULL,
-            nome_loja TEXT NULL
+            nome_loja TEXT NULL,
+            aceita_visualizacao INTEGER NULL,
+            nome_visualizacao VARCHAR (50)
     );
 
     CREATE TABLE IF NOT EXISTS produtos (
@@ -41,6 +43,7 @@ USE nize_database;
             aceita_encomenda INTEGER NULL,
             descricao TEXT NULL,
             valor_custo REAL NULL,
+            aceita_visualizacao INTEGER NULL,
             FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
     );
 
