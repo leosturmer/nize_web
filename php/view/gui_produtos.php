@@ -64,7 +64,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
             <fieldset id="products-form">
                 <legend>Informações do produto</legend>
                 <label>Nome do produto*:
-                    <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" autocomplete="off">
+                    <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" autocomplete="off" required>
                 </label>
 
                 <label class="checkbox-acc-encomenda" for="">

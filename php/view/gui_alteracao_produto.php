@@ -70,7 +70,7 @@ $id_produto = $_GET['id'] ?? null;
             <fieldset id="products-form">
                 <legend>Informações do produto</legend>
                 <label>Nome do produto*:
-                    <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" value="<?php echo htmlspecialchars($produto['nome']); ?>" autocomplete="off">
+                    <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" value="<?php echo htmlspecialchars($produto['nome']); ?>" autocomplete="off" required>
                 </label>
 
                 <?php if ($produto['aceita_encomenda'] !== 1) {
@@ -90,7 +90,7 @@ $id_produto = $_GET['id'] ?? null;
                 </label>
 
                 <label>Valor unitário:
-                    <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_unitario']); ?>" autocomplete="off">
+                    <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_unitario']); ?>" autocomplete="off" required>
                 </label>
 
                 <label>Valor de custo:
