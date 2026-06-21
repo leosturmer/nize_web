@@ -189,9 +189,12 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
 
             </fieldset>
            
-            <button type="submit">Alterar</button>
-
-            <button formaction="../view/gui_visualizacao_pedidos.php">Voltar</button>        </form>
+            <div class="product-btns">
+                <button type="submit">Alterar</button>
+                <button formaction="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-add">Clonar</button>
+                <button formaction="../view/gui_visualizacao_pedidos.php">Voltar</button>        
+            </div>
+        </form>
         
 
             <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>

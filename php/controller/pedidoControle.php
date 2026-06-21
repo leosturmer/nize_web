@@ -22,6 +22,9 @@ switch ($opcao) {
     case "adicionarQuantidade":
         $id_produto = (int)($_GET['id'] ?? 0);
         $quantidade = (int)($_GET['quantidadeVendida'] ?? 0);
+        $origem = $_GET['origem'] ?? '';
+
+
 
         if ($id_produto > 0 && $quantidade > 0) {
             $_SESSION['carrinho'][$id_produto] = $quantidade;
@@ -30,8 +33,10 @@ switch ($opcao) {
             $_SESSION['msg'] = "<p class='error-msg'>Insira uma quantidade válida!</p>";
         }
 
-        if (isset($_SESSION['pedidoSelecionado'])) {
-            header("location:../view/gui_alteracao_pedidos.php");
+        if ($origem === 'clonar') {
+            header("location:../view/gui_clonar_pedido.php");
+        } else if (isset($_SESSION['pedidoSelecionado'])) {
+            header("location:../view/gui_alteracao_pedidos.php?id=" . $_SESSION['pedidoSelecionado']['id_pedido']);
         } else {
             header("location:../view/gui_pedidos.php");
         }
@@ -41,6 +46,7 @@ switch ($opcao) {
         $id_produto = (int)($_GET['id'] ?? 0);
         $id_pedido = (int)($_GET['id_pedido'] ?? 0);
         $valor = (float)($_GET['valor'] ?? 0);
+        $origem = $_GET['origem'] ?? '';
 
         if ($id_produto > 0 && isset($_SESSION['carrinho'][$id_produto])) {
             unset($_SESSION['carrinho'][$id_produto]);
@@ -55,8 +61,10 @@ switch ($opcao) {
             $_SESSION['msg'] = "<p class='error-msg'>Produto não encontrado ou já removido.</p>";
         }
 
-        if (isset($_SESSION['pedidoSelecionado'])) {
-            header("location:../view/gui_alteracao_pedidos.php");
+        if ($origem === 'clonar') {
+            header("location:../view/gui_clonar_pedido.php");
+        } else if (isset($_SESSION['pedidoSelecionado'])) {
+            header("location:../view/gui_alteracao_pedidos.php?id=" . $_SESSION['pedidoSelecionado']['id_pedido']);
         } else {
             header("location:../view/gui_pedidos.php");
         }
@@ -75,6 +83,7 @@ switch ($opcao) {
 
     case "carregarQuantidade":
         $id_pedido = (int)($_GET['id'] ?? 0);
+        $clonar = isset($_GET['clonar']) && $_GET['clonar'] === 'true';
         $pedido = $pedidoDAO->buscarPedidoID($id_pedido);
 
         if (!empty($pedido)) {
@@ -82,6 +91,15 @@ switch ($opcao) {
 
             foreach ($pedido['produtos'] as $produto) {
                 $_SESSION['carrinho'][$produto['id_produto']] = $produto['quantidade'];
+            }
+
+            if ($clonar) {
+                if (isset($_SESSION['pedidoSelecionado'])) {
+                    unset($_SESSION['pedidoSelecionado']);
+                }
+                $_SESSION['msg'] = "<p class='success-msg'>Itens clonados com sucesso! Revise e finalize o novo pedido.</p>";
+                header("location:../view/gui_clonar_pedido.php");
+                exit;
             }
 
             $_SESSION['pedidoSelecionado'] = [

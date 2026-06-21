@@ -105,8 +105,10 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
 
                                     ?>
             </div>
-
-            <a href="../controller/pedidoControle.php?op=limparCarrinho">Voltar</a>
+            <div class="product-btns">
+                <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-add">Clonar</a>
+                <a href="../controller/pedidoControle.php?op=limparCarrinho" class="btn-add">Voltar</a>
+            </div>
         </form>
         
 
