@@ -114,6 +114,7 @@ $id_produto = $_GET['id'] ?? null;
             </fieldset>
             <div id="form-products-buttons">
                 <button type="submit">Alterar</button>
+                <button formaction="gui_clonar_produto.php?id=<?php echo $produto['id_produto']; ?>">Clonar</button>
                 <button formaction="../view/gui_visualizacao_produtos.php">Voltar</button>
             </div>
         </form>

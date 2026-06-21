@@ -17,14 +17,7 @@
 
 --- Fazer a GUI ERRO.
 
-## TESTAR
-
-- Se para alterar produto/pedido está exigindo os dados obrigatórios;
-
-### No CSS
-
---- Ver as mensagens de Error e Success para que elas se sobreponham ao resto e que elas sumam depois de um tempo.
-
+## TESTAR TUDO
 
 #### Para o final:
 

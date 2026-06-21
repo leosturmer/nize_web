@@ -49,8 +49,8 @@ case "cadastrar":
         $produto->valor_custo = $valorCusto;
         $produto->aceita_encomenda = $aceitaEncomenda;
         $produto->descricao = $descricaoProduto;
-        $produto->imagem = null; 
-
+        $produto->imagem = $_POST['imagem_clonada'] ?? null;
+        
         // Verifica se o arquivo foi enviado sem erros de upload
         if (isset($_FILES["imagemProduto"]) && $_FILES["imagemProduto"]['error'] === 0){
             $arquivoTmp = $_FILES['imagemProduto']['tmp_name']; 
