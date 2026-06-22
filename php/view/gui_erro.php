@@ -1,3 +1,14 @@
+<?php 
+session_start();
+
+if (!empty($_SESSION['usuario_logado'])){
+    $logo_link = "tela_inicial.php";
+} else {
+    $logo_link = "../../index.php";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,16 +24,28 @@
 </head>
 <body>
 
+    <header class="header-view-loja">
+        <a href="<?php echo $logo_link ?>"><img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav"></a>
+    </header>
+    
+    <div class="conteudo-pagina">
+        
+        <main>
+            <h1 class="titulo-erro">Ops! Algo deu errado</h1>
 
-<div class="telaErro">
-    <h1>Ops, algo deu errado!</h1>
-    <?php 
-        if (isset($_SESSION["msg"])) {
-            echo $_SESSION["msg"];
-            unset($_SESSION["msg"]);
-        }
-    ?>
-</div>
+            <div class="container-inicial container-erro">
+                <p>Alguma operação causou erro.</p>
+                    
+                <p>Vamos tentar de novo?</p>
+            </div>
+
+            <a href="<?php echo $logo_link ?>" class="btn-voltar-erro">Voltar para o sistema</a>
+
+            
+
+            <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
+        </main>
+    </div>
 
 <script>
 const msgElement = document.getElementById('session-msg');

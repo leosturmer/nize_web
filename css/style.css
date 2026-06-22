@@ -404,13 +404,14 @@ position: absolute;
 
 .header-view-loja {
     background-color: var(--lightGreen);
-    padding: 1rem;
-    border-right: var(--border);
+    width: 300px;
+    padding: 5rem 2.5rem;
+    border-right: 4px solid black;
 
 }
 
 .header-view-loja > a, #img-logo-link {
-    
+    align-self: center;
     border: none;
     background-color: transparent;
     box-shadow: none;
@@ -422,4 +423,34 @@ position: absolute;
 }
 
 
+/* Gui Erro */
 
+.titulo-erro {
+    margin-top: 3rem;
+    text-align: center;
+    align-self: center;
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    width: fit-content;
+
+    background-color: brown;
+    color: whitesmoke;
+
+    font-weight: normal;
+}
+
+.container-erro {
+    text-align: center;
+    font-size: 18px;
+    width: 50%;
+}
+
+.container-erro > p {
+    font-size: 20px;
+    line-height: 1.2rem;
+}
+
+.btn-voltar-erro {
+    margin-top: 20vh;
+    align-self: center;
+}
