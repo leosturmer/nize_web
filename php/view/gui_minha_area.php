@@ -60,6 +60,12 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         } else {
             $view_loja = "Fechada";
         }
+
+        if ($usuario->nome_visualizacao){
+            $nome_visualizacao = $usuario->nome_visualizacao;
+        } else {
+            $nome_visualizacao = "Não informado";
+        }
         ?>
 
         <h1>Minha área</h1>
@@ -72,8 +78,9 @@ $usuario = unserialize($_SESSION['usuario_logado']);
             <br>
             <strong>E-mail</strong>: <?php echo $usuario->login ?>
             <br>
-            <strong>Visualização de produtos</strong>: <?php echo $view_loja ?>
+            <strong>Visualização da loja</strong>: <?php echo $view_loja ?>
             <br>
+            <strong>Link de visualização</strong>: <?php echo $nome_visualizacao ?>
             </p>
 
         </div>

@@ -20,9 +20,11 @@ $usuarioDAO = new UsuarioDAO();
 switch ($opcao){
 
     case "alterar":
-        $novoNome = $_POST['usuNome'];
-        $novaLoja = $_POST['usuLoja'];
-        $novoEmail = $_POST['usuEmail'];
+        $novoNome = trim($_POST['usuNome']);
+        $novaLoja = trim($_POST['usuLoja']) ?? "";
+        $novoEmail = trim(strtolower($_POST['usuEmail']));
+        $novoNomeView = trim(strtolower($_POST['usuNomeView'])) ?? "";
+        $aceitaVisualizacao = $_POST['aceitaVisualizacao'] ?? 0;
 
         if (empty($novoNome) || empty($novoEmail)){
             $_SESSION['msg'] = "<p class='error-msg'>Ops! Insira os dados obrigatórios</p>";
@@ -36,10 +38,13 @@ switch ($opcao){
             exit;
         }
 
-        if ($usuarioDAO->buscarEmail($novoEmail)){
+        if ($usuario->login !== $novoEmail){
+            if ($usuarioDAO->buscarEmail($novoEmail)){
             $_SESSION['msg'] = '<p class="error-msg">E-mail já cadastrado!</p>';
             header("location:../view/gui_alteracao_cadastro.php");
             exit;
+
+            }
         }
 
         $novoUsuario = new Usuario();
@@ -48,8 +53,9 @@ switch ($opcao){
         $novoUsuario->nome = $novoNome;
         $novoUsuario->nome_loja = $novaLoja;
         $novoUsuario->login = $novoEmail;
+        $novoUsuario->nome_visualizacao = $novoNomeView;
+        $novoUsuario->aceita_visualizacao = $aceitaVisualizacao;
 
-        // $usuario = serialize($usuario);
 
         if ($usuarioDAO->alterarDados($novoUsuario)){        
             $_SESSION['usuario_logado'] = serialize($novoUsuario);    

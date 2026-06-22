@@ -51,15 +51,35 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         }
         ?>
 
-            <h1>Minha área</h1>
+        <h1>Minha área</h1>
         <div id="minha-area">
             <h3>Seus dados atuais:</h3>
+
+            <?php         
+            if ($usuario->nome_loja) {
+                $nome_loja = $usuario->nome_loja;
+            } else {
+                $nome_loja = "Não informado";
+            }
+
+            if($usuario->aceita_visualizacao == 1){
+                $view_loja = "Aberta";
+                $checkViewLoja = "checked";
+            } else {
+                $view_loja = "Fechada";
+                $checkViewLoja = "";
+            }
+            ?>
+
             <p>
-            Nome: <?php echo $usuario->nome ?>
-            <?php if ($usuario->nome_loja) {
-                echo "Nome da loja: $usuario->nome_loja";
-            } else {echo "Nome da loja: não informado"; }?>
-            E-mail: <?php echo $usuario->login ?>
+            <strong>Nome</strong>: <?php echo $usuario->nome ?>
+            <br>
+            <strong>Nome loja</strong>: <?php echo $nome_loja ?>
+            <br>
+            <strong>E-mail</strong>: <?php echo $usuario->login ?>
+            <br>
+            <strong>Visualização da loja</strong>: <?php echo $view_loja ?>
+            <br>
             </p>
         </div>
 
@@ -74,25 +94,16 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
                 <label for="usuEmail">E-mail*</label>
                 <input type="email" placeholder="e-mail" class="input-login" name="usuEmail"  value=<?php echo $usuario->login ?> autocomplete="off" required>
-
-                <?php if ($usuario->aceita_visualizacao !== 1) {
-                    $view_loja = "";
-                } else {
-                    $view_loja = "checked";
-                } 
-                
-                echo $usuario->aceita_visualizacao;?> 
-
                 
                 <div>
                     <label for="aceitaVisualizacao">Abrir visualização da loja?</label>
-                    <input type="checkbox" name="aceitaVisualizacao" value='1' <?php $view_loja ?>>
+                    <input type="checkbox" name="aceitaVisualizacao" value='1' <?php echo $checkViewLoja ?>>
                 </div>
 
                 <label for="usuNomeView">Link de visualização (sem espaços)</label>
                 <div>
                     <span>nize.com.br/view_loja/</span>
-                    <input type="text" name="usuNomeView" class="input-login" placeholder="nomedaloja">
+                    <input type="text" name="usuNomeView" pattern="^\S+$" class="input-login" placeholder="nomedaloja" value="<?php echo $usuario->nome_visualizacao ?>">
                 </div>
 
                 <button type="submit">Alterar cadastro</button>

@@ -43,7 +43,9 @@ class UsuarioDAO{
             UPDATE usuario SET
             nome = :nome,
             nome_loja = :nome_loja,
-            login = :login
+            login = :login,
+            aceita_visualizacao = :aceita_visualizacao,
+            nome_visualizacao = :nome_visualizacao
             WHERE id_usuario = :id_usuario;
             ";
 
@@ -53,6 +55,8 @@ class UsuarioDAO{
             $sql->bindValue(":nome_loja", $usuarioModificado->nome_loja);
             $sql->bindValue(":login", $usuarioModificado->login);
             $sql->bindValue(":id_usuario", $usuarioModificado->id_usuario);
+            $sql->bindValue(":aceita_visualizacao", $usuarioModificado->aceita_visualizacao);
+            $sql->bindValue(":nome_visualizacao", $usuarioModificado->nome_visualizacao);
 
             return $sql->execute();
 
