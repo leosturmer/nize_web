@@ -30,13 +30,15 @@ if (password_verify($senha_digitada, $dados['senha'])) {
     $usuario->id_usuario = $dados['id_usuario'];
     $usuario->login = $dados['login'];
     $usuario->nome  = $dados['nome'];
-    $usuario->loja = $dados['nome_loja']; 
+    $usuario->nome_loja = $dados['nome_loja']; 
+    $usuario->aceita_visualizacao = $dados['aceita_visualizacao']; 
+    $usuario->nome_visualizacao = $dados['nome_visualizacao'] ?? "";
 
     $_SESSION['usuario_logado'] = serialize($usuario);
     $_SESSION['msg'] = "<p class='success-msg'>Login realizado com sucesso!</p>";
 
     $nomeURL = $usuario->nome;
-    $lojaURL = $usuario->loja;
+    $lojaURL = $usuario->nome_loja;
 
 
     header("location:../view/tela_inicial.php?nome=$nomeURL&loja=$lojaURL");

@@ -48,19 +48,32 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         echo "<div id='session-msg'>" . $_SESSION['msg'].  "</div>";
         unset($_SESSION["msg"]);
         }
+
+        if ($usuario->nome_loja) {
+            $nome_loja = $usuario->nome_loja;
+        } else {
+            $nome_loja = "Não informado";
+        }
+
+        if($usuario->aceita_visualizacao == 1){
+            $view_loja = "Aberta";
+        } else {
+            $view_loja = "Fechada";
+        }
         ?>
 
         <h1>Minha área</h1>
 
         <div id="minha-area">
             <p>
-            Nome: <?php echo $usuario->nome ?>
-
-            <?php if ($usuario->nome_loja) {
-                echo "Nome da loja: $usuario->nome_loja";
-                } ?>
-
-            E-mail: <?php echo $usuario->login ?>
+            <strong>Nome</strong>: <?php echo $usuario->nome ?>
+            <br>
+            <strong>Nome loja</strong>: <?php echo $nome_loja ?>
+            <br>
+            <strong>E-mail</strong>: <?php echo $usuario->login ?>
+            <br>
+            <strong>Visualização de produtos</strong>: <?php echo $view_loja ?>
+            <br>
             </p>
 
         </div>

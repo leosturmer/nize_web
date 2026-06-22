@@ -67,17 +67,36 @@ $usuario = unserialize($_SESSION['usuario_logado']);
             <form action="../controller/usuarioControle.php?op=alterar" method="post" id="form-cadastro">
 
                 <label for="usuNome">Nome completo*</label>
-                <input type="text" placeholder="digite seu nome" class="input-login" name="usuNome" required value="<?php echo $usuario->nome ?>" autocomplete="off"> 
+                <input type="text" placeholder="digite seu nome" class="input-login" name="usuNome" value="<?php echo $usuario->nome ?>" autocomplete="off" required> 
 
                 <label for="usuLoja">Nome da loja (opcional)</label>
                 <input type="text" placeholder="nome  da loja" class="input-login" name="usuLoja" value="<?php echo $usuario->nome_loja ?>" autocomplete="off">
 
                 <label for="usuEmail">E-mail*</label>
-                <input type="email" placeholder="e-mail" class="input-login" name="usuEmail" required value=<?php echo $usuario->login ?> autocomplete="off">
+                <input type="email" placeholder="e-mail" class="input-login" name="usuEmail"  value=<?php echo $usuario->login ?> autocomplete="off" required>
+
+                <?php if ($usuario->aceita_visualizacao !== 1) {
+                    $view_loja = "";
+                } else {
+                    $view_loja = "checked";
+                } 
                 
+                echo $usuario->aceita_visualizacao;?> 
+
+                
+                <div>
+                    <label for="aceitaVisualizacao">Abrir visualização da loja?</label>
+                    <input type="checkbox" name="aceitaVisualizacao" value='1' <?php $view_loja ?>>
+                </div>
+
+                <label for="usuNomeView">Link de visualização (sem espaços)</label>
+                <div>
+                    <span>nize.com.br/view_loja/</span>
+                    <input type="text" name="usuNomeView" class="input-login" placeholder="nomedaloja">
+                </div>
 
                 <button type="submit">Alterar cadastro</button>
-                <button formaction="../controller/usuarioControle.php?op=excluir" onclick="return confirm('A exclusão deletará todos os dados. Deseja confirmar?')">Excluir conta</button>
+                <button formaction="../controller/usuarioControle.php?op=excluir" onclick="return confirm('A exclusão deletará todos os dados do banco. Deseja confirmar?')">Excluir conta</button>
         </form>
         </div>       
 

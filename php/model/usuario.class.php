@@ -5,6 +5,8 @@ class Usuario{
     private $senha;
     private $nome;
     private $nome_loja;
+    private $aceita_visualizacao;
+    private $nome_visualizacao;
     
     private $loja;
 
