@@ -399,5 +399,27 @@ position: absolute;
     
 }
 
+/* Visualização de loja */
+
+
+.header-view-loja {
+    background-color: var(--lightGreen);
+    padding: 1rem;
+    border-right: var(--border);
+
+}
+
+.header-view-loja > a, #img-logo-link {
+    
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+#img-logo-link {
+    padding: 0;
+    margin: 0 auto;
+}
+
 
 

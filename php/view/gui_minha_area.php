@@ -27,11 +27,12 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
     <title>Nize - Minha área</title>
 </head>
+
 <body>
     <details class="coll-sidenav" open>
         <summary><span class="material-symbols-outlined">dehaze</span></summary>
         <div class="sidenav">
-            <img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav">
+            <a href="tela_inicial.php" id="img-logo-link"><img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav"></a>
             <a href="tela_inicial.php">Tela inicial</a>
             <a href="gui_visualizacao_produtos.php">Produtos</a>
             <a href="gui_visualizacao_pedidos.php">Pedidos</a>

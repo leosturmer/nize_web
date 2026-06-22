@@ -16,6 +16,12 @@ $usuarioDAO = new UsuarioDAO();
 $nome_loja = $usuarioDAO->buscarNomeLoja($id_usuario);
 $lista = $produtoDAO->listarTodosProdutosAbertos($id_usuario);
 
+if (!empty($_SESSION['usuario_logado'])){
+    $logo_link = "tela_inicial.php";
+} else {
+    $logo_link = "../../index.php";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +42,9 @@ $lista = $produtoDAO->listarTodosProdutosAbertos($id_usuario);
 </head>
 <body>
     
-    <header><img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav"></header>
+    <header class="header-view-loja">
+        <a href="<?php echo $logo_link ?>"><img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav"></a>
+    </header>
     
     <div class="conteudo-pagina">
         
