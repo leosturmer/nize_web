@@ -90,6 +90,20 @@ class ProdutoDAO{
         }
     }
 
+    public function listarTodosProdutosAbertos($id_usuario) : array {
+        try{
+            $sql = $this->conexao->prepare("SELECT * FROM produtos WHERE id_usuario = :id_usuario AND aceita_visualizacao = 1 ORDER BY nome ASC");
+            $sql->bindValue(":id_usuario", $id_usuario);
+            $sql->execute();
+            return $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (Exception $e){
+            $_SESSION['msg'] = "Erro ao listar produtos";
+            header("location:../view/gui_visualizacao_produtos.php");
+            exit;
+        }
+    }
+
     public function buscarPorId($id){
         try {
             $sql = $this->conexao->prepare("SELECT * FROM produtos WHERE id_produto = :id");

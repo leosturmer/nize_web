@@ -86,6 +86,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         </div>
         
         <a href="./gui_alteracao_cadastro.php" class="btn-alterar">Alterar cadastro</a>
+        <a href="./view_loja.php?id= <?php echo $usuario->id_usuario ?>" class="btn-alterar">Visualizar loja</a>
 
         <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
     </main>

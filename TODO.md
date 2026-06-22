@@ -1,5 +1,8 @@
 ### Página de visualização de loja
 
+===== Ver os AJAX da pesquisa de produto da loja
+===== Alterar cadastro e alteração de produto para aceitar a visualização pública dos dados
+
 - Gerar um link de visualização da loja
     - Para isso, a loja tem que ter selecionado o "ACEITA VISUALIZAÇÃO" na tela da minha área
     - Pode ter um link redirecionando quando colocar algum produto

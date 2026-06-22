@@ -8,13 +8,13 @@ require_once '../dao/usuariodao.class.php';
 // Seguranca::verificarAcesso();
 
 
-$id_usuario = $_GET['id_usuario']; // AQUI VAI TER QUE VIR PELO GET
+$id_usuario = $_GET['id']; // AQUI VAI TER QUE VIR PELO GET
 
 $produtoDAO = new ProdutoDAO();
 $usuarioDAO = new UsuarioDAO();
 
 $nome_loja = $usuarioDAO->buscarNomeLoja($id_usuario);
-$lista = $produtoDAO->listarTodosProdutos($id_usuario);
+$lista = $produtoDAO->listarTodosProdutosAbertos($id_usuario);
 
 ?>
 
