@@ -21,6 +21,18 @@ class UsuarioDAO{
         }
     }
 
+    public function buscarNomeView($nomeView) {
+        try {
+            $sql = $this->conexao->prepare("SELECT nome_visualizacao FROM usuario WHERE nome_visualizacao = ?");
+            $sql->execute([$nomeView]);
+            return $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            echo "Erro ao buscar" . $e->getMessage();
+            exit;
+        }
+    }
+
     public function cadastrarUsuario(Usuario $usuario){
         try {
             $sql = $this->conexao->prepare(

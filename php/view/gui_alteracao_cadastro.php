@@ -69,6 +69,12 @@ $usuario = unserialize($_SESSION['usuario_logado']);
                 $view_loja = "Fechada";
                 $checkViewLoja = "";
             }
+
+            if ($usuario->nome_visualizacao){
+                $nome_visualizacao = $usuario->nome_visualizacao;
+            } else {
+                $nome_visualizacao = "Não informado";
+            }
             ?>
 
             <p>
@@ -80,6 +86,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
             <br>
             <strong>Visualização da loja</strong>: <?php echo $view_loja ?>
             <br>
+            <strong>Link de visualização</strong>: <?php echo $nome_visualizacao ?>
             </p>
         </div>
 

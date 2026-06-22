@@ -34,7 +34,7 @@ switch ($opcao){
 
         if (!Validacao::validarEmail($novoEmail)){
             $_SESSION['msg'] = '<p class="error-msg">E-mail em formato inválido!</p>';
-            header("location:../view/gui_cadastro_usuario.php");
+            header("location:../view/gui_alteracao_cadastro.php");
             exit;
         }
 
@@ -43,7 +43,15 @@ switch ($opcao){
             $_SESSION['msg'] = '<p class="error-msg">E-mail já cadastrado!</p>';
             header("location:../view/gui_alteracao_cadastro.php");
             exit;
+            }
+        }
 
+        if ($usuario->nome_visualizacao !== $novoNomeView){
+            if ($usuarioDAO->buscarNomeView($novoNomeView)){
+            // if (in_array($novoNomeView, $usuarioDAO->buscarNomeView($novoNomeView)))
+            $_SESSION['msg'] = '<p class="error-msg">Nome para visualização já utilizado!</p>';
+            header("location:../view/gui_alteracao_cadastro.php");
+            exit;
             }
         }
 
