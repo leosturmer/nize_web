@@ -8,29 +8,41 @@ document.addEventListener('DOMContentLoaded', function() {
     let temporizador;
 
     function executarBusca() {
-        let termo = pesquisaProdutos ? pesquisaProdutos.value : '';
-        let estoque = filtroEstoque ? filtroEstoque.value : '';
-        let encomenda = filtroEncomenda ? filtroEncomenda.value : '';
+    let termo = pesquisaProdutos ? pesquisaProdutos.value : '';
+    let estoque = filtroEstoque ? filtroEstoque.value : '';
+    let encomenda = filtroEncomenda ? filtroEncomenda.value : '';
 
-        clearTimeout(temporizador);
+    // Captura o ID da loja se ele estiver presente na URL da página atual
+    const urlParams = new URLSearchParams(window.location.search);
+    const idLoja = urlParams.get('id');
 
-        temporizador = setTimeout(() => {
-            const url = `busca_produtos_ajax.php?pesquisaProdutos=${encodeURIComponent(termo)}&filtroEstoque=${encodeURIComponent(estoque)}&filtroEncomenda=${encodeURIComponent(encomenda)}`;
-            
-            fetch(url)
-                .then(response => {
-                    if (!response.ok) throw new Error('Erro na resposta do servidor');
-                    return response.text();
-                })
-                .then(html => {
-                    listaProdutos.innerHTML = html;
-                })
-                .catch(erro => {
-                    console.error('Erro na busca:', erro);
-                    listaProdutos.innerHTML = '<h4 class="sem-registro">Erro ao processar a busca.</h4>';
-                });
-        }, 250); 
-    }
+    clearTimeout(temporizador);
+
+    temporizador = setTimeout(() => {
+        let url = '';
+        
+        // Se houver idLoja na URL, significa que estamos na view_loja.php (pública)
+        if (idLoja) {
+            url = `busca_produtos_loja_ajax.php?pesquisaProdutos=${encodeURIComponent(termo)}&id_loja=${encodeURIComponent(idLoja)}`;
+        } else {
+            // Caso contrário, mantém o fluxo antigo da área interna (gui_produtos)
+            url = `busca_produtos_ajax.php?pesquisaProdutos=${encodeURIComponent(termo)}&filtroEstoque=${encodeURIComponent(estoque)}&filtroEncomenda=${encodeURIComponent(encomenda)}`;
+        }
+        
+        fetch(url)
+            .then(response => {
+                if (!response.ok) throw new Error('Erro na resposta do servidor');
+                return response.text();
+            })
+            .then(html => {
+                listaProdutos.innerHTML = html;
+            })
+            .catch(erro => {
+                console.error('Erro na busca:', erro);
+                listaProdutos.innerHTML = '<h4 class="sem-registro">Erro ao processar a busca.</h4>';
+            });
+    }, 250); 
+}
 
     if (listaProdutos) {
         if (pesquisaProdutos) {

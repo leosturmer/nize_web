@@ -52,6 +52,15 @@ foreach ($lista as $item) {
     }
 
     echo '<p><strong>Aceita encomenda: </strong>' . $aceita_encomenda . '</p>';
+    
+    if(htmlspecialchars($item['aceita_visualizacao']) === '1') {
+        $aceita_visualizacao = "Aceita";
+    } else {
+        $aceita_visualizacao = "Não aceita";
+    }
+    
+    echo '<p><strong>Disponível para visualização? </strong>' . $aceita_visualizacao . '</p>';
+
     echo '<p><strong>Descrição: </strong>' . htmlspecialchars($item['descricao']) . '</p>';
     
     if($item['imagem']){
