@@ -31,10 +31,18 @@ if ($_POST['aceitaEncomenda'] != "1" || $_POST['aceitaEncomenda'] === null){
     $aceitaEncomenda = $_POST['aceitaEncomenda'];
 }
 
+if ($_POST['aceitaVisualizacao'] != "1" || $_POST['aceitaVisualizacao'] === null){
+    $aceitaVisualizacao = "0";
+} else {
+    $aceitaVisualizacao = $_POST['aceitaVisualizacao'];
+}
+
+
+
 $produtoDAO = new ProdutoDAO();
 
 switch ($opcao){
-case "cadastrar":
+    case "cadastrar":
         if (empty($nomeProduto)){
             $_SESSION['msg'] = "<p class='error-msg'>Insira os dados obrigatórios</p>";
             header("location:../view/gui_produtos.php");
@@ -48,6 +56,7 @@ case "cadastrar":
         $produto->valor_unitario = $valorUnitario;
         $produto->valor_custo = $valorCusto;
         $produto->aceita_encomenda = $aceitaEncomenda;
+        $produto->aceita_visualizacao = $aceitaVisualizacao;
         $produto->descricao = $descricaoProduto;
         $produto->imagem = $_POST['imagem_clonada'] ?? null;
         
@@ -108,6 +117,7 @@ case "cadastrar":
         $produto->valor_unitario = $valorUnitario;
         $produto->valor_custo = $valorCusto;
         $produto->aceita_encomenda = $aceitaEncomenda;
+        $produto->aceita_visualizacao = $aceitaVisualizacao;
         $produto->descricao = $descricaoProduto;
         $produto->imagem = $imagemProduto;
 

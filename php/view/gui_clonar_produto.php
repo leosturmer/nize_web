@@ -77,9 +77,15 @@ if (!$produtoData) {
                     <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" autocomplete="off" required value="<?php echo htmlspecialchars($produtoData['nome'] . ' (Cópia)'); ?>">
                 </label>
 
-                <label class="checkbox-acc-encomenda">
+                <label class="checkbox-acc">
                     Aceita encomendas*:
                     <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto" value='1' <?php echo $produtoData['aceita_encomenda'] == 1 ? 'checked' : ''; ?>>
+                </label>
+
+                <label class="checkbox-acc" for="">
+                    Disponibilizar para visualização?
+
+                    <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" <?php echo $produtoData['aceita_visualizacao'] == 1 ? 'checked' : ''; ?>>
                 </label>
 
                 <label>Quantidade:

@@ -13,11 +13,11 @@ class ProdutoDAO{
         try {
             $sql = $this->conexao->prepare(
                 "INSERT INTO produtos (
-                id_usuario, nome, quantidade, valor_unitario, valor_custo, imagem, aceita_encomenda, descricao
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+                id_usuario, nome, quantidade, valor_unitario, valor_custo, imagem, aceita_encomenda, aceita_visualizacao, descricao
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
                 );
 
-            return $sql->execute([$p->id_usuario, $p->nome, $p->quantidade, $p->valor_unitario, $p->valor_custo, $p->imagem, $p->aceita_encomenda, $p->descricao]);
+            return $sql->execute([$p->id_usuario, $p->nome, $p->quantidade, $p->valor_unitario, $p->valor_custo, $p->imagem, $p->aceita_encomenda, $p->aceita_visualizacao, $p->descricao]);
             
         } catch (Exception $e){
             $_SESSION['msg'] = "<p class='error-msg'> Erro ao cadastrar produto. Tente novamente. </p>";
@@ -37,6 +37,7 @@ class ProdutoDAO{
             quantidade = :quantidade, 
             imagem = :imagem, 
             aceita_encomenda = :aceita_encomenda, 
+            aceita_visualizacao = :aceita_visualizacao,
             descricao = :descricao, 
             valor_custo = :valor_custo
             WHERE id_produto = :id_produto
@@ -50,6 +51,7 @@ class ProdutoDAO{
             $sql->bindValue(":quantidade", $produtoModificado->quantidade);
             $sql->bindValue(":imagem", $produtoModificado->imagem);
             $sql->bindValue(":aceita_encomenda", $produtoModificado->aceita_encomenda);
+            $sql->bindValue(":aceita_visualizacao", $produtoModificado->aceita_visualizacao);
             $sql->bindValue(":descricao", $produtoModificado->descricao);
             $sql->bindValue(":valor_custo", $produtoModificado->valor_custo);
             $sql->bindValue(":id_produto", $produtoModificado->id_produto);

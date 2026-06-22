@@ -73,16 +73,32 @@ $id_produto = $_GET['id'] ?? null;
                     <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" value="<?php echo htmlspecialchars($produto['nome']); ?>" autocomplete="off" required>
                 </label>
 
-                <?php if ($produto['aceita_encomenda'] !== 1) {
+                <?php 
+                
+                if ($produto['aceita_encomenda'] !== 1) {
                     $checkEncomenda = "";
                 } else {
                     $checkEncomenda = "checked";
-                } ?> 
+                } 
 
-                <label class="checkbox-acc-encomenda" for="">
+                if ($produto['aceita_visualizacao'] !== 1) {
+                    $checkVisualizacao = "";
+                } else {
+                    $checkVisualizacao = "checked";
+                } 
+                
+                ?> 
+
+                <label class="checkbox-acc" for="">
                     Aceita encomendas*:
 
                     <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto" value="1" <?php echo " $checkEncomenda"; ?>>
+                </label>
+
+                <label class="checkbox-acc" for="">
+                    Disponibilizar para visualização?
+
+                    <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" <?php echo " $checkVisualizacao"; ?>>
                 </label>
 
                 <label>Quantidade:

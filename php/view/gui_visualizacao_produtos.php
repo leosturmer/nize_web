@@ -98,13 +98,25 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
                         <?php if ($item['valor_custo']) {$valor_custo = "R$ " . number_format($item['valor_custo'], 2, ',', '.'); } else {$valor_custo = "Não informado"; }?>
                         <p><strong>Valor de custo:</strong> <?php echo $valor_custo; ?></p>
                         
-                        <?php if(htmlspecialchars($item['aceita_encomenda']) === '1') {
+                        <?php 
+                        
+                        if(htmlspecialchars($item['aceita_encomenda']) === '1') {
                             $aceita_encomenda = "Aceita";
                         } else {
                             $aceita_encomenda = "Não aceita";
-                        }?>
+                        }
+                        
+                        if(htmlspecialchars($item['aceita_visualizacao']) === '1') {
+                            $aceita_visualizacao = "Sim";
+                        } else {
+                            $aceita_visualizacao = "Não";
+                        }
+                        
+                        
+                        ?>
 
                         <p><strong>Aceita encomenda:</strong> <?php echo $aceita_encomenda; ?></p>
+                        <p><strong>Disponível para visualização:</strong> <?php echo $aceita_visualizacao; ?></p>
                         <p><strong>Descrição:</strong> <?php echo htmlspecialchars($item['descricao']) ?></p>
                         
                         <?php if($item['imagem']){

@@ -67,9 +67,14 @@ $usuario = unserialize($_SESSION['usuario_logado']);
                     <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" autocomplete="off">
                 </label>
 
-                <label class="checkbox-acc-encomenda" for="">
+                <label class="checkbox-acc" for="">
                     Aceita encomendas*:
                     <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto" value='1'>
+                </label>
+
+                <label class="checkbox-acc" for="">
+                    Disponibilizar para visualização?
+                    <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value='1'>
                 </label>
 
                 <label>Quantidade:
