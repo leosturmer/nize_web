@@ -223,6 +223,10 @@ textarea {
 
 }
 
+textarea {
+    resize: none;
+}
+
 .input-pedido:focus, 
 .input-produto:focus,
 input[type="date"]:focus, 
@@ -233,6 +237,40 @@ select:focus {
 }
 
 input[type="date"]:hover{
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin-left: 0.8rem;
+
+}
+
+/* input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 20px 20 white;
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  } */
+
+input[type="checkbox"]:checked {
+    background-color: var(--lighterGreen);
+    /* border: 2.8px double white; */
+    box-shadow: inset 0px 0px 0px 3px white;
+
+
+
+}
+
+input[type="checkbox"]:hover {
     cursor: pointer;
 }
 
