@@ -1,8 +1,6 @@
 #### Outras coisas para fazer
 
---- Fazer a GUI ERRO.
-
-## TESTAR TUDO
+## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 #### Para o final:
 
