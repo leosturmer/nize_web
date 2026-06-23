@@ -90,7 +90,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
 
                     <label>Imagem: (max. 2mb)
-                        <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg" placeholder="Selecione um arquivo">
+                        <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
                     </label>
                     
                     <label class="descricao-produtos" for="descricaoProduto">

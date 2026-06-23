@@ -248,30 +248,30 @@ input[type="checkbox"] {
 
 }
 
-/* input[type="checkbox"]::before {
-    content: "";
-    width: 0.65em;
-    height: 0.65em;
-    transform: scale(0);
-    transition: 120ms transform ease-in-out;
-    box-shadow: inset 20px 20 white;
-}
-
-input[type="checkbox"]:checked::before {
-    transform: scale(1);
-  } */
-
 input[type="checkbox"]:checked {
     background-color: var(--lighterGreen);
-    /* border: 2.8px double white; */
     box-shadow: inset 0px 0px 0px 3px white;
-
-
-
 }
 
 input[type="checkbox"]:hover {
     cursor: pointer;
+}
+
+input[type="file"] {
+    border: none;
+}
+
+input[type="file"]::file-selector-button {
+    border: var(--border);
+    padding: 0.3rem;
+    background-color: var(--lighterPurple);
+    color: white;
+    font-family: var(--font-sans-serif);
+}
+
+input[type="file"]::file-selector-button:hover {
+    cursor: pointer;
+    background-color: var(--darkPurple);
 }
 
 /* Selects */
