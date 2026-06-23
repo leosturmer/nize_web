@@ -119,7 +119,7 @@ switch ($opcao){
         $produto->aceita_encomenda = $aceitaEncomenda;
         $produto->aceita_visualizacao = $aceitaVisualizacao;
         $produto->descricao = $descricaoProduto;
-        $produto->imagem = $imagemProduto;
+        $produto->imagem = $_POST['imagem_atual'] ?? null;
 
         if (isset($_FILES["imagemProduto"]) && $_FILES["imagemProduto"]['error'] === 0){
             $arquivoTmp = $_FILES['imagemProduto']['tmp_name']; 

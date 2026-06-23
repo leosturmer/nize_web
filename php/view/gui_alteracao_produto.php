@@ -113,14 +113,17 @@ $id_produto = $_GET['id'] ?? null;
                     <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_custo']); ?>" autocomplete="off">
                 </label>
 
-                <label>Imagem: (max. 2mb)
-                <?php if($produto['imagem']){
-                        echo "<img src='uploads/" . htmlspecialchars($produto['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
-                    } else {
-                        echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
-                } ?>
-                    <input type="file" name="imagemProduto" id="imagemProduto" accept=".png, .jpg">
+                <input type="hidden" name="imagem_atual" value="<?php echo $produto['imagem']; ?>">
+
+                <label>Imagem atual: 
+                    <?php if (!empty($produto['imagem'])): ?>
+                        <span>(Será mantida se não enviar outra)<?php echo "<img src='uploads/" . htmlspecialchars($produto['imagem']) . "' alt='imagem do produto' class='img-produtos'>" ?> </span>
+                    <?php else: ?>
+                        <span>Nenhuma imagem</span>
+                    <?php endif; ?>
+                    <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
                 </label>
+
 
                 <label class="descricao-produtos" for="descricaoProduto"> 
                     Descrição do produto

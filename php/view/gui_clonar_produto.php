@@ -71,8 +71,6 @@ if (!$produtoData) {
             <fieldset id="products-form">
                 <legend>Informações do Novo Produto (Clone)</legend>
                 
-                <input type="hidden" name="imagem_clonada" value="<?php echo $produtoData['imagem']; ?>">
-
                 <label>Nome do produto*:
                     <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" autocomplete="off" required value="<?php echo htmlspecialchars($produtoData['nome'] . ' (Cópia)'); ?>">
                 </label>
@@ -99,6 +97,8 @@ if (!$produtoData) {
                 <label>Valor de custo:
                     <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" autocomplete="off" value="<?php echo $produtoData['valor_custo']; ?>">
                 </label>
+
+                <input type="hidden" name="imagem_clonada" value="<?php echo $produtoData['imagem']; ?>">
 
                 <label>Imagem atual: 
                     <?php if (!empty($produtoData['imagem'])): ?>
