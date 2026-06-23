@@ -374,7 +374,8 @@ position: absolute;
     min-height: fit-content;
 }
 
-.product-view > img {
+/* .product-view > img  */
+.img-produtos {
     border: var(--border);
     box-shadow: var(--box-shadow);
     margin-left: 10px;
