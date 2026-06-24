@@ -52,7 +52,7 @@ $id_produto = $_GET['id'] ?? null;
     
     <main>
         <div class="internal-nav">
-            <h1>Produtos</h1>
+            <h1>Alteração de produto</h1>
             <div class="internal-nav-links">
                 <!-- <a href="gui_produtos.php">Gerenciar produtos</a> -->
                 <a href="gui_visualizacao_produtos.php">Todos os produtos</a>
@@ -69,66 +69,55 @@ $id_produto = $_GET['id'] ?? null;
         <form action="../controller/produtoControle.php?op=alterar&id=<?php echo $produto['id_produto'] ?>" method="post" enctype="multipart/form-data">
             <fieldset id="products-form">
                 <legend>Informações do produto</legend>
-                <label>Nome do produto*:
-                    <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" value="<?php echo htmlspecialchars($produto['nome']); ?>" autocomplete="off" required>
-                </label>
-
-                <?php 
-                
-                if ($produto['aceita_encomenda'] !== 1) {
-                    $checkEncomenda = "";
-                } else {
-                    $checkEncomenda = "checked";
-                } 
-
-                if ($produto['aceita_visualizacao'] !== 1) {
-                    $checkVisualizacao = "";
-                } else {
-                    $checkVisualizacao = "checked";
-                } 
-                
-                ?> 
-
-                <label class="checkbox-acc" for="">
-                    Aceita encomendas*:
-
-                    <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto" value="1" <?php echo " $checkEncomenda"; ?>>
-                </label>
-
-                <label class="checkbox-acc" for="">
-                    Disponibilizar para visualização?
-
-                    <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" <?php echo " $checkVisualizacao"; ?>>
-                </label>
-
-                <label>Quantidade:
-                    <input type="number" inputmode="" id="quantidadeProduto" name="quantidadeProduto" class="input-produto" value="<?php echo htmlspecialchars($produto['quantidade']); ?>" maxlength="3" autocomplete="off">
-                </label>
-
-                <label>Valor unitário:
-                    <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_unitario']); ?>" autocomplete="off" required>
-                </label>
-
-                <label>Valor de custo:
-                    <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_custo']); ?>" autocomplete="off">
-                </label>
-
-                <input type="hidden" name="imagem_atual" value="<?php echo $produto['imagem']; ?>">
-
-                <label>Imagem atual: 
-                    <?php if (!empty($produto['imagem'])): ?>
-                        <span>(Será mantida se não enviar outra)<?php echo "<img src='uploads/" . htmlspecialchars($produto['imagem']) . "' alt='imagem do produto' class='img-produtos'>" ?> </span>
-                    <?php else: ?>
-                        <span>Nenhuma imagem</span>
-                    <?php endif; ?>
-                    <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
-                </label>
-
-
-                <label class="descricao-produtos" for="descricaoProduto"> 
-                    Descrição do produto
-                    <textarea name="descricaoProduto" id="descricaoProduto" class="input-produto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" autocomplete="off"><?php echo htmlspecialchars($produto['descricao']); ?></textarea>
-                </label>
+                <div class="inner-products-form">
+                    <label>Nome do produto*:
+                        <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" value="<?php echo htmlspecialchars($produto['nome']); ?>" autocomplete="off" required>
+                    </label>
+                    <?php
+                    
+                    if ($produto['aceita_encomenda'] !== 1) {
+                        $checkEncomenda = "";
+                    } else {
+                        $checkEncomenda = "checked";
+                    }
+                    if ($produto['aceita_visualizacao'] !== 1) {
+                        $checkVisualizacao = "";
+                    } else {
+                        $checkVisualizacao = "checked";
+                    }
+                    
+                    ?>
+                    <label class="checkbox-acc" for="">
+                        Aceita encomendas*:
+                        <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto" value="1" <?php echo " $checkEncomenda"; ?>>
+                    </label>
+                    <label class="checkbox-acc" for="">
+                        Disponibilizar para visualização?
+                        <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" <?php echo " $checkVisualizacao"; ?>>
+                    </label>
+                    <label>Quantidade:
+                        <input type="number" inputmode="" id="quantidadeProduto" name="quantidadeProduto" class="input-produto" value="<?php echo htmlspecialchars($produto['quantidade']); ?>" maxlength="3" autocomplete="off">
+                    </label>
+                    <label>Valor unitário:
+                        <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_unitario']); ?>" autocomplete="off" required>
+                    </label>
+                    <label>Valor de custo:
+                        <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_custo']); ?>" autocomplete="off">
+                    </label>
+                    <input type="hidden" name="imagem_atual" value="<?php echo $produto['imagem']; ?>">
+                    <label>Imagem atual:
+                        <?php if (!empty($produto['imagem'])): ?>
+                            <span>(Será mantida se não enviar outra)<?php echo "<img src='uploads/" . htmlspecialchars($produto['imagem']) . "' alt='imagem do produto' class='img-produtos'>" ?> </span>
+                        <?php else: ?>
+                            <span>Nenhuma imagem</span>
+                        <?php endif; ?>
+                        <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
+                    </label>
+                    <label class="descricao-produtos" for="descricaoProduto">
+                        Descrição do produto
+                        <textarea name="descricaoProduto" id="descricaoProduto" class="input-produto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" autocomplete="off"><?php echo htmlspecialchars($produto['descricao']); ?></textarea>
+                    </label>
+                </div>
                 
             </fieldset>
             <div id="form-products-buttons">

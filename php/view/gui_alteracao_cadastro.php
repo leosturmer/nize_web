@@ -51,7 +51,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         }
         ?>
 
-        <h1>Minha área</h1>
+        <h1>Alteração de cadastro</h1>
         <div id="minha-area">
             <h3>Seus dados atuais:</h3>
 

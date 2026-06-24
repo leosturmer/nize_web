@@ -44,11 +44,9 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     
     <main>
 
-    <!-- Conteúdo da página -->
         <div class="internal-nav">
-            <h1>Produtos</h1>
+            <h1>Cadastro de produto</h1>
             <div class="internal-nav-links">
-                <!-- <a href="gui_produtos.php">Gerenciar produtos</a> -->
                 <a href="gui_visualizacao_produtos.php">Todos os produtos</a>
             </div>
         </div>
