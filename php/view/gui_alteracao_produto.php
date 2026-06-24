@@ -54,7 +54,7 @@ $id_produto = $_GET['id'] ?? null;
         <div class="internal-nav">
             <h1>Alteração de produto</h1>
             <div class="internal-nav-links">
-                <!-- <a href="gui_produtos.php">Gerenciar produtos</a> -->
+                <!-- <a href="gui_cadastro_produtos.php">Gerenciar produtos</a> -->
                 <a href="gui_visualizacao_produtos.php">Todos os produtos</a>
             </div>
         </div>

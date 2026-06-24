@@ -22,7 +22,7 @@ class ProdutoDAO{
         } catch (Exception $e){
             $_SESSION['msg'] = "<p class='error-msg'> Erro ao cadastrar produto. Tente novamente. </p>";
 
-            header("location:../view/gui_produtos.php");
+            header("location:../view/gui_cadastro_produtos.php");
             exit;
         }
 

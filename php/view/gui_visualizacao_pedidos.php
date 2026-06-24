@@ -86,7 +86,7 @@ if (isset($_SESSION['pedidoSelecionado'])){
                     </details>
 
                 </form>
-                <a href="gui_pedidos.php">Cadastrar novo pedido</a>
+                <a href="gui_cadastro_pedidos.php">Cadastrar novo pedido</a>
             </div>
         </div>
 

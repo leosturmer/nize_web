@@ -13,7 +13,7 @@ class PedidoDAO{
     public function cadastrarPedido(Pedido $pedido, $darBaixaEstoque){
         if (empty($_SESSION['carrinho'])) {
             $_SESSION['msg'] = "<p class='error-msg'>Nenhum produto adicionado ao pedido</p>";
-            header("Location: ../view/gui_pedidos.php");
+            header("Location: ../view/gui_cadastro_pedidos.php");
             exit;
         }
 
@@ -49,7 +49,7 @@ class PedidoDAO{
                     
                     if ($sql_subtrai->rowCount() === 0) {
                         $_SESSION['msg'] = "<p class='error-msg'>Nenhum produto adicionado ao pedido</p>";
-                        header("Location: ../view/gui_pedidos.php");
+                        header("Location: ../view/gui_cadastro_pedidos.php");
                         exit;
                     }
                 }

@@ -38,7 +38,7 @@ switch ($opcao) {
         } else if (isset($_SESSION['pedidoSelecionado'])) {
             header("location:../view/gui_alteracao_pedidos.php?id=" . $_SESSION['pedidoSelecionado']['id_pedido']);
         } else {
-            header("location:../view/gui_pedidos.php");
+            header("location:../view/gui_cadastro_pedidos.php");
         }
         exit;
 
@@ -66,7 +66,7 @@ switch ($opcao) {
         } else if (isset($_SESSION['pedidoSelecionado'])) {
             header("location:../view/gui_alteracao_pedidos.php?id=" . $_SESSION['pedidoSelecionado']['id_pedido']);
         } else {
-            header("location:../view/gui_pedidos.php");
+            header("location:../view/gui_cadastro_pedidos.php");
         }
         exit;
 
@@ -77,7 +77,7 @@ switch ($opcao) {
             unset($_SESSION['pedidoSelecionado']);
             header("location:../view/gui_visualizacao_pedidos.php");
         } else {
-            header("location:../view/gui_pedidos.php");
+            header("location:../view/gui_cadastro_pedidos.php");
         }
         exit;
 
@@ -149,7 +149,7 @@ switch ($opcao) {
             header("Location: ../view/gui_visualizacao_pedidos.php");
         } catch (Exception $e) {
             $_SESSION['msg'] = "<p class='error-msg'>Algo deu errado !!!</p>" . $e->getMessage();
-            header("Location: ../view/gui_pedidos.php");
+            header("Location: ../view/gui_cadastro_pedidos.php");
         }
         exit;
 

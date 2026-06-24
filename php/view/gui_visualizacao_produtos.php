@@ -51,7 +51,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 
             <div class="internal-nav-links">
                 <h1>Lista de Produtos</h1>
-                <a href="gui_produtos.php">Cadastrar novo produto</a>
+                <a href="gui_cadastro_produtos.php">Cadastrar novo produto</a>
             </div>
 
             <div class="internal-nav-inputs">
