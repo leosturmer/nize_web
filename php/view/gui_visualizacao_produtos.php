@@ -28,7 +28,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dehaze,search" />
 
-    <title>Produtos</title>
+    <title>Lista de Produtos</title>
 </head>
 <body>
     
@@ -72,9 +72,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
                 <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
             </div>
 
-            <!-- <div class="internal-nav-links"> -->
 
-            <!-- </div> -->
         </div>
 
         <?php
@@ -90,7 +88,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
                 <?php foreach ($lista as $item):?>
                     <div class="product-view">
                         <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p> 
-                        <p><strong>Quantidade:</strong> <?php echo htmlspecialchars($item['quantidade']);?> </p>
+                        <p><strong>Quantidade:</strong> <?php if ($item['quantidade'] === 0 || $item['quantidade'] == null) {echo "Sem estoque";} else { echo htmlspecialchars($item['quantidade']); }?> </p>
 
                         <?php if ($item['valor_unitario']) { $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.'); } else {$valor_unitario = "Não informado"; }?> 
                         <p><strong>Valor unitário:</strong> <?php echo $valor_unitario?></p>
@@ -117,7 +115,12 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 
                         <p><strong>Aceita encomenda:</strong> <?php echo $aceita_encomenda; ?></p>
                         <p><strong>Disponível para visualização:</strong> <?php echo $aceita_visualizacao; ?></p>
-                        <p class="p-descricao"><strong>Descrição:</strong> <?php echo htmlspecialchars($item['descricao']) ?></p>
+                        <p class="p-descricao"><strong>Descrição:</strong> 
+                        <?php if ($item['descricao']) { 
+                            echo htmlspecialchars($item['descricao']); 
+                            } else { 
+                                echo "Nenhuma descrição informada";
+                            } ?></p>
                         
                         <?php if($item['imagem']){
                             echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";

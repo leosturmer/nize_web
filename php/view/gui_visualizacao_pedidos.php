@@ -37,10 +37,10 @@ if (isset($_SESSION['pedidoSelecionado'])){
     <link rel="stylesheet" href="../../css/query.css">
     <link rel="stylesheet" href="../../css/style.css">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dehaze" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dehaze,search" />
 
 
-    <title>Pedidos</title>
+    <title>Lista de Pedidos</title>
 </head>
 <body>
     <details class="coll-sidenav" open>
@@ -66,27 +66,27 @@ if (isset($_SESSION['pedidoSelecionado'])){
         ?>
 
         <div class="internal-nav">
-            <h1>Pedidos</h1>
             <div class="internal-nav-links">
-                <form onsubmit="return false;">
-                    <span>Pesquise um termo...</span>
-                    <input type="text" id="pesquisa-pedidos" placeholder="Digite sua pesquisa" autocomplete="off">
-                    <details>
-                        <summary>Mais filtros</summary>
-                        <input type="date" id="filtro-data-pedidos">
-                        <select id="filtro-status-pedidos">
-                            <option value="">Todos os Status</option>
-                            <option value="encomendado">Encomendado</option>
-                            <option value="pagamento">Pagamento</option>
-                            <option value="vendido">Vendido</option>
-                            <option value="cancelado">Cancelado</option>
-                        </select>
-
-                        <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
-                    </details>
-
-                </form>
+                <h1>Lista de Pedidos</h1>
                 <a href="gui_cadastro_pedidos.php">Cadastrar novo pedido</a>
+            </div>
+
+            <div class="internal-nav-inputs">
+                <form onsubmit="return false;" id="form-pesquisa-pedidos">
+                    <input type="text" id="pesquisa-pedidos" placeholder="Digite sua pesquisa" autocomplete="off"><span class="material-symbols-outlined" id="search-icon">search</span>
+                </form>
+                    
+                    <input type="date" id="filtro-data">
+                    <select id="filtro-status">
+                        <option value="">Todos os Status</option>
+                        <option value="encomendado">Encomendado</option>
+                        <option value="pagamento">Pagamento</option>
+                        <option value="vendido">Vendido</option>
+                        <option value="cancelado">Cancelado</option>
+                    </select>
+
+                    <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
+
             </div>
         </div>
 
@@ -107,7 +107,7 @@ if (isset($_SESSION['pedidoSelecionado'])){
 
                             $statusView = '';
                             if ($status == "encomendado") { $statusView = "Encomendado"; } 
-                            else if ($status == "pagamento") { $statusView = "Pagamento"; } 
+                            else if ($status == "pagamento") { $statusView = "Aguardando pagamento"; } 
                             else if ($status == "vendido") { $statusView = "Vendido"; } 
                             else if ($status == "cancelado") { $statusView = "Cancelado"; }
 
@@ -118,8 +118,8 @@ if (isset($_SESSION['pedidoSelecionado'])){
                         
                         <p><strong>Data: </strong><?php echo $data ?></p>
                         <p><strong>Valor final: </strong> R$ <?php echo number_format((float)$dados_pedido['valor_final'], 2, ',', '.') ?></p>
-                        <p><strong>Comentário: </strong><?php echo $comentario ?></p>
                         <p><strong>Status: </strong><?php echo $statusView ?></p>
+                        <p class="p-descricao"><strong>Comentário: </strong><?php if ($comentario) {echo $comentario; } else { echo "Nenhum comentário adicionado"; } ?></p>
 
                         <div class="product-btns">
                             <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido ?>">Visualizar</a>
