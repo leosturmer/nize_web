@@ -45,8 +45,8 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     <main>
 
         <div class="internal-nav">
-            <h1>Cadastro de produto</h1>
             <div class="internal-nav-links">
+                <h1>Cadastro de produto</h1>
                 <a href="gui_visualizacao_produtos.php">Todos os produtos</a>
             </div>
         </div>
@@ -63,38 +63,40 @@ $usuario = unserialize($_SESSION['usuario_logado']);
                 <legend>Informações do produto</legend>
                 <div class="inner-products-form">
                     <label>Nome do produto*:
+                        </label>
                         <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" autocomplete="off" placeholder="o nome do produto vai aqui" required>
-                    </label>
+
                     <label class="checkbox-acc" for="">
                         Aceita encomendas*:
                         <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto input-checkbox" value='1'>
                     </label>
+
                     <label class="checkbox-acc" for="">
-                        Disponibilizar para visualização?
+                        Disponibilizar para visualização:
                         <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1'>
                     </label>
-                    <label>Quantidade:
-                        <input type="number" inputmode="" id="quantidadeProduto" name="quantidadeProduto" class="input-produto " maxlength="3" placeholder="digite a quantidade disponível" autocomplete="off">
-                    </label>
 
-                    <div class="valores-produtos">
-                        <label>Valor unitário*: R$
-                            <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" autocomplete="off" placeholder="00,00" required>
+                    <label>Quantidade:
                         </label>
-                        <label>Valor de custo: R$
-                            <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" placeholder="00,00" autocomplete="off">
+                        <input type="number" inputmode="" id="quantidadeProduto" name="quantidadeProduto" class="input-produto " maxlength="3" placeholder="digite a quantidade disponível" autocomplete="off">
+
+                    <label>Valor unitário*: R$
                         </label>
-                    </div>
+                        <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" autocomplete="off" placeholder="00,00" required>
+
+                    <label>Valor de custo: R$
+                        </label>
+                        <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" placeholder="00,00" autocomplete="off">
 
 
                     <label>Imagem: (max. 2mb)
+                        </label>
                         <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
-                    </label>
                     
                     <label class="descricao-produtos" for="descricaoProduto">
                         Descrição do produto
-                        <textarea name="descricaoProduto" id="descricaoProduto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" class="input-produto" autocomplete="off" ></textarea>
                     </label>
+                    <textarea name="descricaoProduto" id="descricaoProduto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" class="input-produto" autocomplete="off" ></textarea>
                 </div>
                 
             </fieldset>
