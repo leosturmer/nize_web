@@ -1,5 +1,8 @@
 #### Outras coisas para fazer
 
+---- VER pq o AJAX do pedido não tá ficando certo o CSS
+---- Arrumar os CSS aí 
+
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 #### Para o final:
