@@ -66,7 +66,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
                 <p>Aqui vai um resumo do que você pode fazer:</p>
                 <p><strong>Produtos</strong>: faça o cadastro dos produtos que você produz e/ou vende. Visualize e altere todos eles!</p>
                 <p><strong>Pedidos</strong>: organize seus pedidos, encomendas e vendas com os produtos cadastrados.</p>
-                <p><strong>Minha área</strong>: acesse esta área para alterar os seus dados.</p>
+                <p><strong>Minha área</strong>: acesse esta área para alterar os seus dados. Nesta área você pode disponibilizar a visualização pública da sua loja.</p>
 
                 <h2 style="text-align: center;">Boas vendas!</h2>
             </div>
