@@ -62,42 +62,50 @@ $usuario = unserialize($_SESSION['usuario_logado']);
             <fieldset id="products-form">
                 <legend>Informações do produto</legend>
                 <div class="inner-products-form">
-                    <label>Nome do produto*:
-                        </label>
-                        <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" autocomplete="off" placeholder="o nome do produto vai aqui" required>
-
-                    <label class="checkbox-acc" for="">
-                        Aceita encomendas*:
-                        <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto input-checkbox" value='1'>
+                    <label><strong>Nome do produto</strong>*:
+                    <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" autocomplete="off" placeholder="o nome do produto vai aqui" required>
                     </label>
 
-                    <label class="checkbox-acc" for="">
-                        Disponibilizar para visualização:
-                        <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1'>
-                    </label>
-
-                    <label>Quantidade:
+                    <div class="div-inner-products">
+                        <label><strong>Quantidade</strong>:
+                            <input type="number" inputmode="" id="quantidadeProduto" name="quantidadeProduto" class="input-produto " maxlength="3" placeholder="00" autocomplete="off">
                         </label>
-                        <input type="number" inputmode="" id="quantidadeProduto" name="quantidadeProduto" class="input-produto " maxlength="3" placeholder="digite a quantidade disponível" autocomplete="off">
 
-                    <label>Valor unitário*: R$
+                        <label class="checkbox-acc" for="">
+                            <strong>Aceita encomendas</strong>:
+                            <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto input-checkbox" value='1'>
                         </label>
-                        <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" autocomplete="off" placeholder="00,00" required>
-
-                    <label>Valor de custo: R$
-                        </label>
-                        <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" placeholder="00,00" autocomplete="off">
 
 
-                    <label>Imagem: (max. 2mb)
-                        </label>
-                        <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
+                    </div>
                     
-                    <label class="descricao-produtos" for="descricaoProduto">
-                        Descrição do produto
-                    </label>
-                    <textarea name="descricaoProduto" id="descricaoProduto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" class="input-produto" autocomplete="off" ></textarea>
-                </div>
+                    <div class="div-inner-products">
+
+                        <label><strong>Valor unitário</strong>*: R$
+                            <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" autocomplete="off" placeholder="00,00" required>
+                        </label>
+
+                        <label><strong>Valor de custo</strong>: R$
+                            <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" placeholder="00,00" autocomplete="off">
+                        </label>
+                    </div>
+                    
+            
+                    
+                    
+                    <label><strong>Imagem</strong>: (max. 2mb)
+                </label>
+                <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
+                
+                <label class="descricao-produtos" for="descricaoProduto">
+                    <strong>Descrição do produto</strong>
+                </label>
+                <textarea name="descricaoProduto" id="descricaoProduto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" class="input-produto" autocomplete="off" ></textarea>
+                <label class="checkbox-acc" for="">
+                    <strong>Disponibilizar para visualização</strong>:
+                    <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1'>
+                </label>
+            </div>
                 
             </fieldset>
             <div id="form-products-buttons">

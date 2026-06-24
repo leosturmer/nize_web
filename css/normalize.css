@@ -42,6 +42,7 @@
     
     --border-focus-purple: 2.8px solid #853fcb;
     --border-focus-green: 2.8px solid #99d669;
+    --border-focus-input: 2.8px solid #98d669bb;
     --shadow-focus-purple: -3px 3px 0px #853fcb;
     --shadow-focus-green: -3px 3px 0px #99d669;
 
@@ -218,7 +219,7 @@ p > strong {
 input[type="date"], 
 textarea {
     padding: 0.3em;
-    border: var(--border-focus-green);
+    border: var(--border-focus-input);
     font-size: 14px;
 
 }
