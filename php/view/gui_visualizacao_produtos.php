@@ -117,7 +117,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 
                         <p><strong>Aceita encomenda:</strong> <?php echo $aceita_encomenda; ?></p>
                         <p><strong>Disponível para visualização:</strong> <?php echo $aceita_visualizacao; ?></p>
-                        <p><strong>Descrição:</strong> <?php echo htmlspecialchars($item['descricao']) ?></p>
+                        <p class="p-descricao"><strong>Descrição:</strong> <?php echo htmlspecialchars($item['descricao']) ?></p>
                         
                         <?php if($item['imagem']){
                             echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";

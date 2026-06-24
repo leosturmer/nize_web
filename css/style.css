@@ -401,6 +401,12 @@ position: absolute;
     max-width: 95%  ;
 }
 
+.p-descricao {
+    overflow-y: auto;
+    max-height: 150px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--normalPurple);
+}
 
 .product-btns {
     display: flex;

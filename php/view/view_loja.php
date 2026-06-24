@@ -72,7 +72,7 @@ if (!empty($_SESSION['usuario_logado'])){
                         <?php if ($item['valor_unitario']) { $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.'); } else {$valor_unitario = "Não informado"; }?> 
                         <p><strong>Valor unitário:</strong> <?php echo $valor_unitario?></p>
 
-                        <p><strong>Descrição:</strong> <?php echo htmlspecialchars($item['descricao']) ?></p>
+                        <p class="p-descricao"><strong>Descrição:</strong> <?php echo htmlspecialchars($item['descricao']) ?></p>
                         
                         <?php if($item['imagem']){
                             echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
