@@ -26,52 +26,53 @@ if (empty($lista)) {
 
 foreach ($lista as $item) {
     echo '<div class="product-view">';
-    echo '<p><strong>Nome do produto: </strong>' . htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")) . '</p>'; 
-    echo '<p><strong>Quantidade: </strong>' . htmlspecialchars($item['quantidade']) . '</p>';
 
-    if ($item['valor_unitario']) { 
-        $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.'); 
-    } else {
-        $valor_unitario = "Não informado"; 
-    }
-    
-    echo '<p><strong>Valor unitário: </strong>' . $valor_unitario . '</p>';
+    ?>
+    <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p> 
+        <p><strong>Quantidade:</strong> <?php if ($item['quantidade'] === 0 || $item['quantidade'] == null) {echo "Sem estoque";} else { echo htmlspecialchars($item['quantidade']); }?> </p>
 
-    if ($item['valor_custo']) {
-        $valor_custo = "R$ " . number_format($item['valor_custo'], 2, ',', '.'); 
-    } else {
-        $valor_custo = "Não informado"; 
-    }
-    
-    echo '<p><strong>Valor de custo: </strong>' . $valor_custo . '</p>';
-    
-    if(htmlspecialchars($item['aceita_encomenda']) === '1') {
-        $aceita_encomenda = "Aceita";
-    } else {
-        $aceita_encomenda = "Não aceita";
-    }
+        <?php if ($item['valor_unitario']) { $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.'); } else {$valor_unitario = "Não informado"; }?> 
+        <p><strong>Valor unitário:</strong> <?php echo $valor_unitario?></p>
 
-    echo '<p><strong>Aceita encomenda: </strong>' . $aceita_encomenda . '</p>';
-    
-    if(htmlspecialchars($item['aceita_visualizacao']) === '1') {
-        $aceita_visualizacao = "Aceita";
-    } else {
-        $aceita_visualizacao = "Não aceita";
-    }
-    
-    echo '<p><strong>Disponível para visualização? </strong>' . $aceita_visualizacao . '</p>';
+        <?php if ($item['valor_custo']) {$valor_custo = "R$ " . number_format($item['valor_custo'], 2, ',', '.'); } else {$valor_custo = "Não informado"; }?>
+        <p><strong>Valor de custo:</strong> <?php echo $valor_custo; ?></p>
+        
+        <?php 
+        
+        if(htmlspecialchars($item['aceita_encomenda']) === '1') {
+            $aceita_encomenda = "Aceita";
+        } else {
+            $aceita_encomenda = "Não aceita";
+        }
+        
+        if(htmlspecialchars($item['aceita_visualizacao']) === '1') {
+            $aceita_visualizacao = "Sim";
+        } else {
+            $aceita_visualizacao = "Não";
+        }
+        
+        
+        ?>
 
-    echo '<p><strong>Descrição: </strong>' . htmlspecialchars($item['descricao']) . '</p>';
-    
-    if($item['imagem']){
-        echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
-    } else {
-        echo "<p class='img-produtos'>Nenhuma imagem cadastrado</p>";
-    }
+        <p><strong>Aceita encomenda:</strong> <?php echo $aceita_encomenda; ?></p>
+        <p><strong>Disponível para visualização:</strong> <?php echo $aceita_visualizacao; ?></p>
+        <p class="p-descricao"><strong>Descrição:</strong> 
+        <?php if ($item['descricao']) { 
+            echo htmlspecialchars($item['descricao']); 
+            } else { 
+                echo "Nenhuma descrição informada";
+            } ?></p>
+        
+        <?php if($item['imagem']){
+            echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+        } else {
+            echo "<p>Nenhuma imagem cadastrada</p>";
+        } ?>
 
-    echo '<div class="product-btns">';
-        echo '<a href="gui_alteracao_produto.php?id=' . $item['id_produto'] . '">Visualizar</a>';
-        echo '<a href="../controller/produtoControle.php?op=excluir&id=' . $item['id_produto'] . '" onclick="return confirm(\'Deseja mesmo excluir?\');">Excluir </a>';
-    echo '</div>';
-    echo '</div>'; 
+    <div class="product-btns">
+        <a href="gui_alteracao_produto.php?id=<?php echo $item['id_produto']; ?>">Visualizar</a>
+        <a href="../controller/produtoControle.php?op=excluir&id=<?php echo $item['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?');">Excluir</a>
+    </div>
+</div> 
+        <?php
 }

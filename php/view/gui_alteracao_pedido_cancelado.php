@@ -12,8 +12,15 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
 $produtoDAO = new ProdutoDAO();
 
+if (empty($_SESSION['pedidoSelecionado'])) {
+    $_SESSION['msg'] = "<p class='error-msg'>Nenhum pedido selecionado!</p>";
+    echo $_SESSION['msg'];
+    header("location:gui_visualizacao_pedidos.php");
+    exit;
+}
 $id_pedido = $_SESSION['pedidoSelecionado']["id_pedido"];
 $infoPedido = $_SESSION['pedidoSelecionado'];
+
 
 ?>
 

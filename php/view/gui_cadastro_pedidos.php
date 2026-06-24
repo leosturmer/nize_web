@@ -42,7 +42,7 @@ if (isset($_SESSION['encomendaSelecionada'])){
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dehaze" />
 
 
-    <title>Pedidos</title>
+    <title>Cadastro de pedido</title>
 </head>
 <body>
     <details class="coll-sidenav" open>
@@ -67,7 +67,7 @@ if (isset($_SESSION['encomendaSelecionada'])){
         ?>
 
         <div class="internal-nav">
-            <h1>Pedidos</h1>
+            <h1>Cadastro de pedido</h1>
             <div class="internal-nav-links">
                 <a href="gui_visualizacao_pedidos.php">Visualizar pedidos</a>
             </div>
@@ -91,9 +91,9 @@ if (isset($_SESSION['encomendaSelecionada'])){
                                         <p><strong>Valor unitário: R$</strong> <?php echo number_format((float)$item['valor_unitario'], 2, ',', '.') ?> </p>
 
                                                                     
-                                        <p><strong>Aceita encomenda:</strong> <?php if ($item['aceita_encomenda']) {echo "Sim";} else {echo "Não"; } ?></p>
+                                        <!-- <p><strong>Aceita encomenda:</strong> <?php if ($item['aceita_encomenda']) {echo "Sim";} else {echo "Não"; } ?></p>
                                     
-                                        <p><strong>Descrição:</strong> <?php if (htmlspecialchars($item['descricao'])) { echo htmlspecialchars($item['descricao']); } else { echo 'Sem informações';}?></p>
+                                        <p><strong>Descrição:</strong> <?php if (htmlspecialchars($item['descricao'])) { echo htmlspecialchars($item['descricao']); } else { echo 'Sem informações';}?></p> -->
 
                                         <?php if($item['imagem']){
                                                 echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
