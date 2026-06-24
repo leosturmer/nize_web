@@ -473,6 +473,11 @@ position: absolute;
 /* Tela de cadastro de produtos */
 
 .form-cadastro {
+    /* align-items: center; */
+    display: block;
+    flex-direction: column;
+    /* align-content: center; */
+    /* justify-content: center; */
     align-self: center;
 }
 
@@ -489,7 +494,7 @@ position: absolute;
 
     padding: 1rem;
 
-    width: fit-content;
+    width: max-content;
 
 
     display: flex;
