@@ -95,6 +95,8 @@ if (isset($_SESSION['pedidoSelecionado'])){
             <?php if (!empty($listaPedidos)): ?>
                 <?php foreach ($listaPedidos as $id_pedido => $dados_pedido): ?>
                     <div class="product-view">
+
+                    <h2>Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
                         <?php
                             $dataBanco = $dados_pedido['data'];
                             $formatoData = strtotime($dataBanco);

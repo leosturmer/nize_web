@@ -64,6 +64,9 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                 <a href="gui_visualizacao_pedidos.php">Visualizar pedidos</a>
             </div>
         </div>
+
+        <h2>Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
+
         
             <details>
                 <summary style="cursor: pointer;">Clique para adicionar produtos à pedido</summary> 
