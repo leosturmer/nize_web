@@ -1,6 +1,15 @@
 #### Outras coisas para fazer
+- Páginas para alterar CSS ainda:
+    - cadastrar pedido
+    - clonar pedido
+    - alterar pedido
+    - minha área
+    - alterar cadastro
+
 
 - Ajustar os CSS dos SELECTS num geral das telas de produtos e pedidos
+
+
 
 - Mexer no MAX-HEIGTH das imagens, tá me irritando ficar longo os pedidos
     - Colocar imagens para ficar sempre num tamanho X e a imagem se adapta ao  container
