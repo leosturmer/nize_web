@@ -11,14 +11,15 @@ header('Content-Type: text/html; charset=utf-8');
 $pesquisa = trim($_GET['pesquisaPedidos'] ?? '');
 $dataPedido = trim($_GET['dataPedido'] ?? '');
 $statusPedido = trim($_GET['statusPedido'] ?? '');
+$ordenarPor = trim($_GET['ordenarPor'] ?? '');
 
 $pedidoDAO = new PedidoDAO();
 
 $usuario = unserialize($_SESSION['usuario_logado']);
 $idUsuarioLogado = $usuario->id_usuario;
 
-if (!empty($pesquisa) || !empty($dataPedido) || !empty($statusPedido)) {
-    $listaPedidos = $pedidoDAO->buscarPedidoFiltro($pesquisa, $dataPedido, $statusPedido, $idUsuarioLogado);
+if (!empty($pesquisa) || !empty($dataPedido) || !empty($statusPedido) || !empty($ordenarPor)) {
+    $listaPedidos = $pedidoDAO->buscarPedidoFiltro($pesquisa, $dataPedido, $statusPedido, $ordenarPor, $idUsuarioLogado);
 } else {
     $listaPedidos = $pedidoDAO->listarTodosPedidos($idUsuarioLogado);
 }

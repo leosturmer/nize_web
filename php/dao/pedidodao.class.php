@@ -187,7 +187,7 @@ class PedidoDAO{
         }
     }
 
-    public function buscarPedidoFiltro($pesquisa, $data, $status, $id_usuario){
+    public function buscarPedidoFiltro($pesquisa, $data, $status, $ordenar, $id_usuario){
         try {
             $busca = "%" . $pesquisa . "%";
 
@@ -212,9 +212,19 @@ class PedidoDAO{
 
             // Posso fazer aqui o filtro algo como
             // $order = '';
-            // if ($order === 1) { $order = id_pedido ASC} else { $order = $id_pedido DESC }
+            
+            
+            if (!empty($ordenar)){
+                if ($ordenar === "asc") { 
+                    $sqlStr .= " ORDER BY id_pedido ASC";
+                } else { 
+                    $sqlStr .= " ORDER BY id_pedido DESC";
+                }
+                
+            } else {
+                $sqlStr .= " ORDER BY id_pedido DESC;";
 
-            $sqlStr .= " ORDER BY id_pedido DESC;";
+            }
 
             $sql = $this->conexao->prepare($sqlStr);
 
