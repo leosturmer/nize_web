@@ -33,7 +33,7 @@ if (!empty($listaPedidos)){
     foreach ($listaPedidos as $id_pedido => $dados_pedido) {
     $data = date("d/m/Y", strtotime($dados_pedido['data']));
 
-                            $comentario = htmlspecialchars($dados_pedido['comentario']);
+    $comentario = htmlspecialchars($dados_pedido['comentario']);
 
     
     $statusView = '';

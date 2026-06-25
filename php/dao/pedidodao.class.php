@@ -192,11 +192,14 @@ class PedidoDAO{
             $busca = "%" . $pesquisa . "%";
 
             $sqlStr = "SELECT id_pedido, data, nome, quantidade, comentario, status, valor_unitario, valor_final
-                        FROM view_pedidos
-                        WHERE id_usuario = :id_usuario";
+            FROM view_pedidos
+            WHERE id_usuario = :id_usuario";
 
             if (!empty($pesquisa)) {
-                $sqlStr .= " AND (comentario LIKE :busca OR nome LIKE :busca2)";
+                $sqlStr .= " AND (comentario LIKE :busca 
+                OR nome LIKE :busca2 
+                OR id_pedido LIKE :busca3
+                )";
             }
 
             if (!empty($data)) {
@@ -207,15 +210,21 @@ class PedidoDAO{
                 $sqlStr .= " AND status = :status_pedido";
             }
 
+            // Posso fazer aqui o filtro algo como
+            // $order = '';
+            // if ($order === 1) { $order = id_pedido ASC} else { $order = $id_pedido DESC }
+
             $sqlStr .= " ORDER BY id_pedido DESC;";
 
             $sql = $this->conexao->prepare($sqlStr);
 
             $sql->bindValue(":id_usuario", $id_usuario);
 
+
             if (!empty($pesquisa)) {
                 $sql->bindValue(":busca", $busca);
                 $sql->bindValue(":busca2", $busca);
+                $sql->bindValue(":busca3", ltrim($pesquisa, "0"));
             }
 
             if (!empty($data)) {
