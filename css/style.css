@@ -86,7 +86,10 @@ position: absolute;
 
     margin-top: auto;
     bottom: 10px;
-    padding: 0.1rem;
+    padding: 0.3rem;
+    margin-right: 2em;
+    width: fit-content;
+    align-self: center;
 
 }
 
