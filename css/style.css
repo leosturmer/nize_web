@@ -193,6 +193,14 @@
   background-color: white;
 }
 
+.form-produto-pedido {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 1em;
+    align-self: self-end;
+    left: 30%;
+}
+
 #pesquisa-produtos,
 #pesquisa-pedidos {
   border: var(--border);
@@ -359,6 +367,13 @@
   padding: 10px;
   background-color: thistle;
   justify-content: space-evenly;
+}
+
+.lista-produtos-pedido {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
 }
 
 .product-view {
@@ -616,3 +631,28 @@ margin: 0 auto;
   height: 3rem;
   width: 10rem;
 }
+
+.produtos-pedido {
+    border: var(--border);
+    padding: 1rem;
+    background-color: thistle;
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+
+    margin-bottom: 1em;
+
+    /* gap: 1em; */
+}
+
+
+
+.produtos-pedido > summary {
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 0em;
+    
+}
+

@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const pesquisaProdutos = document.getElementById('pesquisa-produtos');
     // Seleciona pela classe .lista-produtos correspondente ao seu HTML
-    const listaProdutos = document.querySelector('.lista-produtos');
+    const listaProdutos = document.querySelector('.lista-produtos-pedido');
     
     let temporizador;
 
