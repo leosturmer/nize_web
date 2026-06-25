@@ -513,7 +513,8 @@ align-self: center;
 }
 
 fieldset#products-form{
-margin-left: 2em;    
+/* margin-left: 2em;     */
+margin: 0 auto;
     width: 95%;
     padding: 1em;
 }
