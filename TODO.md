@@ -1,5 +1,17 @@
 #### Outras coisas para fazer
 
+-- Posso fazer um ORDENAR POR nome do produto crescente/decrescente e também pedido por data crescente/decrescente
+
+- No filtro de buscar pedido, ajustar a busca para buscar também pornúmero do pedido
+
+- Mexer no MAX-HEIGTH das imagens, tá me irritando ficar longo os pedidos
+
+- No visualizar loja a sidebar tá cortando quando rola a tela para baixo
+
+- Ver o checkbox de aceita visualização da loja 
+
+- Colocar imagens para ficar sempre num tamanho X e a imagem se adapta ao container
+
 ---- VER pq o AJAX do pedido não tá ficando certo o CSS
 ---- Arrumar os CSS aí 
 
