@@ -1,8 +1,13 @@
 #### Outras coisas para fazer
 - Páginas para alterar CSS ainda:
     - cadastrar pedido
+        - Tem que mudar o AJAX tbm
+
+
+
     - clonar pedido
     - alterar pedido
+    - pedido cancelado
     - minha área
     - alterar cadastro
 
