@@ -212,7 +212,7 @@ position: absolute;
 }
 
 
-#pesquisa-produtos:focus{
+#pesquisa-produtos:focus, #pesquisa-pedidos:focus{
     border: var(--border-focus-purple);
     box-shadow: var(--shadow-focus-purple);
     outline: none;
