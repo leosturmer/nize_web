@@ -5,6 +5,7 @@ require_once '../dao/produtodao.class.php';
 header('Content-Type: text/html; charset=utf-8');
 
 $pesquisa = trim($_GET['pesquisaProdutos'] ?? '');
+$ordenar = trim($_GET['ordenarPor'] ?? '');
 $idLoja = trim($_GET['id_loja'] ?? '');
 
 if (empty($idLoja)) {
@@ -14,7 +15,7 @@ if (empty($idLoja)) {
 
 $produtoDAO = new ProdutoDAO();
 
-$lista = $produtoDAO->buscarProdutoFiltro($pesquisa, '', '', $idLoja, true);
+$lista = $produtoDAO->buscarProdutoFiltro($pesquisa, '', '', $ordenar, $idLoja, true);
 
 if (empty($lista)) {
     echo '<h4>Nenhum produto correspondente foi encontrado!</h4>';

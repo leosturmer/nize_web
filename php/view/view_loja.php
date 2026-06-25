@@ -57,6 +57,14 @@ if (!empty($_SESSION['usuario_logado'])){
                     <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span class="material-symbols-outlined" id="search-icon">search</span>
                 </form>
 
+                <select id="filtro-order">
+                        <option value="nome-asc">Ordenar por</option>
+                        <option value="nome-asc">Nome (crescente)</option>
+                        <option value="nome-desc">Nome (descrescente)</option>
+                        <option value="valor-asc">Preço (crescente)</option>
+                        <option value="valor-desc">Preço (descrescente)</option>
+                </select>
+
                 <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
             </div>
 

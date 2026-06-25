@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Se houver idLoja na URL, significa que estamos na view_loja.php (pública)
         if (idLoja) {
-            url = `busca_produtos_loja_ajax.php?pesquisaProdutos=${encodeURIComponent(termo)}&id_loja=${encodeURIComponent(idLoja)}`;
+            url = `busca_produtos_loja_ajax.php?pesquisaProdutos=${encodeURIComponent(termo)}&id_loja=${encodeURIComponent(idLoja)}&ordenarPor=${encodeURIComponent(order)}`;
         } else {
             // Caso contrário, mantém o fluxo antigo da área interna (gui_produtos)
             url = `busca_produtos_ajax.php?pesquisaProdutos=${encodeURIComponent(termo)}&filtroEstoque=${encodeURIComponent(estoque)}&filtroEncomenda=${encodeURIComponent(encomenda)}&ordenarPor=${encodeURIComponent(order)}`;

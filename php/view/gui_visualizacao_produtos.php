@@ -77,7 +77,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
                         <option value="nome-desc">Nome (descrescente)</option>
                         <option value="quant-asc">Quantidade (descrescente)</option>
                         <option value="quant-desc">Quantidade (descrescente)</option>
-                    </select>
+                </select>
                 <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
             </div>
 

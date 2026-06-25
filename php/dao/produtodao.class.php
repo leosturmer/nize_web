@@ -160,6 +160,12 @@ class ProdutoDAO{
                 } else if ($ordenar === "quant-desc") {
                     $sqlStr .= " ORDER BY quantidade DESC NULLS LAST;";
 
+                } else if ($ordenar === "valor-asc") {
+                    $sqlStr .= " ORDER BY valor_unitario ASC NULLS FIRST;";
+
+                } else if ($ordenar === "valor-desc") {
+                    $sqlStr .= " ORDER BY valor_unitario DESC NULLS LAST;";
+
                 } 
 
             } else {
