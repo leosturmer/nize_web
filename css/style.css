@@ -166,13 +166,14 @@ position: absolute;
 
 #filtro-estoque,
 #filtro-encomenda,
-#filtro-status {
-    width: 20%;
+#filtro-status,
+#filtro-order {
+    width: 10rem;
 }
 
 #filtro-data {
-    width: 15%;
-    padding: 1rem;
+    width: 10rem;
+    padding: 0.9rem;
     text-align: center;
 }
 
@@ -402,7 +403,8 @@ position: absolute;
     margin-bottom: 10px;
 
     width: 95%;
-    height: auto;
+    max-height: 300px;
+    object-fit: cover;
     /* min-width: 50%;
     max-width: 95%; */
 }

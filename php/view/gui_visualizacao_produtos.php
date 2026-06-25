@@ -60,13 +60,13 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
                 </form>
                 
                 <select id="filtro-estoque">
-                        <option value="">Todo estoque</option>
+                        <option value="">Filtrar estoque</option>
                         <option value="com-estoque">Com estoque</option>
                         <option value="sem-estoque">Sem estoque</option>
                 </select>
 
                 <select id="filtro-encomenda">
-                        <option value="">Todos os produtos</option>
+                        <option value="">Filtrar produtos</option>
                         <option value="com-encomenda">Aceita encomenda</option>
                         <option value="sem-encomenda">Não aceita encomenda</option>
                 </select>
