@@ -80,7 +80,7 @@ class ProdutoDAO{
 
     public function listarTodosProdutos($id_usuario) : array {
         try{
-            $sql = $this->conexao->prepare("SELECT * FROM produtos WHERE id_usuario = :id_usuario ORDER BY nome ASC");
+            $sql = $this->conexao->prepare("SELECT * FROM produtos WHERE id_usuario = :id_usuario ORDER BY nome COLLATE NOCASE ASC");
             $sql->bindValue(":id_usuario", $id_usuario);
             $sql->execute();
             return $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -119,7 +119,7 @@ class ProdutoDAO{
         }
     }
 
-    public function buscarProdutoFiltro($pesquisa, $estoqueProduto, $encomendaProduto, $id_usuario, $apenasVisiveis = false) {
+    public function buscarProdutoFiltro($pesquisa, $estoqueProduto, $encomendaProduto, $ordenar, $id_usuario, $apenasVisiveis = false) {
         try {
             $busca = "%" . $pesquisa . "%";
 
@@ -147,7 +147,26 @@ class ProdutoDAO{
                 $sqlStr .= " AND aceita_encomenda = 0";
             }
 
-            $sqlStr .= " ORDER BY nome ASC;";
+            if ($ordenar) {
+                if ($ordenar === "nome-asc") {
+                    $sqlStr .= " ORDER BY nome COLLATE NOCASE ASC;";
+
+                } else if ($ordenar === "nome-desc") {
+                    $sqlStr .= " ORDER BY nome COLLATE NOCASE DESC;";
+
+                } else if ($ordenar === "quant-asc") {
+                    $sqlStr .= " ORDER BY quantidade ASC NULLS FIRST;";
+                
+                } else if ($ordenar === "quant-desc") {
+                    $sqlStr .= " ORDER BY quantidade DESC NULLS LAST;";
+
+                } 
+
+            } else {
+                $sqlStr .= " ORDER BY nome COLLATE NOCASE ASC;";
+
+            }
+
 
             $sql = $this->conexao->prepare($sqlStr);
 

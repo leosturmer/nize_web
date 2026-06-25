@@ -210,10 +210,6 @@ class PedidoDAO{
                 $sqlStr .= " AND status = :status_pedido";
             }
 
-            // Posso fazer aqui o filtro algo como
-            // $order = '';
-            
-            
             if (!empty($ordenar)){
                 if ($ordenar === "asc") { 
                     $sqlStr .= " ORDER BY id_pedido ASC";

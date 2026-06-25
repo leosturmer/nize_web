@@ -64,11 +64,20 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
                         <option value="com-estoque">Com estoque</option>
                         <option value="sem-estoque">Sem estoque</option>
                 </select>
+
                 <select id="filtro-encomenda">
                         <option value="">Todos os produtos</option>
                         <option value="com-encomenda">Aceita encomenda</option>
                         <option value="sem-encomenda">Não aceita encomenda</option>
                 </select>
+
+                <select id="filtro-order">
+                        <option value="">Ordenar por</option>
+                        <option value="nome-asc">Nome (crescente)</option>
+                        <option value="nome-desc">Nome (descrescente)</option>
+                        <option value="quant-asc">Quantidade (descrescente)</option>
+                        <option value="quant-desc">Quantidade (descrescente)</option>
+                    </select>
                 <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
             </div>
 

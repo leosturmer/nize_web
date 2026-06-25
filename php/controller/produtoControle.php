@@ -52,7 +52,7 @@ switch ($opcao){
         $produto = new Produto();
         $produto->id_usuario = $idUsuarioLogado;
         $produto->nome = $nomeProduto;
-        $produto->quantidade = $quantidadeProduto;
+        $produto->quantidade = (int)$quantidadeProduto ?? 0;
         $produto->valor_unitario = $valorUnitario;
         $produto->valor_custo = $valorCusto;
         $produto->aceita_encomenda = $aceitaEncomenda;
@@ -90,7 +90,7 @@ switch ($opcao){
         
         if ($produtoDAO->cadastrarProduto($produto)){
             $_SESSION['msg'] = '<p class="success-msg">Produto cadastrado com sucesso!</p>';
-            header("location:../view/gui_cadastro_produtos.php");
+            header("location:../view/gui_visualizacao_produtos.php");
             exit;
         } else {
             $_SESSION['msg'] = '<p class="error-msg">Erro desconhecido ao salvar no banco.</p>';
@@ -113,7 +113,7 @@ switch ($opcao){
         $produto->id_usuario = $idUsuarioLogado;
 
         $produto->nome = $nomeProduto;
-        $produto->quantidade = $quantidadeProduto;
+        $produto->quantidade = (int)$quantidadeProduto ?? 0;
         $produto->valor_unitario = $valorUnitario;
         $produto->valor_custo = $valorCusto;
         $produto->aceita_encomenda = $aceitaEncomenda;
