@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require_once '../model/usuario.class.php';
 require_once '../model/produto.class.php';
@@ -12,6 +12,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,6 +28,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
 
 </head>
+
 <body>
     <details class="coll-sidenav" open>
         <summary><span class="material-symbols-outlined">dehaze</span></summary>
@@ -39,107 +41,110 @@ $usuario = unserialize($_SESSION['usuario_logado']);
             <a href="../controller/logout.php" id="btn-sair">Encerrar sessão</a>
         </div>
     </details>
-    
+
     <div class="conteudo-pagina">
-    
-    <main>
 
-        <div class="internal-nav">
-            <div class="internal-nav-links">
-                <h1>Cadastro de produto</h1>
-                <a href="gui_visualizacao_produtos.php">Todos os produtos</a>
+        <main>
+
+            <div class="internal-nav">
+                <div class="internal-nav-links">
+                    <h1>Cadastro de produto</h1>
+                    <a href="gui_visualizacao_produtos.php">Todos os produtos</a>
+                </div>
             </div>
-        </div>
 
-        <?php
+            <?php
             if (isset($_SESSION["msg"])) {
-                echo "<div id='session-msg'>" . $_SESSION['msg'].  "</div>";
-            unset($_SESSION["msg"]);
+                echo "<div id='session-msg'>" . $_SESSION['msg'] .  "</div>";
+                unset($_SESSION["msg"]);
             }
-        ?>
+            ?>
 
-        <form action="#" method="post" enctype="multipart/form-data" class="form-cadastro">
-            <fieldset id="products-form">
-                <legend>Informações do produto</legend>
-                <div class="inner-products-form">
-                    <label><strong>Nome do produto</strong>*:
-                    <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" autocomplete="off" placeholder="o nome do produto vai aqui" required>
-                    </label>
+            <form action="#" method="post" enctype="multipart/form-data" class="form-cadastro">
+                <fieldset id="products-form">
+                    <legend>Informações do produto</legend>
+                    <div class="inner-products-form">
+                        <label><strong>Nome do produto</strong>*:</label>
+                            <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" autocomplete="off" placeholder="o nome do produto vai aqui" required>
+                        
 
-                    <div class="div-inner-products">
-                        <label><strong>Quantidade</strong>:
-                            <input type="number" inputmode="" id="quantidadeProduto" name="quantidadeProduto" class="input-produto " maxlength="3" placeholder="00" autocomplete="off">
+                        <div class="div-inner-products">
+                            <label><strong>Quantidade</strong>:
+                                <input type="number" inputmode="" id="quantidadeProduto" name="quantidadeProduto" class="input-produto " maxlength="3" placeholder="00" autocomplete="off">
+                            </label>
+
+                            <label class="checkbox-acc" for="">
+                                <strong>Aceita encomendas</strong>:
+                                <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto input-checkbox" value='1'>
+                            </label>
+
+
+                        </div>
+
+                        <div class="div-inner-products">
+
+                            <label><strong>Valor unitário</strong>*: R$ 
+                                <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" autocomplete="off" placeholder="00,00" required>
+                            </label>
+                            
+
+                            <label><strong>Valor de custo</strong>: R$ 
+                                <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" placeholder="00,00" autocomplete="off">
+                            </label>
+                            
+                        </div>
+
+                        <label class="descricao-produtos" for="descricaoProduto">
+                            <strong>Descrição do produto</strong>
                         </label>
+                        <textarea name="descricaoProduto" id="descricaoProduto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" class="input-produto" autocomplete="off"></textarea>
 
                         <label class="checkbox-acc" for="">
-                            <strong>Aceita encomendas</strong>:
-                            <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto input-checkbox" value='1'>
+                            <strong>Disponibilizar para visualização</strong>:
+                            <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1'>
                         </label>
 
+
+                        <label><strong>Imagem</strong>: (max. 2mb)
+                        </label>
+                        <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
 
                     </div>
-                    
-                    <div class="div-inner-products">
 
-                        <label><strong>Valor unitário</strong>*: R$
-                            <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" autocomplete="off" placeholder="00,00" required>
-                        </label>
+                </fieldset>
+                <div id="form-products-buttons">
+                    <button type="submit" formaction="../controller/produtoControle.php?op=cadastrar">Cadastrar</button>
+                    <button type="reset">Limpar</button>
+                </div>
+            </form>
 
-                        <label><strong>Valor de custo</strong>: R$
-                            <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" placeholder="00,00" autocomplete="off">
-                        </label>
-                    </div>
-                    
-            
-                    
-                    
-                    <label><strong>Imagem</strong>: (max. 2mb)
-                </label>
-                <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
-                
-                <label class="descricao-produtos" for="descricaoProduto">
-                    <strong>Descrição do produto</strong>
-                </label>
-                <textarea name="descricaoProduto" id="descricaoProduto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" class="input-produto" autocomplete="off" ></textarea>
-                <label class="checkbox-acc" for="">
-                    <strong>Disponibilizar para visualização</strong>:
-                    <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1'>
-                </label>
-            </div>
-                
-            </fieldset>
-            <div id="form-products-buttons">
-                <button type="submit" formaction="../controller/produtoControle.php?op=cadastrar">Cadastrar</button>
-                <button type="reset">Limpar</button>
-            </div>
-        </form>
-
-        <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
-    </main>
+            <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
+        </main>
     </div>
-<script>
-document.getElementById('imagemProduto').addEventListener('change', function() {
-    if (this.files && this.files[0]) {
-        
-        const tamanhoArquivo = this.files[0].size; 
-        
-        const limiteMaximo = 2 * 1024 * 1024; 
+    <script>
+        document.getElementById('imagemProduto').addEventListener('change', function() {
+            if (this.files && this.files[0]) {
 
-        if (tamanhoArquivo > limiteMaximo) {
-            alert('A imagem escolhida é muito grande! O tamanho máximo permitido é de 2 MB.');
-            
-            this.value = ''; 
+                const tamanhoArquivo = this.files[0].size;
+
+                const limiteMaximo = 2 * 1024 * 1024;
+
+                if (tamanhoArquivo > limiteMaximo) {
+                    alert('A imagem escolhida é muito grande! O tamanho máximo permitido é de 2 MB.');
+
+                    this.value = '';
+                }
+            }
+        });
+
+        const msgElement = document.getElementById('session-msg');
+
+        if (msgElement) {
+            setTimeout(() => {
+                msgElement.style.display = 'none';
+            }, 6000);
         }
-    }
-});
-
-const msgElement = document.getElementById('session-msg');
-
-    if (msgElement) {
-        setTimeout(() => {
-            msgElement.style.display = 'none'; 
-        }, 6000);
-    }
-</script>
+    </script>
 </body>
+
 </html>

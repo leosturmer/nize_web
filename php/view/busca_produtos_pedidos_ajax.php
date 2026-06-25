@@ -11,6 +11,7 @@ header('Content-Type: text/html; charset=utf-8');
 $pesquisa = trim($_GET['pesquisaProdutos'] ?? '');
 $estoqueProduto = trim($_GET['filtroEstoque'] ?? '');
 $encomendaProduto = trim($_GET['filtroEncomenda'] ?? '');
+$ordenar = trim($_GET['ordenarPor'] ?? '');
 
 $produtoDAO = new ProdutoDAO();
 
@@ -18,7 +19,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 $idUsuarioLogado = $usuario->id_usuario;
 
 if (!empty($pesquisa)) {
-    $lista = $produtoDAO->buscarProdutoFiltro($pesquisa, $idUsuarioLogado, $encomendaProduto, $estoqueProduto);
+    $lista = $produtoDAO->buscarProdutoFiltro($pesquisa, $estoqueProduto, $encomendaProduto, $ordenar, $idUsuarioLogado);
 } else {
     $lista = $produtoDAO->listarTodosProdutos($idUsuarioLogado);
 }
@@ -67,11 +68,15 @@ if (!empty($lista)) {
             }
         ?>
             <form action="../controller/pedidoControle.php" method="get" class="product-btns">
-                <input type="number" name="quantidadeVendida" id="quantidadeVendida" maxlength="3" placeholder="Digite a quantidade" autocomplete="off">
+                <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Digite a quantidade" autocomplete="off">
                 <input type="hidden" name="op" value="adicionarQuantidade">
                 <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
-                <input type="submit" value="Adicionar ao pedido">
+                <input type="submit" class="btn-add" value="Adicionar ao pedido">
             </form>
+
+        </div>
+    </div>
+
 <?php
         }
 } else {

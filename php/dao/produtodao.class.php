@@ -124,8 +124,8 @@ class ProdutoDAO{
             $busca = "%" . $pesquisa . "%";
 
             $sqlStr = "SELECT id_produto, nome, valor_unitario, quantidade, valor_custo, imagem, aceita_encomenda, aceita_visualizacao, descricao 
-                        FROM produtos
-                        WHERE id_usuario = :id_usuario";
+            FROM produtos
+            WHERE id_usuario = :id_usuario";
 
             if ($apenasVisiveis) {
                 $sqlStr .= " AND aceita_visualizacao = 1";
