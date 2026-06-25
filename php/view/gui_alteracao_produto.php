@@ -65,6 +65,18 @@ $produto = $produtoDAO->buscarPorId($id_produto);
                 echo "<div id='session-msg'>" . $_SESSION['msg'] .  "</div>";
                 unset($_SESSION["msg"]);
             }
+
+            if ($produto['aceita_encomenda'] !== 1) {
+                $checkEncomenda = "";
+            } else {
+                $checkEncomenda = "checked";
+            }
+
+            if ($produto['aceita_visualizacao'] !== 1) {
+                $checkVisualizacao = "";
+            } else {
+                $checkVisualizacao = "checked";
+            }
             ?>
 
             <form action="../controller/produtoControle.php?op=alterar&id=<?php echo $produto['id_produto'] ?>" method="post" enctype="multipart/form-data" class="form-cadastro form-alt-produto">
@@ -73,20 +85,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
                     <div class="inner-products-form">
                         <label><strong>Nome do produto</strong>*:</label>
                         <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto alt-nome-produto" value="<?php echo htmlspecialchars($produto['nome']); ?>" autocomplete="off" required>
-                        <?php
-
-                        if ($produto['aceita_encomenda'] !== 1) {
-                            $checkEncomenda = "";
-                        } else {
-                            $checkEncomenda = "checked";
-                        }
-                        if ($produto['aceita_visualizacao'] !== 1) {
-                            $checkVisualizacao = "";
-                        } else {
-                            $checkVisualizacao = "checked";
-                        }
-
-                        ?>
+     
                         <div class="div-inner-products">
                             <label><strong>Quantidade</strong>:
                                 <input type="number" inputmode="" id="quantidadeProduto" name="quantidadeProduto" class="input-produto" value="<?php echo htmlspecialchars($produto['quantidade']); ?>" maxlength="3" autocomplete="off">
@@ -115,7 +114,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
                             <textarea name="descricaoProduto" id="descricaoProduto" class="input-produto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" autocomplete="off"><?php echo htmlspecialchars($produto['descricao']); ?></textarea>
                         </label>
                         <label class="checkbox-acc" for="">
-                            <strong>Disponibilizar para visualizaçã</strong>o
+                            <strong>Disponibilizar para visualização</strong>
                             <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" <?php echo " $checkVisualizacao"; ?>>
                         </label>
 
