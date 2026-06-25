@@ -1,8 +1,5 @@
 #### Outras coisas para fazer
 
-- Posso fazer um ORDENAR POR nome do produto crescente/decrescente e por quantidade CRESCENTE e descrescente   
-    - Esse eu tbm posso colocar na visualização da loja, mas aí ele tem que ter só de nome e precisa de um AJAX dele (acho que talvez já tenha até)
-
 - Ajustar os CSS dos SELECTS num geral das telas de produtos e pedidos
 
 - Mexer no MAX-HEIGTH das imagens, tá me irritando ficar longo os pedidos
@@ -16,6 +13,7 @@
 ---- VER pq o AJAX do pedido não tá ficando certo o CSS
 ---- Arrumar os CSS aí 
 
+- Tela de fundo deixar verde se colapsar a barra?
 - Ver se faço modo noturno?
 - Colocar acessibilidade?
 
