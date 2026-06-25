@@ -50,7 +50,6 @@ if (!empty($lista)) {
                     $valor_custo = "Não informado"; 
             }
             
-            echo '<p><strong>Valor de custo: </strong>' . $valor_custo . '</p>';
             
             if(htmlspecialchars($item['aceita_encomenda']) === '1') {
                 $aceita_encomenda = "Aceita";
@@ -59,7 +58,7 @@ if (!empty($lista)) {
             }
 
             echo '<p><strong>Aceita encomenda: </strong>' . $aceita_encomenda . '</p>';
-            echo '<p><strong>Descrição: </strong>' . htmlspecialchars($item['descricao']) . '</p>';
+            echo '<p class="p-descricao"><strong>Descrição: </strong>' . htmlspecialchars($item['descricao']) . '</p>';
             
             if($item['imagem']){
                 echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
