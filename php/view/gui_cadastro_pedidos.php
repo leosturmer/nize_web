@@ -85,8 +85,6 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                         <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição" autocomplete="off"><span class="material-symbols-outlined" id="search-icon">search</span>
                     </form>
 
-                    <!-- <p>Adicione os produtos ao pedido</p> -->
-
                     <div class="lista-produtos-pedido">
                         <?php if (!empty($listaProdutos)): ?>
                             <?php foreach ($listaProdutos as $item): ?>
@@ -142,8 +140,8 @@ if (isset($_SESSION['encomendaSelecionada'])) {
 
                             $_SESSION['total_compra'] += $valor;
 
-
-                            echo "<h4>Produto</b>: " . htmlspecialchars($produtoVendido['nome']) . "</h4><br>";
+                            echo "<div class='produto-individual'>";
+                            echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
                             echo "<p>";
                             echo "<b>Quantidade</b>: " . $quantidade . "<br>";
                             echo "<b>Valor do produto</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
@@ -151,9 +149,12 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                             $valor_total = (float)$produtoVendido['valor_unitario'];
                             $valor_total = $valor_total * $quantidade;
 
-                            echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br>";
+                            echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";
 
                             echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor'>Remover produto</a>";
+
+                            echo "</div>";
+
                         } else {
                             echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
                         }
@@ -162,10 +163,10 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                     echo "<p>Nenhum produto no carrinho.</p>";
                 }
 
-                echo "<p><b>Total do pedido</b>: R$ " . number_format($_SESSION['total_compra'], 2, ',', '.') . "</p>";
+                echo "</div>";
+                echo "<div class='total-pedido'><p><b>Total do pedido</b>: R$ " . number_format($_SESSION['total_compra'], 2, ',', '.') . "</p></div>";
                 ?>
 
-            </div>
 
             <form action="../controller/pedidoControle.php" method="get">
                 <input type="hidden" name="op" value="cadastrar">

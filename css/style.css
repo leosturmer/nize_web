@@ -634,6 +634,7 @@ margin: 0 auto;
 
 .produtos-pedido {
     border: var(--border);
+    box-shadow: var(--box-shadow);
     padding: 1rem;
     background-color: thistle;
 
@@ -656,3 +657,50 @@ margin: 0 auto;
     
 }
 
+.produtos-no-pedido {
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+  margin: 1em 0;
+  padding: 0.8em;
+
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 1em;
+
+  width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.produto-individual {
+
+  flex: 0 0 auto;
+  display: block;
+  padding: 0.8em;
+  gap: 1em;
+
+  padding: 0.8em;
+}
+
+.produto-individual > a {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  font-size: 12px;
+  padding: 0.2em;
+
+}
+
+.total-pedido {
+  padding: 0.8em;
+
+  border: var(--border-thin);
+  box-shadow: var(--box-shadow);
+  width: fit-content;
+  font-size: 18px;
+  background-color: var(--softGreen);
+  color: black;
+  margin-bottom: 1em;
+}
