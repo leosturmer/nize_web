@@ -656,19 +656,27 @@ fieldset#products-form {
 .produtos-no-pedido {
   border: var(--border);
   box-shadow: var(--box-shadow);
-  margin: 1em 0;
+  margin: 1em auto;
   padding: 0.8em;
 
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1em;
+  /* flex-direction: row; */
+  /* flex-wrap: nowrap; */
 
-  width: 100%;
-  /* height: max-content; */
+  min-width: fit-content;
+  width: min-content;
 
-  overflow-x: auto;
-  overflow-y: hidden;
+  min-height: fit-content;
+  height: max-content;
+
+  /* overflow: auto; */
+
+  /* overflow-x: auto;
+  overflow-y: hidden; */
+
+  /* margin: 0 auto 1em auto; */
 }
 
 .produto-individual {
@@ -678,6 +686,8 @@ fieldset#products-form {
   gap: 1em;
 
   padding: 0.8em;
+
+  height: max-content;
 }
 
 .produto-individual > a {
