@@ -11,6 +11,7 @@
     - alterar cadastro
 
     - REFAZER TODO CSS E TESTAR TUDO, TÁ DANDO ERROS = ACHO QUE TÁ DANDO ERRO NA QUESTÃO DE SAIR DA TELA DE PEDIDO E VOLTAR
+    - Fazer a validação pra, se a pessoa tirar o status "vendido" e o checkbox sumir, não vai pegar o checkbox
 
 
 - Ajustar os CSS dos SELECTS num geral das telas de produtos e pedidos
