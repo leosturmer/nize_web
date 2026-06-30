@@ -95,16 +95,16 @@ if (isset($_SESSION['encomendaSelecionada'])) {
 
 
                                     <p><strong>Aceita encomenda:</strong> <?php if ($item['aceita_encomenda']) {
-                                                                                    echo "Sim";
-                                                                                } else {
-                                                                                    echo "Não";
-                                                                                } ?></p>
-                                    
-                                        <p class="p-descricao"><strong>Descrição:</strong> <?php if (htmlspecialchars($item['descricao'])) {
-                                                                            echo htmlspecialchars($item['descricao']);
-                                                                        } else {
-                                                                            echo 'Sem informações';
-                                                                        } ?></p> 
+                                                                                echo "Sim";
+                                                                            } else {
+                                                                                echo "Não";
+                                                                            } ?></p>
+
+                                    <p class="p-descricao"><strong>Descrição:</strong> <?php if (htmlspecialchars($item['descricao'])) {
+                                                                                            echo htmlspecialchars($item['descricao']);
+                                                                                        } else {
+                                                                                            echo 'Sem informações';
+                                                                                        } ?></p>
 
                                     <?php if ($item['imagem']) {
                                         echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
@@ -154,7 +154,6 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                             echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor'>Remover produto</a>";
 
                             echo "</div>";
-
                         } else {
                             echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
                         }
@@ -168,49 +167,44 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                 ?>
 
 
-            <form action="../controller/pedidoControle.php" method="get">
-                <input type="hidden" name="op" value="cadastrar">
+                <form action="../controller/pedidoControle.php" method="get">
+                    <input type="hidden" name="op" value="cadastrar">
 
 
-                <fieldset id="pedidos-form">
-                    <!-- <div> -->
-                        <label for="prazoPedido" class="label-column">
-                            Prazo de entrega
-                            <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required>
-                        </label>
-
-                        <label for="statusPedido" class="label-column">
-                            Status do Pedido
-                            <select name="statusPedido" id="statusPedido">
-                                <option value="encomendado">Encomendado</option>
-                                <option value="pagamento">Aguardando pagamento</option>
-                                <option value="vendido">Vendido</option>
-                            </select>
-                        </label>
-
-                        
-                        
-                        <label for="comentarioPedido" class="label-column">
-                            Comentários
-                            <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Detalhes da pedido, dos produtos, da entrega, do cliente, entre outros."></textarea>
-                        </label>
-
-                        <div id="containerVendido" style="display: none;">
-                            <label class="label-baixa-estoque">Dar baixa no estoque?
-                                <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" class="input-produto input-checkbox" value="1">
+                    <div class="form-pedidos-items">
+                        <fieldset id="pedidos-form">
+                            <label for="prazoPedido" class="label-column">
+                                Prazo de entrega
+                                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required>
                             </label>
-                        </div>
-                    <!-- </div> -->
+                            <label for="statusPedido" class="label-column">
+                                Status do Pedido
+                                <select name="statusPedido" id="statusPedido">
+                                    <option value="encomendado">Encomendado</option>
+                                    <option value="pagamento">Aguardando pagamento</option>
+                                    <option value="vendido">Vendido</option>
+                                </select>
+                            </label>
+                            <div id="containerVendido" style="display: none;">
+                                <label class="label-baixa-estoque">Dar baixa no estoque?
+                                    <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" class="input-produto input-checkbox" value="1">
+                                </label>
+                            </div>
+                            <label for="comentarioPedido" class="label-column">
+                                Comentários
+                                <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Detalhes da pedido, dos produtos, da entrega, do cliente, entre outros."></textarea>
+                            </label>
+                        </fieldset>
+                        
+                    </div>
+                    <div class="form-pedidos-items">
+                        <button type="submit">Cadastrar</button>
+                        <a href="../controller/pedidoControle.php?op=limparCarrinho">Resetar pedido</a>
+                    </div>
+                </form>
 
-                </fieldset>
 
-                <button type="submit">Cadastrar</button>
-
-                <a href="../controller/pedidoControle.php?op=limparCarrinho">Resetar pedido</a>
-            </form>
-
-
-            <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
+                <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
         </main>
 
     </div>

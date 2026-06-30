@@ -703,20 +703,45 @@ fieldset#products-form {
 #pedidos-form {
   border: var(--border);
   box-shadow: var(--box-shadow);
-  padding: 0.8em;
+  padding: 1em;
 
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 1em;
+  gap: 1em; */
+
+  display: flex;
+  flex-direction: column;
   gap: 1em;
 
-  align-items: center;
+  width: fit-content;
+  /* align-items: center; */
 
   /* display: flex; */
   /* flex-wrap: nowrap; */
 }
 
+.form-pedidos-items {
+  display: flex;
+  justify-content: center;
+}
+
 .label-baixa-estoque {
   display: flex;
   align-items: center;
+}
+
+#pedidos-form > label > input {
+  margin-left: 1em;
+}
+
+#pedidos-form > label > textarea {
+  margin-top: 0.5em;
+  width: 100%;
+  height: 10em;
+  font-size: 16px;
+}
+
+input#prazoPedido {
+  padding: 0.8em;
 }
