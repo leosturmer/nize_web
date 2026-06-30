@@ -155,7 +155,7 @@ class PedidoDAO{
                 "SELECT id_pedido, data, nome, quantidade, comentario, status, valor_unitario, valor_final
                     FROM view_pedidos 
                     WHERE id_usuario = :id_usuario
-                    ORDER BY data ASC");
+                    ORDER BY id_pedido DESC");
             $sql->bindValue(":id_usuario", $id_usuario);
             $sql->execute();
             $selectAll = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -211,10 +211,14 @@ class PedidoDAO{
             }
 
             if (!empty($ordenar)){
-                if ($ordenar === "asc") { 
+                if ($ordenar === "numero-asc") { 
                     $sqlStr .= " ORDER BY id_pedido ASC";
-                } else { 
+                } else if ($ordenar === "numero-desc") { 
                     $sqlStr .= " ORDER BY id_pedido DESC";
+                } else if ($ordenar === "data-asc") {
+                    $sqlStr .= " ORDER BY data ASC";
+                } else if ($ordenar === "data-desc") {
+                    $sqlStr .= " ORDER BY data DESC";
                 }
                 
             } else {
