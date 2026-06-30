@@ -139,7 +139,11 @@ switch ($opcao) {
             $novoPedido->produtos = $_SESSION['carrinho'];
             $novoPedido->valor_final = $_SESSION['total_compra'];
 
-            $darBaixaEstoque = isset($_GET['darBaixaEstoque']) ? 1 : 0;
+            if ($statusPedido !== "vendido"){
+                $darBaixaEstoque = 0;              
+            } else {
+                $darBaixaEstoque = isset($_GET['darBaixaEstoque']) ? 1 : 0;
+            }
             
             $pedidoDAO->cadastrarPedido($novoPedido, $darBaixaEstoque);
 

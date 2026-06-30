@@ -173,13 +173,13 @@ if (isset($_SESSION['encomendaSelecionada'])) {
 
 
                 <fieldset id="pedidos-form">
-                    <div>
-                        <label for="prazoPedido">
+                    <!-- <div> -->
+                        <label for="prazoPedido" class="label-column">
                             Prazo de entrega
                             <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required>
                         </label>
 
-                        <label for="statusPedido">
+                        <label for="statusPedido" class="label-column">
                             Status do Pedido
                             <select name="statusPedido" id="statusPedido">
                                 <option value="encomendado">Encomendado</option>
@@ -188,19 +188,19 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                             </select>
                         </label>
 
-                        <div id="containerVendido" style="display: none;">
-                            <label style="display: flex; align-items: center; gap: 8px;">
-                                <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" value="1">
-                                Dar baixa no estoque?
-                            </label>
-                        </div>
-
-
-                        <label for="comentarioPedido">
+                        
+                        
+                        <label for="comentarioPedido" class="label-column">
                             Comentários
                             <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Detalhes da pedido, dos produtos, da entrega, do cliente, entre outros."></textarea>
                         </label>
-                    </div>
+
+                        <div id="containerVendido" style="display: none;">
+                            <label class="label-baixa-estoque">Dar baixa no estoque?
+                                <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" class="input-produto input-checkbox" value="1">
+                            </label>
+                        </div>
+                    <!-- </div> -->
 
                 </fieldset>
 

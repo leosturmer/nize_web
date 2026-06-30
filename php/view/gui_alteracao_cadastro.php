@@ -104,7 +104,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
                 
                 <div>
                     <label for="aceitaVisualizacao">Abrir visualização da loja?</label>
-                    <input type="checkbox" name="aceitaVisualizacao" value='1' <?php echo $checkViewLoja ?>>
+                    <input type="checkbox" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1' <?php echo $checkViewLoja ?>>
                 </div>
 
                 <label for="usuNomeView">Link de visualização (sem espaços)</label>

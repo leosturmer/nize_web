@@ -10,6 +10,8 @@
     - minha área
     - alterar cadastro
 
+    - REFAZER TODO CSS E TESTAR TUDO, TÁ DANDO ERROS = ACHO QUE TÁ DANDO ERRO NA QUESTÃO DE SAIR DA TELA DE PEDIDO E VOLTAR
+
 
 - Ajustar os CSS dos SELECTS num geral das telas de produtos e pedidos
 

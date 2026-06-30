@@ -78,7 +78,7 @@ if (isset($_SESSION['pedidoSelecionado'])){
                     
                     <input type="date" id="filtro-data">
                     <select id="filtro-status">
-                        <option value="">Todos os Status</option>
+                        <option value="">Todos os status</option>
                         <option value="encomendado">Encomendado</option>
                         <option value="pagamento">Pagamento</option>
                         <option value="vendido">Vendido</option>
