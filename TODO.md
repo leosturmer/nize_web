@@ -1,11 +1,8 @@
 #### Outras coisas para fazer
 - Páginas para alterar CSS ainda:
-    - cadastrar pedido
 
-
-
-    - clonar pedido
     - alterar pedido
+    - clonar pedido ------>>>>> este botão NÃO ESTÁ FUNCIONANDO
     - pedido cancelado
     - minha área
     - alterar cadastro

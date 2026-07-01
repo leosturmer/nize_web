@@ -83,7 +83,7 @@ switch ($opcao) {
 
     case "carregarQuantidade":
         $id_pedido = (int)($_GET['id'] ?? 0);
-        $clonar = isset($_GET['clonar']) && $_GET['clonar'] === 'true';
+        $clonar = isset($_GET['clonar']) && $_GET['clonar'] == 'true';
         $pedido = $pedidoDAO->buscarPedidoID($id_pedido);
 
         if (!empty($pedido)) {

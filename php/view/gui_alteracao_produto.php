@@ -137,7 +137,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 
                 <div id="form-products-buttons">
                     <button type="submit">Alterar</button>
-                    <button formaction="gui_clonar_produto.php?id=<?php echo $produto['id_produto']; ?>">Clonar</button>
+                    <button formaction="gui_clonar_produto.php?id=<?php echo $produto['id_produto']; ?>" class="btn-clonar">Clonar</button>
                     <button formaction="../view/gui_visualizacao_produtos.php">Voltar</button>
                 </div>
             </form>

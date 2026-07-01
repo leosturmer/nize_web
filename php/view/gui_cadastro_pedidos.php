@@ -75,7 +75,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                 </div>
             </div>
 
-            <details open class="produtos-pedido">
+            <details class="produtos-pedido">
                 <summary>Adicione os produtos ao pedido
 
                 </summary>
@@ -159,7 +159,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                         }
                     }
                 } else {
-                    echo "<p>Nenhum produto no carrinho.</p>";
+                    echo "<p>Nenhum produto no pedido.</p>";
                 }
 
                 echo "</div>";

@@ -444,6 +444,10 @@
   width: 120px;
 }
 
+.product-btns > .btn-clonar {
+  width: 200px;
+}
+
 /* Visualização de loja */
 
 .header-view-loja {

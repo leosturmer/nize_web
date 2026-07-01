@@ -201,7 +201,8 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
            
             <div class="product-btns">
                 <button type="submit">Alterar</button>
-                <button formaction="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-add">Clonar</button>
+                <!-- <button type="submit" formaction="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-add">Clonar</button> -->
+                <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-add btn-clonar">Clonar</a>
                 <button formaction="../view/gui_visualizacao_pedidos.php">Voltar</button>        
             </div>
         </form>
