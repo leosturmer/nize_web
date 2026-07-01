@@ -88,7 +88,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         
         <div class="usuario-btns">
             <a href="./gui_alteracao_cadastro.php" class="btn-alterar">Alterar cadastro</a>
-            <a href="./view_loja.php?id= <?php echo $usuario->id_usuario ?>" class="btn-alterar">Visualizar loja</a>
+            <button formaction="../controller/usuarioControle.php?op=excluir" onclick="return confirm('A exclusão deletará todos os dados do banco. Deseja confirmar?')" class="btn-excluir">Excluir conta</button>
         </div>
 
         <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>

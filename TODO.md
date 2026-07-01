@@ -1,19 +1,18 @@
-#### Outras coisas para fazer
+#### No CSS
 - Páginas para alterar CSS ainda:
-
-    - Telas de cadastro/alteração de pedido: 
-        - Posso tentar colocar lado a lado, na esquerda os produtos do pedido e na direita o box com as informações do total do pedido, prazo, etc.
 
     - alterar cadastro
         - Ver o checkbox de aceita visualização da loja 
 
     - Fazer a validação pra, se a pessoa tirar o status "vendido" e o checkbox sumir, não vai pegar o checkbox
 
-
-- Ajustar os CSS dos SELECTS num geral das telas de produtos e pedidos
-
     - View loja 
         - talvez colocar botão de whatsapp, mas aí vai ter que colcoar o número com DDD e DDI
+
+##### Fazer a responsividade
+
+- Fazer versão tablet
+- Fazer versão smartphone
 
 
 ### O QUE ESTÁ DANDO DE ERRO
@@ -62,3 +61,12 @@ Ok, então para a documentação eu vou ter que alterar as seguintes coisas:
 - Levar as fotos dos produtos (!!!!)
 - Levar os arquivos do banco de dados / PHP para poder configurar
 - Ver de novo no Senac como configurar <code>php --ini</code>
+
+
+
+
+
+
+
+<!-- - Trocar o método como chama os produtos. Tem que fazer o link da loja/nomeusuario &&&& tem que fazer um método da DAO que busca o ID do usuário pelo nome para que ele possa gerar a página.
+- E aí tem que testar, se não aceitar a visualização da loja, não aparece nenhum produto. -->

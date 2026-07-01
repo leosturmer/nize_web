@@ -747,6 +747,18 @@ fieldset#products-form {
   color: white;
 }
 
+.btn-excluir {
+  width: 150px;
+  margin: 0 auto;
+  background-color: white;
+  color: black;
+}
+
+.btn-excluir:hover {
+  background-color: brown;
+  color: white;
+}
+
 .produto-individual > a {
   border: none;
   background-color: transparent;
@@ -852,19 +864,20 @@ input#prazoPedido {
   border: var(--border);
   box-shadow: var(--box-shadow);
 
-  padding: 1em;
+  background-color: white;
 
+  padding: 1em;
   margin: 0 auto;
+  /* margin: 0 auto; */
 
   width: 50%;
-  max-height: 50%;
+  max-height: 100%;
 
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .usuario-btns {
   margin: 2em auto;
 }
 
-.btn-alterar {
-  width: 50%;
-}

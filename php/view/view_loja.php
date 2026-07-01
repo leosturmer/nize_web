@@ -13,6 +13,8 @@ $id_usuario = $_GET['id']; // AQUI VAI TER QUE VIR PELO GET
 $produtoDAO = new ProdutoDAO();
 $usuarioDAO = new UsuarioDAO();
 
+$aceita_view = $usuarioDAO->buscarAceitaView($id_usuario);
+
 $nome_loja = $usuarioDAO->buscarNomeLoja($id_usuario);
 $lista = $produtoDAO->listarTodosProdutosAbertos($id_usuario);
 
