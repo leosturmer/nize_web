@@ -3,7 +3,11 @@
 ##### Fazer a responsividade
 
 - Fazer versão tablet
+    - Essa aqui de repente dá só pra trocar a barra para ficar por cima do restante dos itens
+
+
 - Fazer versão smartphone
+    - esse vai ser foda
     
 
 - Se eu for colocar botão de WhatsApp na view 
