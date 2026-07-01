@@ -48,7 +48,7 @@ class PedidoDAO{
                     $sql_subtrai->execute([$quantidade, $id_produto, $quantidade]);
                     
                     if ($sql_subtrai->rowCount() === 0) {
-                        $_SESSION['msg'] = "<p class='error-msg'>Nenhum produto adicionado ao pedido</p>";
+                        $_SESSION['msg'] = "<p class='error-msg'>Estoque insuficiente para um ou mais produtos.</p>";
                         header("Location: ../view/gui_cadastro_pedidos.php");
                         exit;
                     }
@@ -68,7 +68,7 @@ class PedidoDAO{
 
     public function alterarPedido(Pedido $pedido, $darBaixaEstoque, $estornarEstoque){
         if (empty($_SESSION['carrinho'])) {
-            $_SESSION['msg'] = "<p class='error-msg'>Nenhum produto adicionado ao pedido</p>";
+            $_SESSION['msg'] = "<p class='error-msg'>Nenhum produto adicionado ao pedido.</p>";
             header("Location: ../view/gui_visualizacao_pedidos.php");
             exit;
         }

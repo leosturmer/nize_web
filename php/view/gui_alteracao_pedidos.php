@@ -182,7 +182,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                                 <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required value="<?php echo $infoPedido['data'] ?>">
                             </label>
                             <label for="statusPedido">
-                                Status da Pedido
+                                Status do Pedido
                                 <select name="statusPedido" id="statusPedido">
                                     <option value="encomendado" <?= $infoPedido['status'] == 'encomendado' ? 'selected' : '' ?>>Encomendado</option>
                                     <option value="pagamento" <?= $infoPedido['status'] == 'pagamento' ? 'selected' : '' ?>>Aguardando pagamento</option>
@@ -191,22 +191,22 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                                 </select>
                             </label>
                             <div id="containerVendido" style="display: none;">
-                                <label style="display: flex; align-items: center; gap: 8px;">
-                                    <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" value="1">
+                                <label class="label-baixa-estoque">
                                     Dar baixa no estoque?
+                                    <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" class="input-produto input-checkbox" value="1">
                                 </label>
                             </div>
                             <div id="containerCancelado" style="display: none;">
-                                <p>Atenção: Um pedido cancelado não poderá mais ser editado posteriormente!</p>
-                                <label style="display: flex; align-items: center; gap: 8px;">
-                                    <input type="checkbox" name="estornarEstoque" id="estornarEstoque" value="1">
+                                <p>Atenção: <br> Um pedido cancelado não poderá mais ser editado posteriormente!<br></p>
+                                <label class="label-baixa-estoque">
                                     Devolver produtos ao estoque?
+                                    <input type="checkbox" name="estornarEstoque" id="estornarEstoque" class="input-produto input-checkbox" value="1">
                                 </label>
                             </div>
                         <!-- </div> -->
                         <label for="comentarioPedido">
                             Comentários
-                            <textarea name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes da pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo $infoPedido['comentario'] ?></textarea>
+                            <textarea name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo $infoPedido['comentario'] ?></textarea>
                         </label>
                     </fieldset>
                 </div>

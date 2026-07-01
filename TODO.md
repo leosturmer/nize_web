@@ -1,10 +1,12 @@
 #### Outras coisas para fazer
 - Páginas para alterar CSS ainda:
 
-    - minha área
-    - alterar cadastro
+    - Telas de cadastro/alteração de pedido: 
+        - Posso tentar colocar lado a lado, na esquerda os produtos do pedido e na direita o box com as informações do total do pedido, prazo, etc.
 
-    - REFAZER TODO CSS E TESTAR TUDO, TÁ DANDO ERROS = ACHO QUE TÁ DANDO ERRO NA QUESTÃO DE SAIR DA TELA DE PEDIDO E VOLTAR
+    - alterar cadastro
+        - Ver o checkbox de aceita visualização da loja 
+
     - Fazer a validação pra, se a pessoa tirar o status "vendido" e o checkbox sumir, não vai pegar o checkbox
 
 
@@ -14,23 +16,29 @@
         - talvez colocar botão de whatsapp, mas aí vai ter que colcoar o número com DDD e DDI
 
 
+### O QUE ESTÁ DANDO DE ERRO
 
-- Ver o checkbox de aceita visualização da loja 
-
-
-- buscar os "a pedido"
-
-- Ver se faço modo noturno?
-- Colocar acessibilidade?
-
+- 
 
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 #### Para o final:
 
+- Se eu for colocar botão de WhatsApp na view 
+    - Precisa colocar o telefone no banco de dados
+    - tem que alterar o arquivo de criação do banco
+    - tem que colocar filtro para ver se o telefone está correto
+    - tem que colocar opção se quer ou não o botão do whatsapp
+    - se quiser, tem que colocar um if echo na tela de visualização da loja
+
+- Ver se faço modo noturno?
+- Colocar acessibilidade?
+
 - Confirmar todas mensagens
 - conferir todos os <title> das páginas
-- Remover os getmessage()
+
+- Testar TUDO. Ver se é possível fazer isso de forma automatizada.
+    - Ver a questão de sair de uma tela de pedido e voltar, se não está ficando salva a marcação.
 
 
 ### Na documentação:

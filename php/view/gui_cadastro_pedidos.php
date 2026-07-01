@@ -185,7 +185,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                             </div>
                             <label for="comentarioPedido" class="label-column">
                                 Comentários
-                                <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Detalhes da pedido, dos produtos, da entrega, do cliente, entre outros."></textarea>
+                                <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."></textarea>
                             </label>
                         </fieldset>
 

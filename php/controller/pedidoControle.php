@@ -56,7 +56,7 @@ switch ($opcao) {
                 $pedidoDAO->removerQuantidade($id_produto, $id_pedido);
             }
 
-            $_SESSION['msg'] = "<p class='success-msg'>Produto removido da pedido.</p>";
+            $_SESSION['msg'] = "<p class='success-msg'>Produto removido do pedido.</p>";
         } else {
             $_SESSION['msg'] = "<p class='error-msg'>Produto não encontrado ou já removido.</p>";
         }
@@ -119,7 +119,7 @@ switch ($opcao) {
             }
 
         } else {
-            $_SESSION['msg'] = "<p class='error-msg'>Algo deu errado ao carregar a pedido!</p>";
+            $_SESSION['msg'] = "<p class='error-msg'>Algo deu errado ao carregar o pedido!</p>";
             header("location:../view/gui_visualizacao_pedidos.php");
         }
         exit;
