@@ -125,98 +125,88 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                 </div>
             </details>
 
-            <div class="produtos-no-pedido">
-                <?php
-                $_SESSION['total_compra'] = 0.00;
-
-                if (!empty($_SESSION['carrinho'])) {
-
-                    foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
-                        $produtoVendido = $produtoDAO->buscarPorId($id_produto);
-
-                        if ($produtoVendido) {
-                            $valor_unitario = (float)$produtoVendido['valor_unitario'];
-                            $quantidade =  (int)$quantidade;
-                            $valor = $valor_unitario * $quantidade;
-
-                            $_SESSION['total_compra'] += $valor;
-
-                            echo "<div class='produto-individual'>";
-                            echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
-                            echo "<p>";
-                            echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-                            echo "<b>Valor do produto</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
-
-                            $valor_total = (float)$produtoVendido['valor_unitario'];
-                            $valor_total = $valor_total * $quantidade;
-
-                            echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";
-
-                            echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido'>Remover produto</a>";
-                            // echo "</form>";
-                            echo "</div>";
-
-
-                        } else {
-                            echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
+            <div class="container-horizontal">
+                <div class="produtos-no-pedido">
+                    <?php
+                    $_SESSION['total_compra'] = 0.00;
+                    if (!empty($_SESSION['carrinho'])) {
+                        foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
+                            $produtoVendido = $produtoDAO->buscarPorId($id_produto);
+                            if ($produtoVendido) {
+                                $valor_unitario = (float)$produtoVendido['valor_unitario'];
+                                $quantidade =  (int)$quantidade;
+                                $valor = $valor_unitario * $quantidade;
+                                $_SESSION['total_compra'] += $valor;
+                                echo "<div class='produto-individual'>";
+                                echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
+                                echo "<p>";
+                                echo "<b>Quantidade</b>: " . $quantidade . "<br>";
+                                echo "<b>Valor unitário</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
+                                $valor_total = (float)$produtoVendido['valor_unitario'];
+                                $valor_total = $valor_total * $quantidade;
+                                echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";
+                                echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'>Remover produto</a>";
+                                // echo "</form>";
+                                echo "</div>";
+                            } else {
+                                echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
+                            }
                         }
+                    } else {
+                        echo "<p>Nenhum produto adicionado ao pedido.</p>";
                     }
-                } else {
-                    echo "<p>Nenhum produto adicionado ao pedido.</p>";
-                }
-                echo "</div>";
-
-                echo "<div class='total-pedido'><p><b>Total do pedido</b>: R$ " . number_format($_SESSION['total_compra'], 2, ',', '.') . "</p></div>";
-
-                ?>
-
-            <form action="../controller/pedidoControle.php" method="get">
-                <input type="hidden" name="op" value="alterar">
-
-
-                <div class="form-pedidos-items">
-                    <fieldset id="pedidos-form">
-                        <!-- <div> -->
-                            <label for="prazopedido">
-                                Prazo de entrega
-                                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required value="<?php echo $infoPedido['data'] ?>">
-                            </label>
-                            <label for="statusPedido">
-                                Status do Pedido
-                                <select name="statusPedido" id="statusPedido">
-                                    <option value="encomendado" <?= $infoPedido['status'] == 'encomendado' ? 'selected' : '' ?>>Encomendado</option>
-                                    <option value="pagamento" <?= $infoPedido['status'] == 'pagamento' ? 'selected' : '' ?>>Aguardando pagamento</option>
-                                    <option value="vendido" <?= $infoPedido['status'] == 'vendido' ? 'selected' : '' ?>>Vendido</option>
-                                    <option value="cancelado" <?= $infoPedido['status'] === 'cancelado' ? 'selected' : '' ?>>Cancelado</option>
-                                </select>
-                            </label>
-                            <div id="containerVendido" style="display: none;">
-                                <label class="label-baixa-estoque">
-                                    Dar baixa no estoque?
-                                    <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" class="input-produto input-checkbox" value="1">
-                                </label>
-                            </div>
-                            <div id="containerCancelado" style="display: none;">
-                                <p>Atenção: <br> Um pedido cancelado não poderá mais ser editado posteriormente!<br></p>
-                                <label class="label-baixa-estoque">
-                                    Devolver produtos ao estoque?
-                                    <input type="checkbox" name="estornarEstoque" id="estornarEstoque" class="input-produto input-checkbox" value="1">
-                                </label>
-                            </div>
-                        <!-- </div> -->
-                        <label for="comentarioPedido">
-                            Comentários
-                            <textarea name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo $infoPedido['comentario'] ?></textarea>
-                        </label>
-                    </fieldset>
+                    ?>
                 </div>
-
-                <div class="product-btns">
-                    <button type="submit">Alterar</button>
-                    <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-add btn-clonar">Clonar</a>
-                    <button formaction="../view/gui_visualizacao_pedidos.php">Voltar</button>
+                <div class="infos-pedido">
+                    <div class='total-pedido'>
+                        <p><b>Total do pedido</b>: R$ <?php echo number_format($_SESSION['total_compra'], 2, ',', '.') ?> </p>
+                    </div>
+                    <form action="../controller/pedidoControle.php" method="get">
+                        <input type="hidden" name="op" value="alterar">
+                        <div class="form-pedidos-items">
+                            <fieldset id="pedidos-form">
+                                <!-- <div> -->
+                                <label for="prazopedido">
+                                    Prazo de entrega
+                                    <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required value="<?php echo $infoPedido['data'] ?>">
+                                </label>
+                                <label for="statusPedido">
+                                    Status do Pedido
+                                    <select name="statusPedido" id="statusPedido">
+                                        <option value="encomendado" <?= $infoPedido['status'] == 'encomendado' ? 'selected' : '' ?>>Encomendado</option>
+                                        <option value="pagamento" <?= $infoPedido['status'] == 'pagamento' ? 'selected' : '' ?>>Aguardando pagamento</option>
+                                        <option value="vendido" <?= $infoPedido['status'] == 'vendido' ? 'selected' : '' ?>>Vendido</option>
+                                        <option value="cancelado" <?= $infoPedido['status'] === 'cancelado' ? 'selected' : '' ?>>Cancelado</option>
+                                    </select>
+                                </label>
+                                <div id="containerVendido" style="display: none;">
+                                    <label class="label-baixa-estoque">
+                                        Dar baixa no estoque?
+                                        <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" class="input-produto input-checkbox" value="1">
+                                    </label>
+                                </div>
+                                <div id="containerCancelado" style="display: none;">
+                                    <p>Atenção: <br> Um pedido cancelado não poderá mais ser editado posteriormente!<br></p>
+                                    <label class="label-baixa-estoque">
+                                        Devolver produtos ao estoque?
+                                        <input type="checkbox" name="estornarEstoque" id="estornarEstoque" class="input-produto input-checkbox" value="1">
+                                    </label>
+                                </div>
+                                <!-- </div> -->
+                                <label for="comentarioPedido">
+                                    Comentários
+                                    <textarea name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo $infoPedido['comentario'] ?></textarea>
+                                </label>
+                            </fieldset>
+                        </div>
+                        <div class="form-pedidos-items">
+                            <button type="submit" class="btn-alt-pedido">Alterar</button>
+                            <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-alt-pedido">Clonar</a>
+                            <button formaction="../view/gui_visualizacao_pedidos.php" class="btn-alt-pedido" >Voltar</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
 
 
             <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>

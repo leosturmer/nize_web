@@ -102,77 +102,77 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                 <!-- </div> -->
             </details>
 
-            <div class="produtos-no-pedido">
-                <?php
-                $_SESSION['total_compra'] = 0.00;
-
-                if (!empty($_SESSION['carrinho'])) {
-                    foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
-                        $produtoVendido = $produtoDAO->buscarPorId($id_produto);
-                        if ($produtoVendido) {
-                            $valor_unitario = (float)$produtoVendido['valor_unitario'];
-                            $quantidade = (int)$quantidade;
-                            $valor = $valor_unitario * $quantidade;
-
-                            $_SESSION['total_compra'] += $valor;
-
-                            echo "<div class='produto-individual'>";
-                            echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
-                            echo "<p>";
-                            echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-                            echo "<b>Valor do produto</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
-
-                            $valor_total = (float)$produtoVendido['valor_unitario'];
-                            $valor_total = $valor_unitario * $quantidade;
-
-                            echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";
-                            echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor&origem=clonar'>Remover produto</a>";
-                            echo "</div>";
-                        } else {
-                            echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
+            <div class="container-horizontal">
+                <div class="produtos-no-pedido">
+                    <?php
+                    $_SESSION['total_compra'] = 0.00;
+                    if (!empty($_SESSION['carrinho'])) {
+                        foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
+                            $produtoVendido = $produtoDAO->buscarPorId($id_produto);
+                            if ($produtoVendido) {
+                                $valor_unitario = (float)$produtoVendido['valor_unitario'];
+                                $quantidade = (int)$quantidade;
+                                $valor = $valor_unitario * $quantidade;
+                                $_SESSION['total_compra'] += $valor;
+                                echo "<div class='produto-individual'>";
+                                echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
+                                echo "<p>";
+                                echo "<b>Quantidade</b>: " . $quantidade . "<br>";
+                                echo "<b>Valor unitário</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
+                                $valor_total = (float)$produtoVendido['valor_unitario'];
+                                $valor_total = $valor_unitario * $quantidade;
+                                echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";
+                                echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor&origem=clonar' class='btn-remover'>Remover produto</a>";
+                                echo "</div>";
+                            } else {
+                                echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
+                            }
                         }
+                    } else {
+                        echo "<p>Nenhum produto adicionado ao pedido.</p>";
                     }
-                } else {
-                    echo "<p>Nenhum produto adicionado ao pedido.</p>";
-                }
-                echo "</div>";
-                echo "<div class='total-pedido'><p><b>Total do pedido</b>: R$ " . number_format($_SESSION['total_compra'], 2, ',', '.') . "</p></div>";
-                ?>
+                    ?>
+                </div>
 
-            <form action="../controller/pedidoControle.php" method="get">
-                <input type="hidden" name="op" value="cadastrar">
+                <div class="infos-pedido">
+                    <div class='total-pedido'>
+                        <p><b>Total do pedido</b>: R$ <?php echo number_format($_SESSION['total_compra'], 2, ',', '.') ?> </p>
+                    </div>
 
-                <div class="form-pedidos-items">
-                    <fieldset id="pedidos-form">
-                            <label for="prazoPedido" class="label-column">
-                                Prazo de entrega do novo pedido
-                                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required>
-                            </label>
-                            <label for="statusPedido" class="label-column">
-                                Status do Novo Pedido
-                                <select name="statusPedido" id="statusPedido">
-                                    <option value="encomendado">Encomendado</option>
-                                    <option value="pagamento">Aguardando pagamento</option>
-                                    <option value="vendido">Vendido</option>
-                                </select>
-                            </label>
-                            <div id="containerVendido" style="display: none;">
-                                <label class="label-baixa-estoque">Dar baixa no estoque?
-                                    <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" class="input-produto input-checkbox" value="1">
+                    <form action="../controller/pedidoControle.php" method="get">
+                        <input type="hidden" name="op" value="cadastrar">
+                        <div class="form-pedidos-items">
+                            <fieldset id="pedidos-form">
+                                <label for="prazoPedido" class="label-column">
+                                    Prazo de entrega do novo pedido
+                                    <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required>
                                 </label>
-                            </div>
-                            <label for="comentarioPedido" class="label-column">
-                                Comentários / Observações
-                                <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Detalhes do novo pedido..."></textarea>
-                            </label>
-                    </fieldset>
+                                <label for="statusPedido" class="label-column">
+                                    Status do Novo Pedido
+                                    <select name="statusPedido" id="statusPedido">
+                                        <option value="encomendado">Encomendado</option>
+                                        <option value="pagamento">Aguardando pagamento</option>
+                                        <option value="vendido">Vendido</option>
+                                    </select>
+                                </label>
+                                <div id="containerVendido" style="display: none;">
+                                    <label class="label-baixa-estoque">Dar baixa no estoque?
+                                        <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" class="input-produto input-checkbox" value="1">
+                                    </label>
+                                </div>
+                                <label for="comentarioPedido" class="label-column">
+                                    Comentários / Observações
+                                    <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Detalhes do novo pedido..."></textarea>
+                                </label>
+                            </fieldset>
+                        </div>
+                        <div class="form-pedidos-items">
+                            <button type="submit">Cadastrar</button>
+                            <a href="../controller/pedidoControle.php?op=limparCarrinho">Cancelar</a>
+                        </div>
+                    </form>
                 </div>
-
-                <div class="form-pedidos-items">
-                    <button type="submit">Cadastrar</button>
-                    <a href="../controller/pedidoControle.php?op=limparCarrinho">Cancelar</a>
-                </div>
-            </form>
+            </div>
 
             <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
         </main>
