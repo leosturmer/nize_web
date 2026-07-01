@@ -101,14 +101,14 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                             echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br>";
 
                             echo "</div>";
-
                         } else {
                             echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
                         }
                     }
                 } else {
-                    echo "<p>Nenhum produto encontrado nesta pedido.</p>";
+                    echo "<p>Nenhum produto encontrado no pedido.</p>";
                 }
+
                 echo "</div>";
 
                 echo "<div class='total-pedido'><p><b>Total do pedido</b>: R$ " . number_format((float)$infoPedido['valor_final'], 2, ',', '.') . "</p></div>"; // Aqui tem que mudar
@@ -117,22 +117,20 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                 $formatoData = strtotime($dataBanco);
                 $data = date("d/m/Y", $formatoData);
 
-                echo '<div class="pedidos-form">';
-                echo "<b>Data/prazo</b>:  " . $data . "<br>";
-                echo "<b>Comentários</b>:  " . $infoPedido['comentario'] . "<br>";
-                echo "</p>";
-                echo "<div>";
-
                 ?>
-            <!-- </div> -->
-            <div class="product-btns">
-                <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-add">Clonar</a>
-                <a href="../controller/pedidoControle.php?op=limparCarrinho" class="btn-add">Voltar</a>
-            </div>
-            </form>
 
+                <div id="pedidos-form" class="pedido-cancelado-infos">
+                    <p><b>Data/prazo</b>: <?php echo $data; ?> </p><br>
+                    <p><b>Comentários</b>: <?php echo $infoPedido['comentario']; ?></p> <br>
+                    </p>
+                </div>
 
-            <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
+                <div class="form-pedidos-items">
+                    <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-add">Clonar</a>
+                    <a href="../controller/pedidoControle.php?op=limparCarrinho" class="btn-add">Voltar</a>
+                </div>
+
+                <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
         </main>
 
     </div>
@@ -140,7 +138,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const statusPedido = document.getElementById("statusPedido");
+            // const statusPedido = document.getElementById("statusPedido");
             const containerVendido = document.getElementById("containerVendido");
             const containerCancelado = document.getElementById("containerCancelado");
 
@@ -162,7 +160,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
             }
 
             // 1. Escuta a mudança de opções no select pelo usuário
-            statusPedido.addEventListener("change", gerenciarCheckboxes);
+            // statusPedido.addEventListener("change", gerenciarCheckboxes);
 
             // 2. Executa uma vez ao carregar a página (importante para telas de ALTERAÇÃO)
             gerenciarCheckboxes();

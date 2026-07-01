@@ -1,8 +1,6 @@
 #### Outras coisas para fazer
 - Páginas para alterar CSS ainda:
 
-    - alterar pedido
-    - pedido cancelado
     - minha área
     - alterar cadastro
 

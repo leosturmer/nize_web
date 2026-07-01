@@ -765,3 +765,8 @@ input#prazoPedido {
   /* margin-left: 0; */
   padding-left: 0;
 }
+
+.pedido-cancelado-infos {
+  margin: 0 auto;
+  width: 20rem;
+}
