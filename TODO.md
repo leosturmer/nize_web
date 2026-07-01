@@ -10,20 +10,16 @@
 
 - Ajustar os CSS dos SELECTS num geral das telas de produtos e pedidos
 
+    - View loja 
+        - talvez colocar botão de whatsapp, mas aí vai ter que colcoar o número com DDD e DDI
 
 
-- Mexer no MAX-HEIGTH das imagens, tá me irritando ficar longo os pedidos
-    - Colocar imagens para ficar sempre num tamanho X e a imagem se adapta ao  container
-
-- No visualizar loja a sidebar tá cortando quando rola a tela para baixo
 
 - Ver o checkbox de aceita visualização da loja 
 
 
----- VER pq o AJAX do pedido não tá ficando certo o CSS
----- Arrumar os CSS aí 
+- buscar os "a pedido"
 
-- Tela de fundo deixar verde se colapsar a barra?
 - Ver se faço modo noturno?
 - Colocar acessibilidade?
 
