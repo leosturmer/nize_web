@@ -76,9 +76,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
             </div>
 
             <details class="produtos-pedido">
-                <summary>Adicione os produtos ao pedido
-
-                </summary>
+                <summary>Adicione os produtos ao pedido</summary>
                 <div class="adicionar-produtos">
 
                     <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-produto-pedido">
@@ -94,17 +92,13 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                                     <p><strong>Valor unitário: R$</strong> <?php echo number_format((float)$item['valor_unitario'], 2, ',', '.') ?> </p>
 
 
-                                    <p><strong>Aceita encomenda:</strong> <?php if ($item['aceita_encomenda']) {
-                                                                                echo "Sim";
-                                                                            } else {
-                                                                                echo "Não";
-                                                                            } ?></p>
+                                    <p><strong>Aceita encomenda:</strong> <?php echo $item['aceita_encomenda'] ? "Sim" : "Não"; ?></p>
 
                                     <p class="p-descricao"><strong>Descrição:</strong> <?php if (htmlspecialchars($item['descricao'])) {
-                                                                                            echo htmlspecialchars($item['descricao']);
-                                                                                        } else {
-                                                                                            echo 'Sem informações';
-                                                                                        } ?></p>
+                                                                    echo htmlspecialchars($item['descricao']);
+                                                                } else {
+                                                                    echo 'Sem informações';
+                                                                } ?></p>
 
                                     <?php if ($item['imagem']) {
                                         echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
@@ -170,7 +164,6 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                 <form action="../controller/pedidoControle.php" method="get">
                     <input type="hidden" name="op" value="cadastrar">
 
-
                     <div class="form-pedidos-items">
                         <fieldset id="pedidos-form">
                             <label for="prazoPedido" class="label-column">
@@ -195,7 +188,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                                 <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Detalhes da pedido, dos produtos, da entrega, do cliente, entre outros."></textarea>
                             </label>
                         </fieldset>
-                        
+
                     </div>
                     <div class="form-pedidos-items">
                         <button type="submit">Cadastrar</button>
