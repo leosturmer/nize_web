@@ -1,18 +1,19 @@
 #### No CSS
-- Páginas para alterar CSS ainda:
-
-    - alterar cadastro
-        - Ver o checkbox de aceita visualização da loja 
-
-    - Fazer a validação pra, se a pessoa tirar o status "vendido" e o checkbox sumir, não vai pegar o checkbox
-
-    - View loja 
-        - talvez colocar botão de whatsapp, mas aí vai ter que colcoar o número com DDD e DDI
 
 ##### Fazer a responsividade
 
 - Fazer versão tablet
 - Fazer versão smartphone
+    
+
+- Se eu for colocar botão de WhatsApp na view 
+    - Precisa colocar o telefone no banco de dados
+    - tem que alterar o arquivo de criação do banco
+    - tem que colocar filtro para ver se o telefone está correto (COM DDD E DDI)
+    - tem que colocar opção se quer ou não o botão do whatsapp
+    - se quiser, tem que colocar um if echo na tela de visualização da loja
+
+
 
 
 ### O QUE ESTÁ DANDO DE ERRO
@@ -23,12 +24,7 @@
 
 #### Para o final:
 
-- Se eu for colocar botão de WhatsApp na view 
-    - Precisa colocar o telefone no banco de dados
-    - tem que alterar o arquivo de criação do banco
-    - tem que colocar filtro para ver se o telefone está correto
-    - tem que colocar opção se quer ou não o botão do whatsapp
-    - se quiser, tem que colocar um if echo na tela de visualização da loja
+
 
 - Ver se faço modo noturno?
 - Colocar acessibilidade?

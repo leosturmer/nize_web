@@ -210,6 +210,8 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                     containerVendido.style.display = "block"; // Mostra o de venda
                 } else {
                     containerVendido.style.display = "none";
+                    document.getElementById("darBaixaEstoque").checked = false;
+
                 }
             }
 

@@ -189,6 +189,8 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                     containerVendido.style.display = "block";
                 } else {
                     containerVendido.style.display = "none";
+                    document.getElementById("darBaixaEstoque").checked = false;
+
                 }
             }
 

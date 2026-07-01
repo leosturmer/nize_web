@@ -222,35 +222,34 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
             const containerVendido = document.getElementById("containerVendido");
             const containerCancelado = document.getElementById("containerCancelado");
 
-            // Função que gerencia o que deve aparecer baseado no valor selecionado
-            // O parâmetro 'origemDoClique' serve para saber se foi o usuário mudando manualmente
+        
             function gerenciarCheckboxes(origemDoClique = false) {
                 const valorSelecionado = statusPedido.value;
 
                 if (valorSelecionado === "vendido") {
-                    containerVendido.style.display = "block"; // Mostra o de venda
-                    containerCancelado.style.display = "none"; // Esconde o de cancelamento
+                    containerVendido.style.display = "block"; 
+                    containerCancelado.style.display = "none"; 
                 } else if (valorSelecionado === "cancelado") {
-                    containerVendido.style.display = "none"; // Esconde o de venda
-                    containerCancelado.style.display = "block"; // Mostra o de cancelamento
+                    containerVendido.style.display = "none"; 
+                    containerCancelado.style.display = "block"; 
 
-                    // Se foi uma mudança manual do usuário no select, exibe o aviso pop-up
+  
                     if (origemDoClique === true) {
                         alert("Atenção: Se você salvar este pedido como CANCELADO, ele não poderá mais ser editado!");
                     }
                 } else {
-                    // Se for "encomendado" ou "pagamento", esconde ambos
                     containerVendido.style.display = "none";
                     containerCancelado.style.display = "none";
+                    document.getElementById("darBaixaEstoque").checked = false;
+                    document.getElementById("estornarEstoque").checked = false;
+
                 }
             }
 
-            // 1. Escuta a mudança de opções no select pelo usuário (passando true para indicar clique manual)
             statusPedido.addEventListener("change", function() {
                 gerenciarCheckboxes(true);
             });
 
-            // 2. Executa uma vez ao carregar a página (sem passar parâmetro para não disparar o alert na abertura)
             gerenciarCheckboxes(false);
         });
     </script>
