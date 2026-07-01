@@ -95,10 +95,10 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                                     <p><strong>Aceita encomenda:</strong> <?php echo $item['aceita_encomenda'] ? "Sim" : "Não"; ?></p>
 
                                     <p class="p-descricao"><strong>Descrição:</strong> <?php if (htmlspecialchars($item['descricao'])) {
-                                                                    echo htmlspecialchars($item['descricao']);
-                                                                } else {
-                                                                    echo 'Sem informações';
-                                                                } ?></p>
+                                                                                            echo htmlspecialchars($item['descricao']);
+                                                                                        } else {
+                                                                                            echo 'Sem informações';
+                                                                                        } ?></p>
 
                                     <?php if ($item['imagem']) {
                                         echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
@@ -153,7 +153,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                         }
                     }
                 } else {
-                    echo "<p>Nenhum produto no pedido.</p>";
+                    echo "<p>Nenhum produto adicionado ao pedido.</p>";
                 }
 
                 echo "</div>";

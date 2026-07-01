@@ -759,3 +759,9 @@ fieldset#products-form {
 input#prazoPedido {
   padding: 0.8em;
 }
+
+.internal-nav > h2 {
+  text-align: left;
+  /* margin-left: 0; */
+  padding-left: 0;
+}

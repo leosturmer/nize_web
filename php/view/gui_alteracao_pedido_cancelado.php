@@ -26,6 +26,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,8 +42,9 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
 
     <title>Pedidos</title>
 </head>
+
 <body>
-    
+
     <details class="coll-sidenav" open>
         <summary><span class="material-symbols-outlined">dehaze</span></summary>
         <div class="sidenav">
@@ -55,30 +57,30 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
         </div>
     </details>
     <div class="conteudo-pagina">
-    
-    <main>
-        <?php
+
+        <main>
+            <?php
             if (isset($_SESSION["msg"])) {
-                echo "<div id='session-msg'>" . $_SESSION['msg'].  "</div>";
-            unset($_SESSION["msg"]);
+                echo "<div id='session-msg'>" . $_SESSION['msg'] .  "</div>";
+                unset($_SESSION["msg"]);
             }
-        ?>
+            ?>
 
-        <h1>Visualização de pedido</h1>
 
-        <div class="internal-nav">
-            <div class="internal-nav-links">
-                <a href="gui_visualizacao_pedidos.php">Visualizar pedidos</a>
+            <div class="internal-nav">
+                <div class="internal-nav-links">
+                    <h1>Visualização de pedido</h1>
+                    <a href="gui_visualizacao_pedidos.php">Visualizar pedidos</a>
+                </div>
+                <h2>Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
             </div>
-        </div>
 
-        <h2>Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
 
-        
-        <div class="produtos-na-pedido">
             <h3>Pedido cancelado</h3>
             <p>Não é possível fazer alterações em pedidos cancelados</p>
-            <?php
+
+            <div class="produtos-no-pedido">
+                <?php
 
                 if (!empty($_SESSION['carrinho'])) {
 
@@ -86,48 +88,56 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
 
                         $produtoVendido = $produtoDAO->buscarPorId($id_produto);
                         if ($produtoVendido) {
-                            echo "<h4>Produto</b>: " . htmlspecialchars($produtoVendido['nome']) . "</h4><br>";
+                            echo "<div class='produto-individual'>";
+
+                            echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
                             echo "<p>";
                             echo "<b>Quantidade</b>: " . $quantidade . "<br>";
                             echo "<b>Valor do produto</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
 
                             $valor_total = (float)$produtoVendido['valor_unitario'];
                             $valor_total = $valor_total * $quantidade;
-        
+
                             echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br>";
-                            } else {
-                                echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
-                            }
+
+                            echo "</div>";
+
+                        } else {
+                            echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
+                        }
                     }
                 } else {
                     echo "<p>Nenhum produto encontrado nesta pedido.</p>";
                 }
-                    echo "<b>Valor final do pedido</b>: R$ " . number_format((float)$infoPedido['valor_final'], 2, ',', '.') . "<br>"; // Aqui tem que mudar
+                echo "</div>";
 
-                $dataBanco = $infoPedido['data'] ;
+                echo "<div class='total-pedido'><p><b>Total do pedido</b>: R$ " . number_format((float)$infoPedido['valor_final'], 2, ',', '.') . "</p></div>"; // Aqui tem que mudar
+
+                $dataBanco = $infoPedido['data'];
                 $formatoData = strtotime($dataBanco);
                 $data = date("d/m/Y", $formatoData);
 
-
+                echo '<div class="pedidos-form">';
                 echo "<b>Data/prazo</b>:  " . $data . "<br>";
                 echo "<b>Comentários</b>:  " . $infoPedido['comentario'] . "<br>";
                 echo "</p>";
+                echo "<div>";
 
-                                    ?>
-            </div>
+                ?>
+            <!-- </div> -->
             <div class="product-btns">
                 <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-add">Clonar</a>
                 <a href="../controller/pedidoControle.php?op=limparCarrinho" class="btn-add">Voltar</a>
             </div>
-        </form>
-        
+            </form>
 
-        <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
-    </main>
+
+            <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
+        </main>
 
     </div>
 
-    
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const statusPedido = document.getElementById("statusPedido");
@@ -139,10 +149,10 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                 const valorSelecionado = statusPedido.value;
 
                 if (valorSelecionado === "vendido") {
-                    containerVendido.style.display = "block";   // Mostra o de venda
-                    containerCancelado.style.display = "none";  // Esconde o de cancelamento
+                    containerVendido.style.display = "block"; // Mostra o de venda
+                    containerCancelado.style.display = "none"; // Esconde o de cancelamento
                 } else if (valorSelecionado === "cancelado") {
-                    containerVendido.style.display = "none";  // Esconde o de venda
+                    containerVendido.style.display = "none"; // Esconde o de venda
                     containerCancelado.style.display = "block"; // Mostra o de cancelamento
                 } else {
                     // Se for "encomendado" ou "pagamento", esconde ambos
@@ -160,13 +170,14 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
     </script>
 
     <script>
-    const msgElement = document.getElementById('session-msg');
+        const msgElement = document.getElementById('session-msg');
 
         if (msgElement) {
             setTimeout(() => {
-                msgElement.style.display = 'none'; 
+                msgElement.style.display = 'none';
             }, 6000);
         }
     </script>
 </body>
+
 </html>

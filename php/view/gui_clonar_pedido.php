@@ -133,7 +133,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                         }
                     }
                 } else {
-                    echo "<p>Nenhum produto no carrinho.</p>";
+                    echo "<p>Nenhum produto adicionado ao pedido.</p>";
                 }
                 echo "</div>";
                 echo "<div class='total-pedido'><p><b>Total do pedido</b>: R$ " . number_format($_SESSION['total_compra'], 2, ',', '.') . "</p></div>";
