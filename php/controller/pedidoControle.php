@@ -152,7 +152,7 @@ switch ($opcao) {
             $_SESSION['msg'] = "<p class='success-msg'>Pedido cadastrado com sucesso.</p>";
             header("Location: ../view/gui_visualizacao_pedidos.php");
         } catch (Exception $e) {
-            $_SESSION['msg'] = "<p class='error-msg'>Algo deu errado !!!</p>" . $e->getMessage();
+            $_SESSION['msg'] = "<p class='error-msg'>Algo deu errado! Tente novamente</p>";
             header("Location: ../view/gui_cadastro_pedidos.php");
         }
         exit;
@@ -186,7 +186,7 @@ switch ($opcao) {
             $_SESSION['msg'] = "<p class='success-msg'>Pedido alterado com sucesso.</p>";
             header("Location: ../view/gui_visualizacao_pedidos.php");
         } catch (Exception $e) {
-            $_SESSION['msg'] = "<p class='error-msg'>Algo deu errado !!!</p>" . $e->getMessage();
+            $_SESSION['msg'] = "<p class='error-msg'>Algo deu errado! Tente novamente</p>";
             header("Location: ../view/gui_alteracao_pedidos.php?id=$id_pedido");
         }
         exit;

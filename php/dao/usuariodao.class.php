@@ -16,7 +16,7 @@ class UsuarioDAO{
             return $sql_email->fetchAll(PDO::FETCH_ASSOC);
 
         } catch (PDOException $e) {
-            echo "Erro ao buscar" . $e->getMessage();
+            echo "Erro ao buscar.";
             exit;
         }
     }
@@ -28,7 +28,7 @@ class UsuarioDAO{
             return $sql->fetchAll(PDO::FETCH_ASSOC);
 
         } catch (PDOException $e) {
-            echo "Erro ao buscar" . $e->getMessage();
+            echo "Erro ao buscar.";
             exit;
         }
     }
@@ -40,7 +40,7 @@ class UsuarioDAO{
             return $sql->fetchAll(PDO::FETCH_ASSOC);
 
         } catch (PDOException $e) {
-            echo "Erro ao buscar" . $e->getMessage();
+            echo "Erro ao buscar.";
             exit;
         }
     }
@@ -55,7 +55,7 @@ class UsuarioDAO{
 
         } catch (PDOException $e) {
             if ($e->getCode() === '23000'){
-                echo "Erro ao cadastrar: " . $e->getMessage();
+                echo "Erro ao cadastrar.";
                 return false;
             }
         }
@@ -86,7 +86,7 @@ class UsuarioDAO{
 
 
         } catch (PDOException $e) {
-            echo "Erro ao alterar: " . $e->getMessage();
+            echo "Erro ao alterar.";
             exit;
         }
     }
@@ -108,7 +108,7 @@ class UsuarioDAO{
             return true;
 
         } catch (PDOException $e) {
-            echo "Erro ao excluir: " . $e->getMessage();
+            echo "Erro ao excluir.";
         }
     }
 

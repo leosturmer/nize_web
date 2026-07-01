@@ -21,11 +21,12 @@
   margin: 0;
 }
 
-.coll-sidenav[open] + .conteudo-pagina {
-  margin-left: 300px; /* Mesma largura da sua Sidenav */
+.coll-sidenav[open] + .conteudo-pagina,
+.header-view-loja + .conteudo-pagina {
+  margin-left: 300px; 
   width: calc(
     100% - 300px
-  ); /* Ajusta a largura para não criar scroll horizontal */
+  ); 
 }
 
 .coll-sidenav > summary {
@@ -405,9 +406,11 @@
   margin-left: 10px;
   margin-bottom: 10px;
 
-  width: 95%;
-  max-height: 300px;
+  width: 550px;
+  height: 300px;
   object-fit: cover;
+
+
 }
 
 .img-alt-produto {
@@ -451,6 +454,13 @@
 /* Visualização de loja */
 
 .header-view-loja {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  margin: 0;
+
   background-color: var(--lightGreen);
   width: 300px;
   padding: 5rem 2.5rem;

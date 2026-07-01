@@ -61,7 +61,7 @@ class PedidoDAO{
 
             } catch (Exception $e) {
             $this->conexao->rollBack();
-            echo "Erro ao cadastrar: " . $e->getMessage();
+            echo "Erro ao cadastrar.";
             exit;
         }
     }
@@ -132,7 +132,7 @@ class PedidoDAO{
         }
         catch (Exception $e){
             $this->conexao->rollBack();
-            echo "Erro ao alterar encomenda: " . $e->getMessage();
+            echo "Erro ao alterar encomenda.";
             exit;
         }
 
@@ -143,7 +143,7 @@ class PedidoDAO{
             $sql = $this->conexao->prepare("DELETE FROM pedido_produto WHERE id_produto = ? AND id_pedido = ?");
             $sql->execute([$id_produto, $id_pedido]);
         } catch (Exception $e) {
-            echo "Erro ao remover produto da pedido: " . $e->getMessage();
+            echo "Erro ao remover produto do pedido.";
             exit;
         }
 
@@ -182,7 +182,7 @@ class PedidoDAO{
             }
             return $pedidosDict;
         } catch (Exception $e) {
-            echo "Erro ao listar pedidos: " . $e->getMessage();
+            echo "Erro ao listar pedidos.";
             return [];
         }
     }
@@ -313,7 +313,7 @@ class PedidoDAO{
 
             return $encomendasDict;
         } catch (Exception $e) {
-            echo "Erro ao buscar pedido: " . $e->getMessage();
+            echo "Erro ao buscar pedido.";
         }
 
     }
@@ -328,7 +328,7 @@ class PedidoDAO{
 
             return $sql->execute() && $sql_relacao->execute();
         } catch (Exception $e) {
-            echo "Erro ao excluir: " . $e->getMessage();
+            echo "Erro ao excluir.";
         }
     }
 

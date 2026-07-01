@@ -60,7 +60,7 @@ class ProdutoDAO{
             return $sql->execute();
 
         } catch (PDOException $e) {
-            echo "Erro ao alterar: " . $e->getMessage();
+            echo "Erro ao alterar.";
             exit;
         }
     }
@@ -74,7 +74,7 @@ class ProdutoDAO{
             return $sql->execute();
 
         } catch (PDOException $e) {
-            echo "Erro ao excluir: " . $e->getMessage();
+            echo "Erro ao excluir.";
         }
     }
 
@@ -94,7 +94,7 @@ class ProdutoDAO{
 
     public function listarTodosProdutosAbertos($id_usuario) : array {
         try{
-            $sql = $this->conexao->prepare("SELECT * FROM produtos WHERE id_usuario = :id_usuario AND aceita_visualizacao = 1 ORDER BY nome ASC");
+            $sql = $this->conexao->prepare("SELECT * FROM produtos WHERE id_usuario = :id_usuario AND aceita_visualizacao = 1 ORDER BY nome COLLATE NOCASE ASC");
             $sql->bindValue(":id_usuario", $id_usuario);
             $sql->execute();
             return $sql->fetchAll(PDO::FETCH_ASSOC);
