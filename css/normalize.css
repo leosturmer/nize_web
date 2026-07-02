@@ -22,26 +22,24 @@
   --lighterPurple: #bd87f4;
   --lightPurple: #9373d973;
 
+  --blue: #50ace8;
+
   --darkGreen: #294008;
   --normalGreen: #365902;
   --lightGreen: #99d669;
   --lighterGreen: #a9e879;
   --softGreen: #b4e290;
 
-  --whitesmoke: whitesmoke;
-  --white: white;
-  --black: black;
-
   --font-serif: "Roboto Slab", sans-serif;
   --font-sans-serif: "Open Sans", sans-serif;
 
-  --box-shadow: -3px 3px 0px var(--black);
+  --box-shadow: -3px 3px 0px black;
   --box-shadow-hover: -3px 3px 0px rgba(0, 0, 0, 0.8);
 
-  --border: 2.8px solid var(--black);
+  --border: 2.8px solid black;
   --border-hover: 0.5px solid rgba(0, 0, 0, 0.516);
 
-  --border-thin: 2px solid var(--black);
+  --border-thin: 2px solid black;
 
   --border-focus-purple: 2.8px solid #853fcb;
   --border-focus-green: 2.8px solid #99d669;
@@ -67,7 +65,7 @@ main {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: var(--whitesmoke);
+  background-color: whitesmoke;
   /* padding-top: 10px; */
 }
 
@@ -144,7 +142,7 @@ button,
   padding: 0.5em;
   margin: 0.8em;
   background-color: var(--normalPurple);
-  color: var(--white);
+  color: white;
   font-family: var(--font-serif);
   text-align: center;
   text-decoration: none;
@@ -171,7 +169,7 @@ button:hover,
 /* 
  {
     background-color: var(--darkerPurple);
-    color: var(--whitesmoke);
+    color: whitesmoke;
 } */
 
 h1 {
@@ -258,7 +256,7 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
   background-color: var(--lighterGreen);
-  box-shadow: inset 0px 0px 0px 3px var(--white);
+  box-shadow: inset 0px 0px 0px 3px white;
 }
 
 input[type="checkbox"]:hover {
@@ -273,7 +271,7 @@ input[type="file"]::file-selector-button {
   border: var(--border);
   padding: 0.3rem;
   background-color: var(--lighterPurple);
-  color: var(--white);
+  color: white;
   font-family: var(--font-sans-serif);
 }
 
@@ -293,7 +291,7 @@ select {
   padding: 0.8em;
   border: var(--border-focus-green);
   font-size: 16px;
-  background-color: var(--white);
+  background-color: white;
 }
 
 select:hover {
@@ -316,8 +314,8 @@ input[type="number"] {
 
 .error-msg {
   background-color: brown;
-  color: var(--whitesmoke);
-  border: 2px solid var(--black);
+  color: whitesmoke;
+  border: 2px solid black;
   box-shadow: var(--box-shadow);
   width: 30%;
   padding: 1rem;
@@ -329,8 +327,8 @@ input[type="number"] {
 
 .success-msg {
   background-color: var(--normalGreen);
-  color: var(--white);
-  border: 2px solid var(--black);
+  color: white;
+  border: 2px solid black;
   box-shadow: var(--box-shadow);
   width: 30%;
   padding: 1rem;
@@ -338,10 +336,4 @@ input[type="number"] {
   position: absolute;
   top: 3em;
   right: 1.5em;
-}
-
-.modo-noturno {
-  --black: var(--white);
-  --white: var(--black);
-  
 }
