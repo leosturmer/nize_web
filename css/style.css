@@ -889,3 +889,20 @@ input#prazoPedido {
   margin: 2em 1em;
 }
 
+.div-btn-wpp > img {
+  width: 100%;
+}
+
+.div-btn-wpp > a{
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+
+}
+
+.div-btn-wpp {
+  position: fixed;
+  right: 1em;
+  bottom: 5em;
+
+}

@@ -110,6 +110,11 @@ if (!empty($_SESSION['usuario_logado'])) {
                 <?php else: echo "Nenhum produto cadastrado." ?>
                 <?php endif; ?>
 
+
+            </div>
+            <div class="div-btn-wpp">
+
+                <a href="https://wa.me/<?php echo $telefone; ?>"><img src="../../img/icons/whatsapp-icon-96.png" alt=""></a>
             </div>
 
             <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>

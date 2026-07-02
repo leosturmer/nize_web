@@ -22,7 +22,6 @@
 
 ### O QUE ESTÁ DANDO DE ERRO
 
-- 
 
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -30,8 +29,7 @@
 
 
 
-- Ver se faço modo noturno? (não gostei)
-- Colocar acessibilidade?
+- Ver se faço modo noturno? (não gostei, ver se acho alguma forma mais simples)
 
 - Confirmar todas mensagens
 - conferir todos os <title> das páginas
