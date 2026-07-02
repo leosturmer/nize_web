@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require_once '../model/usuario.class.php';
 require_once '../util/seguranca.class.php';
@@ -10,6 +10,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,6 +27,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
     <title>Início</title>
 </head>
+
 <body>
     <details class="coll-sidenav" open>
         <summary><span class="material-symbols-outlined">dehaze</span></summary>
@@ -42,10 +44,10 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     <div class="conteudo-pagina">
         <main>
             <?php
-                if (isset($_SESSION["msg"])) {
-                    echo "<div id='session-msg'>" . $_SESSION['msg'].  "</div>";
-                    unset($_SESSION["msg"]);
-                }
+            if (isset($_SESSION["msg"])) {
+                echo "<div id='session-msg'>" . $_SESSION['msg'] .  "</div>";
+                unset($_SESSION["msg"]);
+            }
             ?>
 
             <h1 id="tituloInicial">
@@ -55,7 +57,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
             <div class="container-inicial">
                 <p>
                     <?php
-                    if (!empty($usuario->loja)){
+                    if (!empty($usuario->loja)) {
                         echo "Olá, <strong>$usuario->nome</strong>, da loja <strong>$usuario->loja</strong>.";
                     } else {
                         echo "Olá, <strong>" . $usuario->nome . "</strong>.";
@@ -76,14 +78,35 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     </div>
 
     <script>
-    const msgElement = document.getElementById('session-msg');
+        const msgElement = document.getElementById('session-msg');
 
         if (msgElement) {
             setTimeout(() => {
-                msgElement.style.display = 'none'; 
+                msgElement.style.display = 'none';
             }, 6000);
         }
+    </script>
 
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
 </body>
+
 </html>

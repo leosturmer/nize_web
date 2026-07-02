@@ -30,7 +30,7 @@
 
 
 
-- Ver se faço modo noturno?
+- Ver se faço modo noturno? (não gostei)
 - Colocar acessibilidade?
 
 - Confirmar todas mensagens
