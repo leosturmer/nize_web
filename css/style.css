@@ -867,7 +867,7 @@ input#prazoPedido {
   background-color: white;
 
   padding: 1em;
-  margin: 0 auto;
+  margin: 0 2em;
   /* margin: 0 auto; */
 
   width: 50%;
@@ -875,6 +875,14 @@ input#prazoPedido {
 
   overflow-x: hidden;
   overflow-y: scroll;
+}
+
+#novos-dados {
+  margin: 1em auto;
+}
+
+.input-nome-view {
+  margin-left: 1em;
 }
 
 .usuario-btns {

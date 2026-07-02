@@ -77,6 +77,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
                         $nome_visualizacao = "Não informado";
                     }
                     ?>
+                    <hr>
                     <p>
                         <strong>Nome</strong>: <?php echo $usuario->nome ?>
                         <br>
@@ -89,6 +90,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
                         <strong>Link de visualização</strong>: <?php echo $nome_visualizacao ?>
                     </p>
                 </div>
+
                 <div id="novos-dados">
                     <h3>Alterar dados</h3>
                     <form action="../controller/usuarioControle.php?op=alterar" method="post" id="form-cadastro">
@@ -104,9 +106,9 @@ $usuario = unserialize($_SESSION['usuario_logado']);
                         </label>
 
                         <label for="usuNomeView">Link de visualização (sem espaços)</label>
-                        <div>
+                        <div class="checkbox-acc">
                             <span>nize.com.br/view_loja/</span>
-                            <input type="text" name="usuNomeView" pattern="^\S+$" class="input-login" placeholder="nomedaloja" value="<?php echo $usuario->nome_visualizacao ?>">
+                            <input type="text" name="usuNomeView" pattern="^\S+$" class="input-login input-nome-view" placeholder="nomedaloja" value="<?php echo $usuario->nome_visualizacao ?>">
                         </div>
                         <div class="container-horizontal">
                             <button type="submit">Alterar cadastro</button>
