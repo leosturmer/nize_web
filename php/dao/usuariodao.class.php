@@ -33,35 +33,10 @@ class UsuarioDAO{
         }
     }
 
-    public function buscarUsuario($id_usuario) {
-        try {
-            $sql = $this->conexao->prepare("SELECT nome_loja, aceita_visualizacao, nome_visualizacao FROM usuario WHERE id_usuario = ?");
-            $sql->execute([$id_usuario]);
-            return $sql->fetchAll(PDO::FETCH_ASSOC);
-
-        } catch (PDOException $e) {
-            echo "Erro ao buscar.";
-            exit;
-        }
-    }
-    
-
-    // public function buscarAceitaView($id_usuario) {
+    // public function buscarUsuario($id_usuario) {
     //     try {
-    //         $sql = $this->conexao->prepare("SELECT aceita_visualizacao FROM usuario WHERE id_usuario = ?");
-            
-    //         return $sql->execute([$id_usuario]);
-
-    //     } catch (PDOException $e) {
-    //         echo "Erro ao buscar.";
-    //         exit;
-    //     }
-    // }
-
-    // public function buscarNomeView($nomeView) {
-    //     try {
-    //         $sql = $this->conexao->prepare("SELECT nome_visualizacao FROM usuario WHERE nome_visualizacao = ?");
-    //         $sql->execute([$nomeView]);
+    //         $sql = $this->conexao->prepare("SELECT nome_loja, aceita_visualizacao, nome_visualizacao FROM usuario WHERE id_usuario = ?");
+    //         $sql->execute([$id_usuario]);
     //         return $sql->fetchAll(PDO::FETCH_ASSOC);
 
     //     } catch (PDOException $e) {
@@ -69,18 +44,31 @@ class UsuarioDAO{
     //         exit;
     //     }
     // }
+    
 
-    // public function buscarNomeLoja($id_usuario){
-    //     try {
-    //         $sql = $this->conexao->prepare("SELECT nome_visualizacao FROM usuario WHERE id_usuario = ?");
+    public function buscarAceitaView($id_usuario) {
+        try {
+            $sql = $this->conexao->prepare("SELECT aceita_visualizacao FROM usuario WHERE id_usuario = ?");
+            $sql->execute([$id_usuario]);
+            return $sql->fetch(PDO::FETCH_ASSOC);
 
-    //         return $sql->execute([$id_usuario]);
+        } catch (PDOException $e) {
+            echo "Erro ao buscar.";
+            exit;
+        }
+    }
 
-    //     } catch (PDOException $e) {
-    //         echo "Erro ao buscar.";
-    //         exit;
-    //     }
-    // }
+    public function buscarNomeLoja($id_usuario){
+        try {
+            $sql = $this->conexao->prepare("SELECT nome_loja FROM usuario WHERE id_usuario = ?");
+            $sql->execute([$id_usuario]);
+            return $sql->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            echo "Erro ao buscar.";
+            exit;
+        }
+    }
 
     public function cadastrarUsuario(Usuario $usuario){
         try {

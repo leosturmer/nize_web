@@ -4,28 +4,24 @@ require_once '../model/usuario.class.php';
 require_once '../model/produto.class.php';
 require_once '../dao/produtodao.class.php';
 require_once '../dao/usuariodao.class.php';
-// require_once '../util/seguranca.class.php';
-// Seguranca::verificarAcesso();
 
 
 $nome_visualizacao = trim($_GET['loja']);
 
 $produtoDAO = new ProdutoDAO();
 $usuarioDAO = new UsuarioDAO();
-$usuario = new Usuario();
 
 $id_usuario = (int)$usuarioDAO->buscarId($nome_visualizacao);
+$dadosView = $usuarioDAO->buscarAceitaView($id_usuario);
 
-$dadosUsuario = ($usuarioDAO->buscarUsuario($id_usuario));
+$aceita_visualizacao = $dadosView['aceita_visualizacao'];
 
-$usuario->aceita_visualizacao = $dadosUsuario['aceita_visualizacao'];
+$dadosNomeLoja = $usuarioDAO->buscarNomeLoja($id_usuario);
+
+$nome_loja = $dadosNomeLoja['nome_loja'];
 
 
-
-// $aceita_view = $usuarioDAO->buscarAceitaView($id_usuario);
-
-// $nome_loja = $usuarioDAO->buscarNomeLoja($id_usuario);
-// $lista = $produtoDAO->listarTodosProdutosAbertos($id_usuario);
+$lista = $produtoDAO->listarTodosProdutos($id_usuario);
 
 if (!empty($_SESSION['usuario_logado'])) {
     $logo_link = "tela_inicial.php";
@@ -63,16 +59,10 @@ if (!empty($_SESSION['usuario_logado'])) {
 
         <main>
 
-            <div>
-                <?php echo "ID usuário: " . $id_usuario . "  tipo " . gettype($id_usuario) ?>
-                <?php echo "Nome visualizacao: " . $nome_visualizacao . "  tipo " . gettype($nome_visualizacao) ?>
-                <?php echo "Aceita visualizacao " . $usuario->aceita_visualizacao . "  tipo " . gettype($usuario->aceita_visualizacao) ?>
-            </div>
-
             <div class="internal-nav">
-                <?php if ($usuario->aceita_visualizacao == 1): ?>
+                <?php if ($aceita_visualizacao === 1): ?>
 
-                    <h1><?php echo $nome_visualizacao; ?></h1>
+                    <h1><?php echo $nome_loja; ?></h1>
 
                     <div class="internal-nav-inputs">
                         <form onsubmit="return false;" id="form-pesquisa-produtos">
@@ -95,7 +85,7 @@ if (!empty($_SESSION['usuario_logado'])) {
             <div class="lista-produtos">
 
 
-                <?php if (!empty($lista)): ?>
+                <?php if (!empty($lista) && $aceita_visualizacao === 1): ?>
                     <?php foreach ($lista as $item): ?>
                         <div class="product-view">
                             <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
