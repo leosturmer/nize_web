@@ -33,6 +33,19 @@ class UsuarioDAO{
         }
     }
 
+
+    public function buscarNomeView($nomeView) {
+        try {
+            $sql = $this->conexao->prepare("SELECT nome_visualizacao FROM usuario WHERE nome_visualizacao = ?");
+            $sql->execute([$nomeView]);
+            return $sql->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            echo "Erro ao buscar" . $e->getMessage();
+            exit;
+        }
+    }
+
     // public function buscarUsuario($id_usuario) {
     //     try {
     //         $sql = $this->conexao->prepare("SELECT nome_loja, aceita_visualizacao, nome_visualizacao FROM usuario WHERE id_usuario = ?");
@@ -70,6 +83,18 @@ class UsuarioDAO{
         }
     }
 
+    public function buscarTelefone($id_usuario){
+        try {
+            $sql = $this->conexao->prepare("SELECT telefone FROM usuario WHERE id_usuario = ?");
+            $sql->execute([$id_usuario]);
+            return $sql->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            echo "Erro ao buscar.";
+            exit;
+        }
+    }
+
     public function cadastrarUsuario(Usuario $usuario){
         try {
             $sql = $this->conexao->prepare(
@@ -94,7 +119,8 @@ class UsuarioDAO{
             nome_loja = :nome_loja,
             login = :login,
             aceita_visualizacao = :aceita_visualizacao,
-            nome_visualizacao = :nome_visualizacao
+            nome_visualizacao = :nome_visualizacao,
+            telefone = :telefone
             WHERE id_usuario = :id_usuario;
             ";
 
@@ -106,6 +132,7 @@ class UsuarioDAO{
             $sql->bindValue(":id_usuario", $usuarioModificado->id_usuario);
             $sql->bindValue(":aceita_visualizacao", $usuarioModificado->aceita_visualizacao);
             $sql->bindValue(":nome_visualizacao", $usuarioModificado->nome_visualizacao);
+            $sql->bindValue(":telefone", $usuarioModificado->telefone);
 
             return $sql->execute();
 

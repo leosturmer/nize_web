@@ -110,6 +110,16 @@ $usuario = unserialize($_SESSION['usuario_logado']);
                             <span>nize.com.br/view_loja/</span>
                             <input type="text" name="usuNomeView" pattern="^\S+$" class="input-login input-nome-view" placeholder="nomedaloja" value="<?php echo $usuario->nome_visualizacao ?>">
                         </div>
+
+                        <div class="checkbox-acc" style="margin-top: 1em;">
+                            <div>
+                                <label for="usuTelefone">Número de WhatsApp: </label>
+                                <p style="font-size: 12px;">Apenas números</p>
+                            </div>
+                            <input type="text" name="usuTelefone" class="input-login input-nome-view" placeholder="55 55 99999999" value="<?php echo $usuario->telefone ?>">
+                        </div>
+
+
                         <div class="container-horizontal">
                             <button type="submit">Alterar cadastro</button>
                             <a href="./view_loja.php?loja=<?php echo $usuario->nome_visualizacao ?>" class="btn-alterar">Visualizar loja</a>

@@ -30,7 +30,8 @@ USE nize_database;
             nome TEXT NOT NULL,
             nome_loja TEXT NULL,
             aceita_visualizacao INTEGER NULL,
-            nome_visualizacao VARCHAR (50) UNIQUE
+            nome_visualizacao VARCHAR (50) UNIQUE, 
+            telefone VARCHAR(20)
     );
 
     CREATE TABLE IF NOT EXISTS produtos (

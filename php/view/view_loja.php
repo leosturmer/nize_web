@@ -20,6 +20,9 @@ $dadosNomeLoja = $usuarioDAO->buscarNomeLoja($id_usuario);
 
 $nome_loja = $dadosNomeLoja['nome_loja'];
 
+$dadosTelefone = $usuarioDAO->buscarTelefone($id_usuario);
+$telefone = $dadosTelefone['telefone'];
+
 
 $lista = $produtoDAO->listarTodosProdutos($id_usuario);
 
@@ -114,7 +117,9 @@ if (!empty($_SESSION['usuario_logado'])) {
             </div>
             <div class="div-btn-wpp">
 
-                <a href="https://wa.me/<?php echo $telefone; ?>"><img src="../../img/icons/whatsapp-icon-96.png" alt=""></a>
+                <?php if ($aceita_visualizacao === 1 && !empty($telefone)): ?>
+                <a href="https://wa.me/<?php echo $telefone; ?>"><img src="../../img/icons/whatsapp64.png" alt=""></a>
+                <?php endif; ?>
             </div>
 
             <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>

@@ -7,6 +7,7 @@ class Usuario{
     private $nome_loja;
     private $aceita_visualizacao;
     private $nome_visualizacao;
+    private $telefone;
     
     private $loja;
 

@@ -25,6 +25,7 @@ switch ($opcao){
         $novoEmail = trim(strtolower($_POST['usuEmail']));
         $novoNomeView = trim(strtolower($_POST['usuNomeView'])) ?? "";
         $aceitaVisualizacao = $_POST['aceitaVisualizacao'] ?? 0;
+        $novoTelefone = $_POST['usuTelefone'] ?? 0;
 
         if (empty($novoNome) || empty($novoEmail)){
             $_SESSION['msg'] = "<p class='error-msg'>Ops! Insira os dados obrigatórios</p>";
@@ -34,6 +35,12 @@ switch ($opcao){
 
         if (!Validacao::validarEmail($novoEmail)){
             $_SESSION['msg'] = '<p class="error-msg">E-mail em formato inválido!</p>';
+            header("location:../view/gui_alteracao_cadastro.php");
+            exit;
+        }
+
+        if (!Validacao::validarTelefone($novoTelefone) && $novoTelefone !== ''){
+            $_SESSION['msg'] = '<p class="error-msg">Telefone em formato inválido!</p>';
             header("location:../view/gui_alteracao_cadastro.php");
             exit;
         }
@@ -63,6 +70,7 @@ switch ($opcao){
         $novoUsuario->login = $novoEmail;
         $novoUsuario->nome_visualizacao = $novoNomeView;
         $novoUsuario->aceita_visualizacao = $aceitaVisualizacao;
+        $novoUsuario->telefone = str_replace(" ", "", $novoTelefone);
 
 
         if ($usuarioDAO->alterarDados($novoUsuario)){        
