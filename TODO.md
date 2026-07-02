@@ -10,30 +10,12 @@
     - esse vai ser foda
     
 
-- Se eu for colocar botão de WhatsApp na view 
-    - Precisa colocar o telefone no banco de dados
-    - tem que alterar o arquivo de criação do banco
-    - tem que colocar filtro para ver se o telefone está correto (COM DDD E DDI)
-    - tem que colocar opção se quer ou não o botão do whatsapp
-    - se quiser, tem que colocar um if echo na tela de visualização da loja
-
-    - Mudar todas as coisas de alteração de cadastro para que puxe o número do whatsapp também
-
-
-    alter table usuario add column telefone varchar(25);
-    e no outro lá adicionar na coluna junto o telefone
-
-
-
-
 ### O QUE ESTÁ DANDO DE ERRO
 
 
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 #### Para o final:
-
-
 
 - Ver se faço modo noturno? (não gostei, ver se acho alguma forma mais simples)
 
@@ -65,12 +47,3 @@ Ok, então para a documentação eu vou ter que alterar as seguintes coisas:
 - Levar as fotos dos produtos (!!!!)
 - Levar os arquivos do banco de dados / PHP para poder configurar
 - Ver de novo no Senac como configurar <code>php --ini</code>
-
-
-
-
-
-
-
-<!-- - Trocar o método como chama os produtos. Tem que fazer o link da loja/nomeusuario &&&& tem que fazer um método da DAO que busca o ID do usuário pelo nome para que ele possa gerar a página.
-- E aí tem que testar, se não aceitar a visualização da loja, não aparece nenhum produto. -->
