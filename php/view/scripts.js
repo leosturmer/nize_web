@@ -20,3 +20,8 @@ const msgElement = document.getElementById('session-msg');
             msgElement.style.display = 'none'; 
         }, 4000);
     }
+
+
+// function modoNoturno() {
+//     document.body.classList.toggle("modo-noturno");
+// }
