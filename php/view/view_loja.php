@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require_once '../model/usuario.class.php';
 require_once '../model/produto.class.php';
@@ -8,17 +8,26 @@ require_once '../dao/usuariodao.class.php';
 // Seguranca::verificarAcesso();
 
 
-$id_usuario = $_GET['id']; // AQUI VAI TER QUE VIR PELO GET
+$nome_visualizacao = trim($_GET['loja']);
 
 $produtoDAO = new ProdutoDAO();
 $usuarioDAO = new UsuarioDAO();
+$usuario = new Usuario();
 
-$aceita_view = $usuarioDAO->buscarAceitaView($id_usuario);
+$id_usuario = (int)$usuarioDAO->buscarId($nome_visualizacao);
 
-$nome_loja = $usuarioDAO->buscarNomeLoja($id_usuario);
-$lista = $produtoDAO->listarTodosProdutosAbertos($id_usuario);
+$dadosUsuario = ($usuarioDAO->buscarUsuario($id_usuario));
 
-if (!empty($_SESSION['usuario_logado'])){
+$usuario->aceita_visualizacao = $dadosUsuario['aceita_visualizacao'];
+
+
+
+// $aceita_view = $usuarioDAO->buscarAceitaView($id_usuario);
+
+// $nome_loja = $usuarioDAO->buscarNomeLoja($id_usuario);
+// $lista = $produtoDAO->listarTodosProdutosAbertos($id_usuario);
+
+if (!empty($_SESSION['usuario_logado'])) {
     $logo_link = "tela_inicial.php";
 } else {
     $logo_link = "../../index.php";
@@ -28,6 +37,7 @@ if (!empty($_SESSION['usuario_logado'])){
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,73 +52,90 @@ if (!empty($_SESSION['usuario_logado'])){
 
     <title>Visualização loja </title>
 </head>
+
 <body>
-    
+
     <header class="header-view-loja">
         <a href="<?php echo $logo_link ?>"><img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav"></a>
     </header>
-    
+
     <div class="conteudo-pagina">
-        
+
         <main>
-        
-        <div class="internal-nav">
 
-            <div class="internal-nav-inputs">
-                <form onsubmit="return false;" id="form-pesquisa-produtos">
-                    <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span class="material-symbols-outlined" id="search-icon">search</span>
-                </form>
-
-                <select id="filtro-order">
-                        <option value="nome-asc">Ordenar por</option>
-                        <option value="nome-asc">Nome (crescente)</option>
-                        <option value="nome-desc">Nome (descrescente)</option>
-                        <option value="valor-asc">Preço (crescente)</option>
-                        <option value="valor-desc">Preço (descrescente)</option>
-                </select>
-
-                <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
+            <div>
+                <?php echo "ID usuário: " . $id_usuario . "  tipo " . gettype($id_usuario) ?>
+                <?php echo "Nome visualizacao: " . $nome_visualizacao . "  tipo " . gettype($nome_visualizacao) ?>
+                <?php echo "Aceita visualizacao " . $usuario->aceita_visualizacao . "  tipo " . gettype($usuario->aceita_visualizacao) ?>
             </div>
 
-        </div>
+            <div class="internal-nav">
+                <?php if ($usuario->aceita_visualizacao == 1): ?>
 
-        <div class="lista-produtos">
+                    <h1><?php echo $nome_visualizacao; ?></h1>
 
-            <?php if (!empty($lista)): ?>
-                <?php foreach ($lista as $item):?>
-                    <div class="product-view">
-                        <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p> 
+                    <div class="internal-nav-inputs">
+                        <form onsubmit="return false;" id="form-pesquisa-produtos">
+                            <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span class="material-symbols-outlined" id="search-icon">search</span>
+                        </form>
 
-                        <?php if ($item['valor_unitario']) { $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.'); } else {$valor_unitario = "Não informado"; }?> 
-                        <p><strong>Valor unitário:</strong> <?php echo $valor_unitario?></p>
+                        <select id="filtro-order">
+                            <option value="nome-asc">Ordenar por</option>
+                            <option value="nome-asc">Nome (crescente)</option>
+                            <option value="nome-desc">Nome (descrescente)</option>
+                            <option value="valor-asc">Preço (crescente)</option>
+                            <option value="valor-desc">Preço (descrescente)</option>
+                        </select>
 
-                        <p class="p-descricao"><strong>Descrição:</strong> <?php echo htmlspecialchars($item['descricao']) ?></p>
-                        
-                        <?php if($item['imagem']){
-                            echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
-                        } else {
-                            echo "<p>Nenhuma imagem cadastrada</p>";
-                        } ?>
-                
-                </div> 
-                <?php endforeach; ?>
+                        <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <div class="lista-produtos">
+
+
+                <?php if (!empty($lista)): ?>
+                    <?php foreach ($lista as $item): ?>
+                        <div class="product-view">
+                            <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
+
+                            <?php if ($item['valor_unitario']) {
+                                $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.');
+                            } else {
+                                $valor_unitario = "Não informado";
+                            } ?>
+                            <p><strong>Valor unitário:</strong> <?php echo $valor_unitario ?></p>
+
+                            <p class="p-descricao"><strong>Descrição:</strong> <?php echo htmlspecialchars($item['descricao']) ?></p>
+
+                            <?php if ($item['imagem']) {
+                                echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                            } else {
+                                echo "<p>Nenhuma imagem cadastrada</p>";
+                            } ?>
+
+                        </div>
+                    <?php endforeach; ?>
                 <?php else: echo "Nenhum produto cadastrado." ?>
                 <?php endif; ?>
-        </div>
 
-        <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
-    </main>
+            </div>
+
+            <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
+        </main>
     </div>
 
     <script src="busca_produtos.js"></script>
     <script>
-    const msgElement = document.getElementById('session-msg');
+        const msgElement = document.getElementById('session-msg');
 
         if (msgElement) {
             setTimeout(() => {
-                msgElement.style.display = 'none'; 
+                msgElement.style.display = 'none';
             }, 6000);
         }
     </script>
 </body>
+
 </html>
