@@ -17,6 +17,12 @@
     - tem que colocar opção se quer ou não o botão do whatsapp
     - se quiser, tem que colocar um if echo na tela de visualização da loja
 
+    - Mudar todas as coisas de alteração de cadastro para que puxe o número do whatsapp também
+
+
+    alter table usuario add column telefone varchar(25);
+    e no outro lá adicionar na coluna junto o telefone
+
 
 
 
