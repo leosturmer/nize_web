@@ -1,6 +1,15 @@
 #### No CSS
 
-Bootstrap
+Ver o content push
+
+https://preline.co/docs/components/sidebar.html#content-push-to-mini-sidebar
+
+https://www.youtube.com/watch?v=fIR3isyFV8s
+https://codepen.io/optimisticweb/pen/zYQgpXb
+
+
+
+Bootstrap???????????????
     - trocar o DETAILS pelo do bootstrap
 
 
