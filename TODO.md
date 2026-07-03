@@ -1,5 +1,10 @@
 #### No CSS
 
+Bootstrap
+    - trocar o DETAILS pelo do bootstrap
+
+
+
 ##### Fazer a responsividade
 
 - Fazer versão tablet

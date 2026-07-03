@@ -50,6 +50,8 @@
   box-shadow: var(--box-shadow);
   background-color: whitesmoke;
 
+  padding: 0.2em;
+
   transition: rotate 0.5s ease-in-out;
   rotate: 0deg;
 }

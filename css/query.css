@@ -9,8 +9,24 @@
 
 */
 
+/* Bootstrap */
+.navbar.bg-body-tertiary.fixed-top {
+  background-color: transparent;
+  color: transparent;
+  position: absolute;
+  z-index: 9999;
+}
+
+button.navbar-toggler {
+  width: fit-content;
+  border: var(--border); 
+  box-shadow: var(--box-shadow); 
+  border-radius: 0px; 
+  padding: 0.3em
+}
+
 /* Computador */
-@media screen and (min-width:1025px) {
+@media screen and (min-width:1230px) {
   .navbar.bg-body-tertiary.fixed-top {
     display: none;
   }
@@ -21,15 +37,7 @@
 
 @media screen and (max-width: 961px) {
 
-  button.navbar-toggler {
-    width: fit-content;
-    border: var(--border); 
-    box-shadow: var(--box-shadow); 
-    border-radius: 0px; 
-    padding: 0.3em
-  }
-
-
+  
 
   .coll-sidenav {
     display: none;
@@ -37,8 +45,12 @@
 
   .coll-sidenav[open] + .conteudo-pagina, 
   .header-view-loja + .conteudo-pagina {
+    margin-left: 0px;
+    width: 100%;
+  }
+
+  div.conteudo-pagina {
     margin-left: 0;
-    /* width: 100%; */
   }
 
   /* .coll-sidenav[open] + .conteudo-pagina,
