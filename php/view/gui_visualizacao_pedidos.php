@@ -39,7 +39,6 @@ if (isset($_SESSION['pedidoSelecionado'])){
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dehaze,search" />
 
-
     <title>Lista de Pedidos</title>
 </head>
 <body>
@@ -104,7 +103,7 @@ if (isset($_SESSION['pedidoSelecionado'])){
                 <?php foreach ($listaPedidos as $id_pedido => $dados_pedido): ?>
                     <div class="product-view">
 
-                    <h2>Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
+                    <h2 class="num-pedido">Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
                         <?php
                             $dataBanco = $dados_pedido['data'];
                             $formatoData = strtotime($dataBanco);

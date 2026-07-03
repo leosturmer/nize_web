@@ -646,6 +646,10 @@ fieldset#products-form {
 
 /* Tela de pedidos */
 
+.num-pedido {
+  text-align: left;
+}
+
 #quantidadeVendida.input-pedido {
   height: 3rem;
   width: 10rem;
