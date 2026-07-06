@@ -55,8 +55,8 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: var(--font-serif);
   box-sizing: border-box;
+  font-family: var(--font-serif);
 }
 
 html,
@@ -120,13 +120,13 @@ footer {
   /* text-shadow: 3px 3px 3px black; */
 }
 
-.material-symbols-outlined {
+/* .material-symbols-outlined {
   font-variation-settings:
     "FILL" 0,
     "wght" 400,
     "GRAD" 0,
     "opsz" 24;
-}
+} */
 
 .botoes-index {
   align-items: center;
@@ -135,7 +135,7 @@ footer {
 
 a,
 button,
-.sidenav > a,
+/* .sidenav > a, */
 .product-btns > a,
 .botoes-index > a,
 .btn-add {
@@ -156,7 +156,7 @@ button,
 
 a:hover,
 button:hover,
-.sidenav > a:hover,
+/* .sidenav > a:hover, */
 .botoes-index > a:hover,
 #container-produtos > button:hover,
 #form-products-buttons > button:hover,
