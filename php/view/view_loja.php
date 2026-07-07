@@ -46,8 +46,10 @@ if (!empty($_SESSION['usuario_logado'])) {
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/query.css">
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/sidebar.css">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dehaze,search" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
 
     <title>Visualização loja </title>
 </head>
@@ -58,10 +60,10 @@ if (!empty($_SESSION['usuario_logado'])) {
         <a href="<?php echo $logo_link ?>"><img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav"></a>
     </header>
 
-    <div class="conteudo-pagina">
+    <!-- <div class="conteudo-pagina"> -->
 
-        <main>
 
+    <main>
             <div class="internal-nav">
                 <?php if ($aceita_visualizacao === 1): ?>
 
@@ -124,7 +126,6 @@ if (!empty($_SESSION['usuario_logado'])) {
 
             <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
         </main>
-    </div>
 
     <script src="busca_produtos.js"></script>
     <script>
@@ -135,6 +136,14 @@ if (!empty($_SESSION['usuario_logado'])) {
                 msgElement.style.display = 'none';
             }, 6000);
         }
+    </script>
+    <script>
+      const resizeBtn = document.querySelector("[data-resize-btn]");
+
+      resizeBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.body.classList.toggle("sb-expanded");
+      });
     </script>
 </body>
 

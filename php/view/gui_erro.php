@@ -21,6 +21,7 @@ if (!empty($_SESSION['usuario_logado'])){
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/query.css">
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/sidebar.css">
 </head>
 <body>
 
@@ -28,10 +29,10 @@ if (!empty($_SESSION['usuario_logado'])){
         <a href="<?php echo $logo_link ?>"><img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav"></a>
     </header>
     
-    <div class="conteudo-pagina">
+    <!-- <div class="conteudo-pagina"> -->
+
         
-        <main>
-            <h1 class="titulo-erro">Ops! Algo deu errado</h1>
+    <main>            <h1 class="titulo-erro">Ops! Algo deu errado</h1>
 
             <div class="container-inicial container-erro">
                 <p>Alguma operação causou erro.</p>
@@ -45,7 +46,6 @@ if (!empty($_SESSION['usuario_logado'])){
 
             <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
         </main>
-    </div>
 
 <script>
 const msgElement = document.getElementById('session-msg');
@@ -58,5 +58,13 @@ const msgElement = document.getElementById('session-msg');
 
 </script>
 
+    <script>
+      const resizeBtn = document.querySelector("[data-resize-btn]");
+
+      resizeBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.body.classList.toggle("sb-expanded");
+      });
+    </script>
 </body>
 </html>

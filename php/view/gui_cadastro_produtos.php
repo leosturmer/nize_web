@@ -23,29 +23,70 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/query.css">
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/sidebar.css">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dehaze" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 
 </head>
 
 <body>
-    <details class="coll-sidenav" open>
-        <summary><span class="material-symbols-outlined">dehaze</span></summary>
-        <div class="sidenav">
-            <img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav">
-            <a href="tela_inicial.php">Tela inicial</a>
-            <a href="gui_visualizacao_produtos.php">Produtos</a>
-            <a href="gui_visualizacao_pedidos.php">Pedidos</a>
-            <a href="gui_minha_area.php">Minha área</a>
-            <a href="../controller/logout.php" id="btn-sair">Encerrar sessão</a>
-        </div>
-    </details>
+        <aside>
+      <nav>
+        <ul>
+          <li>
+            <a href="#" data-resize-btn>
+              <i class="bi bi-list"></i>              
+              <span>Esconder menu</span>
+            </a>
+          </li>
 
-    <div class="conteudo-pagina">
+          <li>
+            <a href="tela_inicial.php" class="link-logo">
+              <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+            </a>
+          </li>
 
-        <main>
+          <li>
+            <li>
+              <a href="tela_inicial.php" class="active">
+                <i class="bi bi-house"></i>
 
+                <span>Tela inicial</span>
+
+              </a>
+            </li>
+            <a href="gui_visualizacao_produtos.php">
+              <i class="bi bi-box-seam"></i>
+              <span>Produtos</span>
+            </a>
+          </li>
+            </li>
+            <a href="gui_visualizacao_pedidos.php">
+              <i class="bi bi-clipboard2-check"></i>
+              <span>Pedidos</span>
+            </a>
+          </li>
+            </li>
+            <a href="gui_minha_area.php">
+              <i class="bi bi-person-lines-fill"></i> 
+              <span>Minha área</span>
+            </a>
+          </li>
+          <li>
+            <a href="../controller/logout.php">
+              <i class="bi bi-box-arrow-right"></i>
+              <span>Encerrar sessão</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- <div class="conteudo-pagina"> -->
+
+
+    <main>
             <div class="internal-nav">
                 <div class="internal-nav-links">
                     <h1>Cadastro de produto</h1>
@@ -120,7 +161,6 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
             <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
         </main>
-    </div>
     <script>
         document.getElementById('imagemProduto').addEventListener('change', function() {
             if (this.files && this.files[0]) {
@@ -144,6 +184,14 @@ $usuario = unserialize($_SESSION['usuario_logado']);
                 msgElement.style.display = 'none';
             }, 6000);
         }
+    </script>
+    <script>
+      const resizeBtn = document.querySelector("[data-resize-btn]");
+
+      resizeBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.body.classList.toggle("sb-expanded");
+      });
     </script>
 </body>
 

@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 require_once '../model/usuario.class.php';
 require_once '../model/produto.class.php';
@@ -16,150 +16,215 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="../../img/favicon/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../../img/favicon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../../css/normalize.css">
-    <link rel="stylesheet" href="../../css/query.css">
-    <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/normalize.css">
+  <link rel="stylesheet" href="../../css/query.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/sidebar.css">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=dehaze,search" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-    <title>Lista de Produtos</title>
+
+  <title>Lista de Produtos</title>
 </head>
+
 <body>
-    
-    <details class="coll-sidenav" open>
-        <summary><span class="material-symbols-outlined">dehaze</span></summary>
-        <div class="sidenav">
-            <img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav">
-            <a href="tela_inicial.php">Tela inicial</a>
-            <a href="gui_visualizacao_produtos.php">Produtos</a>
-            <a href="gui_visualizacao_pedidos.php">Pedidos</a>
-            <a href="gui_minha_area.php">Minha área</a>
-            <a href="../controller/logout.php" id="btn-sair">Encerrar sessão</a>
-        </div>
-    </details>
-    
-    <div class="conteudo-pagina">
 
-    <main>
-        <div class="internal-nav">
+  <aside>
+    <nav>
+      <ul>
+        <li>
+          <a href="#" data-resize-btn>
+            <i class="bi bi-list"></i>
+            <span>Esconder menu</span>
+          </a>
+        </li>
 
-            <div class="internal-nav-links">
-                <h1>Lista de Produtos</h1>
-                <a href="gui_cadastro_produtos.php">Cadastrar novo produto</a>
-            </div>
+        <li>
+          <a href="tela_inicial.php" class="link-logo">
+            <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+          </a>
+        </li>
 
-            <div class="internal-nav-inputs">
-                <form onsubmit="return false;" id="form-pesquisa-produtos">
-                    <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span class="material-symbols-outlined" id="search-icon">search</span>
-                </form>
-                
-                <select id="filtro-estoque">
-                        <option value="">Filtrar estoque</option>
-                        <option value="com-estoque">Com estoque</option>
-                        <option value="sem-estoque">Sem estoque</option>
-                </select>
+        <li>
+        <li>
+          <a href="tela_inicial.php" class="active">
+            <i class="bi bi-house"></i>
 
-                <select id="filtro-encomenda">
-                        <option value="">Filtrar produtos</option>
-                        <option value="com-encomenda">Aceita encomenda</option>
-                        <option value="sem-encomenda">Não aceita encomenda</option>
-                </select>
+            <span>Tela inicial</span>
 
-                <select id="filtro-order">
-                        <option value="">Ordenar por</option>
-                        <option value="nome-asc">Nome (crescente)</option>
-                        <option value="nome-desc">Nome (descrescente)</option>
-                        <option value="quant-asc">Quantidade (descrescente)</option>
-                        <option value="quant-desc">Quantidade (descrescente)</option>
-                </select>
-                <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
-            </div>
+          </a>
+        </li>
+        <a href="gui_visualizacao_produtos.php">
+          <i class="bi bi-box-seam"></i>
+          <span>Produtos</span>
+        </a>
+        </li>
+        </li>
+        <a href="gui_visualizacao_pedidos.php">
+          <i class="bi bi-clipboard2-check"></i>
+          <span>Pedidos</span>
+        </a>
+        </li>
+        </li>
+        <a href="gui_minha_area.php">
+          <i class="bi bi-person-lines-fill"></i>
+          <span>Minha área</span>
+        </a>
+        </li>
+        <li>
+          <a href="../controller/logout.php">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Encerrar sessão</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- <div class="conteudo-pagina"> -->
 
 
-        </div>
+  <main>
+    <div class="internal-nav">
 
-        <?php
-            if (isset($_SESSION["msg"])) {
-                echo "<div id='session-msg'>" . $_SESSION['msg'].  "</div>";
-                unset($_SESSION["msg"]);
-            }
-        ?>
+      <div class="internal-nav-links">
+        <h1>Lista de Produtos</h1>
+        <a href="gui_cadastro_produtos.php">Cadastrar novo produto</a>
+      </div>
 
-        <div class="lista-produtos">
+      <div class="internal-nav-inputs">
+        <form onsubmit="return false;" id="form-pesquisa-produtos">
+          <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span class="material-symbols-outlined" id="search-icon">search</span>
+        </form>
 
-            <?php if (!empty($lista)): ?>
-                <?php foreach ($lista as $item):?>
-                    <div class="product-view">
-                        <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p> 
-                        <p><strong>Quantidade:</strong> <?php if ($item['quantidade'] === 0 || $item['quantidade'] == null) {echo "Sem estoque";} else { echo htmlspecialchars($item['quantidade']); }?> </p>
+        <select id="filtro-estoque">
+          <option value="">Filtrar estoque</option>
+          <option value="com-estoque">Com estoque</option>
+          <option value="sem-estoque">Sem estoque</option>
+        </select>
 
-                        <?php if ($item['valor_unitario']) { $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.'); } else {$valor_unitario = "Não informado"; }?> 
-                        <p><strong>Valor unitário:</strong> <?php echo $valor_unitario?></p>
+        <select id="filtro-encomenda">
+          <option value="">Filtrar produtos</option>
+          <option value="com-encomenda">Aceita encomenda</option>
+          <option value="sem-encomenda">Não aceita encomenda</option>
+        </select>
 
-                        <?php if ($item['valor_custo']) {$valor_custo = "R$ " . number_format($item['valor_custo'], 2, ',', '.'); } else {$valor_custo = "Não informado"; }?>
-                        <p><strong>Valor de custo:</strong> <?php echo $valor_custo; ?></p>
-                        
-                        <?php 
-                        
-                        if(htmlspecialchars($item['aceita_encomenda']) === '1') {
-                            $aceita_encomenda = "Aceita";
-                        } else {
-                            $aceita_encomenda = "Não aceita";
-                        }
-                        
-                        if(htmlspecialchars($item['aceita_visualizacao']) === '1') {
-                            $aceita_visualizacao = "Sim";
-                        } else {
-                            $aceita_visualizacao = "Não";
-                        }
-                        
-                        
-                        ?>
+        <select id="filtro-order">
+          <option value="">Ordenar por</option>
+          <option value="nome-asc">Nome (crescente)</option>
+          <option value="nome-desc">Nome (descrescente)</option>
+          <option value="quant-asc">Quantidade (descrescente)</option>
+          <option value="quant-desc">Quantidade (descrescente)</option>
+        </select>
+        <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
+      </div>
 
-                        <p><strong>Aceita encomenda:</strong> <?php echo $aceita_encomenda; ?></p>
-                        <p><strong>Disponível para visualização:</strong> <?php echo $aceita_visualizacao; ?></p>
-                        <p class="p-descricao"><strong>Descrição:</strong> 
-                        <?php if ($item['descricao']) { 
-                            echo htmlspecialchars($item['descricao']); 
-                            } else { 
-                                echo "Nenhuma descrição informada";
-                            } ?></p>
-                        
-                        <?php if($item['imagem']){
-                            echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
-                        } else {
-                            echo "<p>Nenhuma imagem cadastrada</p>";
-                        } ?>
-                
-                    <div class="product-btns">
-                        <a href="gui_alteracao_produto.php?id=<?php echo $item['id_produto']; ?>">Visualizar</a>
-                        <a href="../controller/produtoControle.php?op=excluir&id=<?php echo $item['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?');">Excluir</a>
-                    </div>
-                </div> 
-                <?php endforeach; ?>
-                <?php else: echo "Nenhum produto cadastrado." ?>
-                <?php endif; ?>
-        </div>
 
-        <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
-    </main>
     </div>
 
-    <script src="busca_produtos.js"></script>
-    <script>
+    <?php
+    if (isset($_SESSION["msg"])) {
+      echo "<div id='session-msg'>" . $_SESSION['msg'] .  "</div>";
+      unset($_SESSION["msg"]);
+    }
+    ?>
+
+    <div class="lista-produtos">
+
+      <?php if (!empty($lista)): ?>
+        <?php foreach ($lista as $item): ?>
+          <div class="product-view">
+            <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
+            <p><strong>Quantidade:</strong> <?php if ($item['quantidade'] === 0 || $item['quantidade'] == null) {
+                                              echo "Sem estoque";
+                                            } else {
+                                              echo htmlspecialchars($item['quantidade']);
+                                            } ?> </p>
+
+            <?php if ($item['valor_unitario']) {
+              $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.');
+            } else {
+              $valor_unitario = "Não informado";
+            } ?>
+            <p><strong>Valor unitário:</strong> <?php echo $valor_unitario ?></p>
+
+            <?php if ($item['valor_custo']) {
+              $valor_custo = "R$ " . number_format($item['valor_custo'], 2, ',', '.');
+            } else {
+              $valor_custo = "Não informado";
+            } ?>
+            <p><strong>Valor de custo:</strong> <?php echo $valor_custo; ?></p>
+
+            <?php
+
+            if (htmlspecialchars($item['aceita_encomenda']) === '1') {
+              $aceita_encomenda = "Aceita";
+            } else {
+              $aceita_encomenda = "Não aceita";
+            }
+
+            if (htmlspecialchars($item['aceita_visualizacao']) === '1') {
+              $aceita_visualizacao = "Sim";
+            } else {
+              $aceita_visualizacao = "Não";
+            }
+
+
+            ?>
+
+            <p><strong>Aceita encomenda:</strong> <?php echo $aceita_encomenda; ?></p>
+            <p><strong>Disponível para visualização:</strong> <?php echo $aceita_visualizacao; ?></p>
+            <p class="p-descricao"><strong>Descrição:</strong>
+              <?php if ($item['descricao']) {
+                echo htmlspecialchars($item['descricao']);
+              } else {
+                echo "Nenhuma descrição informada";
+              } ?></p>
+
+            <?php if ($item['imagem']) {
+              echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+            } else {
+              echo "<p>Nenhuma imagem cadastrada</p>";
+            } ?>
+
+            <div class="product-btns">
+              <a href="gui_alteracao_produto.php?id=<?php echo $item['id_produto']; ?>">Visualizar</a>
+              <a href="../controller/produtoControle.php?op=excluir&id=<?php echo $item['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?');">Excluir</a>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      <?php else: echo "Nenhum produto cadastrado." ?>
+      <?php endif; ?>
+    </div>
+
+    <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
+  </main>
+
+  <script src="busca_produtos.js"></script>
+  <script>
     const msgElement = document.getElementById('session-msg');
 
-        if (msgElement) {
-            setTimeout(() => {
-                msgElement.style.display = 'none'; 
-            }, 6000);
-        }
-    </script>
+    if (msgElement) {
+      setTimeout(() => {
+        msgElement.style.display = 'none';
+      }, 6000);
+    }
+  </script>
+  <script>
+    const resizeBtn = document.querySelector("[data-resize-btn]");
+
+    resizeBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      document.body.classList.toggle("sb-expanded");
+    });
+  </script>
 </body>
+
 </html>

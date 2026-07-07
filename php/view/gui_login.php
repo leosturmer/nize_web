@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/query.css">
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/sidebar.css">
 </head>
 <body>
     <main class="main">
@@ -54,6 +55,14 @@
                 msgElement.style.display = 'none'; 
             }, 6000);
         }
+    </script>
+    <script>
+      const resizeBtn = document.querySelector("[data-resize-btn]");
+
+      resizeBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.body.classList.toggle("sb-expanded");
+      });
     </script>
 </body>
 </html>
