@@ -66,13 +66,14 @@ nav a {
   line-height: 1;
   color: #fff;
   text-decoration: none;
-  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+  transition:
+    background-color 0.4s ease-in-out,
+    color 0.4s ease-in-out;
   width: 4.5em;
   height: 3.5em;
 
   padding-left: 1.4em;
 }
-
 
 nav a.active:hover,
 nav a:hover,
@@ -103,12 +104,29 @@ nav a span {
 .btn-menu {
   background-color: whitesmoke;
   color: black;
+
+  padding: 0.5em;
+  width: 2.5em;
+  height: 2.5em;
 }
+
+.btn-menu:hover {
+  background-color: var(--darkGreen);
+  color: whitesmoke;
+
+  padding: 0.5em;
+  width: 2.5em;
+  height: 2.5em;
+  /* content: "bi bi-x-lg"; */
+  /* transition: box-shadow 0.3s ease-in-out; */
+  /* rotate: 180deg; */
+}
+
 .btn-sair {
   background-color: transparent;
   border: none;
   box-shadow: none;
-  
+
   color: var(--darkGreen);
 
   margin-top: auto;
@@ -123,23 +141,21 @@ nav a span {
   /* border: var(--border); */
   /* background-color: whitesmoke; */
   /* text-shadow: var(--box-shadow); */
-  
+
   background-color: transparent;
   box-shadow: none;
-  
-  color: black;
-  transition: color 0.2s ease-in-out;;
 
-  
+  color: black;
+  transition: color 0.2s ease-in-out;
 }
 
 .sb-expanded #logo-sidenav {
   width: 150px;
   margin-left: 2.5em;
-  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+  transition:
+    background-color 0.4s ease-in-out,
+    color 0.4s ease-in-out;
 }
-
-
 
 .sb-expanded .link-logo {
   text-align: center;
@@ -157,6 +173,12 @@ nav a span {
   opacity: 1;
   visibility: visible;
   width: fit-content;
+}
+
+.sb-expanded .btn-menu {
+  padding: 0.5em;
+  width: 2.5em;
+  height: 2.5em;
 }
 
 /* .sb-expanded aside .bx-chevrons-right {

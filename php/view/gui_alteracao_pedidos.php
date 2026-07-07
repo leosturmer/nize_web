@@ -54,7 +54,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                 <li>
                     <a href="#" data-resize-btn class="btn-menu">
                         <i class="bi bi-list"></i>
-                        <span>Esconder menu</span>
+                        <!-- <span>Esconder menu</span> -->
                     </a>
                 </li>
 
@@ -307,13 +307,24 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
         }
     </script>
     <script>
-        const resizeBtn = document.querySelector("[data-resize-btn]");
+  const resizeBtn = document.querySelector("[data-resize-btn]");
+  const icon = resizeBtn.querySelector("i");
 
-        resizeBtn.addEventListener("click", function(e) {
-            e.preventDefault();
-            document.body.classList.toggle("sb-expanded");
-        });
-    </script>
+  const alternarIcone = () => {
+    const ativo = document.body.classList.contains("sb-expanded");
+    icon.classList.toggle("bi-x-lg", ativo);
+    icon.classList.toggle("bi-list", !ativo);
+  };
+
+  resizeBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    document.body.classList.toggle("sb-expanded");
+    alternarIcone();
+  });
+
+  resizeBtn.addEventListener("mouseenter", alternarIcone);
+  resizeBtn.addEventListener("mouseleave", alternarIcone);
+</script>
 
     <!-- Acessibilidade -->
 

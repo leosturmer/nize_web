@@ -36,7 +36,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         <li>
           <a href="#" data-resize-btn class="btn-menu">
             <i class="bi bi-list"></i>
-            <span>Esconder menu</span>
+            <!-- <!-- <span>Esconder menu</span> --> -->
           </a>
         </li>
 
@@ -141,14 +141,26 @@ $usuario = unserialize($_SESSION['usuario_logado']);
   <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
-  <script>
-    const resizeBtn = document.querySelector("[data-resize-btn]");
 
-    resizeBtn.addEventListener("click", function(e) {
-      e.preventDefault();
-      document.body.classList.toggle("sb-expanded");
-    });
-  </script>
+<script>
+  const resizeBtn = document.querySelector("[data-resize-btn]");
+  const icon = resizeBtn.querySelector("i");
+
+  const alternarIcone = () => {
+    const ativo = document.body.classList.contains("sb-expanded");
+    icon.classList.toggle("bi-x-lg", ativo);
+    icon.classList.toggle("bi-list", !ativo);
+  };
+
+  resizeBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    document.body.classList.toggle("sb-expanded");
+    alternarIcone();
+  });
+
+  resizeBtn.addEventListener("mouseenter", alternarIcone);
+  resizeBtn.addEventListener("mouseleave", alternarIcone);
+</script>
 </body>
 
 </html>
