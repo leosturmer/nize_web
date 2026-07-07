@@ -56,14 +56,17 @@ if (!empty($_SESSION['usuario_logado'])) {
 
 <body>
 
-    <header class="header-view-loja">
-        <a href="<?php echo $logo_link ?>"><img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav"></a>
-    </header>
+    <aside>
+        <a href="<?php echo $logo_link ?>" class="link-logo">
+            <img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
+        </a>
+    </aside>
 
     <!-- <div class="conteudo-pagina"> -->
 
 
-    <main>
+    <main class='conteudo-pagina'>
+
             <div class="internal-nav">
                 <?php if ($aceita_visualizacao === 1): ?>
 
@@ -71,7 +74,7 @@ if (!empty($_SESSION['usuario_logado'])) {
 
                     <div class="internal-nav-inputs">
                         <form onsubmit="return false;" id="form-pesquisa-produtos">
-                            <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span class="material-symbols-outlined" id="search-icon">search</span>
+                            <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span id="search-icon"  class="bi bi-search"></span >
                         </form>
 
                         <select id="filtro-order">

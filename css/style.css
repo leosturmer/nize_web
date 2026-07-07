@@ -226,7 +226,7 @@
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 2.5rem;
+  font-size: 2.2rem;
 }
 
 /* Tela inicial */
@@ -469,7 +469,7 @@
   margin: 0;
 
   background-color: var(--lightGreen);
-  width: 300px;
+  width: 8rem;
   padding: 5rem 2.5rem;
   border-right: 4px solid black;
 }

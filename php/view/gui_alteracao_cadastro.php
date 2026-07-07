@@ -36,7 +36,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
       <nav>
         <ul>
           <li>
-            <a href="#" data-resize-btn>
+            <a href="#" data-resize-btn class="btn-menu">
               <i class="bi bi-list"></i>              
               <span>Esconder menu</span>
             </a>
@@ -86,7 +86,8 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     <!-- <div class="conteudo-pagina"> -->
 
 
-    <main>
+    <main class='conteudo-pagina'>
+
             <?php
             if (isset($_SESSION["msg"])) {
                 echo "<div id='session-msg'>" . $_SESSION['msg'] .  "</div>";

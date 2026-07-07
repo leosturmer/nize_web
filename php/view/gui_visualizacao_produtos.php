@@ -91,7 +91,8 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
   <!-- <div class="conteudo-pagina"> -->
 
 
-  <main>
+  <main class='conteudo-pagina'>
+
     <div class="internal-nav">
 
       <div class="internal-nav-links">
@@ -101,7 +102,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 
       <div class="internal-nav-inputs">
         <form onsubmit="return false;" id="form-pesquisa-produtos">
-          <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span class="material-symbols-outlined" id="search-icon">search</span>
+          <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span id="search-icon"  class="bi bi-search"></span >
         </form>
 
         <select id="filtro-estoque">

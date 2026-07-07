@@ -293,7 +293,7 @@ main {
       <nav>
         <ul>
           <li>
-            <a href="#" data-resize-btn>
+            <a href="#" data-resize-btn class="btn-menu">
               <i class="bi bi-list"></i>              
               <span>Esconder menu</span>
             </a>
@@ -344,7 +344,8 @@ main {
     <!-- <div class="conteudo-pagina"> -->
 
 
-    <main>            <?php
+    <main class='conteudo-pagina'>
+            <?php
             if (isset($_SESSION["msg"])) {
                 echo "<div id='session-msg'>" . $_SESSION['msg'] .  "</div>";
                 unset($_SESSION["msg"]);
@@ -359,7 +360,7 @@ main {
 
                 <div class="internal-nav-inputs">
                     <form onsubmit="return false;" id="form-pesquisa-pedidos">
-                        <input type="text" id="pesquisa-pedidos" placeholder="Digite sua pesquisa" autocomplete="off"><span class="material-symbols-outlined" id="search-icon">search</span>
+                        <input type="text" id="pesquisa-pedidos" placeholder="Digite sua pesquisa" autocomplete="off"><span id="search-icon"  class="bi bi-search"></span >
                     </form>
 
                     <input type="date" id="filtro-data">

@@ -1,139 +1,140 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  body {
-    --sb-width: 8rem;
-    font-family: system-ui, sans-serif;
-    font-size: 16px;
-    line-height: 1.7;
-  }
+body {
+  --sb-width: 8rem;
+  font-family: system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
 
-  body.sb-expanded {
-    --sb-width: 18.5rem;
-  }
+body.sb-expanded {
+  --sb-width: 18.5rem;
+}
 
-  aside {
-    position: fixed;
-    inset: 0 auto 0 0;
-    padding: 1rem;
-    width: var(--sb-width);
-    background-color: var(--lightGreen);
-    border-right: var(--border);
-    transition: width 0.3s ease-in-out;
-  }
+aside {
+  position: fixed;
+  inset: 0 auto 0 0;
+  padding: 1rem;
+  width: var(--sb-width);
+  background-color: var(--lightGreen);
+  border-right: var(--border);
+  transition: width 0.3s ease-in-out;
+}
 
-  nav {
-    height: 100%;
-  }
+nav {
+  height: 100%;
+}
 
-  nav ul {
-    list-style: none;
-    height: 100%;
-    display: flex;
-    flex-flow: column;
-    gap: 0.25rem;
-  }
+nav ul {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  gap: 0.25rem;
+}
 
-  nav li:last-child {
-    margin-top: auto;
-  }
+nav li:last-child {
+  margin-top: auto;
+}
 
+.link-logo {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  margin-top: 3em;
+  margin-bottom: 3em;
 
-  .link-logo {
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    margin-top: 3em;
-    margin-bottom: 3em;
+  margin-left: 0;
+  padding-left: 0;
+}
 
-    margin-left: 0;
-    padding-left: 0;
+.link-logo:hover {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
 
-  }
+nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 1rem;
+  line-height: 1;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  width: 4.5em;
+  height: 3.5em;
 
-  .link-logo:hover{
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-  }
-
-  nav a {
-    display: flex;
-    align-items: center;
-    gap: 0.625rem;
-    font-size: 1rem;
-    line-height: 1;
-    color: #fff;
-    text-decoration: none;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-    width: 4.5em;
-    height: 3.5em;
-
-    padding-left: 1.4em;
-
-  }
-
-  nav a.active,
-  nav a:hover,
-  nav a:focus-visible {
-    outline: none;
-    color: whitesmoke;
-    background-color: var(--darkerPurple);
-  }
-
-  nav a i {
-    font-size: 1.3em;
-  }
-
-  nav a span {
-    font-size: 1rem;
-    margin-left: 0.5em;
-    opacity: 0;
-    visibility: hidden;
-    /* transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out; */
-  }
+  padding-left: 1.4em;
+}
 
 
-  .sb-expanded #logo-sidenav {
-    width: 150px;
-  }
+nav a.active,
+nav a:hover,
+nav a:focus-visible {
+  outline: none;
+  color: whitesmoke;
+  background-color: var(--darkerPurple);
+}
 
-  .sb-expanded .link-logo{
-      text-align: center;
-      margin-left: 1em;
-  }
+nav a i {
+  font-size: 1.3em;
+}
 
-  .sb-expanded nav a {
+nav a span {
+  font-size: 1.1rem;
+  margin-left: 0.5em;
+  opacity: 0;
+  visibility: hidden;
+  /* transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out; */
+}
 
-    width: 15em;
-    height: 3.5em;
+.sb-expanded #logo-sidenav {
+  width: 150px;
+  margin-left: 2.5em;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
 
-    text-align: center;
+.btn-menu {
+  background-color: whitesmoke;
+  color: black;
+}
 
-  }
+.sb-expanded .link-logo {
+  text-align: center;
+  margin-left: 1em;
+}
 
-  .sb-expanded nav a span {
-    opacity: 1;
-    visibility: visible;
-    width: fit-content;
+.sb-expanded nav a {
+  width: 15em;
+  height: 3.5em;
 
-  }
+  text-align: center;
+}
 
-  .sb-expanded aside .bx-chevrons-right {
+.sb-expanded nav a span {
+  opacity: 1;
+  visibility: visible;
+  width: fit-content;
+}
+
+/* .sb-expanded aside .bx-chevrons-right {
     rotate: 180deg;
-  }
+  } */
 
+main {
+  margin-left: 5rem;
+  padding: 1rem 2rem;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+@media (min-width: 768px) {
   main {
-    margin-left: 5rem;
-    padding: 1rem 2rem;
-    transition: margin-left 0.3s ease-in-out;
+    margin-left: var(--sb-width);
   }
-
-  @media (min-width: 768px) {
-    main {
-      margin-left: var(--sb-width);
-    }
-  }
+}

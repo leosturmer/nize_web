@@ -35,7 +35,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
       <nav>
         <ul>
           <li>
-            <a href="#" data-resize-btn>
+            <a href="#" data-resize-btn class="btn-menu">
               <i class="bi bi-list"></i>              
               <span>Esconder menu</span>
             </a>
@@ -86,7 +86,8 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     <!-- <div class="conteudo-pagina"> -->
 
 
-    <main>
+    <main class='conteudo-pagina'>
+
             <div class="internal-nav">
                 <div class="internal-nav-links">
                     <h1>Cadastro de produto</h1>

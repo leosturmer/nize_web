@@ -32,7 +32,8 @@ if (!empty($_SESSION['usuario_logado'])){
     <!-- <div class="conteudo-pagina"> -->
 
         
-    <main>            <h1 class="titulo-erro">Ops! Algo deu errado</h1>
+    <main class='conteudo-pagina'>
+            <h1 class="titulo-erro">Ops! Algo deu errado</h1>
 
             <div class="container-inicial container-erro">
                 <p>Alguma operação causou erro.</p>

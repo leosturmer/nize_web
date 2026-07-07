@@ -53,7 +53,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
       <nav>
         <ul>
           <li>
-            <a href="#" data-resize-btn>
+            <a href="#" data-resize-btn class="btn-menu">
               <i class="bi bi-list"></i>              
               <span>Esconder menu</span>
             </a>
@@ -103,7 +103,8 @@ if (isset($_SESSION['encomendaSelecionada'])) {
     <!-- <div class="conteudo-pagina"> -->
 
 
-    <main>            <?php
+    <main class='conteudo-pagina'>
+            <?php
             if (isset($_SESSION["msg"])) {
                 echo "<div id='session-msg'>" . $_SESSION['msg'] .  "</div>";
                 unset($_SESSION["msg"]);
@@ -122,7 +123,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                 <div class="adicionar-produtos">
 
                     <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-produto-pedido">
-                        <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição" autocomplete="off"><span class="material-symbols-outlined" id="search-icon">search</span>
+                        <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição" autocomplete="off"><span id="search-icon"  class="bi bi-search"></span >
                     </form>
 
                     <div class="lista-produtos-pedido">

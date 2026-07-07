@@ -50,7 +50,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
       <nav>
         <ul>
           <li>
-            <a href="#" data-resize-btn>
+            <a href="#" data-resize-btn class="btn-menu">
               <i class="bi bi-list"></i>              
               <span>Esconder menu</span>
             </a>
@@ -100,7 +100,8 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
     <!-- <div class="conteudo-pagina"> -->
 
 
-    <main>            <?php
+    <main class='conteudo-pagina'>
+            <?php
             if (isset($_SESSION["msg"])) {
                 echo "<div id='session-msg'>" . $_SESSION['msg'] .  "</div>";
                 unset($_SESSION["msg"]);

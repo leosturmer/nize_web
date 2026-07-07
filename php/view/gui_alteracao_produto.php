@@ -44,7 +44,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
       <nav>
         <ul>
           <li>
-            <a href="#" data-resize-btn>
+            <a href="#" data-resize-btn class="btn-menu">
               <i class="bi bi-list"></i>              
               <span>Esconder menu</span>
             </a>
@@ -94,7 +94,8 @@ $produto = $produtoDAO->buscarPorId($id_produto);
     <!-- <div class="conteudo-pagina"> -->
 
 
-    <main>            <div class="internal-nav">
+    <main class='conteudo-pagina'>
+            <div class="internal-nav">
                 <div class="internal-nav-links">
                     <h1>Alteração de produto</h1>
                     <a href="gui_visualizacao_produtos.php">Todos os produtos</a>
