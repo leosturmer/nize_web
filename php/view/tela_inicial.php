@@ -36,7 +36,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         <li>
           <a href="#" data-resize-btn class="btn-menu">
             <i class="bi bi-list"></i>
-            <!-- <!-- <span>Esconder menu</span> --> -->
+            <!-- <span>Esconder menu</span> -->
           </a>
         </li>
 
