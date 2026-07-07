@@ -79,7 +79,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
             </a>
           </li>
             </li>
-            <a href="gui_visualizacao_pedidos.php">
+            <a href="gui_visualizacao_pedidos.php" class="active">
               <i class="bi bi-clipboard2-check"></i>
               <span>Pedidos</span>
             </a>

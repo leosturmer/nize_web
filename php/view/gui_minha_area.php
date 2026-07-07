@@ -67,7 +67,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
             </a>
           </li>
             </li>
-            <a href="gui_minha_area.php">
+            <a href="gui_minha_area.php" class="active">
               <i class="bi bi-person-lines-fill"></i> 
               <span>Minha área</span>
             </a>

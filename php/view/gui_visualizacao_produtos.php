@@ -61,7 +61,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 
           </a>
         </li>
-        <a href="gui_visualizacao_produtos.php">
+        <a href="gui_visualizacao_produtos.php" class="active">
           <i class="bi bi-box-seam"></i>
           <span>Produtos</span>
         </a>
