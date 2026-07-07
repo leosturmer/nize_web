@@ -59,6 +59,19 @@
   font-family: var(--font-serif);
 }
 
+/* ESSE AQUI É NOVO, É DA SIDEBAR */
+body {
+  --sb-width: 8rem;
+  font-family: system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+body.sb-expanded {
+  --sb-width: 18.5rem;
+}
+
+/* Acaba aqui */
 html,
 body,
 main {
@@ -113,11 +126,16 @@ footer {
 /* NORMALIZAÇÕES ITENS */
 
 #logo-sidenav {
-  width: 150px;
+  margin: 3em 10px;
+  width: 80px;
   margin: 10px;
+  text-align: left;
+
   align-self: center;
   justify-content: center;
-  /* text-shadow: 3px 3px 3px black; */
+
+  background-color: transparent;
+  border: none;
 }
 
 /* .material-symbols-outlined {

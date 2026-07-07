@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /*  SELETORES */
-.coll-sidenav {
+/* .coll-sidenav {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -74,8 +74,7 @@
   padding-left: 28px;
   padding-right: 25px;
   border-right: 4px solid black;
-  /* box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.3); */
-}
+} */
 
 #btn-sair {
   justify-content: center;
