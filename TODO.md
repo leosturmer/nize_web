@@ -1,20 +1,11 @@
 #### No CSS
 
-Ver o content push
-
-https://preline.co/docs/components/sidebar.html#content-push-to-mini-sidebar
-
-https://www.youtube.com/watch?v=fIR3isyFV8s
-https://codepen.io/optimisticweb/pen/zYQgpXb
-
-
-
-Bootstrap???????????????
-    - trocar o DETAILS pelo do bootstrap
-
-
 
 ##### Fazer a responsividade
+
+- Nas páginas que tem as views de produto, vai ter que virar 1 coluna
+- O menu lateral tem que sumir quando ficar muito pequeno, aí tem que aparecer o logo do site em cima e o botão do menu
+    -  Aí clica no botão do menu e ele fica na tela toda
 
 - Fazer versão tablet
     - Essa aqui de repente dá só pra trocar a barra para ficar por cima do restante dos itens
