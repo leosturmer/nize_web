@@ -75,7 +75,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         </a>
         </li>
         <li>
-          <a href="../controller/logout.php">
+          <a href="../controller/logout.php" class="btn-sair">
             <i class="bi bi-box-arrow-left"></i>
             <span>Encerrar sessão</span>
           </a>

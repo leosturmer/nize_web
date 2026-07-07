@@ -92,7 +92,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                 </a>
                 </li>
                 <li>
-                    <a href="../controller/logout.php">
+                    <a href="../controller/logout.php" class="btn-sair">
                         <i class="bi bi-box-arrow-left"></i>
                         <span>Encerrar sessão</span>
                     </a>

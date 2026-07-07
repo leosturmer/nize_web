@@ -76,27 +76,7 @@
   border-right: 4px solid black;
 } */
 
-#btn-sair {
-  justify-content: center;
-  background-color: transparent;
 
-  color: var(--darkGreen);
-  border: 2.8px solid transparent;
-  box-shadow: none;
-
-  margin-top: auto;
-  bottom: 10px;
-  padding: 0.3rem;
-  margin-right: 2em;
-  width: fit-content;
-  align-self: center;
-}
-
-#btn-sair:hover {
-  border: var(--border);
-  color: black;
-  background-color: whitesmoke;
-}
 
 .header-mobile {
   background-color: var(--lightGreen);

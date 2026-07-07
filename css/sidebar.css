@@ -100,16 +100,46 @@ nav a span {
   /* transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out; */
 }
 
+.btn-menu {
+  background-color: whitesmoke;
+  color: black;
+}
+.btn-sair {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  
+  color: var(--darkGreen);
+
+  margin-top: auto;
+  bottom: 10px;
+  /* padding: 0.3rem; */
+  /* margin-right: 2em; */
+  width: fit-content;
+  align-self: center;
+}
+
+.btn-sair:hover {
+  /* border: var(--border); */
+  /* background-color: whitesmoke; */
+  /* text-shadow: var(--box-shadow); */
+  
+  background-color: transparent;
+  box-shadow: none;
+  
+  color: black;
+  transition: color 0.2s ease-in-out;;
+
+  
+}
+
 .sb-expanded #logo-sidenav {
   width: 150px;
   margin-left: 2.5em;
   transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
 }
 
-.btn-menu {
-  background-color: whitesmoke;
-  color: black;
-}
+
 
 .sb-expanded .link-logo {
   text-align: center;

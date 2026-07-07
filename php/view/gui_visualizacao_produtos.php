@@ -40,7 +40,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
     <nav>
       <ul>
         <li>
-          <a href="#" data-resize-btn>
+          <a href="#" data-resize-btn class="btn-menu">
             <i class="bi bi-list"></i>
             <span>Esconder menu</span>
           </a>
@@ -79,7 +79,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
         </a>
         </li>
         <li>
-          <a href="../controller/logout.php">
+          <a href="../controller/logout.php" class="btn-sair">
             <i class="bi bi-box-arrow-left"></i>
             <span>Encerrar sessão</span>
           </a>
