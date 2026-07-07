@@ -80,7 +80,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
         </li>
         <li>
           <a href="../controller/logout.php">
-            <i class="bi bi-box-arrow-right"></i>
+            <i class="bi bi-box-arrow-left"></i>
             <span>Encerrar sessão</span>
           </a>
         </li>
