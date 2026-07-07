@@ -54,7 +54,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 
         <li>
         <li>
-          <a href="tela_inicial.php"  >
+          <a href="tela_inicial.php">
             <i class="bi bi-house"></i>
 
             <span>Tela inicial</span>
@@ -102,7 +102,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 
       <div class="internal-nav-inputs">
         <form onsubmit="return false;" id="form-pesquisa-produtos">
-          <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span id="search-icon"  class="bi bi-search"></span >
+          <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
         </form>
 
         <select id="filtro-estoque">
@@ -226,6 +226,20 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
       document.body.classList.toggle("sb-expanded");
     });
   </script>
+
+  <!-- Acessibilidade -->
+
+  <div vw class="enabled">
+    <div vw-access-button></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
 </body>
 
 </html>

@@ -48,7 +48,7 @@ if (!empty($_SESSION['usuario_logado'])) {
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/sidebar.css">
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 
     <title>Visualização loja </title>
@@ -67,68 +67,68 @@ if (!empty($_SESSION['usuario_logado'])) {
 
     <main class='conteudo-pagina'>
 
-            <div class="internal-nav">
-                <?php if ($aceita_visualizacao === 1): ?>
+        <div class="internal-nav">
+            <?php if ($aceita_visualizacao === 1): ?>
 
-                    <h1><?php echo $nome_loja; ?></h1>
+                <h1><?php echo $nome_loja; ?></h1>
 
-                    <div class="internal-nav-inputs">
-                        <form onsubmit="return false;" id="form-pesquisa-produtos">
-                            <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span id="search-icon"  class="bi bi-search"></span >
-                        </form>
+                <div class="internal-nav-inputs">
+                    <form onsubmit="return false;" id="form-pesquisa-produtos">
+                        <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
+                    </form>
 
-                        <select id="filtro-order">
-                            <option value="nome-asc">Ordenar por</option>
-                            <option value="nome-asc">Nome (crescente)</option>
-                            <option value="nome-desc">Nome (descrescente)</option>
-                            <option value="valor-asc">Preço (crescente)</option>
-                            <option value="valor-desc">Preço (descrescente)</option>
-                        </select>
+                    <select id="filtro-order">
+                        <option value="nome-asc">Ordenar por</option>
+                        <option value="nome-asc">Nome (crescente)</option>
+                        <option value="nome-desc">Nome (descrescente)</option>
+                        <option value="valor-asc">Preço (crescente)</option>
+                        <option value="valor-desc">Preço (descrescente)</option>
+                    </select>
 
-                        <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
+                    <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <div class="lista-produtos">
+
+
+            <?php if (!empty($lista) && $aceita_visualizacao === 1): ?>
+                <?php foreach ($lista as $item): ?>
+                    <div class="product-view">
+                        <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
+
+                        <?php if ($item['valor_unitario']) {
+                            $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.');
+                        } else {
+                            $valor_unitario = "Não informado";
+                        } ?>
+                        <p><strong>Valor unitário:</strong> <?php echo $valor_unitario ?></p>
+
+                        <p class="p-descricao"><strong>Descrição:</strong> <?php echo htmlspecialchars($item['descricao']) ?></p>
+
+                        <?php if ($item['imagem']) {
+                            echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                        } else {
+                            echo "<p>Nenhuma imagem cadastrada</p>";
+                        } ?>
+
                     </div>
-                <?php endif; ?>
-            </div>
-
-            <div class="lista-produtos">
-
-
-                <?php if (!empty($lista) && $aceita_visualizacao === 1): ?>
-                    <?php foreach ($lista as $item): ?>
-                        <div class="product-view">
-                            <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
-
-                            <?php if ($item['valor_unitario']) {
-                                $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.');
-                            } else {
-                                $valor_unitario = "Não informado";
-                            } ?>
-                            <p><strong>Valor unitário:</strong> <?php echo $valor_unitario ?></p>
-
-                            <p class="p-descricao"><strong>Descrição:</strong> <?php echo htmlspecialchars($item['descricao']) ?></p>
-
-                            <?php if ($item['imagem']) {
-                                echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
-                            } else {
-                                echo "<p>Nenhuma imagem cadastrada</p>";
-                            } ?>
-
-                        </div>
-                    <?php endforeach; ?>
-                <?php else: echo "Nenhum produto cadastrado." ?>
-                <?php endif; ?>
+                <?php endforeach; ?>
+            <?php else: echo "Nenhum produto cadastrado." ?>
+            <?php endif; ?>
 
 
-            </div>
-            <div class="div-btn-wpp">
+        </div>
+        <div class="div-btn-wpp">
 
-                <?php if ($aceita_visualizacao === 1 && !empty($telefone)): ?>
+            <?php if ($aceita_visualizacao === 1 && !empty($telefone)): ?>
                 <a href="https://wa.me/<?php echo $telefone; ?>"><img src="../../img/icons/whatsapp64.png" alt=""></a>
-                <?php endif; ?>
-            </div>
+            <?php endif; ?>
+        </div>
 
-            <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
-        </main>
+        <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
+    </main>
 
     <script src="busca_produtos.js"></script>
     <script>
@@ -141,13 +141,27 @@ if (!empty($_SESSION['usuario_logado'])) {
         }
     </script>
     <script>
-      const resizeBtn = document.querySelector("[data-resize-btn]");
+        const resizeBtn = document.querySelector("[data-resize-btn]");
 
-      resizeBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.body.classList.toggle("sb-expanded");
-      });
+        resizeBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            document.body.classList.toggle("sb-expanded");
+        });
     </script>
+
+    <!-- Acessibilidade -->
+
+    <div vw class="enabled">
+        <div vw-access-button></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
 </body>
 
 </html>
