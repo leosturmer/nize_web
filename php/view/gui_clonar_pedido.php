@@ -56,7 +56,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
 
           <li>
             <li>
-              <a href="tela_inicial.php" class="active">
+              <a href="tela_inicial.php"  >
                 <i class="bi bi-house"></i>
 
                 <span>Tela inicial</span>

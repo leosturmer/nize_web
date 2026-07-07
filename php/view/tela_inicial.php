@@ -48,7 +48,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
           <li>
             <li>
-              <a href="tela_inicial.php" class="active">
+              <a href="tela_inicial.php"  class="active">
                 <i class="bi bi-house"></i>
 
                 <span>Tela inicial</span>
@@ -130,7 +130,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     </script>
 
     <div vw class="enabled">
-        <div vw-access-button class="active"></div>
+        <div vw-access-button  ></div>
         <div vw-plugin-wrapper>
             <div class="vw-plugin-top-wrapper"></div>
         </div>

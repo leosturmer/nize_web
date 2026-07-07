@@ -217,7 +217,7 @@ main {
   <nav>
     <ul>
       <li>
-        <a href="#" class="active">
+        <a href="#"  >
           <i class="bx bx-home-circle"></i>
           <span>Dashboard</span>
         </a>
@@ -307,7 +307,7 @@ main {
 
           <li>
             <li>
-              <a href="tela_inicial.php" class="active">
+              <a href="tela_inicial.php"  >
                 <i class="bi bi-house"></i>
 
                 <span>Tela inicial</span>

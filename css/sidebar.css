@@ -74,12 +74,18 @@ nav a {
 }
 
 
-nav a.active,
+nav a.active:hover,
 nav a:hover,
 nav a:focus-visible {
   outline: none;
   color: whitesmoke;
   background-color: var(--darkerPurple);
+}
+
+nav a.active {
+  outline: none;
+  color: whitesmoke;
+  background-color: var(--lighterPurple);
 }
 
 nav a i {
