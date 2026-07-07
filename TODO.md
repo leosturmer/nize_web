@@ -22,6 +22,8 @@
 
 #### Para o final:
 
+- Botão de resetar senha?
+
 - Ver se faço modo noturno? (não gostei, ver se acho alguma forma mais simples)
 
 - Confirmar todas mensagens
