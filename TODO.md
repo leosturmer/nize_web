@@ -1,12 +1,3 @@
-### O QUE ESTÁ DANDO DE ERRO
-
--- Ao voltar da visualização do pedido, ele está sendo deletado ???????????
--- Ver o javascript da tela de alteração de pedidos 
-
-
-
-
-
 ### No CSS
 
 
@@ -27,6 +18,10 @@
 
 
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+### O QUE ESTÁ DANDO DE ERRO
+
+
 
 #### Para o final:
 
