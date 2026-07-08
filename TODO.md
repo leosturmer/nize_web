@@ -1,4 +1,13 @@
-#### No CSS
+### O QUE ESTÁ DANDO DE ERRO
+
+-- Ao voltar da visualização do pedido, ele está sendo deletado ???????????
+-- Ver o javascript da tela de alteração de pedidos 
+
+
+
+
+
+### No CSS
 
 
 ##### Fazer a responsividade
@@ -15,7 +24,6 @@
     - esse vai ser foda
     
 
-### O QUE ESTÁ DANDO DE ERRO
 
 
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
