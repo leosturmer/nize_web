@@ -46,13 +46,13 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
 
 <body>
 
-  <aside>
+  <aside id="sidebar">
     <nav>
       <ul>
         <li>
-           <a href="#" data-resize-btn class="btn-menu" title="Esconder/expandir menu" >
+          <a href="#" data-resize-btn class="btn-menu" title="Esconder/expandir menu">
             <i class="bi bi-list"></i>
-             
+
           </a>
         </li>
 
@@ -97,7 +97,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
       </ul>
     </nav>
   </aside>
- 
+
 
   <main class='conteudo-pagina'>
     <?php
@@ -176,74 +176,23 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
 
   </div>
 
+  <script type="module" src="../../js/main.js"></script>
 
+  <!-- Acessibilidade -->
+
+  <div vw class="enabled">
+    <div vw-access-button></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const containerVendido = document.getElementById("containerVendido");
-      const containerCancelado = document.getElementById("containerCancelado");
-
-      function gerenciarCheckboxes() {
-        const valorSelecionado = statusPedido.value;
-
-        if (valorSelecionado === "vendido") {
-          containerVendido.style.display = "block"; // Mostra o de venda
-          containerCancelado.style.display = "none"; // Esconde o de cancelamento
-        } else if (valorSelecionado === "cancelado") {
-          containerVendido.style.display = "none"; // Esconde o de venda
-          containerCancelado.style.display = "block"; // Mostra o de cancelamento
-        } else {
-          containerVendido.style.display = "none";
-          containerCancelado.style.display = "none";
-        }
-      }
-
-
-      gerenciarCheckboxes();
-    });
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
 
-  <script>
-    const msgElement = document.getElementById('session-msg');
-
-    if (msgElement) {
-      setTimeout(() => {
-        msgElement.style.display = 'none';
-      }, 6000);
-    }
-  </script>
-<script>
-  const resizeBtn = document.querySelector("[data-resize-btn]");
-  const icon = resizeBtn.querySelector("i");
-
-  const alternarIcone = () => {
-    const ativo = document.body.classList.contains("sb-expanded");
-    icon.classList.toggle("bi-x-lg", ativo);
-    icon.classList.toggle("bi-list", !ativo);
-  };
-
-  resizeBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    document.body.classList.toggle("sb-expanded");
-    alternarIcone();
-  });
-
-  resizeBtn.addEventListener("mouseenter", alternarIcone);
-  resizeBtn.addEventListener("mouseleave", alternarIcone);
-</script>
 </body>
 
-<!-- Acessibilidade -->
-
-<div vw class="enabled">
-  <div vw-access-button></div>
-  <div vw-plugin-wrapper>
-    <div class="vw-plugin-top-wrapper"></div>
-  </div>
-</div>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-  new window.VLibras.Widget('https://vlibras.gov.br/app');
-</script>
 
 
 </html>

@@ -1,3 +1,6 @@
+
+
+
 document.getElementById('imagemProduto').addEventListener('change', function() {
     if (this.files && this.files[0]) {
         
