@@ -49,7 +49,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
 </head>
 
 <body>
-    <aside>
+    <aside id="sidebar">
         <nav>
             <ul>
                 <li>
@@ -238,57 +238,9 @@ if (isset($_SESSION['encomendaSelecionada'])) {
     </div>
 
     <script src="../../js/busca_produtos_pedido.js"></script>
+    <script type="module" src="../../js/main.js"></script>
 
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const statusPedido = document.getElementById("statusPedido");
-            const containerVendido = document.getElementById("containerVendido");
-
-            function gerenciarCheckboxes() {
-                const valorSelecionado = statusPedido.value;
-
-                if (valorSelecionado === "vendido") {
-                    containerVendido.style.display = "block"; // Mostra o de venda
-                } else {
-                    containerVendido.style.display = "none";
-                    document.getElementById("darBaixaEstoque").checked = false;
-
-                }
-            }
-
-            statusPedido.addEventListener("change", gerenciarCheckboxes);
-            gerenciarCheckboxes();
-        });
-
-        const msgElement = document.getElementById('session-msg');
-
-        if (msgElement) {
-            setTimeout(() => {
-                msgElement.style.display = 'none';
-            }, 6000);
-        }
-    </script>
-
-    <script>
-        const resizeBtn = document.querySelector("[data-resize-btn]");
-        const icon = resizeBtn.querySelector("i");
-
-        const alternarIcone = () => {
-            const ativo = document.body.classList.contains("sb-expanded");
-            icon.classList.toggle("bi-x-lg", ativo);
-            icon.classList.toggle("bi-list", !ativo);
-        };
-
-        resizeBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            document.body.classList.toggle("sb-expanded");
-            alternarIcone();
-        });
-
-        resizeBtn.addEventListener("mouseenter", alternarIcone);
-        resizeBtn.addEventListener("mouseleave", alternarIcone);
-    </script>
 
     <!-- Acessibilidade -->
 

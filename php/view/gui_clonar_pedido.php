@@ -38,13 +38,13 @@ if (isset($_SESSION['pedidoSelecionado'])) {
 </head>
 
 <body>
-    <aside>
+    <aside id="sidebar">
         <nav>
             <ul>
                 <li>
-                     <a href="#" data-resize-btn class="btn-menu" title="Esconder/expandir menu" >
+                    <a href="#" data-resize-btn class="btn-menu" title="Esconder/expandir menu">
                         <i class="bi bi-list"></i>
-                         
+
                     </a>
                 </li>
 
@@ -90,7 +90,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
         </nav>
     </aside>
 
-   
+
     <main class='conteudo-pagina'>
         <?php
         if (isset($_SESSION["msg"])) {
@@ -219,52 +219,9 @@ if (isset($_SESSION['pedidoSelecionado'])) {
         <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
     </main>
 
+    <script type="module" src="../../js/main.js"></script>
+
     <script src="../../js/busca_produtos_pedido.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const statusPedido = document.getElementById("statusPedido");
-            const containerVendido = document.getElementById("containerVendido");
-
-            function gerenciarCheckboxes() {
-                if (statusPedido.value === "vendido") {
-                    containerVendido.style.display = "block";
-                } else {
-                    containerVendido.style.display = "none";
-                    document.getElementById("darBaixaEstoque").checked = false;
-
-                }
-            }
-
-            statusPedido.addEventListener("change", gerenciarCheckboxes);
-            gerenciarCheckboxes();
-        });
-
-        const msgElement = document.getElementById('session-msg');
-        if (msgElement) {
-            setTimeout(() => {
-                msgElement.style.display = 'none';
-            }, 6000);
-        }
-    </script>
-    <script>
-  const resizeBtn = document.querySelector("[data-resize-btn]");
-  const icon = resizeBtn.querySelector("i");
-
-  const alternarIcone = () => {
-    const ativo = document.body.classList.contains("sb-expanded");
-    icon.classList.toggle("bi-x-lg", ativo);
-    icon.classList.toggle("bi-list", !ativo);
-  };
-
-  resizeBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    document.body.classList.toggle("sb-expanded");
-    alternarIcone();
-  });
-
-  resizeBtn.addEventListener("mouseenter", alternarIcone);
-  resizeBtn.addEventListener("mouseleave", alternarIcone);
-</script>
 
     <!-- Acessibilidade -->
 

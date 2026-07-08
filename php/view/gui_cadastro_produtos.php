@@ -31,7 +31,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 </head>
 
 <body>
-  <aside>
+  <aside id="sidebar">
     <nav>
       <ul>
         <li>
@@ -161,49 +161,8 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
     <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
   </main>
-  <script>
-    document.getElementById('imagemProduto').addEventListener('change', function() {
-      if (this.files && this.files[0]) {
-
-        const tamanhoArquivo = this.files[0].size;
-
-        const limiteMaximo = 2 * 1024 * 1024;
-
-        if (tamanhoArquivo > limiteMaximo) {
-          alert('A imagem escolhida é muito grande! O tamanho máximo permitido é de 2 MB.');
-
-          this.value = '';
-        }
-      }
-    });
-
-    const msgElement = document.getElementById('session-msg');
-
-    if (msgElement) {
-      setTimeout(() => {
-        msgElement.style.display = 'none';
-      }, 6000);
-    }
-  </script>
-<script>
-  const resizeBtn = document.querySelector("[data-resize-btn]");
-  const icon = resizeBtn.querySelector("i");
-
-  const alternarIcone = () => {
-    const ativo = document.body.classList.contains("sb-expanded");
-    icon.classList.toggle("bi-x-lg", ativo);
-    icon.classList.toggle("bi-list", !ativo);
-  };
-
-  resizeBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    document.body.classList.toggle("sb-expanded");
-    alternarIcone();
-  });
-
-  resizeBtn.addEventListener("mouseenter", alternarIcone);
-  resizeBtn.addEventListener("mouseleave", alternarIcone);
-</script>
+  
+  <script type="module" src="../../js/main.js"></script>
 
   <!-- Acessibilidade -->
 

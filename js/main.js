@@ -1,6 +1,8 @@
 import { inicializarSidebar } from "./modules/sidebar.js";
-import { gerenciarCheckboxesVeC } from "./modules/checkboxes.js";
 import { sessionMsg } from "./modules/session_msg.js";
+import { verificarTamanhoImagem } from "./modules/inputs.js";
+import { gerenciarCheckboxesVeC } from "./modules/inputs.js";
+import { checkboxVendido } from "./modules/inputs.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Sidebar
@@ -13,12 +15,22 @@ document.addEventListener("DOMContentLoaded", () => {
     sessionMsg();
   }
 
-  // Checkboxes
-  // Checbox Vendido e Checkbox Cancelado
+  // Input
+  // Tamanho da imagem
+  if (document.getElementById('imagemProduto')) {
+    verificarTamanhoImagem();
+  }
+
+  // Checkbox Vendido e Checkbox Cancelado
   if (document.getElementById("containerVendido") && document.getElementById("containerCancelado")) {
     gerenciarCheckboxesVeC();
   }
 
+  // Checkbox Vendido
+
+  if (document.getElementById("containerVendido")) {
+    checkboxVendido();
+  }
 
 
 

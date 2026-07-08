@@ -40,7 +40,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 </head>
 
 <body>
-  <aside>
+  <aside id="sidebar">
     <nav>
       <ul>
         <li>
@@ -188,57 +188,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 
   </div>
 
-  <script>
-    document.getElementById('imagemProduto').addEventListener('change', function() {
-      // 1. Verifica se o usuário realmente selecionou um arquivo
-      if (this.files && this.files[0]) {
-
-        // 2. Pega o tamanho do arquivo em Bytes
-        const tamanhoArquivo = this.files[0].size;
-
-        // 3. Define o limite máximo: 2 Megabytes em Bytes (2 * 1024 * 1024)
-        const limiteMaximo = 2 * 1024 * 1024;
-
-        // 4. Se o tamanho for maior que o limite...
-        if (tamanhoArquivo > limiteMaximo) {
-          alert('A imagem escolhida é muito grande! O tamanho máximo permitido é de 2 MB.');
-
-          // Limpa o campo para o usuário não conseguir enviar o arquivo gigante
-          this.value = '';
-        }
-      }
-    });
-  </script>
-
-  <script>
-    const msgElement = document.getElementById('session-msg');
-
-    if (msgElement) {
-      setTimeout(() => {
-        msgElement.style.display = 'none';
-      }, 6000);
-    }
-  </script>
-
-  <script>
-    const resizeBtn = document.querySelector("[data-resize-btn]");
-    const icon = resizeBtn.querySelector("i");
-
-    const alternarIcone = () => {
-      const ativo = document.body.classList.contains("sb-expanded");
-      icon.classList.toggle("bi-x-lg", ativo);
-      icon.classList.toggle("bi-list", !ativo);
-    };
-
-    resizeBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      document.body.classList.toggle("sb-expanded");
-      alternarIcone();
-    });
-
-    resizeBtn.addEventListener("mouseenter", alternarIcone);
-    resizeBtn.addEventListener("mouseleave", alternarIcone);
-  </script>
+  <script type="module" src="../../js/main.js"></script>
 
   <!-- Acessibilidade -->
 

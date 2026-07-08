@@ -30,13 +30,13 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 </head>
 
 <body>
-  <aside>
+  <aside id="sidebar">
     <nav>
       <ul>
         <li>
-           <a href="#" data-resize-btn class="btn-menu" title="Esconder/expandir menu" >
+          <a href="#" data-resize-btn class="btn-menu" title="Esconder/expandir menu">
             <i class="bi bi-list"></i>
-             
+
           </a>
         </li>
 
@@ -82,7 +82,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     </nav>
   </aside>
 
- 
+
   <main class='conteudo-pagina'>
     <?php
     if (isset($_SESSION["msg"])) {
@@ -118,15 +118,10 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
   </div>
 
-  <script>
-    const msgElement = document.getElementById('session-msg');
+  <script type="module" src="../../js/main.js"></script>
 
-    if (msgElement) {
-      setTimeout(() => {
-        msgElement.style.display = 'none';
-      }, 6000);
-    }
-  </script>
+
+
 
   <!-- Acessibilidade -->
 
@@ -141,25 +136,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
 
-<script>
-  const resizeBtn = document.querySelector("[data-resize-btn]");
-  const icon = resizeBtn.querySelector("i");
 
-  const alternarIcone = () => {
-    const ativo = document.body.classList.contains("sb-expanded");
-    icon.classList.toggle("bi-x-lg", ativo);
-    icon.classList.toggle("bi-list", !ativo);
-  };
-
-  resizeBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    document.body.classList.toggle("sb-expanded");
-    alternarIcone();
-  });
-
-  resizeBtn.addEventListener("mouseenter", alternarIcone);
-  resizeBtn.addEventListener("mouseleave", alternarIcone);
-</script>
 </body>
 
 </html>

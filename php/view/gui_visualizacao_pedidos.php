@@ -46,7 +46,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
 </head>
 
 <body>
-  <aside>
+  <aside id="sidebar">
     <nav>
       <ul>
         <li>
@@ -197,37 +197,8 @@ if (isset($_SESSION['pedidoSelecionado'])) {
 
   </div>
 
+  <script type="module" src="../../js/main.js"></script>
   <script src="../../js/busca_pedidos.js"></script>
-  <script>
-    const msgElement = document.getElementById('session-msg');
-
-    if (msgElement) {
-      setTimeout(() => {
-        msgElement.style.display = 'none';
-      }, 6000);
-    }
-  </script>
-
-
-<script>
-  const resizeBtn = document.querySelector("[data-resize-btn]");
-  const icon = resizeBtn.querySelector("i");
-
-  const alternarIcone = () => {
-    const ativo = document.body.classList.contains("sb-expanded");
-    icon.classList.toggle("bi-x-lg", ativo);
-    icon.classList.toggle("bi-list", !ativo);
-  };
-
-  resizeBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    document.body.classList.toggle("sb-expanded");
-    alternarIcone();
-  });
-
-  resizeBtn.addEventListener("mouseenter", alternarIcone);
-  resizeBtn.addEventListener("mouseleave", alternarIcone);
-</script>
 
   <!-- Acessibilidade -->
 

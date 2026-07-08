@@ -48,7 +48,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
 </head>
 
 <body>
-    <aside>
+    <aside id="sidebar">
         <nav>
             <ul>
                 <li>
@@ -255,6 +255,8 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
     </main>
 
     </div>
+
+    <script type="module" src="../../js/main.js"></script>
 
     <script src="../../js/busca_produtos_pedido.js"></script>
 
