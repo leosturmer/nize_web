@@ -197,7 +197,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
 
   </div>
 
-  <script src="busca_pedidos.js"></script>
+  <script src="../../js/busca_pedidos.js"></script>
   <script>
     const msgElement = document.getElementById('session-msg');
 

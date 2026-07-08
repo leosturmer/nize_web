@@ -256,7 +256,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
 
     </div>
 
-    <script src="busca_produtos_pedido.js"></script>
+    <script src="../../js/busca_produtos_pedido.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

@@ -179,11 +179,9 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      // const statusPedido = document.getElementById("statusPedido");
       const containerVendido = document.getElementById("containerVendido");
       const containerCancelado = document.getElementById("containerCancelado");
 
-      // Função que gerencia o que deve aparecer baseado no valor selecionado
       function gerenciarCheckboxes() {
         const valorSelecionado = statusPedido.value;
 
@@ -194,16 +192,12 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
           containerVendido.style.display = "none"; // Esconde o de venda
           containerCancelado.style.display = "block"; // Mostra o de cancelamento
         } else {
-          // Se for "encomendado" ou "pagamento", esconde ambos
           containerVendido.style.display = "none";
           containerCancelado.style.display = "none";
         }
       }
 
-      // 1. Escuta a mudança de opções no select pelo usuário
-      // statusPedido.addEventListener("change", gerenciarCheckboxes);
 
-      // 2. Executa uma vez ao carregar a página (importante para telas de ALTERAÇÃO)
       gerenciarCheckboxes();
     });
   </script>

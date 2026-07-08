@@ -129,7 +129,7 @@ if (!empty($_SESSION['usuario_logado'])) {
         <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
     </main>
 
-    <script src="busca_produtos.js"></script>
+    <script src="../../js/busca_produtos.js"></script>
     <script>
         const msgElement = document.getElementById('session-msg');
 

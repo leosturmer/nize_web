@@ -237,7 +237,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
 
     </div>
 
-    <script src="busca_produtos_pedido.js"></script>
+    <script src="../../js/busca_produtos_pedido.js"></script>
 
 
     <script>

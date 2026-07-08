@@ -219,7 +219,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
         <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
     </main>
 
-    <script src="busca_produtos_pedido.js"></script>
+    <script src="../../js/busca_produtos_pedido.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const statusPedido = document.getElementById("statusPedido");

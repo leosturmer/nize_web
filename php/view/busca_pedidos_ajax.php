@@ -46,7 +46,7 @@ if (!empty($listaPedidos)){
         echo '<div class="product-view">';
 
         ?>
-        <h2>Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
+        <h2 class="num-pedido">Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
 
         <?php            
             foreach ($dados_pedido['produtos'] as $produto) {
