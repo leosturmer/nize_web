@@ -16,25 +16,43 @@ export function verificarTamanhoImagem() {
 }
 
 export function gerenciarCheckboxesVeC() {
+  const statusPedido = document.getElementById("statusPedido");
   const containerVendido = document.getElementById("containerVendido");
   const containerCancelado = document.getElementById("containerCancelado");
 
-  function gerenciarCheckboxes() {
-    const valorSelecionado = statusPedido.value;
+  if (!containerVendido || !containerCancelado) return;
+
+  function gerenciar(origemDoClique = false) {
+    const valorSelecionado = statusPedido ? statusPedido.value : "cancelado";
 
     if (valorSelecionado === "vendido") {
-      containerVendido.style.display = "block"; // Mostra o de venda
-      containerCancelado.style.display = "none"; // Esconde o de cancelamento
+      containerVendido.style.display = "block";
+      containerCancelado.style.display = "none";
     } else if (valorSelecionado === "cancelado") {
-      containerVendido.style.display = "none"; // Esconde o de venda
-      containerCancelado.style.display = "block"; // Mostra o de cancelamento
+      containerVendido.style.display = "none";
+      containerCancelado.style.display = "block";
+
+      if (origemDoClique === true) {
+        alert("Atenção: Se você salvar este pedido como CANCELADO, ele não poderá mais ser editado!");
+      }
     } else {
       containerVendido.style.display = "none";
       containerCancelado.style.display = "none";
+      
+      const chkBaixa = document.getElementById("darBaixaEstoque");
+      const chkEstorno = document.getElementById("estornarEstoque");
+      if (chkBaixa) chkBaixa.checked = false;
+      if (chkEstorno) chkEstorno.checked = false;
     }
   }
 
-  gerenciarCheckboxes();
+  if (statusPedido) {
+    statusPedido.addEventListener("change", function() {
+      gerenciar(true);
+    });
+  }
+
+  gerenciar(false);
 }
 
 export function checkboxVendido() {

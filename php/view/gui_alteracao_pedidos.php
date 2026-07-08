@@ -228,7 +228,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                                 </label>
                             </div>
                             <div id="containerCancelado" style="display: none;">
-                                <p>Atenção: <br> Um pedido cancelado não poderá mais ser editado posteriormente!<br></p>
+                                <p>Atenção: <br> Pedidos cancelados não podem ser editados!<br></p>
                                 <label class="label-baixa-estoque">
                                     Devolver produtos ao estoque?
                                     <input type="checkbox" name="estornarEstoque" id="estornarEstoque" class="input-produto input-checkbox" value="1">
@@ -260,72 +260,6 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
 
     <script src="../../js/busca_produtos_pedido.js"></script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const statusPedido = document.getElementById("statusPedido");
-            const containerVendido = document.getElementById("containerVendido");
-            const containerCancelado = document.getElementById("containerCancelado");
-
-
-            function gerenciarCheckboxes(origemDoClique = false) {
-                const valorSelecionado = statusPedido.value;
-
-                if (valorSelecionado === "vendido") {
-                    containerVendido.style.display = "block";
-                    containerCancelado.style.display = "none";
-                } else if (valorSelecionado === "cancelado") {
-                    containerVendido.style.display = "none";
-                    containerCancelado.style.display = "block";
-
-
-                    if (origemDoClique === true) {
-                        alert("Atenção: Se você salvar este pedido como CANCELADO, ele não poderá mais ser editado!");
-                    }
-                } else {
-                    containerVendido.style.display = "none";
-                    containerCancelado.style.display = "none";
-                    document.getElementById("darBaixaEstoque").checked = false;
-                    document.getElementById("estornarEstoque").checked = false;
-
-                }
-            }
-
-            statusPedido.addEventListener("change", function() {
-                gerenciarCheckboxes(true);
-            });
-
-            gerenciarCheckboxes(false);
-        });
-    </script>
-
-    <script>
-        const msgElement = document.getElementById('session-msg');
-
-        if (msgElement) {
-            setTimeout(() => {
-                msgElement.style.display = 'none';
-            }, 6000);
-        }
-    </script>
-    <script>
-        const resizeBtn = document.querySelector("[data-resize-btn]");
-        const icon = resizeBtn.querySelector("i");
-
-        const alternarIcone = () => {
-            const ativo = document.body.classList.contains("sb-expanded");
-            icon.classList.toggle("bi-x-lg", ativo);
-            icon.classList.toggle("bi-list", !ativo);
-        };
-
-        resizeBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            document.body.classList.toggle("sb-expanded");
-            alternarIcone();
-        });
-
-        resizeBtn.addEventListener("mouseenter", alternarIcone);
-        resizeBtn.addEventListener("mouseleave", alternarIcone);
-    </script>
 
     <!-- Acessibilidade -->
 
