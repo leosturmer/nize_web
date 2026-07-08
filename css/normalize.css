@@ -15,7 +15,6 @@
 }
 
 :root {
-  
   --darkerPurple: #3f1970;
   --darkPurple: #571fa6;
   --normalPurple: #853fcb;
@@ -84,7 +83,7 @@ main {
 
 body {
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
@@ -141,26 +140,6 @@ button.navbar-toggler {
   padding: 0.3em
 } */
 
-
-#logo-sidenav {
-  width: 80px;
-
-  margin: 3em 10px;
-
-}
-
-#logo-sidenav-view {
-  margin: 7.8em 10px;
-  width: 80px;
-  /* margin: 10px; */
-  text-align: left;
-
-
-
-  background-color: transparent;
-  border: none;
-
-}
 
 .botoes-index {
   align-items: center;
