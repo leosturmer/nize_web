@@ -3,6 +3,11 @@
 
 ##### Fazer a responsividade
 
+
+- FAzer o botão de menu ficar sempre fixo na parte superior
+- Tem que ver como fazer isso
+
+
 - Nas páginas que tem as views de produto, vai ter que virar 1 coluna
 - O menu lateral tem que sumir quando ficar muito pequeno, aí tem que aparecer o logo do site em cima e o botão do menu
     -  Aí clica no botão do menu e ele fica na tela toda

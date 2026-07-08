@@ -125,6 +125,23 @@ footer {
 
 /* NORMALIZAÇÕES ITENS */
 
+/* Bootstrap icons */
+/* .navbar.bg-body-tertiary.fixed-top {
+  background-color: transparent;
+  color: transparent;
+  position: absolute;
+  z-index: 9999;
+}
+
+button.navbar-toggler {
+  width: fit-content;
+  border: var(--border); 
+  box-shadow: var(--box-shadow); 
+  border-radius: 0px; 
+  padding: 0.3em
+} */
+
+
 #logo-sidenav {
   width: 80px;
 
