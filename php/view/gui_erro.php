@@ -27,9 +27,11 @@ if (!empty($_SESSION['usuario_logado'])) {
 
 <body>
 
-    <header class="header-view-loja">
-        <a href="<?php echo $logo_link ?>"><img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav"></a>
-    </header>
+    <aside>
+        <a href="<?php echo $logo_link ?>" class="link-logo">
+            <img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
+        </a>
+    </aside>
 
     <!-- <div class="conteudo-pagina"> -->
 
