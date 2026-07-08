@@ -28,13 +28,12 @@ if (!empty($_SESSION['usuario_logado'])) {
 <body>
 
     <aside>
-        <a href="<?php echo $logo_link ?>" class="link-logo">
+        <a href="<?php echo $logo_link ?>" class="link-logo" title="Tela inicial">
             <img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
         </a>
     </aside>
 
-    <!-- <div class="conteudo-pagina"> -->
-
+   
 
     <main class='conteudo-pagina'>
         <h1 class="titulo-erro">Ops! Algo deu errado</h1>

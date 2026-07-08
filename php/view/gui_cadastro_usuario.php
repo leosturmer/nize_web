@@ -32,7 +32,7 @@
         ?>
 
         <aside style="background-color: white;">
-            <a href="../../index.php" class="link-logo">
+            <a href="../../index.php" class="link-logo" title="Tela inicial">
                 <img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
             </a>
         </aside>
