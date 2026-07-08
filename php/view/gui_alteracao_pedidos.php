@@ -244,7 +244,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                     <div class="form-pedidos-items">
                         <button type="submit" class="btn-alt-pedido">Alterar</button>
                         <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-alt-pedido">Clonar</a>
-                        <button formaction="../view/gui_visualizacao_pedidos.php" class="btn-alt-pedido">Voltar</button>
+                        <a href="../view/gui_visualizacao_pedidos.php" class="btn-alt-pedido">Voltar</a>
                     </div>
                 </form>
             </div>

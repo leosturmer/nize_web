@@ -52,9 +52,9 @@ switch ($opcao) {
             unset($_SESSION['carrinho'][$id_produto]);
             $_SESSION['total_compra'] -= $valor;
 
-            if (isset($_SESSION['pedidoSelecionado']) && $id_pedido > 0) {
-                $pedidoDAO->removerQuantidade($id_produto, $id_pedido);
-            }
+            // if (isset($_SESSION['pedidoSelecionado']) && $id_pedido > 0) {
+            //     $pedidoDAO->removerQuantidade($id_produto, $id_pedido);
+            // }
 
             $_SESSION['msg'] = "<p class='success-msg'>Produto removido do pedido.</p>";
         } else {
