@@ -74,7 +74,7 @@ body.sb-expanded {
 html,
 body,
 main {
-  height: 100%;
+  height: 100vh;
   margin: 0;
   padding: 0;
   background-color: whitesmoke;

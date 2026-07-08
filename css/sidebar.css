@@ -16,26 +16,36 @@ body.sb-expanded {
 }
 
 aside {
-  position: fixed;
+  position: fixed !important;
   inset: 0 auto 0 0;
   padding: 1rem;
   width: var(--sb-width);
+  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
   background-color: var(--lightGreen);
   border-right: var(--border);
   transition: width 0.4s ease-in-out;
 }
 
-nav {
-  height: 100vh;
+#sidebar nav, 
+#sidebar ul {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  
+  display: flex;
+  flex-direction: column; 
+  flex-flow: column;
+  gap: 0.25rem;
+
 }
 
 nav ul {
   list-style: none;
-  /* height: 100%; */
-  height: fit-content;
-  display: flex;
+
   flex-flow: column;
-  gap: 0.25rem;
 }
 
 nav li:last-child {
@@ -161,6 +171,12 @@ nav a span {
   transition: opacity 0.3s ease-in-out;
 }
 
+#header-mobile .btn-menu i {
+  margin-top: -5px;
+  padding: 0;
+  font-size: 1.2em;
+}
+
 .btn-menu {
   background-color: whitesmoke;
   color: black;
@@ -171,14 +187,12 @@ nav a span {
 
   rotate: 0deg;
   transition: rotate 0.4s ease-in-out;
+
+  display: flex;
+  align-content: center;
 }
 
-#header-mobile a i {
-  margin: 0;
-  padding: 0;
-  font-size: 1.2em;
-  /* background-color: red; */
-}
+
 
 .btn-menu:hover {
   background-color: var(--darkGreen);
@@ -199,12 +213,13 @@ nav a span {
 
   color: var(--darkGreen);
 
-  margin-top: auto;
+  /* margin-top: auto; */
   bottom: 10px;
   /* padding: 0.3rem; */
   /* margin-right: 2em; */
   width: fit-content;
   align-self: center;
+  display: flex;
 }
 
 .btn-sair:hover {
@@ -268,10 +283,6 @@ nav a span {
   height: 2.5em;
 }
 
-/* .sb-expanded aside .bx-chevrons-right {
-    rotate: 180deg;
-  } */
-
 main {
   margin-left: 5rem;
   padding: 1rem 2rem;
@@ -298,6 +309,7 @@ main {
 @media screen and (max-width: 961px) {
   #sidebar {
     visibility: hidden;
+    position: static;
   }
 
   header {

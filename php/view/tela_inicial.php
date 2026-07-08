@@ -30,57 +30,58 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 </head>
 
 <body>
-  <aside id="sidebar">
-    <nav>
-      <ul>
-        <li>
-          <a href="#" data-resize-btn class="btn-menu" title="Esconder/expandir menu">
-            <i class="bi bi-list"></i>
+<aside id="sidebar">
+  <nav>
+    <ul>
+      <li>
+        <a href="#" data-resize-btn class="btn-menu" title="Esconder/expandir menu">
+          <i class="bi bi-list"></i>
+        </a>
+      </li>
 
-          </a>
-        </li>
+      <li>
+        <a href="tela_inicial.php" class="link-logo" title="Tela inicial">
+          <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+        </a>
+      </li>
 
-        <li>
-          <a href="tela_inicial.php" class="link-logo" title="Tela inicial">
-            <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
-          </a>
-        </li>
+      <li>
+        <a href="tela_inicial.php" class="active" title="Tela inicial">
+          <i class="bi bi-house"></i>
+          <span>Tela inicial</span>
+        </a>
+      </li>
 
-        <li>
-        <li>
-          <a href="tela_inicial.php" class="active" title="Tela inicial">
-            <i class="bi bi-house"></i>
-
-            <span>Tela inicial</span>
-
-          </a>
-        </li>
+      <li>
         <a href="gui_visualizacao_produtos.php" title="Tela de produtos">
           <i class="bi bi-box-seam"></i>
           <span>Produtos</span>
         </a>
-        </li>
-        </li>
+      </li>
+
+      <li>
         <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos">
           <i class="bi bi-clipboard2-check"></i>
           <span>Pedidos</span>
         </a>
-        </li>
-        </li>
+      </li>
+
+      <li>
         <a href="gui_minha_area.php" title="Minha área">
           <i class="bi bi-person-lines-fill"></i>
           <span>Minha área</span>
         </a>
-        </li>
-        <li>
-          <a href="../controller/logout.php" class="btn-sair" title="Sair">
-            <i class="bi bi-box-arrow-left"></i>
-            <span>Encerrar sessão</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </aside>
+      </li>
+
+      <li class="item-logout">
+        <a href="../controller/logout.php" class="btn-sair" title="Sair">
+          <i class="bi bi-box-arrow-left"></i>
+          <span>Encerrar sessão</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</aside>
 
   <header id="header-mobile">
       <div class="container-header">

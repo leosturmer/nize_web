@@ -3,6 +3,8 @@
 
 ##### Fazer a responsividade
 
+- Substituir TODAS sidenav pela do tela_inicial (ver bem os class active)
+- Adicionar o HEADER em todas as páginas
 
 - FAzer o botão de menu ficar sempre fixo na parte superior
 - Tem que ver como fazer isso
@@ -19,7 +21,7 @@
 - Fazer versão smartphone
     - esse vai ser foda
     
-
+- Tem que ver os header do view_loja, gui_erro, etc, como vai ficar
 
 
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
