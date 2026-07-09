@@ -30,14 +30,15 @@ $usuario = unserialize($_SESSION['usuario_logado']);
   <title>Nize - Minha área</title>
 </head>
 
+
 <body>
   <aside id="sidebar">
     <nav>
       <ul>
         <li>
-           <a href="#" data-resize-btn class="btn-menu" title="Esconder/expandir menu" >
+          <a href="#" data-resize-btn class="btn-menu" title="Esconder/expandir menu">
             <i class="bi bi-list"></i>
-             
+
           </a>
         </li>
 
@@ -83,7 +84,17 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     </nav>
   </aside>
 
- 
+  <header id="header-mobile">
+    <div class="container-header">
+      <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
+        <i class="bi bi-list"></i>
+      </a>
+      <a href="tela_inicial.php" class="link-logo-header" title="Tela inicial">
+        <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+      </a>
+    </div>
+  </header>
+
 
   <main class='conteudo-pagina'>
 
@@ -111,12 +122,21 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     } else {
       $nome_visualizacao = "Não informado";
     }
+
+    if ($usuario->telefone) {
+      $telefone = $usuario->telefone;
+    } else {
+      $telefone = "Não informado";
+    }
+
     ?>
 
-    <h1>Minha área</h1>
-
-    <div id="minha-area">
-      <p>
+    <div class="main-minha-area">
+      <h1>Minha área</h1>
+      <div id="minha-area">
+        <p>
+        <h3>Seus dados atuais:</h3>
+        <hr>
         <strong>Nome</strong>: <?php echo $usuario->nome ?>
         <br>
         <strong>Nome loja</strong>: <?php echo $nome_loja ?>
@@ -126,13 +146,14 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         <strong>Visualização da loja</strong>: <?php echo $view_loja ?>
         <br>
         <strong>Link de visualização</strong>: <?php echo $nome_visualizacao ?>
-      </p>
-
-    </div>
-
-    <div class="usuario-btns">
-      <a href="./gui_alteracao_cadastro.php" class="btn-alterar">Alterar cadastro</a>
-      <button formaction="../controller/usuarioControle.php?op=excluir" onclick="return confirm('A exclusão deletará todos os dados do banco. Deseja confirmar?')" class="btn-excluir">Excluir conta</button>
+        <br>
+        <strong>WhatsApp</strong> (opcional): <?php echo $telefone ?>
+        </p>
+      </div>
+      <div class="usuario-btns">
+        <a href="./gui_alteracao_cadastro.php" class="btn-alterar">Alterar cadastro</a>
+        <button formaction="../controller/usuarioControle.php?op=excluir" onclick="return confirm('A exclusão deletará todos os dados do banco. Deseja confirmar?')" class="btn-excluir">Excluir conta</button>
+      </div>
     </div>
 
     <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>

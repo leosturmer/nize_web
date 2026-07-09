@@ -37,6 +37,8 @@ if (isset($_SESSION['pedidoSelecionado'])) {
     <title>Clonar Pedido</title>
 </head>
 
+
+
 <body>
     <aside id="sidebar">
         <nav>
@@ -90,7 +92,16 @@ if (isset($_SESSION['pedidoSelecionado'])) {
         </nav>
     </aside>
 
-
+    <header id="header-mobile">
+        <div class="container-header">
+            <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
+                <i class="bi bi-list"></i>
+            </a>
+            <a href="tela_inicial.php" class="link-logo-header" title="Tela inicial">
+                <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+            </a>
+        </div>
+    </header>
     <main class='conteudo-pagina'>
         <?php
         if (isset($_SESSION["msg"])) {

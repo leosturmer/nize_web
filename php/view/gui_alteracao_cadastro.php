@@ -31,14 +31,16 @@ $usuario = unserialize($_SESSION['usuario_logado']);
   <title>Nize - Alteração de cadastro</title>
 </head>
 
+
+
 <body>
   <aside id="sidebar">
     <nav>
       <ul>
         <li>
-           <a href="#" data-resize-btn class="btn-menu" title="Esconder/expandir menu" >
+          <a href="#" data-resize-btn class="btn-menu" title="Esconder/expandir menu">
             <i class="bi bi-list"></i>
-             
+
           </a>
         </li>
 
@@ -83,7 +85,17 @@ $usuario = unserialize($_SESSION['usuario_logado']);
       </ul>
     </nav>
   </aside>
- 
+
+  <header id="header-mobile">
+    <div class="container-header">
+      <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
+        <i class="bi bi-list"></i>
+      </a>
+      <a href="tela_inicial.php" class="link-logo-header" title="Tela inicial">
+        <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+      </a>
+    </div>
+  </header>
 
   <main class='conteudo-pagina'>
 
@@ -117,6 +129,12 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         } else {
           $nome_visualizacao = "Não informado";
         }
+        if ($usuario->telefone) {
+          $telefone = $usuario->telefone;
+        } else {
+          $telefone = "Não informado";
+        }
+    
         ?>
         <hr>
         <p>
@@ -129,6 +147,8 @@ $usuario = unserialize($_SESSION['usuario_logado']);
           <strong>Visualização da loja</strong>: <?php echo $view_loja ?>
           <br>
           <strong>Link de visualização</strong>: <?php echo $nome_visualizacao ?>
+          <br>
+          <strong>WhatsApp</strong> (opcional): <?php echo $telefone ?>
         </p>
       </div>
 

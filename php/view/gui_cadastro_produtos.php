@@ -30,14 +30,16 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
 </head>
 
+
+
 <body>
   <aside id="sidebar">
     <nav>
       <ul>
         <li>
-           <a href="#" data-resize-btn class="btn-menu" title="Esconder/expandir menu" >
+          <a href="#" data-resize-btn class="btn-menu" title="Esconder/expandir menu">
             <i class="bi bi-list"></i>
-             
+
           </a>
         </li>
 
@@ -83,7 +85,16 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     </nav>
   </aside>
 
- 
+  <header id="header-mobile">
+    <div class="container-header">
+      <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
+        <i class="bi bi-list"></i>
+      </a>
+      <a href="tela_inicial.php" class="link-logo-header" title="Tela inicial">
+        <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+      </a>
+    </div>
+  </header>
 
   <main class='conteudo-pagina'>
 
@@ -161,7 +172,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
     <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
   </main>
-  
+
   <script type="module" src="../../js/main.js"></script>
 
   <!-- Acessibilidade -->
