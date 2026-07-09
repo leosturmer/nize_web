@@ -842,6 +842,19 @@ input#prazoPedido {
 
 /* Tela Minha Área */
 
+.main-minha-area {
+  margin: 0 auto;
+  /* align-content: center; */
+}
+
+.main-minha-area h1 {
+  text-align: center;
+}
+
+.main-minha-area #minha-area {
+  width: 100%;
+}
+
 #minha-area {
   display: block;
   line-height: 2.5em;
@@ -852,7 +865,7 @@ input#prazoPedido {
   background-color: white;
 
   padding: 1em;
-  margin: 0 2em;
+  /* margin: 0 2em; */
   /* margin: 0 auto; */
 
   width: 50%;

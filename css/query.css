@@ -9,6 +9,37 @@
 
 */
 
+@media (max-width:641px)  {
+   /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+  
+   #container-index.container {
+    display: flex;
+    flex-direction: column;
+    /* width: 65%; */
+    /* margin: 0 auto; */
+    /* align-self: center; */
+    /* margin-left: 1em; */
+   }
+
+   #subtitulo-index {
+    width: auto;
+    font-size: 1.3em;
+   }
+
+   .botoes-index {
+    display: flex;
+    flex-direction: column;
+   }
+
+
+
+
+
+   footer {
+    text-align: center;
+   }
+  }
+
 
 
 

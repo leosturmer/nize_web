@@ -72,6 +72,7 @@ nav li:last-child {
 
 header {
   visibility: hidden;
+  width: 0em;
 }
 
 #logo-header {
@@ -284,7 +285,7 @@ nav a span {
 }
 
 main {
-  margin-left: 5rem;
+  /* margin-left: 5rem; */
   padding: 1rem 2rem;
   transition: margin-left 0.4s ease-in-out;
 }
@@ -301,16 +302,17 @@ main {
 /* Queries específicas */
 
 /* Computador */
-@media screen and (min-width: 1230px) {
-}
+/* @media screen and (min-width: 1230px) {
+} */
 
 /* Tablet */
 
-@media screen and (max-width: 961px) {
+@media screen and (max-width: 1280px) {
   #sidebar {
     visibility: hidden;
     position: static;
   }
+
 
   header {
     /* background-color: red; */
@@ -326,8 +328,14 @@ main {
     height: 5em;
   }
 
+  main {
+    margin-left: 1em;
+  }
   .sb-expanded #sidebar {
+    position: fixed;
+    z-index: 9999;
     visibility: visible;
+    width: 17.5em;
   }
 
   .sb-expanded #logo-header {
@@ -340,8 +348,15 @@ main {
     border-bottom: transparent;
   }
 
+  /* .sb-expanded #header-mobile .btn-menu {
+    visibility: visible;
+    position: absolute;
+    z-index: 99999;
+  } */
+
   .sb-expanded #sidebar .btn-menu {
     visibility: hidden;
+  
   }
 
   .sb-expanded #logo-sidenav {
