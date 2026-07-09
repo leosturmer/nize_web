@@ -9,62 +9,84 @@
 
 */
 
-@media (max-width:641px)  {
-   /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+@media (max-width: 641px) {
+  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
 
-   
-   #aside-deslog {
+  main {
+    padding: 1em;
+  }
+
+  #aside-deslog {
     visibility: hidden;
-   }
-  
-   /* Index */
-   #container-index.container {
+  }
+
+  /* Index */
+  #container-index.container {
     display: flex;
     flex-direction: column;
     margin: auto auto;
-    margin-top: 18dvh;
+    /* margin-top: 18dvh; */
     /* width: 65%; */
     /* margin: 0 auto; */
     /* align-self: center; */
     /* margin-left: 1em; */
-   }
+  }
 
-   #subtitulo-index {
+  #subtitulo-index {
     width: auto;
     font-size: 1.3em;
-   }
+  }
 
-   .botoes-index {
+  .botoes-index {
     display: flex;
     flex-direction: column;
-   }
+  }
 
+  /* Tela de login */
 
-   /* Tela de login */
-
-   .container.container-login {
+  .container.container-login {
     display: flex;
     flex-direction: column;
-    margin: 2.5em -10px;
-    /* margin-top: 10dvh; */
-   }
+    margin: 1.5em -10px;
+  }
+
+
+  #form-login {
+    margin: 0;
+    align-self: center;
+  }
+
+
+  .logo-header-mobile {
+    position: relative;
+    z-index: 9999;
+    align-self: center;
+    padding: 0;
+  }
 
 
 
+  /* Tela de cadastro */
 
-   /* Footer */
+  #titulo-cadastro {
+    font-size: 22px;
+    margin-bottom: 0;
+  }
 
+  .container.container-cadastro {
+    padding: 20px 10px;
+  }
 
-   footer {
+  /* Footer */
+
+  footer {
     text-align: center;
     position: fixed;
+    padding: 5px 0;
     bottom: 5px;
     font-size: 0.6em;
     margin: 0 auto;
     align-self: center;
     /* width: fit-content; */
-    
-
-   }
   }
-
+}

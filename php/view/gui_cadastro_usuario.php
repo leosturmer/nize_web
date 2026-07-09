@@ -18,27 +18,8 @@
 
 
 <body>
-    <!-- <header>
-        Nize - Organize suas pedidos
-    </header> -->
 
-
-
-    <aside style="background-color: white;">
-        <a href="../../index.php" class="link-logo" title="Tela inicial">
-            <img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
-        </a>
-    </aside>
-
-    <header id="header-mobile-deslog" >
-        <div class="container-header" style="background-color: white;">
-            <a href="tela_inicial.php" class="link-logo-header" title="Tela inicial">
-                <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
-            </a>
-        </div>
-    </header>
-
-    <main>
+    <main id="main-index">
 
         <?php
         session_start();
@@ -49,6 +30,9 @@
         }
         ?>
 
+        <a href="../../index.php" class="link-logo-header logo-header-mobile" title="Tela inicial">
+            <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+        </a>
 
         <div class="container container-cadastro">
             <h1 id="titulo-cadastro">
@@ -89,15 +73,15 @@
     <!-- Acessibilidade -->
 
     <div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
     </div>
-  </div>
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 
 </body>
 

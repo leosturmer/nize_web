@@ -25,11 +25,11 @@
         }
         ?>
 
-        <aside id="aside-deslog" style="background-color: white;">
-            <a href="../../index.php" class="link-logo" title="Tela inicial">
-                <img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
-            </a>
-        </aside>
+        
+
+        <a href="../../index.php" class="link-logo-header logo-header-mobile" title="Tela inicial">
+            <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+        </a>
 
 
         <div class="container container-login">
@@ -52,7 +52,7 @@
 
         <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
     </main>
-    
+
     <script type="module" src="../../js/main.js"></script>
 
     <!-- Acessibilidade -->

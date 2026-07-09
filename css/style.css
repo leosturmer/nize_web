@@ -273,6 +273,7 @@
 
   width: 456;
   height: 355;
+  align-self: center;
 }
 
 .container > img
@@ -303,9 +304,9 @@
   flex-wrap: nowrap;
 }
 
-.container-cadastro {
+/* .container-cadastro {
   margin-top: 4em;
-}
+} */
 
 #titulo-cadastro,
 #titulo-login {
