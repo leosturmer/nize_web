@@ -1,5 +1,27 @@
 ### No CSS
 
+Ordem de páginas:
+
+index
+cadastro usuario
+login
+erro
+
+visualizacao produtos
+cadastro produtos
+alteração produtos
+clonar produto
+
+visualizacao pedidos
+cadastro pedidos
+alteração pedido
+alterçaão pedido cancelado
+clonar pedido
+
+minha area
+alteração cadastro
+
+
 
 ##### Fazer a responsividade
 
@@ -21,7 +43,9 @@
 - Fazer versão smartphone
     - esse vai ser foda
     
-- Tem que ver os header do view_loja, gui_erro, etc, como vai ficar
+- Tem que ver os header do index, login, cadastro usuário, view_loja, gui_erro (?)
+    - Ver os header como ficam, deixei um exemplo no gui_cadastro_usuario
+
 
 
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
