@@ -11,7 +11,13 @@
 
 @media (max-width:641px)  {
    /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+
+   
+   #aside-deslog {
+    visibility: hidden;
+   }
   
+   /* Index */
    #container-index.container {
     display: flex;
     flex-direction: column;
@@ -34,70 +40,31 @@
    }
 
 
+   /* Tela de login */
 
+   .container.container-login {
+    display: flex;
+    flex-direction: column;
+    margin: 2.5em -10px;
+    /* margin-top: 10dvh; */
+   }
+
+
+
+
+   /* Footer */
 
 
    footer {
     text-align: center;
+    position: fixed;
+    bottom: 5px;
+    font-size: 0.6em;
+    margin: 0 auto;
+    align-self: center;
+    /* width: fit-content; */
+    
+
    }
   }
 
-
-
-
-
-
-  /* .coll-sidenav {
-    display: none;
-  }
-
-  .coll-sidenav[open] + .conteudo-pagina, 
-  .header-view-loja + .conteudo-pagina {
-    margin-left: 0px;
-    width: 100%;
-  }
-
-  div.conteudo-pagina {
-    margin-left: 0;
-  }
-
-  .coll-sidenav[open] + .conteudo-pagina,
-  .header-view-loja + .conteudo-pagina {
-    position: relative;
-    z-index: 1;
-    margin-left: 2rem;
-    width: 100%;
-  } */
-
-/* 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-  }
-  
-  #hamburguer {
-    display: none;
-    position: relative;
-    z-index: 10;
-  }
-
-  @media screen and (max-width: 768px) {
-  .header-mobile{
-    display: block;
-  }
-  .aside-desktop {
-    display: none;
-}
-  
-}
-
-@media screen and (min-width: 768px){
-  .header-mobile{
-    display: none;
-  }
-
-  main {
-    margin-left: 320px;
-  }
-}
-  */

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" style="background-color: #99d669;">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <main class="main">
+    <main id="main-index">
 
         <?php
         session_start();
@@ -25,7 +25,7 @@
         }
         ?>
 
-        <aside style="background-color: white;">
+        <aside id="aside-deslog" style="background-color: white;">
             <a href="../../index.php" class="link-logo" title="Tela inicial">
                 <img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
             </a>
@@ -52,13 +52,12 @@
 
         <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
     </main>
-
+    
     <script type="module" src="../../js/main.js"></script>
 
     <!-- Acessibilidade -->
-
     <div vw class="enabled">
-        <div vw-access-button></div>
+        <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
             <div class="vw-plugin-top-wrapper"></div>
         </div>
@@ -67,6 +66,7 @@
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
+
 
 </body>
 
