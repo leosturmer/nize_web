@@ -109,7 +109,7 @@ if (!empty($_SESSION['usuario_logado'])) {
         </div>
     </header>
 
-    <main class='main-index conteudo-pagina'>
+    <main class='conteudo-pagina'>
 
         <h1 class="titulo-erro">Ops! Algo deu errado</h1>
 

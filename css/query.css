@@ -9,6 +9,28 @@
 
 */
 
+/* TABLET */
+@media screen and (max-width: 1280px) {
+  main {
+    margin-top: 1.5em;
+    margin-left: 1em;
+  }
+
+  #container-index.container {
+    margin-top: 15dvh;
+  }
+
+  h1#titulo-inicial {
+    font-size: 22px;
+  }
+
+
+
+}
+
+
+/* CELULAR */
+
 @media (max-width: 641px) {
   /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
 
@@ -16,13 +38,40 @@
   main {
     margin-top: 1.5em;
     padding: 1em;
+    margin-left: 0px;
     /* overflow-y: auto; */
+  }
+
+  .conteudo-pagina {
+    margin-left: 0;
   }
 
   #aside-deslog {
     visibility: hidden;
   }
 
+  /* Tela de ERRO */
+
+  .titulo-erro {
+    font-size: 20px;
+    width: fit-content;
+  }
+
+  .container-inicial.container-erro {
+    width: auto;
+    padding: 2em 1em;
+  }
+
+  .container-inicial.container-erro p {
+    font-size: 16px;
+    margin-top: 0.8em;
+    margin-bottom: 0.5em;
+  }
+  
+  a.btn-voltar-erro {
+    margin-top: 30%;
+
+  }
 
   /* Index */
   #container-index.container {
