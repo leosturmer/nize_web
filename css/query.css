@@ -12,7 +12,9 @@
 @media (max-width: 641px) {
   /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
 
+  /* GERAL */
   main {
+    margin-top: 1.5em;
     padding: 1em;
     /* overflow-y: auto; */
   }
@@ -20,6 +22,7 @@
   #aside-deslog {
     visibility: hidden;
   }
+
 
   /* Index */
   #container-index.container {
@@ -95,21 +98,25 @@
     padding-right: 1em;
   }
 
+  form#form-cadastro button {
+    margin: 10px auto;
+  }
+
   
 
   /* Footer */
 
-  /* footer {
+  footer {
     font-size: 0.6em;
     text-align: center;
     align-self: center;
     
-    position: sticky;
+    /* position: sticky;
     padding: 5px 0;
 
     z-index: 1;
 
     bottom: 5px;
-    margin: 0 auto;
-  } */
+    margin: 0 auto; */
+  }
 }

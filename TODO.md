@@ -72,6 +72,9 @@ alteração cadastro
 
 ### Na documentação:
 
+- Requisito funcional é o que mexe no banco de dados
+    - Casos de uso é colocar os principais
+
 - Mudar as coisas de banco (diagramas)
 - Ver as tabelas de use cases pra mudar tbm
 
