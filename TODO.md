@@ -22,6 +22,9 @@ minha area
 alteração cadastro
 
 
+#### VER OS FOOTERs
+
+- Se o body for ROW, se o footer fica DEPOIS do main
 
 ##### Fazer a responsividade
 

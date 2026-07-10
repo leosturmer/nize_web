@@ -14,6 +14,7 @@
 
   main {
     padding: 1em;
+    /* overflow-y: auto; */
   }
 
   #aside-deslog {
@@ -44,10 +45,15 @@
 
   /* Tela de login */
 
+  #titulo-login {
+    font-size: 22px;
+  }
+
   .container.container-login {
     display: flex;
     flex-direction: column;
     margin: 1.5em -10px;
+    width: 95%;
   }
 
 
@@ -70,23 +76,40 @@
 
   #titulo-cadastro {
     font-size: 22px;
-    margin-bottom: 0;
+    padding-bottom: 0;
   }
 
   .container.container-cadastro {
     padding: 20px 10px;
+    width: 95%;
+    /* height: 10%; */
   }
+
+  form#form-cadastro  label {
+    font-size: 16px;
+    margin: 0.3em 0 0.2em 0;
+  }
+
+  .div-cadastro {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  
 
   /* Footer */
 
-  footer {
-    text-align: center;
-    position: fixed;
-    padding: 5px 0;
-    bottom: 5px;
+  /* footer {
     font-size: 0.6em;
-    margin: 0 auto;
+    text-align: center;
     align-self: center;
-    /* width: fit-content; */
-  }
+    
+    position: sticky;
+    padding: 5px 0;
+
+    z-index: 1;
+
+    bottom: 5px;
+    margin: 0 auto;
+  } */
 }

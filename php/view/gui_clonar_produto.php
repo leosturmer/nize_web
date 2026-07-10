@@ -122,7 +122,7 @@ if (!$produtoData) {
     }
     ?>
 
-    <form action="../controller/produtoControle.php?op=cadastrar" method="post" enctype="multipart/form-data" class="form-cadastro">
+    <form action="../controller/produtoControle.php?op=cadastrar" method="post" enctype="multipart/form-data" class="form-cadastro-produto">
       <fieldset id="products-form">
         <legend>Informações do Novo Produto (Clone)</legend>
 

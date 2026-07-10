@@ -317,7 +317,8 @@
 #form-cadastro,
 #form-login {
   display: grid;
-  grid-template-columns: 1;
+  /* grid-template-columns: 1fr; */
+
 }
 
 #form-cadastro > label,
@@ -504,7 +505,7 @@
 
 /* Tela de cadastro de produtos */
 
-.form-cadastro {
+.form-cadastro-produto {
   display: block;
   flex-direction: column;
   align-self: center;

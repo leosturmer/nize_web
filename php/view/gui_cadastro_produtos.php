@@ -112,7 +112,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     }
     ?>
 
-    <form action="#" method="post" enctype="multipart/form-data" class="form-cadastro">
+    <form action="#" method="post" enctype="multipart/form-data" class="form-cadastro-produto">
       <fieldset id="products-form">
         <legend>Informações do produto</legend>
         <div class="inner-products-form">
