@@ -16,14 +16,37 @@
     margin-left: 1em;
   }
 
+  main.conteudo-pagina {
+    /* align-self: center; */
+    margin: 0 auto;
+  }
+
   #container-index.container {
     margin-top: 15dvh;
   }
 
-  h1#titulo-inicial {
+  h1#tituloInicial {
     font-size: 22px;
+    margin-top: 3em;
   }
 
+  div.container-inicial {
+    margin-top: 2em;
+  }
+
+  div.container-inicial > p {
+    margin-top: 0.4em;
+  }
+
+  div.container-inicial > h2 {
+    padding: 0.5em;
+  }
+
+  .btn-menu {
+    position: fixed;
+    left: 1.5em;
+    top: 0.5em;
+  }
 
 
 }
@@ -44,7 +67,13 @@
 
   .conteudo-pagina {
     margin-left: 0;
+    padding: 0 0;
+    padding-top: 2em;
+    height: 100dvh;
+    width: 100dvw;
   }
+
+
 
   #aside-deslog {
     visibility: hidden;
@@ -149,6 +178,23 @@
 
   form#form-cadastro button {
     margin: 10px auto;
+  }
+
+  /* Tela inicial */
+
+  div.container-inicial {
+    width: 20em;
+    padding: 1.5em;
+  }
+
+  div.container-inicial > p {
+    font-size: 14px;
+  }
+
+  div.container-inicial > h2 {
+
+    font-size: 18px;
+    padding-bottom: 0;
   }
 
   

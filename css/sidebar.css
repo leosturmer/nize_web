@@ -28,18 +28,17 @@ aside {
   transition: width 0.4s ease-in-out;
 }
 
-#sidebar nav, 
+#sidebar nav,
 #sidebar ul {
   height: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
-  
+
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   flex-flow: column;
   gap: 0.25rem;
-
 }
 
 nav ul {
@@ -77,16 +76,12 @@ header {
 
 #logo-header {
   width: 80px;
-  margin: 0.5em auto;
-  margin-right: 42.5px;
+  margin: 0em auto;
+  /* margin-right: 42.5px; */
 
-  transition:
-  width 0.4s ease-in-out,
-  transform 0.8s ease-in-out,
+  transition: width 0.4s ease-in-out, transform 0.8s ease-in-out,
     opacity 0.4s ease-in-out;
   transform: rotate(0deg);
-
-
 }
 
 .link-logo {
@@ -111,7 +106,7 @@ header {
   background-color: transparent;
   border: none;
   box-shadow: none;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   align-content: center;
 }
 
@@ -120,7 +115,7 @@ header {
   border-bottom: var(--border);
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
 
   width: 100%;
 
@@ -135,9 +130,7 @@ nav a {
   line-height: 1;
   color: #fff;
   text-decoration: none;
-  transition:
-    background-color 0.4s ease-in-out,
-    color 0.4s ease-in-out;
+  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
   /* width: 4.5em;
   height: 3.5em;
 
@@ -197,8 +190,6 @@ nav a span {
   display: flex;
   align-content: center;
 }
-
-
 
 .btn-menu:hover {
   background-color: var(--darkGreen);
@@ -316,8 +307,8 @@ main {
   #sidebar {
     visibility: hidden;
     position: static;
+    padding-top: 4em;
   }
-
 
   header {
     /* background-color: red; */
@@ -333,7 +324,6 @@ main {
     height: 5em;
   }
 
- 
   .sb-expanded #sidebar {
     position: fixed;
     z-index: 9999;
@@ -359,7 +349,6 @@ main {
 
   .sb-expanded #sidebar .btn-menu {
     visibility: hidden;
-  
   }
 
   .sb-expanded #logo-sidenav {
