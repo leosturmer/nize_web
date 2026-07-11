@@ -110,9 +110,8 @@ main {
   /* margin-left: 1rem; */
   padding: 2rem 3.2rem 0 3.2em;
 
-  transition:
-    margin-left 0.2s ease,
-    /* width 0.2s ease; */
+  transition: margin-left 0.2s ease;
+  /* width 0.2s ease; */
 }
 
 footer {
@@ -148,7 +147,6 @@ button.navbar-toggler {
   border-radius: 0px; 
   padding: 0.3em
 } */
-
 
 .botoes-index {
   align-items: center;
@@ -335,28 +333,25 @@ input[type="number"] {
 
 /* Mensagens padrão */
 
+.success-msg,
 .error-msg {
-  background-color: brown;
   color: whitesmoke;
   border: 2px solid black;
   box-shadow: var(--box-shadow);
-  width: 30%;
-  padding: 1rem;
-
   position: absolute;
   top: 3em;
   right: 1.5em;
+
+  width: 30%;
+  padding: 1rem;
+}
+
+.error-msg {
+  background-color: brown;
+
+  
 }
 
 .success-msg {
   background-color: var(--normalGreen);
-  color: white;
-  border: 2px solid black;
-  box-shadow: var(--box-shadow);
-  width: 30%;
-  padding: 1rem;
-
-  position: absolute;
-  top: 3em;
-  right: 1.5em;
 }

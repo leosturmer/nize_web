@@ -19,6 +19,39 @@
   main.conteudo-pagina {
     /* align-self: center; */
     margin: 0 auto;
+    margin-top: 3em;
+  }
+
+  .logo-header-mobile {
+    position: relative;
+    z-index: 9999;
+    align-self: center;
+    padding: 0;
+  }
+
+  .success-msg,
+  .error-msg {
+    color: whitesmoke;
+    border: 2px solid black;
+    box-shadow: var(--box-shadow);
+
+    font-size: 16px;
+
+    position: absolute;
+    top: 3.2em;
+    right: 1.5em;
+
+    width: fit-content;
+    padding: 0.8em 1rem;
+  }
+
+  h1 {
+    font-size: 22px;
+
+  }
+
+  div.internal-nav-links {
+    margin: 0 1em;
   }
 
   #container-index.container {
@@ -27,7 +60,7 @@
 
   h1#tituloInicial {
     font-size: 22px;
-    margin-top: 3em;
+    /* margin-top: 3em; */
   }
 
   div.container-inicial {
@@ -48,9 +81,31 @@
     top: 0.5em;
   }
 
+  #titulo-cadastro {
+    font-size: 22px;
+    padding-bottom: 0;
+  }
 
+  .container.container-cadastro {
+    padding: 20px 10px;
+    width: 45%;
+    /* height: 10%; */
+  }
+
+  form#form-cadastro label {
+    font-size: 16px;
+    margin: 0.3em 0 0.2em 0;
+  }
+
+  .div-cadastro {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  form#form-cadastro button {
+    margin: 10px auto;
+  }
 }
-
 
 /* CELULAR */
 
@@ -73,8 +128,6 @@
     width: 100dvw;
   }
 
-
-
   #aside-deslog {
     visibility: hidden;
   }
@@ -96,10 +149,9 @@
     margin-top: 0.8em;
     margin-bottom: 0.5em;
   }
-  
+
   a.btn-voltar-erro {
     margin-top: 30%;
-
   }
 
   /* Index */
@@ -137,12 +189,10 @@
     width: 95%;
   }
 
-
   #form-login {
     margin: 0;
     align-self: center;
   }
-
 
   .logo-header-mobile {
     position: relative;
@@ -150,8 +200,6 @@
     align-self: center;
     padding: 0;
   }
-
-
 
   /* Tela de cadastro */
 
@@ -166,7 +214,7 @@
     /* height: 10%; */
   }
 
-  form#form-cadastro  label {
+  form#form-cadastro label {
     font-size: 16px;
     margin: 0.3em 0 0.2em 0;
   }
@@ -192,12 +240,9 @@
   }
 
   div.container-inicial > h2 {
-
     font-size: 18px;
     padding-bottom: 0;
   }
-
-  
 
   /* Footer */
 
@@ -205,7 +250,7 @@
     font-size: 0.6em;
     text-align: center;
     align-self: center;
-    
+
     /* position: sticky;
     padding: 5px 0;
 
