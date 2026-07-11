@@ -2,10 +2,10 @@
 
 Ordem de páginas:
 
-index
-cadastro usuario
-login
-erro
+- index
+- cadastro usuario
+- login
+- erro
 
 visualizacao produtos
 cadastro produtos
@@ -24,7 +24,6 @@ alteração cadastro
 
 #### VER OS FOOTERs
 
-- Se o body for ROW, se o footer fica DEPOIS do main
 
 ##### Fazer a responsividade
 
