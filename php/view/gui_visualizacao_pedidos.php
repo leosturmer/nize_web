@@ -130,24 +130,28 @@ if (isset($_SESSION['pedidoSelecionado'])) {
           <input type="text" id="pesquisa-pedidos" placeholder="Digite sua pesquisa" autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
         </form>
 
-        <input type="date" id="filtro-data">
-        <select id="filtro-status">
-          <option value="">Todos os status</option>
-          <option value="encomendado">Encomendado</option>
-          <option value="pagamento">Pagamento</option>
-          <option value="vendido">Vendido</option>
-          <option value="cancelado">Cancelado</option>
-        </select>
+        <details class="filtros-produtos">
+          <summary><span class="bi bi-filter"></span>Filtrar</summary>
 
-        <select id="filtro-order">
-          <option value="">Ordenar por</option>
-          <option value="numero-asc">Número pedido (crescente)</option>
-          <option value="numero-desc">Número pedido (descrescente)</option>
-          <option value="data-asc">Data (crescente)</option>
-          <option value="data-desc">Data (descrescente)</option>
-        </select>
-
-        <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
+          <div>
+            <input type="date" id="filtro-data">
+            <select id="filtro-status">
+              <option value="">Todos os status</option>
+              <option value="encomendado">Encomendado</option>
+              <option value="pagamento">Pagamento</option>
+              <option value="vendido">Vendido</option>
+              <option value="cancelado">Cancelado</option>
+            </select>
+            <select id="filtro-order">
+              <option value="">Ordenar por</option>
+              <option value="numero-asc">Número pedido (crescente)</option>
+              <option value="numero-desc">Número pedido (descrescente)</option>
+              <option value="data-asc">Data (crescente)</option>
+              <option value="data-desc">Data (descrescente)</option>
+            </select>
+            <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
+          </div>
+        </details>
 
       </div>
     </div>

@@ -117,26 +117,30 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
           <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
         </form>
 
-        <select id="filtro-estoque">
-          <option value="">Filtrar estoque</option>
-          <option value="com-estoque">Com estoque</option>
-          <option value="sem-estoque">Sem estoque</option>
-        </select>
+        <details class="filtros-produtos">
+          <summary><span class="bi bi-filter"></span>Filtrar</summary>
+          <div>
+            <select id="filtro-estoque">
+              <option value="">Estoque</option>
+              <option value="com-estoque">Com estoque</option>
+              <option value="sem-estoque">Sem estoque</option>
+            </select>
+            <select id="filtro-encomenda">
+              <option value="">Encomenda</option>
+              <option value="com-encomenda">Aceita encomenda</option>
+              <option value="sem-encomenda">Não aceita encomenda</option>
+            </select>
+            <select id="filtro-order">
+              <option value="">Ordenar por</option>
+              <option value="nome-asc">Nome (crescente)</option>
+              <option value="nome-desc">Nome (descrescente)</option>
+              <option value="quant-asc">Quantidade (descrescente)</option>
+              <option value="quant-desc">Quantidade (descrescente)</option>
+            </select>
+            <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
+          </div>
+        </details>
 
-        <select id="filtro-encomenda">
-          <option value="">Filtrar produtos</option>
-          <option value="com-encomenda">Aceita encomenda</option>
-          <option value="sem-encomenda">Não aceita encomenda</option>
-        </select>
-
-        <select id="filtro-order">
-          <option value="">Ordenar por</option>
-          <option value="nome-asc">Nome (crescente)</option>
-          <option value="nome-desc">Nome (descrescente)</option>
-          <option value="quant-asc">Quantidade (descrescente)</option>
-          <option value="quant-desc">Quantidade (descrescente)</option>
-        </select>
-        <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
       </div>
 
 
