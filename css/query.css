@@ -51,7 +51,7 @@
   }
 
   div.internal-nav-links {
-    margin: 0 1em;
+    /* margin: 0 1em; */
   }
 
   #container-index.container {
@@ -258,5 +258,33 @@
 
     bottom: 5px;
     margin: 0 auto; */
+  }
+
+  .internal-nav-links {
+    width: 100dvw;
+    /* margin: 0 1em; */
+  }
+
+  div.internal-nav-links h1 {
+    font-size: 22px;
+    margin-right: 0;
+  }
+
+
+  div.internal-nav-links > a {
+    /* width: 100%; */
+    font-size: 14px;
+    padding: 0.2em 0.6em;
+    /* width: 8em; */
+    /* right: 0; */
+    /* margin-right: 2em; */
+
+    display: flex;
+    align-items: center;
+  }
+
+  div.internal-nav-links > a > span {
+    font-size: 18px;
+    margin-right: 0.5em;
   }
 }
