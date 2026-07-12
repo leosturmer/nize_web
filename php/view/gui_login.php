@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" style="background-color: var(--lightGreen);">
 
 <head>
     <meta charset="UTF-8">

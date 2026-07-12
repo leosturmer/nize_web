@@ -109,12 +109,17 @@
   /* margin-right: 10rem; */
 }
 
+.margin-mobile {
+  /* width: 85dvw; */
+}
+
 .internal-nav-links {
   padding: 0;
   margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 90dvw;
   /* gap: 20px; */
 }
 
@@ -131,6 +136,8 @@
   /* justify-self: center; */
 }
 
+
+
 .internal-nav-links > a:hover {
   background-color: var(--normalPurple);
   color: white;
@@ -146,7 +153,7 @@
 
 .filtros-produtos {
   border: var(--border-focus-purple);
-  padding: 0.5em 0.8em;
+  padding: 0.2em 0.6em;
   background-color: white;
 }
 
@@ -167,6 +174,8 @@
   position: absolute;
   z-index: 9999;
   right: 3em;
+
+  padding: 0.5em 0.6em;
 
   box-shadow: var(--shadow-focus-purple);
 }
@@ -258,7 +267,7 @@
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 2.2rem;
+  font-size: 1.8rem;
 }
 
 /* Tela inicial */

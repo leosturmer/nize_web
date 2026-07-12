@@ -18,8 +18,11 @@
 
   main.conteudo-pagina {
     /* align-self: center; */
-    margin: 0 auto;
-    margin-top: 3em;
+    /* margin: 3em 1.5em 0 1.5em; */
+    /* margin-top: 3em; */
+    margin: 3em 0;
+    padding: 2em 2em;
+    /* margin-top: 3em; */
   }
 
   .logo-header-mobile {
@@ -47,7 +50,6 @@
 
   h1 {
     font-size: 22px;
-
   }
 
   div.internal-nav-links {
@@ -105,6 +107,68 @@
   form#form-cadastro button {
     margin: 10px auto;
   }
+
+  div.product-view {
+    padding: 1em;
+  }
+
+  div.product-view p{
+    margin: 2px;
+    line-height: 2em;
+    font-size: 16px;
+  }
+
+  .internal-nav-links {
+    width: 90dvw;
+  }
+
+
+}
+
+/* Barra de pesquisa */
+@media (max-width: 900px) {
+  input#pesquisa-produtos {
+    font-size: 12px;
+    width: 60dvw;
+  }
+
+  /* #pesquisa-produtos::placeholder {
+    color: transparent;
+  } */
+
+  span#search-icon {
+    font-size: 16px;
+    right: -60%;
+    /* right: 0px; */
+    /* left: 10px; */
+    /* z-index: 1; */
+    /* width: 60dvw; */
+  }
+
+  div.internal-nav-links > a {
+    /* width: 100%; */
+    font-size: 14px;
+    padding: 0.2em 0.6em;
+    /* width: 8em; */
+    /* right: 0; */
+    /* margin-right: 2em; */
+
+    display: flex;
+    align-items: center;
+  }
+
+  div.internal-nav-links > a > span {
+    font-size: 18px;
+    margin-right: 0.5em;
+  }
+
+  div.internal-nav-inputs details.fitros-produtos {
+    padding: 0.1em 0.6em;
+  }
+
+  details.fitros-produtos > summary {
+    font-size: 16px;
+  }
 }
 
 /* CELULAR */
@@ -122,10 +186,13 @@
 
   .conteudo-pagina {
     margin-left: 0;
+    margin-right: 0;
     padding: 0 0;
     padding-top: 2em;
     height: 100dvh;
     width: 100dvw;
+
+    /* justify-content: center; */
   }
 
   #aside-deslog {
@@ -270,7 +337,6 @@
     margin-right: 0;
   }
 
-
   div.internal-nav-links > a {
     /* width: 100%; */
     font-size: 14px;
@@ -286,5 +352,17 @@
   div.internal-nav-links > a > span {
     font-size: 18px;
     margin-right: 0.5em;
+  }
+
+  input#pesquisa-produtos {
+    max-width: 50dvw;
+  }
+
+  input#pesquisa-produtos::placeholder {
+    color: transparent;
+  }
+
+  span#search-icon {
+    right: -35%;
   }
 }
