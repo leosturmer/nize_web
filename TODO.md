@@ -22,7 +22,11 @@ minha area
 alteração cadastro
 
 
-#### VER OS FOOTERs
+#### COLOCAR NA DIV PRODUTOS
+ - as novas divs do texto e imagem
+    - fazer isso nos AJAX e outras telas
+ - class="texto-produto"
+ - class="product-img-btn"
 
 
 ##### Fazer a responsividade
