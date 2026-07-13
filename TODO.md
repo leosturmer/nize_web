@@ -28,6 +28,7 @@ alteração cadastro
  - class="texto-produto"
  - class="product-img-btn"
 
+### VER se ficou aquelas coisas que anotei na documentação
 
 ##### Fazer a responsividade
 
