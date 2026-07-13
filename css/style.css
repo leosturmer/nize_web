@@ -458,6 +458,11 @@ div.product-img-btn {
   flex-direction: column;
 }
 
+div.product-btns span {
+  font-size: 18px;
+  margin-right: 0.5em;
+}
+
 div.product-img-btn > img.img-produtos {
   /* display: flex; */
   /* justify-content: center; */
@@ -605,7 +610,7 @@ div.product-img-btn > img.img-produtos {
 fieldset#products-form {
   /* margin-left: 2em;     */
   margin: 0 auto;
-  width: 95%;
+  width: 100%;
   padding: 1em;
 }
 

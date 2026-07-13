@@ -7,7 +7,7 @@ Ordem de páginas:
 - login
 - erro
 
-visualizacao produtos
+- visualizacao produtos
 cadastro produtos
 alteração produtos
 clonar produto

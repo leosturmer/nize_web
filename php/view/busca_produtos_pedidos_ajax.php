@@ -33,6 +33,7 @@ if (empty($lista)) {
 if (!empty($lista)) {
         foreach ($lista as $item) {
             echo '<div class="product-view">';
+            echo '<div class="texto-produto">';
             echo '<p><strong>Nome do produto: </strong>' . htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")) . '</p>'; 
             echo '<p><strong>Quantidade: </strong>' . htmlspecialchars($item['quantidade']) . '</p>';
 
@@ -59,6 +60,9 @@ if (!empty($lista)) {
 
             echo '<p><strong>Aceita encomenda: </strong>' . $aceita_encomenda . '</p>';
             echo '<p class="p-descricao"><strong>Descrição: </strong>' . htmlspecialchars($item['descricao']) . '</p>';
+            echo '</div>';
+
+            echo '<div class="product-img-btn">';
             
             if($item['imagem']){
                 echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
@@ -72,7 +76,7 @@ if (!empty($lista)) {
                 <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
                 <input type="submit" class="btn-add" value="Adicionar ao pedido">
             </form>
-
+            </div>
         </div>
     </div>
 

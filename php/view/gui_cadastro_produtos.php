@@ -101,7 +101,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     <div class="internal-nav">
       <div class="internal-nav-links">
         <h1>Cadastro de produto</h1>
-        <a href="gui_visualizacao_produtos.php" title="Tela de produtos">Todos os produtos</a>
+        <a href="gui_visualizacao_produtos.php" title="Tela de produtos"><span class="bi bi-arrow-left"></span>Voltar</a>
       </div>
     </div>
 
@@ -152,7 +152,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
           <textarea name="descricaoProduto" id="descricaoProduto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" class="input-produto" autocomplete="off"></textarea>
 
           <label class="checkbox-acc" for="">
-            <strong>Disponibilizar para visualização</strong>:
+            <strong>Disponibilizar para visualização:</strong>
             <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1'>
           </label>
 

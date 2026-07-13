@@ -137,8 +137,15 @@
     max-width: 50%;
   }
 
+  div.product-btns > a {
+    padding: 0.2em 0.5em;
+    font-size: 16px;
+  }
+
 
 }
+
+
 
 /* Barra de pesquisa */
 @media (max-width: 900px) {
@@ -184,6 +191,48 @@
   details.fitros-produtos > summary {
     font-size: 16px;
   }
+}
+
+
+@media (max-width: 770px)  {
+
+  main.conteudo-pagina { 
+    margin-top: 4em;
+    padding: 1em 1em;
+  }
+  div.product-view > div.texto-produto{
+    max-width: 60%;
+  }
+
+  div.product-view {
+    margin-bottom: 10px;
+  }
+
+  div.product-img-btn {
+    max-width: 35%;
+  }
+
+  div.product-btns > a {
+    margin: 0.5em;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;  }
+
+  div.product-btns span {
+    font-size: 18px;
+    margin-right: 0.5em;
+  }
+
+  div.product-view > div.product-img-btn > img.img-produtos {
+    width: 90%;
+
+  }
+
+  div.lista-produtos {
+    padding: 0px;
+  }
+
 }
 
 /* CELULAR */
@@ -397,4 +446,46 @@
   span#search-icon {
     right: -15%;
   }
+
+  div.product-view > div.product-img-btn > img.img-produtos {
+    /* width: 90%; */
+    max-height: 150px;
+
+  }
+
+}
+
+@media (max-width: 550px){
+  div.product-view {
+    flex-direction: column;
+  }  
+
+  div.product-view > div.texto-produto {
+    max-width: 100%;
+  }
+
+  div.product-img-btn {
+    max-width: 100%;
+  }
+
+  /* Cadastro de produtos */
+
+  div.inner-products-form {
+    padding: 0.3em;
+  }
+
+  div.div-inner-products {
+    flex-direction: column;
+  }
+
+  fieldset#products-form {
+
+  }
+
+  #form-products-buttons > button {
+    padding: 0.5em 0.5em;
+    font-size: 14px;
+    width: 50%;
+  }
+
 }
