@@ -46,21 +46,20 @@ if (!empty($listaPedidos)){
         echo '<div class="product-view">';
 
         ?>
-        <h2 class="num-pedido">Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
+        <div class="texto-pedido">
+            <h2>Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
+            <?php
+                foreach ($dados_pedido['produtos'] as $produto) {
+                    echo '<p><strong>' . htmlspecialchars($produto['nome']) . '</strong>: ' . htmlspecialchars($produto['quantidade']) . ' unidades</p>';
+                }
+            ?>
+            <p><strong>Data: </strong><?php echo $data ?></p>
+            <p><strong>Valor final: </strong> R$ <?php echo number_format((float)$dados_pedido['valor_final'], 2, ',', '.') ?></p>
+            <p><strong>Status: </strong><?php echo $statusView ?></p>
+            <p class="p-descricao"><strong>Comentário: </strong><?php if ($comentario) {echo $comentario; } else { echo "Nenhum comentário adicionado"; } ?></p>
+        </div>
 
-        <?php            
-            foreach ($dados_pedido['produtos'] as $produto) {
-                echo '<p><strong>' . htmlspecialchars($produto['nome']) . '</strong>: ' . htmlspecialchars($produto['quantidade']) . ' unidades</p>';
-            }
-        ?>
-
-
-        <p><strong>Data: </strong><?php echo $data ?></p>
-        <p><strong>Valor final: </strong> R$ <?php echo number_format((float)$dados_pedido['valor_final'], 2, ',', '.') ?></p>
-        <p><strong>Status: </strong><?php echo $statusView ?></p>
-        <p class="p-descricao"><strong>Comentário: </strong><?php if ($comentario) {echo $comentario; } else { echo "Nenhum comentário adicionado"; } ?></p>
-
-        <div class="product-btns">
+        <div class="product-btns pedido-btns">
             <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido ?>"><span class="bi bi-pencil"></span>Editar</a>
             <a href="../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3"></span>Excluir</a>
         </div>
