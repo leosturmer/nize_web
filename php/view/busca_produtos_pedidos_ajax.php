@@ -25,63 +25,64 @@ if (!empty($pesquisa)) {
 }
 
 if (empty($lista)) {
-    
+
     echo '<h4>Nenhum produto correspondente foi encontrado!</h4>';
     exit;
 }
 
 if (!empty($lista)) {
-        foreach ($lista as $item) {
-            echo '<div class="product-view">';
-            echo '<div class="texto-produto">';
-            echo '<p><strong>Nome do produto: </strong>' . htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")) . '</p>'; 
-            echo '<p><strong>Quantidade: </strong>' . htmlspecialchars($item['quantidade']) . '</p>';
+    foreach ($lista as $item) {
+        echo '<div class="product-view">';
+        echo '<div class="texto-produto">';
+        echo '<p><strong>Nome do produto: </strong>' . htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")) . '</p>';
+        echo '<p><strong>Quantidade: </strong>' . htmlspecialchars($item['quantidade']) . '</p>';
 
-            if ($item['valor_unitario']) { 
-                $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.'); 
-                } else {
-                    $valor_unitario = "Não informado"; 
-            }
-            
-            echo '<p><strong>Valor unitário: </strong>' . $valor_unitario . '</p>';
+        if ($item['valor_unitario']) {
+            $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.');
+        } else {
+            $valor_unitario = "Não informado";
+        }
 
-            if ($item['valor_custo']) {
-                $valor_custo = "R$ " . number_format($item['valor_custo'], 2, ',', '.'); 
-                } else {
-                    $valor_custo = "Não informado"; 
-            }
-            
-            
-            if(htmlspecialchars($item['aceita_encomenda']) === '1') {
-                $aceita_encomenda = "Aceita";
-            } else {
-                $aceita_encomenda = "Não aceita";
-            }
+        echo '<p><strong>Valor unitário: </strong>' . $valor_unitario . '</p>';
 
-            echo '<p><strong>Aceita encomenda: </strong>' . $aceita_encomenda . '</p>';
-            echo '<p class="p-descricao"><strong>Descrição: </strong>' . htmlspecialchars($item['descricao']) . '</p>';
-            echo '</div>';
+        if ($item['valor_custo']) {
+            $valor_custo = "R$ " . number_format($item['valor_custo'], 2, ',', '.');
+        } else {
+            $valor_custo = "Não informado";
+        }
 
-            echo '<div class="product-img-btn">';
-            
-            if($item['imagem']){
-                echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
-            } else {
-                echo "<p class='img-produtos'>Nenhuma imagem cadastrado</p>";
-            }
-        ?>
-            <form action="../controller/pedidoControle.php" method="get" class="product-btns">
-                <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Digite a quantidade" autocomplete="off">
-                <input type="hidden" name="op" value="adicionarQuantidade">
-                <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
-                <input type="submit" class="btn-add" value="Adicionar ao pedido">
-            </form>
-            </div>
+
+        if (htmlspecialchars($item['aceita_encomenda']) === '1') {
+            $aceita_encomenda = "Aceita";
+        } else {
+            $aceita_encomenda = "Não aceita";
+        }
+
+        echo '<p><strong>Aceita encomenda: </strong>' . $aceita_encomenda . '</p>';
+        echo '<p class="p-descricao"><strong>Descrição: </strong>' . htmlspecialchars($item['descricao']) . '</p>';
+        echo '</div>';
+
+        echo '<div class="product-img-btn">';
+
+        if ($item['imagem']) {
+            echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+        } else {
+            echo "<p class='img-produtos'>Nenhuma imagem cadastrado</p>";
+        }
+?>
+        <form action="../controller/pedidoControle.php" method="get" class="product-btns">
+            <span class="bi bi-bag-plus"></span>
+            <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
+            <input type="hidden" name="op" value="adicionarQuantidade">
+            <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
+            <input type="submit" class="btn-add" value="+ Adicionar">
+        </form>
         </div>
-    </div>
+        </div>
+        </div>
 
 <?php
-        }
+    }
 } else {
     echo "Nenhum produto encontrado";
 }

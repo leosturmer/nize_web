@@ -119,6 +119,7 @@
     flex-direction: row;
     width: 100%;
     justify-content: space-between;
+    align-items: center;
     /* align-items: center  ; */
   }
 
@@ -168,8 +169,29 @@
   }
 
 
+  details.produtos-pedido {
+    padding: 0.8em;
+  }
 
+  details.produtos-pedido > summary {
+    font-size: 16px;
+  }
 
+  div.adicionar-produtos > div.product-view {
+    margin-bottom: 10px;
+  }
+  
+  div.product-img-btn > span.bi.bi-bag-plus {
+    font-size: 20px;
+  }
+
+  input#quantidadeVendida.input-pedido {
+    width: 50px;
+  }
+
+  input#quantidadeVendida.input-pedido::placeholder{
+    color: transparent;
+  }
 }
 
 
@@ -179,7 +201,7 @@
   input#pesquisa-produtos,
   input#pesquisa-pedidos {
     font-size: 12px;
-    width: 60dvw;
+    /* width: 60dvw; */
   }
 
   /* #pesquisa-produtos::placeholder {
@@ -219,6 +241,22 @@
   details.fitros-produtos > summary {
     font-size: 16px;
   }
+
+  div.adicionar-produtos span#search-icon {
+    /* align-self: center; */
+    right: 0;
+    /* background-color: red; */
+  }
+
+  .total-pedido > p {
+    font-size: 16px;
+  }
+
+  .produtos-no-pedido p {
+    font-size: 16px;
+  }
+
+
 }
 
 
@@ -239,6 +277,7 @@
 
   div.product-img-btn {
     max-width: 35%;
+    margin-right: 1em;
   }
 
   div.product-btns > a {
@@ -260,6 +299,10 @@
 
   div.lista-produtos {
     padding: 0px;
+  }
+
+  span.bi.bi-bag-plus {
+    display: none;
   }
 
 }
@@ -525,4 +568,7 @@
     width: 30%;
   }
 
+  div.product-img-btn {
+    margin-right: 0;
+  }
 }

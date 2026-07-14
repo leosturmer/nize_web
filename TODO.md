@@ -30,6 +30,8 @@ alteração cadastro
 
 ### VER se ficou aquelas coisas que anotei na documentação
 
+### VER a questão de CSS para deixar a borda vermelha caso não tenha sido preenchido todos os dados
+
 ##### Fazer a responsividade
 
 - Substituir TODAS sidenav pela do tela_inicial (ver bem os class active)

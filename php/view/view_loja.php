@@ -84,7 +84,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                         <option value="valor-desc">Preço (descrescente)</option>
                     </select>
 
-                    <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
+                    <button type="button" id="btn-limpar-filtros"><span class="bi bi-arrow-clockwise"></span>Limpar</button>
                 </div>
             <?php endif; ?>
         </div>

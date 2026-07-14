@@ -149,7 +149,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
               <option value="data-asc">Data (crescente)</option>
               <option value="data-desc">Data (descrescente)</option>
             </select>
-            <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
+            <button type="button" id="btn-limpar-filtros"><span class="bi bi-arrow-clockwise"></span>Limpar</button>
           </div>
         </details>
 

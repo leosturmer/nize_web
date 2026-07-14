@@ -610,6 +610,11 @@ div.product-img-btn > img.img-produtos {
   margin-left: 0px;
 }
 
+span.bi.bi-bag-plus {
+  font-size: 30px;
+  /* padding-right: 0.8em; */
+}
+
 #form-products-buttons > button {
   width: 50%;
 }
@@ -897,7 +902,9 @@ fieldset#products-form {
 
 .form-pedidos-items > a {
   margin-right: 0;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .label-baixa-estoque {

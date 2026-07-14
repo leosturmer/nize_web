@@ -137,7 +137,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
               <option value="quant-asc">Quantidade (descrescente)</option>
               <option value="quant-desc">Quantidade (descrescente)</option>
             </select>
-            <button type="button" id="btn-limpar-filtros">Resetar filtros</button>
+            <button type="button" id="btn-limpar-filtros"><span class="bi bi-arrow-clockwise"></span>Limpar</button>
           </div>
         </details>
 
