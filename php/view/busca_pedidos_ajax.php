@@ -61,8 +61,8 @@ if (!empty($listaPedidos)){
         <p class="p-descricao"><strong>Comentário: </strong><?php if ($comentario) {echo $comentario; } else { echo "Nenhum comentário adicionado"; } ?></p>
 
         <div class="product-btns">
-            <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido ?>">Visualizar</a>
-            <a href="../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');">Excluir</a>
+            <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido ?>"><span class="bi bi-pencil"></span>Editar</a>
+            <a href="../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3"></span>Excluir</a>
         </div>
     </div>
     <?php }

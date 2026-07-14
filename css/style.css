@@ -270,6 +270,12 @@
   font-size: 1.8rem;
 }
 
+div.texto-produto h2,
+div.texto-pedido h2 {
+  text-align: left;
+  padding: 0 0 0.4em 0;
+}
+
 /* Tela inicial */
 #tituloInicial {
   border: var(--border);
@@ -380,6 +386,10 @@
   display: grid;
   /* grid-template-columns: 1fr; */
 
+}
+
+#form-login > button {
+  width: auto;
 }
 
 #form-cadastro > label,
@@ -719,9 +729,9 @@ fieldset#products-form {
 
 /* Tela de pedidos */
 
-.num-pedido {
+/* .num-pedido {
   text-align: left;
-}
+} */
 
 #quantidadeVendida.input-pedido {
   height: 3rem;

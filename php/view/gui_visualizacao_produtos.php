@@ -159,7 +159,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
         <?php foreach ($lista as $item): ?>
           <div class="product-view">
             <div class="texto-produto">
-              <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
+              <h2><?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></h2>
               <p><strong>Quantidade:</strong> <?php if ($item['quantidade'] === 0 || $item['quantidade'] == null) {
                                                 echo "Sem estoque";
                                               } else {

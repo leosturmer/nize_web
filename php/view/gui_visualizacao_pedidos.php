@@ -122,7 +122,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
     <div class="internal-nav">
       <div class="internal-nav-links">
         <h1>Lista de Pedidos</h1>
-        <a href="gui_cadastro_pedidos.php">Cadastrar novo pedido</a>
+        <a href="gui_cadastro_pedidos.php"><span class="bi bi-plus-lg"></span>Pedido</a>
       </div>
 
       <div class="internal-nav-inputs">
@@ -162,43 +162,41 @@ if (isset($_SESSION['pedidoSelecionado'])) {
         <?php foreach ($listaPedidos as $id_pedido => $dados_pedido): ?>
           <div class="product-view">
 
-            <h2 class="num-pedido">Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
-            <?php
-            $dataBanco = $dados_pedido['data'];
-            $formatoData = strtotime($dataBanco);
-            $data = date("d/m/Y", $formatoData);
+            <div class="texto-pedido">
+              <h2>Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
+              <?php
+              $dataBanco = $dados_pedido['data'];
+              $formatoData = strtotime($dataBanco);
+              $data = date("d/m/Y", $formatoData);
+              $comentario = htmlspecialchars($dados_pedido['comentario']);
+              $status = $dados_pedido['status'];
+              $statusView = '';
+              if ($status == "encomendado") {
+                $statusView = "Encomendado";
+              } else if ($status == "pagamento") {
+                $statusView = "Aguardando pagamento";
+              } else if ($status == "vendido") {
+                $statusView = "Vendido";
+              } else if ($status == "cancelado") {
+                $statusView = "Cancelado";
+              }
+              foreach ($dados_pedido['produtos'] as $produto) {
+                echo "<p><strong>" . htmlspecialchars($produto['nome']) . "</strong>: " . htmlspecialchars($produto['quantidade']) . " unidades</p>";
+              }
+              ?>
+              <p><strong>Data: </strong><?php echo $data ?></p>
+              <p><strong>Valor final: </strong> R$ <?php echo number_format((float)$dados_pedido['valor_final'], 2, ',', '.') ?></p>
+              <p><strong>Status: </strong><?php echo $statusView ?></p>
+              <p class="p-descricao"><strong>Comentário: </strong><?php if ($comentario) {
+                                                                    echo $comentario;
+                                                                  } else {
+                                                                    echo "Nenhum comentário adicionado";
+                                                                  } ?></p>
+            </div>
 
-            $comentario = htmlspecialchars($dados_pedido['comentario']);
-            $status = $dados_pedido['status'];
-
-            $statusView = '';
-            if ($status == "encomendado") {
-              $statusView = "Encomendado";
-            } else if ($status == "pagamento") {
-              $statusView = "Aguardando pagamento";
-            } else if ($status == "vendido") {
-              $statusView = "Vendido";
-            } else if ($status == "cancelado") {
-              $statusView = "Cancelado";
-            }
-
-            foreach ($dados_pedido['produtos'] as $produto) {
-              echo "<p><strong>" . htmlspecialchars($produto['nome']) . "</strong>: " . htmlspecialchars($produto['quantidade']) . " unidades</p>";
-            }
-            ?>
-
-            <p><strong>Data: </strong><?php echo $data ?></p>
-            <p><strong>Valor final: </strong> R$ <?php echo number_format((float)$dados_pedido['valor_final'], 2, ',', '.') ?></p>
-            <p><strong>Status: </strong><?php echo $statusView ?></p>
-            <p class="p-descricao"><strong>Comentário: </strong><?php if ($comentario) {
-                                                                  echo $comentario;
-                                                                } else {
-                                                                  echo "Nenhum comentário adicionado";
-                                                                } ?></p>
-
-            <div class="product-btns">
-              <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido ?>">Visualizar</a>
-              <a href="../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');">Excluir</a>
+            <div class="product-btns pedido-btns">
+              <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido ?>"><span class="bi bi-pencil"></span>Editar</a>
+              <a href="../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3"></span>Excluir</a>
             </div>
           </div> <?php endforeach; ?>
       <?php else: ?>

@@ -159,6 +159,7 @@ span.bi {
 .botoes-index {
   align-items: center;
   display: flex;
+  justify-content: center;
 }
 
 /* #sidebar a {
@@ -183,7 +184,7 @@ button,
   border: var(--border);
   box-shadow: var(--box-shadow);
 
-  /* width: 150px; */
+  width: 150px;
 
  
 }
@@ -362,7 +363,7 @@ input[type="number"] {
   top: 3em;
   right: 1.5em;
 
-  width: 30%;
+  width: fit-content;
   padding: 1rem;
 }
 
