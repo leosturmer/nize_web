@@ -149,10 +149,21 @@ button.navbar-toggler {
   padding: 0.3em
 } */
 
+span.bi {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  font-size: 18px;
+}
+
+
 .botoes-index {
   align-items: center;
   display: flex;
 }
+
+/* #sidebar a {
+  display: inline-block;
+} */
 
 a,
 button,
@@ -172,7 +183,15 @@ button,
   border: var(--border);
   box-shadow: var(--box-shadow);
 
-  width: 200px;
+  /* width: 150px; */
+
+ 
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 a:hover,

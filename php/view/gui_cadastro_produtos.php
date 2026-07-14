@@ -165,8 +165,8 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
       </fieldset>
       <div id="form-products-buttons">
-        <button type="submit" formaction="../controller/produtoControle.php?op=cadastrar">Cadastrar</button>
-        <button type="reset">Limpar</button>
+        <button type="submit" formaction="../controller/produtoControle.php?op=cadastrar"><span class="bi bi-check2"></span>Salvar</button>
+        <button type="reset"><span class="bi bi-eraser"></span>Limpar</button>
       </div>
     </form>
 

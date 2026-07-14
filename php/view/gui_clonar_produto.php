@@ -111,7 +111,7 @@ if (!$produtoData) {
     <div class="internal-nav">
       <div class="internal-nav-links">
         <h1>Clonar Produto</h1>
-        <a href="gui_visualizacao_produtos.php" title="Tela de produtos">Todos os produtos</a>
+        <a href="gui_visualizacao_produtos.php" title="Tela de produtos"><span class="bi bi-arrow-left"></span>Voltar</a>
       </div>
     </div>
 
@@ -172,8 +172,8 @@ if (!$produtoData) {
 
       </fieldset>
       <div id="form-products-buttons">
-        <button type="submit">Salvar</button>
-        <button formaction="../view/gui_visualizacao_produtos.php">Cancelar</button>
+        <button type="submit"><span class="bi bi-check2"></span>Salvar</button>
+        <button formaction="../view/gui_visualizacao_produtos.php"><span class="bi bi-x-lg"></span>Cancelar</button>
       </div>
     </form>
 

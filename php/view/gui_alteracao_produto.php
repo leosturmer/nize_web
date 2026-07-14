@@ -109,7 +109,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
     <div class="internal-nav">
       <div class="internal-nav-links">
         <h1>Alteração de produto</h1>
-        <a href="gui_visualizacao_produtos.php" title="Tela de produtos">Todos os produtos</a>
+        <a href="gui_visualizacao_produtos.php" title="Tela de produtos"><span class="bi bi-arrow-left"></span>Voltar</a>
       </div>
     </div>
 
@@ -189,9 +189,9 @@ $produto = $produtoDAO->buscarPorId($id_produto);
       </fieldset>
 
       <div id="form-products-buttons">
-        <button type="submit">Alterar</button>
-        <button formaction="gui_clonar_produto.php?id=<?php echo $produto['id_produto']; ?>" class="btn-clonar">Clonar</button>
-        <button formaction="../view/gui_visualizacao_produtos.php">Voltar</button>
+        <button type="submit"><span class="bi bi-check2"></span>Alterar</button>
+        <button formaction="gui_clonar_produto.php?id=<?php echo $produto['id_produto']; ?>" class="btn-clonar"><span class="bi bi-copy"></span>Clonar</button>
+        <!-- <button formaction="../view/gui_visualizacao_produtos.php">Voltar</button> -->
       </div>
     </form>
 

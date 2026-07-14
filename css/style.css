@@ -404,6 +404,7 @@
 #btn-login {
   /* top: 10px; */
   align-self: center;
+  width: 200px;
 }
 
 /* Produtos */
@@ -590,6 +591,17 @@ div.product-img-btn > img.img-produtos {
 #form-products-buttons {
   display: flex;
   justify-content: center;
+
+}
+
+#form-products-buttons span.bi {
+  display: flex;
+  justify-content: center;
+  margin-left: 0px;
+}
+
+#form-products-buttons > button {
+  width: 50%;
 }
 
 #products-form {
