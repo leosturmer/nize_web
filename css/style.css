@@ -491,7 +491,10 @@ div.product-img-btn > img.img-produtos {
 
 }
 
+
 .img-alt-produto {
+  border: var(--border);
+  box-shadow: var(--box-shadow);
   align-self: center;
   width: 70%;
   max-height: 300px;
@@ -738,6 +741,11 @@ fieldset#products-form {
   text-align: left;
 } */
 
+.adicionar-produtos {
+  
+
+}
+
 #quantidadeVendida.input-pedido {
   height: 3rem;
   width: 10rem;
@@ -860,7 +868,7 @@ fieldset#products-form {
 }
 
 .total-pedido {
-  padding: 0.8em;
+  padding: 0.5em 0.8em;
 
   border: var(--border-thin);
   box-shadow: var(--box-shadow);

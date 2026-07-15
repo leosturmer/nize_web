@@ -43,8 +43,12 @@
   --border-focus-purple: 2.8px solid #853fcb;
   --border-focus-green: 2.8px solid #99d669;
   --border-focus-input: 2.8px solid #98d669bb;
+  --border-input: 2.8px solid #71b179;
   --shadow-focus-purple: -3px 3px 0px #853fcb;
   --shadow-focus-green: -3px 3px 0px #99d669;
+
+  --shadow-invalid: -3px 3px 0px brown;
+
 
   --transition-background: margin-left 0.2s ease, width 0.2s ease;
 }
@@ -268,7 +272,7 @@ p > strong {
 input[type="date"],
 textarea {
   padding: 0.3em;
-  border: var(--border-focus-input);
+  border: var(--border-input);
   font-size: 14px;
 }
 
@@ -375,4 +379,33 @@ input[type="number"] {
 
 .success-msg {
   background-color: var(--normalGreen);
+}
+
+
+/* Show red borders when filled, but invalid */
+input:not(:placeholder-shown) {
+  border-color: brown;
+}
+
+input.input-login:not(:placeholder-shown) {
+  box-shadow: var(--shadow-invalid);
+}
+
+input[type='checkbox'] {
+  border: var(--border-input);
+}
+
+/* Show green borders when valid */
+input:valid {
+  border: var(--border-input);
+}
+
+
+input[type="file"]:valid {
+  border: none;
+}
+
+input.input-login:valid {
+  border: var(--border);
+  box-shadow: var(--box-shadow);
 }
