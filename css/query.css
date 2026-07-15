@@ -79,7 +79,7 @@
 
   .btn-menu {
     position: fixed;
-    left: 1.5em;
+    left: 1em;
     top: 0.5em;
   }
 
@@ -168,6 +168,22 @@
     font-size: 16px;
   }
 
+  details[open].produtos-pedido summary {
+    position: fixed;
+    /* top: 0px; */
+    bottom: 2em;
+    left: 2em;
+    /* margin: 0 auto; */
+    background-color: var(--lightGreen);
+    padding: 0.5em;
+    width: fit-content;
+    border: var(--border-thin);
+    /* background-color: var(--lightGreen); */
+    /* padding: 0.5em; */
+    /* width: fit-content; */
+    /* border: var(--border-thin); */
+  }
+
   details.produtos-pedido {
     padding: 0.8em;
   }
@@ -192,9 +208,7 @@
     color: transparent;
   }
 
-
   div.produtos-no-pedido h3 {
-
     font-size: 18px;
   }
 
@@ -300,21 +314,15 @@
     font-size: 14px;
   }
 
-
   div.produtos-no-pedido {
     grid-template-columns: none;
     gap: 0.5em;
   }
 
-
-
-
   div.produtos-no-pedido div.produto-individual {
     padding: 0.5em;
     gap: 0;
   }
-
-
 }
 
 @media (max-width: 770px) {
@@ -322,6 +330,13 @@
     margin-top: 4em;
     padding: 1em 1em;
   }
+
+  .btn-menu {
+    position: fixed;
+    left: 0.5em;
+    top: 0.5em;
+  }
+
   div.product-view > div.texto-produto,
   div.product-view > div.texto-pedido {
     max-width: 60%;
@@ -361,7 +376,7 @@
     display: none;
   }
 
-  div.container-horizontal{
+  div.container-horizontal {
     display: block;
   }
 
@@ -369,9 +384,11 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+
+    max-height: 300px;
   }
 
-  div.produtos-no-pedido div.produto-individual p{
+  div.produtos-no-pedido div.produto-individual p {
     font-size: 14px;
   }
 
@@ -379,7 +396,52 @@
     font-size: 16px;
   }
 
+  div.produtos-no-pedido div.produto-individual a.btn-remover {
+    font-size: 12px;
+    padding: 0.2em 0.5em;
+    background-color: whitesmoke;
+    border: var(--border-hover);
+    /* border-color: brown; */
+  }
 
+  div.produtos-no-pedido div.produto-individual a.btn-remover:hover {
+    border-color: brown;
+  }
+
+  div.produtos-no-pedido div.produto-individual {
+    /* max-height: 100px; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .lista-produtos-pedido .product-view .btn-add {
+    font-size: 12px;
+  }
+
+  .lista-produtos-pedido .product-view #quantidadeVendida {
+    height: 40px;
+  }
+
+  div.total-pedido {
+    text-align: center;
+    margin: 0.8em 0 1em auto;
+    font-size: 16px;
+    width: 200%;
+  }
+
+  div.infos-pedido div.form-pedidos-items {
+    width: 200%;
+  }
+
+  fieldset#pedidos-form {
+    margin: 0;
+    padding: 0.8em;
+  }
+
+  div.form-pedidos-buttons {
+    margin: 0 auto;
+    justify-content: center;
+  }
 }
 
 /* CELULAR */
@@ -393,6 +455,11 @@
     padding: 1em;
     margin-left: 0px;
     /* overflow-y: auto; */
+  }
+
+  .success-msg,
+  .error-msg {
+    top: 2em;
   }
 
   .conteudo-pagina {
@@ -572,6 +639,11 @@
     /* max-width: 50dvw; */
   }
 
+  .produtos-pedido #form-pesquisa-produtos {
+    width: 80%;
+    left: 1em;
+  }
+
   /* form#form-pesquisa-produtos:focus {
   } */
   input#pesquisa-produtos,
@@ -599,6 +671,10 @@
     /* width: 90%; */
     max-height: 150px;
   }
+
+  /* .form-produto-pedido {
+    left: 1%;
+  } */
 }
 
 @media (max-width: 550px) {

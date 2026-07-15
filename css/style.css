@@ -1,83 +1,5 @@
 @charset "UTF-8";
 
-/*  SELETORES */
-/* .coll-sidenav {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 9999;
-  margin: 0;
-  font-size: 1em;
-  background-color: transparent;
-}
-
-.coll-sidenav[open] {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 9999;
-  margin: 0;
-}
-
-.coll-sidenav[open] + .conteudo-pagina,
-.header-view-loja + .conteudo-pagina {
-  margin-left: 300px; 
-  width: calc(
-    100% - 300px
-  ); 
-}
-
-.coll-sidenav > summary {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  z-index: 1000;
-  list-style-type: none;
-  outline: none;
-}
-
-.coll-sidenav > summary::-webkit-details-marker {
-  display: none;
-}
-
-.coll-sidenav > summary > span {
-  position: fixed;
-  font-size: 2rem;
-  margin-left: 10px;
-  border: var(--border);
-  box-shadow: var(--box-shadow);
-  background-color: whitesmoke;
-
-  padding: 0.2em;
-
-  transition: rotate 0.5s ease-in-out;
-  rotate: 0deg;
-}
-
-.coll-sidenav > summary > span:hover {
-  cursor: pointer;
-
-  transition: rotate 0.5s ease-in-out;
-  rotate: 180deg;
-}
-
-.sidenav {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 300px;
-  position: relative;
-  background-color: var(--lightGreen);
-  padding-top: 80px;
-  padding-left: 28px;
-  padding-right: 25px;
-  border-right: 4px solid black;
-} */
-
-
-
 .header-mobile {
   background-color: var(--lightGreen);
   margin-top: 0px;
@@ -136,8 +58,6 @@
   /* justify-self: center; */
 }
 
-
-
 .internal-nav-links > a:hover {
   background-color: var(--normalPurple);
   color: white;
@@ -167,7 +87,6 @@
 .filtros-produtos[open] summary {
   text-align: left;
   content: "Fechar";
-
 }
 
 .filtros-produtos[open] {
@@ -189,8 +108,37 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
 
+/* details[open].produtos-pedido {
+  height: 100%;
+  overflow-y: auto; 
+} */
 
+/* details[open].produtos-pedido summary {
+  position: fixed;
+  top: 2em;
+  background-color: var(--lightGreen);
+  padding: 0.5em;
+  width: fit-content;
+  border: var(--border-thin);
+  left: 9em;
+} */
+
+details > summary {
+  list-style: none;
+}
+
+details.produtos-pedido > summary::before {
+  content: "▶ ";
+}
+
+details[open].produtos-pedido > summary::before {
+  font-family: sans-serif;
+  font-weight: bolder;
+  content: "✖ ";
+  /* color: white; */
+  margin: 0.5em 0;
 }
 
 #filtro-estoque,
@@ -203,7 +151,6 @@
 
   width: 10em;
   font-size: 13px;
-
 }
 
 #filtro-data {
@@ -243,7 +190,6 @@
   align-self: self-end;
   left: 30%;
 }
-
 
 #pesquisa-produtos,
 #pesquisa-pedidos {
@@ -318,8 +264,7 @@ div.texto-pedido h2 {
   position: absolute;
 }
 
-#main-index
-{
+#main-index {
   background-color: var(--lightGreen);
   display: flex;
   margin: 0 auto;
@@ -385,7 +330,6 @@ div.texto-pedido h2 {
 #form-login {
   display: grid;
   /* grid-template-columns: 1fr; */
-
 }
 
 #form-login > button {
@@ -488,9 +432,7 @@ div.product-img-btn > img.img-produtos {
   object-fit: cover;
 
   align-self: center;
-
 }
-
 
 .img-alt-produto {
   border: var(--border);
@@ -604,7 +546,6 @@ div.product-img-btn > img.img-produtos {
 #form-products-buttons {
   display: flex;
   justify-content: center;
-
 }
 
 #form-products-buttons span.bi {
@@ -806,8 +747,6 @@ div.produtos-no-pedido p {
 
   min-height: fit-content;
   height: max-content; */
-
-
 }
 
 .infos-pedido {
@@ -818,12 +757,7 @@ div.produtos-no-pedido p {
 
   /* justify-content: end; */
   /* right: 0; */
-
 }
-
-
-
-
 
 .produto-individual {
   flex: 0 0 auto;
@@ -845,25 +779,24 @@ div.produtos-no-pedido p {
   margin: 0 auto;
   padding: 0.3em 0.5em;
   width: fit-content;
-  background-color: white;
-  color: black;
+  background-color: whitesmoke;
+  color: brown;
   box-shadow: none;
-  border: var(--border-focus-purple);
+  border: var(--border-hover);
 
   display: flex;
   align-items: center;
 }
 
-.btn-remover > span {
-  
-}
+/* .btn-remover > span {
+} */
 
 .btn-remover:hover {
   background-color: white;
   /* color: white; */
   box-shadow: none;
   border-color: brown;
-  color: brown;
+  color: black;
 }
 
 .btn-excluir {
@@ -1027,16 +960,14 @@ input#prazoPedido {
   width: 100%;
 }
 
-.div-btn-wpp > a{
+.div-btn-wpp > a {
   background-color: transparent;
   border: none;
   box-shadow: none;
-
 }
 
 .div-btn-wpp {
   position: fixed;
   right: 1em;
   bottom: 2em;
-
 }

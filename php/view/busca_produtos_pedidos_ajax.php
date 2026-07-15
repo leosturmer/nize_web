@@ -71,7 +71,7 @@ if (!empty($lista)) {
         }
 ?>
         <form action="../controller/pedidoControle.php" method="get" class="product-btns">
-            <span class="bi bi-bag-plus"></span>
+            <!-- <span class="bi bi-bag-plus"></span> -->
             <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
             <input type="hidden" name="op" value="adicionarQuantidade">
             <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">

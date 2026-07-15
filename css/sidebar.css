@@ -280,6 +280,19 @@ nav a span {
   height: 2.5em;
 }
 
+.sb-expanded details[open].produtos-pedido summary {
+  left: 17em;
+}
+
+.sb-expanded .product-view .img-produtos {
+  width: 50%;
+  height: 150px;
+}
+
+.sb-expanded .product-view {
+  padding: 0.8em;
+}
+
 main {
   /* margin-left: 5rem; */
   /* padding: 1rem 2rem; */
