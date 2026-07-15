@@ -405,7 +405,8 @@ input[type="file"]:valid {
   border: none;
 }
 
-input.input-login:valid {
+input.input-login:valid,
+input.btn-add:valid {
   border: var(--border);
   box-shadow: var(--box-shadow);
 }

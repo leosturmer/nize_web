@@ -741,10 +741,10 @@ fieldset#products-form {
   text-align: left;
 } */
 
-.adicionar-produtos {
-  
+/* .adicionar-produtos {
 
-}
+
+} */
 
 #quantidadeVendida.input-pedido {
   height: 3rem;
@@ -764,6 +764,11 @@ fieldset#products-form {
   margin-bottom: 1em;
 
   /* gap: 1em; */
+}
+
+div.produtos-no-pedido h3,
+div.produtos-no-pedido p {
+  color: var(--darkGreen);
 }
 
 .produtos-pedido > summary {
@@ -838,13 +843,27 @@ fieldset#products-form {
 .btn-remover {
   font-size: 14px;
   margin: 0 auto;
+  padding: 0.3em 0.5em;
+  width: fit-content;
   background-color: white;
   color: black;
+  box-shadow: none;
+  border: var(--border-focus-purple);
+
+  display: flex;
+  align-items: center;
+}
+
+.btn-remover > span {
+  
 }
 
 .btn-remover:hover {
-  background-color: var(--normalPurple);
-  color: white;
+  background-color: white;
+  /* color: white; */
+  box-shadow: none;
+  border-color: brown;
+  color: brown;
 }
 
 .btn-excluir {

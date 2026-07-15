@@ -130,12 +130,12 @@ if (isset($_SESSION['encomendaSelecionada'])) {
 
         <details class="produtos-pedido">
             <summary>Adicione os produtos ao pedido</summary>
-            <div class="adicionar-produtos">
 
-                <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-produto-pedido">
-                    <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição" autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
-                </form>
+            <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-produto-pedido">
+                <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição" autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
+            </form>
 
+            <!-- <div class="adicionar-produtos"> -->
                 <div class="lista-produtos-pedido">
                     <?php if (!empty($listaProdutos)): ?>
                         <?php foreach ($listaProdutos as $item): ?>
@@ -162,7 +162,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                                         <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
                                         <input type="hidden" name="op" value="adicionarQuantidade">
                                         <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
-                                        <input type="submit" class="btn-add" value="+ Adicionar"> 
+                                        <input type="submit" class="btn-add" value="+ Adicionar">
                                     </form>
                                 </div>
                             </div>
@@ -170,7 +170,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                     <?php else: echo "Nenhum produto cadastrado." ?>
                     <?php endif; ?>
                 </div>
-            </div>
+            <!-- </div> -->
         </details>
 
         <div class="container-horizontal">
@@ -193,7 +193,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                             $valor_total = (float)$produtoVendido['valor_unitario'];
                             $valor_total = $valor_total * $quantidade;
                             echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";
-                            echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor' class='btn-remover'>Remover produto</a>";
+                            echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
                             echo "</div>";
                         } else {
                             echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
@@ -218,7 +218,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                                 <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required>
                             </label>
                             <label for="statusPedido" class="label-column">
-                                Status do Pedido
+                                Status do pedido
                                 <select name="statusPedido" id="statusPedido">
                                     <option value="encomendado">Encomendado</option>
                                     <option value="pagamento">Aguardando pagamento</option>
