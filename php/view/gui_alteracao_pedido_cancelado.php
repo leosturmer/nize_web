@@ -122,68 +122,63 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
 
     <div class="internal-nav">
       <div class="internal-nav-links">
-        <h1>Visualização de pedido</h1>
+        <h1>Pedido cancelado</h1>
         <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
       </div>
-      <h2>Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
+      <div class="texto-pedido-cancelado">
+        <p>Não é possível fazer alterações em pedidos cancelados</p>
+      </div>
+      <h2 class="num-pedido num-pedido-cancelado">Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
     </div>
 
 
-    <h3>Pedido cancelado</h3>
-    <p>Não é possível fazer alterações em pedidos cancelados</p>
 
-    <div class="produtos-no-pedido">
-      <?php
-
-      if (!empty($_SESSION['carrinho'])) {
-
-        foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
-
-          $produtoVendido = $produtoDAO->buscarPorId($id_produto);
-          if ($produtoVendido) {
-            echo "<div class='produto-individual'>";
-
-            echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
-            echo "<p>";
-            echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-            echo "<b>Valor do produto</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
-
-            $valor_total = (float)$produtoVendido['valor_unitario'];
-            $valor_total = $valor_total * $quantidade;
-
-            echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br>";
-
-            echo "</div>";
-          } else {
-            echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
+    <div class="container-horizontal">
+      <div class="produtos-no-pedido">
+        <?php
+        if (!empty($_SESSION['carrinho'])) {
+          foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
+            $produtoVendido = $produtoDAO->buscarPorId($id_produto);
+            if ($produtoVendido) {
+              echo "<div class='produto-individual'>";
+              echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
+              echo "<p>";
+              echo "<b>Quantidade</b>: " . $quantidade . "<br>";
+              echo "<b>Valor do produto</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
+              $valor_total = (float)$produtoVendido['valor_unitario'];
+              $valor_total = $valor_total * $quantidade;
+              echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br>";
+              echo "</div>";
+            } else {
+              echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
+            }
           }
+        } else {
+          echo "<p>Nenhum produto encontrado no pedido.</p>";
         }
-      } else {
-        echo "<p>Nenhum produto encontrado no pedido.</p>";
-      }
-
-      echo "</div>";
-
-      echo "<div class='total-pedido'><p><b>Total do pedido</b>: R$ " . number_format((float)$infoPedido['valor_final'], 2, ',', '.') . "</p></div>"; // Aqui tem que mudar
-
-      $dataBanco = $infoPedido['data'];
-      $formatoData = strtotime($dataBanco);
-      $data = date("d/m/Y", $formatoData);
-
-      ?>
-
-      <div id="pedidos-form" class="pedido-cancelado-infos">
-        <p><b>Data/prazo</b>: <?php echo $data; ?> </p><br>
-        <p><b>Comentários</b>: <?php echo $infoPedido['comentario']; ?></p> <br>
-        </p>
+        echo "</div>";
+        echo "<div class='infos-pedido'>";
+        echo "<div class='total-pedido'><p><b>Total do pedido</b>: R$ " . number_format((float)$infoPedido['valor_final'], 2, ',', '.') . "</p></div>"; // Aqui tem que mudar
+        $dataBanco = $infoPedido['data'];
+        $formatoData = strtotime($dataBanco);
+        $data = date("d/m/Y", $formatoData);
+        ?>
+        <div class="form-pedidos-items">
+          <div id="pedidos-form" class="pedido-cancelado-infos">
+            <p><b>Data/prazo</b>: <?php echo $data; ?> </p><br>
+            <p><b>Comentários</b>: <?php echo $infoPedido['comentario']; ?></p> <br>
+            </p>
+          </div>
+        </div>
+        <div class="form-pedidos-items">
+          <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-add"><span class="bi bi-copy"></span>Clonar</a>
+          <a href="../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');" class="btn-alt-pedido"><span class="bi bi-trash3"></span>Excluir</a>
+          <!-- <a href="../controller/pedidoControle.php?op=limparCarrinho" class="btn-add">Voltar</a> -->
+        </div>
       </div>
+    </div>
 
-      <div class="form-pedidos-items">
-        <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-add">Clonar</a>
-        <a href="../controller/pedidoControle.php?op=limparCarrinho" class="btn-add">Voltar</a>
-      </div>
-
-      <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
+    <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
   </main>
 
   </div>

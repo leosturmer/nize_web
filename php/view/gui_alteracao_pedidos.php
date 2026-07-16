@@ -133,7 +133,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
 
         <details class="produtos-pedido">
             <summary>Adicione os produtos ao pedido</summary>
-            <div class="adicionar-produtos">
+            <!-- <div class="adicionar-produtos"> -->
 
                 <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-produto-pedido">
                     <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição" autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
@@ -143,40 +143,41 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                     <?php if (!empty($listaProdutos)): ?>
                         <?php foreach ($listaProdutos as $item): ?>
                             <div class="product-view">
-                                <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
-                                <p><strong>Quantidade disponível:</strong> <?php echo htmlspecialchars($item['quantidade']); ?> </p>
-                                <p><strong>Unidade:</strong> <?php echo "R$ " . number_format((float)$item['valor_unitario'], 2, ',', '.'); ?> </p>
+                                <div class="texto-produto">
+                                    <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
+                                    <p><strong>Quantidade disponível:</strong> <?php echo htmlspecialchars($item['quantidade']); ?> </p>
+                                    <p><strong>Unidade:</strong> <?php echo "R$ " . number_format((float)$item['valor_unitario'], 2, ',', '.'); ?> </p>
+                                    <p><strong>Aceita encomenda:</strong> <?php if ($item['aceita_encomenda']) {
+                                                                                echo "Sim";
+                                                                            } else {
+                                                                                echo "Não";
+                                                                            } ?></p>
+                                    <p><strong>Descrição:</strong> <?php if ($item['descricao']) {
+                                                                        echo htmlspecialchars($item['descricao']);
+                                                                    } else {
+                                                                        echo "Sem informações";
+                                                                    } ?></p>
+                                </div>
 
-                                <p><strong>Aceita encomenda:</strong> <?php if ($item['aceita_encomenda']) {
-                                                                            echo "Sim";
-                                                                        } else {
-                                                                            echo "Não";
-                                                                        } ?></p>
-
-                                <p><strong>Descrição:</strong> <?php if ($item['descricao']) {
-                                                                    echo htmlspecialchars($item['descricao']);
-                                                                } else {
-                                                                    echo "Sem informações";
-                                                                } ?></p>
-
-                                <?php if ($item['imagem']) {
-                                    echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
-                                } else {
-                                    echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
-                                } ?>
-
-                                <form action="../controller/pedidoControle.php" method="get" class="product-btns">
-                                    <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Digite a quantidade" autocomplete="off">
-                                    <input type="hidden" name="op" value="adicionarQuantidade">
-                                    <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
-                                    <input type="submit" class="btn-add" value="Adicionar ao pedido">
-                                </form>
+                                <div class="product-img-btn">
+                                    <?php if ($item['imagem']) {
+                                        echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                                    } else {
+                                        echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
+                                    } ?>
+                                    <form action="../controller/pedidoControle.php" method="get" class="product-btns">
+                                        <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
+                                        <input type="hidden" name="op" value="adicionarQuantidade">
+                                        <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
+                                        <input type="submit" class="btn-add" value="Adicionar ao pedido">
+                                    </form>
+                                </div>
                             </div>
                         <?php endforeach; ?>
                     <?php else: echo "Nenhum produto cadastrado." ?>
                     <?php endif; ?>
                 </div>
-            </div>
+            <!-- </div> -->
         </details>
 
         <div class="container-horizontal">
@@ -256,6 +257,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                     <div class="form-pedidos-items">
                         <button type="submit" class="btn-alt-pedido"><span class="bi bi-check2"></span>Alterar</button>
                         <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-alt-pedido"><span class="bi bi-copy"></span>Clonar</a>
+                        <a href="../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3" class="btn-alt-pedido"></span>Excluir</a>
                         <!-- <a href="../view/gui_visualizacao_pedidos.php" class="btn-alt-pedido">Voltar</a> -->
                     </div>
                 </form>

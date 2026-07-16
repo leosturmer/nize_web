@@ -196,7 +196,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
 
             <div class="product-btns pedido-btns">
               <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido ?>"><span class="bi bi-pencil"></span>Editar</a>
-              <a href="../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3"></span>Excluir</a>
+              
             </div>
           </div> <?php endforeach; ?>
       <?php else: ?>

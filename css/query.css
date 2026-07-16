@@ -204,9 +204,9 @@
     width: 50px;
   }
 
-  input#quantidadeVendida.input-pedido::placeholder {
+  /* input#quantidadeVendida.input-pedido::placeholder {
     color: transparent;
-  }
+  } */
 
   div.produtos-no-pedido h3 {
     font-size: 18px;
@@ -333,6 +333,14 @@
   .span-alt-img {
     font-size: 12px;
   }
+
+
+  div#pedidos-form.pedido-cancelado-infos p {
+    font-size: 16px;
+  }
+
+
+
 }
 
 @media (max-width: 770px) {
@@ -468,6 +476,10 @@
   div.form-pedidos-items {
     display: flex;
     justify-content: center;
+  }
+
+  .texto-pedido-cancelado p {
+    font-size: 14px;
   }
 
 }

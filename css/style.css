@@ -897,10 +897,20 @@ input#prazoPedido {
 }
 
 .internal-nav > h2 {
-  text-align: left;
+  text-align: center;
   /* margin-left: 0; */
   padding-left: 0;
 }
+
+h2.num-pedido.num-pedido-cancelado {
+  padding-top: 0.5em;
+}
+
+.btn-alt-pedido span {
+  margin-left: 0;
+  margin-right: 0.3em;
+}
+
 
 .pedido-cancelado-infos {
   margin: 0 auto;

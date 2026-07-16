@@ -14,12 +14,19 @@ Ordem de páginas:
 
 - visualizacao pedidos
 - cadastro pedidos
-alteração pedido
-alterçaão pedido cancelado!!!!!!!!!!!!!
+- alteração pedido
+- alterçaão pedido cancelado!!!!!!!!!!!!!
+
 clonar pedido
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!! TROCAR O LOCAL DO EXCLUIR PRODUTO PRA DENTRO DO ALTERAR PRODUTOS
 
 minha area
 alteração cadastro
+
+### No HTML
+
+- Trocar os nomes das páginas que estão grandes - ex: "Visualização de pedidos" trocar para "Pedidos - Visualização"
 
 #### No JS:
 - Fazer com que a sidebar e o details de filtro fechem automático ao clicar FORA deles
