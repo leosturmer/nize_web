@@ -133,7 +133,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
     ?>
 
     <form action="../controller/produtoControle.php?op=alterar&id=<?php echo $produto['id_produto'] ?>" method="post" enctype="multipart/form-data" class="form-cadastro-produto form-alt-produto">
-      <fieldset id="products-form">
+      <fieldset id="products-form" class="alt-products-form">
         <legend>Informações do produto</legend>
         <div class="inner-products-form">
           <label><strong>Nome do produto</strong>*:</label>
