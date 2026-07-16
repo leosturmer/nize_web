@@ -143,7 +143,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                                 <div class="texto-produto">
                                     <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
                                     <p><strong>Quantidade disponível:</strong> <?php echo htmlspecialchars($item['quantidade']); ?> </p>
-                                    <p><strong>Valor unitário: R$</strong> <?php echo number_format((float)$item['valor_unitario'], 2, ',', '.') ?> </p>
+                                    <p><strong>Unidade: R$</strong> <?php echo number_format((float)$item['valor_unitario'], 2, ',', '.') ?> </p>
                                     <p><strong>Aceita encomenda:</strong> <?php echo $item['aceita_encomenda'] ? "Sim" : "Não"; ?></p>
                                     <p class="p-descricao"><strong>Descrição:</strong> <?php if (htmlspecialchars($item['descricao'])) {
                                                                                             echo htmlspecialchars($item['descricao']);
@@ -189,7 +189,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                             echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
                             echo "<p>";
                             echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-                            echo "<b>Valor unitário</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
+                            echo "<b>Unidade</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
                             $valor_total = (float)$produtoVendido['valor_unitario'];
                             $valor_total = $valor_total * $quantidade;
                             echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";

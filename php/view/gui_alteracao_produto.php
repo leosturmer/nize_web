@@ -151,7 +151,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
           </div>
 
           <div class="div-inner-products">
-            <label><strong>Valor unitário</strong>*: R$
+            <label><strong>Unidade</strong>*: R$
               <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_unitario']); ?>" autocomplete="off" required>
             </label>
 

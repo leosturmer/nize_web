@@ -219,6 +219,12 @@
   /* div.adicionar-produtos {
     width: 100%;
   } */
+
+  h2.num-pedido {
+    padding: 0 0 1em 0;
+    font-size: 20px;
+  }
+
 }
 
 /* Barra de pesquisa */
@@ -415,7 +421,7 @@
   div.produtos-no-pedido div.produto-individual {
     /* max-height: 100px; */
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
   }
 
   .lista-produtos-pedido .product-view .btn-add {
@@ -457,6 +463,11 @@
 
   div.inner-products-form {
     padding: 0;
+  }
+
+  div.form-pedidos-items {
+    display: flex;
+    justify-content: center;
   }
 
 }
@@ -729,6 +740,8 @@
     font-size: 14px;
     width: 30%;
   }
+
+  
 
   div.product-img-btn {
     margin-right: 0;

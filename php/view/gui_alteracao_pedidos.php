@@ -126,7 +126,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                 <h1>Alteração de Pedido</h1>
                 <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
             </div>
-            <h2>Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
+            <h2 class="num-pedido">Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
         </div>
 
 
@@ -145,7 +145,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                             <div class="product-view">
                                 <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
                                 <p><strong>Quantidade disponível:</strong> <?php echo htmlspecialchars($item['quantidade']); ?> </p>
-                                <p><strong>Valor unitário:</strong> <?php echo "R$ " . number_format((float)$item['valor_unitario'], 2, ',', '.'); ?> </p>
+                                <p><strong>Unidade:</strong> <?php echo "R$ " . number_format((float)$item['valor_unitario'], 2, ',', '.'); ?> </p>
 
                                 <p><strong>Aceita encomenda:</strong> <?php if ($item['aceita_encomenda']) {
                                                                             echo "Sim";
@@ -195,7 +195,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                             echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
                             echo "<p>";
                             echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-                            echo "<b>Valor unitário</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
+                            echo "<b>Unidade</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
                             $valor_total = (float)$produtoVendido['valor_unitario'];
                             $valor_total = $valor_total * $quantidade;
                             echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";
@@ -254,9 +254,9 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                         </fieldset>
                     </div>
                     <div class="form-pedidos-items">
-                        <button type="submit" class="btn-alt-pedido">Alterar</button>
-                        <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-alt-pedido">Clonar</a>
-                        <a href="../view/gui_visualizacao_pedidos.php" class="btn-alt-pedido">Voltar</a>
+                        <button type="submit" class="btn-alt-pedido"><span class="bi bi-check2"></span>Alterar</button>
+                        <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-alt-pedido"><span class="bi bi-copy"></span>Clonar</a>
+                        <!-- <a href="../view/gui_visualizacao_pedidos.php" class="btn-alt-pedido">Voltar</a> -->
                     </div>
                 </form>
             </div>

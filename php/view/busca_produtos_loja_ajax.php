@@ -29,7 +29,7 @@ foreach ($lista as $item) {
     <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p> 
 
     <?php if ($item['valor_unitario']) { $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.'); } else {$valor_unitario = "Não informado"; }?> 
-    <p><strong>Valor unitário:</strong> <?php echo $valor_unitario?></p>
+    <p><strong>Unidade:</strong> <?php echo $valor_unitario?></p>
 
     <p class="p-descricao"><strong>Descrição:</strong> 
         <?php if ($item['descricao']) { 

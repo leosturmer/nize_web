@@ -43,7 +43,7 @@ if (!empty($lista)) {
             $valor_unitario = "Não informado";
         }
 
-        echo '<p><strong>Valor unitário: </strong>' . $valor_unitario . '</p>';
+        echo '<p><strong>Unidade: </strong>' . $valor_unitario . '</p>';
 
         if ($item['valor_custo']) {
             $valor_custo = "R$ " . number_format($item['valor_custo'], 2, ',', '.');

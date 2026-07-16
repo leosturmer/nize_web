@@ -34,7 +34,7 @@ foreach ($lista as $item) {
             
             <p><strong>Quantidade:</strong> <?php if ($item['quantidade'] === 0 || $item['quantidade'] == null) {echo "Sem estoque";} else { echo htmlspecialchars($item['quantidade']); }?> </p>
             <?php if ($item['valor_unitario']) { $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.'); } else {$valor_unitario = "Não informado"; }?>
-            <p><strong>Valor unitário:</strong> <?php echo $valor_unitario?></p>
+            <p><strong>Unidade:</strong> <?php echo $valor_unitario?></p>
             <?php if ($item['valor_custo']) {$valor_custo = "R$ " . number_format($item['valor_custo'], 2, ',', '.'); } else {$valor_custo = "Não informado"; }?>
             <p><strong>Valor de custo:</strong> <?php echo $valor_custo; ?></p>
             

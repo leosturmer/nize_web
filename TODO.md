@@ -8,25 +8,21 @@ Ordem de páginas:
 - erro
 
 - visualizacao produtos
-cadastro produtos
-alteração produtos
-clonar produto
+- cadastro produtos
+- alteração produtos
+- clonar produto
 
-visualizacao pedidos
-cadastro pedidos
+- visualizacao pedidos
+- cadastro pedidos
 alteração pedido
-alterçaão pedido cancelado
+alterçaão pedido cancelado!!!!!!!!!!!!!
 clonar pedido
 
 minha area
 alteração cadastro
 
-
-#### COLOCAR NA DIV PRODUTOS
- - as novas divs do texto e imagem
-    - fazer isso nos AJAX e outras telas
- - class="texto-produto"
- - class="product-img-btn"
+#### No JS:
+- Fazer com que a sidebar e o details de filtro fechem automático ao clicar FORA deles
 
 ### VER se ficou aquelas coisas que anotei na documentação
 
