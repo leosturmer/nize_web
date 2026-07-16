@@ -123,7 +123,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
     <div class="internal-nav">
       <div class="internal-nav-links">
         <h1>Visualização de pedido</h1>
-        <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos">Visualizar pedidos</a>
+        <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
       </div>
       <h2>Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
     </div>

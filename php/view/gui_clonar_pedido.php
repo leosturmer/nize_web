@@ -113,7 +113,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
         <div class="internal-nav">
             <div class="internal-nav-links">
                 <h1>Clonar Pedido</h1>
-                <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos">Visualizar pedidos</a>
+                <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
             </div>
         </div>
 
