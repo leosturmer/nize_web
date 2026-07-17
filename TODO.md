@@ -19,8 +19,8 @@ Ordem de páginas:
 - clonar pedido
 
 
-minha area
-alteração cadastro
+- minha area
+alteração cadastro --->>>>> nessa aqui tem que mexer no 900px pra baixo
 
 ### No HTML
 
