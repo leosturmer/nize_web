@@ -16,8 +16,7 @@ Ordem de páginas:
 - cadastro pedidos
 - alteração pedido
 - alterçaão pedido cancelado!!!!!!!!!!!!!
-
-clonar pedido
+- clonar pedido
 
 
 minha area
