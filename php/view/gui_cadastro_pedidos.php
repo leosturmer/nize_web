@@ -135,42 +135,39 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                 <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição" autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
             </form>
 
-            <!-- <div class="adicionar-produtos"> -->
-                <div class="lista-produtos-pedido">
-                    <?php if (!empty($listaProdutos)): ?>
-                        <?php foreach ($listaProdutos as $item): ?>
-                            <div class="product-view">
-                                <div class="texto-produto">
-                                    <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
-                                    <p><strong>Quantidade disponível:</strong> <?php echo htmlspecialchars($item['quantidade']); ?> </p>
-                                    <p><strong>Unidade: R$</strong> <?php echo number_format((float)$item['valor_unitario'], 2, ',', '.') ?> </p>
-                                    <p><strong>Aceita encomenda:</strong> <?php echo $item['aceita_encomenda'] ? "Sim" : "Não"; ?></p>
-                                    <p class="p-descricao"><strong>Descrição:</strong> <?php if (htmlspecialchars($item['descricao'])) {
-                                                                                            echo htmlspecialchars($item['descricao']);
-                                                                                        } else {
-                                                                                            echo 'Sem informações';
-                                                                                        } ?></p>
-                                </div>
-                                <div class="product-img-btn">
-                                    <?php if ($item['imagem']) {
-                                        echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
-                                    } else {
-                                        echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
-                                    } ?>
-                                    <form action="../controller/pedidoControle.php" method="get" class="product-btns">
-                                        <!-- <span class="bi bi-bag-plus"></span> -->
-                                        <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
-                                        <input type="hidden" name="op" value="adicionarQuantidade">
-                                        <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
-                                        <input type="submit" class="btn-add" value="+ Adicionar">
-                                    </form>
-                                </div>
+            <div class="lista-produtos-pedido">
+                <?php if (!empty($listaProdutos)): ?>
+                    <?php foreach ($listaProdutos as $item): ?>
+                        <div class="product-view">
+                            <div class="texto-produto">
+                                <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
+                                <p><strong>Quantidade disponível:</strong> <?php echo htmlspecialchars($item['quantidade']); ?> </p>
+                                <p><strong>Unidade: R$</strong> <?php echo number_format((float)$item['valor_unitario'], 2, ',', '.') ?> </p>
+                                <p><strong>Aceita encomenda:</strong> <?php echo $item['aceita_encomenda'] ? "Sim" : "Não"; ?></p>
+                                <p class="p-descricao"><strong>Descrição:</strong> <?php if (htmlspecialchars($item['descricao'])) {
+                                                                                        echo htmlspecialchars($item['descricao']);
+                                                                                    } else {
+                                                                                        echo 'Sem informações';
+                                                                                    } ?></p>
                             </div>
-                        <?php endforeach; ?>
-                    <?php else: echo "Nenhum produto cadastrado." ?>
-                    <?php endif; ?>
-                </div>
-            <!-- </div> -->
+                            <div class="product-img-btn">
+                                <?php if ($item['imagem']) {
+                                    echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                                } else {
+                                    echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
+                                } ?>
+                                <form action="../controller/pedidoControle.php" method="get" class="product-btns">
+                                    <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
+                                    <input type="hidden" name="op" value="adicionarQuantidade">
+                                    <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
+                                    <input type="submit" class="btn-add" value="+ Adicionar">
+                                </form>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: echo "Nenhum produto cadastrado." ?>
+                <?php endif; ?>
+            </div>
         </details>
 
         <div class="container-horizontal">

@@ -697,6 +697,10 @@ span.bi.bi-bag-plus {
 
 } */
 
+.texto-pedido-cancelado p {
+  color: brown;
+}
+
 #quantidadeVendida.input-pedido {
   height: 3rem;
   width: 10rem;
