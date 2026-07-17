@@ -256,7 +256,6 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                     </div>
                     <div class="form-pedidos-items">
                         <button type="submit" class="btn-alt-pedido"><span class="bi bi-check2"></span>Alterar</button>
-                        <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-alt-pedido"><span class="bi bi-copy"></span>Clonar</a>
                         <a href="../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3" class="btn-alt-pedido"></span>Excluir</a>
                         <!-- <a href="../view/gui_visualizacao_pedidos.php" class="btn-alt-pedido">Voltar</a> -->
                     </div>

@@ -190,7 +190,6 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 
       <div id="form-products-buttons">
         <button type="submit"><span class="bi bi-check2"></span>Alterar</button>
-        <button formaction="gui_clonar_produto.php?id=<?php echo $produto['id_produto']; ?>" class="btn-clonar"><span class="bi bi-copy"></span>Clonar</button>
         <a href="../controller/produtoControle.php?op=excluir&id=<?php echo $produto['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3"></span>Excluir</a>
 
         <!-- <button formaction="../view/gui_visualizacao_produtos.php">Voltar</button> -->

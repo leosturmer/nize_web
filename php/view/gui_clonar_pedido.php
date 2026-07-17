@@ -118,7 +118,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
         </div>
 
         <details class="produtos-pedido">
-            <summary>Adicione os produtos ao pedido clonado</summary>
+            <summary>Adicione os produtos ao pedido</summary>
 
             <!-- <div class="adicionar-produtos"> -->
             <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-produto-pedido">
@@ -197,11 +197,11 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                     <div class="form-pedidos-items">
                         <fieldset id="pedidos-form">
                             <label for="prazoPedido" class="label-column">
-                                Prazo de entrega do novo pedido
+                                Prazo de entrega
                                 <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required>
                             </label>
                             <label for="statusPedido" class="label-column">
-                                Status do Novo Pedido
+                                Status
                                 <select name="statusPedido" id="statusPedido">
                                     <option value="encomendado">Encomendado</option>
                                     <option value="pagamento">Aguardando pagamento</option>
@@ -220,8 +220,8 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                         </fieldset>
                     </div>
                     <div class="form-pedidos-items">
-                        <button type="submit">Cadastrar</button>
-                        <a href="../controller/pedidoControle.php?op=limparCarrinho">Cancelar</a>
+                        <button type="submit"><span class="bi bi-check2"></span>Salvar</button>
+                        <a href="../controller/pedidoControle.php?op=limparCarrinho"><span class="bi bi-x"></span>Cancelar</a>
                     </div>
                 </form>
             </div>

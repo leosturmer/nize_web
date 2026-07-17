@@ -9,7 +9,7 @@ Ordem de páginas:
 
 - visualizacao produtos
 - cadastro produtos
-#### alteração produtos
+- alteração produtos
 - clonar produto
 
 - visualizacao pedidos
@@ -19,7 +19,6 @@ Ordem de páginas:
 
 clonar pedido
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!! TROCAR O LOCAL DO EXCLUIR PRODUTO PRA DENTRO DO ALTERAR PRODUTOS
 
 minha area
 alteração cadastro
