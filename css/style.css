@@ -977,7 +977,17 @@ h2.num-pedido.num-pedido-cancelado {
 }
 
 .usuario-btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   margin: 2em 1em;
+}
+
+.usuario-btns .btn-excluir {
+  padding: 0.5em;
+  height: 50px;
+  margin: 0.8em;
 }
 
 .div-btn-wpp > img {
