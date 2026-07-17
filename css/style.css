@@ -559,8 +559,14 @@ span.bi.bi-bag-plus {
   /* padding-right: 0.8em; */
 }
 
-#form-products-buttons > button {
-  width: 50%;
+#form-products-buttons > button,
+#form-products-buttons > a {
+  width: 150px;
+  /* font-size: 14px; */
+  padding: 0.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #products-form {

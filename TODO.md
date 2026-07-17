@@ -9,7 +9,7 @@ Ordem de páginas:
 
 - visualizacao produtos
 - cadastro produtos
-- alteração produtos
+#### alteração produtos
 - clonar produto
 
 - visualizacao pedidos
