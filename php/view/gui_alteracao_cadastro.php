@@ -181,9 +181,9 @@ $usuario = unserialize($_SESSION['usuario_logado']);
           </div>
 
 
-          <div class="container-horizontal">
-            <button type="submit">Alterar cadastro</button>
-            <a href="./view_loja.php?loja=<?php echo $usuario->nome_visualizacao ?>" target="_blank" class="btn-alterar">Visualizar loja</a>
+          <div class="container-horizontal cadastro-btns">
+            <button type="submit"><span class="bi bi-check2"></span>Alterar</button>
+            <a href="./view_loja.php?loja=<?php echo $usuario->nome_visualizacao ?>" target="_blank" class="btn-alterar">Ver loja<span class="bi bi-box-arrow-up-right"></span></a>
           </div>
         </form>
       </div>

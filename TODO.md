@@ -20,7 +20,9 @@ Ordem de páginas:
 
 
 - minha area
-alteração cadastro --->>>>> nessa aqui tem que mexer no 900px pra baixo
+- alteração cadastro 
+
+VISUALIZAÇÃO LOJA
 
 ### No HTML
 

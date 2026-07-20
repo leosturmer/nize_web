@@ -990,6 +990,12 @@ h2.num-pedido.num-pedido-cancelado {
   margin: 0.8em;
 }
 
+div.container-horizontal.cadastro-btns span.bi-box-arrow-up-right {
+  margin-left: 0.5em;
+  margin-right: 0;
+  font-size: 16px;
+}
+
 .div-btn-wpp > img {
   width: 100%;
 }

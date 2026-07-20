@@ -477,6 +477,18 @@
   .texto-pedido-cancelado p {
     font-size: 14px;
   }
+
+  div#minha-area {
+    width: 100%;
+  }
+
+  div.container-horizontal.cadastro-btns {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+  }
+
+  
 }
 
 /* CELULAR */
@@ -605,7 +617,7 @@
   }
 
   form#form-cadastro button {
-    margin: 10px auto;
+    margin: 0.8em auto;
   }
 
   /* Tela inicial */
