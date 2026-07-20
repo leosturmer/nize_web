@@ -410,3 +410,7 @@ input.btn-add:valid {
   border: var(--border);
   box-shadow: var(--box-shadow);
 }
+
+details.filtros-produtos[open] summary span.bi-filter::before {
+  content: "\f659"; /* Código unicode do ícone 'bi-x-lg' (ícone de X) */
+}

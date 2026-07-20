@@ -177,7 +177,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
 
       <div class="usuario-btns">
-        <a href="./gui_alteracao_cadastro.php" class="btn-alterar">Alterar cadastro</a>
+        <a href="./gui_alteracao_cadastro.php" class="btn-alterar"><span class="bi bi-pencil" style="margin-left: 0;"></span>Editar</a>
 
         <a href="<?php echo $link_view_loja ?>" target="<?php echo $target ?>" class="btn-alterar">Ver loja<span class="bi bi-box-arrow-up-right"></span></a>
       </div>

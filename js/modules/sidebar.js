@@ -37,3 +37,4 @@ export function inicializarHeaderMobile() {
   resizeBtn.addEventListener("mouseenter", alternarIcone);
   resizeBtn.addEventListener("mouseleave", alternarIcone);
 }
+

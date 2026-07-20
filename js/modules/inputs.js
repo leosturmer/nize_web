@@ -75,3 +75,13 @@ export function checkboxVendido() {
             gerenciarCheckboxes();
 }
 
+export function fecharFiltro () {
+  document.addEventListener('click', function (event) {
+  const details = document.querySelector('details.filtros-produtos');
+  
+  if (details && details.open && !details.contains(event.target)) {
+    details.removeAttribute('open'); // Fecha o details
+  }
+});
+
+}
