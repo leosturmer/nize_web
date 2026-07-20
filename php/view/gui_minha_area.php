@@ -27,7 +27,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 
-  <title>Nize - Minha área</title>
+  <title>Minha área- Nize</title>
 </head>
 
 

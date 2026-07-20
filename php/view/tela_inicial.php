@@ -26,7 +26,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
 
 
-  <title>Início</title>
+  <title>Início- Nize</title>
 </head>
 
 

@@ -44,7 +44,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
 
 
 
-    <title>Pedidos</title>
+    <title>Alteração de pedido- Nize</title>
 </head>
 
 

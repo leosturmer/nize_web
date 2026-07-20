@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/sidebar.css">
 
-    <title>Cadastro</title>
+    <title>Cadastro- Nize</title>
 </head>
 
 

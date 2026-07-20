@@ -45,7 +45,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
 
 
 
-    <title>Cadastro de pedido</title>
+    <title>Cadastro de pedido- Nize</title>
 </head>
 
 

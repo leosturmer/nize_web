@@ -34,7 +34,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 
-    <title>Clonar Pedido</title>
+    <title>Clonar Pedido- Nize</title>
 </head>
 
 

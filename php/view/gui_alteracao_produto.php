@@ -25,7 +25,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nize</title>
+  <title>Alteração de produto- Nize</title>
 
   <link rel="shortcut icon" href="../../img/favicon/favicon.ico" type="image/x-icon">
 
