@@ -134,7 +134,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         } else {
           $telefone = "Não informado";
         }
-    
+
         ?>
         <hr>
         <p>
@@ -180,10 +180,10 @@ $usuario = unserialize($_SESSION['usuario_logado']);
             <input type="text" name="usuTelefone" class="input-login input-nome-view" placeholder="55 55 99999999" value="<?php echo $usuario->telefone ?>">
           </div>
 
-
           <div class="container-horizontal cadastro-btns">
             <button type="submit"><span class="bi bi-check2"></span>Alterar</button>
-            <a href="./view_loja.php?loja=<?php echo $usuario->nome_visualizacao ?>" target="_blank" class="btn-alterar">Ver loja<span class="bi bi-box-arrow-up-right"></span></a>
+
+            <button formaction="../controller/usuarioControle.php?op=excluir" onclick="return confirm('A exclusão deletará todos os dados do banco. Deseja confirmar?')" class="btn-excluir">Excluir conta</button>
           </div>
         </form>
       </div>

@@ -559,10 +559,9 @@ div.product-img-btn > img.img-produtos {
   margin-left: 0px;
 }
 
-span.bi.bi-bag-plus {
+/* span.bi.bi-bag-plus {
   font-size: 30px;
-  /* padding-right: 0.8em; */
-}
+} */
 
 #form-products-buttons > button,
 #form-products-buttons > a {

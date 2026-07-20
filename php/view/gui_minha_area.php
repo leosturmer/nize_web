@@ -150,9 +150,36 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         <strong>WhatsApp</strong> (opcional): <?php echo $telefone ?>
         </p>
       </div>
+
+      <?php
+      $link_view_loja = '';
+      $target = '';
+      $texto_msg = '';
+
+      if (!$usuario->nome_visualizacao || $usuario->aceita_visualizacao == 0) {
+
+        if (!$usuario->nome_visualizacao && $usuario->aceita_visualizacao == 0) {
+          $texto_msg = "sem link e sem visualização";
+        } else if (!$usuario->nome_visualizacao && $usuario->aceita_visualizacao == 1) {
+          $texto_msg = "sem link";
+        } else if ($usuario->aceita_visualizacao == 0 && $usuario->nome_visualizacao) {
+          $texto_msg = "sem visualização aberta";
+        }
+
+        $_SESSION['msg'] = "<p class='error-msg'>Loja $texto_msg! </p>";
+        $link_view_loja = "gui_alteracao_cadastro.php";
+        $target = "";
+      } else {
+        $link_view_loja = "./view_loja.php?loja=$usuario->nome_visualizacao";
+        $target = "_blank";
+      }
+      ?>
+
+
       <div class="usuario-btns">
         <a href="./gui_alteracao_cadastro.php" class="btn-alterar">Alterar cadastro</a>
-        <button formaction="../controller/usuarioControle.php?op=excluir" onclick="return confirm('A exclusão deletará todos os dados do banco. Deseja confirmar?')" class="btn-excluir">Excluir conta</button>
+
+        <a href="<?php echo $link_view_loja ?>" target="<?php echo $target ?>" class="btn-alterar">Ver loja<span class="bi bi-box-arrow-up-right"></span></a>
       </div>
     </div>
 

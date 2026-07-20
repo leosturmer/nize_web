@@ -24,7 +24,7 @@ $dadosTelefone = $usuarioDAO->buscarTelefone($id_usuario);
 $telefone = $dadosTelefone['telefone'];
 
 
-$lista = $produtoDAO->listarTodosProdutos($id_usuario);
+$lista = $produtoDAO->listarTodosProdutosAbertos($id_usuario);
 
 if (!empty($_SESSION['usuario_logado'])) {
     $logo_link = "tela_inicial.php";
@@ -73,7 +73,6 @@ if (!empty($_SESSION['usuario_logado'])) {
 
 
     <main class='conteudo-pagina'>
-
         <div class="internal-nav">
             <?php if ($aceita_visualizacao === 1): ?>
 
