@@ -41,7 +41,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 
-  <title>Pedido cancelado- Nize</title>
+  <title>Pedido vendido - Nize</title>
 </head>
 
 
@@ -121,14 +121,13 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
 
 
     <div class="internal-nav">
-      <div class="internal-nav-links">
-        <h2 class="num-pedido num-pedido-cancelado">Pedido cancelado - <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
+      <div class="internal-nav-links" style="display: flex; align-items: center;">
+        <h2 class="num-pedido num-pedido-cancelado">Pedido vendido - <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
         <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
       </div>
       <div class="texto-pedido-cancelado">
-        <p>Não é possível fazer alterações em pedidos cancelados</p>
+        <p>Pedidos vendidos tem limitações de alteração</p>
       </div>
-      
     </div>
 
 
@@ -163,18 +162,49 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
         $formatoData = strtotime($dataBanco);
         $data = date("d/m/Y", $formatoData);
         ?>
-        <div class="form-pedidos-items">
-          <div id="pedidos-form" class="pedido-cancelado-infos">
-            <p><b>Data/prazo</b>: <?php echo $data; ?> </p><br>
-            <p><b>Comentários</b>: <?php echo $infoPedido['comentario']; ?></p> <br>
-            </p>
+        <form action="../controller/pedidoControle.php" method="get">
+          <input type="hidden" name="op" value="alterar">
+          <div class="form-pedidos-items">
+            <fieldset id="pedidos-form">
+              <!-- <div> -->
+              <label for="prazopedido">
+                Data
+                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required value="<?php echo $infoPedido['data'] ?>">
+              </label>
+              <label for="statusPedido">
+                Status do Pedido
+                <select name="statusPedido" id="statusPedido">
+                  <option value="vendido" <?= $infoPedido['status'] == 'vendido' ? 'selected' : '' ?>>Vendido</option>
+                  <option value="cancelado" <?= $infoPedido['status'] === 'cancelado' ? 'selected' : '' ?>>Cancelado</option>
+                </select>
+              </label>
+              
+              <div id="containerVendido" style="display: none;">
+                <!-- <label class="label-baixa-estoque">
+                  Dar baixa no estoque?
+                  <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" class="input-produto input-checkbox" value="1">
+                </label> -->
+              </div>
+              <div id="containerCancelado" style="display: none;">
+                <p>Atenção: <br> Pedidos cancelados não podem ser editados!<br></p>
+                <label class="label-baixa-estoque">
+                  Devolver produtos ao estoque?
+                  <input type="checkbox" name="estornarEstoque" id="estornarEstoque" class="input-produto input-checkbox" value="1">
+                </label>
+              </div>
+              <!-- </div> -->
+              <label for="comentarioPedido">
+                Comentários
+                <textarea name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo $infoPedido['comentario'] ?></textarea>
+              </label>
+            </fieldset>
           </div>
-        </div>
-        <div class="form-pedidos-items">
-          <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-add"><span class="bi bi-copy"></span>Clonar</a>
-          <a href="../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');" class="btn-alt-pedido"><span class="bi bi-trash3"></span>Excluir</a>
-          <!-- <a href="../controller/pedidoControle.php?op=limparCarrinho" class="btn-add">Voltar</a> -->
-        </div>
+          <div class="form-pedidos-items">
+            <button type="submit" class="btn-alt-pedido"><span class="bi bi-check2"></span>Alterar</button>
+            <a href="../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3" class="btn-alt-pedido"></span>Excluir</a>
+            <!-- <a href="../view/gui_visualizacao_pedidos.php" class="btn-alt-pedido">Voltar</a> -->
+          </div>
+        </form>
       </div>
     </div>
 

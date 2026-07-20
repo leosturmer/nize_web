@@ -110,12 +110,14 @@ switch ($opcao) {
                 'valor_final' => $pedido['valor_final']
             ];
 
-            if ($pedido['status'] != "cancelado") {
+            if ($pedido['status'] != "cancelado" && $pedido['status'] != 'vendido') {
                 header("location:../view/gui_alteracao_pedidos.php");
                 
-            } else {
+            } else if ($pedido['status'] == "cancelado") {
                 header("location:../view/gui_alteracao_pedido_cancelado.php");
 
+            } else if ($pedido['status'] == "vendido") {
+                header("location:../view/gui_alteracao_pedido_vendido.php");
             }
 
         } else {

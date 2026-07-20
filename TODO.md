@@ -1,16 +1,10 @@
 #### No CSS:
 - O botão CLONAR PRODUTO está muito largo
+- alguns títulos não tão centralizados com o botão
+- botão de excluir tá grande na tela de alterção de pedido
 
-
-### O QUE ESTÁ DANDO DE ERRADO
-
-- Testei novo usuário. Na parte da tela da MINHA ÁREA, tem que
-    1) colocar para visualizar a loja só funcionar se estiver OK a visualização
-        - Colocar um IF para gerar a variável do link
-        - Aí tem que ter tipo uma tela de view_loja sem nada? nao sei
-    2) A busca para aparecer a loja está aparecendo produtos errados heeh
-
-
+#### Nos diretórios:
+- Mudar o nome dos arquivos e segmentar eles em pastas
 
 
 ### VER se ficou aquelas coisas que anotei na documentação
@@ -22,12 +16,10 @@ visualizar o valor do produto na data em que foi vendido
     -> o máximo que ele pode fazer é ser transformado em CANCELADO ou ser clonado!!!!! 
     -> acho que é isso
 
-### VER a questão de CSS para deixar a borda vermelha caso não tenha sido preenchido todos os dados
-
-
-
-
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+### O QUE ESTÁ DANDO DE ERRADO
+
 
 #### Para o final:
 
