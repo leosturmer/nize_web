@@ -1,28 +1,9 @@
-### No CSS
+### No HTML
 
-Ordem de páginas:
+- Trocar os nomes das páginas que estão grandes - ex: "Visualização de pedidos" trocar para "Pedidos - Visualização"
 
-- index
-- cadastro usuario
-- login
-- erro
-
-- visualizacao produtos
-- cadastro produtos
-- alteração produtos
-- clonar produto
-
-- visualizacao pedidos
-- cadastro pedidos
-- alteração pedido
-- alterçaão pedido cancelado!!!!!!!!!!!!!
-- clonar pedido
-
-
-- minha area
-- alteração cadastro 
-
-- VISUALIZAÇÃO LOJA
+#### No JS:
+- Fazer com que a sidebar e o details de filtro fechem automático ao clicar FORA deles
 
 ### O QUE ESTÁ DANDO DE ERRADO
 
@@ -33,17 +14,12 @@ Ordem de páginas:
 
 
 
-
-### No HTML
-
-- Trocar os nomes das páginas que estão grandes - ex: "Visualização de pedidos" trocar para "Pedidos - Visualização"
-
-#### No JS:
-- Fazer com que a sidebar e o details de filtro fechem automático ao clicar FORA deles
-
 ### VER se ficou aquelas coisas que anotei na documentação
 
 ### VER a questão de CSS para deixar a borda vermelha caso não tenha sido preenchido todos os dados
+
+
+
 
 ##### Fazer a responsividade
 
