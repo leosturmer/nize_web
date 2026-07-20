@@ -363,6 +363,11 @@ div.texto-pedido h2 {
 
 /* Produtos */
 
+div.lista-produtos h4, 
+div.lista-pedidos h4 {
+  padding: 0.5em;
+}
+
 .lista-produtos,
 .lista-pedidos {
   display: flex;

@@ -337,6 +337,11 @@
   div#pedidos-form.pedido-cancelado-infos p {
     font-size: 16px;
   }
+
+  .nome-loja {
+    text-align: center;
+  }
+
 }
 
 @media (max-width: 770px) {
@@ -354,6 +359,7 @@
   div.product-view > div.texto-produto,
   div.product-view > div.texto-pedido {
     max-width: 60%;
+    align-self: start;
   }
 
   div.product-view {
@@ -488,6 +494,22 @@
     align-items: center;
   }
 
+  /* div.product-img-btn p {
+    display: inline;
+    width: 100%;
+  } */
+
+  div.div-btn-wpp {
+    right: 0;
+    bottom: 0;
+  }
+
+  div.div-btn-wpp img {
+    width: 55px;
+  }
+
+
+  
   
 }
 

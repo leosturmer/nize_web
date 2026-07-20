@@ -18,14 +18,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const idLoja = urlParams.get('id');
 
+    const nome_loja = urlParams.get('loja');
+
     clearTimeout(temporizador);
 
     temporizador = setTimeout(() => {
         let url = '';
         
         // Se houver idLoja na URL, significa que estamos na view_loja.php (pública)
-        if (idLoja) {
-            url = `busca_produtos_loja_ajax.php?pesquisaProdutos=${encodeURIComponent(termo)}&id_loja=${encodeURIComponent(idLoja)}&ordenarPor=${encodeURIComponent(order)}`;
+        if (nome_loja) {
+            url = `busca_produtos_loja_ajax.php?pesquisaProdutos=${encodeURIComponent(termo)}&nome_loja=${encodeURIComponent(nome_loja)}&ordenarPor=${encodeURIComponent(order)}`;
         } else {
             // Caso contrário, mantém o fluxo antigo da área interna (gui_produtos)
             url = `busca_produtos_ajax.php?pesquisaProdutos=${encodeURIComponent(termo)}&filtroEstoque=${encodeURIComponent(estoque)}&filtroEncomenda=${encodeURIComponent(encomenda)}&ordenarPor=${encodeURIComponent(order)}`;

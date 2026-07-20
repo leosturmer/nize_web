@@ -22,7 +22,17 @@ Ordem de páginas:
 - minha area
 - alteração cadastro 
 
-VISUALIZAÇÃO LOJA
+- VISUALIZAÇÃO LOJA
+
+### O QUE ESTÁ DANDO DE ERRADO
+
+- Testei novo usuário. Na parte da tela da MINHA ÁREA, tem que
+    1) colocar para visualizar a loja só funcionar se estiver OK a visualização
+    2) A busca para aparecer a loja está aparecendo produtos errados heeh
+
+
+
+
 
 ### No HTML
 
@@ -62,7 +72,6 @@ VISUALIZAÇÃO LOJA
 
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-### O QUE ESTÁ DANDO DE ERRO
 
 
 

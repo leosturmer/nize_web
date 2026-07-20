@@ -219,7 +219,7 @@ button:hover,
 } */
 
 h1 {
-  padding: 1em;
+  padding: 1em 0;
   color: var(--darkGreen);
   font-size: 2em;
 }
