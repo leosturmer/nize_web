@@ -9,6 +9,8 @@
 
 - Testei novo usuário. Na parte da tela da MINHA ÁREA, tem que
     1) colocar para visualizar a loja só funcionar se estiver OK a visualização
+        - Colocar um IF para gerar a variável do link
+        - Aí tem que ter tipo uma tela de view_loja sem nada? nao sei
     2) A busca para aparecer a loja está aparecendo produtos errados heeh
 
 
