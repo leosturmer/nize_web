@@ -19,6 +19,18 @@ visualizar o valor do produto na data em que foi vendido
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ### O QUE ESTÁ DANDO DE ERRADO
+- Na visualização de pedidos, tem que puxar o valor do PRODUTO_PEDIDO para o valor_unitario, não pelo próprio PRODUTO
+    - Tem que ver o Session['carrinho'], acho que vai ter que mudar isso
+    - Em todas alterações de produto tem que buscar pelo preço do BANCO pedido_produto 
+    - Tá tudo errado os valores e valor total e quantidade dos PEDIDOS
+    - Aí tbm tem que colocar pra LIMPAR o carrinho & o session[produtods] toda vez que sair da página.
+
+
+
+
+
+- Valor total do pedido está dando com 0 nos pedidos cancelados (?)
+
 
 
 #### Para o final:

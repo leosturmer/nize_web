@@ -280,7 +280,7 @@ class PedidoDAO{
     
     public function buscarPedidoID($id_pedido){
         try {
-            $sql = $this->conexao->prepare("SELECT id_pedido, data, comentario, status, valor_unitario, valor_final
+            $sql = $this->conexao->prepare("SELECT id_pedido, data, comentario, status, valor_final
                     FROM view_pedidos WHERE id_pedido = :id_pedido");
             $sql->bindValue(":id_pedido", $id_pedido);
             $sql->execute();
@@ -299,7 +299,7 @@ class PedidoDAO{
                 'produtos'     => []
             ];
 
-            $sql_produtos = $this->conexao->prepare("SELECT id_produto, quantidade FROM pedido_produto WHERE id_pedido = :id_pedido");
+            $sql_produtos = $this->conexao->prepare("SELECT id_produto, quantidade, valor_unitario FROM pedido_produto WHERE id_pedido = :id_pedido");
             $sql_produtos->bindValue(":id_pedido", $id_pedido);
             $sql_produtos->execute();
             $selectProdutos = $sql_produtos->fetchAll(PDO::FETCH_ASSOC);
@@ -307,7 +307,8 @@ class PedidoDAO{
             foreach ($selectProdutos as $linhas){
                 $encomendasDict['produtos'][] = [
                     'id_produto' => $linhas['id_produto'],
-                    'quantidade' => $linhas['quantidade']
+                    'quantidade' => $linhas['quantidade'],
+                    'valor_unitario' => $linhas['valor_unitario']
                 ];
             }
 

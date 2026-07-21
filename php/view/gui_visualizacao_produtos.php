@@ -31,7 +31,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 
-  <title>Lista de Produtos- Nize</title>
+  <title>Lista de produtos- Nize</title>
 </head>
 
 
@@ -108,7 +108,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
     <div class="internal-nav">
 
       <div class="internal-nav-links">
-        <h1>Lista de Produtos</h1>
+        <h1>Lista de produtos</h1>
         <a href="gui_cadastro_produtos.php"><span class="bi bi-plus-lg"></span>Produto</a>
       </div>
 

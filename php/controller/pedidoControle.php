@@ -72,7 +72,7 @@ switch ($opcao) {
 
     case "limparCarrinho":
         $_SESSION['carrinho'] = [];
- 
+
         if (isset($_SESSION['pedidoSelecionado'])) {
             unset($_SESSION['pedidoSelecionado']);
             header("location:../view/gui_visualizacao_pedidos.php");
@@ -91,6 +91,10 @@ switch ($opcao) {
 
             foreach ($pedido['produtos'] as $produto) {
                 $_SESSION['carrinho'][$produto['id_produto']] = $produto['quantidade'];
+
+                // Aqui tem que colocar pra ele pegar o valor_unitario do produto tbm
+                $_SESSION['produtos'][$produto['id_produto']] = $produto['valor_unitario']; 
+
             }
 
             if ($clonar) {
@@ -103,7 +107,7 @@ switch ($opcao) {
             }
 
             $_SESSION['pedidoSelecionado'] = [
-                'id_pedido' => $pedido['id_pedido'], 
+                'id_pedido' => $pedido['id_pedido'],
                 'data'        => $pedido['data'],
                 'comentario'   => $pedido['comentario'],
                 'status'       => $pedido['status'],
@@ -112,14 +116,11 @@ switch ($opcao) {
 
             if ($pedido['status'] != "cancelado" && $pedido['status'] != 'vendido') {
                 header("location:../view/gui_alteracao_pedidos.php");
-                
             } else if ($pedido['status'] == "cancelado") {
                 header("location:../view/gui_alteracao_pedido_cancelado.php");
-
             } else if ($pedido['status'] == "vendido") {
                 header("location:../view/gui_alteracao_pedido_vendido.php");
             }
-
         } else {
             $_SESSION['msg'] = "<p class='error-msg'>Algo deu errado ao carregar o pedido!</p>";
             header("location:../view/gui_visualizacao_pedidos.php");
@@ -146,7 +147,7 @@ switch ($opcao) {
             // } else {
             //     $darBaixaEstoque = isset($_GET['darBaixaEstoque']) ? 1 : 0;
             // }
-            
+
             $pedidoDAO->cadastrarPedido($novoPedido, $darBaixaEstoque);
 
             $_SESSION['carrinho'] = [];
@@ -185,8 +186,8 @@ switch ($opcao) {
             // } else {
             //     $darBaixaEstoque = isset($_GET['darBaixaEstoque']) ? 1 : 0;
             // }
-            
-            
+
+
             $pedidoDAO->alterarPedido($novoPedido, $darBaixaEstoque, $estornarEstoque);
 
             $_SESSION['carrinho'] = [];
@@ -205,13 +206,12 @@ switch ($opcao) {
         $id_pedido = $_GET['id'] ?? null;
 
         if ($id_pedido) {
-            if ($pedidoDAO->excluirPedido($id_pedido)){
+            if ($pedidoDAO->excluirPedido($id_pedido)) {
                 $_SESSION['msg'] = "<p class='success-msg'>Pedido removida com sucesso.</p>";
             } else {
                 $_SESSION['msg'] = "<p class='error-msg'>Erro ao excluir pedido.</p>";
             }
-        }  
+        }
         header("location:../view/gui_visualizacao_pedidos.php");
         exit;
 }
-
