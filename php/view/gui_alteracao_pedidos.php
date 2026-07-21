@@ -22,7 +22,10 @@ if (empty($_SESSION['pedidoSelecionado'])) {
 }
 
 $id_pedido = $_SESSION['pedidoSelecionado']["id_pedido"];
-$infoPedido = $_SESSION['pedidoSelecionado'];
+$infoPedidoSession = $_SESSION['pedidoSelecionado'];
+
+$pedidoDAO = new PedidoDAO();
+$infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
 ?>
 
@@ -126,7 +129,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                 <h2 class="num-pedido">Alteração - Pedido <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
                 <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
             </div>
-            
+
         </div>
 
 
@@ -135,48 +138,48 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
             <summary>Adicione os produtos ao pedido</summary>
             <!-- <div class="adicionar-produtos"> -->
 
-                <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-produto-pedido">
-                    <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição" autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
-                </form>
+            <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-produto-pedido">
+                <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição" autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
+            </form>
 
-                <div class="lista-produtos-pedido">
-                    <?php if (!empty($listaProdutos)): ?>
-                        <?php foreach ($listaProdutos as $item): ?>
-                            <div class="product-view">
-                                <div class="texto-produto">
-                                    <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
-                                    <p><strong>Quantidade disponível:</strong> <?php echo htmlspecialchars($item['quantidade']); ?> </p>
-                                    <p><strong>Unidade:</strong> <?php echo "R$ " . number_format((float)$item['valor_unitario'], 2, ',', '.'); ?> </p>
-                                    <p><strong>Aceita encomenda:</strong> <?php if ($item['aceita_encomenda']) {
-                                                                                echo "Sim";
-                                                                            } else {
-                                                                                echo "Não";
-                                                                            } ?></p>
-                                    <p><strong>Descrição:</strong> <?php if ($item['descricao']) {
-                                                                        echo htmlspecialchars($item['descricao']);
-                                                                    } else {
-                                                                        echo "Sem informações";
-                                                                    } ?></p>
-                                </div>
-
-                                <div class="product-img-btn">
-                                    <?php if ($item['imagem']) {
-                                        echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
-                                    } else {
-                                        echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
-                                    } ?>
-                                    <form action="../controller/pedidoControle.php" method="get" class="product-btns">
-                                        <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
-                                        <input type="hidden" name="op" value="adicionarQuantidade">
-                                        <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
-                                        <input type="submit" class="btn-add" value="Adicionar ao pedido">
-                                    </form>
-                                </div>
+            <div class="lista-produtos-pedido">
+                <?php if (!empty($listaProdutos)): ?>
+                    <?php foreach ($listaProdutos as $item): ?>
+                        <div class="product-view">
+                            <div class="texto-produto">
+                                <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
+                                <p><strong>Quantidade disponível:</strong> <?php echo htmlspecialchars($item['quantidade']); ?> </p>
+                                <p><strong>Unidade:</strong> <?php echo "R$ " . number_format((float)$item['valor_unitario'], 2, ',', '.'); ?> </p>
+                                <p><strong>Aceita encomenda:</strong> <?php if ($item['aceita_encomenda']) {
+                                                                            echo "Sim";
+                                                                        } else {
+                                                                            echo "Não";
+                                                                        } ?></p>
+                                <p><strong>Descrição:</strong> <?php if ($item['descricao']) {
+                                                                    echo htmlspecialchars($item['descricao']);
+                                                                } else {
+                                                                    echo "Sem informações";
+                                                                } ?></p>
                             </div>
-                        <?php endforeach; ?>
-                    <?php else: echo "Nenhum produto cadastrado." ?>
-                    <?php endif; ?>
-                </div>
+
+                            <div class="product-img-btn">
+                                <?php if ($item['imagem']) {
+                                    echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                                } else {
+                                    echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
+                                } ?>
+                                <form action="../controller/pedidoControle.php" method="get" class="product-btns">
+                                    <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
+                                    <input type="hidden" name="op" value="adicionarQuantidade">
+                                    <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
+                                    <input type="submit" class="btn-add" value="Adicionar ao pedido">
+                                </form>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: echo "Nenhum produto cadastrado." ?>
+                <?php endif; ?>
+            </div>
             <!-- </div> -->
         </details>
 
@@ -186,25 +189,27 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                 $_SESSION['total_compra'] = 0.00;
                 if (!empty($_SESSION['carrinho'])) {
                     foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
-                        $produtoVendido = $produtoDAO->buscarPorId($id_produto);
-                        if ($produtoVendido) {
-                            $valor_unitario = (float)$produtoVendido['valor_unitario'];
-                            $quantidade =  (int)$quantidade;
-                            $valor = $valor_unitario * $quantidade;
-                            $_SESSION['total_compra'] += $valor;
-                            echo "<div class='produto-individual'>";
-                            echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
-                            echo "<p>";
-                            echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-                            echo "<b>Unidade</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
-                            $valor_total = (float)$produtoVendido['valor_unitario'];
-                            $valor_total = $valor_total * $quantidade;
-                            echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";
-                            echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'>Remover produto</a>";
-                            // echo "</form>";
-                            echo "</div>";
-                        } else {
-                            echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
+                        foreach ($_SESSION['produtos'] as $produto_id => $valor_unitario) {
+                            $produtoVendido = $produtoDAO->buscarPorId($id_produto);
+                            if ($produtoVendido) {
+                                $valor_unitario = (float)$produtoVendido['valor_unitario'];
+                                $quantidade =  (int)$quantidade;
+                                $valor = $valor_unitario * $quantidade;
+                                $_SESSION['total_compra'] += $valor;
+                                echo "<div class='produto-individual'>";
+                                echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
+                                echo "<p>";
+                                echo "<b>Quantidade</b>: " . $quantidade . "<br>";
+                                echo "<b>Unidade</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
+                                $valor_total = (float)$produtoVendido['valor_unitario'];
+                                $valor_total = $valor_total * $quantidade;
+                                echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";
+                                echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'>Remover produto</a>";
+                                // echo "</form>";
+                                echo "</div>";
+                            } else {
+                                echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
+                            }
                         }
                     }
                 } else {
@@ -223,15 +228,15 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                             <!-- <div> -->
                             <label for="prazopedido">
                                 Prazo de entrega
-                                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required value="<?php echo $infoPedido['data'] ?>">
+                                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required value="<?php echo $infoPedidoBanco['data'] ?>">
                             </label>
                             <label for="statusPedido">
                                 Status do Pedido
                                 <select name="statusPedido" id="statusPedido">
-                                    <option value="encomendado" <?= $infoPedido['status'] == 'encomendado' ? 'selected' : '' ?>>Encomendado</option>
-                                    <option value="pagamento" <?= $infoPedido['status'] == 'pagamento' ? 'selected' : '' ?>>Aguardando pagamento</option>
-                                    <option value="vendido" <?= $infoPedido['status'] == 'vendido' ? 'selected' : '' ?>>Vendido</option>
-                                    <option value="cancelado" <?= $infoPedido['status'] === 'cancelado' ? 'selected' : '' ?>>Cancelado</option>
+                                    <option value="encomendado" <?= $infoPedidoSession['status'] == 'encomendado' ? 'selected' : '' ?>>Encomendado</option>
+                                    <option value="pagamento" <?= $infoPedidoSession['status'] == 'pagamento' ? 'selected' : '' ?>>Aguardando pagamento</option>
+                                    <option value="vendido" <?= $infoPedidoSession['status'] == 'vendido' ? 'selected' : '' ?>>Vendido</option>
+                                    <option value="cancelado" <?= $infoPedidoSession['status'] === 'cancelado' ? 'selected' : '' ?>>Cancelado</option>
                                 </select>
                             </label>
                             <div id="containerVendido" style="display: none;">
@@ -250,7 +255,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
                             <!-- </div> -->
                             <label for="comentarioPedido">
                                 Comentários
-                                <textarea name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo $infoPedido['comentario'] ?></textarea>
+                                <textarea name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo $infoPedidoBanco['comentario'] ?></textarea>
                             </label>
                         </fieldset>
                     </div>
@@ -277,15 +282,15 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
     <!-- Acessibilidade -->
 
     <div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
     </div>
-  </div>
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 
 </body>
 

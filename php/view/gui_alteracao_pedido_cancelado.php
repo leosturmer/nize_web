@@ -22,7 +22,6 @@ $id_pedido = $_SESSION['pedidoSelecionado']["id_pedido"];
 $infoPedidoSession = $_SESSION['pedidoSelecionado'];
 
 $pedidoDAO = new PedidoDAO();
-
 $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
 ?>

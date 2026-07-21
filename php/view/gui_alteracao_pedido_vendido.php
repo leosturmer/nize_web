@@ -19,8 +19,10 @@ if (empty($_SESSION['pedidoSelecionado'])) {
   exit;
 }
 $id_pedido = $_SESSION['pedidoSelecionado']["id_pedido"];
-$infoPedido = $_SESSION['pedidoSelecionado'];
+$infoPedidoSession = $_SESSION['pedidoSelecionado'];
 
+$pedidoDAO = new PedidoDAO();
+$infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
 ?>
 
@@ -137,19 +139,21 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
         <?php
         if (!empty($_SESSION['carrinho'])) {
           foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
-            $produtoVendido = $produtoDAO->buscarPorId($id_produto);
-            if ($produtoVendido) {
-              echo "<div class='produto-individual'>";
-              echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
-              echo "<p>";
-              echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-              echo "<b>Valor do produto</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
-              $valor_total = (float)$produtoVendido['valor_unitario'];
-              $valor_total = $valor_total * $quantidade;
-              echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br>";
-              echo "</div>";
-            } else {
-              echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
+            foreach ($_SESSION['produtos'] as $produto_id => $valor_unitario) {
+              $produtoVendido = $produtoDAO->buscarPorId($id_produto);
+              if ($produtoVendido) {
+                echo "<div class='produto-individual'>";
+                echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
+                echo "<p>";
+                echo "<b>Quantidade</b>: " . $quantidade . "<br>";
+                echo "<b>Valor do produto</b>: R$ " . number_format((float)$valor_unitario, 2, ',', '.') . "<br>";
+                $valor_total = (float)$valor_unitario;
+                $valor_total = $valor_total * $quantidade;
+                echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br>";
+                echo "</div>";
+              } else {
+                echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
+              }
             }
           }
         } else {
@@ -157,8 +161,8 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
         }
         echo "</div>";
         echo "<div class='infos-pedido'>";
-        echo "<div class='total-pedido'><p><b>Total do pedido</b>: R$ " . number_format((float)$infoPedido['valor_final'], 2, ',', '.') . "</p></div>"; // Aqui tem que mudar
-        $dataBanco = $infoPedido['data'];
+        echo "<div class='total-pedido'><p><b>Total do pedido</b>: R$ " . number_format((float)$infoPedidoBanco['valor_final'], 2, ',', '.') . "</p></div>"; // Aqui tem que mudar
+        $dataBanco = $infoPedidoBanco['data'];
         $formatoData = strtotime($dataBanco);
         $data = date("d/m/Y", $formatoData);
         ?>
@@ -169,16 +173,16 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
               <!-- <div> -->
               <label for="prazopedido">
                 Data
-                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required value="<?php echo $infoPedido['data'] ?>">
+                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required value="<?php echo $infoPedidoBanco['data'] ?>">
               </label>
               <label for="statusPedido">
                 Status do Pedido
                 <select name="statusPedido" id="statusPedido">
-                  <option value="vendido" <?= $infoPedido['status'] == 'vendido' ? 'selected' : '' ?>>Vendido</option>
-                  <option value="cancelado" <?= $infoPedido['status'] === 'cancelado' ? 'selected' : '' ?>>Cancelado</option>
+                  <option value="vendido" <?= $infoPedidoSession['status'] == 'vendido' ? 'selected' : '' ?>>Vendido</option>
+                  <option value="cancelado" <?= $infoPedidoSession['status'] === 'cancelado' ? 'selected' : '' ?>>Cancelado</option>
                 </select>
               </label>
-              
+
               <div id="containerVendido" style="display: none;">
                 <!-- <label class="label-baixa-estoque">
                   Dar baixa no estoque?
@@ -195,7 +199,7 @@ $infoPedido = $_SESSION['pedidoSelecionado'];
               <!-- </div> -->
               <label for="comentarioPedido">
                 Comentários
-                <textarea name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo $infoPedido['comentario'] ?></textarea>
+                <textarea name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo $infoPedidoSession['comentario'] ?></textarea>
               </label>
             </fieldset>
           </div>
