@@ -189,27 +189,31 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                 $_SESSION['total_compra'] = 0.00;
                 if (!empty($_SESSION['carrinho'])) {
                     foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
+                        $produtoVendido = $produtoDAO->buscarPorId($id_produto);
+
                         foreach ($_SESSION['produtos'] as $produto_id => $valor_unitario) {
-                            $produtoVendido = $produtoDAO->buscarPorId($id_produto);
-                            if ($produtoVendido) {
-                                $valor_unitario = (float)$produtoVendido['valor_unitario'];
-                                $quantidade =  (int)$quantidade;
-                                $valor = $valor_unitario * $quantidade;
-                                $_SESSION['total_compra'] += $valor;
-                                echo "<div class='produto-individual'>";
-                                echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
-                                echo "<p>";
-                                echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-                                echo "<b>Unidade</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
-                                $valor_total = (float)$produtoVendido['valor_unitario'];
-                                $valor_total = $valor_total * $quantidade;
-                                echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";
-                                echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'>Remover produto</a>";
-                                // echo "</form>";
-                                echo "</div>";
-                            } else {
-                                echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
+                            if ($id_produto == $produto_id) {
+                                $valor_unitario = $valor_unitario;
                             }
+                        }
+                        if ($produtoVendido) {
+                            $valor_unitario = (float)$produtoVendido['valor_unitario'];
+                            $quantidade =  (int)$quantidade;
+                            $valor = $valor_unitario * $quantidade;
+                            $_SESSION['total_compra'] += $valor;
+                            echo "<div class='produto-individual'>";
+                            echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
+                            echo "<p>";
+                            echo "<b>Quantidade</b>: " . $quantidade . "<br>";
+                            echo "<b>Unidade</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
+                            $valor_total = (float)$produtoVendido['valor_unitario'];
+                            $valor_total = $valor_total * $quantidade;
+                            echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";
+                            echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'>Remover produto</a>";
+                            // echo "</form>";
+                            echo "</div>";
+                        } else {
+                            echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
                         }
                     }
                 } else {

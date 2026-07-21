@@ -139,21 +139,26 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
         <?php
         if (!empty($_SESSION['carrinho'])) {
           foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
+            $produtoVendido = $produtoDAO->buscarPorId($id_produto);
             foreach ($_SESSION['produtos'] as $produto_id => $valor_unitario) {
-              $produtoVendido = $produtoDAO->buscarPorId($id_produto);
-              if ($produtoVendido) {
-                echo "<div class='produto-individual'>";
-                echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
-                echo "<p>";
-                echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-                echo "<b>Valor do produto</b>: R$ " . number_format((float)$valor_unitario, 2, ',', '.') . "<br>";
-                $valor_total = (float)$valor_unitario;
-                $valor_total = $valor_total * $quantidade;
-                echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br>";
-                echo "</div>";
-              } else {
-                echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
+            
+              if ($id_produto == $produto_id) {
+                $valor_unitario = $valor_unitario;
               }
+            }
+
+            if ($produtoVendido) {
+              echo "<div class='produto-individual'>";
+              echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
+              echo "<p>";
+              echo "<b>Quantidade</b>: " . $quantidade . "<br>";
+              echo "<b>Valor do produto</b>: R$ " . number_format((float)$valor_unitario, 2, ',', '.') . "<br>";
+              $valor_total = (float)$valor_unitario;
+              $valor_total = $valor_total * $quantidade;
+              echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br>";
+              echo "</div>";
+            } else {
+              echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
             }
           }
         } else {

@@ -148,8 +148,15 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
         if (!empty($_SESSION['carrinho'])) {
           foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
+            $produtoVendido = $produtoDAO->buscarPorId($id_produto);
+
             foreach ($_SESSION['produtos'] as $produto_id => $valor_unitario) {
-              $produtoVendido = $produtoDAO->buscarPorId($id_produto);
+              if ($id_produto == $produto_id){
+                $valor_unitario = $valor_unitario;
+              }
+            }
+
+
               if ($produtoVendido) {
                 echo "<div class='produto-individual'>";
                 echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
@@ -163,7 +170,6 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
               } else {
                 echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
               }
-            }
           }
         } else {
           echo "<p>Nenhum produto encontrado no pedido.</p>";
