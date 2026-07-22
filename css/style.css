@@ -349,7 +349,6 @@ div.texto-pedido h2 {
   margin-top: 0.3em;
 }
 
-
 #btn-cad-usuario {
   align-self: center;
   padding: 0.7em;
@@ -364,7 +363,7 @@ div.texto-pedido h2 {
 
 /* Produtos */
 
-div.lista-produtos h4, 
+div.lista-produtos h4,
 div.lista-pedidos h4 {
   padding: 0.5em;
 }
@@ -549,7 +548,7 @@ div.product-img-btn > img.img-produtos {
   align-self: center;
 }
 
-#form-products-buttons{
+#form-products-buttons {
   display: flex;
   justify-content: center;
 }
@@ -588,7 +587,7 @@ div.product-img-btn > img.img-produtos {
 
   margin: 0 auto;
   width: 100%;
-  
+
   /* margin-left: 1.5rem; */
 }
 
@@ -689,7 +688,6 @@ div.product-img-btn > img.img-produtos {
   height: 10rem;
   margin: 0;
 }
-
 
 /* Tela de pedidos */
 
@@ -926,7 +924,6 @@ h2.num-pedido.num-pedido-cancelado {
   margin-right: 0.3em;
 }
 
-
 .pedido-cancelado-infos {
   margin: 0 auto;
   width: 20rem;
@@ -1016,3 +1013,49 @@ div.container-horizontal.cadastro-btns span.bi-box-arrow-up-right {
   right: 1em;
   bottom: 2em;
 }
+
+/* Tela administrador */
+
+.h1-admin {
+text-align: center;
+}
+
+
+.main-administrador {
+  display: block;
+  line-height: 2.5em;
+
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+
+  background-color: white;
+
+  padding: 1em;
+
+  width: 50%;
+  max-height: 100%;
+
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  margin: 0 auto;
+}
+
+
+.usuario_cadastrado {
+  display: flex;
+  align-items: center;
+  /* align-self: self-start; */
+  justify-content: space-between;
+}
+
+.usuario_cadastrado .texto-users {
+  text-align: left;
+  align-self: center;
+}
+
+.usuario_cadastrado span.bi {
+  margin-left: 0;
+}
+
+

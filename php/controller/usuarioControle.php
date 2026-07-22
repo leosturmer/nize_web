@@ -17,7 +17,7 @@ $opcao = $_GET['op'] ?? '';
 
 $usuarioDAO = new UsuarioDAO();
 
-switch ($opcao){
+switch ($opcao) {
 
     case "alterar":
         $novoNome = trim($_POST['usuNome']);
@@ -27,38 +27,38 @@ switch ($opcao){
         $aceitaVisualizacao = $_POST['aceitaVisualizacao'] ?? 0;
         $novoTelefone = $_POST['usuTelefone'] ?? 0;
 
-        if (empty($novoNome) || empty($novoEmail)){
+        if (empty($novoNome) || empty($novoEmail)) {
             $_SESSION['msg'] = "<p class='error-msg'>Ops! Insira os dados obrigatórios</p>";
             header("location:../view/alteracao_cadastro.php");
             exit;
         }
 
-        if (!Validacao::validarEmail($novoEmail)){
+        if (!Validacao::validarEmail($novoEmail)) {
             $_SESSION['msg'] = '<p class="error-msg">E-mail em formato inválido!</p>';
             header("location:../view/alteracao_cadastro.php");
             exit;
         }
 
-        if (!Validacao::validarTelefone($novoTelefone) && $novoTelefone !== ''){
+        if (!Validacao::validarTelefone($novoTelefone) && $novoTelefone !== '') {
             $_SESSION['msg'] = '<p class="error-msg">Telefone em formato inválido!</p>';
             header("location:../view/alteracao_cadastro.php");
             exit;
         }
 
-        if ($usuario->login !== $novoEmail){
-            if ($usuarioDAO->buscarEmail($novoEmail)){
-            $_SESSION['msg'] = '<p class="error-msg">E-mail já cadastrado!</p>';
-            header("location:../view/alteracao_cadastro.php");
-            exit;
+        if ($usuario->login !== $novoEmail) {
+            if ($usuarioDAO->buscarEmail($novoEmail)) {
+                $_SESSION['msg'] = '<p class="error-msg">E-mail já cadastrado!</p>';
+                header("location:../view/alteracao_cadastro.php");
+                exit;
             }
         }
 
-        if ($usuario->nome_visualizacao !== $novoNomeView){
-            if ($usuarioDAO->buscarNomeView($novoNomeView)){
-            // if (in_array($novoNomeView, $usuarioDAO->buscarNomeView($novoNomeView)))
-            $_SESSION['msg'] = '<p class="error-msg">Nome para visualização já utilizado!</p>';
-            header("location:../view/alteracao_cadastro.php");
-            exit;
+        if ($usuario->nome_visualizacao !== $novoNomeView) {
+            if ($usuarioDAO->buscarNomeView($novoNomeView)) {
+                // if (in_array($novoNomeView, $usuarioDAO->buscarNomeView($novoNomeView)))
+                $_SESSION['msg'] = '<p class="error-msg">Nome para visualização já utilizado!</p>';
+                header("location:../view/alteracao_cadastro.php");
+                exit;
             }
         }
 
@@ -73,11 +73,11 @@ switch ($opcao){
         $novoUsuario->telefone = str_replace(" ", "", $novoTelefone);
 
 
-        if ($usuarioDAO->alterarDados($novoUsuario)){        
-            $_SESSION['usuario_logado'] = serialize($novoUsuario);    
+        if ($usuarioDAO->alterarDados($novoUsuario)) {
+            $_SESSION['usuario_logado'] = serialize($novoUsuario);
             $_SESSION['msg'] = "<p class='success-msg'>Dados alterados com sucesso!</p>";
         } else {
-            $_SESSION['msg'] = "<p class='error-msg'>Erro ao atualizar dados!</p>";   
+            $_SESSION['msg'] = "<p class='error-msg'>Erro ao atualizar dados!</p>";
         }
 
         header("location:../view/alteracao_cadastro.php");
@@ -89,7 +89,7 @@ switch ($opcao){
         $id = $usuario->id_usuario ?? null;
 
         if ($id) {
-            if ($usuarioDAO->excluirUsuario($id)){
+            if ($usuarioDAO->excluirUsuario($id)) {
                 $_SESSION['msg'] = "<p class='success-msg'>Espero que seja um até breve :(</p>";
                 header("location:../../index.php");
                 exit;
@@ -98,8 +98,25 @@ switch ($opcao){
                 header("location:../../index.php");
                 exit;
             }
-        }  
-        
+        }
+
         header("location:../../index.php");
         exit;
-    }
+
+    case "excluirUsuario":
+        $tipo_usuario = (int)($usuario->tipoUsuario ?? 0);
+
+        $id_usuario = $_POST['id'] ?? null;
+
+        if ($tipo_usuario === 1) {
+            if ($usuarioDAO->excluirUsuario($id_usuario)) {
+                $_SESSION['msg'] = "<p class='success-msg'>Usuário deletado com sucesso!</p>";
+                header("location:../view/dashboard_administrador.php");
+                exit;
+            } else {
+                $_SESSION['msg'] = "<p class='error-msg'>Pane no sistema! Algo deu errado.</p>";
+                header("location:../view/dashboard_administrador.php");
+                exit;
+            }
+        }
+}

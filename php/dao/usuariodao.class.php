@@ -37,7 +37,6 @@ class UsuarioDAO
         }
     }
 
-
     public function buscarNomeView($nomeView)
     {
         try {
@@ -49,19 +48,6 @@ class UsuarioDAO
             exit;
         }
     }
-
-    // public function buscarUsuario($id_usuario) {
-    //     try {
-    //         $sql = $this->conexao->prepare("SELECT nome_loja, aceita_visualizacao, nome_visualizacao FROM usuario WHERE id_usuario = ?");
-    //         $sql->execute([$id_usuario]);
-    //         return $sql->fetchAll(PDO::FETCH_ASSOC);
-
-    //     } catch (PDOException $e) {
-    //         echo "Erro ao buscar.";
-    //         exit;
-    //     }
-    // }
-
 
     public function buscarAceitaView($id_usuario)
     {
@@ -164,7 +150,21 @@ class UsuarioDAO
 
             return true;
         } catch (PDOException $e) {
-            echo "Erro ao excluir.";
+            echo "Erro ao excluir";
         }
     }
+
+    // Tela de administrador
+
+    public function buscarUsuarios() {
+        try {
+            $sql = $this->conexao->prepare("SELECT id_usuario, login, nome, tipo_usuario FROM usuario");
+            $sql->execute();
+            return $sql->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Erro ao buscar.";
+            exit;
+        }
+    }
+
 }

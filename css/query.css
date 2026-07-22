@@ -486,8 +486,18 @@
     font-size: 14px;
   }
 
-  div#minha-area {
+  div#minha-area, 
+  div.main-administrador {
     width: 100%;
+  }
+
+  div.main-administrador p {
+    font-size: 14px;
+  }
+
+  div.main-administrador button {
+    font-size: 14px;
+    width: 100px;
   }
 
   div.container-horizontal.cadastro-btns {

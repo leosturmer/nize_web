@@ -10,6 +10,7 @@ class Usuario{
     private $telefone;
     
     private $loja;
+    private $tipoUsuario;
 
     public function __construct(){
 

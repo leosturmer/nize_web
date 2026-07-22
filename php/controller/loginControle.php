@@ -2,9 +2,7 @@
 // 1 - Preparação do ambiente
 session_start();
 require_once '../model/usuario.class.php';
-require_once '../model/administrador.class.php';
 require_once '../dao/usuariodao.class.php';
-require_once '../dao/administradordao.class.php';
 require_once '../persistence/conexaoBanco.class.php';
 
 // 2 - Captura de dados
@@ -19,85 +17,47 @@ if (empty($login) || empty($senha_digitada)) {
 // 3 - Consulta ao Banco
 $conexao = ConexaoBanco::getInstancia();
 
-// Buscando administrador
-
-$sql_admin = $conexao->prepare("SELECT * FROM administrador WHERE login = ?");
-$sql_admin->execute([$login]);
-
 $sql = $conexao->prepare("SELECT * FROM usuario WHERE login = ?");
 $sql->execute([$login]);
 
-$dadosUsuario = $sql->fetch();
+$dadosUsuario = $sql->fetch(PDO::FETCH_ASSOC);
 
-if (password_verify($senha_digitada, $dadosUsuario['senha'])) {
-    $usuario = new Usuario();
-    $usuario->id_usuario = $dadosUsuario['id_usuario'];
-    $usuario->login = $dadosUsuario['login'];
-    $usuario->nome  = $dadosUsuario['nome'];
-    $usuario->nome_loja = $dadosUsuario['nome_loja']; 
-    $usuario->aceita_visualizacao = $dadosUsuario['aceita_visualizacao']; 
-    $usuario->nome_visualizacao = $dadosUsuario['nome_visualizacao'] ?? "";
+if ($dadosUsuario) {
+    $senhaValida = false;
+    $tipoUsuario = (int) ($dadosUsuario['tipo_usuario'] ?? 0);
 
-    $_SESSION['usuario_logado'] = serialize($usuario);
-    $_SESSION['msg'] = "<p class='success-msg'>Login realizado com sucesso!</p>";
+    if ($tipoUsuario === 1) {
+        $senhaValida = ($senha_digitada === $dadosUsuario['senha']);
+    } else {
+        $senhaValida = password_verify($senha_digitada, $dadosUsuario['senha']);
+    }
 
-    $nomeURL = $usuario->nome;
-    $lojaURL = $usuario->nome_loja;
+    if ($senhaValida) {
+        $usuario = new Usuario();
+        $usuario->id_usuario = $dadosUsuario['id_usuario'];
+        $usuario->login = $dadosUsuario['login'];
+        $usuario->nome  = $dadosUsuario['nome'];
+        $usuario->nome_loja = $dadosUsuario['nome_loja'];
+        $usuario->aceita_visualizacao = $dadosUsuario['aceita_visualizacao'];
+        $usuario->nome_visualizacao = $dadosUsuario['nome_visualizacao'] ?? "";
+        $usuario->tipoUsuario = $tipoUsuario;
 
+        $_SESSION['usuario_logado'] = serialize($usuario);
+        $_SESSION['msg'] = "<p class='success-msg'>Login realizado com sucesso!</p>";
 
-    header("location:../view/tela_inicial.php?nome=$nomeURL&loja=$lojaURL");
-    exit;
-} else {
-    $_SESSION['msg'] = "<p class='error-msg'>Usuário ou senha inválidos.</p>";
-    header("location:../view/login.php");
+        if ($tipoUsuario === 1) {
+            header("Location: ../view/dashboard_administrador.php");
+            exit;
+        } else {
+            $nomeURL = urlencode($usuario->nome);
+            $lojaURL = urlencode($usuario->nome_loja);
+
+            header("Location: ../view/tela_inicial.php?nome=$nomeURL&loja=$lojaURL");
+            exit;
+        }
+    }
 }
 
-// 4 - Instância e Sessão
-// if($dados){
-//     $usuario = new Usuario();
-//     $usuario->id_usuario = $dados['id_usuario'];
-//     $usuario->login = $dados['login'];
-//     $usuario->nome  = $dados['nome'];
-//     $usuario->loja = $dados['nome_loja']; 
-
-//     $_SESSION['usuario_logado'] = serialize($usuario);
-//     $_SESSION['msg'] = "<p class='success-msg'>Login realizado com sucesso!</p>";
-
-//     $nomeURL = $usuario->nome;
-//     $lojaURL = $usuario->loja;
-
-
-//     header("location:../view/tela_inicial.php?nome=$nomeURL&loja=$lojaURL");
-//     exit;
-
-// } else {
-//     $usuario = new Usuario();
-
-//     $usuarioDAO = new UsuarioDAO();
-
-//     $usuario = $usuarioDAO->buscarEmail($dados['login']);
-
-//     if ($usuario != null) {
-//         $senhaHash = $usuario->senha;
-
-
-//         if (password_verify($senha_digitada, $senhaHash)){
-//             $_SESSION['usuario_logado'] = serialize($usuario);
-//             $_SESSION['msg'] = "<p class='success-msg'>Login realizado com sucesso!</p>";
-        
-//             $nomeURL = $usuario->nome;
-//             $lojaURL = $usuario->loja;
-
-//             header("location:../view/tela_inicial.php?nome=$nomeURL&loja=$lojaURL");
-//             exit;
-
-//         }
-
-//     }
-
-
-
-//     $_SESSION['msg'] = "<p class='error-msg'>Usuário ou senha inválidos.</p>";
-//     header("location:../view/login.php");
-// }
-// ?>
+$_SESSION['msg'] = "<p class='error-msg'>Usuário ou senha inválidos.</p>";
+header("Location: ../view/login.php");
+exit;

@@ -31,7 +31,8 @@ USE nize_database;
             nome_loja TEXT NULL,
             aceita_visualizacao INTEGER NULL,
             nome_visualizacao VARCHAR (50) UNIQUE, 
-            telefone VARCHAR(20)
+            telefone VARCHAR(20),
+            tipo_usuario INTEGER,
     );
 
     CREATE TABLE IF NOT EXISTS produtos (
@@ -79,6 +80,10 @@ CREATE VIEW IF NOT EXISTS view_pedidos AS
     INNER JOIN pedido_produto vp ON v.id_pedido = vp.id_pedido
     INNER JOIN produtos p ON vp.id_produto = p.id_produto;
 
+
+-- adicionando administrador
+
+INSERT INTO usuario (nome, login, senha, tipo_usuario) VALUES ('Admin', 'admin@admin.com', 'Admin123', 1);
 
 -- Criação de usuário teste
 
