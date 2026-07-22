@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/sidebar.css">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
     <title>Cadastro- Nize</title>
 </head>
 
@@ -53,6 +56,9 @@
 
                     <label for="usuSenha">Senha*</label>
                     <input type="password" placeholder="senha" class="input-login" name="usuSenha" required>
+
+                    <label for="confirmaSenha">Repita a senha*</label>
+                    <input type="password" placeholder="repita a senha" class="input-login" name="confirmaSenha" required>
                     <p>8 caracteres (no mínimo 1 maiúscula, 1 minúscula e 1 número)</p>
 
 
@@ -62,7 +68,7 @@
 
         </div>
 
-        <a href="gui_login.php" id="btn-login">Já tem cadastro?</a>
+        <a href="login.php" id="btn-login">Já tem cadastro?</a>
 
         <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
     </main>

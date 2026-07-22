@@ -2,28 +2,12 @@
 session_start();
 require_once '../model/usuario.class.php';
 require_once '../model/produto.class.php';
-require_once '../dao/produtodao.class.php';
 require_once '../util/seguranca.class.php';
-
 Seguranca::verificarAcesso();
 
 $usuario = unserialize($_SESSION['usuario_logado']);
 
-// Busca o produto original para clonar os dados
-$id_produto = $_GET['id'] ?? null;
-$produtoData = null;
 
-if ($id_produto) {
-  $produtoDAO = new ProdutoDAO();
-  $produtoData = $produtoDAO->buscarPorId($id_produto);
-}
-
-// Se não achar o produto, redireciona de volta
-if (!$produtoData) {
-  $_SESSION['msg'] = "<p class='error-msg'>Produto não encontrado para clonagem.</p>";
-  header("location:gui_visualizacao_produtos.php");
-  exit;
-}
 ?>
 
 <!DOCTYPE html>
@@ -32,13 +16,18 @@ if (!$produtoData) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clonar produto- Nize</title>
+  <title>Cadastro de produto- Nize</title>
+
   <link rel="shortcut icon" href="../../img/favicon/favicon.ico" type="image/x-icon">
+
   <link rel="stylesheet" href="../../css/normalize.css">
   <link rel="stylesheet" href="../../css/query.css">
   <link rel="stylesheet" href="../../css/style.css">
   <link rel="stylesheet" href="../../css/sidebar.css">
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
 </head>
 
 
@@ -69,19 +58,19 @@ if (!$produtoData) {
 
           </a>
         </li>
-        <a href="gui_visualizacao_produtos.php" class="active" title="Tela de produtos">
+        <a href="visualizacao_produtos.php" class="active" title="Tela de produtos">
           <i class="bi bi-box-seam"></i>
           <span>Produtos</span>
         </a>
         </li>
         </li>
-        <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos">
+        <a href="visualizacao_pedidos.php" title="Tela de pedidos">
           <i class="bi bi-clipboard2-check"></i>
           <span>Pedidos</span>
         </a>
         </li>
         </li>
-        <a href="gui_minha_area.php" title="Minha área">
+        <a href="minha_area.php" title="Minha área">
           <i class="bi bi-person-lines-fill"></i>
           <span>Minha área</span>
         </a>
@@ -108,10 +97,11 @@ if (!$produtoData) {
   </header>
 
   <main class='conteudo-pagina'>
+
     <div class="internal-nav">
       <div class="internal-nav-links">
-        <h1>Clonar Produto</h1>
-        <a href="gui_visualizacao_produtos.php" title="Tela de produtos"><span class="bi bi-arrow-left"></span>Voltar</a>
+        <h1>Cadastro de produto</h1>
+        <a href="visualizacao_produtos.php" title="Tela de produtos"><span class="bi bi-arrow-left"></span>Voltar</a>
       </div>
     </div>
 
@@ -122,58 +112,61 @@ if (!$produtoData) {
     }
     ?>
 
-    <form action="../controller/produtoControle.php?op=cadastrar" method="post" enctype="multipart/form-data" class="form-cadastro-produto">
+    <form action="#" method="post" enctype="multipart/form-data" class="form-cadastro-produto">
       <fieldset id="products-form">
-        <legend>Informações do Novo Produto (Clone)</legend>
-
+        <legend>Informações do produto</legend>
         <div class="inner-products-form">
-          <label><strong>Nome do produto</strong>*: </label>
-          <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" autocomplete="off" required value="<?php echo htmlspecialchars($produtoData['nome'] . ' (Cópia)'); ?>">
+          <label><strong>Nome do produto</strong>*:</label>
+          <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" autocomplete="off" placeholder="o nome do produto vai aqui" required>
+
 
           <div class="div-inner-products">
             <label><strong>Quantidade</strong>:
-              <input type="number" id="quantidadeProduto" name="quantidadeProduto" class="input-produto" maxlength="3" autocomplete="off" value="<?php echo $produtoData['quantidade']; ?>">
+              <input type="number" inputmode="" id="quantidadeProduto" name="quantidadeProduto" class="input-produto " maxlength="3" placeholder="00" autocomplete="off">
             </label>
-            <label class="checkbox-acc">
+
+            <label class="checkbox-acc" for="">
               <strong>Aceita encomendas</strong>:
-              <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto" value='1' <?php echo $produtoData['aceita_encomenda'] == 1 ? 'checked' : ''; ?>>
+              <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto input-checkbox" value='1'>
             </label>
+
+
           </div>
 
           <div class="div-inner-products">
+
             <label><strong>Valor unitário</strong>*: R$
-              <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" autocomplete="off" required value="<?php echo $produtoData['valor_unitario']; ?>">
+              <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" autocomplete="off" placeholder="00,00" required>
             </label>
+
+
             <label><strong>Valor de custo</strong>: R$
-              <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" autocomplete="off" value="<?php echo $produtoData['valor_custo']; ?>">
+              <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" placeholder="00,00" autocomplete="off">
             </label>
+
           </div>
 
           <label class="descricao-produtos" for="descricaoProduto">
             <strong>Descrição do produto</strong>
-            <textarea name="descricaoProduto" id="descricaoProduto" class="input-produto" autocomplete="off"><?php echo htmlspecialchars($produtoData['descricao']); ?></textarea>
           </label>
+          <textarea name="descricaoProduto" id="descricaoProduto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" class="input-produto" autocomplete="off"></textarea>
+
           <label class="checkbox-acc" for="">
-            <strong>Disponibilizar para visualização</strong>:
-            <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" <?php echo $produtoData['aceita_visualizacao'] == 1 ? 'checked' : ''; ?>>
+            <strong>Disponibilizar para visualização:</strong>
+            <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1'>
           </label>
 
-          <input type="hidden" name="imagem_clonada" value="<?php echo $produtoData['imagem']; ?>">
-          <label><strong>Imagem</strong>:
-            <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
+
+          <label><strong>Imagem</strong>: (max. 2mb)
           </label>
-          <?php if (!empty($produtoData['imagem'])): ?>
-            <?php echo "<img src='uploads/" . htmlspecialchars($produtoData['imagem']) . "' alt='imagem do produto' class='img-produtos img-alt-produto'>" ?>
-            <span class="span-alt-img">(Será mantida se não enviar outra)</span>
-          <?php else: ?>
-            <span>Nenhuma imagem</span>
-          <?php endif; ?>
+          <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
+
         </div>
 
       </fieldset>
       <div id="form-products-buttons">
-        <button type="submit"><span class="bi bi-check2"></span>Salvar</button>
-        <button formaction="../view/gui_visualizacao_produtos.php"><span class="bi bi-x-lg"></span>Cancelar</button>
+        <button type="submit" formaction="../controller/produtoControle.php?op=cadastrar"><span class="bi bi-check2"></span>Salvar</button>
+        <button type="reset"><span class="bi bi-arrow-clockwise"></span>Limpar</button>
       </div>
     </form>
 

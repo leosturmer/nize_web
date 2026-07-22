@@ -57,19 +57,19 @@ if (!empty($_SESSION['usuario_logado'])) {
 
                     </a>
                 </li>
-                <a href="gui_visualizacao_produtos.php" class="active" title="Tela de produtos">
+                <a href="visualizacao_produtos.php" class="active" title="Tela de produtos">
                     <i class="bi bi-box-seam"></i>
                     <span>Produtos</span>
                 </a>
                 </li>
                 </li>
-                <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos">
+                <a href="visualizacao_pedidos.php" title="Tela de pedidos">
                     <i class="bi bi-clipboard2-check"></i>
                     <span>Pedidos</span>
                 </a>
                 </li>
                 </li>
-                <a href="gui_minha_area.php" title="Minha área">
+                <a href="minha_area.php" title="Minha área">
                     <i class="bi bi-person-lines-fill"></i>
                     <span>Minha área</span>
                 </a>
@@ -82,13 +82,13 @@ if (!empty($_SESSION['usuario_logado'])) {
                 </li>
             <?php else: ?>
                 </li>
-                <a href="gui_cadastro_usuario.php" title="Criar cadastro">
+                <a href="cadastro_usuario.php" title="Criar cadastro">
                     <i class="bi bi-person-add"></i>
                     <span>Cadastre-se</span>
                 </a>
                 </li>
                 </li>
-                <a href="gui_login.php" title="Fazer login">
+                <a href="login.php" title="Fazer login">
                     <i class="bi bi-box-arrow-in-right"></i>
                     <span>Fazer login</span>
                 </a>

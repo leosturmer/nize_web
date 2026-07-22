@@ -20,22 +20,29 @@ switch ($opcao):
         $nome_loja = trim($_POST['usuLoja']) ?? "";
         $email = trim(strtolower($_POST['usuEmail'])) ?? "";
         $senha_digitada = trim($_POST['usuSenha']) ?? "";
+        $confirma_senha = trim($_POST['confirmaSenha']) ?? "";
 
         if (empty($nome) || empty($email) || empty($senha)) {
             $_SESSION['msg'] = '<p class="error-msg">Digite todos os campos obrigatórios!</p>';
-            header("location:../view/gui_cadastro_usuario.php");
+            header("location:../view/cadastro_usuario.php");
             exit;
         }
 
         if (!Validacao::validarEmail($email)){
             $_SESSION['msg'] = '<p class="error-msg">E-mail em formato inválido!</p>';
-            header("location:../view/gui_cadastro_usuario.php");
+            header("location:../view/cadastro_usuario.php");
             exit;
         }
 
         if (!Validacao::validarSenha($senha_digitada)){
             $_SESSION['msg'] = '<p class="error-msg">Senha precisa ter no mínimo 8 caracteres, 1 maiúscula, 1 minúscula e 1 número!</p>';
-            header("location:../view/gui_cadastro_usuario.php");
+            header("location:../view/cadastro_usuario.php");
+            exit;
+        }
+
+        if ($senha_digitada !== $confirma_senha){
+            $_SESSION['msg'] = '<p class="error-msg">As senhas não coincidem!</p>';
+            header("location:../view/cadastro_usuario.php");
             exit;
         }
 
@@ -57,11 +64,11 @@ switch ($opcao):
 
         if ($usuarioDAO->cadastrarUsuario($novoUsuario)) {
             $_SESSION['msg'] = '<p class="success-msg">Oba! Tudo certo com o seu cadastro!</p>';
-            header("location:../view/gui_login.php");
+            header("location:../view/login.php");
             exit;
         } else {
             $_SESSION['msg'] = '<p class="error-msg">E-mail já cadastrado!</p>';
-            header("location:../view/gui_cadastro_usuario.php");
+            header("location:../view/cadastro_usuario.php");
             exit;
         }
 

@@ -10,7 +10,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 $id_produto = $_GET['id'] ?? null;
 
 if (!$id_produto) {
-  header("location:gui_visualizacao_produtos.php");
+  header("location:visualizacao_produtos.php");
   exit;
 }
 
@@ -67,19 +67,19 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 
           </a>
         </li>
-        <a href="gui_visualizacao_produtos.php" class="active" title="Tela de produtos">
+        <a href="visualizacao_produtos.php" class="active" title="Tela de produtos">
           <i class="bi bi-box-seam"></i>
           <span>Produtos</span>
         </a>
         </li>
         </li>
-        <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos">
+        <a href="visualizacao_pedidos.php" title="Tela de pedidos">
           <i class="bi bi-clipboard2-check"></i>
           <span>Pedidos</span>
         </a>
         </li>
         </li>
-        <a href="gui_minha_area.php" title="Minha área">
+        <a href="minha_area.php" title="Minha área">
           <i class="bi bi-person-lines-fill"></i>
           <span>Minha área</span>
         </a>
@@ -109,7 +109,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
     <div class="internal-nav">
       <div class="internal-nav-links">
         <h1>Alteração de produto</h1>
-        <a href="gui_visualizacao_produtos.php" title="Tela de produtos"><span class="bi bi-arrow-left"></span>Voltar</a>
+        <a href="visualizacao_produtos.php" title="Tela de produtos"><span class="bi bi-arrow-left"></span>Voltar</a>
       </div>
     </div>
 
@@ -192,7 +192,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
         <button type="submit"><span class="bi bi-check2"></span>Alterar</button>
         <a href="../controller/produtoControle.php?op=excluir&id=<?php echo $produto['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3"></span>Excluir</a>
 
-        <!-- <button formaction="../view/gui_visualizacao_produtos.php">Voltar</button> -->
+        <!-- <button formaction="../view/visualizacao_produtos.php">Voltar</button> -->
       </div>
     </form>
 

@@ -10,7 +10,7 @@
             try {
                 self::$instancia = new ConexaoBanco("mysql:host=localhost; dbname=nize_database","root", "");
             }catch (Exception $e){
-                header("location:../view/gui_erro.php?=Erro ao conectar com o banco de dados.");
+                header("location:../view/erro.php?=Erro ao conectar com o banco de dados.");
                 exit;
             }// fecha o try catch
         }//fecha o if
@@ -60,7 +60,7 @@ class ConexaoBanco extends PDO {
                 // Em caso de erro (ex: pasta sem permissão de escrita), redireciona para a tela de erro
                 // urlencode protege a mensagem para trafegar com segurança na URL
                 $msg_erro = urlencode("Erro ao conectar com o banco SQLite: " . $e->getMessage());
-                header("location:../view/gui_erro.php?msg=" . $msg_erro);
+                header("location:../view/erro.php?msg=" . $msg_erro);
                 exit;
             }
         }

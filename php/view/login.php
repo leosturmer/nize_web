@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <a href="gui_cadastro_usuario.php" id="btn-login">Não se cadastrou?</a>
+        <a href="cadastro_usuario.php" id="btn-login">Não se cadastrou?</a>
 
         <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
     </main>

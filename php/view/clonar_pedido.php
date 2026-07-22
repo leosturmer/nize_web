@@ -7,24 +7,17 @@ require_once '../util/seguranca.class.php';
 Seguranca::verificarAcesso();
 
 $usuario = unserialize($_SESSION['usuario_logado']);
-
 $produtoDAO = new ProdutoDAO();
-
 $listaProdutos = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 
 if (!isset($_SESSION['carrinho'])) {
     $_SESSION['carrinho'] = [];
 }
 
+// Certifica-se de que não há pedido selecionado para não sobrescrever dados antigos por engano
 if (isset($_SESSION['pedidoSelecionado'])) {
     unset($_SESSION['pedidoSelecionado']);
 }
-
-if (isset($_SESSION['encomendaSelecionada'])) {
-    unset($_SESSION['encomendaSelecionada']);
-}
-
-
 ?>
 
 <!DOCTYPE html>
@@ -33,19 +26,15 @@ if (isset($_SESSION['encomendaSelecionada'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="shortcut icon" href="../../img/favicon/favicon.ico" type="image/x-icon">
-
     <link rel="stylesheet" href="../../css/normalize.css">
     <link rel="stylesheet" href="../../css/query.css">
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/sidebar.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 
-
-    <title>Cadastro de pedido- Nize</title>
+    <title>Clonar Pedido- Nize</title>
 </head>
 
 
@@ -57,6 +46,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                 <li>
                     <a href="#" data-resize-btn class="btn-menu" title="Esconder/expandir menu">
                         <i class="bi bi-list"></i>
+
                     </a>
                 </li>
 
@@ -75,19 +65,19 @@ if (isset($_SESSION['encomendaSelecionada'])) {
 
                     </a>
                 </li>
-                <a href="gui_visualizacao_produtos.php" title="Tela de produtos">
+                <a href="visualizacao_produtos.php" title="Tela de produtos">
                     <i class="bi bi-box-seam"></i>
                     <span>Produtos</span>
                 </a>
                 </li>
                 </li>
-                <a href="gui_visualizacao_pedidos.php" class="active" title="Tela de pedidos">
+                <a href="visualizacao_pedidos.php" class="active" title="Tela de pedidos">
                     <i class="bi bi-clipboard2-check"></i>
                     <span>Pedidos</span>
                 </a>
                 </li>
                 </li>
-                <a href="gui_minha_area.php" title="Minha área">
+                <a href="minha_area.php" title="Minha área">
                     <i class="bi bi-person-lines-fill"></i>
                     <span>Minha área</span>
                 </a>
@@ -112,7 +102,6 @@ if (isset($_SESSION['encomendaSelecionada'])) {
             </a>
         </div>
     </header>
-
     <main class='conteudo-pagina'>
         <?php
         if (isset($_SESSION["msg"])) {
@@ -123,18 +112,18 @@ if (isset($_SESSION['encomendaSelecionada'])) {
 
         <div class="internal-nav">
             <div class="internal-nav-links">
-                <h1>Cadastro de pedido</h1>
-                <a href="gui_visualizacao_pedidos.php"><span class="bi bi-arrow-left"></span>Voltar</a>
+                <h1>Clonar Pedido</h1>
+                <a href="visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
             </div>
         </div>
 
         <details class="produtos-pedido">
             <summary>Adicione os produtos ao pedido</summary>
 
+            <!-- <div class="adicionar-produtos"> -->
             <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-produto-pedido">
                 <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição" autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
             </form>
-
             <div class="lista-produtos-pedido">
                 <?php if (!empty($listaProdutos)): ?>
                     <?php foreach ($listaProdutos as $item): ?>
@@ -142,32 +131,30 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                             <div class="texto-produto">
                                 <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
                                 <p><strong>Quantidade disponível:</strong> <?php echo htmlspecialchars($item['quantidade']); ?> </p>
-                                <p><strong>Unidade: R$</strong> <?php echo number_format((float)$item['valor_unitario'], 2, ',', '.') ?> </p>
+                                <p><strong>Valor unitário: R$</strong> <?php echo number_format((float)$item['valor_unitario'], 2, ',', '.') ?> </p>
                                 <p><strong>Aceita encomenda:</strong> <?php echo $item['aceita_encomenda'] ? "Sim" : "Não"; ?></p>
-                                <p class="p-descricao"><strong>Descrição:</strong> <?php if (htmlspecialchars($item['descricao'])) {
-                                                                                        echo htmlspecialchars($item['descricao']);
-                                                                                    } else {
-                                                                                        echo 'Sem informações';
-                                                                                    } ?></p>
+                                <p class="p-descricao"><strong>Descrição:</strong> <?php echo htmlspecialchars($item['descricao']) ? htmlspecialchars($item['descricao']) : 'Sem informações'; ?></p>
                             </div>
-                            <div class="product-img-btn">
-                                <?php if ($item['imagem']) {
-                                    echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
-                                } else {
-                                    echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
-                                } ?>
-                                <form action="../controller/pedidoControle.php" method="get" class="product-btns">
-                                    <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
-                                    <input type="hidden" name="op" value="adicionarQuantidade">
-                                    <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
-                                    <input type="submit" class="btn-add" value="+ Adicionar">
-                                </form>
-                            </div>
+
+                            <?php if ($item['imagem']) {
+                                echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                            } else {
+                                echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
+                            } ?>
+
+                            <form action="../controller/pedidoControle.php" method="get" class="product-btns">
+                                <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Digite a quantidade" autocomplete="off">
+                                <input type="hidden" name="op" value="adicionarQuantidade">
+                                <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
+                                <input type="hidden" name="origem" value="clonar">
+                                <input type="submit" class="btn-add" value="Adicionar ao pedido">
+                            </form>
                         </div>
                     <?php endforeach; ?>
                 <?php else: echo "Nenhum produto cadastrado." ?>
                 <?php endif; ?>
             </div>
+            <!-- </div> -->
         </details>
 
         <div class="container-horizontal">
@@ -179,18 +166,18 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                         $produtoVendido = $produtoDAO->buscarPorId($id_produto);
                         if ($produtoVendido) {
                             $valor_unitario = (float)$produtoVendido['valor_unitario'];
-                            $quantidade =  (int)$quantidade;
+                            $quantidade = (int)$quantidade;
                             $valor = $valor_unitario * $quantidade;
                             $_SESSION['total_compra'] += $valor;
                             echo "<div class='produto-individual'>";
                             echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
                             echo "<p>";
                             echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-                            echo "<b>Unidade</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
+                            echo "<b>Valor unitário</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
                             $valor_total = (float)$produtoVendido['valor_unitario'];
-                            $valor_total = $valor_total * $quantidade;
+                            $valor_total = $valor_unitario * $quantidade;
                             echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";
-                            echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
+                            echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor&origem=clonar' class='btn-remover'>Remover produto</a>";
                             echo "</div>";
                         } else {
                             echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
@@ -204,8 +191,9 @@ if (isset($_SESSION['encomendaSelecionada'])) {
 
             <div class="infos-pedido">
                 <div class='total-pedido'>
-                    <p><b>Total do pedido</b>: R$ <?php echo number_format($_SESSION['total_compra'], 2, ',', '.')  ?> </p>
+                    <p><b>Total do pedido</b>: R$ <?php echo number_format($_SESSION['total_compra'], 2, ',', '.') ?> </p>
                 </div>
+
                 <form action="../controller/pedidoControle.php" method="get">
                     <input type="hidden" name="op" value="cadastrar">
                     <div class="form-pedidos-items">
@@ -215,7 +203,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                                 <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required>
                             </label>
                             <label for="statusPedido" class="label-column">
-                                Status do pedido
+                                Status
                                 <select name="statusPedido" id="statusPedido">
                                     <option value="encomendado">Encomendado</option>
                                     <option value="pagamento">Aguardando pagamento</option>
@@ -228,42 +216,38 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                                 </label>
                             </div>
                             <label for="comentarioPedido" class="label-column">
-                                Comentários
-                                <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."></textarea>
+                                Comentários / Observações
+                                <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Detalhes do novo pedido..."></textarea>
                             </label>
                         </fieldset>
                     </div>
-                    <div class="form-pedidos-items form-pedidos-buttons">
+                    <div class="form-pedidos-items">
                         <button type="submit"><span class="bi bi-check2"></span>Salvar</button>
-                        <a href="../controller/pedidoControle.php?op=limparCarrinho"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
+                        <a href="../controller/pedidoControle.php?op=limparCarrinho"><span class="bi bi-x"></span>Cancelar</a>
                     </div>
                 </form>
             </div>
         </div>
 
-
         <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
     </main>
 
-    </div>
-
-    <script src="../../js/busca_produtos_pedido.js"></script>
     <script type="module" src="../../js/main.js"></script>
 
-
+    <script src="../../js/busca_produtos_pedido.js"></script>
 
     <!-- Acessibilidade -->
 
     <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
     </div>
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
 
 </body>
 

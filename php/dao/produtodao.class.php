@@ -22,7 +22,7 @@ class ProdutoDAO{
         } catch (Exception $e){
             $_SESSION['msg'] = "<p class='error-msg'> Erro ao cadastrar produto. Tente novamente. </p>";
 
-            header("location:../view/gui_cadastro_produtos.php");
+            header("location:../view/cadastro_produtos.php");
             exit;
         }
 
@@ -87,7 +87,7 @@ class ProdutoDAO{
 
         } catch (Exception $e){
             $_SESSION['msg'] = "Erro ao listar produtos";
-            header("location:../view/gui_visualizacao_produtos.php");
+            header("location:../view/visualizacao_produtos.php");
             exit;
         }
     }
@@ -101,7 +101,7 @@ class ProdutoDAO{
 
         } catch (Exception $e){
             $_SESSION['msg'] = "Erro ao listar produtos";
-            header("location:../view/gui_visualizacao_produtos.php");
+            header("location:../view/visualizacao_produtos.php");
             exit;
         }
     }

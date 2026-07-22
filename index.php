@@ -32,8 +32,8 @@
             <h1 id="subtitulo-index">Orga<em>nize</em> suas vendas</h1>
 
             <div class="botoes-index">
-                <a href="./php/view/gui_login.php">Fazer login</a>
-                <a href="./php/view/gui_cadastro_usuario.php">Criar cadastro</a>
+                <a href="./php/view/login.php">Fazer login</a>
+                <a href="./php/view/cadastro_usuario.php">Criar cadastro</a>
             </div>
 
         </div>

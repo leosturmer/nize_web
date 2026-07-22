@@ -73,19 +73,19 @@ if (isset($_SESSION['pedidoSelecionado'])) {
 
           </a>
         </li>
-        <a href="gui_visualizacao_produtos.php" title="Tela de produtos">
+        <a href="visualizacao_produtos.php" title="Tela de produtos">
           <i class="bi bi-box-seam"></i>
           <span>Produtos</span>
         </a>
         </li>
         </li>
-        <a href="gui_visualizacao_pedidos.php" class="active" title="Tela de pedidos">
+        <a href="visualizacao_pedidos.php" class="active" title="Tela de pedidos">
           <i class="bi bi-clipboard2-check"></i>
           <span>Pedidos</span>
         </a>
         </li>
         </li>
-        <a href="gui_minha_area.php" title="Minha área">
+        <a href="minha_area.php" title="Minha área">
           <i class="bi bi-person-lines-fill"></i>
           <span>Minha área</span>
         </a>
@@ -122,7 +122,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
     <div class="internal-nav">
       <div class="internal-nav-links">
         <h1>Lista de Pedidos</h1>
-        <a href="gui_cadastro_pedidos.php"><span class="bi bi-plus-lg"></span>Pedido</a>
+        <a href="cadastro_pedidos.php"><span class="bi bi-plus-lg"></span>Pedido</a>
       </div>
 
       <div class="internal-nav-inputs">

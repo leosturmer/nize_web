@@ -16,7 +16,7 @@ class PedidoDAO
     {
         if (empty($_SESSION['carrinho'])) {
             $_SESSION['msg'] = "<p class='error-msg'>Nenhum produto adicionado ao pedido</p>";
-            header("Location: ../view/gui_cadastro_pedidos.php");
+            header("Location: ../view/cadastro_pedidos.php");
             exit;
         }
 
@@ -52,7 +52,7 @@ class PedidoDAO
 
                     if ($sql_subtrai->rowCount() === 0) {
                         $_SESSION['msg'] = "<p class='error-msg'>Estoque insuficiente para um ou mais produtos.</p>";
-                        header("Location: ../view/gui_cadastro_pedidos.php");
+                        header("Location: ../view/cadastro_pedidos.php");
                         exit;
                     }
                 }
@@ -71,7 +71,7 @@ class PedidoDAO
     {
         if (empty($_SESSION['carrinho'])) {
             $_SESSION['msg'] = "<p class='error-msg'>Nenhum produto adicionado ao pedido.</p>";
-            header("Location: ../view/gui_visualizacao_pedidos.php");
+            header("Location: ../view/visualizacao_pedidos.php");
             exit;
         }
 
@@ -99,7 +99,7 @@ class PedidoDAO
 
                     if ($sql_subtrai->rowCount() === 0) {
                         $_SESSION['msg'] = "<p class='error-msg'>Estoque insuficiente para um ou mais produtos.</p>";
-                        header("Location: ../view/gui_alteracao_pedidos.php?id=$pedido->id_pedido");
+                        header("Location: ../view/alteracao_pedidos.php?id=$pedido->id_pedido");
                         exit;
                     }
                 }
@@ -278,7 +278,7 @@ class PedidoDAO
             return $pedidosDict;
         } catch (Exception $e) {
             echo $e;
-            header("location:../view/gui_erro.php?msg=Erro ao realizar a busca avançada.");
+            header("location:../view/erro.php?msg=Erro ao realizar a busca avançada.");
             exit;
         }
     }

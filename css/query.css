@@ -47,6 +47,8 @@
     width: fit-content;
     max-width: 300px;
     padding: 0.8em 1rem;
+
+    z-index: 99999;
   }
 
   h1 {

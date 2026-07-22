@@ -64,19 +64,19 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 
           </a>
         </li>
-        <a href="gui_visualizacao_produtos.php" class="active" title="Tela de produtos">
+        <a href="visualizacao_produtos.php" class="active" title="Tela de produtos">
           <i class="bi bi-box-seam"></i>
           <span>Produtos</span>
         </a>
         </li>
         </li>
-        <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos">
+        <a href="visualizacao_pedidos.php" title="Tela de pedidos">
           <i class="bi bi-clipboard2-check"></i>
           <span>Pedidos</span>
         </a>
         </li>
         </li>
-        <a href="gui_minha_area.php" title="Minha área">
+        <a href="minha_area.php" title="Minha área">
           <i class="bi bi-person-lines-fill"></i>
           <span>Minha área</span>
         </a>
@@ -109,7 +109,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 
       <div class="internal-nav-links">
         <h1>Lista de produtos</h1>
-        <a href="gui_cadastro_produtos.php"><span class="bi bi-plus-lg"></span>Produto</a>
+        <a href="cadastro_produtos.php"><span class="bi bi-plus-lg"></span>Produto</a>
       </div>
 
       <div class="internal-nav-inputs">
@@ -206,8 +206,8 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
                 echo "<p>Nenhuma imagem cadastrada</p>";
               } ?>
               <div class="product-btns">
-                <a href="gui_alteracao_produto.php?id=<?php echo $item['id_produto']; ?>"><span class="bi bi-pencil"></span>Editar</a>
-                <a href="gui_clonar_produto.php?id=<?php echo $item['id_produto']; ?>" class="btn-clonar"><span class="bi bi-copy"></span>Clonar</a>
+                <a href="alteracao_produto.php?id=<?php echo $item['id_produto']; ?>"><span class="bi bi-pencil"></span>Editar</a>
+                <a href="clonar_produto.php?id=<?php echo $item['id_produto']; ?>" class="btn-clonar"><span class="bi bi-copy"></span>Clonar</a>
                 </div>
             </div>
           </div>

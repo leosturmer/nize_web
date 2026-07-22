@@ -45,7 +45,7 @@ switch ($opcao){
     case "cadastrar":
         if (empty($nomeProduto)){
             $_SESSION['msg'] = "<p class='error-msg'>Insira os dados obrigatórios</p>";
-            header("location:../view/gui_cadastro_produtos.php");
+            header("location:../view/cadastro_produtos.php");
             exit;
         }
 
@@ -90,11 +90,11 @@ switch ($opcao){
         
         if ($produtoDAO->cadastrarProduto($produto)){
             $_SESSION['msg'] = '<p class="success-msg">Produto cadastrado com sucesso!</p>';
-            header("location:../view/gui_visualizacao_produtos.php");
+            header("location:../view/visualizacao_produtos.php");
             exit;
         } else {
             $_SESSION['msg'] = '<p class="error-msg">Erro desconhecido ao salvar no banco.</p>';
-            header("location:../view/gui_cadastro_produtos.php");
+            header("location:../view/cadastro_produtos.php");
             exit;
         }
 
@@ -103,7 +103,7 @@ switch ($opcao){
     case "alterar":
         if (empty($nomeProduto)){
             $_SESSION['msg'] = "<p class='error-msg'>Ops! Insira os dados obrigatórios</p>";
-            header("location:../view/gui_visualizacao_produtos.php");
+            header("location:../view/visualizacao_produtos.php");
             exit;
         }
         
@@ -154,7 +154,7 @@ switch ($opcao){
             $_SESSION['msg'] = "<p class='error-msg'>Erro ao atualizar produto!</p>";   
         }
 
-        header("location:../view/gui_alteracao_produto.php");
+        header("location:../view/alteracao_produto.php");
         exit;
 
     case "excluir":
@@ -168,7 +168,7 @@ switch ($opcao){
             }
         }  
         
-        header("location:../view/gui_visualizacao_produtos.php");
+        header("location:../view/visualizacao_produtos.php");
         exit;
 
 

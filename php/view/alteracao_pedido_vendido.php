@@ -15,7 +15,7 @@ $produtoDAO = new ProdutoDAO();
 if (empty($_SESSION['pedidoSelecionado'])) {
   $_SESSION['msg'] = "<p class='error-msg'>Nenhum pedido selecionado!</p>";
   echo $_SESSION['msg'];
-  header("location:gui_visualizacao_pedidos.php");
+  header("location:visualizacao_pedidos.php");
   exit;
 }
 $id_pedido = $_SESSION['pedidoSelecionado']["id_pedido"];
@@ -43,7 +43,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 
-  <title>Pedido cancelado- Nize</title>
+  <title>Pedido vendido - Nize</title>
 </head>
 
 
@@ -75,19 +75,19 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
           </a>
         </li>
-        <a href="gui_visualizacao_produtos.php" title="Tela de produtos">
+        <a href="visualizacao_produtos.php" title="Tela de produtos">
           <i class="bi bi-box-seam"></i>
           <span>Produtos</span>
         </a>
         </li>
         </li>
-        <a href="gui_visualizacao_pedidos.php" class="active" title="Tela de pedidos">
+        <a href="visualizacao_pedidos.php" class="active" title="Tela de pedidos">
           <i class="bi bi-clipboard2-check"></i>
           <span>Pedidos</span>
         </a>
         </li>
         </li>
-        <a href="gui_minha_area.php" title="Minha área">
+        <a href="minha_area.php" title="Minha área">
           <i class="bi bi-person-lines-fill"></i>
           <span>Minha área</span>
         </a>
@@ -123,29 +123,20 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
 
     <div class="internal-nav">
-      <div class="internal-nav-links">
-        <h2 class="num-pedido num-pedido-cancelado">Pedido cancelado - <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
-        <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
+      <div class="internal-nav-links" style="display: flex; align-items: center;">
+        <h2 class="num-pedido num-pedido-cancelado">Pedido vendido - <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
+        <a href="visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
       </div>
       <div class="texto-pedido-cancelado">
-        <p>Não é possível fazer alterações em pedidos cancelados</p>
+        <p>Pedidos vendidos tem limitações de alteração</p>
       </div>
-
     </div>
 
 
 
     <div class="container-horizontal">
       <div class="produtos-no-pedido">
-
-        <!-- Aqui tem que mudar. O preço do produto tem que vir do banco de dados. Ou seja, o $produtoVendido tem que ter o preço que está salvo no banco de dados. -->
-
         <?php
-        // $infoPedidoBanco[''];
-
-
-
-
         $_SESSION['total_compra'] = 0.00;
 
         if (!empty($_SESSION['carrinho'])) {
@@ -173,7 +164,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
               echo "<b>Valor total</b>: R$ " . number_format($valor_total_item, 2, ',', '.') . "<br><br>";
 
               // Exibir o botão de remoção apenas se for a tela de alteração normal
-              if (basename($_SERVER['PHP_SELF']) == 'gui_alteracao_pedidos.php') {
+              if (basename($_SERVER['PHP_SELF']) == 'alteracao_pedidos.php') {
                 echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'>Remover produto</a>";
               }
 
@@ -192,18 +183,49 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
         $formatoData = strtotime($dataBanco);
         $data = date("d/m/Y", $formatoData);
         ?>
-        <div class="form-pedidos-items">
-          <div id="pedidos-form" class="pedido-cancelado-infos">
-            <p><b>Data/prazo</b>: <?php echo $data; ?> </p><br>
-            <p><b>Comentários</b>: <?php echo $infoPedidoBanco['comentario']; ?></p> <br>
-            </p>
+        <form action="../controller/pedidoControle.php" method="get">
+          <input type="hidden" name="op" value="alterar">
+          <div class="form-pedidos-items">
+            <fieldset id="pedidos-form">
+              <!-- <div> -->
+              <label for="prazopedido">
+                Data
+                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required value="<?php echo $infoPedidoBanco['data'] ?>">
+              </label>
+              <label for="statusPedido">
+                Status do Pedido
+                <select name="statusPedido" id="statusPedido">
+                  <option value="vendido" <?= $infoPedidoSession['status'] == 'vendido' ? 'selected' : '' ?>>Vendido</option>
+                  <option value="cancelado" <?= $infoPedidoSession['status'] === 'cancelado' ? 'selected' : '' ?>>Cancelado</option>
+                </select>
+              </label>
+
+              <div id="containerVendido" style="display: none;">
+                <!-- <label class="label-baixa-estoque">
+                  Dar baixa no estoque?
+                  <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" class="input-produto input-checkbox" value="1">
+                </label> -->
+              </div>
+              <div id="containerCancelado" style="display: none;">
+                <p>Atenção: <br> Pedidos cancelados não podem ser editados!<br></p>
+                <label class="label-baixa-estoque">
+                  Devolver produtos ao estoque?
+                  <input type="checkbox" name="estornarEstoque" id="estornarEstoque" class="input-produto input-checkbox" value="1">
+                </label>
+              </div>
+              <!-- </div> -->
+              <label for="comentarioPedido">
+                Comentários
+                <textarea name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo $infoPedidoSession['comentario'] ?></textarea>
+              </label>
+            </fieldset>
           </div>
-        </div>
-        <div class="form-pedidos-items">
-          <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-add"><span class="bi bi-copy"></span>Clonar</a>
-          <a href="../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');" class="btn-alt-pedido"><span class="bi bi-trash3"></span>Excluir</a>
-          <!-- <a href="../controller/pedidoControle.php?op=limparCarrinho" class="btn-add">Voltar</a> -->
-        </div>
+          <div class="form-pedidos-items">
+            <button type="submit" class="btn-alt-pedido"><span class="bi bi-check2"></span>Alterar</button>
+            <a href="../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3" class="btn-alt-pedido"></span>Excluir</a>
+            <!-- <a href="../view/visualizacao_pedidos.php" class="btn-alt-pedido">Voltar</a> -->
+          </div>
+        </form>
       </div>
     </div>
 

@@ -72,7 +72,7 @@ foreach ($lista as $item) {
             } ?>
             
                 <div class="product-btns">
-            <a href="gui_alteracao_produto.php?id=<?php echo $item['id_produto']; ?>"><span class="bi bi-pencil"></span>Editar</a>
+            <a href="alteracao_produto.php?id=<?php echo $item['id_produto']; ?>"><span class="bi bi-pencil"></span>Editar</a>
             <a href="../controller/produtoControle.php?op=excluir&id=<?php echo $item['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3"></span>Excluir</a>
                 </div>
         </div>

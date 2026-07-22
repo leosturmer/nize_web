@@ -59,19 +59,19 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
           </a>
         </li>
-        <a href="gui_visualizacao_produtos.php" title="Tela de produtos">
+        <a href="visualizacao_produtos.php" title="Tela de produtos">
           <i class="bi bi-box-seam"></i>
           <span>Produtos</span>
         </a>
         </li>
         </li>
-        <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos">
+        <a href="visualizacao_pedidos.php" title="Tela de pedidos">
           <i class="bi bi-clipboard2-check"></i>
           <span>Pedidos</span>
         </a>
         </li>
         </li>
-        <a href="gui_minha_area.php" class="active" title="Minha área">
+        <a href="minha_area.php" class="active" title="Minha área">
           <i class="bi bi-person-lines-fill"></i>
           <span>Minha área</span>
         </a>

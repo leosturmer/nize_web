@@ -17,7 +17,7 @@ $listaProdutos = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 if (empty($_SESSION['pedidoSelecionado'])) {
     $_SESSION['msg'] = "<p class='error-msg'>Nenhum pedido selecionado!</p>";
     echo $_SESSION['msg'];
-    header("location:gui_visualizacao_pedidos.php");
+    header("location:visualizacao_pedidos.php");
     exit;
 }
 
@@ -78,19 +78,19 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
                     </a>
                 </li>
-                <a href="gui_visualizacao_produtos.php" title="Tela de produtos">
+                <a href="visualizacao_produtos.php" title="Tela de produtos">
                     <i class="bi bi-box-seam"></i>
                     <span>Produtos</span>
                 </a>
                 </li>
                 </li>
-                <a href="gui_visualizacao_pedidos.php" class="active" title="Tela de pedidos">
+                <a href="visualizacao_pedidos.php" class="active" title="Tela de pedidos">
                     <i class="bi bi-clipboard2-check"></i>
                     <span>Pedidos</span>
                 </a>
                 </li>
                 </li>
-                <a href="gui_minha_area.php" title="Minha área">
+                <a href="minha_area.php" title="Minha área">
                     <i class="bi bi-person-lines-fill"></i>
                     <span>Minha área</span>
                 </a>
@@ -127,7 +127,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
         <div class="internal-nav">
             <div class="internal-nav-links">
                 <h2 class="num-pedido">Alteração - Pedido <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
-                <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
+                <a href="visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
             </div>
 
         </div>
@@ -213,7 +213,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                             echo "<b>Valor total</b>: R$ " . number_format($valor_total_item, 2, ',', '.') . "<br><br>";
                             
                             // Exibir o botão de remoção apenas se for a tela de alteração normal
-                            if (basename($_SERVER['PHP_SELF']) == 'gui_alteracao_pedidos.php') {
+                            if (basename($_SERVER['PHP_SELF']) == 'alteracao_pedidos.php') {
                                 echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'>Remover produto</a>";
                             }
                             
@@ -272,7 +272,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                     <div class="form-pedidos-items">
                         <button type="submit" class="btn-alt-pedido"><span class="bi bi-check2"></span>Alterar</button>
                         <a href="../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3" class="btn-alt-pedido"></span>Excluir</a>
-                        <!-- <a href="../view/gui_visualizacao_pedidos.php" class="btn-alt-pedido">Voltar</a> -->
+                        <!-- <a href="../view/visualizacao_pedidos.php" class="btn-alt-pedido">Voltar</a> -->
                     </div>
                 </form>
             </div>

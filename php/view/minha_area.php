@@ -57,19 +57,19 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
           </a>
         </li>
-        <a href="gui_visualizacao_produtos.php" title="Tela de produtos">
+        <a href="visualizacao_produtos.php" title="Tela de produtos">
           <i class="bi bi-box-seam"></i>
           <span>Produtos</span>
         </a>
         </li>
         </li>
-        <a href="gui_visualizacao_pedidos.php" title="Tela de pedidos">
+        <a href="visualizacao_pedidos.php" title="Tela de pedidos">
           <i class="bi bi-clipboard2-check"></i>
           <span>Pedidos</span>
         </a>
         </li>
         </li>
-        <a href="gui_minha_area.php" class="active" title="Minha área">
+        <a href="minha_area.php" class="active" title="Minha área">
           <i class="bi bi-person-lines-fill"></i>
           <span>Minha área</span>
         </a>
@@ -167,7 +167,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         }
 
         $_SESSION['msg'] = "<p class='error-msg'>Loja $texto_msg! </p>";
-        $link_view_loja = "gui_alteracao_cadastro.php";
+        $link_view_loja = "alteracao_cadastro.php";
         $target = "";
       } else {
         $link_view_loja = "./view_loja.php?loja=$usuario->nome_visualizacao";
@@ -177,7 +177,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
 
       <div class="usuario-btns">
-        <a href="./gui_alteracao_cadastro.php" class="btn-alterar"><span class="bi bi-pencil" style="margin-left: 0;"></span>Editar</a>
+        <a href="./alteracao_cadastro.php" class="btn-alterar"><span class="bi bi-pencil" style="margin-left: 0;"></span>Editar</a>
 
         <a href="<?php echo $link_view_loja ?>" target="<?php echo $target ?>" class="btn-alterar">Ver loja<span class="bi bi-box-arrow-up-right"></span></a>
       </div>
