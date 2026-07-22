@@ -191,7 +191,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                 if (!empty($_SESSION['carrinho'])) {
                     foreach ($_SESSION['carrinho'] as $id_produto => $item) {
                         $produtoVendido = $produtoDAO->buscarPorId($id_produto);
-                
+
                         // Trata item como array ou inteiro simples (compatibilidade)
                         if (is_array($item)) {
                             $quantidade = (int)$item['quantidade'];
@@ -200,10 +200,10 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                             $quantidade = (int)$item;
                             $valor_unitario = (float)($produtoVendido['valor_unitario'] ?? 0);
                         }
-                
+
                         $valor_total_item = $valor_unitario * $quantidade;
                         $_SESSION['total_compra'] += $valor_total_item;
-                
+
                         if ($produtoVendido) {
                             echo "<div class='produto-individual'>";
                             echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
@@ -211,12 +211,12 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                             echo "<b>Quantidade</b>: " . $quantidade . "<br>";
                             echo "<b>Unidade</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
                             echo "<b>Valor total</b>: R$ " . number_format($valor_total_item, 2, ',', '.') . "<br><br>";
-                            
+
                             // Exibir o botão de remoção apenas se for a tela de alteração normal
                             if (basename($_SERVER['PHP_SELF']) == 'alteracao_pedidos.php') {
                                 echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'>Remover produto</a>";
                             }
-                            
+
                             echo "</div>";
                         } else {
                             echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
@@ -244,6 +244,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                                 Status do Pedido
                                 <select name="statusPedido" id="statusPedido">
                                     <option value="encomendado" <?= $infoPedidoSession['status'] == 'encomendado' ? 'selected' : '' ?>>Encomendado</option>
+                                    <option value="encomenda_online" <?= $infoPedidoSession['status'] == 'encomenda_online' ? 'selected' : '' ?>>Encomenda online</option>
                                     <option value="pagamento" <?= $infoPedidoSession['status'] == 'pagamento' ? 'selected' : '' ?>>Aguardando pagamento</option>
                                     <option value="vendido" <?= $infoPedidoSession['status'] == 'vendido' ? 'selected' : '' ?>>Vendido</option>
                                     <option value="cancelado" <?= $infoPedidoSession['status'] === 'cancelado' ? 'selected' : '' ?>>Cancelado</option>

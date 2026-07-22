@@ -193,7 +193,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                             echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
                             echo "</div>";
                         } else {
-                            echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
+                            echo "<p><b>Produto</b> não foi encontrado no estoque.</p>";
                         }
                     }
                 } else {

@@ -32,6 +32,8 @@ if (!empty($_SESSION['usuario_logado'])) {
     $logo_link = "../../index.php";
 }
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -56,14 +58,84 @@ if (!empty($_SESSION['usuario_logado'])) {
 
 <body>
 
-    <aside id="sidebar">
-        <a href="<?php echo $logo_link ?>" class="link-logo" title="Tela inicial">
-            <img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
-        </a>
+    <aside id="sidebar" class="sacola-compras">
+        <ul>
+            <li>
+                <a href="#" data-resize-btn class="btn-menu btn-sacola" title="Esconder/expandir menu">
+                    <i class="bi bi-bag"></i>
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo $logo_link ?>" class="link-logo" title="Tela inicial">
+                    <img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
+                </a>
+            </li>
+
+            <li class="produtos-sacola-sidenav">
+                <div>
+                    <?php
+                    $_SESSION['total_compra'] = 0.00;
+                    // 1. Mudamos de $_SESSION['carrinho'] para $_SESSION['sacola']
+                    if (!empty($_SESSION['sacola'])) {
+                        foreach ($_SESSION['sacola'] as $id_produto => $item) {
+                            // Suporta se o item for array ou apenas inteiro
+                            $quantidade = is_array($item) ? (int)$item['quantidade'] : (int)$item;
+                            $produtoVendido = $produtoDAO->buscarPorId($id_produto);
+
+                            if ($produtoVendido) {
+                                $valor_unitario = (float)$produtoVendido['valor_unitario'];
+                                $valor = $valor_unitario * $quantidade;
+                                $_SESSION['total_compra'] += $valor;
+
+                                echo "<div class='produto-individual'>";
+                                echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
+                                echo "<p>";
+                                echo "<b>Quantidade</b>: " . $quantidade . "<br>";
+                                echo "<b>Unidade</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
+                                echo "<b>Valor total</b>: R$ " . number_format($valor, 2, ',', '.') . "<br><br>";
+
+                                // Link de remoção passando origem=loja e nome da loja
+                                echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor&origem=loja&loja=" . urlencode($nome_visualizacao) . "' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
+                                echo "</div>";
+                            } else {
+                                echo "<p><b>Produto</b> não foi encontrado no estoque.</p>";
+                            }
+                        }
+                    } else {
+                        echo "<p style='margin-bottom: 0.5em'>Nenhum produto adicionado ao pedido.</p>";
+                    }
+                    ?>
+                </div>
+
+                <div class='total-pedido'>
+                    <p><b>Total do pedido</b>: R$ <?php echo number_format($_SESSION['total_compra'], 2, ',', '.') ?></p>
+                </div>
+
+                <div class="pedido-loja">
+                    <form action="../controller/pedidoControle.php" method="get">
+                        <input type="hidden" name="op" value="solicitarPedido">
+                        <input type="hidden" name="loja" value="<?php echo htmlspecialchars($nome_visualizacao); ?>">
+
+                        <label for="comentarioPedido" class="label-column">
+                            Comentários:
+                            <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Detalhes do pedido, dos produtos, da entrega, entre outros."></textarea>
+                        </label>
+
+                        <button type="submit"><span class="bi bi-check2"></span>Enviar</button>
+
+                        <!-- Botão Limpar apenas para a view_loja -->
+                        <a href="../controller/pedidoControle.php?op=limparCarrinho&origem=loja&loja=<?php echo urlencode($nome_visualizacao); ?>"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
+                    </form>
+                </div>
+            </li>
+        </ul>
     </aside>
 
     <header id="header-mobile">
         <div class="container-header">
+            <a href="#" data-resize-btn-mobile class="btn-menu btn-sacola" title="Esconder/expandir menu">
+                <i class="bi bi-bag"></i>
+            </a>
             <a href="tela_inicial.php" class="link-logo-header" title="Tela inicial">
                 <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
             </a>
@@ -71,10 +143,33 @@ if (!empty($_SESSION['usuario_logado'])) {
     </header>
 
 
-
     <main class='conteudo-pagina'>
         <div class="internal-nav">
-            <?php if ($aceita_visualizacao === 1): ?>
+            <?php
+            if (isset($_SESSION["msg"])) {
+                echo "<div id='session-msg'>" . $_SESSION['msg'] .  "</div>";
+                unset($_SESSION["msg"]);
+            }
+
+            if (isset($_SESSION['pedido_sucesso']) && $_SESSION['pedido_sucesso'] === true) {
+                $numPedido = $_SESSION['ultimo_pedido_id'] ?? '';
+
+                unset($_SESSION['pedido_sucesso']);
+                unset($_SESSION['ultimo_pedido_id']);
+
+                // Exemplo: Enviando o número do pedido junto na mensagem do WhatsApp
+                $mensagemWpp = urlencode("Olá! Acabei de fazer o pedido *#{$numPedido}* na loja.");
+                $urlDestino  = !empty($telefone) ? "https://wa.me/{$telefone}?text={$mensagemWpp}" : "tela_inicial.php";
+            ?>
+                <script>
+                    setTimeout(function() {
+                        window.open("<?php echo $urlDestino; ?>", "_blank");
+                    }, 3000);
+                </script>
+            <?php
+            }
+
+            if ($aceita_visualizacao === 1): ?>
 
                 <h1 class="nome-loja"><?php echo $nome_loja; ?></h1>
 
@@ -123,6 +218,13 @@ if (!empty($_SESSION['usuario_logado'])) {
                         } else {
                             echo "<p>Nenhuma imagem cadastrada</p>";
                         } ?>
+                        <form action="../controller/pedidoControle.php" method="get" class="product-btns">
+                            <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
+                            <input type="hidden" name="op" value="adicionarSacola">
+                            <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
+                            <input type="hidden" name="loja" value="<?php echo htmlspecialchars($nome_visualizacao); ?>">
+                            <input type="submit" class="btn-add" value="+ Adicionar">
+                        </form>
                     </div>
 
                 </div>

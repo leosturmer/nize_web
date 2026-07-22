@@ -138,6 +138,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
             <select id="filtro-status">
               <option value="">Todos os status</option>
               <option value="encomendado">Encomendado</option>
+              <option value="encomenda_online">Encomenda online</option>
               <option value="pagamento">Pagamento</option>
               <option value="vendido">Vendido</option>
               <option value="cancelado">Cancelado</option>
@@ -171,8 +172,11 @@ if (isset($_SESSION['pedidoSelecionado'])) {
               $comentario = htmlspecialchars($dados_pedido['comentario']);
               $status = $dados_pedido['status'];
               $statusView = '';
+
               if ($status == "encomendado") {
                 $statusView = "Encomendado";
+              } else if ($status == "encomenda_online") { 
+                $statusView = "Encomenda online";
               } else if ($status == "pagamento") {
                 $statusView = "Aguardando pagamento";
               } else if ($status == "vendido") {
@@ -180,6 +184,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
               } else if ($status == "cancelado") {
                 $statusView = "Cancelado";
               }
+
               foreach ($dados_pedido['produtos'] as $produto) {
                 echo "<p><strong>" . htmlspecialchars($produto['nome']) . "</strong>: " . htmlspecialchars($produto['quantidade']) . " unidades</p>";
               }

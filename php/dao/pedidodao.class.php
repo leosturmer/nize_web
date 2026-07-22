@@ -24,34 +24,44 @@ class PedidoDAO
             $this->conexao->beginTransaction();
 
             $sql_pedido = "INSERT INTO pedidos (id_usuario, status, data, comentario, valor_final) VALUES (?, ?, ?, ?, ?)";
-
             $stmt = $this->conexao->prepare($sql_pedido);
             $stmt->execute([$pedido->id_usuario, $pedido->status, $pedido->data, $pedido->comentario, $pedido->valor_final]);
 
+            // Pega o ID gerado pelo banco
             $id_pedido = $this->conexao->lastInsertId();
 
-
             $sql_produto = "INSERT INTO pedido_produto (id_pedido, id_produto, quantidade, valor_unitario) VALUES (?, ?, ?, ?)";
-
             $stmt_produto = $this->conexao->prepare($sql_produto);
 
-            foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
-                $pegar_valor_unitario = $this->conexao->prepare("SELECT valor_unitario FROM produtos WHERE id_produto = ? AND id_usuario = ?");
-                $pegar_valor_unitario->execute([$id_produto, $pedido->id_usuario]);
+            foreach ($_SESSION['carrinho'] as $id_produto => $item) {
+                // Tratamento do formato do item no carrinho/sacola
+                if (is_array($item)) {
+                    $quantidade = (int)$item['quantidade'];
+                    $valor_unitario = (float)($item['valor_unitario'] ?? 0);
+                } else {
+                    $quantidade = (int)$item;
+                    $valor_unitario = 0;
+                }
 
-                $valor_unitario =  $pegar_valor_unitario->fetchColumn();
+                // Caso não tenha o valor unitário no array, busca no banco
+                if ($valor_unitario <= 0) {
+                    $pegar_valor_unitario = $this->conexao->prepare("SELECT valor_unitario FROM produtos WHERE id_produto = ? AND id_usuario = ?");
+                    $pegar_valor_unitario->execute([$id_produto, $pedido->id_usuario]);
+                    $valor_unitario = (float)$pegar_valor_unitario->fetchColumn();
+                }
 
-
+                // Inserção com a quantidade inteira extraída
                 $stmt_produto->execute([$id_pedido, $id_produto, $quantidade, $valor_unitario]);
 
                 if ($darBaixaEstoque === 1) {
                     $sql_subtrai = $this->conexao->prepare("UPDATE produtos 
-                        SET quantidade = quantidade - ? 
-                        WHERE id_produto = ? AND quantidade >= ?");
+                    SET quantidade = quantidade - ? 
+                    WHERE id_produto = ? AND quantidade >= ?");
                     $sql_subtrai->execute([$quantidade, $id_produto, $quantidade]);
 
                     if ($sql_subtrai->rowCount() === 0) {
                         $_SESSION['msg'] = "<p class='error-msg'>Estoque insuficiente para um ou mais produtos.</p>";
+                        $this->conexao->rollBack();
                         header("Location: ../view/cadastro_pedidos.php");
                         exit;
                     }
@@ -59,10 +69,10 @@ class PedidoDAO
             }
 
             $this->conexao->commit();
-            return true;
+            return $id_pedido;
         } catch (Exception $e) {
             $this->conexao->rollBack();
-            echo "Erro ao cadastrar.";
+            echo "Erro ao cadastrar: " . $e->getMessage();
             exit;
         }
     }

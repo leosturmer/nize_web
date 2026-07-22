@@ -4,8 +4,13 @@ export function inicializarSidebar() {
 
   const alternarIcone = () => {
     const ativo = document.body.classList.contains("sb-expanded");
-    icon.classList.toggle("bi-x-lg", ativo);
-    icon.classList.toggle("bi-list", !ativo);
+    if (document.getElementsByClassName("btn-sacola")){
+      icon.classList.toggle("bi-x-lg", ativo);
+      icon.classList.toggle("bi-bag", !ativo);
+    } else {
+      icon.classList.toggle("bi-x-lg", ativo);
+      icon.classList.toggle("bi-list", !ativo);
+    }
   };
 
   resizeBtn.addEventListener("click", (e) => {
@@ -18,14 +23,20 @@ export function inicializarSidebar() {
   resizeBtn.addEventListener("mouseleave", alternarIcone);
 }
 
+
+
 export function inicializarHeaderMobile() {
   const resizeBtn = document.querySelector("[data-resize-btn-mobile]");
   const icon = resizeBtn.querySelector("i");
 
   const alternarIcone = () => {
-    const ativo = document.body.classList.contains("sb-expanded");
-    icon.classList.toggle("bi-x-lg", ativo);
-    icon.classList.toggle("bi-list", !ativo);
+    if (document.getElementsByClassName("btn-sacola")){
+      icon.classList.toggle("bi-x-lg", ativo);
+      icon.classList.toggle("bi-bag", !ativo);
+    } else {
+      icon.classList.toggle("bi-x-lg", ativo);
+      icon.classList.toggle("bi-list", !ativo);
+    }
   };
 
   resizeBtn.addEventListener("click", (e) => {

@@ -28,6 +28,13 @@ aside {
   transition: width 0.4s ease-in-out;
 }
 
+.sb-expanded aside#sidebar.sacola-compras {
+  width: 28rem;
+  z-index: 99999;
+
+}
+
+
 #sidebar nav,
 #sidebar ul {
   height: 100%;
@@ -43,7 +50,6 @@ aside {
 
 nav ul {
   list-style: none;
-
   flex-flow: column;
 }
 
@@ -51,7 +57,13 @@ nav li:last-child {
   margin-top: auto;
 }
 
-#logo-sidenav {
+.sacola-compras ul {
+  /* height: 50%; */
+}
+
+#logo-sidenav, 
+#logo-sidenav-view
+ {
   width: 80px;
 
   margin: 3em 10px;
@@ -60,14 +72,9 @@ nav li:last-child {
 }
 
 #logo-sidenav-view {
-  margin: 7.8em 10px;
-  width: 80px;
-  /* margin: 10px; */
-  text-align: left;
-
-  background-color: transparent;
-  border: none;
+  margin: 1em 10px;
 }
+
 
 header {
   visibility: hidden;
@@ -79,7 +86,9 @@ header {
   margin: 0em auto;
   /* margin-right: 42.5px; */
 
-  transition: width 0.4s ease-in-out, transform 0.8s ease-in-out,
+  transition:
+    width 0.4s ease-in-out,
+    transform 0.8s ease-in-out,
     opacity 0.4s ease-in-out;
   transform: rotate(0deg);
 }
@@ -130,7 +139,9 @@ nav a {
   line-height: 1;
   color: #fff;
   text-decoration: none;
-  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+  transition:
+    background-color 0.4s ease-in-out,
+    color 0.4s ease-in-out;
   /* width: 4.5em;
   height: 3.5em;
 
@@ -231,7 +242,8 @@ nav a span {
   transition: color 0.2s ease-in-out;
 }
 
-.sb-expanded #logo-sidenav {
+.sb-expanded #logo-sidenav,
+.sb-expanded #logo-sidenav-view {
   width: 150px;
   margin-left: 2.5em;
   transition: width 0.3s ease-in-out;
@@ -279,7 +291,7 @@ nav a span {
   width: 2.5em;
   height: 2.5em;
 }
-
+/* 
 .sb-expanded details[open].produtos-pedido summary {
   left: 17em;
 }
@@ -291,13 +303,56 @@ nav a span {
 
 .sb-expanded .product-view {
   padding: 0.8em;
-}
+} */
 
 main {
   /* margin-left: 5rem; */
   /* padding: 1rem 2rem; */
   transition: margin-left 0.4s ease-in-out;
 }
+
+
+
+.produtos-sacola-sidenav {
+  visibility: hidden;
+
+  display: flex;
+  flex-direction: column;
+  background-color: whitesmoke;
+  border: var(--border-thin);
+
+  padding: 0.5em;
+}
+
+
+li.produtos-sacola-sidenav div.total-pedido {
+  width: fit-content;
+  margin: 0 auto 0.8em auto;
+  font-size: 16px;
+
+}
+
+li.produtos-sacola-sidenav label.label-column {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+li.produtos-sacola-sidenav label.label-column textarea{
+}
+
+
+
+
+
+
+.sb-expanded  .produtos-sacola-sidenav {
+  visibility: visible;
+  width: 25rem;
+}
+
+
 
 /* Media query da sidenav */
 
@@ -344,6 +399,11 @@ main {
     width: 17.5em;
   }
 
+  .sb-expanded aside#sidebar.sacola-compras {
+
+    width: 28rem;
+  }
+
   .sb-expanded #logo-header {
     visibility: hidden;
     transform: rotate(360deg);
@@ -369,20 +429,4 @@ main {
   }
 }
 
-/* OLD */
 
-/* #sidebar {
-    visibility: hidden;
-  }
-
-  .btn-menu {
-    visibility: visible;
-
-
-  }
-
-  .sb-expanded #sidebar {
-    visibility: visible;
-
- 
-  } */

@@ -39,6 +39,7 @@ if (!empty($listaPedidos)){
     
     $statusView = '';
     if ($dados_pedido['status'] == "encomendado") { $statusView = "Encomendado"; }
+    if ($dados_pedido['status'] == "encomenda_online") { $statusView = "Encomenda online"; }
     else if ($dados_pedido['status'] == "pagamento") { $statusView = "Pagamento"; }
     else if ($dados_pedido['status'] == "vendido") { $statusView = "Vendido"; }
     else if ($dados_pedido['status'] == "cancelado") { $statusView = "Cancelado"; }
