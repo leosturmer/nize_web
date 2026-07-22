@@ -110,6 +110,21 @@
   gap: 10px;
 }
 
+.filtros-produtos:hover{
+  cursor: pointer;
+  background-color: thistle;
+}
+
+.filtros-produtos[open]:hover {
+  cursor: auto;
+  background-color: white;
+}
+
+.filtros-produtos[open] summary:hover{
+  cursor: pointer;
+  color: var(--darkerPurple);
+}
+
 /* details[open].produtos-pedido {
   height: 100%;
   overflow-y: auto; 
@@ -476,7 +491,7 @@ div.product-img-btn > img.img-produtos {
 }
 
 .product-btns > .btn-clonar {
-  width: 200px;
+  width: 120px;
 }
 
 /* Visualização de loja */
@@ -916,7 +931,7 @@ input#prazoPedido {
 }
 
 h2.num-pedido.num-pedido-cancelado {
-  padding-top: 0.5em;
+  /* padding-top: 0.5em; */
 }
 
 .btn-alt-pedido span {
