@@ -187,37 +187,43 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
             <div class="produtos-no-pedido">
                 <?php
                 $_SESSION['total_compra'] = 0.00;
-                if (!empty($_SESSION['carrinho'])) {
-                    foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
-                        $produtoVendido = $produtoDAO->buscarPorId($id_produto);
 
-                        foreach ($_SESSION['produtos'] as $produto_id => $valor_unitario) {
-                            if ($id_produto == $produto_id) {
-                                $valor_unitario = $valor_unitario;
-                            }
+                if (!empty($_SESSION['carrinho'])) {
+                    foreach ($_SESSION['carrinho'] as $id_produto => $item) {
+                        $produtoVendido = $produtoDAO->buscarPorId($id_produto);
+                
+                        // Trata item como array ou inteiro simples (compatibilidade)
+                        if (is_array($item)) {
+                            $quantidade = (int)$item['quantidade'];
+                            $valor_unitario = (float)$item['valor_unitario'];
+                        } else {
+                            $quantidade = (int)$item;
+                            $valor_unitario = (float)($produtoVendido['valor_unitario'] ?? 0);
                         }
+                
+                        $valor_total_item = $valor_unitario * $quantidade;
+                        $_SESSION['total_compra'] += $valor_total_item;
+                
                         if ($produtoVendido) {
-                            $valor_unitario = (float)$produtoVendido['valor_unitario'];
-                            $quantidade =  (int)$quantidade;
-                            $valor = $valor_unitario * $quantidade;
-                            $_SESSION['total_compra'] += $valor;
                             echo "<div class='produto-individual'>";
                             echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
                             echo "<p>";
                             echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-                            echo "<b>Unidade</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
-                            $valor_total = (float)$produtoVendido['valor_unitario'];
-                            $valor_total = $valor_total * $quantidade;
-                            echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";
-                            echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'>Remover produto</a>";
-                            // echo "</form>";
+                            echo "<b>Unidade</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
+                            echo "<b>Valor total</b>: R$ " . number_format($valor_total_item, 2, ',', '.') . "<br><br>";
+                            
+                            // Exibir o botão de remoção apenas se for a tela de alteração normal
+                            if (basename($_SERVER['PHP_SELF']) == 'gui_alteracao_pedidos.php') {
+                                echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'>Remover produto</a>";
+                            }
+                            
                             echo "</div>";
                         } else {
                             echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
                         }
                     }
                 } else {
-                    echo "<p>Nenhum produto adicionado ao pedido.</p>";
+                    echo "<p>Nenhum produto encontrado no pedido.</p>";
                 }
                 ?>
             </div>

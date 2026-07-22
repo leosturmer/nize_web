@@ -3,14 +3,17 @@ require_once '../persistence/conexaoBanco.class.php';
 require_once '../model/produto.class.php';
 require_once '../model/pedido.class.php';
 
-class PedidoDAO{
+class PedidoDAO
+{
     private $conexao;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->conexao = ConexaoBanco::getInstancia();
     }
 
-    public function cadastrarPedido(Pedido $pedido, $darBaixaEstoque){
+    public function cadastrarPedido(Pedido $pedido, $darBaixaEstoque)
+    {
         if (empty($_SESSION['carrinho'])) {
             $_SESSION['msg'] = "<p class='error-msg'>Nenhum produto adicionado ao pedido</p>";
             header("Location: ../view/gui_cadastro_pedidos.php");
@@ -27,18 +30,18 @@ class PedidoDAO{
 
             $id_pedido = $this->conexao->lastInsertId();
 
-            
+
             $sql_produto = "INSERT INTO pedido_produto (id_pedido, id_produto, quantidade, valor_unitario) VALUES (?, ?, ?, ?)";
-            
+
             $stmt_produto = $this->conexao->prepare($sql_produto);
-            
-            foreach ($_SESSION['carrinho'] as $id_produto => $quantidade){
+
+            foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
                 $pegar_valor_unitario = $this->conexao->prepare("SELECT valor_unitario FROM produtos WHERE id_produto = ? AND id_usuario = ?");
                 $pegar_valor_unitario->execute([$id_produto, $pedido->id_usuario]);
 
                 $valor_unitario =  $pegar_valor_unitario->fetchColumn();
 
-               
+
                 $stmt_produto->execute([$id_pedido, $id_produto, $quantidade, $valor_unitario]);
 
                 if ($darBaixaEstoque === 1) {
@@ -46,27 +49,26 @@ class PedidoDAO{
                         SET quantidade = quantidade - ? 
                         WHERE id_produto = ? AND quantidade >= ?");
                     $sql_subtrai->execute([$quantidade, $id_produto, $quantidade]);
-                    
+
                     if ($sql_subtrai->rowCount() === 0) {
                         $_SESSION['msg'] = "<p class='error-msg'>Estoque insuficiente para um ou mais produtos.</p>";
                         header("Location: ../view/gui_cadastro_pedidos.php");
                         exit;
                     }
                 }
-
             }
 
             $this->conexao->commit();
             return true;
-
-            } catch (Exception $e) {
+        } catch (Exception $e) {
             $this->conexao->rollBack();
             echo "Erro ao cadastrar.";
             exit;
         }
     }
 
-    public function alterarPedido(Pedido $pedido, $darBaixaEstoque, $estornarEstoque){
+    public function alterarPedido(Pedido $pedido, $darBaixaEstoque, $estornarEstoque)
+    {
         if (empty($_SESSION['carrinho'])) {
             $_SESSION['msg'] = "<p class='error-msg'>Nenhum produto adicionado ao pedido.</p>";
             header("Location: ../view/gui_visualizacao_pedidos.php");
@@ -79,7 +81,7 @@ class PedidoDAO{
             $sql = $this->conexao->prepare("UPDATE pedidos SET 
                 data = :data, status = :status, comentario = :comentario, valor_final = :valor_final 
                 WHERE id_pedido = :id_pedido AND id_usuario = :id_usuario");
-            
+
             $sql->bindValue(":data", $pedido->data);
             $sql->bindValue(":status", $pedido->status);
             $sql->bindValue(":comentario", $pedido->comentario);
@@ -94,16 +96,14 @@ class PedidoDAO{
                         SET quantidade = quantidade - ? 
                         WHERE id_produto = ? AND quantidade >= ?");
                     $sql_subtrai->execute([$quantidade, $id_produto, $quantidade]);
-                    
-                    if ($sql_subtrai->rowCount() === 0) {
-                            $_SESSION['msg'] = "<p class='error-msg'>Estoque insuficiente para um ou mais produtos.</p>";
-                            header("Location: ../view/gui_alteracao_pedidos.php?id=$pedido->id_pedido");
-                            exit;
 
+                    if ($sql_subtrai->rowCount() === 0) {
+                        $_SESSION['msg'] = "<p class='error-msg'>Estoque insuficiente para um ou mais produtos.</p>";
+                        header("Location: ../view/gui_alteracao_pedidos.php?id=$pedido->id_pedido");
+                        exit;
                     }
                 }
-            } 
-            else if ($estornarEstoque === 1) {
+            } else if ($estornarEstoque === 1) {
                 foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
                     $sql_soma = $this->conexao->prepare("UPDATE produtos 
                         SET quantidade = quantidade + ? 
@@ -118,27 +118,33 @@ class PedidoDAO{
             $sql_produto = "INSERT INTO pedido_produto (id_pedido, id_produto, quantidade, valor_unitario) VALUES (?, ?, ?, ?)";
             $stmt_produto = $this->conexao->prepare($sql_produto);
 
-            foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
-                $stmt_preco = $this->conexao->prepare("SELECT valor_unitario FROM produtos WHERE id_produto = ?");
-                $stmt_preco->execute([$id_produto]);
-                $prod = $stmt_preco->fetch(PDO::FETCH_ASSOC);
-                $valor_unitario = $prod ? $prod['valor_unitario'] : 0;
+            foreach ($_SESSION['carrinho'] as $id_produto => $item) {
+                // Suporta tanto o formato antigo (int) quanto o novo formato (array)
+                if (is_array($item)) {
+                    $quantidade = $item['quantidade'];
+                    $valor_unitario = $item['valor_unitario'];
+                } else {
+                    $quantidade = $item;
+                    $stmt_preco = $this->conexao->prepare("SELECT valor_unitario FROM produtos WHERE id_produto = ?");
+                    $stmt_preco->execute([$id_produto]);
+                    $prod = $stmt_preco->fetch(PDO::FETCH_ASSOC);
+                    $valor_unitario = $prod ? $prod['valor_unitario'] : 0;
+                }
 
                 $stmt_produto->execute([$pedido->id_pedido, $id_produto, $quantidade, $valor_unitario]);
             }
 
             $this->conexao->commit();
             return true;
-        }
-        catch (Exception $e){
+        } catch (Exception $e) {
             $this->conexao->rollBack();
             echo "Erro ao alterar encomenda.";
             exit;
         }
-
     }
 
-    public function removerQuantidade($id_produto, $id_pedido){
+    public function removerQuantidade($id_produto, $id_pedido)
+    {
         try {
             $sql = $this->conexao->prepare("DELETE FROM pedido_produto WHERE id_produto = ? AND id_pedido = ?");
             $sql->execute([$id_produto, $id_pedido]);
@@ -146,16 +152,17 @@ class PedidoDAO{
             echo "Erro ao remover produto do pedido.";
             exit;
         }
-
     }
 
-    public function listarTodosPedidos($id_usuario){
+    public function listarTodosPedidos($id_usuario)
+    {
         try {
             $sql = $this->conexao->prepare(
                 "SELECT id_pedido, data, nome, quantidade, comentario, status, valor_unitario, valor_final
                     FROM view_pedidos 
                     WHERE id_usuario = :id_usuario
-                    ORDER BY id_pedido DESC");
+                    ORDER BY id_pedido DESC"
+            );
             $sql->bindValue(":id_usuario", $id_usuario);
             $sql->execute();
             $selectAll = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -187,7 +194,8 @@ class PedidoDAO{
         }
     }
 
-    public function buscarPedidoFiltro($pesquisa, $data, $status, $ordenar, $id_usuario){
+    public function buscarPedidoFiltro($pesquisa, $data, $status, $ordenar, $id_usuario)
+    {
         try {
             $busca = "%" . $pesquisa . "%";
 
@@ -210,20 +218,18 @@ class PedidoDAO{
                 $sqlStr .= " AND status = :status_pedido";
             }
 
-            if (!empty($ordenar)){
-                if ($ordenar === "numero-asc") { 
+            if (!empty($ordenar)) {
+                if ($ordenar === "numero-asc") {
                     $sqlStr .= " ORDER BY id_pedido ASC";
-                } else if ($ordenar === "numero-desc") { 
+                } else if ($ordenar === "numero-desc") {
                     $sqlStr .= " ORDER BY id_pedido DESC";
                 } else if ($ordenar === "data-asc") {
                     $sqlStr .= " ORDER BY data ASC";
                 } else if ($ordenar === "data-desc") {
                     $sqlStr .= " ORDER BY data DESC";
                 }
-                
             } else {
                 $sqlStr .= " ORDER BY id_pedido DESC;";
-
             }
 
             $sql = $this->conexao->prepare($sqlStr);
@@ -270,15 +276,15 @@ class PedidoDAO{
                 ];
             }
             return $pedidosDict;
-
-        } catch (Exception $e){
+        } catch (Exception $e) {
             echo $e;
             header("location:../view/gui_erro.php?msg=Erro ao realizar a busca avançada.");
             exit;
         }
     }
-    
-    public function buscarPedidoID($id_pedido){
+
+    public function buscarPedidoID($id_pedido)
+    {
         try {
             $sql = $this->conexao->prepare("SELECT id_pedido, data, comentario, status, valor_final
                     FROM view_pedidos WHERE id_pedido = :id_pedido");
@@ -287,7 +293,7 @@ class PedidoDAO{
             $select = $sql->fetch(PDO::FETCH_ASSOC);
 
             if (!$select) {
-                return []; 
+                return [];
             }
 
             $encomendasDict = [
@@ -303,8 +309,8 @@ class PedidoDAO{
             $sql_produtos->bindValue(":id_pedido", $id_pedido);
             $sql_produtos->execute();
             $selectProdutos = $sql_produtos->fetchAll(PDO::FETCH_ASSOC);
-            
-            foreach ($selectProdutos as $linhas){
+
+            foreach ($selectProdutos as $linhas) {
                 $encomendasDict['produtos'][] = [
                     'id_produto' => $linhas['id_produto'],
                     'quantidade' => $linhas['quantidade'],
@@ -316,10 +322,10 @@ class PedidoDAO{
         } catch (Exception $e) {
             echo "Erro ao buscar pedido.";
         }
-
     }
 
-    public function excluirPedido($id_pedido){
+    public function excluirPedido($id_pedido)
+    {
         try {
             $sql = $this->conexao->prepare("DELETE FROM pedidos WHERE id_pedido = :id_pedido");
             $sql_relacao = $this->conexao->prepare("DELETE FROM pedido_produto WHERE id_pedido = :id_pedido");
@@ -332,5 +338,4 @@ class PedidoDAO{
             echo "Erro ao excluir.";
         }
     }
-
 }

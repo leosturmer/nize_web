@@ -366,7 +366,9 @@ input[type="number"] {
   box-shadow: var(--box-shadow);
   position: absolute;
   top: 3em;
-  right: 1.5em;
+  align-self: center;
+  /* right: 50%; */
+  left: 40%;
 
   width: fit-content;
   padding: 1rem;

@@ -14,6 +14,7 @@ $conexao = ConexaoBanco::getInstancia();
 $usuario = unserialize($_SESSION['usuario_logado']);
 
 $pedidoDAO = new PedidoDAO();
+$produtoDAO = new ProdutoDAO();
 
 $opcao = $_GET['op'] ?? '';
 
@@ -28,6 +29,18 @@ switch ($opcao) {
 
         if ($id_produto > 0 && $quantidade > 0) {
             $_SESSION['carrinho'][$id_produto] = $quantidade;
+            $valor_unitario = $_SESSION['carrinho'][$id_produto]['valor_unitario'] ?? null;
+
+            if ($valor_unitario === null) {
+                $prodAtual = $produtoDAO->buscarPorId($id_produto);
+                $valor_unitario = $prodAtual['valor_unitario'] ?? 0;
+            }
+
+            $_SESSION['carrinho'][$id_produto] = [
+                'quantidade' => $quantidade,
+                'valor_unitario' => $valor_unitario
+            ];
+
             $_SESSION['msg'] = "<p class='success-msg'>Quantidade atualizada no pedido.</p>";
         } else {
             $_SESSION['msg'] = "<p class='error-msg'>Insira uma quantidade válida!</p>";
@@ -88,13 +101,13 @@ switch ($opcao) {
 
         if (!empty($pedido)) {
             $_SESSION['carrinho'] = [];
+            unset($_SESSION['produtos']);
 
             foreach ($pedido['produtos'] as $produto) {
-                $_SESSION['carrinho'][$produto['id_produto']] = $produto['quantidade'];
-
-                // Aqui tem que colocar pra ele pegar o valor_unitario do produto tbm
-                $_SESSION['produtos'][$produto['id_produto']] = $produto['valor_unitario']; 
-
+                $_SESSION['carrinho'][$produto['id_produto']] = [
+                    'quantidade' => $produto['quantidade'],
+                    'valor_unitario' => $produto['valor_unitario']
+                ];
             }
 
             if ($clonar) {
