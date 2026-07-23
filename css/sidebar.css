@@ -200,6 +200,7 @@ nav a span {
 
   display: flex;
   align-content: center;
+  
 }
 
 .btn-menu:hover {
@@ -213,6 +214,43 @@ nav a span {
   /* transition: box-shadow 0.3s ease-in-out; */
   rotate: 180deg;
 }
+
+.btn-menu.btn-sacola {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 3.5em;
+  height: 3.5em;
+  /* margin: 0; */
+
+  background-color: white;
+  border: var(--border-thin);
+  /* box-shadow: none; */
+  color: black;
+
+}
+
+.btn-menu.btn-sacola:hover {
+  transition: none;
+  background-color: var(--darkerPurple);
+  color: white;
+  /* box-shadow: none; */
+  /* border: none; */
+  rotate: 0deg;
+
+  
+}
+
+.btn-menu.btn-sacola span {
+  font-size: 25px;
+  padding: 0;
+  margin: 0;
+  /* margin-bottom: 1em; */
+
+}
+
+
 
 .btn-sair {
   background-color: transparent;
@@ -287,10 +325,14 @@ nav a span {
 }
 
 .sb-expanded .btn-menu {
+  /* display: flex;
+  align-items: center;
+
   padding: 0.5em;
   width: 2.5em;
-  height: 2.5em;
+  height: 2.5em; */
 }
+
 /* 
 .sb-expanded details[open].produtos-pedido summary {
   left: 17em;
@@ -360,6 +402,10 @@ li.produtos-sacola-sidenav label.label-column textarea{
 @media (min-width: 0px) {
   main {
     margin-left: var(--sb-width);
+  }
+
+  .sb-expanded .conteudo-loja {
+    margin-left: 28em;
   }
 }
 

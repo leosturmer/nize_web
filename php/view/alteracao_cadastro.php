@@ -173,17 +173,16 @@ $usuario = unserialize($_SESSION['usuario_logado']);
             <label for="aceitaVisualizacao" class="checkbox-acc">Abrir visualização da loja?
               <input type="checkbox" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1' <?php echo $checkViewLoja ?>>
             </label>
-            <label for="usuNomeView">Link de visualização (sem espaços)</label>
+            <label for="usuNomeView"><b>Link de visualização</b></label>
             <div class="checkbox-acc">
-              <span>nize.com.br/view_loja/</span>
-              <input type="text" name="usuNomeView" pattern="^\S+$" class="input-login input-nome-view" placeholder="nomedaloja" value="<?php echo $usuario->nome_visualizacao ?>">
+              <span>nize.com.br/loja/</span>
+              <input type="text" name="usuNomeView" pattern="^\S+$" class="input-login input-nome-view" placeholder="nomedaloja" value="<?php echo $usuario->nome_visualizacao ?>" title="Link para a loja não deve conter espaços">
             </div>
             <div class="checkbox-acc" style="margin-top: 1em;">
               <div>
                 <label for="usuTelefone">Número de WhatsApp: </label>
-                <p style="font-size: 12px;">Apenas números</p>
               </div>
-              <input type="text" name="usuTelefone" class="input-login input-nome-view" placeholder="55 55 99999999" value="<?php echo $usuario->telefone ?>">
+              <input type="text" name="usuTelefone" class="input-login input-nome-view" placeholder="55 55 99999999" value="<?php echo $usuario->telefone ?>" title="Telefone com (55) DDD e número">
             </div>
           </div>
 

@@ -63,7 +63,7 @@ if (!empty($_SESSION['usuario_logado'])) {
             <?php if ($aceita_visualizacao === 1 && !empty($telefone)): ?>
                 <li>
                     <a href="#" data-resize-btn class="btn-menu btn-sacola" title="Esconder/expandir menu">
-                        <i class="bi bi-bag"></i>
+                        <span class="bi bi-bag"></span>
                     </a>
                 </li>
             <?php endif; ?>
@@ -147,7 +147,7 @@ if (!empty($_SESSION['usuario_logado'])) {
     </header>
 
 
-    <main class='conteudo-pagina'>
+    <main class='conteudo-pagina conteudo-loja'>
         <div class="internal-nav">
             <?php
             if (isset($_SESSION["msg"])) {

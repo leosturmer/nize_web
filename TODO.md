@@ -1,5 +1,10 @@
 #### No CSS:
 
+- Botão da sacola/menu tem que ficar igual aberto quanto está fechado
+- Na view loja, se o menu lateral está aberto e a tela diminui, o botão de fechar o menu some 
+
+- o NIZE quando abre o menu não tá centralizando
+
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ### O QUE ESTÁ DANDO DE ERRADO
