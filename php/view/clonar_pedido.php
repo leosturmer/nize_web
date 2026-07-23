@@ -177,7 +177,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                             $valor_total = (float)$produtoVendido['valor_unitario'];
                             $valor_total = $valor_unitario * $quantidade;
                             echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";
-                            echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor&origem=clonar' class='btn-remover'>Remover produto</a>";
+                            echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor&origem=clonar' class='btn-remover'><span class='bi bi-x'></span>Remover</a>";
                             echo "</div>";
                         } else {
                             echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";

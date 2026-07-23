@@ -753,7 +753,7 @@ div.produtos-no-pedido p {
 
 .container-horizontal {
   display: flex;
-  align-items: stretch;
+  align-items: center;
 }
 
 .produtos-no-pedido {
@@ -820,8 +820,9 @@ div.produtos-no-pedido p {
   align-items: center;
 }
 
-/* .btn-remover > span {
-} */
+.btn-remover  span {
+  margin-left: 0;
+}
 
 .btn-remover:hover {
   background-color: white;
@@ -832,7 +833,7 @@ div.produtos-no-pedido p {
 }
 
 .btn-excluir {
-  width: 150px;
+  width: 120px;
   margin: 0 auto;
   background-color: white;
   color: black;
@@ -1007,10 +1008,17 @@ h2.num-pedido.num-pedido-cancelado {
   margin: 0.8em;
 }
 
+div.container-horizontal.cadastro-btns {
+  margin-top: 0.8em;
+}
+
 div.container-horizontal.cadastro-btns span.bi-box-arrow-up-right {
   margin-left: 0.5em;
-  margin-right: 0;
   font-size: 16px;
+}
+
+span.bi-box-arrow-up-right {
+  margin-right: 0px;
 }
 
 .div-btn-wpp > img {
@@ -1028,6 +1036,22 @@ div.container-horizontal.cadastro-btns span.bi-box-arrow-up-right {
   right: 1em;
   bottom: 2em;
 }
+
+.pedidos-online hr {
+  margin-top: 1em;
+}
+
+
+.pedidos-online .p-info-pedidos-online {
+  font-size: 14px;
+  padding: 0.3em;
+  background-color: thistle;
+  margin-bottom: 0.3em;
+}
+
+
+
+
 
 /* Tela administrador */
 

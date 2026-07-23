@@ -106,7 +106,12 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     }
     ?>
 
-    <h1>Alteração de cadastro</h1>
+    <div class="internal-nav">
+      <div class="internal-nav-links">
+        <h1>Alteração de cadastro</h1>
+        <a href="minha_area.php" title="Tela Minha Área"><span class="bi bi-arrow-left"></span>Voltar</a>
+      </div>
+    </div>
 
     <div class="container-horizontal">
       <div id="minha-area">
@@ -162,28 +167,29 @@ $usuario = unserialize($_SESSION['usuario_logado']);
           <label for="usuEmail">E-mail*</label>
           <input type="email" placeholder="e-mail" class="input-login" name="usuEmail" value=<?php echo $usuario->login ?> autocomplete="off" required>
 
-          <label for="aceitaVisualizacao" class="checkbox-acc">Abrir visualização da loja?
-            <input type="checkbox" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1' <?php echo $checkViewLoja ?>>
-          </label>
-
-          <label for="usuNomeView">Link de visualização (sem espaços)</label>
-          <div class="checkbox-acc">
-            <span>nize.com.br/view_loja/</span>
-            <input type="text" name="usuNomeView" pattern="^\S+$" class="input-login input-nome-view" placeholder="nomedaloja" value="<?php echo $usuario->nome_visualizacao ?>">
-          </div>
-
-          <div class="checkbox-acc" style="margin-top: 1em;">
-            <div>
-              <label for="usuTelefone">Número de WhatsApp: </label>
-              <p style="font-size: 12px;">Apenas números</p>
+          <div class="pedidos-online">
+            <hr>
+            <p class="p-info-pedidos-online">Para permitir pedidos online, os três campos abaixo são obrigatórios</p>
+            <label for="aceitaVisualizacao" class="checkbox-acc">Abrir visualização da loja?
+              <input type="checkbox" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1' <?php echo $checkViewLoja ?>>
+            </label>
+            <label for="usuNomeView">Link de visualização (sem espaços)</label>
+            <div class="checkbox-acc">
+              <span>nize.com.br/view_loja/</span>
+              <input type="text" name="usuNomeView" pattern="^\S+$" class="input-login input-nome-view" placeholder="nomedaloja" value="<?php echo $usuario->nome_visualizacao ?>">
             </div>
-            <input type="text" name="usuTelefone" class="input-login input-nome-view" placeholder="55 55 99999999" value="<?php echo $usuario->telefone ?>">
+            <div class="checkbox-acc" style="margin-top: 1em;">
+              <div>
+                <label for="usuTelefone">Número de WhatsApp: </label>
+                <p style="font-size: 12px;">Apenas números</p>
+              </div>
+              <input type="text" name="usuTelefone" class="input-login input-nome-view" placeholder="55 55 99999999" value="<?php echo $usuario->telefone ?>">
+            </div>
           </div>
 
           <div class="container-horizontal cadastro-btns">
             <button type="submit"><span class="bi bi-check2"></span>Alterar</button>
-
-            <button formaction="../controller/usuarioControle.php?op=excluir" onclick="return confirm('A exclusão deletará todos os dados do banco. Deseja confirmar?')" class="btn-excluir">Excluir conta</button>
+            <button formaction="../controller/usuarioControle.php?op=excluir" onclick="return confirm('A exclusão deletará todos os dados do banco. Deseja confirmar?')" class="btn-excluir"><span class="bi bi-person-x"></span>Excluir</button>
           </div>
         </form>
       </div>

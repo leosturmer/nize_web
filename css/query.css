@@ -502,8 +502,12 @@
 
   div.container-horizontal.cadastro-btns {
     display: flex;
-    justify-self: center;
+    /* justify-self: center; */
     align-items: center;
+  }
+
+  div.cadastro-btns button.btn-excluir {
+    margin-left: 0.5em;
   }
 
   /* div.product-img-btn p {

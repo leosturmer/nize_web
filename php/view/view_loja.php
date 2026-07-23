@@ -60,16 +60,20 @@ if (!empty($_SESSION['usuario_logado'])) {
 
     <aside id="sidebar" class="sacola-compras">
         <ul>
-            <li>
-                <a href="#" data-resize-btn class="btn-menu btn-sacola" title="Esconder/expandir menu">
-                    <i class="bi bi-bag"></i>
-                </a>
-            </li>
+            <?php if ($aceita_visualizacao === 1 && !empty($telefone)): ?>
+                <li>
+                    <a href="#" data-resize-btn class="btn-menu btn-sacola" title="Esconder/expandir menu">
+                        <i class="bi bi-bag"></i>
+                    </a>
+                </li>
+            <?php endif; ?>
+
             <li>
                 <a href="<?php echo $logo_link ?>" class="link-logo" title="Tela inicial">
                     <img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
                 </a>
             </li>
+
 
             <li class="produtos-sacola-sidenav">
                 <div>
