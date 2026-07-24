@@ -215,7 +215,8 @@ nav a span {
   rotate: 180deg;
 }
 
-.btn-menu.btn-sacola {
+.btn-menu.btn-sacola
+ {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -229,6 +230,14 @@ nav a span {
   /* box-shadow: none; */
   color: black;
 
+}
+
+.sb-expanded .btn-menu.btn-sacola {
+  width: 3.5em;
+  height: 3.5em;
+
+  background-color: var(--normalPurple);
+  color: white;
 }
 
 .btn-menu.btn-sacola:hover {
@@ -325,12 +334,12 @@ nav a span {
 }
 
 .sb-expanded .btn-menu {
-  /* display: flex;
+  display: flex;
   align-items: center;
 
   padding: 0.5em;
   width: 2.5em;
-  height: 2.5em; */
+  height: 2.5em;
 }
 
 /* 

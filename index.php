@@ -33,7 +33,7 @@
 
             <div class="botoes-index">
                 <a href="./php/view/login.php">Fazer login</a>
-                <a href="./php/view/cadastro_usuario.php">Criar cadastro</a>
+                <a href="./php/view/cadastro_usuario.php">Cadastre-se</a>
             </div>
 
         </div>
