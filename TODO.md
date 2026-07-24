@@ -1,5 +1,6 @@
 #### No CSS:
 
+- o btn-sacola/btn-menu no header-mobile nao está centralizando, acho que é o tamanho dele, tenho que diminuir
 - Fazer as queries da view_loja
 
 
