@@ -232,6 +232,10 @@ nav a span {
 
 }
 
+.li-img-sidenav {
+  margin: 0 auto;
+}
+
 .sb-expanded .btn-menu.btn-sacola {
   width: 3.5em;
   height: 3.5em;
@@ -289,12 +293,18 @@ nav a span {
   transition: color 0.2s ease-in-out;
 }
 
-.sb-expanded #logo-sidenav,
-.sb-expanded #logo-sidenav-view {
+.sb-expanded #logo-sidenav {
   width: 150px;
   margin-left: 2.5em;
   transition: width 0.3s ease-in-out;
 }
+
+.sb-expanded #logo-sidenav-view {
+  width: 150px;
+  /* margin-left: 2.5em; */
+  transition: width 0.3s ease-in-out;
+}
+
 
 .sb-expanded .link-logo {
   text-align: center;
@@ -375,10 +385,35 @@ main {
   padding: 0.5em;
 }
 
+.produtos-sacola-sidenav .produtos-no-pedido{
+  border: var(--border-thin);
+  /* border-color: var(--lighterPurple); */
+  box-shadow: none;
+  /* background-color: thistle; */
+  margin: 0 auto 0.5em auto;
+  padding: 0.5em;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 300px;
+  display: grid;
+  grid-template-columns: repeat(1fr);
+  gap: 0.5em;
+  min-width: fit-content;
+  width: min-content;
+  min-height: fit-content;
+  min-height: 50%;
+}
+
 
 li.produtos-sacola-sidenav div.total-pedido {
   width: fit-content;
-  margin: 0 auto 0.8em auto;
+  margin: 0 auto 0.5em auto;
+  padding: 0.3em 0.6em;
+
+}
+
+li.produtos-sacola-sidenav div.total-pedido p {
   font-size: 16px;
 
 }
@@ -391,6 +426,7 @@ li.produtos-sacola-sidenav label.label-column {
 }
 
 li.produtos-sacola-sidenav label.label-column textarea{
+  height: 100px;
 }
 
 

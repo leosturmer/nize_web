@@ -68,7 +68,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                 </li>
             <?php endif; ?>
 
-            <li>
+            <li class="li-img-sidenav">
                 <a href="<?php echo $logo_link ?>" class="link-logo" title="Tela inicial">
                     <img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
                 </a>
@@ -76,7 +76,7 @@ if (!empty($_SESSION['usuario_logado'])) {
 
 
             <li class="produtos-sacola-sidenav">
-                <div>
+                <div class="produtos-no-pedido">
                     <?php
                     $_SESSION['total_compra'] = 0.00;
                     // 1. Mudamos de $_SESSION['carrinho'] para $_SESSION['sacola']
@@ -121,8 +121,8 @@ if (!empty($_SESSION['usuario_logado'])) {
                         <input type="hidden" name="loja" value="<?php echo htmlspecialchars($nome_visualizacao); ?>">
 
                         <label for="comentarioPedido" class="label-column">
-                            Comentários:
-                            <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Detalhes do pedido, dos produtos, da entrega, entre outros."></textarea>
+                            Informações do pedido
+                            <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Digite seu nome, detalhes do pedido ou dúvidas"></textarea required>
                         </label>
 
                         <button type="submit"><span class="bi bi-check2"></span>Enviar</button>

@@ -739,8 +739,7 @@ div.product-img-btn > img.img-produtos {
   /* gap: 1em; */
 }
 
-div.produtos-no-pedido h3,
-div.produtos-no-pedido p {
+div.produtos-no-pedido h3 {
   color: var(--darkGreen);
 }
 
