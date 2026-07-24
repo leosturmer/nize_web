@@ -62,14 +62,18 @@ nav li:last-child {
 #logo-sidenav,
 #logo-sidenav-view {
   width: 80px;
-
   margin: 3em 10px;
-
   transition: width 0.3s ease-in-out;
 }
 
+.sb-expanded #logo-sidenav-view {
+  position: fixed;
+  left: 10em;
+  top: 0.8em;
+}
+
 #logo-sidenav-view {
-  margin: 0.5 em 10px;
+  margin: 0.5em 10px;
 }
 
 header {
@@ -82,7 +86,9 @@ header {
   margin: 0em auto;
   /* margin-right: 42.5px; */
 
-  transition: width 0.4s ease-in-out, transform 0.8s ease-in-out,
+  transition:
+    width 0.4s ease-in-out,
+    transform 0.8s ease-in-out,
     opacity 0.4s ease-in-out;
   transform: rotate(0deg);
 }
@@ -133,7 +139,9 @@ nav a {
   line-height: 1;
   color: #fff;
   text-decoration: none;
-  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+  transition:
+    background-color 0.4s ease-in-out,
+    color 0.4s ease-in-out;
   /* width: 4.5em;
   height: 3.5em;
 
@@ -187,8 +195,8 @@ nav a span {
   width: 2.5em;
   height: 2.5em;
 
-  rotate: 0deg;
-  transition: rotate 0.4s ease-in-out;
+  /* rotate: 0deg; */
+  /* transition: rotate 0.4s ease-in-out; */
 
   display: flex;
   align-content: center;
@@ -197,13 +205,14 @@ nav a span {
 .btn-menu:hover {
   background-color: var(--darkGreen);
   color: whitesmoke;
+  box-shadow: none;
 
   padding: 0.5em;
   width: 2.5em;
   height: 2.5em;
   /* content: "bi bi-x-lg"; */
   /* transition: box-shadow 0.3s ease-in-out; */
-  rotate: 180deg;
+  /* rotate: 180deg; */
 }
 
 .btn-menu.btn-sacola {
@@ -211,8 +220,9 @@ nav a span {
   align-items: center;
   justify-content: center;
 
-  width: 3.5em;
-  height: 3.5em;
+  width: 2.5em;
+  height: 2.5em;
+  padding-top: 0.6em;
   /* margin: 0; */
 
   background-color: white;
@@ -222,28 +232,37 @@ nav a span {
 }
 
 .li-img-sidenav {
-  margin: 0 auto;
+  margin: 1em auto;
+  height: 0px;
+}
+
+.li-sacola-sidenav {
+  height: 0px;
+}
+
+aside.sacola-compras ul {
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .sb-expanded .btn-menu.btn-sacola {
-  width: 3.5em;
-  height: 3.5em;
-
   background-color: var(--normalPurple);
   color: white;
+  /* padding-top: 0.6em; */
 }
 
 .btn-menu.btn-sacola:hover {
   transition: none;
   background-color: var(--darkerPurple);
   color: white;
+
   /* box-shadow: none; */
   /* border: none; */
-  rotate: 0deg;
+  /* rotate: 0deg; */
 }
 
-.btn-menu.btn-sacola span {
-  font-size: 25px;
+.btn-menu.btn-sacola i {
+  font-size: 20px;
   padding: 0;
   margin: 0;
   /* margin-bottom: 1em; */
@@ -279,12 +298,12 @@ nav a span {
 
 .sb-expanded #logo-sidenav {
   width: 150px;
-  margin-left: 2.5em;
+  margin: 0 auto 0 2em;
   transition: width 0.3s ease-in-out;
 }
 
 .sb-expanded #logo-sidenav-view {
-  width: 150px;
+  width: 100px;
   transition: width 0.3s ease-in-out;
   margin: 0.5em;
 }
@@ -360,6 +379,7 @@ main {
 
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background-color: whitesmoke;
   border: var(--border-thin);
 
@@ -396,7 +416,7 @@ main {
   gap: 0.5em;
 }
 
-.produtos-sacola-sidenav .produtos-no-pedido .texto-produto p{
+.produtos-sacola-sidenav .produtos-no-pedido .texto-produto p {
   font-size: 14px;
 }
 
@@ -442,11 +462,10 @@ li.produtos-sacola-sidenav label.label-column textarea {
   color: var(--lighterPurple);
 }
 
-
-
 .sb-expanded .produtos-sacola-sidenav {
   visibility: visible;
   width: 100%;
+  height: 100%;
 }
 
 /* Media query da sidenav */
@@ -498,13 +517,34 @@ li.produtos-sacola-sidenav label.label-column textarea {
     width: 17.5em;
   }
 
+  .sb-expanded #sidebar.sacola-compras{
+    z-index: 9999;
+  }
+
+  /* .sb-expanded #logo-sidenav-view {
+    width: 100px;
+  } */
+
+  /* a.btn-menu.btn-sacola {
+    width: 2.5em;
+    height: 2.5em;
+  }
+
+  a.btn-menu.btn-sacola i {
+    font-size: 20px;
+  } */
+
+  .btn-menu.btn-sacola {
+    padding-top: 0.8em;
+  }
+
   .sb-expanded aside#sidebar.sacola-compras {
     width: 28rem;
   }
 
   .sb-expanded #logo-header {
     visibility: hidden;
-    transform: rotate(360deg);
+    /* transform: rotate(360deg); */
   }
 
   .sb-expanded .container-header {

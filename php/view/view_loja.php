@@ -123,15 +123,16 @@ if (!empty($_SESSION['usuario_logado'])) {
                         <input type="hidden" name="op" value="solicitarPedido">
                         <input type="hidden" name="loja" value="<?php echo htmlspecialchars($nome_visualizacao); ?>">
 
-                        <label for="comentarioPedido" class="label-column">
-                            Informações do pedido
-                            <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Digite seu nome, detalhes do pedido ou dúvidas"></textarea required>
-                        </label>
-
-                        <div class="product-btns">
-                            <button type="submit"><span class="bi bi-check2"></span>Enviar</button>
-                            <!-- Botão Limpar apenas para a view_loja -->
-                            <a href="../controller/pedidoControle.php?op=limparCarrinho&origem=loja&loja=<?php echo urlencode($nome_visualizacao); ?>"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
+                        <div class="info-btn-sacola">
+                            <label for="comentarioPedido" class="label-column">
+                                Informações do pedido
+                                <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Digite seu nome, detalhes do pedido ou dúvidas"></textarea required>
+                            </label>
+                            <div class="product-btns">
+                                <button type="submit"><span class="bi bi-check2"></span>Enviar</button>
+                                <!-- Botão Limpar apenas para a view_loja -->
+                                <a href="../controller/pedidoControle.php?op=limparCarrinho&origem=loja&loja=<?php echo urlencode($nome_visualizacao); ?>"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -183,7 +184,7 @@ if (!empty($_SESSION['usuario_logado'])) {
 
                 <div class="internal-nav-inputs">
                     <form onsubmit="return false;" id="form-pesquisa-produtos">
-                        <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
+                        <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"></span>
                     </form>
 
                     <details class="filtros-produtos">
@@ -224,7 +225,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                         <?php if ($item['imagem']) {
                             echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
                         } else {
-                            echo "<p>Nenhuma imagem cadastrada</p>";
+                            echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
                         } ?>
                         <form action="../controller/pedidoControle.php" method="get" class="product-btns">
                             <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">

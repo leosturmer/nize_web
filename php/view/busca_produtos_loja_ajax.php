@@ -51,7 +51,7 @@ foreach ($lista as $item) {
             <?php if ($item['imagem']) {
                 echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
             } else {
-                echo "<p>Nenhuma imagem cadastrada</p>";
+                echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
             } ?>
         </div>
     </div>

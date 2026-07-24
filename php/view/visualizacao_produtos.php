@@ -203,7 +203,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
               <?php if ($item['imagem']) {
                 echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
               } else {
-                echo "<p>Nenhuma imagem cadastrada</p>";
+                echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
               } ?>
               <div class="product-btns">
                 <a href="alteracao_produto.php?id=<?php echo $item['id_produto']; ?>"><span class="bi bi-pencil"></span>Editar</a>
