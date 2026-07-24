@@ -170,7 +170,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
               echo "<p>";
               echo "<b>Quantidade</b>: " . $quantidade . "<br>";
               echo "<b>Unidade</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
-              echo "<b>Valor total</b>: R$ " . number_format($valor_total_item, 2, ',', '.') . "<br><br>";
+              echo "<b>Valor total</b>: R$ " . number_format($valor_total_item, 2, ',', '.') . "</p>";
 
               // Exibir o botão de remoção apenas se for a tela de alteração normal
               if (basename($_SERVER['PHP_SELF']) == 'alteracao_pedidos.php') {

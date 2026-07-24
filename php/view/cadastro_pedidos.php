@@ -189,7 +189,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                             echo "<b>Unidade</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
                             $valor_total = (float)$produtoVendido['valor_unitario'];
                             $valor_total = $valor_total * $quantidade;
-                            echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";
+                            echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "</p>";
                             echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
                             echo "</div>";
                         } else {

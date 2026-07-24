@@ -92,15 +92,18 @@ if (!empty($_SESSION['usuario_logado'])) {
                                 $_SESSION['total_compra'] += $valor;
 
                                 echo "<div class='produto-individual'>";
+                                echo "<div class='texto-produto'>";
                                 echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
                                 echo "<p>";
                                 echo "<b>Quantidade</b>: " . $quantidade . "<br>";
                                 echo "<b>Unidade</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
-                                echo "<b>Valor total</b>: R$ " . number_format($valor, 2, ',', '.') . "<br><br>";
+                                echo "<b>Valor total</b>: R$ " . number_format($valor, 2, ',', '.') . "</p>";
+                                echo "</div>";
 
                                 // Link de remoção passando origem=loja e nome da loja
                                 echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor&origem=loja&loja=" . urlencode($nome_visualizacao) . "' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
                                 echo "</div>";
+                                echo "<hr>";
                             } else {
                                 echo "<p><b>Produto</b> não foi encontrado no estoque.</p>";
                             }
@@ -125,10 +128,11 @@ if (!empty($_SESSION['usuario_logado'])) {
                             <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Digite seu nome, detalhes do pedido ou dúvidas"></textarea required>
                         </label>
 
-                        <button type="submit"><span class="bi bi-check2"></span>Enviar</button>
-
-                        <!-- Botão Limpar apenas para a view_loja -->
-                        <a href="../controller/pedidoControle.php?op=limparCarrinho&origem=loja&loja=<?php echo urlencode($nome_visualizacao); ?>"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
+                        <div class="product-btns">
+                            <button type="submit"><span class="bi bi-check2"></span>Enviar</button>
+                            <!-- Botão Limpar apenas para a view_loja -->
+                            <a href="../controller/pedidoControle.php?op=limparCarrinho&origem=loja&loja=<?php echo urlencode($nome_visualizacao); ?>"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
+                        </div>
                     </form>
                 </div>
             </li>

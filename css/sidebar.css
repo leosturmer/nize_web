@@ -30,10 +30,8 @@ aside {
 
 .sb-expanded aside#sidebar.sacola-compras {
   width: 28rem;
-  z-index: 99999;
-
+  z-index: 9999;
 }
-
 
 #sidebar nav,
 #sidebar ul {
@@ -61,9 +59,8 @@ nav li:last-child {
   /* height: 50%; */
 }
 
-#logo-sidenav, 
-#logo-sidenav-view
- {
+#logo-sidenav,
+#logo-sidenav-view {
   width: 80px;
 
   margin: 3em 10px;
@@ -72,9 +69,8 @@ nav li:last-child {
 }
 
 #logo-sidenav-view {
-  margin: 1em 10px;
+  margin: 0.5 em 10px;
 }
-
 
 header {
   visibility: hidden;
@@ -86,9 +82,7 @@ header {
   margin: 0em auto;
   /* margin-right: 42.5px; */
 
-  transition:
-    width 0.4s ease-in-out,
-    transform 0.8s ease-in-out,
+  transition: width 0.4s ease-in-out, transform 0.8s ease-in-out,
     opacity 0.4s ease-in-out;
   transform: rotate(0deg);
 }
@@ -139,9 +133,7 @@ nav a {
   line-height: 1;
   color: #fff;
   text-decoration: none;
-  transition:
-    background-color 0.4s ease-in-out,
-    color 0.4s ease-in-out;
+  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
   /* width: 4.5em;
   height: 3.5em;
 
@@ -200,7 +192,6 @@ nav a span {
 
   display: flex;
   align-content: center;
-  
 }
 
 .btn-menu:hover {
@@ -215,8 +206,7 @@ nav a span {
   rotate: 180deg;
 }
 
-.btn-menu.btn-sacola
- {
+.btn-menu.btn-sacola {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -229,7 +219,6 @@ nav a span {
   border: var(--border-thin);
   /* box-shadow: none; */
   color: black;
-
 }
 
 .li-img-sidenav {
@@ -251,8 +240,6 @@ nav a span {
   /* box-shadow: none; */
   /* border: none; */
   rotate: 0deg;
-
-  
 }
 
 .btn-menu.btn-sacola span {
@@ -260,10 +247,7 @@ nav a span {
   padding: 0;
   margin: 0;
   /* margin-bottom: 1em; */
-
 }
-
-
 
 .btn-sair {
   background-color: transparent;
@@ -301,10 +285,9 @@ nav a span {
 
 .sb-expanded #logo-sidenav-view {
   width: 150px;
-  /* margin-left: 2.5em; */
   transition: width 0.3s ease-in-out;
+  margin: 0.5em;
 }
-
 
 .sb-expanded .link-logo {
   text-align: center;
@@ -372,8 +355,6 @@ main {
   transition: margin-left 0.4s ease-in-out;
 }
 
-
-
 .produtos-sacola-sidenav {
   visibility: hidden;
 
@@ -385,9 +366,9 @@ main {
   padding: 0.5em;
 }
 
-.produtos-sacola-sidenav .produtos-no-pedido{
+.produtos-sacola-sidenav .produtos-no-pedido {
   border: var(--border-thin);
-  /* border-color: var(--lighterPurple); */
+  border-color: var(--lightPurple);
   box-shadow: none;
   /* background-color: thistle; */
   margin: 0 auto 0.5em auto;
@@ -396,26 +377,37 @@ main {
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 300px;
-  display: grid;
-  grid-template-columns: repeat(1fr);
+  display: flex;
+  flex-direction: column;
   gap: 0.5em;
-  min-width: fit-content;
-  width: min-content;
+  width: 100%;
   min-height: fit-content;
   min-height: 50%;
 }
 
+.produtos-sacola-sidenav .produtos-no-pedido .btn-remover {
+  height: 45px;
+  margin: 0;
+}
+
+.produtos-sacola-sidenav .produtos-no-pedido .texto-produto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.produtos-sacola-sidenav .produtos-no-pedido .texto-produto p{
+  font-size: 14px;
+}
 
 li.produtos-sacola-sidenav div.total-pedido {
   width: fit-content;
   margin: 0 auto 0.5em auto;
   padding: 0.3em 0.6em;
-
 }
 
 li.produtos-sacola-sidenav div.total-pedido p {
   font-size: 16px;
-
 }
 
 li.produtos-sacola-sidenav label.label-column {
@@ -425,21 +417,37 @@ li.produtos-sacola-sidenav label.label-column {
   width: 100%;
 }
 
-li.produtos-sacola-sidenav label.label-column textarea{
+li.produtos-sacola-sidenav label.label-column textarea {
   height: 100px;
 }
 
+.produtos-sacola-sidenav .produtos-no-pedido .produto-individual {
+  flex: 0 0 auto;
+  /* display: block; */
+  /* padding: 0.8em; */
+  padding: 0.5em;
+  /* padding-bottom: 1.5em; */
+  height: fit-content;
+  border: none;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+  font-size: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
 
-
-
-
-
-.sb-expanded  .produtos-sacola-sidenav {
-  visibility: visible;
-  width: 25rem;
+.produtos-sacola-sidenav .produtos-no-pedido hr {
+  color: var(--lighterPurple);
 }
 
 
+
+.sb-expanded .produtos-sacola-sidenav {
+  visibility: visible;
+  width: 100%;
+}
 
 /* Media query da sidenav */
 
@@ -491,7 +499,6 @@ li.produtos-sacola-sidenav label.label-column textarea{
   }
 
   .sb-expanded aside#sidebar.sacola-compras {
-
     width: 28rem;
   }
 
@@ -519,5 +526,3 @@ li.produtos-sacola-sidenav label.label-column textarea{
     margin: 1em auto;
   }
 }
-
-

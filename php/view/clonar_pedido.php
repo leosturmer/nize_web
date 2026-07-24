@@ -147,7 +147,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                                 <input type="hidden" name="op" value="adicionarQuantidade">
                                 <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
                                 <input type="hidden" name="origem" value="clonar">
-                                <input type="submit" class="btn-add" value="Adicionar ao pedido">
+                                <input type="submit" class="btn-add" value="+ Adicionar">
                             </form>
                         </div>
                     <?php endforeach; ?>
@@ -176,7 +176,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                             echo "<b>Valor unitário</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
                             $valor_total = (float)$produtoVendido['valor_unitario'];
                             $valor_total = $valor_unitario * $quantidade;
-                            echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "<br><br>";
+                            echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "</p>";
                             echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor&origem=clonar' class='btn-remover'><span class='bi bi-x'></span>Remover</a>";
                             echo "</div>";
                         } else {

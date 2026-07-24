@@ -172,7 +172,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                                     <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
                                     <input type="hidden" name="op" value="adicionarQuantidade">
                                     <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
-                                    <input type="submit" class="btn-add" value="Adicionar ao pedido">
+                                    <input type="submit" class="btn-add" value="+ Adicionar">
                                 </form>
                             </div>
                         </div>
@@ -210,11 +210,11 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                             echo "<p>";
                             echo "<b>Quantidade</b>: " . $quantidade . "<br>";
                             echo "<b>Unidade</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
-                            echo "<b>Valor total</b>: R$ " . number_format($valor_total_item, 2, ',', '.') . "<br><br>";
+                            echo "<b>Valor total</b>: R$ " . number_format($valor_total_item, 2, ',', '.') . "</p>";
 
                             // Exibir o botão de remoção apenas se for a tela de alteração normal
                             if (basename($_SERVER['PHP_SELF']) == 'alteracao_pedidos.php') {
-                                echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'><span class='bi bi-x'></span>Remover</a>";
+                                echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
                             }
 
                             echo "</div>";

@@ -1,9 +1,8 @@
 #### No CSS:
 
-- Botão da sacola/menu tem que ficar igual aberto quanto está fechado
-- Na view loja, se o menu lateral está aberto e a tela diminui, o botão de fechar o menu some 
+- Fazer as queries da view_loja
 
-- o NIZE quando abre o menu não tá centralizando
+
 
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -12,13 +11,11 @@
 
 #### Para o final:
 
-- Comparar senhas inseridas? colocar botão pra ver a senha digitada?
-
-- Botão de resetar senha?
+- Botão de resetar senha? VOU FAZER RESET DE SENHA??????????
     - tem que enviar email com link de resetar senha
 
 - Confirmar todas mensagens
-- conferir todos os <title> das páginas
+    - conferir todos os <title> das páginas
 
 - Testar TUDO. Ver se é possível fazer isso de forma automatizada.
 
