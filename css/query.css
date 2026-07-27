@@ -227,6 +227,12 @@
     padding: 0 0 0 0;
     font-size: 20px;
   }
+
+
+  .sb-expanded img#logo-sidenav-view {
+    margin: 0.5em auto;
+  }
+
 }
 
 /* Barra de pesquisa */
@@ -854,6 +860,7 @@
   div.usuario-btns {
     margin: 2em 0;
   }
+
 
   
 

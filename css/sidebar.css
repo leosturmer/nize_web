@@ -65,11 +65,6 @@ nav li:last-child {
   margin: 3em 10px;
   transition: width 0.3s ease-in-out;
 }
-
-.sb-expanded #logo-sidenav-view {
-  position: fixed;
-  left: 10em;
-  top: 0.8em;
 }
 
 #logo-sidenav-view {
@@ -304,9 +299,12 @@ nav a span {
 }
 
 .sb-expanded #logo-sidenav-view {
+  position: fixed;
+  left: auto;
+  top: 0.8em;
   width: 100px;
   transition: width 0.3s ease-in-out;
-  margin: 0.5em;
+  margin: 0.8em auto;
 }
 
 .sb-expanded .link-logo {
@@ -527,18 +525,6 @@ li.produtos-sacola-sidenav label.label-column textarea {
     overflow-x: hidden;
   }
 
-  /* .sb-expanded #logo-sidenav-view {
-    width: 100px;
-  } */
-
-  /* a.btn-menu.btn-sacola {
-    width: 2.5em;
-    height: 2.5em;
-  }
-
-  a.btn-menu.btn-sacola i {
-    font-size: 20px;
-  } */
 
   .btn-menu.btn-sacola {
     padding-top: 0.8em;
