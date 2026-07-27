@@ -244,10 +244,7 @@ nav a span {
   height: 0px;
 }
 
-aside.sacola-compras ul {
-  overflow-y: auto;
-  overflow-x: hidden;
-}
+
 
 .sb-expanded .btn-menu.btn-sacola {
   background-color: var(--normalPurple);
@@ -469,7 +466,7 @@ li.produtos-sacola-sidenav label.label-column textarea {
 .sb-expanded .produtos-sacola-sidenav {
   visibility: visible;
   width: 100%;
-  height: 100%;
+  min-height: 70%;
 }
 
 /* Media query da sidenav */
@@ -525,6 +522,11 @@ li.produtos-sacola-sidenav label.label-column textarea {
     z-index: 9999;
   }
 
+  aside.sacola-compras ul {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
   /* .sb-expanded #logo-sidenav-view {
     width: 100px;
   } */
@@ -544,6 +546,7 @@ li.produtos-sacola-sidenav label.label-column textarea {
 
   .sb-expanded aside#sidebar.sacola-compras {
     width: 28rem;
+    height: 100%;
   }
 
   .sb-expanded #logo-header {

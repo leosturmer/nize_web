@@ -413,6 +413,7 @@
 
   .sb-expanded aside#sidebar.sacola-compras {
     width: 90dvw;
+    height: 100%;
     /* max-width: 90%; */
   }
 
@@ -536,6 +537,21 @@
 
   div.div-btn-wpp img {
     width: 55px;
+  }
+
+  .sb-expanded aside#sidebar.sacola-compras {
+    max-width: 95dvw;
+  }
+
+  .sacola-compras .product-btns button,
+  .sacola-compras .product-btns a {
+    font-size: 14px;
+    height: 40px;
+  } 
+
+  .sb-expanded .conteudo-loja {
+    overflow-y: hidden;
+    overflow-x: hidden;
   }
 }
 
@@ -776,6 +792,16 @@
     margin-left: 0px;
   }
 
+  .sb-expanded aside#sidebar.sacola-compras {
+    max-width: 95dvw;
+    height: 100dvh;
+  }
+
+  .sb-expanded .conteudo-loja{
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+
   /* div#form-products-buttons  button,
   div#form-products-buttons > a {
     width: 90px;
@@ -829,9 +855,7 @@
     margin: 2em 0;
   }
 
-  .sb-expanded aside#sidebar.sacola-compras {
-    max-width: 95dvw;
-  }
+  
 
 
 

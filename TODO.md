@@ -1,10 +1,6 @@
 #### No CSS:
 
-- o btn-sacola/btn-menu no header-mobile nao está centralizando, acho que é o tamanho dele, tenho que diminuir
-- Fazer as queries da view_loja
-
-
-
+-- ESTÁ ROLANDO A BARRA E FICANDO O BRANCO EM BAIXO QUANDO EU COLOCO NA VERSÃO MOBILE DA SCOLA NAV 
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ### O QUE ESTÁ DANDO DE ERRADO
@@ -15,17 +11,13 @@
 - Botão de resetar senha? VOU FAZER RESET DE SENHA??????????
     - tem que enviar email com link de resetar senha
 
-- Confirmar todas mensagens
-    - conferir todos os <title> das páginas
-
 - Testar TUDO. Ver se é possível fazer isso de forma automatizada.
-
 
 ### Na documentação:
 
 - Mudar as coisas de banco (diagramas)
 
-- Adicionar o ADMINISTRADOR 
+- Adicionar o ADMINISTRADOR na documentação toda
 
 -> Use cases tem que ver pq se o pedido não foi vendido, não pode ser cancelado; se o produto já foi cancelado, tem aviso de que foi cancelado e não pode mudar as informações dele além de data e comentários;
 -> Ver se vou fazer possibilidade de duplicar produtos e pedidos;
