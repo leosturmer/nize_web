@@ -412,8 +412,8 @@
   }
 
   .sb-expanded aside#sidebar.sacola-compras {
-    min-width: 90%;
-    max-width: 90%;
+    width: 90dvw;
+    /* max-width: 90%; */
   }
 
   div.produtos-no-pedido {
@@ -828,4 +828,11 @@
   div.usuario-btns {
     margin: 2em 0;
   }
+
+  .sb-expanded aside#sidebar.sacola-compras {
+    max-width: 95dvw;
+  }
+
+
+
 }
