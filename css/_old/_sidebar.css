@@ -15,10 +15,6 @@ body.sb-expanded {
   --sb-width: 18.5rem;
 }
 
-/* ==========================================
-   ASIDE / SIDEBAR
-   ========================================== */
-
 aside {
   position: fixed !important;
   inset: 0 auto 0 0;
@@ -43,6 +39,7 @@ aside {
   margin: 0;
   padding: 0;
   list-style: none;
+
   display: flex;
   flex-direction: column;
   flex-flow: column;
@@ -62,22 +59,12 @@ nav li:last-child {
   /* height: 50%; */
 }
 
-.li-img-sidenav {
-  margin: 1em auto;
-  height: 0px;
-}
-
-.li-sacola-sidenav {
-  height: 0px;
-}
-
-/* Logos & Headers na Sidenav */
-
 #logo-sidenav,
 #logo-sidenav-view {
   width: 80px;
   margin: 3em 10px;
   transition: width 0.3s ease-in-out;
+}
 }
 
 #logo-sidenav-view {
@@ -93,6 +80,7 @@ header {
   width: 80px;
   margin: 0em auto;
   /* margin-right: 42.5px; */
+
   transition:
     width 0.4s ease-in-out,
     transform 0.8s ease-in-out,
@@ -106,6 +94,7 @@ header {
   box-shadow: none;
   margin-top: 3em;
   margin-bottom: 3em;
+
   margin-left: 0;
   padding-left: 0;
 }
@@ -131,11 +120,11 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: center;
+
   width: 100%;
+
   transition: border 0.3s ease-in-out;
 }
-
-/* Links da Navegação */
 
 nav a {
   display: flex;
@@ -151,11 +140,14 @@ nav a {
     color 0.4s ease-in-out;
   /* width: 4.5em;
   height: 3.5em;
+
   padding-left: 1.4em; */
+
   margin-left: 1.4em;
   width: 3em;
   height: 3em;
   padding-left: 0.7em;
+
   transition: width 0.4s ease-in-out;
 }
 
@@ -185,10 +177,6 @@ nav a span {
   transition: opacity 0.3s ease-in-out;
 }
 
-/* ==========================================
-   BOTÕES & AÇÕES
-   ========================================== */
-
 #header-mobile .btn-menu i {
   margin-top: -5px;
   padding: 0;
@@ -198,21 +186,26 @@ nav a span {
 .btn-menu {
   background-color: whitesmoke;
   color: black;
+
   padding: 0.5em;
   width: 2.5em;
   height: 2.5em;
+
   /* rotate: 0deg; */
   /* transition: rotate 0.4s ease-in-out; */
+
   display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: space-between;
+
 }
 
 .btn-menu:hover {
   background-color: var(--darkGreen);
   color: whitesmoke;
   box-shadow: none;
+
   padding: 0.5em;
   width: 2.5em;
   height: 2.5em;
@@ -225,20 +218,40 @@ nav a span {
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 2.5em;
   height: 2.5em;
   padding-top: 0.6em;
   /* margin: 0; */
+
   background-color: white;
   border: var(--border-thin);
   /* box-shadow: none; */
   color: black;
 }
 
+.li-img-sidenav {
+  margin: 1em auto;
+  height: 0px;
+}
+
+.li-sacola-sidenav {
+  height: 0px;
+}
+
+
+
+.sb-expanded .btn-menu.btn-sacola {
+  background-color: var(--normalPurple);
+  color: white;
+  /* padding-top: 0.6em; */
+}
+
 .btn-menu.btn-sacola:hover {
   transition: none;
   background-color: var(--darkerPurple);
   color: white;
+
   /* box-shadow: none; */
   /* border: none; */
   /* rotate: 0deg; */
@@ -255,7 +268,9 @@ nav a span {
   background-color: transparent;
   border: none;
   box-shadow: none;
+
   color: var(--darkGreen);
+
   /* margin-top: auto; */
   bottom: 10px;
   /* padding: 0.3rem; */
@@ -269,15 +284,13 @@ nav a span {
   /* border: var(--border); */
   /* background-color: whitesmoke; */
   /* text-shadow: var(--box-shadow); */
+
   background-color: transparent;
   box-shadow: none;
+
   color: black;
   transition: color 0.2s ease-in-out;
 }
-
-/* ==========================================
-   ESTADOS EXPANDIDOS (SIDEBAR EXPANDIDA)
-   ========================================== */
 
 .sb-expanded #logo-sidenav {
   width: 150px;
@@ -302,7 +315,9 @@ nav a span {
 .sb-expanded nav a {
   width: 13em;
   height: 3.5em;
+
   text-align: center;
+
   /* display: flex; */
   /* align-items: center; */
   /* gap: 0.625rem; */
@@ -315,7 +330,9 @@ nav a span {
     color 0.4s ease-in-out; */
   /* width: 4.5em;
   height: 3.5em;
+
   padding-left: 1.4em; */
+
   margin-left: 1.4em;
   height: 3em;
   padding-left: 0.7em;
@@ -330,15 +347,10 @@ nav a span {
 .sb-expanded .btn-menu {
   display: flex;
   align-items: center;
+
   padding: 0.5em;
   width: 2.5em;
   height: 2.5em;
-}
-
-.sb-expanded .btn-menu.btn-sacola {
-  background-color: var(--normalPurple);
-  color: white;
-  /* padding-top: 0.6em; */
 }
 
 /* 
@@ -355,10 +367,6 @@ nav a span {
   padding: 0.8em;
 } */
 
-/* ==========================================
-   CONTEÚDO PRINCIPAL & SACOLA SIDENAV
-   ========================================== */
-
 main {
   /* margin-left: 5rem; */
   /* padding: 1rem 2rem; */
@@ -367,11 +375,13 @@ main {
 
 .produtos-sacola-sidenav {
   visibility: hidden;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: whitesmoke;
   border: var(--border-thin);
+
   padding: 0.5em;
 }
 
@@ -457,9 +467,7 @@ li.produtos-sacola-sidenav label.label-column textarea {
   min-height: 70%;
 }
 
-/* ==========================================
-   MEDIA QUERIES (SIDENAV)
-   ========================================== */
+/* Media query da sidenav */
 
 /* Padrão do sistema */
 @media (min-width: 0px) {
@@ -473,11 +481,13 @@ li.produtos-sacola-sidenav label.label-column textarea {
 }
 
 /* Queries específicas */
+
 /* Computador */
 /* @media screen and (min-width: 1230px) {
 } */
 
 /* Tablet */
+
 @media screen and (max-width: 1280px) {
   #sidebar {
     visibility: hidden;
@@ -488,9 +498,11 @@ li.produtos-sacola-sidenav label.label-column textarea {
   header {
     /* background-color: red; */
     visibility: visible;
+
     position: fixed;
     top: 0;
     z-index: 9999;
+
     display: flex;
     flex-direction: row;
     width: 100dvw;
@@ -504,7 +516,7 @@ li.produtos-sacola-sidenav label.label-column textarea {
     width: 17.5em;
   }
 
-  .sb-expanded #sidebar.sacola-compras {
+  .sb-expanded #sidebar.sacola-compras{
     z-index: 9999;
   }
 
@@ -512,6 +524,7 @@ li.produtos-sacola-sidenav label.label-column textarea {
     overflow-y: auto;
     overflow-x: hidden;
   }
+
 
   .btn-menu.btn-sacola {
     padding-top: 0.8em;

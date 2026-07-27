@@ -9,10 +9,7 @@
 
 */
 
-/* ==========================================
-   TABLETS (MAX-WIDTH: 1280PX)
-   ========================================== */
-
+/* TABLET */
 @media screen and (max-width: 1280px) {
   main {
     margin-top: 1.5em;
@@ -40,13 +37,17 @@
     color: whitesmoke;
     border: 2px solid black;
     box-shadow: var(--box-shadow);
+
     font-size: 16px;
+
     position: absolute;
     top: 3.2em;
     right: 1.5em;
+
     width: fit-content;
     max-width: 300px;
     padding: 0.8em 1rem;
+
     z-index: 99999;
   }
 
@@ -116,6 +117,7 @@
 
   div.product-view {
     padding: 1em;
+
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -226,15 +228,14 @@
     font-size: 20px;
   }
 
+
   .sb-expanded img#logo-sidenav-view {
     margin: 0.5em auto;
   }
+
 }
 
-/* ==========================================
-   TELAS MÉDIAS E BARRAS DE PESQUISA (MAX-WIDTH: 900PX)
-   ========================================== */
-
+/* Barra de pesquisa */
 @media (max-width: 900px) {
   input#pesquisa-produtos,
   input#pesquisa-pedidos {
@@ -262,6 +263,7 @@
     /* width: 8em; */
     /* right: 0; */
     /* margin-right: 2em; */
+
     display: flex;
     align-items: center;
   }
@@ -307,6 +309,7 @@
 
   fieldset#pedidos-form input#prazoPedido {
     padding: 0.5em;
+
     font-size: 14px;
   }
 
@@ -353,10 +356,6 @@
     text-align: center;
   }
 }
-
-/* ==========================================
-   TABLETS PEQUENOS (MAX-WIDTH: 770PX)
-   ========================================== */
 
 @media (max-width: 770px) {
   main.conteudo-pagina {
@@ -428,6 +427,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+
     max-height: 300px;
   }
 
@@ -553,7 +553,7 @@
   .sacola-compras .product-btns a {
     font-size: 14px;
     height: 40px;
-  }
+  } 
 
   .sb-expanded .conteudo-loja {
     overflow-y: hidden;
@@ -561,9 +561,7 @@
   }
 }
 
-/* ==========================================
-   CELULARES (MAX-WIDTH: 641PX)
-   ========================================== */
+/* CELULAR */
 
 @media (max-width: 641px) {
   /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
@@ -588,6 +586,7 @@
     padding-top: 2em;
     height: 100dvh;
     width: 100dvw;
+
     /* justify-content: center; */
   }
 
@@ -600,7 +599,6 @@
   .titulo-erro {
     font-size: 20px;
     width: fit-content;
-    padding: 0.8em 0.5em;
   }
 
   .container-inicial.container-erro {
@@ -619,7 +617,6 @@
   }
 
   /* Index */
-
   #container-index.container {
     display: flex;
     flex-direction: column;
@@ -715,9 +712,12 @@
     font-size: 0.6em;
     text-align: center;
     align-self: center;
+
     /* position: sticky;
     padding: 5px 0;
+
     z-index: 1;
+
     bottom: 5px;
     margin: 0 auto; */
   }
@@ -739,6 +739,7 @@
     /* width: 8em; */
     /* right: 0; */
     /* margin-right: 2em; */
+
     display: flex;
     align-items: center;
   }
@@ -762,7 +763,6 @@
 
   /* form#form-pesquisa-produtos:focus {
   } */
-
   input#pesquisa-produtos,
   input#pesquisa-pedidos {
     max-width: 100%;
@@ -803,7 +803,7 @@
     height: 100dvh;
   }
 
-  .sb-expanded .conteudo-loja {
+  .sb-expanded .conteudo-loja{
     overflow-y: hidden;
     overflow-x: hidden;
   }
@@ -818,10 +818,6 @@
     left: 1%;
   } */
 }
-
-/* ==========================================
-   CELULARES PEQUENOS (MAX-WIDTH: 550PX)
-   ========================================== */
 
 @media (max-width: 550px) {
   div.product-view {
@@ -864,4 +860,10 @@
   div.usuario-btns {
     margin: 2em 0;
   }
+
+
+  
+
+
+
 }

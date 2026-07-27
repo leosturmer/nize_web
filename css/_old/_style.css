@@ -1,18 +1,19 @@
 @charset "UTF-8";
 
-/* ==========================================
-   NAVEGAÇÃO INTERNA & FILTROS
-   ========================================== */
-
 .header-mobile {
   background-color: var(--lightGreen);
   margin-top: 0px;
 }
 
+/* Navs internas */
+
 .internal-nav {
   display: inline-block;
   margin-bottom: 2em 0;
   gap: 20px;
+}
+
+.internal-nav {
   /* padding: 0.5em; */
 }
 
@@ -28,6 +29,10 @@
   color: var(--darkGreen);
   text-align: left;
   /* margin-right: 10rem; */
+}
+
+.margin-mobile {
+  /* width: 85dvw; */
 }
 
 .internal-nav-links {
@@ -66,18 +71,6 @@
   margin-bottom: 1em;
 }
 
-.internal-nav > h2 {
-  text-align: center;
-  /* margin-left: 0; */
-  padding-left: 0;
-}
-
-.margin-mobile {
-  /* width: 85dvw; */
-}
-
-/* Filtros DROPDOWN */
-
 .filtros-produtos {
   border: var(--border-focus-purple);
   padding: 0.2em 0.6em;
@@ -100,7 +93,9 @@
   position: absolute;
   z-index: 9999;
   right: 3em;
+
   padding: 0.5em 0.6em;
+
   box-shadow: var(--shadow-focus-purple);
 }
 
@@ -115,7 +110,7 @@
   gap: 10px;
 }
 
-.filtros-produtos:hover {
+.filtros-produtos:hover{
   cursor: pointer;
   background-color: thistle;
 }
@@ -125,9 +120,40 @@
   background-color: white;
 }
 
-.filtros-produtos[open] summary:hover {
+.filtros-produtos[open] summary:hover{
   cursor: pointer;
   color: var(--darkerPurple);
+}
+
+/* details[open].produtos-pedido {
+  height: 100%;
+  overflow-y: auto; 
+} */
+
+/* details[open].produtos-pedido summary {
+  position: fixed;
+  top: 2em;
+  background-color: var(--lightGreen);
+  padding: 0.5em;
+  width: fit-content;
+  border: var(--border-thin);
+  left: 9em;
+} */
+
+details > summary {
+  list-style: none;
+}
+
+details.produtos-pedido > summary::before {
+  content: "▶ ";
+}
+
+details[open].produtos-pedido > summary::before {
+  font-family: sans-serif;
+  font-weight: bolder;
+  content: "✖ ";
+  /* color: white; */
+  margin: 0.5em 0;
 }
 
 #filtro-estoque,
@@ -137,6 +163,7 @@
 #btn-limpar-filtros,
 #filtro-data {
   /* width: 10rem; */
+
   width: 10em;
   font-size: 13px;
 }
@@ -161,13 +188,12 @@
   background-color: var(--softGreen);
 }
 
-/* FORMULÁRIOS DE PESQUISA */
-
 #form-pesquisa-produtos,
 #form-pesquisa-pedidos {
   position: relative;
   display: inline-block;
   margin-top: 0.8em;
+
   width: 40%;
   background-color: white;
 }
@@ -184,6 +210,7 @@
 #pesquisa-pedidos {
   border: var(--border);
   box-shadow: var(--box-shadow);
+
   padding: 0.8em;
   font-size: 16px;
   width: 100%;
@@ -204,18 +231,23 @@
   font-size: 1.8rem;
 }
 
-/* ==========================================
-   TELA INICIAL & INDEX
-   ========================================== */
+div.texto-produto h2,
+div.texto-pedido h2 {
+  text-align: left;
+  padding: 0 0 0.4em 0;
+}
 
+/* Tela inicial */
 #tituloInicial {
   border: var(--border);
   box-shadow: var(--box-shadow);
   background-color: var(--lighterPurple);
   color: white;
+
   font-weight: 400;
   font-size: 2.8em;
   align-self: center;
+
   margin-top: 1em;
   padding: 0.5em 1em;
   width: fit-content;
@@ -238,6 +270,8 @@
   /* margin-right: 3em; */
 }
 
+/* Index */
+
 .logo-inicio {
   top: 50px;
   left: 60px;
@@ -252,27 +286,33 @@
   width: 100dvw;
 }
 
-.container /* #container-index */ {
+.container
+/* #container-index */ {
   border: var(--border);
   box-shadow: var(--box-shadow);
   margin: auto auto;
   background-color: whitesmoke;
   justify-self: center;
+
   padding: 2rem;
+
   display: grid;
+
   width: 456;
   height: 355;
   align-self: center;
 }
 
-.container > img /* #container-index > img */ {
+.container > img
+/* #container-index > img */ {
   width: 200px;
   margin: 0 auto;
   margin-top: 35px;
   /* align-self: center; */
 }
 
-.container > a /* #container-index > a */ {
+.container > a
+/* #container-index > a */ {
   margin: 20px;
 }
 
@@ -280,9 +320,7 @@
   text-align: center;
 }
 
-/* ==========================================
-   TELAS DE CADASTRO & LOGIN
-   ========================================== */
+/* Tela de cadastro */
 
 .div-cadastro,
 .div-login {
@@ -338,18 +376,7 @@
   width: 200px;
 }
 
-div.container-horizontal.cadastro-btns {
-  margin-top: 0.8em;
-}
-
-div.container-horizontal.cadastro-btns span.bi-box-arrow-up-right {
-  margin-left: 0.5em;
-  font-size: 16px;
-}
-
-/* ==========================================
-   PRODUTOS (LISTAGEM E CARD)
-   ========================================== */
+/* Produtos */
 
 div.lista-produtos h4,
 div.lista-pedidos h4 {
@@ -376,15 +403,21 @@ div.lista-pedidos h4 {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+
   overflow-x: hidden;
+
   background-color: whitesmoke;
   border: var(--border);
   box-shadow: var(--box-shadow);
+
   padding: 2rem;
   margin: 10px;
+
   margin-bottom: 25px;
   box-sizing: border-box;
+
   width: 45%;
+
   min-height: fit-content;
   max-height: fit-content;
   justify-content: space-between;
@@ -394,19 +427,7 @@ div.lista-pedidos h4 {
   margin-left: 0;
 }
 
-.product-view > p {
-  margin: 10px;
-  max-width: 95%;
-}
-
-div.texto-produto h2,
-div.texto-pedido h2 {
-  text-align: left;
-  padding: 0 0 0.4em 0;
-}
-
-/* Elementos Internos do Card do Produto */
-
+/* .product-view > img  */
 div.product-img-btn {
   display: flex;
   align-content: center;
@@ -417,6 +438,11 @@ div.product-img-btn p {
   align-self: center;
 }
 
+div.product-btns span {
+  font-size: 18px;
+  margin-right: 0.5em;
+}
+
 div.product-img-btn > img.img-produtos {
   /* display: flex; */
   /* justify-content: center; */
@@ -425,9 +451,11 @@ div.product-img-btn > img.img-produtos {
   margin-left: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
+
   width: 70%;
   height: 300px;
   object-fit: cover;
+
   align-self: center;
 }
 
@@ -441,6 +469,11 @@ div.product-img-btn > img.img-produtos {
 
 .span-alt-img {
   text-align: center;
+}
+
+.product-view > p {
+  margin: 10px;
+  max-width: 95%;
 }
 
 .p-descricao {
@@ -458,21 +491,17 @@ div.product-img-btn > img.img-produtos {
   margin-top: auto;
 }
 
-div.product-btns span {
-  font-size: 18px;
-  margin-right: 0.5em;
-}
-
 .product-btns > a {
   width: 120px;
   height: 45px;
+
 }
 
 .product-btns > .btn-clonar {
   width: 120px;
 }
 
-/* Visualização de Loja */
+/* Visualização de loja */
 
 .header-view-loja {
   position: fixed;
@@ -481,6 +510,7 @@ div.product-btns span {
   left: 0;
   z-index: 9999;
   margin: 0;
+
   background-color: var(--lightGreen);
   width: 8rem;
   padding: 5rem 2.5rem;
@@ -500,9 +530,39 @@ div.product-btns span {
   margin: 0 auto;
 }
 
-/* ==========================================
-   FORMULÁRIO DE CADASTRO DE PRODUTOS
-   ========================================== */
+/* Gui Erro */
+
+.titulo-erro {
+  margin-top: 4rem;
+  text-align: center;
+  align-self: center;
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+  width: fit-content;
+
+  background-color: brown;
+  color: whitesmoke;
+
+  font-weight: normal;
+}
+
+.container-erro {
+  text-align: center;
+  font-size: 18px;
+  width: 50%;
+}
+
+.container-erro > p {
+  font-size: 20px;
+  line-height: 1.2rem;
+}
+
+.btn-voltar-erro {
+  margin-top: 20vh;
+  align-self: center;
+}
+
+/* Tela de cadastro de produtos */
 
 .form-cadastro-produto {
   display: block;
@@ -539,25 +599,24 @@ div.product-btns span {
   border: var(--border);
   box-shadow: var(--box-shadow);
   background-color: white;
+
   padding: 0.8em;
+
   /* width: max-content; */
+
   display: flex;
   justify-content: center;
+
   margin: 0 auto;
   width: 100%;
+
   /* margin-left: 1.5rem; */
 }
 
 /* fieldset#products-form {
+  
   padding: 1em;
 } */
-
-#products-form > legend {
-  font-size: 18px;
-  padding: 0.2em;
-  color: black;
-  font-weight: bolder;
-}
 
 .inner-products-form {
   display: flex;
@@ -589,7 +648,10 @@ div.product-btns span {
   gap: 10px;
 }
 
-#nomeProduto.input-produto,
+#nomeProduto.input-produto {
+  width: 100%;
+}
+
 #nomeProduto.alt-nome-produto {
   width: 100%;
 }
@@ -631,6 +693,13 @@ div.product-btns span {
   align-items: center;
 }
 
+#products-form > legend {
+  font-size: 18px;
+  padding: 0.2em;
+  color: black;
+  font-weight: bolder;
+}
+
 .descricao-produtos {
   display: flex;
   align-items: start;
@@ -642,20 +711,16 @@ div.product-btns span {
   margin: 0;
 }
 
-/* ==========================================
-   TELA DE PEDIDOS
-   ========================================== */
+/* Tela de pedidos */
 
 /* .num-pedido {
   text-align: left;
 } */
 
 /* .adicionar-produtos {
-} */
 
-h2.num-pedido.num-pedido-cancelado {
-  /* padding-top: 0.5em; */
-}
+
+} */
 
 .texto-pedido-cancelado p {
   color: brown;
@@ -671,44 +736,18 @@ h2.num-pedido.num-pedido-cancelado {
   box-shadow: var(--box-shadow);
   padding: 1rem;
   background-color: thistle;
+
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
+
   margin-bottom: 1em;
+
   /* gap: 1em; */
 }
 
-/* Accordion de Pedidos (Details & Summary) */
-
-/* details[open].produtos-pedido {
-  height: 100%;
-  overflow-y: auto; 
-} */
-
-/* details[open].produtos-pedido summary {
-  position: fixed;
-  top: 2em;
-  background-color: var(--lightGreen);
-  padding: 0.5em;
-  width: fit-content;
-  border: var(--border-thin);
-  left: 9em;
-} */
-
-details > summary {
-  list-style: none;
-}
-
-details.produtos-pedido > summary::before {
-  content: "▶ ";
-}
-
-details[open].produtos-pedido > summary::before {
-  font-family: sans-serif;
-  font-weight: bolder;
-  content: "✖ ";
-  /* color: white; */
-  margin: 0.5em 0;
+div.produtos-no-pedido h3 {
+  color: var(--darkGreen);
 }
 
 .produtos-pedido > summary {
@@ -728,22 +767,24 @@ details[open].produtos-pedido > summary::before {
   box-shadow: var(--box-shadow);
   /* margin: 1em auto; */
   padding: 0.8em;
+
   width: 50%;
   right: 0;
+
   overflow-y: auto;
   overflow-x: hidden;
+
   height: 500px;
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1em;
+
   /* min-width: fit-content;
   width: min-content;
+
   min-height: fit-content;
   height: max-content; */
-}
-
-div.produtos-no-pedido h3 {
-  color: var(--darkGreen);
 }
 
 .infos-pedido {
@@ -751,6 +792,7 @@ div.produtos-no-pedido h3 {
   flex-direction: column;
   width: 50%;
   /* margin: 0 0 1em auto; */
+
   /* justify-content: end; */
   /* right: 0; */
 }
@@ -760,18 +802,14 @@ div.produtos-no-pedido h3 {
   display: block;
   padding: 0.8em;
   gap: 1em;
+
+  padding: 0.8em;
   /* padding-bottom: 1.5em; */
+
   height: max-content;
+
   border: var(--border-thin);
   margin-bottom: 0;
-}
-
-.produto-individual > a {
-  border: none;
-  background-color: transparent;
-  box-shadow: none;
-  font-size: 12px;
-  padding: 0.2em;
 }
 
 .produto-individual .btn-remover {
@@ -787,11 +825,12 @@ div.produtos-no-pedido h3 {
   color: brown;
   box-shadow: none;
   border: var(--border-hover);
+
   display: flex;
   align-items: center;
 }
 
-.btn-remover span {
+.btn-remover  span {
   margin-left: 0;
 }
 
@@ -815,8 +854,17 @@ div.produtos-no-pedido h3 {
   color: white;
 }
 
+.produto-individual > a {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  font-size: 12px;
+  padding: 0.2em;
+}
+
 .total-pedido {
   padding: 0.5em 0.8em;
+
   border: var(--border-thin);
   box-shadow: var(--box-shadow);
   width: fit-content;
@@ -826,21 +874,23 @@ div.produtos-no-pedido h3 {
   margin: 0 0 1em auto;
 }
 
-/* Formulário de Pedidos */
-
 #pedidos-form {
   border: var(--border);
   box-shadow: var(--box-shadow);
   padding: 1em;
+
   /* display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 1em;
   gap: 1em; */
+
   display: flex;
   flex-direction: column;
   gap: 1em;
+
   width: 100%;
   /* align-items: center; */
+
   /* display: flex; */
   /* flex-wrap: nowrap; */
 }
@@ -849,6 +899,7 @@ div.produtos-no-pedido h3 {
   display: flex;
   justify-content: end;
   margin: 0 0 1em auto;
+
   width: fit-content;
 }
 
@@ -884,6 +935,16 @@ input#prazoPedido {
   margin-right: 0;
 }
 
+.internal-nav > h2 {
+  text-align: center;
+  /* margin-left: 0; */
+  padding-left: 0;
+}
+
+h2.num-pedido.num-pedido-cancelado {
+  /* padding-top: 0.5em; */
+}
+
 .btn-alt-pedido span {
   margin-left: 0;
   margin-right: 0.3em;
@@ -900,9 +961,7 @@ input#prazoPedido {
   margin-bottom: 1em;
 }
 
-/* ==========================================
-   TELA MINHA ÁREA & WHATSAPP
-   ========================================== */
+/* Tela Minha Área */
 
 .main-minha-area {
   margin: 0 auto;
@@ -920,14 +979,19 @@ input#prazoPedido {
 #minha-area {
   display: block;
   line-height: 2.5em;
+
   border: var(--border);
   box-shadow: var(--box-shadow);
+
   background-color: white;
+
   padding: 1em;
   /* margin: 0 2em; */
   /* margin: 0 auto; */
+
   width: 50%;
   max-height: 100%;
+
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -954,16 +1018,17 @@ input#prazoPedido {
   margin: 0.8em;
 }
 
-span.bi-box-arrow-up-right {
-  margin-right: 0px;
+div.container-horizontal.cadastro-btns {
+  margin-top: 0.8em;
 }
 
-/* Botão Flutuante do WhatsApp */
+div.container-horizontal.cadastro-btns span.bi-box-arrow-up-right {
+  margin-left: 0.5em;
+  font-size: 16px;
+}
 
-.div-btn-wpp {
-  position: fixed;
-  right: 1em;
-  bottom: 2em;
+span.bi-box-arrow-up-right {
+  margin-right: 0px;
 }
 
 .div-btn-wpp > img {
@@ -976,9 +1041,16 @@ span.bi-box-arrow-up-right {
   box-shadow: none;
 }
 
+.div-btn-wpp {
+  position: fixed;
+  right: 1em;
+  bottom: 2em;
+}
+
 .pedidos-online hr {
   margin-top: 1em;
 }
+
 
 .pedidos-online .p-info-pedidos-online {
   font-size: 14px;
@@ -987,27 +1059,37 @@ span.bi-box-arrow-up-right {
   margin-bottom: 0.3em;
 }
 
-/* ==========================================
-   TELA ADMINISTRADOR & MENSAGENS DE ERRO
-   ========================================== */
+
+
+
+
+/* Tela administrador */
 
 .h1-admin {
-  text-align: center;
+text-align: center;
 }
+
 
 .main-administrador {
   display: block;
   line-height: 2.5em;
+
   border: var(--border);
   box-shadow: var(--box-shadow);
+
   background-color: white;
+
   padding: 1em;
+
   width: 50%;
   max-height: 100%;
+
   overflow-x: hidden;
   overflow-y: scroll;
+
   margin: 0 auto;
 }
+
 
 .usuario_cadastrado {
   display: flex;
@@ -1025,33 +1107,3 @@ span.bi-box-arrow-up-right {
   margin-left: 0;
 }
 
-/* Tela / Gui Erro */
-
-.titulo-erro {
-  margin-top: 4rem;
-  text-align: center;
-  align-self: center;
-  border: var(--border);
-  box-shadow: var(--box-shadow);
-  width: fit-content;
-  background-color: brown;
-  color: whitesmoke;
-  font-weight: normal;
-  padding: 1em 0.8em;
-}
-
-.container-erro {
-  text-align: center;
-  font-size: 18px;
-  width: 50%;
-}
-
-.container-erro > p {
-  font-size: 20px;
-  line-height: 1.2rem;
-}
-
-.btn-voltar-erro {
-  margin-top: 20vh;
-  align-self: center;
-}

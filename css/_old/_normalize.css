@@ -14,10 +14,6 @@
   src: url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 }
 
-/* ==========================================
-   VARIÁVEIS DO SISTEMA
-   ========================================== */
-
 :root {
   --darkerPurple: #3f1970;
   --darkPurple: #571fa6;
@@ -56,9 +52,7 @@
   --transition-background: margin-left 0.2s ease, width 0.2s ease;
 }
 
-/* ==========================================
-   NORMALIZAÇÕES INICIAIS (RESET)
-   ========================================== */
+/* NORMALIZAÇÕES INICIAIS */
 
 * {
   margin: 0;
@@ -78,8 +72,8 @@ body {
 body.sb-expanded {
   --sb-width: 18.5rem;
 }
-/* Acaba aqui */
 
+/* Acaba aqui */
 html,
 body,
 main {
@@ -119,12 +113,14 @@ main {
   z-index: 1;
   /* margin-left: 1rem; */
   padding: 2rem 3.2rem 0 3.2em;
+
   transition: margin-left 0.2s ease;
   /* width 0.2s ease; */
 }
 
 footer {
   position: static;
+
   padding: 20px;
   margin-bottom: 0;
   margin-right: 0;
@@ -134,12 +130,11 @@ footer {
   z-index: 1;
   text-align: right;
   font-size: 0.8rem;
+
   /* max-width: 100vw; */
 }
 
-/* ==========================================
-   TIPOGRAFIA & ÍCONES GLOBAIS
-   ========================================== */
+/* NORMALIZAÇÕES ITENS */
 
 /* Bootstrap icons */
 /* .navbar.bg-body-tertiary.fixed-top {
@@ -162,38 +157,6 @@ span.bi {
   margin-right: 0.5em;
   font-size: 16px;
 }
-
-h1 {
-  padding: 1em 0;
-  color: var(--darkGreen);
-  font-size: 2em;
-}
-
-h2 {
-  text-align: center;
-  padding: 1em;
-  padding-left: 0;
-  color: var(--normalGreen);
-}
-
-hr {
-  color: var(--lighterGreen);
-  opacity: 50%;
-  margin: 0.5em 0;
-}
-
-p {
-  font-size: 18px;
-}
-
-p > strong {
-  font-weight: bolder;
-  color: var(--darkGreen);
-}
-
-/* ==========================================
-   BOTÕES GLOBAIS
-   ========================================== */
 
 .botoes-index {
   align-items: center;
@@ -219,9 +182,12 @@ button,
   font-family: var(--font-serif);
   text-align: center;
   text-decoration: none;
+
   border: var(--border);
   box-shadow: var(--box-shadow);
+
   width: 120px;
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -246,16 +212,45 @@ button:hover,
   box-shadow: var(--box-shadow-hover);
   cursor: pointer;
 }
-
 /* 
  {
     background-color: var(--darkerPurple);
     color: whitesmoke;
 } */
 
-/* ==========================================
-   INPUTS & FORMULÁRIOS GLOBAIS
-   ========================================== */
+h1 {
+  padding: 1em 0;
+  color: var(--darkGreen);
+  font-size: 2em;
+}
+
+/* hr {
+  margin-top: 1em;
+} */
+
+h2 {
+  text-align: center;
+  padding: 1em;
+  padding-left: 0;
+  color: var(--normalGreen);
+}
+
+hr {
+  color: var(--lighterGreen);
+  opacity: 50%;
+  margin: 0.5em 0;
+}
+
+p {
+  font-size: 18px;
+}
+
+p > strong {
+  font-weight: bolder;
+  color: var(--darkGreen);
+}
+
+/* Tipos de inputs */
 
 .input-pesquisa {
 }
@@ -304,7 +299,6 @@ input[type="checkbox"] {
   appearance: none;
   background-color: #fff;
   margin-left: 0.8rem;
-  border: var(--border-input);
 }
 
 input[type="checkbox"]:checked {
@@ -334,7 +328,6 @@ input[type="file"]::file-selector-button:hover {
 }
 
 /* Selects */
-
 select,
 ::picker(select) {
   appearance: base-select;
@@ -354,7 +347,6 @@ select:hover {
 }
 
 /* Remover setas dos inputs number */
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -365,7 +357,30 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-/* Estados de Validação (Pseudo-classes) */
+/* Mensagens padrão */
+
+.success-msg,
+.error-msg {
+  color: whitesmoke;
+  border: 2px solid black;
+  box-shadow: var(--box-shadow);
+  position: absolute;
+  top: 3em;
+  align-self: center;
+  /* right: 50%; */
+  /* left: 42%; */
+
+  width: fit-content;
+  padding: 1rem;
+}
+
+.error-msg {
+  background-color: brown;
+}
+
+.success-msg {
+  background-color: var(--normalGreen);
+}
 
 /* Show red borders when filled, but invalid */
 input:not(:placeholder-shown) {
@@ -374,6 +389,10 @@ input:not(:placeholder-shown) {
 
 input.input-login:not(:placeholder-shown) {
   box-shadow: var(--shadow-invalid);
+}
+
+input[type="checkbox"] {
+  border: var(--border-input);
 }
 
 /* Show green borders when valid */
@@ -389,32 +408,6 @@ input.input-login:valid,
 input.btn-add:valid {
   border: var(--border);
   box-shadow: var(--box-shadow);
-}
-
-/* ==========================================
-   MENSAGENS DE NOTIFICAÇÃO & UTILITÁRIOS
-   ========================================== */
-
-.success-msg,
-.error-msg {
-  color: whitesmoke;
-  border: 2px solid black;
-  box-shadow: var(--box-shadow);
-  position: absolute;
-  top: 3em;
-  align-self: center;
-  /* right: 50%; */
-  /* left: 42%; */
-  width: fit-content;
-  padding: 1rem;
-}
-
-.error-msg {
-  background-color: brown;
-}
-
-.success-msg {
-  background-color: var(--normalGreen);
 }
 
 details.filtros-produtos[open] summary span.bi-filter::before {
