@@ -17,7 +17,7 @@ if (!empty($_SESSION['usuario_logado'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Erro - Nize</title>
+    <title>Ajuda - Nize</title>
 
     <link rel="shortcut icon" href="../../img/favicon/favicon.ico" type="image/x-icon">
 
@@ -111,13 +111,33 @@ if (!empty($_SESSION['usuario_logado'])) {
 
     <main class='conteudo-pagina'>
 
-        <h1 class="titulo-erro">Ops! Algo deu errado</h1>
+        <h1 id="tituloInicial">Termos de uso</h1>
 
-        <div class="container-inicial container-erro">
-            <p>Alguma operação causou erro.</p>
+        <h2>Termos de uso do Nize</h2>
 
-            <p>Vamos tentar de novo?</p>
-        </div>
+        <details class="termos-uso container-inicial">
+            <summary>Termos de uso</summary>
+            <p>O nome "Nize" vem da palavra "organize", já que essa plataforma é uma forma de vendedores autônomos organizarem os seus produtos e pedidos.</p>
+            <h3>1. Aceitação dos termos</h3>
+            <p>Ao criar um cadastro conosco, você está ciente que aceita os termos de uso presentes nesta página. Caso não aceite, você não poderá utilizar a plataforma.</p>
+            <h3>2. Uso do site</h3>
+            <p>O usuário se compromete a usar o site apenas para fins legais. É proibido tentar invadir o sistema, enviar vírus, copiar conteúdos de forma ilegal ou prejudicar o funcionamento da página.</p>
+            <h3>3. Propriedade Intelectual</h3>
+            <p>Todo o conteúdo do site (textos, imagens, logotipos, marcas e códigos) pertence aos donos do site. Você não pode copiar ou usar esses materiais sem autorização prévia por escrito.</p>
+            <h3>4. Alterações nos Termos</h3>
+            <p>Podemos mudar estes termos a qualquer momento. A versão mais nova estará sempre publicada nesta mesma página, com a data de atualização.</p>
+            <h3>5. Lei e Foro</h3>
+            <p>Estes termos seguem as leis do Brasil. Qualquer problema ou dúvida será resolvido no foro da cidade onde a empresa está localizada.</p>
+        </details>
+
+        <details class="faq container-inicial">
+            <summary>Perguntas frequentes</summary>
+            <h3>1. Preciso de ajuda. Como fazer?</h3>
+            <p>Para ajuda, você deve entrar em contato com nosso suporte via e-mail <a href="#">clicando aqui</a> ou através do e-mail sac@nize.com.br</p>
+            <h3>2. Esqueci minha senha. E agora?</h3>
+
+        </details>
+
 
         <a href="<?php echo $logo_link ?>" class="btn-voltar-erro"><span class="bi bi-arrow-left"></span>Voltar</a>
 

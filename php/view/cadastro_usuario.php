@@ -14,7 +14,6 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-
     <title>Cadastro- Nize</title>
 </head>
 
@@ -63,6 +62,8 @@
 
 
                     <button type="submit" id="btn-cad-usuario">Cadastre-se</button>
+
+                    <!-- <p>Ao se cadastrar, você concorda com nossos Termos de Uso.</p> -->
                 </form>
             </div>
 

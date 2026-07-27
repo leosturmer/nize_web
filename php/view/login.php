@@ -50,7 +50,10 @@
 
         <a href="cadastro_usuario.php" id="btn-login">Não se cadastrou?</a>
 
-        <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
+        <footer>
+            <!-- <a href="ajuda.php" style="border: none; box-shadow: none; background-color: transparent;">Termos de uso</a> -->
+            Leonardo Stürmer &copy; Todos os direitos reservados
+        </footer>
     </main>
 
     <script type="module" src="../../js/main.js"></script>
