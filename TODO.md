@@ -1,6 +1,5 @@
 #### No CSS:
 
--- ESTÁ ROLANDO A BARRA E FICANDO O BRANCO EM BAIXO QUANDO EU COLOCO NA VERSÃO MOBILE DA SCOLA NAV 
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ### O QUE ESTÁ DANDO DE ERRADO
