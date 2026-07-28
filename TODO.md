@@ -4,7 +4,7 @@
 
     - Ao alterar pedido, ele diz que Estoque insuficiente para um ou mais produtos, mesmo que tenha estoque.
     - Se cancela e quer devolver ao estoque, não está devolvendo
-    
+
 
 
 #### No CSS:
@@ -31,6 +31,7 @@
 ### Na documentação:
 
 - Mudar as coisas de banco (diagramas)
+    - ver os created_at
 
 - Adicionar o ADMINISTRADOR na documentação toda
 
