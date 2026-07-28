@@ -142,6 +142,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                 <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição" autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
             </form>
 
+            </div>
             <div class="lista-produtos-pedido">
                 <?php if (!empty($listaProdutos)): ?>
                     <?php foreach ($listaProdutos as $item): ?>
@@ -179,8 +180,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                     <?php endforeach; ?>
                 <?php else: echo "Nenhum produto cadastrado." ?>
                 <?php endif; ?>
-            </div>
-            <!-- </div> -->
+                <!-- </div> -->
         </details>
 
         <div class="container-horizontal">
