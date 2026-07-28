@@ -182,6 +182,8 @@ switch ($opcao) {
             $prazoPedido = $_GET['prazoPedido'] ?? "";
             $statusPedido = $_GET['statusPedido'] ?? 'encomendado';
             $comentarioPedido = trim($_GET['comentarioPedido'] ?? "");
+            $darBaixaEstoque = isset($_GET['darBaixaEstoque']) ? 1 : 0;
+
 
             $novoPedido = new Pedido();
             $novoPedido->id_usuario = $usuario->id_usuario;
@@ -191,7 +193,7 @@ switch ($opcao) {
             $novoPedido->produtos = $_SESSION['carrinho'];
             $novoPedido->valor_final = $_SESSION['total_compra'];
 
-            $pedidoDAO->cadastrarPedido($novoPedido, $darBaixaEstoque = null);
+            $pedidoDAO->cadastrarPedido($novoPedido, $darBaixaEstoque);
 
             $_SESSION['carrinho'] = [];
             $_SESSION['total_compra'] = [];
