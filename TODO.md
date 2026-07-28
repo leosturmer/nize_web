@@ -1,5 +1,9 @@
 ### O QUE ESTÁ DANDO DE ERRADO
 
+- Os ajax e filtros não estão funcionando
+- na página de CLONAR PEDIDO não aparecem as imagens dos produtos, ao contrário da página de criar pedido
+
+
 #### No CSS:
 
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
