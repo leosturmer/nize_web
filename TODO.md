@@ -1,15 +1,22 @@
+### O QUE ESTÁ DANDO DE ERRADO
+
+- Dar baixa e devolver ao estoque não estão funcionando
+
+    - Ao alterar pedido, ele diz que Estoque insuficiente para um ou mais produtos, mesmo que tenha estoque.
+    - Se cancela e quer devolver ao estoque, não está devolvendo
+    
+
+
 #### No CSS:
 
 ---- O success/error msg na tela inicial/login/cadsatro está ficando feio
+-- Ao buscar produto, mudei um pouco o CSS. Tenho que ver isso.
 
 <!-- Link de PHP password reset: https://phppot-com.translate.goog/php/php-forgot-password-recover-code/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=wa -->
 
 
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-### O QUE ESTÁ DANDO DE ERRADO
-
-- Dar baixa e devolver ao estoque não estão funcionando
 
 
 
