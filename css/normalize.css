@@ -417,7 +417,7 @@ input.btn-add:valid {
   background-color: var(--normalGreen);
 }
 
-#session-msg {
+.msg-deslog {
   margin: 1em auto;
 }
 

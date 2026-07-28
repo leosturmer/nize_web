@@ -27,7 +27,7 @@
         session_start();
 
         if (isset($_SESSION["msg"])) {
-            echo "<div id='session-msg'>" . $_SESSION['msg'] .  "</div>";
+            echo "<div id='session-msg' class='msg-deslog'>" . $_SESSION['msg'] .  "</div>";
             unset($_SESSION["msg"]);
         }
         ?>
