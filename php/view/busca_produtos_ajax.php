@@ -30,7 +30,7 @@ foreach ($lista as $item) {
 
     ?>
         <div class="texto-produto">
-            <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
+            <h2><?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></h2>
             
             <p><strong>Quantidade:</strong> <?php if ($item['quantidade'] === 0 || $item['quantidade'] == null) {echo "Sem estoque";} else { echo htmlspecialchars($item['quantidade']); }?> </p>
             <?php if ($item['valor_unitario']) { $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.'); } else {$valor_unitario = "Não informado"; }?>

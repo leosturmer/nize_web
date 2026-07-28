@@ -89,8 +89,8 @@ class PedidoDAO
             $this->conexao->beginTransaction();
 
             $sql = $this->conexao->prepare("UPDATE pedidos SET 
-                data = :data, status = :status, comentario = :comentario, valor_final = :valor_final 
-                WHERE id_pedido = :id_pedido AND id_usuario = :id_usuario");
+            data = :data, status = :status, comentario = :comentario, valor_final = :valor_final 
+            WHERE id_pedido = :id_pedido AND id_usuario = :id_usuario");
 
             $sql->bindValue(":data", $pedido->data);
             $sql->bindValue(":status", $pedido->status);
@@ -100,28 +100,39 @@ class PedidoDAO
             $sql->bindValue(":id_usuario", $pedido->id_usuario);
             $sql->execute();
 
+            // --- CORREÇÃO DA BAIXA NO ESTOQUE ---
             if ($darBaixaEstoque === 1) {
-                foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
+                foreach ($_SESSION['carrinho'] as $id_produto => $item) {
+                    // Extrai quantidade se for array ou int
+                    $qtd = is_array($item) ? (int)$item['quantidade'] : (int)$item;
+
                     $sql_subtrai = $this->conexao->prepare("UPDATE produtos 
-                        SET quantidade = quantidade - ? 
-                        WHERE id_produto = ? AND quantidade >= ?");
-                    $sql_subtrai->execute([$quantidade, $id_produto, $quantidade]);
+                    SET quantidade = quantidade - ? 
+                    WHERE id_produto = ? AND quantidade >= ?");
+                    $sql_subtrai->execute([$qtd, $id_produto, $qtd]);
 
                     if ($sql_subtrai->rowCount() === 0) {
                         $_SESSION['msg'] = "<p class='error-msg'>Estoque insuficiente para um ou mais produtos.</p>";
+                        $this->conexao->rollBack(); // Desfaz alterações caso falhe
                         header("Location: ../view/alteracao_pedidos.php?id=$pedido->id_pedido");
                         exit;
                     }
                 }
-            } else if ($estornarEstoque === 1) {
-                foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
+            }
+            // --- CORREÇÃO DO ESTORNO DE ESTOQUE ---
+            else if ($estornarEstoque === 1) {
+                foreach ($_SESSION['carrinho'] as $id_produto => $item) {
+                    // Extrai quantidade se for array ou int
+                    $qtd = is_array($item) ? (int)$item['quantidade'] : (int)$item;
+
                     $sql_soma = $this->conexao->prepare("UPDATE produtos 
-                        SET quantidade = quantidade + ? 
-                        WHERE id_produto = ?");
-                    $sql_soma->execute([$quantidade, $id_produto]);
+                    SET quantidade = quantidade + ? 
+                    WHERE id_produto = ?");
+                    $sql_soma->execute([$qtd, $id_produto]);
                 }
             }
 
+            // Recria a relação de produtos do pedido
             $delete_relacao = $this->conexao->prepare("DELETE FROM pedido_produto WHERE id_pedido = ?");
             $delete_relacao->execute([$pedido->id_pedido]);
 
@@ -129,7 +140,6 @@ class PedidoDAO
             $stmt_produto = $this->conexao->prepare($sql_produto);
 
             foreach ($_SESSION['carrinho'] as $id_produto => $item) {
-                // Suporta tanto o formato antigo (int) quanto o novo formato (array)
                 if (is_array($item)) {
                     $quantidade = $item['quantidade'];
                     $valor_unitario = $item['valor_unitario'];
@@ -148,7 +158,7 @@ class PedidoDAO
             return true;
         } catch (Exception $e) {
             $this->conexao->rollBack();
-            echo "Erro ao alterar encomenda.";
+            echo "Erro ao alterar encomenda: " . $e->getMessage();
             exit;
         }
     }

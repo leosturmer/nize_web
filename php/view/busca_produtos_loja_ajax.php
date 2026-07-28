@@ -8,10 +8,11 @@ header('Content-Type: text/html; charset=utf-8');
 $pesquisa = trim($_GET['pesquisaProdutos'] ?? '');
 $ordenar = trim($_GET['ordenarPor'] ?? '');
 $nome_loja = trim($_GET['nome_loja'] ?? '');
+// $nome_visualizacao = trim($_GET['loja']);
 
 $usuarioDao = new UsuarioDAO();
 
-$idLoja = (int)$usuarioDao->buscarId($nome_loja); 
+$idLoja = (int)$usuarioDao->buscarId($nome_loja);
 
 if (empty($idLoja)) {
     echo '<h4>Loja inválida!</h4>';
@@ -53,6 +54,14 @@ foreach ($lista as $item) {
             } else {
                 echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
             } ?>
+
+            <form action="../controller/pedidoControle.php" method="get" class="product-btns">
+                <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
+                <input type="hidden" name="op" value="adicionarSacola">
+                <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
+                <input type="hidden" name="loja" value="<?php echo htmlspecialchars($nome_loja); ?>">
+                <input type="submit" class="btn-add" value="+ Adicionar">
+            </form>
         </div>
     </div>
     </div>

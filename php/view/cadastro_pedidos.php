@@ -174,26 +174,33 @@ if (isset($_SESSION['encomendaSelecionada'])) {
             <div class="produtos-no-pedido">
                 <?php
                 $_SESSION['total_compra'] = 0.00;
+
                 if (!empty($_SESSION['carrinho'])) {
-                    foreach ($_SESSION['carrinho'] as $id_produto => $quantidade) {
+                    foreach ($_SESSION['carrinho'] as $id_produto => $item) {
                         $produtoVendido = $produtoDAO->buscarPorId($id_produto);
+
+                        if (is_array($item)) {
+                            $quantidade = (int)$item['quantidade'];
+                            $valor_unitario = (float)$item['valor_unitario'];
+                        } else {
+                            $quantidade = (int)$item;
+                            $valor_unitario = (float)($produtoVendido['valor_unitario'] ?? 0);
+                        }
+
+                        $valor_total_item = $valor_unitario * $quantidade;
+                        $_SESSION['total_compra'] += $valor_total_item;
+
                         if ($produtoVendido) {
-                            $valor_unitario = (float)$produtoVendido['valor_unitario'];
-                            $quantidade =  (int)$quantidade;
-                            $valor = $valor_unitario * $quantidade;
-                            $_SESSION['total_compra'] += $valor;
                             echo "<div class='produto-individual'>";
                             echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
                             echo "<p>";
                             echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-                            echo "<b>Unidade</b>: R$ " . number_format((float)$produtoVendido['valor_unitario'], 2, ',', '.') . "<br>";
-                            $valor_total = (float)$produtoVendido['valor_unitario'];
-                            $valor_total = $valor_total * $quantidade;
-                            echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "</p>";
-                            echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
+                            echo "<b>Unidade</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
+                            echo "<b>Valor total</b>: R$ " . number_format($valor_total_item, 2, ',', '.') . "</p>";
+                            echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
                             echo "</div>";
                         } else {
-                            echo "<p><b>Produto</b> não foi encontrado no estoque.</p>";
+                            echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
                         }
                     }
                 } else {
