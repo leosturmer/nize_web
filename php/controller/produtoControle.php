@@ -65,7 +65,7 @@ switch ($opcao){
             $arquivoTmp = $_FILES['imagemProduto']['tmp_name']; 
             $nomeOriginal = $_FILES['imagemProduto']['name'];   
             
-            $pastaDestino = '../view/uploads/';
+            $pastaDestino = '../persistence/uploads/';
             
             if (!is_dir($pastaDestino)) {
                 mkdir($pastaDestino, 0755, true);

@@ -163,7 +163,7 @@ if (!$produtoData) {
             <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
           </label>
           <?php if (!empty($produtoData['imagem'])): ?>
-            <?php echo "<img src='uploads/" . htmlspecialchars($produtoData['imagem']) . "' alt='imagem do produto' class='img-produtos img-alt-produto'>" ?>
+            <?php echo "<img src='../persistence/uploads/" . htmlspecialchars($produtoData['imagem']) . "' alt='imagem do produto' class='img-produtos img-alt-produto'>" ?>
             <span class="span-alt-img">(Será mantida se não enviar outra)</span>
           <?php else: ?>
             <span>Nenhuma imagem</span>

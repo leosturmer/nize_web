@@ -164,7 +164,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
                             <div class="product-img-btn">
                                 <?php if ($item['imagem']) {
-                                    echo "<img src='uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                                    echo "<img src='../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
                                 } else {
                                     echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
                                 } ?>
