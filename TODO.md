@@ -1,8 +1,16 @@
 #### No CSS:
 
+---- O success/error msg na tela inicial/login/cadsatro está ficando feio
+
+<!-- Link de PHP password reset: https://phppot-com.translate.goog/php/php-forgot-password-recover-code/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=wa -->
+
+
 ## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ### O QUE ESTÁ DANDO DE ERRADO
+
+- Dar baixa e devolver ao estoque não estão funcionando
+
 
 
 #### Para o final:
@@ -10,7 +18,8 @@
 - Botão de resetar senha? VOU FAZER RESET DE SENHA??????????
     - tem que enviar email com link de resetar senha
 
-- Testar TUDO. Ver se é possível fazer isso de forma automatizada.
+- Testar TUDO.
+
 
 ### Na documentação:
 
