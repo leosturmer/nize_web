@@ -5,17 +5,14 @@ Para funcionar o banco:
 - No CMD, dar **php --ini**, copiar o caminho que aparece e dar **code <caminho copiado>** para abrir no VS Code;
   - No VS Code, dar CTRL + F e pesquisar por sqlite e ativar o PDO sqlite e o sqlite3;
 
-
 Para abrir:
 
 - Ir na pasta onde está salvo o projeto e abrir o CMD;
-- Dar o comando **php -S localhost:8000 ** 
+- Dar o comando **php -S localhost:8000 **
 
---------------------------------------------
+---
 
--- CÓDIGO BANCO: 
-
-
+-- CÓDIGO BANCO:
 
 -- 1. CRIAÇÃO DO BANCO DE DADOS (Opcional, caso ainda não tenha criado no phpMyAdmin)
 
@@ -26,13 +23,14 @@ USE nize_database;
     CREATE TABLE IF NOT EXISTS usuario (
             id_usuario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
             login TEXT NOT NULL UNIQUE,
-            senha TEXT NOT NULL, 
+            senha TEXT NOT NULL,
             nome TEXT NOT NULL,
             nome_loja TEXT NULL,
             aceita_visualizacao INTEGER NULL,
-            nome_visualizacao VARCHAR (50) UNIQUE, 
+            nome_visualizacao VARCHAR (50) UNIQUE,
             telefone VARCHAR(20),
             tipo_usuario INTEGER,
+            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
     );
 
     CREATE TABLE IF NOT EXISTS produtos (
@@ -46,6 +44,7 @@ USE nize_database;
             descricao TEXT NULL,
             valor_custo REAL NULL,
             aceita_visualizacao INTEGER NULL,
+            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
     );
 
@@ -56,6 +55,7 @@ USE nize_database;
             valor_final REAL NOT NULL,
             status TEXT NOT NULL,
             comentario TEXT NULL,
+            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
     );
 
@@ -71,15 +71,14 @@ USE nize_database;
 -- 3. CRIAÇÃO DAS VIEWS
 
 CREATE VIEW IF NOT EXISTS view_produtos AS
-    SELECT id_usuario, id_produto, nome, quantidade, valor_unitario, valor_custo, aceita_encomenda, descricao, imagem
-    FROM produtos;
+SELECT id_usuario, id_produto, nome, quantidade, valor_unitario, valor_custo, aceita_encomenda, descricao, imagem
+FROM produtos;
 
-CREATE VIEW IF NOT EXISTS view_pedidos AS 
-    SELECT v.id_usuario, v.id_pedido, p.nome, vp.quantidade, v.data, vp.valor_unitario, v.valor_final, v.status, v.comentario
-    FROM pedidos v
-    INNER JOIN pedido_produto vp ON v.id_pedido = vp.id_pedido
-    INNER JOIN produtos p ON vp.id_produto = p.id_produto;
-
+CREATE VIEW IF NOT EXISTS view_pedidos AS
+SELECT v.id_usuario, v.id_pedido, p.nome, vp.quantidade, v.data, vp.valor_unitario, v.valor_final, v.status, v.comentario
+FROM pedidos v
+INNER JOIN pedido_produto vp ON v.id_pedido = vp.id_pedido
+INNER JOIN produtos p ON vp.id_produto = p.id_produto;
 
 -- adicionando administrador
 
@@ -87,4 +86,6 @@ INSERT INTO usuario (nome, login, senha, tipo_usuario) VALUES ('Admin', 'admin@a
 
 -- Criação de usuário teste
 
-INSERT INTO usuario (nome, nome_loja, login, senha) VALUES ('Leo', 'Loja do Leo', 'leo@leo.com', 'leo123');
+<!--
+-- INSERT INTO usuario (nome, nome_loja, login, senha) VALUES ('Leo', 'Loja do Leo', 'leo@leo.com', 'leo123');
+-->
