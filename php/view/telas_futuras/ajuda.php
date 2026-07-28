@@ -21,10 +21,10 @@ if (!empty($_SESSION['usuario_logado'])) {
 
     <link rel="shortcut icon" href="../../img/favicon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../../css/normalize.css">
-    <link rel="stylesheet" href="../../css/query.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/sidebar.css">
+    <link rel="stylesheet" href="../../../css/normalize.css">
+    <link rel="stylesheet" href="../../../css/query.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/sidebar.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 </head>
@@ -42,7 +42,7 @@ if (!empty($_SESSION['usuario_logado'])) {
 
                 <li>
                     <a href="<?php echo $logo_link ?>" class="link-logo" title="Tela inicial">
-                        <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+                        <img src="../../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
                     </a>
                 </li>
 
@@ -104,7 +104,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                 <i class="bi bi-list"></i>
             </a>
             <a href="tela_inicial.php" class="link-logo-header" title="Tela inicial">
-                <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+                <img src="../../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
             </a>
         </div>
     </header>
@@ -146,7 +146,7 @@ if (!empty($_SESSION['usuario_logado'])) {
         <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
     </main>
 
-    <script type="module" src="../../js/main.js"></script>
+    <script type="module" src="../../../js/main.js"></script>
 
 
     <!-- Acessibilidade -->
