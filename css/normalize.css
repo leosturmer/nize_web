@@ -417,6 +417,10 @@ input.btn-add:valid {
   background-color: var(--normalGreen);
 }
 
+#session-msg {
+  margin: 1em auto;
+}
+
 
 details.filtros-produtos[open] summary span.bi-filter::before {
   content: "\f659"; /* Código unicode do ícone 'bi-x-lg' (ícone de X) */
