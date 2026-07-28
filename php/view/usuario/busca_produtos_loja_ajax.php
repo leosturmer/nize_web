@@ -1,7 +1,7 @@
 <?php
-require_once '../model/produto.class.php';
-require_once '../dao/produtodao.class.php';
-require_once '../dao/usuariodao.class.php';
+require_once '../../model/produto.class.php';
+require_once '../../dao/produtodao.class.php';
+require_once '../../dao/usuariodao.class.php';
 
 header('Content-Type: text/html; charset=utf-8');
 
@@ -50,12 +50,12 @@ foreach ($lista as $item) {
 
         <div class="product-img-btn">
             <?php if ($item['imagem']) {
-                echo "<img src='../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                echo "<img src='../../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
             } else {
                 echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
             } ?>
 
-            <form action="../controller/pedidoControle.php" method="get" class="product-btns">
+            <form action="../../controller/pedidoControle.php" method="get" class="product-btns">
                 <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
                 <input type="hidden" name="op" value="adicionarSacola">
                 <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">

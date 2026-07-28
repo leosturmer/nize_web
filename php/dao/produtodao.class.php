@@ -1,6 +1,6 @@
 <?php
-require_once '../persistence/conexaoBanco.class.php';
-require_once '../model/produto.class.php';
+require_once __DIR__ . '/../persistence/conexaoBanco.class.php';
+require_once __DIR__ . '/../model/produto.class.php';
 
 class ProdutoDAO{
     private $conexao;
@@ -22,7 +22,7 @@ class ProdutoDAO{
         } catch (Exception $e){
             $_SESSION['msg'] = "<p class='error-msg'> Erro ao cadastrar produto. Tente novamente. </p>";
 
-            header("location:../view/cadastro_produtos.php");
+            header("location:../view/produtos/cadastro_produtos.php");
             exit;
         }
 
@@ -87,7 +87,7 @@ class ProdutoDAO{
 
         } catch (Exception $e){
             $_SESSION['msg'] = "Erro ao listar produtos";
-            header("location:../view/visualizacao_produtos.php");
+            header("location:../view/produtos/visualizacao_produtos.php");
             exit;
         }
     }
@@ -101,7 +101,7 @@ class ProdutoDAO{
 
         } catch (Exception $e){
             $_SESSION['msg'] = "Erro ao listar produtos";
-            header("location:../view/visualizacao_produtos.php");
+            header("location:../view/produtos/visualizacao_produtos.php");
             exit;
         }
     }

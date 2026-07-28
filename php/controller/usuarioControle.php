@@ -29,26 +29,26 @@ switch ($opcao) {
 
         if (empty($novoNome) || empty($novoEmail)) {
             $_SESSION['msg'] = "<p class='error-msg'>Ops! Insira os dados obrigatórios</p>";
-            header("location:../view/alteracao_cadastro.php");
+            header("location:../view/usuario/alteracao_cadastro.php");
             exit;
         }
 
         if (!Validacao::validarEmail($novoEmail)) {
             $_SESSION['msg'] = '<p class="error-msg">E-mail em formato inválido!</p>';
-            header("location:../view/alteracao_cadastro.php");
+            header("location:../view/usuario/alteracao_cadastro.php");
             exit;
         }
 
         if (!Validacao::validarTelefone($novoTelefone) && $novoTelefone !== '') {
             $_SESSION['msg'] = '<p class="error-msg">Telefone em formato inválido!</p>';
-            header("location:../view/alteracao_cadastro.php");
+            header("location:../view/usuario/alteracao_cadastro.php");
             exit;
         }
 
         if ($usuario->login !== $novoEmail) {
             if ($usuarioDAO->buscarEmail($novoEmail)) {
                 $_SESSION['msg'] = '<p class="error-msg">E-mail já cadastrado!</p>';
-                header("location:../view/alteracao_cadastro.php");
+                header("location:../view/usuario/alteracao_cadastro.php");
                 exit;
             }
         }
@@ -57,7 +57,7 @@ switch ($opcao) {
             if ($usuarioDAO->buscarNomeView($novoNomeView)) {
                 // if (in_array($novoNomeView, $usuarioDAO->buscarNomeView($novoNomeView)))
                 $_SESSION['msg'] = '<p class="error-msg">Nome para visualização já utilizado!</p>';
-                header("location:../view/alteracao_cadastro.php");
+                header("location:../view/usuario/alteracao_cadastro.php");
                 exit;
             }
         }
@@ -80,7 +80,7 @@ switch ($opcao) {
             $_SESSION['msg'] = "<p class='error-msg'>Erro ao atualizar dados!</p>";
         }
 
-        header("location:../view/alteracao_cadastro.php");
+        header("location:../view/usuario/alteracao_cadastro.php");
         exit;
 
     case "excluir":
@@ -111,11 +111,11 @@ switch ($opcao) {
         if ($tipo_usuario === 1) {
             if ($usuarioDAO->excluirUsuario($id_usuario)) {
                 $_SESSION['msg'] = "<p class='success-msg'>Usuário deletado com sucesso!</p>";
-                header("location:../view/dashboard_administrador.php");
+                header("location:../view/admin/dashboard_administrador.php");
                 exit;
             } else {
                 $_SESSION['msg'] = "<p class='error-msg'>Pane no sistema! Algo deu errado.</p>";
-                header("location:../view/dashboard_administrador.php");
+                header("location:../view/admin/dashboard_administrador.php");
                 exit;
             }
         }

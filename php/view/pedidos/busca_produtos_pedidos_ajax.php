@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once '../model/produto.class.php';
-require_once '../model/usuario.class.php';
-require_once '../util/seguranca.class.php';
-require_once '../dao/produtodao.class.php';
+require_once '../../model/produto.class.php';
+require_once '../../model/usuario.class.php';
+require_once '../../util/seguranca.class.php';
+require_once '../../dao/produtodao.class.php';
 
 Seguranca::verificarAcesso();
 header('Content-Type: text/html; charset=utf-8');
@@ -65,12 +65,12 @@ if (!empty($lista)) {
         echo '<div class="product-img-btn">';
 
         if ($item['imagem']) {
-            echo "<img src='../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+            echo "<img src='../../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
         } else {
             echo "<p class='img-produtos'>Nenhuma imagem cadastrado</p>";
         }
 ?>
-        <form action="../controller/pedidoControle.php" method="get" class="product-btns">
+        <form action="../../controller/pedidoControle.php" method="get" class="product-btns">
             <!-- <span class="bi bi-bag-plus"></span> -->
             <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
             <input type="hidden" name="op" value="adicionarQuantidade">

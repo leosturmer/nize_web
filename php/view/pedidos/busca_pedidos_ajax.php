@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once '../model/usuario.class.php';
-require_once '../model/pedido.class.php';
-require_once '../dao/pedidodao.class.php';
-require_once '../util/seguranca.class.php';
+require_once '../../model/usuario.class.php';
+require_once '../../model/pedido.class.php';
+require_once '../../dao/pedidodao.class.php';
+require_once '../../util/seguranca.class.php';
 
 Seguranca::verificarAcesso();
 header('Content-Type: text/html; charset=utf-8');
@@ -72,8 +72,8 @@ if (!empty($listaPedidos)) {
         </div>
 
         <div class="product-btns pedido-btns">
-            <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido ?>"><span class="bi bi-pencil"></span>Editar</a>
-            <a href="../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-alt-pedido"><span class="bi bi-copy"></span>Clonar</a>
+            <a href="../../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido ?>"><span class="bi bi-pencil"></span>Editar</a>
+            <a href="../../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-alt-pedido"><span class="bi bi-copy"></span>Clonar</a>
         </div>
         </div>
 <?php }

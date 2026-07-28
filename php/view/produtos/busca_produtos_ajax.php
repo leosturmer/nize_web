@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once '../model/produto.class.php';
-require_once '../model/usuario.class.php';
-require_once '../util/seguranca.class.php';
-require_once '../dao/produtodao.class.php';
+require_once '../../model/produto.class.php';
+require_once '../../model/usuario.class.php';
+require_once '../../util/seguranca.class.php';
+require_once '../../dao/produtodao.class.php';
 
 Seguranca::verificarAcesso();
 header('Content-Type: text/html; charset=utf-8');
@@ -66,14 +66,14 @@ foreach ($lista as $item) {
         
         <div class="product-img-btn">
             <?php if($item['imagem']){
-                echo "<img src='../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                echo "<img src='../../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
             } else {
                 echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
             } ?>
             
                 <div class="product-btns">
             <a href="alteracao_produto.php?id=<?php echo $item['id_produto']; ?>"><span class="bi bi-pencil"></span>Editar</a>
-            <a href="../controller/produtoControle.php?op=excluir&id=<?php echo $item['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3"></span>Excluir</a>
+            <a href="../../controller/produtoControle.php?op=excluir&id=<?php echo $item['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3"></span>Excluir</a>
                 </div>
         </div>
 </div> 

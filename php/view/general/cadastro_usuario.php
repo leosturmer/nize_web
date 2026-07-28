@@ -7,10 +7,10 @@
 
     <link rel="shortcut icon" href="../../../img/favicon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../../css/normalize.css">
-    <link rel="stylesheet" href="../../css/query.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/sidebar.css">
+    <link rel="stylesheet" href="../../../css/normalize.css">
+    <link rel="stylesheet" href="../../../css/query.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/sidebar.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -32,8 +32,8 @@
         }
         ?>
 
-        <a href="../../index.php" class="link-logo-header logo-header-mobile" title="Tela inicial">
-            <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+        <a href="../../../index.php" class="link-logo-header logo-header-mobile" title="Tela inicial">
+            <img src="../../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
         </a>
 
         <div class="container container-cadastro">
@@ -41,7 +41,7 @@
                 Faça o seu cadastro
             </h1>
             <div class="div-cadastro">
-                <form action="../controller/cadastroControle.php?op=cadastrar" method="post" id="form-cadastro">
+                <form action="../../controller/cadastroControle.php?op=cadastrar" method="post" id="form-cadastro">
                     <label for="usuNome">Nome completo*</label>
 
                     <input type="text" placeholder="digite seu nome" class="input-login" name="usuNome" required>
@@ -74,7 +74,7 @@
         <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
     </main>
 
-    <script type="module" src="../../js/main.js"></script>
+    <script type="module" src="../../../js/main.js"></script>
 
 
     <!-- Acessibilidade -->

@@ -1,7 +1,7 @@
 <?php
-require_once '../persistence/conexaoBanco.class.php';
-require_once '../model/produto.class.php';
-require_once '../model/pedido.class.php';
+require_once __DIR__ . '/../persistence/conexaoBanco.class.php';
+require_once __DIR__ . '/../model/produto.class.php';
+require_once __DIR__ . '/../model/pedido.class.php';
 
 class PedidoDAO
 {
@@ -16,7 +16,7 @@ class PedidoDAO
     {
         if (empty($_SESSION['carrinho'])) {
             $_SESSION['msg'] = "<p class='error-msg'>Nenhum produto adicionado ao pedido</p>";
-            header("Location: ../view/cadastro_pedidos.php");
+            header("Location: ../view/pedidos/cadastro_pedidos.php");
             exit;
         }
 
@@ -62,7 +62,7 @@ class PedidoDAO
                     if ($sql_subtrai->rowCount() === 0) {
                         $_SESSION['msg'] = "<p class='error-msg'>Estoque insuficiente para um ou mais produtos.</p>";
                         $this->conexao->rollBack();
-                        header("Location: ../view/cadastro_pedidos.php");
+                        header("Location: ../view/pedidos/cadastro_pedidos.php");
                         exit;
                     }
                 }
@@ -81,7 +81,7 @@ class PedidoDAO
     {
         if (empty($_SESSION['carrinho'])) {
             $_SESSION['msg'] = "<p class='error-msg'>Nenhum produto adicionado ao pedido.</p>";
-            header("Location: ../view/visualizacao_pedidos.php");
+            header("Location: ../view/pedidos/visualizacao_pedidos.php");
             exit;
         }
 
@@ -114,7 +114,7 @@ class PedidoDAO
                     if ($sql_subtrai->rowCount() === 0) {
                         $_SESSION['msg'] = "<p class='error-msg'>Estoque insuficiente para um ou mais produtos.</p>";
                         $this->conexao->rollBack(); // Desfaz alterações caso falhe
-                        header("Location: ../view/alteracao_pedidos.php?id=$pedido->id_pedido");
+                        header("Location: ../view/pedidos/alteracao_pedidos.php?id=$pedido->id_pedido");
                         exit;
                     }
                 }
@@ -298,7 +298,7 @@ class PedidoDAO
             return $pedidosDict;
         } catch (Exception $e) {
             echo $e;
-            header("location:../view/erro.php?msg=Erro ao realizar a busca avançada.");
+            header("location:../view/general/erro.php?msg=Erro ao realizar a busca avançada.");
             exit;
         }
     }

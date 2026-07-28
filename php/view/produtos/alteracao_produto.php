@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once '../model/usuario.class.php';
-require_once '../model/produto.class.php';
-require_once '../dao/produtodao.class.php';
-require_once '../util/seguranca.class.php';
+require_once '../../model/usuario.class.php';
+require_once '../../model/produto.class.php';
+require_once '../../dao/produtodao.class.php';
+require_once '../../util/seguranca.class.php';
 Seguranca::verificarAcesso();
 
 $usuario = unserialize($_SESSION['usuario_logado']);
@@ -27,12 +27,12 @@ $produto = $produtoDAO->buscarPorId($id_produto);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alteração de produto- Nize</title>
 
-  <link rel="shortcut icon" href="../../img/favicon/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../../../img/favicon/favicon.ico" type="image/x-icon">
 
-  <link rel="stylesheet" href="../../css/normalize.css">
-  <link rel="stylesheet" href="../../css/query.css">
-  <link rel="stylesheet" href="../../css/style.css">
-  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../../css/normalize.css">
+  <link rel="stylesheet" href="../../../css/query.css">
+  <link rel="stylesheet" href="../../../css/style.css">
+  <link rel="stylesheet" href="../../../css/sidebar.css">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -53,14 +53,14 @@ $produto = $produtoDAO->buscarPorId($id_produto);
         </li>
 
         <li>
-          <a href="tela_inicial.php" class="link-logo" title="Tela inicial">
-            <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+          <a href="../general/tela_inicial.php" class="link-logo" title="Tela inicial">
+            <img src="../../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
           </a>
         </li>
 
         <li>
         <li>
-          <a href="tela_inicial.php" title="Tela inicial">
+          <a href="../general/tela_inicial.php" title="Tela inicial">
             <i class="bi bi-house"></i>
 
             <span>Tela inicial</span>
@@ -73,19 +73,19 @@ $produto = $produtoDAO->buscarPorId($id_produto);
         </a>
         </li>
         </li>
-        <a href="visualizacao_pedidos.php" title="Tela de pedidos">
+        <a href="../pedidos/visualizacao_pedidos.php" title="Tela de pedidos">
           <i class="bi bi-clipboard2-check"></i>
           <span>Pedidos</span>
         </a>
         </li>
         </li>
-        <a href="minha_area.php" title="Minha área">
+        <a href="../usuario/minha_area.php" title="Minha área">
           <i class="bi bi-person-lines-fill"></i>
           <span>Minha área</span>
         </a>
         </li>
         <li>
-          <a href="../controller/logout.php" class="btn-sair" title="Sair">
+          <a href="../../controller/logout.php" class="btn-sair" title="Sair">
             <i class="bi bi-box-arrow-left"></i>
             <span>Encerrar sessão</span>
           </a>
@@ -99,8 +99,8 @@ $produto = $produtoDAO->buscarPorId($id_produto);
       <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
         <i class="bi bi-list"></i>
       </a>
-      <a href="tela_inicial.php" class="link-logo-header" title="Tela inicial">
-        <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+      <a href="../general/tela_inicial.php" class="link-logo-header" title="Tela inicial">
+        <img src="../../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
       </a>
     </div>
   </header>
@@ -132,7 +132,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
     }
     ?>
 
-    <form action="../controller/produtoControle.php?op=alterar&id=<?php echo $produto['id_produto'] ?>" method="post" enctype="multipart/form-data" class="form-cadastro-produto">
+    <form action="../../controller/produtoControle.php?op=alterar&id=<?php echo $produto['id_produto'] ?>" method="post" enctype="multipart/form-data" class="form-cadastro-produto">
       <fieldset id="products-form">
         <legend>Informações do produto</legend>
         <div class="inner-products-form">
@@ -178,7 +178,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
             <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
           </label>
           <?php if (!empty($produto['imagem'])): ?>
-            <?php echo "<img src='../persistence/uploads/" . htmlspecialchars($produto['imagem']) . "' alt='imagem do produto' class='img-produtos img-alt-produto'>" ?>
+            <?php echo "<img src='../../persistence/uploads/" . htmlspecialchars($produto['imagem']) . "' alt='imagem do produto' class='img-produtos img-alt-produto'>" ?>
             <span class="span-alt-img">(Será mantida se não enviar outra)</span>
           <?php else: ?>
             <span>Nenhuma imagem</span>
@@ -190,7 +190,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 
       <div id="form-products-buttons">
         <button type="submit"><span class="bi bi-check2"></span>Alterar</button>
-        <a href="../controller/produtoControle.php?op=excluir&id=<?php echo $produto['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3"></span>Excluir</a>
+        <a href="../../controller/produtoControle.php?op=excluir&id=<?php echo $produto['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3"></span>Excluir</a>
 
         <!-- <button formaction="../view/visualizacao_produtos.php">Voltar</button> -->
       </div>
@@ -201,7 +201,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 
   </div>
 
-  <script type="module" src="../../js/main.js"></script>
+  <script type="module" src="../../../js/main.js"></script>
 
   <!-- Acessibilidade -->
 

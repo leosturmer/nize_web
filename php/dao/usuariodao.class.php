@@ -1,6 +1,6 @@
 <?php
-require_once '../persistence/conexaoBanco.class.php';
-require_once '../model/usuario.class.php';
+require_once __DIR__ . '/../persistence/conexaoBanco.class.php';
+require_once __DIR__ . '/../model/usuario.class.php';
 
 class UsuarioDAO
 {

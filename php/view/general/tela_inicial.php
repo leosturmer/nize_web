@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once '../model/usuario.class.php';
-require_once '../util/seguranca.class.php';
+require_once '../../model/usuario.class.php';
+require_once '../../util/seguranca.class.php';
 Seguranca::verificarAcesso();
 
 $usuario = unserialize($_SESSION['usuario_logado']);
@@ -15,12 +15,12 @@ $usuario = unserialize($_SESSION['usuario_logado']);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="shortcut icon" href="../../img/favicon/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../../../img/favicon/favicon.ico" type="image/x-icon">
 
-  <link rel="stylesheet" href="../../css/normalize.css">
-  <link rel="stylesheet" href="../../css/query.css">
-  <link rel="stylesheet" href="../../css/style.css">
-  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../../css/normalize.css">
+  <link rel="stylesheet" href="../../../css/query.css">
+  <link rel="stylesheet" href="../../../css/style.css">
+  <link rel="stylesheet" href="../../../css/sidebar.css">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -43,7 +43,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
         <li>
           <a href="tela_inicial.php" class="link-logo" title="Tela inicial">
-            <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+            <img src="../../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
           </a>
         </li>
 
@@ -55,28 +55,28 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         </li>
 
         <li>
-          <a href="visualizacao_produtos.php" title="Tela de produtos">
+          <a href="../produtos/visualizacao_produtos.php" title="Tela de produtos">
             <i class="bi bi-box-seam"></i>
             <span>Produtos</span>
           </a>
         </li>
 
         <li>
-          <a href="visualizacao_pedidos.php" title="Tela de pedidos">
+          <a href="../pedidos/visualizacao_pedidos.php" title="Tela de pedidos">
             <i class="bi bi-clipboard2-check"></i>
             <span>Pedidos</span>
           </a>
         </li>
 
         <li>
-          <a href="minha_area.php" title="Minha área">
+          <a href="../usuario/minha_area.php" title="Minha área">
             <i class="bi bi-person-lines-fill"></i>
             <span>Minha área</span>
           </a>
         </li>
 
         <li class="item-logout">
-          <a href="../controller/logout.php" class="btn-sair" title="Sair">
+          <a href="../../controller/logout.php" class="btn-sair" title="Sair">
             <i class="bi bi-box-arrow-left"></i>
             <span>Encerrar sessão</span>
           </a>
@@ -91,7 +91,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         <i class="bi bi-list"></i>
       </a>
       <a href="tela_inicial.php" class="link-logo-header" title="Tela inicial">
-        <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+        <img src="../../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
       </a>
     </div>
   </header>
@@ -133,7 +133,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
   </div>
 
-  <script type="module" src="../../js/main.js"></script>
+  <script type="module" src="../../../js/main.js"></script>
 
   <!-- Acessibilidade -->
 

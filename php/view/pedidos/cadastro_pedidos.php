@@ -1,11 +1,9 @@
 <?php
 session_start();
-require_once '../model/usuario.class.php';
-require_once '../model/produto.class.php';
-require_once '../dao/produtodao.class.php';
-require_once '../dao/pedidodao.class.php';
-require_once '../util/seguranca.class.php';
-
+require_once '../../model/usuario.class.php';
+require_once '../../model/produto.class.php';
+require_once '../../dao/produtodao.class.php';
+require_once '../../util/seguranca.class.php';
 Seguranca::verificarAcesso();
 
 $usuario = unserialize($_SESSION['usuario_logado']);
@@ -14,18 +12,18 @@ $produtoDAO = new ProdutoDAO();
 
 $listaProdutos = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 
-if (empty($_SESSION['pedidoSelecionado'])) {
-    $_SESSION['msg'] = "<p class='error-msg'>Nenhum pedido selecionado!</p>";
-    echo $_SESSION['msg'];
-    header("location:visualizacao_pedidos.php");
-    exit;
+if (!isset($_SESSION['carrinho'])) {
+    $_SESSION['carrinho'] = [];
 }
 
-$id_pedido = $_SESSION['pedidoSelecionado']["id_pedido"];
-$infoPedidoSession = $_SESSION['pedidoSelecionado'];
+if (isset($_SESSION['pedidoSelecionado'])) {
+    unset($_SESSION['pedidoSelecionado']);
+}
 
-$pedidoDAO = new PedidoDAO();
-$infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
+if (isset($_SESSION['encomendaSelecionada'])) {
+    unset($_SESSION['encomendaSelecionada']);
+}
+
 
 ?>
 
@@ -36,18 +34,18 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="../../img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../img/favicon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../../css/normalize.css">
-    <link rel="stylesheet" href="../../css/query.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/sidebar.css">
+    <link rel="stylesheet" href="../../../css/normalize.css">
+    <link rel="stylesheet" href="../../../css/query.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/sidebar.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 
 
-    <title>Alteração de pedido- Nize</title>
+    <title>Cadastro de pedido- Nize</title>
 </head>
 
 
@@ -59,26 +57,25 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                 <li>
                     <a href="#" data-resize-btn class="btn-menu" title="Esconder/expandir menu">
                         <i class="bi bi-list"></i>
-
                     </a>
                 </li>
 
                 <li>
-                    <a href="tela_inicial.php" class="link-logo" title="Tela inicial">
-                        <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+                    <a href="../general/tela_inicial.php" class="link-logo" title="Tela inicial">
+                        <img src="../../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
                     </a>
                 </li>
 
                 <li>
                 <li>
-                    <a href="tela_inicial.php" title="Tela inicial">
+                    <a href="../general/tela_inicial.php" title="Tela inicial">
                         <i class="bi bi-house"></i>
 
                         <span>Tela inicial</span>
 
                     </a>
                 </li>
-                <a href="visualizacao_produtos.php" title="Tela de produtos">
+                <a href="../produtos/visualizacao_produtos.php" title="Tela de produtos">
                     <i class="bi bi-box-seam"></i>
                     <span>Produtos</span>
                 </a>
@@ -90,13 +87,13 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                 </a>
                 </li>
                 </li>
-                <a href="minha_area.php" title="Minha área">
+                <a href="../usuario/minha_area.php" title="Minha área">
                     <i class="bi bi-person-lines-fill"></i>
                     <span>Minha área</span>
                 </a>
                 </li>
                 <li>
-                    <a href="../controller/logout.php" class="btn-sair" title="Sair">
+                    <a href="../../controller/logout.php" class="btn-sair" title="Sair">
                         <i class="bi bi-box-arrow-left"></i>
                         <span>Encerrar sessão</span>
                     </a>
@@ -110,8 +107,8 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
             <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
                 <i class="bi bi-list"></i>
             </a>
-            <a href="tela_inicial.php" class="link-logo-header" title="Tela inicial">
-                <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+            <a href="../general/tela_inicial.php" class="link-logo-header" title="Tela inicial">
+                <img src="../../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
             </a>
         </div>
     </header>
@@ -126,17 +123,13 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
         <div class="internal-nav">
             <div class="internal-nav-links">
-                <h2 class="num-pedido">Alteração - Pedido <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
-                <a href="visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
+                <h1>Cadastro de pedido</h1>
+                <a href="visualizacao_pedidos.php"><span class="bi bi-arrow-left"></span>Voltar</a>
             </div>
-
         </div>
-
-
 
         <details class="produtos-pedido">
             <summary>Adicione os produtos ao pedido</summary>
-            <!-- <div class="adicionar-produtos"> -->
 
             <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-produto-pedido">
                 <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição" autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
@@ -149,26 +142,21 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                             <div class="texto-produto">
                                 <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
                                 <p><strong>Quantidade disponível:</strong> <?php echo htmlspecialchars($item['quantidade']); ?> </p>
-                                <p><strong>Unidade:</strong> <?php echo "R$ " . number_format((float)$item['valor_unitario'], 2, ',', '.'); ?> </p>
-                                <p><strong>Aceita encomenda:</strong> <?php if ($item['aceita_encomenda']) {
-                                                                            echo "Sim";
-                                                                        } else {
-                                                                            echo "Não";
-                                                                        } ?></p>
-                                <p><strong>Descrição:</strong> <?php if ($item['descricao']) {
-                                                                    echo htmlspecialchars($item['descricao']);
-                                                                } else {
-                                                                    echo "Sem informações";
-                                                                } ?></p>
+                                <p><strong>Unidade: R$</strong> <?php echo number_format((float)$item['valor_unitario'], 2, ',', '.') ?> </p>
+                                <p><strong>Aceita encomenda:</strong> <?php echo $item['aceita_encomenda'] ? "Sim" : "Não"; ?></p>
+                                <p class="p-descricao"><strong>Descrição:</strong> <?php if (htmlspecialchars($item['descricao'])) {
+                                                                                        echo htmlspecialchars($item['descricao']);
+                                                                                    } else {
+                                                                                        echo 'Sem informações';
+                                                                                    } ?></p>
                             </div>
-
                             <div class="product-img-btn">
                                 <?php if ($item['imagem']) {
-                                    echo "<img src='../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                                    echo "<img src='../../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
                                 } else {
                                     echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
                                 } ?>
-                                <form action="../controller/pedidoControle.php" method="get" class="product-btns">
+                                <form action="../../controller/pedidoControle.php" method="get" class="product-btns">
                                     <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
                                     <input type="hidden" name="op" value="adicionarQuantidade">
                                     <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
@@ -180,7 +168,6 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                 <?php else: echo "Nenhum produto cadastrado." ?>
                 <?php endif; ?>
             </div>
-            <!-- </div> -->
         </details>
 
         <div class="container-horizontal">
@@ -192,7 +179,6 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                     foreach ($_SESSION['carrinho'] as $id_produto => $item) {
                         $produtoVendido = $produtoDAO->buscarPorId($id_produto);
 
-                        // Trata item como array ou inteiro simples (compatibilidade)
                         if (is_array($item)) {
                             $quantidade = (int)$item['quantidade'];
                             $valor_unitario = (float)$item['valor_unitario'];
@@ -211,69 +197,52 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                             echo "<b>Quantidade</b>: " . $quantidade . "<br>";
                             echo "<b>Unidade</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
                             echo "<b>Valor total</b>: R$ " . number_format($valor_total_item, 2, ',', '.') . "</p>";
-
-                            // Exibir o botão de remoção apenas se for a tela de alteração normal
-                            if (basename($_SERVER['PHP_SELF']) == 'alteracao_pedidos.php') {
-                                echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
-                            }
-
+                            echo "<a href='../../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
                             echo "</div>";
                         } else {
                             echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
                         }
                     }
                 } else {
-                    echo "<p>Nenhum produto encontrado no pedido.</p>";
+                    echo "<p>Nenhum produto adicionado ao pedido.</p>";
                 }
                 ?>
             </div>
+
             <div class="infos-pedido">
                 <div class='total-pedido'>
-                    <p><b>Total do pedido</b>: R$ <?php echo number_format($_SESSION['total_compra'], 2, ',', '.') ?> </p>
+                    <p><b>Total do pedido</b>: R$ <?php echo number_format($_SESSION['total_compra'], 2, ',', '.')  ?> </p>
                 </div>
-                <form action="../controller/pedidoControle.php" method="get">
-                    <input type="hidden" name="op" value="alterar">
+                <form action="../../controller/pedidoControle.php" method="get">
+                    <input type="hidden" name="op" value="cadastrar">
                     <div class="form-pedidos-items">
                         <fieldset id="pedidos-form">
-                            <!-- <div> -->
-                            <label for="prazopedido">
+                            <label for="prazoPedido" class="label-column">
                                 Prazo de entrega
-                                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required value="<?php echo $infoPedidoBanco['data'] ?>">
+                                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required>
                             </label>
-                            <label for="statusPedido">
-                                Status do Pedido
+                            <label for="statusPedido" class="label-column">
+                                Status do pedido
                                 <select name="statusPedido" id="statusPedido">
-                                    <option value="encomendado" <?= $infoPedidoSession['status'] == 'encomendado' ? 'selected' : '' ?>>Encomendado</option>
-                                    <option value="encomenda_online" <?= $infoPedidoSession['status'] == 'encomenda_online' ? 'selected' : '' ?>>Encomenda online</option>
-                                    <option value="pagamento" <?= $infoPedidoSession['status'] == 'pagamento' ? 'selected' : '' ?>>Aguardando pagamento</option>
-                                    <option value="vendido" <?= $infoPedidoSession['status'] == 'vendido' ? 'selected' : '' ?>>Vendido</option>
-                                    <option value="cancelado" <?= $infoPedidoSession['status'] === 'cancelado' ? 'selected' : '' ?>>Cancelado</option>
+                                    <option value="encomendado">Encomendado</option>
+                                    <option value="pagamento">Aguardando pagamento</option>
+                                    <option value="vendido">Vendido</option>
                                 </select>
                             </label>
                             <div id="containerVendido" style="display: none;">
-                                <label class="label-baixa-estoque">
-                                    Dar baixa no estoque?
+                                <label class="label-baixa-estoque">Dar baixa no estoque?
                                     <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" class="input-produto input-checkbox" value="1">
                                 </label>
                             </div>
-                            <div id="containerCancelado" style="display: none;">
-                                <p>Atenção: <br> Pedidos cancelados não podem ser editados!<br></p>
-                                <label class="label-baixa-estoque">
-                                    Devolver produtos ao estoque?
-                                    <input type="checkbox" name="estornarEstoque" id="estornarEstoque" class="input-produto input-checkbox" value="1">
-                                </label>
-                            </div>
-                            <!-- </div> -->
-                            <label for="comentarioPedido">
+                            <label for="comentarioPedido" class="label-column">
                                 Comentários
-                                <textarea name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo $infoPedidoBanco['comentario'] ?></textarea>
+                                <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."></textarea>
                             </label>
                         </fieldset>
                     </div>
-                    <div class="form-pedidos-items">
-                        <button type="submit" class="btn-alt-pedido"><span class="bi bi-check2"></span>Alterar</button>
-                        <a href="../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3" class="btn-alt-pedido"></span>Excluir</a>
-                        <!-- <a href="../view/visualizacao_pedidos.php" class="btn-alt-pedido">Voltar</a> -->
+                    <div class="form-pedidos-items form-pedidos-buttons">
+                        <button type="submit"><span class="bi bi-check2"></span>Salvar</button>
+                        <a href="../../controller/pedidoControle.php?op=limparCarrinho"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
                     </div>
                 </form>
             </div>
@@ -285,9 +254,9 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
     </div>
 
-    <script type="module" src="../../js/main.js"></script>
-
     <script src="../../js/busca_produtos_pedido.js"></script>
+    <script type="module" src="../../../js/main.js"></script>
+
 
 
     <!-- Acessibilidade -->

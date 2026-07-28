@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once '../model/usuario.class.php';
-require_once '../model/produto.class.php';
-require_once '../dao/produtodao.class.php';
-require_once '../dao/pedidodao.class.php';
-require_once '../util/seguranca.class.php';
+require_once '../../model/usuario.class.php';
+require_once '../../model/produto.class.php';
+require_once '../../dao/produtodao.class.php';
+require_once '../../dao/pedidodao.class.php';
+require_once '../../util/seguranca.class.php';
 
 Seguranca::verificarAcesso();
 
@@ -33,17 +33,17 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="shortcut icon" href="../../img/favicon/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../../../img/favicon/favicon.ico" type="image/x-icon">
 
-  <link rel="stylesheet" href="../../css/normalize.css">
-  <link rel="stylesheet" href="../../css/query.css">
-  <link rel="stylesheet" href="../../css/style.css">
-  <link rel="stylesheet" href="../../css/sidebar.css">
+  <link rel="stylesheet" href="../../../css/normalize.css">
+  <link rel="stylesheet" href="../../../css/query.css">
+  <link rel="stylesheet" href="../../../css/style.css">
+  <link rel="stylesheet" href="../../../css/sidebar.css">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 
-  <title>Pedido vendido - Nize</title>
+  <title>Pedido cancelado- Nize</title>
 </head>
 
 
@@ -61,21 +61,21 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
         </li>
 
         <li>
-          <a href="tela_inicial.php" class="link-logo" title="Tela inicial">
-            <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+          <a href="../general/tela_inicial.php" class="link-logo" title="Tela inicial">
+            <img src="../../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
           </a>
         </li>
 
         <li>
         <li>
-          <a href="tela_inicial.php" title="Tela inicial">
+          <a href="../general/tela_inicial.php" title="Tela inicial">
             <i class="bi bi-house"></i>
 
             <span>Tela inicial</span>
 
           </a>
         </li>
-        <a href="visualizacao_produtos.php" title="Tela de produtos">
+        <a href="../produtos/visualizacao_produtos.php" title="Tela de produtos">
           <i class="bi bi-box-seam"></i>
           <span>Produtos</span>
         </a>
@@ -87,13 +87,13 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
         </a>
         </li>
         </li>
-        <a href="minha_area.php" title="Minha área">
+        <a href="../usuario/minha_area.php" title="Minha área">
           <i class="bi bi-person-lines-fill"></i>
           <span>Minha área</span>
         </a>
         </li>
         <li>
-          <a href="../controller/logout.php" class="btn-sair" title="Sair">
+          <a href="../../controller/logout.php" class="btn-sair" title="Sair">
             <i class="bi bi-box-arrow-left"></i>
             <span>Encerrar sessão</span>
           </a>
@@ -107,8 +107,8 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
       <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
         <i class="bi bi-list"></i>
       </a>
-      <a href="tela_inicial.php" class="link-logo-header" title="Tela inicial">
-        <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+      <a href="../general/tela_inicial.php" class="link-logo-header" title="Tela inicial">
+        <img src="../../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
       </a>
     </div>
   </header>
@@ -123,20 +123,29 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
 
     <div class="internal-nav">
-      <div class="internal-nav-links" style="display: flex; align-items: center;">
-        <h2 class="num-pedido num-pedido-cancelado">Pedido vendido - <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
+      <div class="internal-nav-links">
+        <h2 class="num-pedido num-pedido-cancelado">Pedido cancelado - <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
         <a href="visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
       </div>
       <div class="texto-pedido-cancelado">
-        <p>Pedidos vendidos tem limitações de alteração</p>
+        <p>Não é possível fazer alterações em pedidos cancelados</p>
       </div>
+
     </div>
 
 
 
     <div class="container-horizontal">
       <div class="produtos-no-pedido">
+
+        <!-- Aqui tem que mudar. O preço do produto tem que vir do banco de dados. Ou seja, o $produtoVendido tem que ter o preço que está salvo no banco de dados. -->
+
         <?php
+        // $infoPedidoBanco[''];
+
+
+
+
         $_SESSION['total_compra'] = 0.00;
 
         if (!empty($_SESSION['carrinho'])) {
@@ -165,7 +174,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
               // Exibir o botão de remoção apenas se for a tela de alteração normal
               if (basename($_SERVER['PHP_SELF']) == 'alteracao_pedidos.php') {
-                echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'><span class='bi bi-x-square'>Remover</a>";
+                echo "<a href='../../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'><span class='bi bi-x'></span>Remover</a>";
               }
 
               echo "</div>";
@@ -183,49 +192,18 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
         $formatoData = strtotime($dataBanco);
         $data = date("d/m/Y", $formatoData);
         ?>
-        <form action="../controller/pedidoControle.php" method="get">
-          <input type="hidden" name="op" value="alterar">
-          <div class="form-pedidos-items">
-            <fieldset id="pedidos-form">
-              <!-- <div> -->
-              <label for="prazopedido">
-                Data
-                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required value="<?php echo $infoPedidoBanco['data'] ?>">
-              </label>
-              <label for="statusPedido">
-                Status do Pedido
-                <select name="statusPedido" id="statusPedido">
-                  <option value="vendido" <?= $infoPedidoSession['status'] == 'vendido' ? 'selected' : '' ?>>Vendido</option>
-                  <option value="cancelado" <?= $infoPedidoSession['status'] === 'cancelado' ? 'selected' : '' ?>>Cancelado</option>
-                </select>
-              </label>
-
-              <div id="containerVendido" style="display: none;">
-                <!-- <label class="label-baixa-estoque">
-                  Dar baixa no estoque?
-                  <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" class="input-produto input-checkbox" value="1">
-                </label> -->
-              </div>
-              <div id="containerCancelado" style="display: none;">
-                <p>Atenção: <br> Pedidos cancelados não podem ser editados!<br></p>
-                <label class="label-baixa-estoque">
-                  Devolver produtos ao estoque?
-                  <input type="checkbox" name="estornarEstoque" id="estornarEstoque" class="input-produto input-checkbox" value="1">
-                </label>
-              </div>
-              <!-- </div> -->
-              <label for="comentarioPedido">
-                Comentários
-                <textarea name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo $infoPedidoSession['comentario'] ?></textarea>
-              </label>
-            </fieldset>
+        <div class="form-pedidos-items">
+          <div id="pedidos-form" class="pedido-cancelado-infos">
+            <p><b>Data/prazo</b>: <?php echo $data; ?> </p><br>
+            <p><b>Comentários</b>: <?php echo $infoPedidoBanco['comentario']; ?></p> <br>
+            </p>
           </div>
-          <div class="form-pedidos-items">
-            <button type="submit" class="btn-alt-pedido"><span class="bi bi-check2"></span>Alterar</button>
-            <a href="../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');"><span class="bi bi-trash3" class="btn-alt-pedido"></span>Excluir</a>
-            <!-- <a href="../view/visualizacao_pedidos.php" class="btn-alt-pedido">Voltar</a> -->
-          </div>
-        </form>
+        </div>
+        <div class="form-pedidos-items">
+          <a href="../../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&clonar=true" class="btn-add"><span class="bi bi-copy"></span>Clonar</a>
+          <a href="../../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?');" class="btn-alt-pedido"><span class="bi bi-trash3"></span>Excluir</a>
+          <!-- <a href="../../controller/pedidoControle.php?op=limparCarrinho" class="btn-add">Voltar</a> -->
+        </div>
       </div>
     </div>
 
@@ -234,7 +212,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
   </div>
 
-  <script type="module" src="../../js/main.js"></script>
+  <script type="module" src="../../../js/main.js"></script>
 
   <!-- Acessibilidade -->
 

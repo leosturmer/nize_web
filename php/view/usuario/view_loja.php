@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once '../model/usuario.class.php';
-require_once '../model/produto.class.php';
-require_once '../dao/produtodao.class.php';
-require_once '../dao/usuariodao.class.php';
+require_once '../../model/usuario.class.php';
+require_once '../../model/produto.class.php';
+require_once '../../dao/produtodao.class.php';
+require_once '../../dao/usuariodao.class.php';
 
 
 $nome_visualizacao = trim($_GET['loja']);
@@ -29,7 +29,7 @@ $lista = $produtoDAO->listarTodosProdutosAbertos($id_usuario);
 if (!empty($_SESSION['usuario_logado'])) {
     $logo_link = "tela_inicial.php";
 } else {
-    $logo_link = "../../index.php";
+    $logo_link = "../../../index.php";
 }
 
 
@@ -43,12 +43,12 @@ if (!empty($_SESSION['usuario_logado'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="../../img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../img/favicon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../../css/normalize.css">
-    <link rel="stylesheet" href="../../css/query.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/sidebar.css">
+    <link rel="stylesheet" href="../../../css/normalize.css">
+    <link rel="stylesheet" href="../../../css/query.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/sidebar.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -70,7 +70,7 @@ if (!empty($_SESSION['usuario_logado'])) {
 
             <li class="li-img-sidenav">
                 <a href="<?php echo $logo_link ?>" class="link-logo" title="Tela inicial">
-                    <img src="../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
+                    <img src="../../../img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
                 </a>
             </li>
 
@@ -146,7 +146,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                 <i class="bi bi-bag"></i>
             </a>
             <a href="tela_inicial.php" class="link-logo-header" title="Tela inicial">
-                <img src="../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+                <img src="../../../img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
             </a>
         </div>
     </header>
@@ -223,7 +223,7 @@ if (!empty($_SESSION['usuario_logado'])) {
 
                     <div class="product-img-btn">
                         <?php if ($item['imagem']) {
-                            echo "<img src='../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                            echo "<img src='../../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
                         } else {
                             echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
                         } ?>
@@ -246,7 +246,7 @@ if (!empty($_SESSION['usuario_logado'])) {
     <div class="div-btn-wpp">
 
         <?php if ($aceita_visualizacao === 1 && !empty($telefone)): ?>
-            <a href="https://wa.me/<?php echo $telefone; ?>" target="_blank"><img src="../../img/icons/whatsapp64.png" alt="botão whatsapp"></a>
+            <a href="https://wa.me/<?php echo $telefone; ?>" target="_blank"><img src="../../../img/icons/whatsapp64.png" alt="botão whatsapp"></a>
         <?php endif; ?>
     </div>
 
@@ -254,7 +254,7 @@ if (!empty($_SESSION['usuario_logado'])) {
     </main>
 
     <script src="../../js/busca_produtos.js"></script>
-    <script type="module" src="../../js/main.js"></script>
+    <script type="module" src="../../../js/main.js"></script>
 
     <!-- Acessibilidade -->
 

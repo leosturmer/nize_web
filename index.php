@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nize- Organize seus pedidos</title>
 
-    <link rel="shortcut icon" href="../img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./img/favicon/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/query.css">
@@ -27,13 +27,13 @@
 
         <div id="container-index" class="container">
 
-            <img src="../../img/logo/nize_new.png" alt="Nize">
+            <img src="./img/logo/nize_new.png" alt="Nize">
 
             <h1 id="subtitulo-index">Orga<em>nize</em> suas vendas</h1>
 
             <div class="botoes-index">
-                <a href="./php/view/login.php">Fazer login</a>
-                <a href="./php/view/cadastro_usuario.php">Cadastre-se</a>
+                <a href="./php/view/general/login.php">Fazer login</a>
+                <a href="./php/view/general/cadastro_usuario.php">Cadastre-se</a>
             </div>
 
         </div>
@@ -42,7 +42,7 @@
     </main>
     
 
-    <script type="module" src="../../js/main.js"></script>
+    <script type="module" src="./js/main.js"></script>
 
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
