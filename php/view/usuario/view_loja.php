@@ -253,7 +253,7 @@ if (!empty($_SESSION['usuario_logado'])) {
     <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
     </main>
 
-    <script src="../../js/busca_produtos.js"></script>
+    <script src="../../../js/busca_produtos.js"></script>
     <script type="module" src="../../../js/main.js"></script>
 
     <!-- Acessibilidade -->

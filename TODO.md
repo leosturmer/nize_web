@@ -1,6 +1,6 @@
 ### O QUE ESTÁ DANDO DE ERRADO
 
-- Os ajax e filtros não estão funcionando
+- Os ajax e filtros não estão funcionando PARA A BUSCA DE PRODUTOS DENTRO DAS PÁGINAS DE PEDIDOS
 
 ## Posso fazer: 
 - Um AJAX pro administrador buscar o usuário pelo nome

@@ -287,7 +287,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
     <script type="module" src="../../../js/main.js"></script>
 
-    <script src="../../js/busca_produtos_pedido.js"></script>
+    <script src="../../../js/busca_produtos_pedido.js"></script>
 
 
     <!-- Acessibilidade -->

@@ -220,7 +220,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
   </main>
 
   <script type="module" src="../../../js/main.js"></script>
-  <script src="../../js/busca_produtos.js"></script>
+  <script src="../../../js/busca_produtos.js"></script>
 
   <!-- Acessibilidade -->
 

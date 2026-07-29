@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
             clearTimeout(temporizador);
 
             temporizador = setTimeout(() => {
-                fetch('busca_produtos_pedidos_ajax.php?pesquisaProdutos=' + encodeURIComponent(termo))
+                // Atualiza o caminho para o arquivo PHP correto
+                fetch('php/view/pedidos/busca_produtos_pedidos_ajax.php?pesquisaProdutos=' + encodeURIComponent(termo))
                     .then(response => {
                         if (!response.ok) throw new Error('Erro na resposta do servidor');
                         return response.text();

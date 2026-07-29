@@ -216,7 +216,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
   </div>
 
   <script type="module" src="../../../js/main.js"></script>
-  <script src="../../js/busca_pedidos.js"></script>
+  <script src="../../../js/busca_pedidos.js"></script>
 
   <!-- Acessibilidade -->
 
