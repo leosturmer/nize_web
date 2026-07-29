@@ -171,18 +171,18 @@ $usuario = unserialize($_SESSION['usuario_logado']);
             <hr>
             <p class="p-info-pedidos-online">Para permitir pedidos online, os três campos abaixo são obrigatórios</p>
             <label for="aceitaVisualizacao" class="checkbox-acc">Abrir visualização da loja?
-              <input type="checkbox" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1' <?php echo $checkViewLoja ?>>
+              <input type="checkbox" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1' autocomplete="off" <?php echo $checkViewLoja ?>>
             </label>
             <label for="usuNomeView"><b>Link de visualização</b></label>
             <div class="checkbox-acc">
               <span>nize.com.br/loja/</span>
-              <input type="text" name="usuNomeView" pattern="^\S+$" class="input-login input-nome-view" placeholder="nomedaloja" value="<?php echo $usuario->nome_visualizacao ?>" title="Link para a loja não deve conter espaços">
+              <input type="text" name="usuNomeView" pattern="^\S+$" class="input-login input-nome-view" placeholder="nomedaloja" value="<?php echo $usuario->nome_visualizacao ?>" autocomplete="off" title="Link para a loja não deve conter espaços">
             </div>
             <div class="checkbox-acc" style="margin-top: 1em;">
               <div>
                 <label for="usuTelefone">Número de WhatsApp: </label>
               </div>
-              <input type="text" name="usuTelefone" class="input-login input-nome-view" placeholder="55 55 99999999" value="<?php echo $usuario->telefone ?>" title="Telefone com (55) DDD e número">
+              <input type="text" name="usuTelefone" class="input-login input-nome-view" placeholder="55 55 99999999" value="<?php echo $usuario->telefone ?>" autocomplete="off" title="Telefone com (55) DDD e número">
             </div>
           </div>
 

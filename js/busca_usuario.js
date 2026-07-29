@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const pesquisaUsuario = document.getElementById("pesquisa-usuario");
-  // const filtroEstoque = document.getElementById('filtro-nome');
-  // const filtroEncomenda = document.getElementById('filtro-encomenda');
+  const pesquisaUsuario = document.getElementById("pesquisa-usuarios");
   const filtroOrder = document.getElementById("filtro-order");
   const btnLimpar = document.getElementById("btn-limpar-filtros"); // Captura o novo botão
   const listaUsuario = document.querySelector(".lista_usuarios_cadastrados");
@@ -10,24 +8,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function executarBusca() {
     let termo = pesquisaUsuario ? pesquisaUsuario.value : "";
-    // let estoque = filtroEstoque ? filtroEstoque.value : '';
-    // let encomenda = filtroEncomenda ? filtroEncomenda.value : '';
     let order = filtroOrder ? filtroOrder.value : "";
 
-    // Captura o ID da loja se ele estiver presente na URL da página atual
     const urlParams = new URLSearchParams(window.location.search);
-    // const idLoja = urlParams.get('id');
-
-    // const nome_loja = urlParams.get('loja');
 
     clearTimeout(temporizador);
 
     temporizador = setTimeout(() => {
       let url = "";
-
-      // Se houver idLoja na URL, significa que estamos na view_loja.php (pública)
-
-      // Caso contrário, mantém o fluxo antigo da área interna (produtos)
       url = `busca_usuario_ajax.php?pesquisaUsuario=${encodeURIComponent(
         termo
       )}&ordenarPor=${encodeURIComponent(order)}`;

@@ -136,7 +136,7 @@ if (!$produtoData) {
             </label>
             <label class="checkbox-acc">
               <strong>Aceita encomendas</strong>:
-              <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto" value='1' <?php echo $produtoData['aceita_encomenda'] == 1 ? 'checked' : ''; ?>>
+              <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto" value='1' autocomplete="off" <?php echo $produtoData['aceita_encomenda'] == 1 ? 'checked' : ''; ?>>
             </label>
           </div>
 
@@ -155,12 +155,12 @@ if (!$produtoData) {
           </label>
           <label class="checkbox-acc" for="">
             <strong>Disponibilizar para visualização</strong>:
-            <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" <?php echo $produtoData['aceita_visualizacao'] == 1 ? 'checked' : ''; ?>>
+            <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" autocomplete="off" <?php echo $produtoData['aceita_visualizacao'] == 1 ? 'checked' : ''; ?>>
           </label>
 
           <input type="hidden" name="imagem_clonada" value="<?php echo $produtoData['imagem']; ?>">
           <label><strong>Imagem</strong>:
-            <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
+            <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg" autocomplete="off">
           </label>
           <?php if (!empty($produtoData['imagem'])): ?>
             <?php echo "<img src='../persistence/uploads/" . htmlspecialchars($produtoData['imagem']) . "' alt='imagem do produto' class='img-produtos img-alt-produto'>" ?>

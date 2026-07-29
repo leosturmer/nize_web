@@ -40,9 +40,9 @@
             <div class="div-login">
                 <form action="../../controller/loginControle.php" method="post" id="form-login">
                     <label for="email">E-mail:</label>
-                    <input type="email" placeholder="e-mail" class="input-login" name="txtemail" required>
+                    <input type="email" placeholder="e-mail" class="input-login" name="txtemail" autocomplete="off" required>
                     <label for="senha"> Senha:</label>
-                    <input type="password" placeholder="senha" class="input-login" name="txtsenha" required>
+                    <input type="password" placeholder="senha" class="input-login" name="txtsenha" autocomplete="off" required>
                     <button type="submit">Entrar</button>
                 </form>
             </div>

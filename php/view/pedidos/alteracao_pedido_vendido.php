@@ -190,7 +190,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
               <!-- <div> -->
               <label for="prazopedido">
                 Data
-                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required value="<?php echo $infoPedidoBanco['data'] ?>">
+                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" autocomplete="off" required value="<?php echo $infoPedidoBanco['data'] ?>">
               </label>
               <label for="statusPedido">
                 Status do Pedido
@@ -210,7 +210,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                 <p>Atenção: <br> Pedidos cancelados não podem ser editados!<br></p>
                 <label class="label-baixa-estoque">
                   Devolver produtos ao estoque?
-                  <input type="checkbox" name="estornarEstoque" id="estornarEstoque" class="input-produto input-checkbox" value="1">
+                  <input type="checkbox" name="estornarEstoque" id="estornarEstoque" class="input-produto input-checkbox" value="1" autocomplete="off">
                 </label>
               </div>
               <!-- </div> -->

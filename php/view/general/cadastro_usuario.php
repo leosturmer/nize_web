@@ -44,20 +44,20 @@
                 <form action="../../controller/cadastroControle.php?op=cadastrar" method="post" id="form-cadastro">
                     <label for="usuNome">Nome completo*</label>
 
-                    <input type="text" placeholder="digite seu nome" class="input-login" name="usuNome" required>
+                    <input type="text" placeholder="digite seu nome" class="input-login" name="usuNome" autocomplete="off" required>
 
                     <label for="usuLoja">Nome da loja (opcional)</label>
-                    <input type="text" placeholder="nome  da loja" class="input-login" name="usuLoja">
+                    <input type="text" placeholder="nome  da loja" class="input-login" name="usuLoja" autocomplete="off">
 
 
                     <label for="usuEmail">E-mail*</label>
-                    <input type="email" placeholder="e-mail" class="input-login" name="usuEmail" required>
+                    <input type="email" placeholder="e-mail" class="input-login" name="usuEmail" autocomplete="off" required>
 
                     <label for="usuSenha">Senha*</label>
-                    <input type="password" placeholder="senha" class="input-login" name="usuSenha" required>
+                    <input type="password" placeholder="senha" class="input-login" name="usuSenha" autocomplete="off" required>
 
                     <label for="confirmaSenha">Repita a senha*</label>
-                    <input type="password" placeholder="repita a senha" class="input-login" name="confirmaSenha" required>
+                    <input type="password" placeholder="repita a senha" class="input-login" name="confirmaSenha" autocomplete="off" required>
                     <p>8 caracteres (no mínimo 1 maiúscula, 1 minúscula e 1 número)</p>
 
 

@@ -219,7 +219,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                         <fieldset id="pedidos-form">
                             <label for="prazoPedido" class="label-column">
                                 Prazo de entrega
-                                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required>
+                                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" autocomplete="off" required>
                             </label>
                             <label for="statusPedido" class="label-column">
                                 Status do pedido
@@ -231,7 +231,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                             </label>
                             <div id="containerVendido" style="display: none;">
                                 <label class="label-baixa-estoque">Dar baixa no estoque?
-                                    <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" class="input-produto input-checkbox" value="1">
+                                    <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" class="input-produto input-checkbox" value="1" autocomplete="off">
                                 </label>
                             </div>
                             <label for="comentarioPedido" class="label-column">

@@ -134,7 +134,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
           <summary><span class="bi bi-filter"></span>Filtrar</summary>
 
           <div>
-            <input type="date" id="filtro-data">
+            <input type="date" id="filtro-data" autocomplete="off">
             <select id="filtro-status">
               <option value="">Todos os status</option>
               <option value="encomendado">Encomendado</option>

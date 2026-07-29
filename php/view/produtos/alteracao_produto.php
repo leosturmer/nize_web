@@ -168,7 +168,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
           </label>
           <label class="checkbox-acc" for="">
             <strong>Disponibilizar para visualização</strong>
-            <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" <?php echo " $checkVisualizacao"; ?>>
+              <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" autocomplete="off" <?php echo " $checkVisualizacao";?>>
           </label>
 
 

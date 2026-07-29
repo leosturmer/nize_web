@@ -33,7 +33,7 @@ if (empty($lista_usuarios)) {
                 <div class="texto-users">
                     <p>
                         Nome: <?php echo $usuarioCadastrado['nome'] ?> <br>
-                        Login: <?php echo $usuarioCadastrado['login'] ?> <br>
+                        E-mail: <?php echo $usuarioCadastrado['login'] ?> <br>
                     </p>
                 </div>
                 <div class="btns-admin-user">

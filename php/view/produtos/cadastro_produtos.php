@@ -127,7 +127,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
             <label class="checkbox-acc" for="">
               <strong>Aceita encomendas</strong>:
-              <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto input-checkbox" value='1'>
+              <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto input-checkbox" value='1' autocomplete="off">
             </label>
 
 
@@ -153,13 +153,13 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
           <label class="checkbox-acc" for="">
             <strong>Disponibilizar para visualização:</strong>
-            <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1'>
+            <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1' autocomplete="off">
           </label>
 
 
           <label><strong>Imagem</strong>: (max. 2mb)
           </label>
-          <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
+          <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg" autocomplete="off">
 
         </div>
 

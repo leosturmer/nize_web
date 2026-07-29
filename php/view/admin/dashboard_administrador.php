@@ -89,12 +89,21 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
 
         <h1 class="h1-admin">Tela administrador</h1>
 
-        <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-pesquisa-usuarios">
-            <input type="text" id="pesquisa-usuarios" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
-        </form>
+        <div class="internal-nav-inputs">
+            <form onsubmit="return false;" id="form-pesquisa-usuarios" class="form-pesquisa-usuarios">
+                <input type="text" id="pesquisa-usuarios" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
+            </form>
+            <select id="filtro-order">
+                  <option value="">Ordenar por</option>
+                  <option value="nome-asc">Nome (crescente)</option>
+                  <option value="nome-desc">Nome (descrescente)</option>
+                  <option value="email-asc">E-mail (crescente)</option>
+                  <option value="email-desc">E-mail (descrescente)</option>
+                </select>
+                <button type="button" id="btn-limpar-filtros"><span class="bi bi-arrow-clockwise"></span>Limpar</button>
+        </div>
 
         <div class="main-administrador">
-
             <div id="lista_usuarios_cadastrados">
                 <?php
                 foreach ($lista_usuarios as $usuarioCadastrado):
@@ -104,7 +113,7 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
                             <div class="texto-users">
                                 <p>
                                     Nome: <?php echo $usuarioCadastrado['nome'] ?> <br>
-                                    Login: <?php echo $usuarioCadastrado['login'] ?> <br>
+                                    E-mail: <?php echo $usuarioCadastrado['login'] ?> <br>
                                 </p>
                             </div>
                             <div class="btns-admin-user">

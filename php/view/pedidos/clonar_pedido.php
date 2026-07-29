@@ -152,9 +152,9 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                                 } ?>
                                 <form action="../../controller/pedidoControle.php" method="get" class="product-btns">
                                     <input type="number" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
-                                    <input type="hidden" name="op" value="adicionarQuantidade">
-                                    <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
-                                    <input type="submit" class="btn-add" value="+ Adicionar">
+                                    <input type="hidden" name="op" value="adicionarQuantidade" autocomplete="off">
+                                    <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>" autocomplete="off">
+                                    <input type="submit" class="btn-add" value="+ Adicionar" autocomplete="off">
                                 </form>
                             </div>
                         </div>
@@ -208,7 +208,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                         <fieldset id="pedidos-form">
                             <label for="prazoPedido" class="label-column">
                                 Prazo de entrega
-                                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" required>
+                                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" autocomplete="off" required>
                             </label>
                             <label for="statusPedido" class="label-column">
                                 Status
@@ -220,7 +220,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                             </label>
                             <div id="containerVendido" style="display: none;">
                                 <label class="label-baixa-estoque">Dar baixa no estoque?
-                                    <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" class="input-produto input-checkbox" value="1">
+                                    <input type="checkbox" name="darBaixaEstoque" id="darBaixaEstoque" class="input-produto input-checkbox" value="1" autocomplete="off">
                                 </label>
                             </div>
                             <label for="comentarioPedido" class="label-column">
