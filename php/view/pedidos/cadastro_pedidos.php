@@ -254,8 +254,8 @@ if (isset($_SESSION['encomendaSelecionada'])) {
 
     </div>
 
-    <script src="../../../js/busca_produtos_pedido.js"></script>
     <script type="module" src="../../../js/main.js"></script>
+    <script src="../../../js/busca_produtos_pedido.js"></script>
 
 
 
