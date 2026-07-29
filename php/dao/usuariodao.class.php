@@ -174,12 +174,12 @@ class UsuarioDAO
 
             $sqlStr = "SELECT id_usuario, login, nome, tipo_usuario FROM usuario";
 
-            if ($pesquisa) {
-                $sqlStr .= " AND (login LIKE :busca OR nome LIKE :busca2)";
+            if (!empty($pesquisa)) {
+                $sqlStr .= " WHERE (login LIKE :busca OR nome LIKE :busca2)";
             }
 
             if ($ordenar) {
-                if ($ordenar  === "nome-asc") {
+                if ($ordenar === "nome-asc") {
                     $sqlStr .= " ORDER BY nome ASC";
                 } else if ($ordenar === "nome-desc") {
                     $sqlStr .= " ORDER BY nome DESC";
@@ -189,7 +189,7 @@ class UsuarioDAO
                     $sqlStr .= " ORDER BY login DESC";
                 }
             } else {
-                $sqlStr .= " ORDER BY nome COLLATE NOCASE ASC;";
+                $sqlStr .= " ORDER BY nome COLLATE NOCASE ASC";
             }
 
             $sql = $this->conexao->prepare($sqlStr);

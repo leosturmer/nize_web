@@ -89,18 +89,23 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
 
         <h1 class="h1-admin">Tela administrador</h1>
 
-        <div class="internal-nav-inputs">
+        <div class="filters-admin">
             <form onsubmit="return false;" id="form-pesquisa-usuarios" class="form-pesquisa-usuarios">
-                <input type="text" id="pesquisa-usuarios" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
+                <input type="text" id="pesquisa-usuarios" placeholder="Busque pelo nome ou e-mail " autocomplete="off">
             </form>
-            <select id="filtro-order">
-                  <option value="">Ordenar por</option>
-                  <option value="nome-asc">Nome (crescente)</option>
-                  <option value="nome-desc">Nome (descrescente)</option>
-                  <option value="email-asc">E-mail (crescente)</option>
-                  <option value="email-desc">E-mail (descrescente)</option>
+            
+            <details class="filtros-produtos">
+                <summary><span class="bi bi-filter"></span>Ordenar por</summary>
+
+                <select id="filtro-order">
+                    <option value="">Ordenar por</option>
+                    <option value="nome-asc">Nome (crescente)</option>
+                    <option value="nome-desc">Nome (descrescente)</option>
+                    <option value="email-asc">E-mail (crescente)</option>
+                    <option value="email-desc">E-mail (descrescente)</option>
                 </select>
                 <button type="button" id="btn-limpar-filtros"><span class="bi bi-arrow-clockwise"></span>Limpar</button>
+            </details>
         </div>
 
         <div class="main-administrador">
@@ -118,7 +123,7 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
                             </div>
                             <div class="btns-admin-user">
                                 <form action="../../controller/usuarioControle.php?op=excluirUsuario&id=<?php echo $usuarioCadastrado['id_usuario'] ?>" method="post">
-                                    <input type="hidden" name="id" value="<?php echo $usuarioCadastrado['id_usuario']; ?>">
+                                    <input type="hidden" name="id" value="<?php echo $usuarioCadastrado['id_usuario']; ?>" autocomplete="off">
                                     <button class="btn-excluir" type="submit"><span class="bi bi-trash3"></span>Excluir</button>
                                 </form>
                             </div>

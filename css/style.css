@@ -61,7 +61,18 @@
 
 .internal-nav-inputs {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: baseline;
+  margin-bottom: 1em;
+}
+
+.internal-nav-inputs details{
+  margin-left: 1em;
+}
+
+.filters-admin {
+  display: flex;
+  justify-content: space-around;
   align-items: baseline;
   margin-bottom: 1em;
 }
@@ -163,7 +174,8 @@
 /* FORMULÁRIOS DE PESQUISA */
 
 #form-pesquisa-produtos,
-#form-pesquisa-pedidos {
+#form-pesquisa-pedidos,
+#form-pesquisa-usuarios {
   position: relative;
   display: inline-block;
   margin-top: 0.8em;
@@ -180,7 +192,8 @@
 }
 
 #pesquisa-produtos,
-#pesquisa-pedidos {
+#pesquisa-pedidos,
+#pesquisa-usuarios {
   border: var(--border);
   box-shadow: var(--box-shadow);
   padding: 0.8em;
@@ -189,7 +202,8 @@
 }
 
 #pesquisa-produtos:focus,
-#pesquisa-pedidos:focus {
+#pesquisa-pedidos:focus,
+#pesquisa-usuarios:focus {
   border: var(--border-focus-purple);
   box-shadow: var(--shadow-focus-purple);
   outline: none;

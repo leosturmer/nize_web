@@ -237,14 +237,12 @@
 
 @media (max-width: 900px) {
   input#pesquisa-produtos,
-  input#pesquisa-pedidos {
+  input#pesquisa-pedidos,
+  input#pesquisa-usuarios {
     font-size: 12px;
     /* width: 60dvw; */
   }
 
-  /* #pesquisa-produtos::placeholder {
-    color: transparent;
-  } */
 
   span#search-icon {
     font-size: 16px;
@@ -749,7 +747,8 @@
   }
 
   form#form-pesquisa-produtos,
-  form#form-pesquisa-pedidos {
+  form#form-pesquisa-pedidos,
+  form#form-pesquisa-usuarios {
     /* border: var(--border-thin); */
     width: 55%;
     /* max-width: 50dvw; */
@@ -760,18 +759,17 @@
     left: 1em;
   }
 
-  /* form#form-pesquisa-produtos:focus {
-  } */
-
   input#pesquisa-produtos,
-  input#pesquisa-pedidos {
+  input#pesquisa-pedidos,
+  input#pesquisa-usuarios {
     max-width: 100%;
     border: var(--border-thin);
     box-shadow: none;
   }
 
   input#pesquisa-produtos:focus,
-  input#pesquisa-pedidos:focus {
+  input#pesquisa-pedidos:focus,
+  input#pesquisa-usuarios:focus {
     border: var(--border-focus-purple);
     box-shadow: var(--shadow-focus-purple);
   }
