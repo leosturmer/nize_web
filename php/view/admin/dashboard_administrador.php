@@ -89,7 +89,12 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
 
         <h1 class="h1-admin">Tela administrador</h1>
 
+        <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-pesquisa-clientes">
+            <input type="text" id="pesquisa-clientes" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
+        </form>
+
         <div class="main-administrador">
+
             <div id="lista_usuarios_cadastrados">
                 <?php
                 foreach ($lista_usuarios as $usuarioCadastrado):
@@ -103,7 +108,7 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
                                 </p>
                             </div>
                             <div class="btns-admin-user">
-                                <form action="../controller/usuarioControle.php?op=excluirUsuario&id=<?php echo $usuarioCadastrado['id_usuario'] ?>" method="post">
+                                <form action="../../controller/usuarioControle.php?op=excluirUsuario&id=<?php echo $usuarioCadastrado['id_usuario'] ?>" method="post">
                                     <input type="hidden" name="id" value="<?php echo $usuarioCadastrado['id_usuario']; ?>">
                                     <button class="btn-excluir" type="submit"><span class="bi bi-trash3"></span>Excluir</button>
                                 </form>
@@ -120,6 +125,7 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
     </main>
 
     <script type="module" src="../../../js/main.js"></script>
+    <script type="module" src="../../../js/busca_clientes.js"></script>
 
     <!-- Acessibilidade -->
 
