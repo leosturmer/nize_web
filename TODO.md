@@ -1,20 +1,14 @@
 ### O QUE ESTÁ DANDO DE ERRADO
 
-- Os ajax e filtros não estão funcionando PARA A BUSCA DE PRODUTOS DENTRO DAS PÁGINAS DE PEDIDOS
-
 ## Posso fazer: 
 - Um AJAX pro administrador buscar o usuário pelo nome
-
-#### No CSS:
-
-## TESTAR TUDO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 #### Para o final:
 
 - Botão de resetar senha? VOU FAZER RESET DE SENHA??????????
     - tem que enviar email com link de resetar senha
 
-- Testar TUDO.
+- Testar TUDO!!!!!!!!!!!!!!!!
 
 
 ### Na documentação:
