@@ -89,8 +89,8 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
 
         <h1 class="h1-admin">Tela administrador</h1>
 
-        <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-pesquisa-clientes">
-            <input type="text" id="pesquisa-clientes" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
+        <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-pesquisa-usuarios">
+            <input type="text" id="pesquisa-usuarios" placeholder="Busque pelo nome ou descrição " autocomplete="off"><span id="search-icon" class="bi bi-search"></span>
         </form>
 
         <div class="main-administrador">
@@ -125,7 +125,7 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
     </main>
 
     <script type="module" src="../../../js/main.js"></script>
-    <script type="module" src="../../../js/busca_clientes.js"></script>
+    <script type="module" src="../../../js/busca_usuario.js"></script>
 
     <!-- Acessibilidade -->
 

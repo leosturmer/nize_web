@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const pesquisaClientes = document.getElementById("pesquisa-clientes");
+  const pesquisaUsuario = document.getElementById("pesquisa-usuario");
   // const filtroEstoque = document.getElementById('filtro-nome');
   // const filtroEncomenda = document.getElementById('filtro-encomenda');
   const filtroOrder = document.getElementById("filtro-order");
   const btnLimpar = document.getElementById("btn-limpar-filtros"); // Captura o novo botão
-  const listaClientes = document.querySelector(".lista_usuarios_cadastrados");
+  const listaUsuario = document.querySelector(".lista_usuarios_cadastrados");
 
   let temporizador;
 
   function executarBusca() {
-    let termo = pesquisaClientes ? pesquisaClientes.value : "";
+    let termo = pesquisaUsuario ? pesquisaUsuario.value : "";
     // let estoque = filtroEstoque ? filtroEstoque.value : '';
     // let encomenda = filtroEncomenda ? filtroEncomenda.value : '';
     let order = filtroOrder ? filtroOrder.value : "";
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Se houver idLoja na URL, significa que estamos na view_loja.php (pública)
 
       // Caso contrário, mantém o fluxo antigo da área interna (produtos)
-      url = `busca_clientes_ajax.php?pesquisaCliente=${encodeURIComponent(
+      url = `busca_usuario_ajax.php?pesquisaUsuario=${encodeURIComponent(
         termo
       )}&ordenarPor=${encodeURIComponent(order)}`;
 
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (listaProdutos) {
-    if (pesquisaClientes) {
+    if (pesquisaUsuario) {
       pesquisaProdutos.addEventListener("input", executarBusca);
     }
     if (filtroOrder) {
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Ação do botão de limpar filtros
     if (btnLimpar) {
       btnLimpar.addEventListener("click", function () {
-        if (pesquisaClientes) pesquisaClientes.value = ""; // Limpa o texto
+        if (pesquisaUsuario) pesquisaUsuario.value = ""; // Limpa o texto
         if (filtroOrder) filtroOrder.value = "";
 
         executarBusca(); // Recarrega a lista completa
