@@ -1,20 +1,9 @@
-### O QUE ESTÁ DANDO DE ERRADO
-
-## Posso fazer: 
-- Um AJAX pro administrador buscar o usuário pelo nome
-
 #### Para o final:
-
-- Botão de resetar senha? VOU FAZER RESET DE SENHA??????????
-    - tem que enviar email com link de resetar senha
+- Trocar nome de visualização para exibição????
 
 - Testar TUDO!!!!!!!!!!!!!!!!
 
-
 ### Na documentação:
-
-- Mudar as coisas de banco (diagramas)
-    - ver os created_at
 
 - Adicionar o ADMINISTRADOR na documentação toda
 
