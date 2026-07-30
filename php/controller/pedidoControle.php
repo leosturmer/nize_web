@@ -184,12 +184,15 @@ switch ($opcao) {
             $comentarioPedido = trim($_GET['comentarioPedido'] ?? "");
             $darBaixaEstoque = isset($_GET['darBaixaEstoque']) ? 1 : 0;
 
+            if ($darBaixaEstoque == 1) {
+                $comentarioFinal = "### Pedido com baixa no estoque ### " . $comentarioPedido;
+            }
 
             $novoPedido = new Pedido();
             $novoPedido->id_usuario = $usuario->id_usuario;
             $novoPedido->data = $prazoPedido;
             $novoPedido->status = $statusPedido;
-            $novoPedido->comentario = $comentarioPedido;
+            $novoPedido->comentario = $comentarioFinal;
             $novoPedido->produtos = $_SESSION['carrinho'];
             $novoPedido->valor_final = $_SESSION['total_compra'];
 
@@ -253,12 +256,12 @@ switch ($opcao) {
             $_SESSION['ultimo_pedido_id'] = $numero_formatado;
             $_SESSION['msg'] = "<p class='success-msg'>Pedido #{$numero_formatado} enviado com sucesso! Aguarde, você será redirecionado...</p>";
             
-            header("Location: ../view/general/view_loja.php?loja=" . urlencode($loja));
+            header("Location: ../view/usuario/view_loja.php?loja=" . urlencode($loja));
             exit;
 
         } catch (Exception $e) {
             $_SESSION['msg'] = "<p class='error-msg'>Algo deu errado ao enviar seu pedido! Tente novamente.</p>";
-            header("Location: ../view/general/view_loja.php?loja=" . urlencode($loja));
+            header("Location: ../view/usuario/view_loja.php?loja=" . urlencode($loja));
             exit;
         }
 
@@ -274,12 +277,20 @@ switch ($opcao) {
             $darBaixaEstoque = isset($_GET['darBaixaEstoque']) ? 1 : 0;
             $estornarEstoque = isset($_GET['estornarEstoque']) ? 1 : 0;
 
+            if ($darBaixaEstoque == 1) {
+                $comentarioFinal = "### Pedido com baixa no estoque ### " . $comentarioPedido;
+            }
+
+            if ($estornarEstoque == 1) {
+                $comentarioFinal = "### Pedido estornado para o estoque ### " . $comentarioPedido;
+            }
+
             $novoPedido = new Pedido();
             $novoPedido->id_pedido = $id_pedido;
             $novoPedido->id_usuario = $usuario->id_usuario;
             $novoPedido->data = $prazoPedido;
             $novoPedido->status = $statusPedido;
-            $novoPedido->comentario = $comentarioPedido;
+            $novoPedido->comentario = $comentarioFinal;
             $novoPedido->valor_final = $_SESSION['total_compra'];
 
             // if ($statusPedido !== "vendido"){

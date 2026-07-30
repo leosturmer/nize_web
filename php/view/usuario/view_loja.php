@@ -119,7 +119,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                 </div>
 
                 <div class="pedido-loja">
-                    <form action="../controller/pedidoControle.php" method="get">
+                    <form action="../../controller/pedidoControle.php" method="get">
                         <input type="hidden" name="op" value="solicitarPedido">
                         <input type="hidden" name="loja" value="<?php echo htmlspecialchars($nome_visualizacao); ?>">
 
@@ -131,7 +131,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                             <div class="product-btns">
                                 <button type="submit"><span class="bi bi-check2"></span>Enviar</button>
                                 <!-- Botão Limpar apenas para a view_loja -->
-                                <a href="../controller/pedidoControle.php?op=limparCarrinho&origem=loja&loja=<?php echo urlencode($nome_visualizacao); ?>"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
+                                <a href="../../controller/pedidoControle.php?op=limparCarrinho&origem=loja&loja=<?php echo urlencode($nome_visualizacao); ?>"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
                             </div>
                         </div>
                     </form>
