@@ -74,7 +74,7 @@ switch ($opcao) {
             $_SESSION['msg'] = "<p class='error-msg'>Insira uma quantidade válida!</p>";
         }
 
-        header("Location: ../view/general/view_loja.php?loja=" . urlencode($nome_visualizacao));
+        header("Location: ../view/usuario/view_loja.php?loja=" . urlencode($nome_visualizacao));
         exit;
 
     case "removerQuantidade":
@@ -89,7 +89,7 @@ switch ($opcao) {
                 unset($_SESSION['sacola'][$id_produto]);
                 $_SESSION['msg'] = "<p class='success-msg'>Produto removido da sacola.</p>";
             }
-            header("Location: ../view/general/view_loja.php?loja=" . urlencode($loja));
+            header("Location: ../view/usuario/view_loja.php?loja=" . urlencode($loja));
             exit;
         } else {
             // Remoção do carrinho interno do gestor
@@ -116,7 +116,7 @@ switch ($opcao) {
         if ($origem === 'loja') {
             // Limpa apenas a sacola da loja pública
             $_SESSION['sacola'] = [];
-            header("Location: ../view/general/view_loja.php?loja=" . urlencode($loja));
+            header("Location: ../view/usuario/view_loja.php?loja=" . urlencode($loja));
         } else {
             // Limpa o carrinho administrativo
             Seguranca::verificarAcesso();
@@ -219,7 +219,7 @@ switch ($opcao) {
 
             if (empty($_SESSION['sacola'])) {
                 $_SESSION['msg'] = "<p class='error-msg'>Sua sacola está vazia!</p>";
-                header("Location: ../view/general/view_loja.php?loja=" . urlencode($loja));
+                header("Location: ../view/usuario/view_loja.php?loja=" . urlencode($loja));
                 exit;
             }
 
