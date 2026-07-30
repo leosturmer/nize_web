@@ -1,0 +1,5 @@
+- Copiar todos arquivos para um pendrive
+- Levar um banco de dados pronto
+- Levar as fotos dos produtos (!!!!)
+- Levar os arquivos do banco de dados / PHP para poder configurar
+- Ver de novo no Senac como configurar <code>php --ini</code>
