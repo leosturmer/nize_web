@@ -49,15 +49,16 @@ USE nize_database;
     );
 
     CREATE TABLE IF NOT EXISTS pedidos (
-            id_pedido INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-            id_usuario INTEGER NOT NULL,
-            data TEXT NOT NULL,
-            valor_final REAL NOT NULL,
-            status TEXT NOT NULL,
-            comentario TEXT NULL,
-            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
-    );
+        id_pedido INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        num_pedido INTEGER NULL,
+        id_usuario INTEGER NOT NULL,
+        data TEXT NOT NULL,
+        valor_final REAL NOT NULL,
+        status TEXT NOT NULL,
+        comentario TEXT NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
+);
 
     CREATE TABLE IF NOT EXISTS pedido_produto (
         id_pedido INTEGER NOT NULL,
@@ -75,10 +76,32 @@ SELECT id_usuario, id_produto, nome, quantidade, valor_unitario, valor_custo, ac
 FROM produtos;
 
 CREATE VIEW IF NOT EXISTS view_pedidos AS
-SELECT v.id_usuario, v.id_pedido, p.nome, vp.quantidade, v.data, vp.valor_unitario, v.valor_final, v.status, v.comentario
+SELECT v.id_usuario, v.id_pedido, v.num_pedido, p.nome, vp.quantidade, v.data, vp.valor_unitario, v.valor_final, v.status, v.comentario
 FROM pedidos v
 INNER JOIN pedido_produto vp ON v.id_pedido = vp.id_pedido
 INNER JOIN produtos p ON vp.id_produto = p.id_produto;
+
+-- Criando um trigger
+
+CREATE TRIGGER IF NOT EXISTS gerar_num_pedido_por_usuario
+AFTER INSERT ON pedidos
+FOR EACH ROW
+WHEN NEW.num_pedido IS NULL OR NEW.num_pedido = 0
+BEGIN
+    UPDATE pedidos
+    SET num_pedido = (
+        SELECT COALESCE(MAX(num_pedido), 0) + 1
+        FROM pedidos
+        WHERE id_usuario = NEW.id_usuario
+    )
+    WHERE id_pedido = NEW.id_pedido;
+END;
+
+
+
+
+
+
 
 -- adicionando administrador
 
