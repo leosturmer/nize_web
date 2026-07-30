@@ -1,7 +1,15 @@
+### Arrumar erro
+
+- Na tela de view_loja, está dando erro para inserir pedido na loja
+
 #### Para o final:
 - Trocar nome de visualização para exibição????
 
 - Testar TUDO!!!!!!!!!!!!!!!!
+
+#### Nas capturas de tela:
+
+- Tela de visualização de pedidos e produtos e etc tem que fazer uma loja bonita para mostrar os produtos e pedidos
 
 ### Na documentação:
 
