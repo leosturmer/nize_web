@@ -11,6 +11,8 @@ class Usuario{
     
     private $loja;
     private $tipoUsuario;
+    private $created_at;
+
 
     public function __construct(){
 

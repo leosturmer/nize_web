@@ -4,10 +4,12 @@ class Pedido {
     private $id_pedido;
     private $id_usuario;
     private $data;
+    private $valor_final;
     private $status;
     private $comentario;
-    private $valor_final;
     private $produtos;
+    private $created_at;
+    private $num_pedido;
 
     public function __construct(){
 

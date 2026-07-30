@@ -9,6 +9,8 @@ class Produto {
     private $imagem;
     private $aceita_encomenda;
     private $descricao;
+    private $created_at;
+
 
     // public function __construct(){
     // }

@@ -55,7 +55,7 @@ if (!empty($listaPedidos)) {
 
 ?>
         <div class="texto-pedido">
-            <h2>Número do pedido: <?php echo $numero_pedido = str_pad($id_pedido, 4, '0', STR_PAD_LEFT); ?></h2>
+            <h2>Número do pedido: <?php echo $numero_pedido = str_pad($dados_pedido['num_pedido'], 4, '0', STR_PAD_LEFT); ?></h2>
             <?php
             foreach ($dados_pedido['produtos'] as $produto) {
                 echo '<p><strong>' . htmlspecialchars($produto['nome']) . '</strong>: ' . htmlspecialchars($produto['quantidade']) . ' unidades</p>';

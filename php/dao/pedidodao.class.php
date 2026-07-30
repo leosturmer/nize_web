@@ -178,7 +178,7 @@ class PedidoDAO
     {
         try {
             $sql = $this->conexao->prepare(
-                "SELECT id_pedido, data, nome, quantidade, comentario, status, valor_unitario, valor_final
+                "SELECT id_pedido, num_pedido, data, nome, quantidade, comentario, status, valor_unitario, valor_final
                     FROM view_pedidos 
                     WHERE id_usuario = :id_usuario
                     ORDER BY id_pedido DESC"
@@ -197,7 +197,8 @@ class PedidoDAO
                         'data'      => $linha['data'],
                         'comentario' => $linha['comentario'],
                         'status'     => $linha['status'],
-                        'valor_final'     => $linha['valor_final']
+                        'valor_final'     => $linha['valor_final'],
+                        'num_pedido' => $linha['num_pedido']
                     ];
                 }
 
@@ -219,14 +220,14 @@ class PedidoDAO
         try {
             $busca = "%" . $pesquisa . "%";
 
-            $sqlStr = "SELECT id_pedido, data, nome, quantidade, comentario, status, valor_unitario, valor_final
+            $sqlStr = "SELECT id_pedido, num_pedido, data, nome, quantidade, comentario, status, valor_unitario, valor_final
             FROM view_pedidos
             WHERE id_usuario = :id_usuario";
 
             if (!empty($pesquisa)) {
                 $sqlStr .= " AND (comentario LIKE :busca 
                 OR nome LIKE :busca2 
-                OR id_pedido LIKE :busca3
+                OR num_pedido LIKE :busca3
                 )";
             }
 
@@ -240,9 +241,9 @@ class PedidoDAO
 
             if (!empty($ordenar)) {
                 if ($ordenar === "numero-asc") {
-                    $sqlStr .= " ORDER BY id_pedido ASC";
+                    $sqlStr .= " ORDER BY num_pedido ASC";
                 } else if ($ordenar === "numero-desc") {
-                    $sqlStr .= " ORDER BY id_pedido DESC";
+                    $sqlStr .= " ORDER BY num_pedido DESC";
                 } else if ($ordenar === "data-asc") {
                     $sqlStr .= " ORDER BY data ASC";
                 } else if ($ordenar === "data-desc") {
@@ -281,6 +282,7 @@ class PedidoDAO
 
                 if (!isset($pedidosDict[$id_pedido])) {
                     $pedidosDict[$id_pedido] = [
+                        'num_pedido' => $linha['num_pedido'],
                         'produtos'   => [],
                         'data'      => $linha['data'],
                         'comentario' => $linha['comentario'],
