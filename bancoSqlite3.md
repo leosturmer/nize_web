@@ -50,8 +50,8 @@ USE nize_database;
 
     CREATE TABLE IF NOT EXISTS pedidos (
         id_pedido INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-        num_pedido INTEGER NULL,
         id_usuario INTEGER NOT NULL,
+        num_pedido INTEGER NULL,
         data TEXT NOT NULL,
         valor_final REAL NOT NULL,
         status TEXT NOT NULL,
