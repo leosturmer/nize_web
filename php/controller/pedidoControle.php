@@ -182,6 +182,7 @@ switch ($opcao) {
             $prazoPedido = $_GET['prazoPedido'] ?? "";
             $statusPedido = $_GET['statusPedido'] ?? 'encomendado';
             $comentarioPedido = trim($_GET['comentarioPedido'] ?? "");
+            $comentarioFinal = "";
             $darBaixaEstoque = isset($_GET['darBaixaEstoque']) ? 1 : 0;
 
             if ($darBaixaEstoque == 1) {
@@ -321,7 +322,7 @@ switch ($opcao) {
 
         if ($id_pedido) {
             if ($pedidoDAO->excluirPedido($id_pedido)) {
-                $_SESSION['msg'] = "<p class='success-msg'>Pedido removida com sucesso.</p>";
+                $_SESSION['msg'] = "<p class='success-msg'>Pedido removido com sucesso.</p>";
             } else {
                 $_SESSION['msg'] = "<p class='error-msg'>Erro ao excluir pedido.</p>";
             }
