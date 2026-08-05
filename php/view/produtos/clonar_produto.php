@@ -132,7 +132,7 @@ if (!$produtoData) {
 
           <div class="div-inner-products">
             <label><strong>Quantidade</strong>:
-              <input type="number" id="quantidadeProduto" name="quantidadeProduto" class="input-produto" maxlength="3" autocomplete="off" value="<?php echo $produtoData['quantidade']; ?>">
+              <input type="number"  step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" id="quantidadeProduto" name="quantidadeProduto" class="input-produto" maxlength="3" autocomplete="off" value="<?php echo $produtoData['quantidade']; ?>">
             </label>
             <label class="checkbox-acc">
               <strong>Aceita encomendas</strong>:
@@ -142,10 +142,10 @@ if (!$produtoData) {
 
           <div class="div-inner-products">
             <label><strong>Valor unitário</strong>*: R$
-              <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" autocomplete="off" required value="<?php echo $produtoData['valor_unitario']; ?>">
+              <input type="number" min="0" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" autocomplete="off" required value="<?php echo $produtoData['valor_unitario']; ?>">
             </label>
             <label><strong>Valor de custo</strong>: R$
-              <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" autocomplete="off" value="<?php echo $produtoData['valor_custo']; ?>">
+              <input type="number" min="0" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" autocomplete="off" value="<?php echo $produtoData['valor_custo']; ?>">
             </label>
           </div>
 

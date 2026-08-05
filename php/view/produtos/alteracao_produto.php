@@ -141,7 +141,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 
           <div class="div-inner-products">
             <label><strong>Quantidade</strong>:
-              <input type="number" inputmode="" id="quantidadeProduto" name="quantidadeProduto" class="input-produto" value="<?php echo htmlspecialchars($produto['quantidade']); ?>" maxlength="3" autocomplete="off">
+              <input type="number"  step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" id="quantidadeProduto" name="quantidadeProduto" class="input-produto" value="<?php echo htmlspecialchars($produto['quantidade']); ?>" maxlength="3" autocomplete="off">
             </label>
 
             <label class="checkbox-acc" for="">
@@ -152,11 +152,11 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 
           <div class="div-inner-products">
             <label><strong>Unidade</strong>*: R$
-              <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_unitario']); ?>" autocomplete="off" required>
+              <input type="number" min="0" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_unitario']); ?>" autocomplete="off" required>
             </label>
 
             <label><strong>Valor de custo</strong>: R$
-              <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_custo']); ?>" autocomplete="off">
+              <input type="number" min="0" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_custo']); ?>" autocomplete="off">
             </label>
 
           </div>

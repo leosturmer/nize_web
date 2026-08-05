@@ -355,7 +355,7 @@ select:hover {
 
 /* Remover setas dos inputs number */
 
-input::-webkit-outer-spin-button,
+/* input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
@@ -363,6 +363,15 @@ input::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+} */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 1 !important;
+  /* height: 100%;   */
+  /* background-color: red; */
+
+  
 }
 
 /* Estados de Validação (Pseudo-classes) */

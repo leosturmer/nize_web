@@ -122,7 +122,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
           <div class="div-inner-products">
             <label><strong>Quantidade</strong>:
-              <input type="number" inputmode="" id="quantidadeProduto" name="quantidadeProduto" class="input-produto " maxlength="3" placeholder="00" autocomplete="off">
+              <input type="number"  step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" id="quantidadeProduto" name="quantidadeProduto" class="input-produto " maxlength="3" placeholder="00" autocomplete="off">
             </label>
 
             <label class="checkbox-acc" for="">
@@ -136,12 +136,12 @@ $usuario = unserialize($_SESSION['usuario_logado']);
           <div class="div-inner-products">
 
             <label><strong>Valor unitário</strong>*: R$
-              <input type="number" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" autocomplete="off" placeholder="00,00" required>
+              <input type="number" min="0" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" autocomplete="off" placeholder="00,00" required>
             </label>
 
 
             <label><strong>Valor de custo</strong>: R$
-              <input type="number" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" placeholder="00,00" autocomplete="off">
+              <input type="number" min="0" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" placeholder="00,00" autocomplete="off">
             </label>
 
           </div>
