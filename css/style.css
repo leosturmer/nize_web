@@ -259,7 +259,9 @@
 }
 
 #main-index {
-  background-color: var(--lightGreen);
+  /* background-color: var(--lightGreen); */
+  background: linear-gradient(143deg,rgba(180, 226, 144, 1) 15%, rgba(189, 135, 244, 0.60) 50%, rgba(180, 226, 144, 1) 85%);
+
   display: flex;
   margin: 0 auto;
   width: 100dvw;
