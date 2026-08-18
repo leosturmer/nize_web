@@ -1,15 +1,19 @@
 1. cadastro_produtos.php (Adicionar a div do botão no HTML)Adicione a <div> com o botão da calculadora onde preferir na página (pode ser logo antes do <footer> ou do <script>):  HTML    <!-- Botão da Calculadora (Quando presente na página, ativa a calculadora) -->
-    <div id="container-calculadora">
-        <button type="button" class="calc-fab" id="calc-open-fab">
-            🧮 <span>Calculadora</span>
+    <div id="container-calculadora"
+    style="position: fixed; bottom: 50px; right: 30px; z-index: 9999; ">
+        <button type="button" class="calc-fab" id="calc-open-fab" 
+        style="width: fit-content; background-color: var(--lightGreen); box-shadow: none; background-color: transparent; border: none; "
+        >
+            <span class="bi bi-calculator" 
+            style="font-size: 30px; color: var(--darkGreen); padding: 0; margin: 0 5px; "
+            ></span>
         </button>
     </div>
 
-    <footer>Leonardo Stürmer &copy; Todos os direitos reservados</footer>
-  </main>
 
-  <script type="module" src="../../../js/main.js"></script>
-2. main.js (Verificação antes de inicializar)No main.js, adicionamos a checagem com if para garantir que initCalculadora() só seja executado se o botão/div existir na página atual:  JavaScriptimport { inicializarSidebar, inicializarHeaderMobile } from "./modules/sidebar.js";
+2. main.js (Verificação antes de inicializar)
+
+No main.js, adicionamos a checagem com if para garantir que initCalculadora() só seja executado se o botão/div existir na página atual:  JavaScriptimport { inicializarSidebar, inicializarHeaderMobile } from "./modules/sidebar.js";
 import { sessionMsg } from "./modules/session_msg.js";
 import { verificarTamanhoImagem, gerenciarCheckboxesVeC, checkboxVendido, fecharFiltro } from "./modules/inputs.js";
 import { initCalculadora } from "./modules/calculadora.js";
