@@ -26,11 +26,11 @@ if ($dadosUsuario) {
     $senhaValida = false;
     $tipoUsuario = (int) ($dadosUsuario['tipo_usuario'] ?? 0);
 
-    if ($tipoUsuario === 1) {
-        $senhaValida = ($senha_digitada === $dadosUsuario['senha']);
-    } else {
+    // if ($tipoUsuario === 1) {
+    //     $senhaValida = ($senha_digitada === $dadosUsuario['senha']);
+    // } else {
         $senhaValida = password_verify($senha_digitada, $dadosUsuario['senha']);
-    }
+    // }
 
     if ($senhaValida) {
         $usuario = new Usuario();

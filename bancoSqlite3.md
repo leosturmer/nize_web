@@ -97,18 +97,3 @@ BEGIN
     WHERE id_pedido = NEW.id_pedido;
 END;
 
-
-
-
-
-
-
--- adicionando administrador
-
-INSERT INTO usuario (nome, login, senha, tipo_usuario) VALUES ('Admin', 'admin@admin.com', 'Admin123', 1);
-
--- Criação de usuário teste
-
-<!--
--- INSERT INTO usuario (nome, nome_loja, login, senha) VALUES ('Leo', 'Loja do Leo', 'leo@leo.com', 'leo123');
--->
