@@ -21,46 +21,46 @@ O projeto segue em desenvolvimento até setembro de 2026. Abaixo, as capturas de
 ![alt text](./github_img/telas/4_dashboard_administrador.png)
 
 ### Tela inicial
-![alt text](./github_img/telas/6_tela_inicial.png)
+![alt text](./github_img/telas/5_tela_inicial.png)
 
 ### Visualização de produtos
-![alt text](./github_img/telas/7_visualizacao_produtos.png)
+![alt text](./github_img/telas/6_visualizacao_produtos.png)
 
 ### Cadastro de produtos
-![alt text](./github_img/telas/8_cadastro_produto.png)
+![alt text](./github_img/telas/7_cadastro_produto.png)
 
 ### Alteração de produtos
-![alt text](./github_img/telas/9_alteracao_produto.png)
+![alt text](./github_img/telas/8_alteracao_produto.png)
 
 ### Clonar produto
-![alt text](./github_img/telas/10_clonar_produto.png)
+![alt text](./github_img/telas/9_clonar_produto.png)
 
 ### Visualização de pedidos
-![alt text](./github_img/telas/11_visualizacao_pedidos.png)
+![alt text](./github_img/telas/10_visualizacao_pedidos.png)
 
 ### Cadastro de pedidos
-![alt text](./github_img/telas/12_cadastro_pedido.png)
+![alt text](./github_img/telas/11_cadastro_pedido.png)
 
 ### Alteração de pedido
-![alt text](./github_img/telas/13_alterar_pedido.png)
+![alt text](./github_img/telas/12_alterar_pedido.png)
 
 ### Alteração de pedido cancelado
-![alt text](./github_img/telas/14_alteracao_pedido_cancelado.png)
+![alt text](./github_img/telas/13_alteracao_pedido_cancelado.png)
 
 ### Alteração de pedido vendido
-![alt text](./github_img/telas/15_alteracao_pedido_vendido.png)
+![alt text](./github_img/telas/14_alteracao_pedido_vendido.png)
 
 ### Clonar pedido
-![alt text](./github_img/telas/16_clonar_pedido.png)
+![alt text](./github_img/telas/15_clonar_pedido.png)
 
 ### Área do usuário
-![alt text](./github_img/telas/17_minha_area.png)
+![alt text](./github_img/telas/16_minha_area.png)
 
 ### Alteração de dados de cadastro
-![alt text](./github_img/telas/18_alterar_cadastro.png)
+![alt text](./github_img/telas/17_alterar_cadastro.png)
 
 ### Visualização pública de loja
-![alt text](./github_img/telas/19_view_loja.png)
+![alt text](./github_img/telas/18_view_loja.png)
 
 ### Tela de erro
-![alt text](./github_img/telas/20_erro.png)
+![alt text](./github_img/telas/19_erro.png)
