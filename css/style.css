@@ -59,6 +59,25 @@
   box-shadow: var(--box-shadow);
 }
 
+.nome-loja {
+  text-align: center;
+  /* background-color: var(--softGreen); */
+  border-bottom: var(--border-input);
+  /* box-shadow: var(--box-shadow); */
+  color: black;
+  width: fit-content;
+  margin: 0.5em auto;
+  padding: 0.8em 1.6em;
+
+}
+
+input#pesquisa-produtos.pesquisa-loja, div.product-view-loja {
+  box-shadow: none;
+}
+
+
+
+
 .internal-loja-head{
   display: flex;
   justify-content: space-evenly;
@@ -386,6 +405,14 @@ div.lista-pedidos h4 {
   justify-content: space-evenly;
 }
 
+.lista-produtos-loja {
+  border: none;
+  padding: 0px;
+  background-color: whitesmoke;
+  justify-content: space-between;
+
+}
+
 .lista-produtos-pedido {
   display: flex;
   flex-wrap: wrap;
@@ -410,6 +437,15 @@ div.lista-pedidos h4 {
   justify-content: space-between;
 }
 
+.product-view-loja {
+  width: 500px;
+  max-width: 500px;
+}
+
+.product-view-loja > img {
+  width: 400px;
+}
+
 .product-view > .product-btns {
   margin-left: 0;
 }
@@ -421,7 +457,7 @@ div.lista-pedidos h4 {
 
 div.texto-produto h2,
 div.texto-pedido h2 {
-  text-align: left;
+  text-align: center;
   padding: 0 0 0.4em 0;
 }
 
@@ -436,6 +472,37 @@ div.product-img-btn {
 div.product-img-btn p {
   align-self: center;
 }
+
+div.texto-produto {
+  display: flex;
+  flex-direction: column;
+}
+
+div.product-view-loja {
+  display: flex;
+  flex-direction: column;
+}
+
+div.texto-produto > img.img-produtos {
+  border: var(--border);
+  /* box-shadow: var(--box-shadow); */
+  margin-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 400px;
+  height: 250px;
+  object-fit: cover;
+  align-self: center;
+
+}
+
+div.texto-produto > img.sem-imagem {
+  width: 400px;
+  height: 250px;
+  text-align: center;
+  border: var(--border);
+}
+
 
 div.product-img-btn > img.img-produtos {
   /* display: flex; */
@@ -463,12 +530,21 @@ div.product-img-btn > img.img-produtos {
   text-align: center;
 }
 
+.p-valor {
+  text-align: center;
+
+}
+
 .p-descricao {
   overflow-y: auto;
   max-height: 150px;
   scrollbar-width: thin;
   scrollbar-color: var(--normalPurple);
 }
+
+/* .nome-produto-loja {
+  text-align: center;
+} */
 
 .product-btns {
   display: flex;
@@ -982,8 +1058,8 @@ span.bi-box-arrow-up-right {
 
 .div-btn-wpp {
   position: fixed;
-  right: 1em;
-  bottom: 2em;
+  right: 0;
+  bottom: 0.5em;
 }
 
 .div-btn-wpp > img {

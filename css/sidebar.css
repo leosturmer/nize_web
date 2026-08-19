@@ -37,6 +37,11 @@ aside {
   transition: width 0.4s ease-in-out;
 }
 
+.sacola-compras {
+  background: linear-gradient(134deg,rgba(206, 235, 162, 1) 0%, rgba(153, 214, 105, 1) 50%, rgb(235, 162, 234) 80%);
+}
+
+
 .sb-expanded aside#sidebar.sacola-compras {
   width: 28rem;
   z-index: 9999;
@@ -136,17 +141,18 @@ header {
 
   background: linear-gradient(134deg,rgba(206, 235, 162, 1) 0%, rgba(153, 214, 105, 1) 50%, rgba(206, 235, 162, 1) 100%);
 
-
-
-
-
-
   border-bottom: var(--border);
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 100%;
   transition: border 0.3s ease-in-out;
+}
+
+.container-header-loja {
+
+  background: linear-gradient(134deg,rgba(206, 235, 162, 1) 0%, rgba(153, 214, 105, 1) 50%, rgb(235, 162, 234) 80%);
+
 }
 
 /* Links da Navegação */

@@ -141,7 +141,7 @@ if (!empty($_SESSION['usuario_logado'])) {
     </aside>
 
     <header id="header-mobile">
-        <div class="container-header">
+        <div class="container-header container-header-loja">
             <a href="#" data-resize-btn-mobile class="btn-menu btn-sacola" title="Esconder/expandir menu">
                 <i class="bi bi-bag"></i>
             </a>
@@ -184,7 +184,7 @@ if (!empty($_SESSION['usuario_logado'])) {
 
                 <div class="internal-nav-inputs">
                     <form onsubmit="return false;" id="form-pesquisa-produtos">
-                        <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição " autocomplete="off"></span>
+                        <input type="text" id="pesquisa-produtos" class="pesquisa-loja" placeholder="🔎︎ Busque pelo nome ou descrição" autocomplete="off">
                     </form>
 
                     <details class="filtros-produtos">
@@ -204,29 +204,33 @@ if (!empty($_SESSION['usuario_logado'])) {
         </div>
     <?php endif; ?>
 
-    <div class="lista-produtos">
+    <div class="lista-produtos lista-produtos-loja">
 
 
         <?php if (!empty($lista) && $aceita_visualizacao === 1): ?>
             <?php foreach ($lista as $item): ?>
-                <div class="product-view">
+                <div class="product-view product-view-loja">
                     <div class="texto-produto">
-                        <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
+                        <h2><strong><?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></strong></h2>
+
+                        <?php if ($item['imagem']) {
+                            echo "<img src='../../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                        } else {
+                            echo "<img src='#' alt='Produto sem imagem' class='img-produtos sem-imagem'>";
+                        } ?>
+
                         <?php if ($item['valor_unitario']) {
                             $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.');
                         } else {
                             $valor_unitario = "Não informado";
                         } ?>
-                        <p><strong>Valor unitário:</strong> <?php echo $valor_unitario ?></p>
-                        <p class="p-descricao"><strong>Descrição:</strong> <?php echo htmlspecialchars($item['descricao']) ?></p>
-                    </div>
 
+                        <p class="p-valor"><strong><?php echo $valor_unitario ?></strong></p>
+                        
+                    </div>
+                    
                     <div class="product-img-btn">
-                        <?php if ($item['imagem']) {
-                            echo "<img src='../../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
-                        } else {
-                            echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
-                        } ?>
+                        <p class="p-descricao"><?php echo htmlspecialchars($item['descricao']) ?></p>
                         <form action="../../controller/pedidoControle.php" method="get" class="product-btns">
                             <input type="number"  step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))"
                             name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
