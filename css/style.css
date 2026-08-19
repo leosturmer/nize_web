@@ -59,6 +59,11 @@
   box-shadow: var(--box-shadow);
 }
 
+.internal-loja-head{
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .internal-nav-inputs {
   display: flex;
   justify-content: space-between;
