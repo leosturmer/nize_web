@@ -126,7 +126,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     if ($usuario->telefone) {
       $telefone = $usuario->telefone;
     } else {
-      $telefone = "Não informado";
+      $telefone = "Não informado" . $usuario->telefone;
     }
 
     ?>

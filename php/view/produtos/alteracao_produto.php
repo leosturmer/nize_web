@@ -152,11 +152,11 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 
           <div class="div-inner-products">
             <label><strong>Unidade</strong>*: R$
-              <input type="number" min="0" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_unitario']); ?>" autocomplete="off" required>
+              <input type="number" min="0" id="valorUnitario" name="valorUnitario" step="0.10" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_unitario']); ?>" autocomplete="off" required>
             </label>
 
             <label><strong>Valor de custo</strong>: R$
-              <input type="number" min="0" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_custo']); ?>" autocomplete="off">
+              <input type="number" min="0" id="valorCusto" name="valorCusto" step="0.10" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_custo']); ?>" autocomplete="off">
             </label>
 
           </div>

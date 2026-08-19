@@ -142,10 +142,10 @@ if (!$produtoData) {
 
           <div class="div-inner-products">
             <label><strong>Valor unitário</strong>*: R$
-              <input type="number" min="0" id="valorUnitario" name="valorUnitario" step="0.01" class="input-produto" autocomplete="off" required value="<?php echo $produtoData['valor_unitario']; ?>">
+              <input type="number" min="0" id="valorUnitario" name="valorUnitario" step="0.10" class="input-produto" autocomplete="off" required value="<?php echo $produtoData['valor_unitario']; ?>">
             </label>
             <label><strong>Valor de custo</strong>: R$
-              <input type="number" min="0" id="valorCusto" name="valorCusto" step="0.01" class="input-produto" autocomplete="off" value="<?php echo $produtoData['valor_custo']; ?>">
+              <input type="number" min="0" id="valorCusto" name="valorCusto" step="0.10" class="input-produto" autocomplete="off" value="<?php echo $produtoData['valor_custo']; ?>">
             </label>
           </div>
 

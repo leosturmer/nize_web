@@ -41,6 +41,7 @@ if ($dadosUsuario) {
         $usuario->aceita_visualizacao = $dadosUsuario['aceita_visualizacao'];
         $usuario->nome_visualizacao = $dadosUsuario['nome_visualizacao'] ?? "";
         $usuario->tipoUsuario = $tipoUsuario;
+        $usuario->telefone = $dadosUsuario['telefone'];
 
         $_SESSION['usuario_logado'] = serialize($usuario);
         $_SESSION['msg'] = "<p class='success-msg'>Login realizado com sucesso!</p>";
