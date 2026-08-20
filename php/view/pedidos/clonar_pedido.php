@@ -237,7 +237,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                     </div>
                     <div class="form-pedidos-items">
                         <button type="submit"><span class="bi bi-check2"></span>Salvar</button>
-                        <a href="../../controller/pedidoControle.php?op=limparCarrinho"><span class="bi bi-x"></span>Cancelar</a>
+                        <a href="../../controller/pedidoControle.php?op=limparCarrinho"><span class="bi">✖</span>Cancelar</a>
                     </div>
                 </form>
             </div>

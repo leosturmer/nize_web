@@ -181,7 +181,7 @@ if (!$produtoData) {
       </fieldset>
       <div id="form-products-buttons">
         <button type="submit"><span class="bi bi-check2"></span>Salvar</button>
-        <button formaction="./visualizacao_produtos.php"><span class="bi bi-x-lg"></span>Cancelar</button>
+        <button formaction="./visualizacao_produtos.php"><span class="bi">✖</span>Cancelar</button>
       </div>
     </form>
 
