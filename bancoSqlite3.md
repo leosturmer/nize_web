@@ -42,6 +42,7 @@ USE nize_database;
             imagem TEXT NULL,
             aceita_encomenda INTEGER NULL,
             descricao TEXT NULL,
+            comentario TEXT NULL,
             valor_custo REAL NULL,
             aceita_visualizacao INTEGER NULL,
             created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
