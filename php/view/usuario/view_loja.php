@@ -101,7 +101,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                                 echo "</div>";
 
                                 // Link de remoção passando origem=loja e nome da loja
-                                echo "<a href='../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor&origem=loja&loja=" . urlencode($nome_visualizacao) . "' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
+                                echo "<a href='../../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor&origem=loja&loja=" . urlencode($nome_visualizacao) . "' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
                                 echo "</div>";
                                 echo "<hr>";
                             } else {

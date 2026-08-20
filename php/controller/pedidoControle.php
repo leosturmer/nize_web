@@ -187,6 +187,8 @@ switch ($opcao) {
 
             if ($darBaixaEstoque == 1) {
                 $comentarioFinal = "### Pedido com baixa no estoque ### " . $comentarioPedido;
+            } else {
+                $comentarioFinal = $comentarioPedido;
             }
 
             $novoPedido = new Pedido();
@@ -274,6 +276,7 @@ switch ($opcao) {
             $prazoPedido = $_GET['prazoPedido'] ?? "";
             $statusPedido = $_GET['statusPedido'] ?? '';
             $comentarioPedido = trim($_GET['comentarioPedido'] ?? "");
+            $comentarioFinal = $comentarioPedido;
 
             $darBaixaEstoque = isset($_GET['darBaixaEstoque']) ? 1 : 0;
             $estornarEstoque = isset($_GET['estornarEstoque']) ? 1 : 0;

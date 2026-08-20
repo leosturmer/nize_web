@@ -169,7 +169,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
               $dataBanco = $dados_pedido['data'];
               $formatoData = strtotime($dataBanco);
               $data = date("d/m/Y", $formatoData);
-              $comentario = htmlspecialchars($dados_pedido['comentario']);
+              $comentario = $dados_pedido['comentario'];              
               $status = $dados_pedido['status'];
               $statusView = '';
 
@@ -192,11 +192,12 @@ if (isset($_SESSION['pedidoSelecionado'])) {
               <p><strong>Data: </strong><?php echo $data ?></p>
               <p><strong>Valor final: </strong> R$ <?php echo number_format((float)$dados_pedido['valor_final'], 2, ',', '.') ?></p>
               <p><strong>Status: </strong><?php echo $statusView ?></p>
-              <p class="p-descricao"><strong>Comentário: </strong><?php if ($comentario) {
-                                                                    echo $comentario;
-                                                                  } else {
-                                                                    echo "Nenhum comentário adicionado";
-                                                                  } ?></p>
+              <p class="p-descricao"><strong>Comentário: </strong>
+              <?php if ($comentario) {
+                      echo $comentario;
+                    } else {
+                      echo "Nenhum comentário adicionado";
+                    } ?></p>
             </div>
 
             <div class="product-btns pedido-btns">

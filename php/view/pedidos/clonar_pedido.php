@@ -132,6 +132,12 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                                 <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
                                 <p><strong>Quantidade disponível:</strong> <?php echo htmlspecialchars($item['quantidade']); ?> </p>
                                 <p><strong>Unidade:</strong> <?php echo "R$ " . number_format((float)$item['valor_unitario'], 2, ',', '.'); ?> </p>
+                                <p class="p-descricao"><strong>Comentário:</strong>
+                                    <?php if ($item['comentario']) {
+                                        echo htmlspecialchars($item['comentario']);
+                                    } else {
+                                        echo "--";
+                                    } ?></p>
                                 <p><strong>Aceita encomenda:</strong> <?php if ($item['aceita_encomenda']) {
                                                                             echo "Sim";
                                                                         } else {

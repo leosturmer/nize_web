@@ -143,6 +143,12 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                                 <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
                                 <p><strong>Quantidade disponível:</strong> <?php echo htmlspecialchars($item['quantidade']); ?> </p>
                                 <p><strong>Unidade: R$</strong> <?php echo number_format((float)$item['valor_unitario'], 2, ',', '.') ?> </p>
+                                <p class="p-descricao"><strong>Comentário:</strong>
+                                    <?php if ($item['comentario']) {
+                                        echo htmlspecialchars($item['comentario']);
+                                    } else {
+                                        echo "--";
+                                    } ?></p>
                                 <p><strong>Aceita encomenda:</strong> <?php echo $item['aceita_encomenda'] ? "Sim" : "Não"; ?></p>
                                 <p class="p-descricao"><strong>Descrição:</strong> <?php if (htmlspecialchars($item['descricao'])) {
                                                                                         echo htmlspecialchars($item['descricao']);
@@ -157,7 +163,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                                     echo "<p class='img-produtos'>Nenhuma imagem cadastrada</p>";
                                 } ?>
                                 <form action="../../controller/pedidoControle.php" method="get" class="product-btns">
-                                    <input type="number"  step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
+                                    <input type="number" step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
                                     <input type="hidden" name="op" value="adicionarQuantidade">
                                     <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
                                     <input type="submit" class="btn-add" value="+ Adicionar">

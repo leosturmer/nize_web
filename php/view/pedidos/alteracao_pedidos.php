@@ -151,6 +151,12 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                                 <p><strong>Nome do produto:</strong> <?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></p>
                                 <p><strong>Quantidade disponível:</strong> <?php echo htmlspecialchars($item['quantidade']); ?> </p>
                                 <p><strong>Unidade:</strong> <?php echo "R$ " . number_format((float)$item['valor_unitario'], 2, ',', '.'); ?> </p>
+                                <p class="p-descricao"><strong>Comentário:</strong>
+                                    <?php if ($item['comentario']) {
+                                        echo htmlspecialchars($item['comentario']);
+                                    } else {
+                                        echo "--";
+                                    } ?></p>
                                 <p><strong>Aceita encomenda:</strong> <?php if ($item['aceita_encomenda']) {
                                                                             echo "Sim";
                                                                         } else {
@@ -171,7 +177,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                                 } ?>
                                 <form action="../../controller/pedidoControle.php" method="get" class="product-btns">
                                     <input type="number" step="1" min="0" step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))"
-                                     name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
+                                        name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
                                     <input type="hidden" name="op" value="adicionarQuantidade">
                                     <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
                                     <input type="submit" class="btn-add" value="+ Adicionar">
