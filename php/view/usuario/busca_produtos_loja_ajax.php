@@ -48,8 +48,9 @@ foreach ($lista as $item) {
                         
                     </div>
                     
+                    <p class="p-descricao"><?php echo htmlspecialchars($item['descricao']) ?></p>
+                    
                     <div class="product-img-btn">
-                        <p class="p-descricao"><?php echo htmlspecialchars($item['descricao']) ?></p>
                         <form action="../../controller/pedidoControle.php" method="get" class="product-btns">
                             <input type="number"  step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))"
                             name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">

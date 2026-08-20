@@ -127,7 +127,11 @@
   div.product-view p {
     margin: 2px;
     line-height: 2em;
-    font-size: 16px;
+    /* font-size: 16px; */
+  }
+
+  .p-valor {
+    font-size: 1.2em;
   }
 
   .internal-nav-links {
@@ -143,7 +147,7 @@
   div.product-view-loja {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    /* width: 300px; */
 
   }
 
@@ -161,7 +165,7 @@
   div.texto-pedido h2 {
     text-align: left;
     padding: 0.2em;
-    font-size: 18px;
+    /* font-size: 18px; */
     /* font-family: sans-serif; */
     /* color: black; */
     /* font-weight: 300; */
@@ -385,8 +389,8 @@
 
   div.product-view > div.texto-produto,
   div.product-view > div.texto-pedido {
-    max-width: 100%;
-    align-self: start;
+    /* max-width: 100%;
+    align-self: start; */
   }
 
   div.product-view {
@@ -849,6 +853,19 @@
   div.product-img-btn {
     width: 300px;
   }
+
+  div.product-view-loja {
+    max-width: 87.5dvw;
+  }
+
+  div.texto-produto > img.sem-imagem,
+  div.texto-produto > img.img-produtos {
+    max-width: 75dvw;
+    margin: 0;
+  }
+  }
+
+
 
   /* Cadastro de produtos */
 

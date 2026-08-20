@@ -61,9 +61,9 @@
 
 .nome-loja {
   text-align: center;
-  /* background-color: var(--softGreen); */
-  border-bottom: var(--border-input);
-  /* box-shadow: var(--box-shadow); */
+  background-color: whitesmoke;
+  border: var(--border);
+  box-shadow: var(--box-shadow);
   color: black;
   width: fit-content;
   margin: 0.5em auto;
@@ -71,9 +71,11 @@
 
 }
 
-input#pesquisa-produtos.pesquisa-loja, div.product-view-loja {
+/* input#pesquisa-produtos.pesquisa-loja,
+div.product-view-loja
+ {
   box-shadow: none;
-}
+} */
 
 
 
@@ -399,17 +401,23 @@ div.lista-pedidos h4 {
 .lista-pedidos {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   border: var(--border-thin);
   padding: 10px;
   background-color: thistle;
-  justify-content: space-evenly;
+
+
+
 }
 
 .lista-produtos-loja {
   border: none;
   padding: 0px;
-  background-color: whitesmoke;
-  justify-content: space-between;
+  /* background-color: whitesmoke; */
+  background-color: transparent;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, auto));
+  justify-content: space-around;
 
 }
 
@@ -532,14 +540,18 @@ div.product-img-btn > img.img-produtos {
 
 .p-valor {
   text-align: center;
-
+  font-size: 1.3em;
 }
 
 .p-descricao {
-  overflow-y: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
   max-height: 150px;
+  max-width: 500px;
   scrollbar-width: thin;
   scrollbar-color: var(--normalPurple);
+  margin: 0.5em 0;
+
 }
 
 /* .nome-produto-loja {

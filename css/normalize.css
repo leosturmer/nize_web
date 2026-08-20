@@ -102,6 +102,10 @@ main {
   /* padding-top: 10px; */
 }
 
+html.html-loja {
+  background: linear-gradient(134deg,rgba(206, 235, 162, 1) 0%, rgba(153, 214, 105, 1) 50%, rgb(235, 162, 234) 80%)
+}
+
 body {
   display: flex;
   flex-direction: row;
@@ -132,6 +136,13 @@ main {
   padding: 2rem 3.2rem 0 3.2em;
   transition: margin-left 0.2s ease;
   /* width 0.2s ease; */
+  overflow-x: auto;
+  overflow-y: scroll;
+}
+
+.conteudo-pagina.conteudo-loja {
+  background: linear-gradient(134deg,rgba(206, 235, 162, 1) 0%, rgba(153, 214, 105, 1) 50%, rgb(235, 162, 234) 80%);
+
 }
 
 footer {

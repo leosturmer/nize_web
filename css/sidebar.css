@@ -38,7 +38,8 @@ aside {
 }
 
 .sacola-compras {
-  background: linear-gradient(134deg,rgba(206, 235, 162, 1) 0%, rgba(153, 214, 105, 1) 50%, rgb(235, 162, 234) 80%);
+  /* background: linear-gradient(134deg,rgba(206, 235, 162, 1) 0%, rgba(153, 214, 105, 1) 50%, rgb(235, 162, 234) 80%); */
+  background: whitesmoke;
 }
 
 
@@ -151,8 +152,8 @@ header {
 
 .container-header-loja {
 
-  background: linear-gradient(134deg,rgba(206, 235, 162, 1) 0%, rgba(153, 214, 105, 1) 50%, rgb(235, 162, 234) 80%);
-
+  /* background: linear-gradient(134deg,rgba(206, 235, 162, 1) 0%, rgba(153, 214, 105, 1) 50%, rgb(235, 162, 234) 80%); */
+  background: whitesmoke;
 }
 
 /* Links da Navegação */
@@ -547,7 +548,16 @@ li.produtos-sacola-sidenav label.label-column textarea {
     /* transform: rotate(360deg); */
   }
 
-  .sb-expanded .container-header {
+  .sb-expanded  main.conteudo-pagina {
+    margin: 0 0;
+  }
+
+  /* .sb-expanded header {
+    display: none;
+
+  } */
+
+  .sb-expanded div.container-header {
     background: transparent;
     background-color: transparent;
     border-bottom: transparent;
