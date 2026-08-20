@@ -13,11 +13,11 @@ class ProdutoDAO{
         try {
             $sql = $this->conexao->prepare(
                 "INSERT INTO produtos (
-                id_usuario, nome, quantidade, valor_unitario, valor_custo, imagem, aceita_encomenda, aceita_visualizacao, descricao
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                id_usuario, nome, quantidade, valor_unitario, valor_custo, imagem, aceita_encomenda, aceita_visualizacao, comentario, descricao
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
                 );
 
-            return $sql->execute([$p->id_usuario, $p->nome, $p->quantidade, $p->valor_unitario, $p->valor_custo, $p->imagem, $p->aceita_encomenda, $p->aceita_visualizacao, $p->descricao]);
+            return $sql->execute([$p->id_usuario, $p->nome, $p->quantidade, $p->valor_unitario, $p->valor_custo, $p->imagem, $p->aceita_encomenda, $p->aceita_visualizacao, $p->comentario, $p->descricao]);
             
         } catch (Exception $e){
             $_SESSION['msg'] = "<p class='error-msg'> Erro ao cadastrar produto. Tente novamente. </p>";
@@ -38,6 +38,7 @@ class ProdutoDAO{
             imagem = :imagem, 
             aceita_encomenda = :aceita_encomenda, 
             aceita_visualizacao = :aceita_visualizacao,
+            comentario = :comentario, 
             descricao = :descricao, 
             valor_custo = :valor_custo
             WHERE id_produto = :id_produto
@@ -52,6 +53,7 @@ class ProdutoDAO{
             $sql->bindValue(":imagem", $produtoModificado->imagem);
             $sql->bindValue(":aceita_encomenda", $produtoModificado->aceita_encomenda);
             $sql->bindValue(":aceita_visualizacao", $produtoModificado->aceita_visualizacao);
+            $sql->bindValue(":comentario", $produtoModificado->comentario);
             $sql->bindValue(":descricao", $produtoModificado->descricao);
             $sql->bindValue(":valor_custo", $produtoModificado->valor_custo);
             $sql->bindValue(":id_produto", $produtoModificado->id_produto);
@@ -123,7 +125,7 @@ class ProdutoDAO{
         try {
             $busca = "%" . $pesquisa . "%";
 
-            $sqlStr = "SELECT id_produto, nome, valor_unitario, quantidade, valor_custo, imagem, aceita_encomenda, aceita_visualizacao, descricao 
+            $sqlStr = "SELECT id_produto, nome, valor_unitario, quantidade, valor_custo, imagem, aceita_encomenda, aceita_visualizacao, comentario, descricao 
             FROM produtos
             WHERE id_usuario = :id_usuario";
 
@@ -132,7 +134,7 @@ class ProdutoDAO{
             }
 
             if (!empty($pesquisa)){
-                $sqlStr .= " AND (nome LIKE :busca OR descricao LIKE :busca2)";
+                $sqlStr .= " AND (nome LIKE :busca OR descricao LIKE :busca2 OR comentario LIKE :busca3)";
             }
 
             if ($estoqueProduto === 'com-estoque'){
@@ -181,6 +183,7 @@ class ProdutoDAO{
             if (!empty($pesquisa)){
                 $sql->bindValue(":busca", $busca);
                 $sql->bindValue(":busca2", $busca);
+                $sql->bindValue(":busca3", $busca);
             }
 
             $sql->execute();

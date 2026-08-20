@@ -146,16 +146,20 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
           </div>
 
-          <label class="descricao-produtos" for="descricaoProduto">
-            <strong>Descrição do produto</strong>
+          <label class="comentario-produtos" for="comentarioProduto">
+            <strong>Comentários</strong>
           </label>
-          <textarea name="descricaoProduto" id="descricaoProduto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" class="input-produto" autocomplete="off"></textarea>
+          <textarea name="comentarioProduto" id="comentarioProduto" placeholder="Adicione comentarios pessoais sobre o produto" class="input-produto" autocomplete="off"></textarea>
 
           <label class="checkbox-acc" for="">
             <strong>Disponibilizar para visualização:</strong>
             <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1' autocomplete="off">
           </label>
-
+          
+          <label class="descricao-produtos" for="descricaoProduto">
+            <strong>Informações públicas do produto:</strong>
+          </label>
+          <textarea name="descricaoProduto" id="descricaoProduto" placeholder="Adicione informações para a loja pública" class="input-produto" autocomplete="off"></textarea>
 
           <label><strong>Imagem</strong>: (max. 2mb)
           </label>

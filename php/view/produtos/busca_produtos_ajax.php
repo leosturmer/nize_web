@@ -54,13 +54,22 @@ foreach ($lista as $item) {
             
             
             ?>
+            <p class="p-descricao"><strong>Comentário:</strong>
+            
+            <?php if ($item['comentario']) {
+                echo htmlspecialchars($item['comentario']);
+            } else {
+                echo "--";
+            } ?></p>
+
             <p><strong>Aceita encomenda:</strong> <?php echo $aceita_encomenda; ?></p>
+
             <p><strong>Disponível para visualização:</strong> <?php echo $aceita_visualizacao; ?></p>
-            <p class="p-descricao"><strong>Descrição:</strong>
+            <p class="p-descricao"><strong>Informações:</strong>
             <?php if ($item['descricao']) {
                 echo htmlspecialchars($item['descricao']);
                 } else {
-                    echo "Nenhuma descrição informada";
+                    echo "--";
                 } ?></p>
         </div>
         

@@ -149,15 +149,23 @@ if (!$produtoData) {
             </label>
           </div>
 
-          <label class="descricao-produtos" for="descricaoProduto">
-            <strong>Descrição do produto</strong>
-            <textarea name="descricaoProduto" id="descricaoProduto" class="input-produto" autocomplete="off"><?php echo htmlspecialchars($produtoData['descricao']); ?></textarea>
+          <label class="comentario-produtos" for="comentarioProduto">
+            <strong>Comentários</strong>
           </label>
+          <textarea name="comentarioProduto" id="comentarioProduto" placeholder="Adicione comentarios pessoais sobre o produto" class="input-produto" autocomplete="off"><?php echo htmlspecialchars($produtoData['comentario']); ?></textarea>
+
           <label class="checkbox-acc" for="">
             <strong>Disponibilizar para visualização</strong>:
             <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" autocomplete="off" <?php echo $produtoData['aceita_visualizacao'] == 1 ? 'checked' : ''; ?>>
           </label>
 
+
+          <label class="descricao-produtos" for="descricaoProduto">
+            <strong>Informações do produto</strong>
+            <textarea name="descricaoProduto" id="descricaoProduto" class="input-produto" autocomplete="off"><?php echo htmlspecialchars($produtoData['descricao']); ?></textarea>
+          </label>
+          
+          
           <input type="hidden" name="imagem_clonada" value="<?php echo $produtoData['imagem']; ?>">
           <label><strong>Imagem</strong>:
             <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg" autocomplete="off">

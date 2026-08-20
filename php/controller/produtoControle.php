@@ -23,6 +23,7 @@ $quantidadeProduto = $_POST['quantidadeProduto'] ?? 0;
 $valorUnitario = trim($_POST['valorUnitario']) ?? '';
 $valorCusto = trim($_POST['valorCusto']) ?? 0;
 $imagemProduto = $_POST['imagemProduto'] ?? null;
+$comentarioProduto = trim($_POST['comentarioProduto']) ?? '';
 $descricaoProduto = trim($_POST['descricaoProduto']) ?? '';
 
 if ($_POST['aceitaEncomenda'] != "1" || $_POST['aceitaEncomenda'] === null){
@@ -57,6 +58,7 @@ switch ($opcao){
         $produto->valor_custo = $valorCusto;
         $produto->aceita_encomenda = $aceitaEncomenda;
         $produto->aceita_visualizacao = $aceitaVisualizacao;
+        $produto->comentario = $comentarioProduto;
         $produto->descricao = $descricaoProduto;
         $produto->imagem = $_POST['imagem_clonada'] ?? null;
         
@@ -118,6 +120,7 @@ switch ($opcao){
         $produto->valor_custo = $valorCusto;
         $produto->aceita_encomenda = $aceitaEncomenda;
         $produto->aceita_visualizacao = $aceitaVisualizacao;
+        $produto->comentario = $comentarioProduto;
         $produto->descricao = $descricaoProduto;
         $produto->imagem = $_POST['imagem_atual'] ?? null;
 

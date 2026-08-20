@@ -162,15 +162,20 @@ $produto = $produtoDAO->buscarPorId($id_produto);
           </div>
 
 
-          <label class="descricao-produtos" for="descricaoProduto">
-            <strong>Descrição do produto</strong>
-            <textarea name="descricaoProduto" id="descricaoProduto" class="input-produto" placeholder="Adicione detalhes sobre o produto (material, cores, tamanho, etc)" autocomplete="off"><?php echo htmlspecialchars($produto['descricao']); ?></textarea>
+          <label class="comentario-produtos" for="comentarioProduto">
+            <strong>Comentários</strong>
           </label>
+          <textarea name="comentarioProduto" id="comentarioProduto" placeholder="Adicione comentarios pessoais sobre o produto" class="input-produto" autocomplete="off"><?php echo htmlspecialchars($produto['comentario']); ?></textarea>
+
           <label class="checkbox-acc" for="">
             <strong>Disponibilizar para visualização</strong>
               <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" autocomplete="off" <?php echo " $checkVisualizacao";?>>
           </label>
 
+          <label class="descricao-produtos" for="descricaoProduto">
+            <strong>Informações do produto</strong>
+            <textarea name="descricaoProduto" id="descricaoProduto" class="input-produto" autocomplete="off"><?php echo htmlspecialchars($produto['descricao']); ?></textarea>
+          </label>
 
 
           <input type="hidden" name="imagem_atual" value="<?php echo $produto['imagem']; ?>">

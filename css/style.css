@@ -953,6 +953,10 @@ div.produtos-no-pedido h3 {
   /* flex-wrap: nowrap; */
 }
 
+#pedidos-form p {
+  max-width: 500px;
+}
+
 .form-pedidos-items {
   display: flex;
   justify-content: end;
