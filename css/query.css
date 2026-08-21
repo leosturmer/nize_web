@@ -366,6 +366,7 @@
     text-align: center;
     font-size: 1.3em;
     padding: 0.6em 1.2em;
+    margin: 0.5em auto;
   }
 }
 
@@ -809,6 +810,11 @@
   /* #form-products-buttons > button {
     width: fit-content;
   } */
+
+  div.lista-produtos-loja {
+    border: none;
+    background-color: transparent;
+  }
 
   span.bi {
     margin-left: 8px;
