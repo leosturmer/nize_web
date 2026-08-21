@@ -218,6 +218,13 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                 Comentários
                 <textarea name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo $infoPedidoSession['comentario'] ?></textarea>
               </label>
+
+              <?php
+                            if ($infoPedidoBanco['mensagem_cliente']):
+                            ?>
+                            <p><b>Mensagem do cliente</b>: <?php echo $infoPedidoBanco['mensagem_cliente']; ?></p>
+
+                            <?php endif; ?>
             </fieldset>
           </div>
           <div class="form-pedidos-items">

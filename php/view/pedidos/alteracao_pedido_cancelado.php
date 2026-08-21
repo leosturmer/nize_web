@@ -196,6 +196,12 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
           <div id="pedidos-form" class="pedido-cancelado-infos">
             <p><b>Data/prazo</b>: <?php echo $data; ?> </p><br>
             <p><b>Comentários</b>: <?php echo $infoPedidoBanco['comentario']; ?></p> <br>
+            <?php
+            if ($infoPedidoBanco['mensagem_cliente']):
+            ?>
+              <p><b>Mensagem do cliente</b>: <?php echo $infoPedidoBanco['mensagem_cliente']; ?></p>
+
+            <?php endif; ?>
             </p>
           </div>
         </div>

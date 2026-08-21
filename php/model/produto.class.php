@@ -8,6 +8,7 @@ class Produto {
     private $valor_custo;
     private $imagem;
     private $aceita_encomenda;
+    private $comentario;
     private $descricao;
     private $created_at;
 

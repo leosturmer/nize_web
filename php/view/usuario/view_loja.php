@@ -124,9 +124,13 @@ if (!empty($_SESSION['usuario_logado'])) {
                         <input type="hidden" name="loja" value="<?php echo htmlspecialchars($nome_visualizacao); ?>">
 
                         <div class="info-btn-sacola">
-                            <label for="comentarioPedido" class="label-column">
-                                Informações do pedido
-                                <textarea name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Digite seu nome, detalhes do pedido ou dúvidas"></textarea required>
+                            <p>Informações do pedido</p>
+                            <label for="nomeCliente">Nome completo<input type="text" name="nomeCliente" placeholder="Nome e Sobrenome" class="input-produto" pattern=".*\s+.*" title="Digite pelo menos nome e sobrenome com um espaço" required></label>
+
+                            <label for="telefoneCliente">Telefone<input type="tel" name="telefoneCliente" placeholder="Ex: 55 99999999" class="input-produto" maxlength="16" required></label>
+
+                            <label for="mensagemCliente" class="label-column">
+                                <textarea name="mensagemCliente" id="mensagemCliente" class="input-pedido" placeholder="Gostaria de adicionar alguma informação?"></textarea required>
                             </label>
                             <div class="product-btns">
                                 <button type="submit"><span class="bi bi-check2"></span>Enviar</button>

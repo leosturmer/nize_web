@@ -169,7 +169,8 @@ if (isset($_SESSION['pedidoSelecionado'])) {
               $dataBanco = $dados_pedido['data'];
               $formatoData = strtotime($dataBanco);
               $data = date("d/m/Y", $formatoData);
-              $comentario = $dados_pedido['comentario'];              
+              $comentario = $dados_pedido['comentario'];
+              $mensagem_cliente = $dados_pedido['mensagem_cliente'];     
               $status = $dados_pedido['status'];
               $statusView = '';
 
@@ -198,6 +199,14 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                     } else {
                       echo "Nenhum comentário adicionado";
                     } ?></p>
+
+              <?php 
+                if ($mensagem_cliente):             
+              ?>
+              <p><strong>Mensagem do cliente:</strong> <?php echo $mensagem_cliente; ?></p>
+
+              <?php endif; ?>
+
             </div>
 
             <div class="product-btns pedido-btns">

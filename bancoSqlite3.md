@@ -21,32 +21,32 @@ USE nize_database;
 -- 2. CRIAÇÃO DAS TABELAS
 
     CREATE TABLE IF NOT EXISTS usuario (
-            id_usuario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-            login TEXT NOT NULL UNIQUE,
-            senha TEXT NOT NULL,
-            nome TEXT NOT NULL,
-            nome_loja TEXT NULL,
-            aceita_visualizacao INTEGER NULL,
-            nome_visualizacao VARCHAR (50) UNIQUE,
-            telefone VARCHAR(20),
-            tipo_usuario INTEGER,
-            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+        id_usuario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        login TEXT NOT NULL UNIQUE,
+        senha TEXT NOT NULL,
+        nome TEXT NOT NULL,
+        nome_loja TEXT NULL,
+        aceita_visualizacao INTEGER NULL,
+        nome_visualizacao VARCHAR (50) UNIQUE,
+        telefone VARCHAR(20),
+        tipo_usuario INTEGER,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
     );
 
     CREATE TABLE IF NOT EXISTS produtos (
-            id_produto INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-            id_usuario INTEGER NOT NULL,
-            nome TEXT NOT NULL,
-            valor_unitario REAL NOT NULL,
-            quantidade INTEGER NULL,
-            imagem TEXT NULL,
-            aceita_encomenda INTEGER NULL,
-            descricao TEXT NULL,
-            comentario TEXT NULL,
-            valor_custo REAL NULL,
-            aceita_visualizacao INTEGER NULL,
-            created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
+        id_produto INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+        id_usuario INTEGER NOT NULL,
+        nome TEXT NOT NULL,
+        valor_unitario REAL NOT NULL,
+        quantidade INTEGER NULL,
+        imagem TEXT NULL,
+        aceita_encomenda INTEGER NULL,
+        descricao TEXT NULL,
+        comentario TEXT NULL,
+        valor_custo REAL NULL,
+        aceita_visualizacao INTEGER NULL,
+        created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
     );
 
     CREATE TABLE IF NOT EXISTS pedidos (
@@ -57,6 +57,7 @@ USE nize_database;
         valor_final REAL NOT NULL,
         status TEXT NOT NULL,
         comentario TEXT NULL,
+        mensagem_cliente TEXT NULL,
         created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario)
 );
@@ -73,11 +74,11 @@ USE nize_database;
 -- 3. CRIAÇÃO DAS VIEWS
 
 CREATE VIEW IF NOT EXISTS view_produtos AS
-SELECT id_usuario, id_produto, nome, quantidade, valor_unitario, valor_custo, aceita_encomenda, descricao, imagem
+SELECT id_usuario, id_produto, nome, quantidade, valor_unitario, valor_custo, aceita_encomenda, comentario, descricao, imagem
 FROM produtos;
 
 CREATE VIEW IF NOT EXISTS view_pedidos AS
-SELECT v.id_usuario, v.id_pedido, v.num_pedido, p.nome, vp.quantidade, v.data, vp.valor_unitario, v.valor_final, v.status, v.comentario
+SELECT v.id_usuario, v.id_pedido, v.num_pedido, p.nome, vp.quantidade, v.data, vp.valor_unitario, v.valor_final, v.status, v.comentario, v.mensagem_cliente
 FROM pedidos v
 INNER JOIN pedido_produto vp ON v.id_pedido = vp.id_pedido
 INNER JOIN produtos p ON vp.id_produto = p.id_produto;

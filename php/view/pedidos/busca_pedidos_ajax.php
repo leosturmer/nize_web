@@ -69,6 +69,13 @@ if (!empty($listaPedidos)) {
                                                                 } else {
                                                                     echo "Nenhum comentário adicionado";
                                                                 } ?></p>
+
+            <?php
+            if ($dados_pedido['mensagem_cliente']):
+            ?>
+                <p><strong>Mensagem do cliente:</strong> <?php echo $dados_pedido['mensagem_cliente']; ?></p>
+
+            <?php endif; ?>
         </div>
 
         <div class="product-btns pedido-btns">

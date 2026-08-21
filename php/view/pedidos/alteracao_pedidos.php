@@ -270,11 +270,19 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                                     <input type="checkbox" name="estornarEstoque" id="estornarEstoque" class="input-produto input-checkbox" value="1" autocomplete="off">
                                 </label>
                             </div>
-                            <!-- </div> -->
-                            <label for="comentarioPedido">
-                                Comentários
-                                <textarea name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo $infoPedidoBanco['comentario'] ?></textarea>
-                            </label>
+
+                            
+                        <!-- </div> -->
+                        <label for="comentarioPedido">
+                            Comentários
+                            <textarea name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo $infoPedidoBanco['comentario'] ?></textarea>
+                        </label>
+                            <?php
+                            if ($infoPedidoBanco['mensagem_cliente']):
+                            ?>
+                            <p><b>Mensagem do cliente</b>: <?php echo $infoPedidoBanco['mensagem_cliente']; ?></p>
+
+                            <?php endif; ?>
                         </fieldset>
                     </div>
                     <div class="form-pedidos-items">

@@ -392,8 +392,19 @@ main {
   flex-direction: column;
   justify-content: space-between;
   background-color: whitesmoke;
-  border: var(--border-thin);
+  /* border: var(--border-thin); */
   padding: 0.5em;
+}
+
+.info-btn-sacola {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-evenly;
+}
+
+.info-btn-sacola input {
+  margin-left: 1em;
 }
 
 .produtos-sacola-sidenav .produtos-no-pedido {

@@ -23,9 +23,9 @@ class PedidoDAO
         try {
             $this->conexao->beginTransaction();
 
-            $sql_pedido = "INSERT INTO pedidos (id_usuario, status, data, comentario, valor_final) VALUES (?, ?, ?, ?, ?)";
+            $sql_pedido = "INSERT INTO pedidos (id_usuario, status, data, comentario, valor_final, mensagem_cliente) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $this->conexao->prepare($sql_pedido);
-            $stmt->execute([$pedido->id_usuario, $pedido->status, $pedido->data, $pedido->comentario, $pedido->valor_final]);
+            $stmt->execute([$pedido->id_usuario, $pedido->status, $pedido->data, $pedido->comentario, $pedido->valor_final, $pedido->mensagem_cliente]);
 
             // Pega o ID gerado pelo banco
             $id_pedido = $this->conexao->lastInsertId();
@@ -178,7 +178,7 @@ class PedidoDAO
     {
         try {
             $sql = $this->conexao->prepare(
-                "SELECT id_pedido, num_pedido, data, nome, quantidade, comentario, status, valor_unitario, valor_final
+                "SELECT id_pedido, num_pedido, data, nome, quantidade, comentario, mensagem_cliente, status, valor_unitario, valor_final
                     FROM view_pedidos 
                     WHERE id_usuario = :id_usuario
                     ORDER BY id_pedido DESC"
@@ -196,6 +196,7 @@ class PedidoDAO
                         'produtos'   => [],
                         'data'      => $linha['data'],
                         'comentario' => $linha['comentario'],
+                        'mensagem_cliente' => $linha['mensagem_cliente'],
                         'status'     => $linha['status'],
                         'valor_final'     => $linha['valor_final'],
                         'num_pedido' => $linha['num_pedido']
@@ -220,7 +221,7 @@ class PedidoDAO
         try {
             $busca = "%" . $pesquisa . "%";
 
-            $sqlStr = "SELECT id_pedido, num_pedido, data, nome, quantidade, comentario, status, valor_unitario, valor_final
+            $sqlStr = "SELECT id_pedido, num_pedido, data, nome, quantidade, comentario, mensagem_cliente, status, valor_unitario, valor_final
             FROM view_pedidos
             WHERE id_usuario = :id_usuario";
 
@@ -228,6 +229,7 @@ class PedidoDAO
                 $sqlStr .= " AND (comentario LIKE :busca 
                 OR nome LIKE :busca2 
                 OR num_pedido LIKE :busca3
+                OR mensagem_cliente LIKE :busca4
                 )";
             }
 
@@ -262,6 +264,7 @@ class PedidoDAO
                 $sql->bindValue(":busca", $busca);
                 $sql->bindValue(":busca2", $busca);
                 $sql->bindValue(":busca3", ltrim($pesquisa, "0"));
+                $sql->bindValue(":busca4", $busca);
             }
 
             if (!empty($data)) {
@@ -286,6 +289,7 @@ class PedidoDAO
                         'produtos'   => [],
                         'data'      => $linha['data'],
                         'comentario' => $linha['comentario'],
+                        'mensagem_cliente' => $linha['mensagem_cliente'],
                         'status'     => $linha['status'],
                         'valor_final'     => $linha['valor_final']
                     ];
@@ -308,7 +312,7 @@ class PedidoDAO
     public function buscarPedidoID($id_pedido)
     {
         try {
-            $sql = $this->conexao->prepare("SELECT id_pedido, data, comentario, status, valor_final
+            $sql = $this->conexao->prepare("SELECT id_pedido, data, comentario, mensagem_cliente, status, valor_final
                     FROM view_pedidos WHERE id_pedido = :id_pedido");
             $sql->bindValue(":id_pedido", $id_pedido);
             $sql->execute();
@@ -322,6 +326,7 @@ class PedidoDAO
                 'id_pedido' => $select['id_pedido'],
                 'data'        => $select['data'],
                 'comentario'   => $select['comentario'],
+                'mensagem_cliente'   => $select['mensagem_cliente'],
                 'status'       => $select['status'],
                 'valor_final' => $select['valor_final'],
                 'produtos'     => []

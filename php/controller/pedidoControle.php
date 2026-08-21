@@ -214,13 +214,15 @@ switch ($opcao) {
     case "solicitarPedido":
         try {
             $loja = $_GET['loja'] ?? '';
-            $comentarioDigitado = trim($_GET['comentarioPedido'] ?? "");
+            $nomeCliente = trim($_GET['nomeCliente']);
+            $telefoneCliente = trim($_GET['telefoneCliente']);
+            $mensagemCliente = trim($_GET['mensagemCliente'] ?? "");
 
             // Monta o comentário com a Opção 2 (prefixo no início)
-            if (!empty($comentarioDigitado)) {
-                $comentarioFinal = "### Pedido feito online ### " . $comentarioDigitado;
+            if (!empty($mensagemCliente)) {
+                $mensagemFinal = "Nome do cliente: $nomeCliente  \nTelefone: $telefoneCliente \n $mensagemCliente";
             } else {
-                $comentarioFinal = "### Pedido feito online ### ";
+                $mensagemFinal = $nomeCliente . " \n " . $telefoneCliente;
             }
 
             if (empty($_SESSION['sacola'])) {
@@ -237,13 +239,12 @@ switch ($opcao) {
             $novoPedido->id_usuario = $id_dono_loja;
             $novoPedido->data = date('Y-m-d');
             $novoPedido->status = 'encomenda_online';
-            
-            $novoPedido->comentario = $comentarioFinal;
-            
+            $novoPedido->comentario = "### Pedido feito online ###";
+            $novoPedido->mensagem_cliente = $mensagemFinal;
             $novoPedido->produtos = $_SESSION['sacola'];
             $novoPedido->valor_final = $_SESSION['total_compra'];
 
-            $_SESSION['carrinho'] = $_SESSION['sacola']; 
+            $_SESSION['carrinho'] = $_SESSION['sacola'];
 
             // Cadastra o pedido e recupera o ID gerado no banco
             $id_pedido_gerado = $pedidoDAO->cadastrarPedido($novoPedido, null);
@@ -258,10 +259,9 @@ switch ($opcao) {
             $_SESSION['pedido_sucesso'] = true;
             $_SESSION['ultimo_pedido_id'] = $numero_formatado;
             $_SESSION['msg'] = "<p class='success-msg'>Pedido #{$numero_formatado} enviado com sucesso! Aguarde, você será redirecionado...</p>";
-            
+
             header("Location: ../view/usuario/view_loja.php?loja=" . urlencode($loja));
             exit;
-
         } catch (Exception $e) {
             $_SESSION['msg'] = "<p class='error-msg'>Algo deu errado ao enviar seu pedido! Tente novamente.</p>";
             header("Location: ../view/usuario/view_loja.php?loja=" . urlencode($loja));

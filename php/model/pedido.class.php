@@ -6,6 +6,7 @@ class Pedido {
     private $data;
     private $valor_final;
     private $status;
+    private $mensagem_cliente;
     private $comentario;
     private $produtos;
     private $created_at;
