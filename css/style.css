@@ -951,6 +951,11 @@ div.produtos-no-pedido h3 {
 
 #pedidos-form p {
   max-width: 500px;
+  font-size: 16px;
+}
+
+#pedidos-form b {
+  background-color: var(--softGreen);
 }
 
 .form-pedidos-items {
