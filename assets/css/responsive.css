@@ -1,0 +1,765 @@
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  main {
+    margin-top: 1.5em;
+    margin-left: 1em;
+
+    &.conteudo-pagina {
+      margin: 3em 0;
+      padding: 2em;
+    }
+  }
+
+  .logo-header-mobile {
+    position: relative;
+    z-index: 9999;
+    align-self: center;
+    padding: 0;
+  }
+
+  .success-msg,
+  .error-msg {
+    color: whitesmoke;
+    border: 2px solid black;
+    box-shadow: var(--box-shadow);
+    font-size: 16px;
+    position: absolute;
+    /* top: 3.2em; */
+    /* right: 1.5em; */
+    width: fit-content;
+    max-width: 300px;
+    padding: 0.8em 1rem;
+    z-index: 99999;
+  }
+
+  h1,
+  h1#tituloInicial,
+  #titulo-cadastro {
+    font-size: 22px;
+  }
+
+  #container-index.container {
+    margin-top: 15dvh;
+  }
+
+  div.container-inicial {
+    margin-top: 2em;
+
+    & > p {
+      margin-top: 0.4em;
+    }
+
+    & > h2 {
+      padding: 0.5em;
+    }
+  }
+
+  .btn-menu {
+    position: fixed;
+    left: 1em;
+    top: 0.5em;
+  }
+
+  #titulo-cadastro {
+    padding-bottom: 0;
+  }
+
+  .container.container-cadastro {
+    padding: 20px 10px;
+    width: 45%;
+  }
+
+  form#form-cadastro {
+    & label {
+      font-size: 16px;
+      margin: 0.3em 0 0.2em 0;
+    }
+
+    & button {
+      margin: 10px auto;
+    }
+  }
+
+  .div-cadastro {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  div.product-view {
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    & .product-btns {
+      margin: auto 0;
+    }
+
+    & p {
+      margin: 2px;
+      line-height: 2em;
+      font-size: 16px;
+    }
+
+    & > div.product-img-btn > img.img-produtos {
+      align-self: center;
+      width: 300px;
+      height: 200px;
+    }
+  }
+
+  .p-valor {
+    font-size: 1.2em;
+  }
+
+  div.product-view-loja {
+    display: flex;
+    flex-direction: column;
+
+    & > img {
+      width: 300px;
+      height: 250px;
+    }
+  }
+
+  div.texto-produto,
+  div.texto-pedido {
+    max-width: 50%;
+
+    & h2 {
+      text-align: left;
+      padding: 0.2em;
+      font-size: 18px;
+    }
+  }
+
+  div.pedido-btns {
+    display: flex;
+    flex-direction: column;
+  }
+
+  div.product-btns > a {
+    padding: 0.2em 0.5em;
+    font-size: 16px;
+  }
+
+  details.produtos-pedido {
+    padding: 0.8em;
+
+    & > summary {
+      font-size: 16px;
+    }
+
+    &[open] summary.summary-pedido {
+      position: fixed;
+      top: 5.5em;
+      align-self: center;
+      /* left: 2em; */
+      background-color: var(--lightGreen);
+      padding: 0.5em;
+      width: fit-content;
+      border: var(--border-thin);
+    }
+  }
+
+  div.adicionar-produtos > div.product-view {
+    margin-bottom: 10px;
+  }
+
+  div.product-img-btn > span.bi.bi-bag-plus {
+    font-size: 20px;
+  }
+
+  input#quantidadeVendida.input-pedido {
+    width: 50px;
+  }
+
+  div.produtos-no-pedido {
+    & h3 {
+      font-size: 18px;
+    }
+
+    & p {
+      font-size: 16px;
+    }
+  }
+
+  h2.num-pedido {
+    padding: 0;
+    font-size: 20px;
+  }
+
+  .sb-expanded img#logo-sidenav-view {
+    margin: 0.5em auto;
+  }
+}
+
+@media (max-width: 900px) {
+  input#pesquisa-produtos,
+  input#pesquisa-pedidos,
+  input#pesquisa-usuarios {
+    font-size: 12px;
+  }
+
+  span#search-icon {
+    font-size: 16px;
+    right: -15%;
+  }
+
+  div.internal-nav-links > a {
+    font-size: 14px;
+    padding: 0.2em 0.6em;
+    display: flex;
+    align-items: center;
+
+    & > span {
+      font-size: 18px;
+      margin-right: 0.5em;
+    }
+  }
+
+  div.internal-nav-inputs details.fitros-produtos {
+    padding: 0.1em 0.6em;
+  }
+
+  details.fitros-produtos > summary {
+    font-size: 16px;
+  }
+
+  div.adicionar-produtos span#search-icon {
+    right: 0;
+  }
+
+  fieldset#pedidos-form {
+    margin-left: 1em;
+    padding: 0.5em 0.8em;
+
+    & label.label-column,
+    & textarea#comentarioPedido.input-pedido {
+      font-size: 15px;
+    }
+
+    & input#prazoPedido {
+      padding: 0.5em;
+      font-size: 14px;
+    }
+  }
+
+  select#statusPedido {
+    font-size: 14px;
+    padding: 0.5em;
+    width: 150px;
+    margin-left: 0.5em;
+  }
+
+  .total-pedido > p,
+  .produtos-no-pedido p,
+  div#pedidos-form.pedido-cancelado-infos p {
+    font-size: 16px;
+  }
+
+  div.form-pedidos-items {
+    & > button,
+    & > a {
+      padding: 0.3em;
+      width: 100px;
+      font-size: 14px;
+    }
+  }
+
+  div.produtos-no-pedido {
+    grid-template-columns: none;
+    gap: 0.5em;
+
+    & div.produto-individual {
+      padding: 0.5em;
+      gap: 0;
+    }
+  }
+
+  div.product-view > div.product-img-btn > img.img-produtos {
+    align-self: center;
+    width: 250px;
+    height: 150px;
+  }
+
+  .span-alt-img {
+    font-size: 12px;
+  }
+
+  .nome-loja {
+    text-align: center;
+    font-size: 1.3em;
+    padding: 0.6em 1.2em;
+    margin: 0.5em auto;
+  }
+
+  .sem-imagem {
+    width: fit-content;
+    padding: 0.5em;
+  }
+}
+
+@media (max-width: 770px) {
+  main.conteudo-pagina {
+    margin-top: 4em;
+    padding: 1em;
+  }
+
+  .btn-menu {
+    position: fixed;
+    left: 0.5em;
+    top: 0.5em;
+  }
+
+  div.product-view {
+    margin-bottom: 10px;
+
+    & > div.product-img-btn > img.img-produtos {
+      width: 100%;
+    }
+  }
+
+  div.product-img-btn {
+    max-width: 35%;
+    margin-right: 1em;
+  }
+
+  div.product-btns {
+    & > a {
+      margin: 0.5em;
+      font-size: 13px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    & span {
+      font-size: 16px;
+      margin-right: 0.5em;
+    }
+  }
+
+  div.lista-produtos {
+    padding: 0;
+  }
+
+  div.container-horizontal {
+    display: block;
+
+    &.cadastro-btns {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .sb-expanded aside#sidebar.sacola-compras {
+    width: 90dvw;
+    max-width: 95dvw;
+    height: 100%;
+  }
+
+  div.produtos-no-pedido {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-height: 300px;
+
+    & div.produto-individual {
+      display: grid;
+
+      & p {
+        font-size: 14px;
+      }
+
+      & h3 {
+        font-size: 16px;
+      }
+
+      & a.btn-remover {
+        font-size: 12px;
+        padding: 0.2em 0.5em;
+        background-color: whitesmoke;
+        border: var(--border-hover);
+
+        &:hover {
+          border-color: brown;
+        }
+      }
+    }
+  }
+
+  .lista-produtos-pedido .product-view {
+    & .btn-add {
+      font-size: 12px;
+    }
+
+    & #quantidadeVendida {
+      height: 40px;
+    }
+  }
+
+  div.total-pedido {
+    text-align: center;
+    margin: 0.8em 0 1em auto;
+    font-size: 16px;
+    width: 200%;
+  }
+
+  div.infos-pedido div.form-pedidos-items {
+    width: 200%;
+  }
+
+  fieldset#pedidos-form {
+    margin: 0;
+    padding: 0.8em;
+  }
+
+  div.form-pedidos-buttons {
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  #products-form,
+  div.inner-products-form {
+    padding: 0.4em;
+  }
+
+  div.form-pedidos-items {
+    display: flex;
+    justify-content: center;
+  }
+
+  .texto-pedido-cancelado p,
+  div.main-administrador p,
+  div.main-administrador button {
+    font-size: 14px;
+  }
+
+  div#minha-area,
+  div.main-administrador {
+    width: 100%;
+  }
+
+  div.main-administrador button {
+    width: 100px;
+  }
+
+  div.cadastro-btns button.btn-excluir {
+    margin-left: 0.5em;
+  }
+
+  div.div-btn-wpp {
+
+    & img {
+      width: 55px;
+    }
+  }
+
+  .sacola-compras .product-btns {
+    & button,
+    & a {
+      font-size: 14px;
+      height: 40px;
+    }
+  }
+
+  .sb-expanded .conteudo-loja {
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+
+  
+}
+
+@media (max-width: 641px) {
+  main {
+    margin-top: 1.5em;
+    padding: 1em;
+    margin-left: 0;
+  }
+
+  .success-msg,
+  .error-msg {
+    /* top: 2em; */
+  }
+
+  .conteudo-pagina {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 2em 0 0 0;
+    height: 100dvh;
+    width: 100dvw;
+  }
+
+  #aside-deslog {
+    visibility: hidden;
+  }
+
+  .titulo-erro {
+    font-size: 20px;
+    width: fit-content;
+    padding: 0.8em 0.5em;
+  }
+
+  .container-inicial.container-erro {
+    width: auto;
+    padding: 2em 1em;
+
+    & p {
+      font-size: 16px;
+      margin-top: 0.8em;
+      margin-bottom: 0.5em;
+    }
+  }
+
+  form#form-cadastro label,
+  div.container-inicial > p,
+  details.faq-inicial > summary,
+  details.faq-inicial {
+    font-size: 16px;
+  }
+
+  a.btn-voltar-erro {
+    margin-top: 30%;
+  }
+
+  #container-index.container {
+    display: flex;
+    flex-direction: column;
+    margin: auto auto;
+  }
+
+  #subtitulo-index {
+    width: auto;
+    font-size: 1.3em;
+  }
+
+  .botoes-index {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #titulo-login,
+  #titulo-cadastro,
+  div.internal-nav-links h1 {
+    font-size: 22px;
+  }
+
+  .container.container-login {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5em -10px;
+    width: 95%;
+  }
+
+  #form-login {
+    margin: 0;
+    align-self: center;
+  }
+
+  .logo-header-mobile {
+    position: relative;
+    z-index: 9999;
+    align-self: center;
+    padding: 0;
+  }
+
+  #titulo-cadastro {
+    padding-bottom: 0;
+  }
+
+  .container.container-cadastro {
+    padding: 20px 10px;
+    width: 95%;
+  }
+
+  form#form-cadastro {
+    & label {
+      margin: 0.3em 0 0.2em 0;
+    }
+
+    & button {
+      margin: 0.8em auto;
+    }
+  }
+
+  .div-cadastro {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  div.container-inicial {
+    width: 100%;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background-color: whitesmoke;
+
+    & > h2 {
+      font-size: 18px;
+      padding-bottom: 0;
+    }
+  }
+
+  footer {
+    font-size: 0.6em;
+    text-align: center;
+    align-self: center;
+
+  }
+
+
+
+
+
+  div.internal-nav-links {
+    & h1 {
+      margin-right: 0;
+      font-size: 20px;
+    }
+
+    & > a {
+      font-size: 14px;
+      padding: 0.2em 0.6em;
+      display: flex;
+      align-items: center;
+
+      & > span {
+        font-size: 18px;
+        margin-right: 0.5em;
+      }
+    }
+  }
+
+  form#form-pesquisa-produtos,
+  form#form-pesquisa-pedidos,
+  form#form-pesquisa-usuarios {
+    width: 55%;
+  }
+
+  .produtos-pedido #form-pesquisa-produtos {
+    width: 80%;
+    left: 1em;
+  }
+
+  input#pesquisa-produtos,
+  input#pesquisa-pedidos,
+  input#pesquisa-usuarios {
+    max-width: 100%;
+    border: var(--border-thin);
+    box-shadow: none;
+
+    &:focus {
+      border: var(--border-focus-purple);
+      box-shadow: var(--shadow-focus-purple);
+    }
+  }
+
+  div.lista-pedidos,
+  div.lista-produtos {
+    border: none;
+    background: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  details[open].produtos-pedido {
+    padding: 1em;
+  }
+
+  span#search-icon {
+    right: -15%;
+  }
+
+  div.product-view > div.product-img-btn > img.img-produtos {
+    max-width: 250px;
+    max-height: 150px;
+    width: 250px;
+  }
+
+  div.lista-produtos-loja {
+    border: none;
+    background-color: transparent;
+    /* justify-content: center; */
+    margin: 0 auto;
+  }
+
+  span.bi {
+    margin-left: 8px;
+  }
+
+  .sb-expanded {
+    & aside#sidebar.sacola-compras {
+      max-width: 95dvw;
+      height: 100dvh;
+    }
+
+    & .conteudo-loja {
+      overflow-y: hidden;
+      overflow-x: hidden;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  #container-index.container {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+  }
+
+
+  div.product-view {
+    flex-direction: column;
+
+    & > .pedido-btns {
+      flex-direction: row;
+    }
+
+    & > div.texto-produto,
+    & > div.texto-pedido {
+      max-width: 100%;
+    }
+  }
+
+  div.product-img-btn {
+    width: 300px;
+    margin-right: 0;
+  }
+
+  div.product-view-loja {
+    max-width: 93dvw;
+  }
+
+  .sem-imagem,
+  div.texto-produto > img.img-produtos {
+    max-width: 75dvw;
+    margin: 0 auto;
+  }
+
+  div.div-inner-products {
+    flex-direction: column;
+  }
+
+  #form-products-buttons > button {
+    padding: 0.5em;
+    font-size: 14px;
+    width: 30%;
+  }
+
+  div.usuario-btns {
+    margin: 2em 0;
+  }
+}
