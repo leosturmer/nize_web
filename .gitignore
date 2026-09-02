@@ -1,6 +1,6 @@
 _old/
 arquivos_apresentacao/
-php/persistence/nize_databse.db
+php/persistence/nize_database.db
 php/persistence/uploads/
 bancoSqlite3.md
 implementacoes_futuras.md
