@@ -82,7 +82,7 @@ class ProdutoDAO{
 
     public function listarTodosProdutos($id_usuario) : array {
         try{
-            $sql = $this->conexao->prepare("SELECT * FROM produtos WHERE id_usuario = :id_usuario ORDER BY nome COLLATE NOCASE ASC");
+            $sql = $this->conexao->prepare("SELECT * FROM produtos WHERE id_usuario = :id_usuario ORDER BY nome ASC");
             $sql->bindValue(":id_usuario", $id_usuario);
             $sql->execute();
             return $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -96,7 +96,7 @@ class ProdutoDAO{
 
     public function listarTodosProdutosAbertos($id_usuario) : array {
         try{
-            $sql = $this->conexao->prepare("SELECT * FROM produtos WHERE id_usuario = :id_usuario AND aceita_visualizacao = 1 ORDER BY nome COLLATE NOCASE ASC");
+            $sql = $this->conexao->prepare("SELECT * FROM produtos WHERE id_usuario = :id_usuario AND aceita_visualizacao = 1 ORDER BY nome ASC");
             $sql->bindValue(":id_usuario", $id_usuario);
             $sql->execute();
             return $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -151,27 +151,27 @@ class ProdutoDAO{
 
             if ($ordenar) {
                 if ($ordenar === "nome-asc") {
-                    $sqlStr .= " ORDER BY nome COLLATE NOCASE ASC;";
+                    $sqlStr .= " ORDER BY nome ASC;";
 
                 } else if ($ordenar === "nome-desc") {
-                    $sqlStr .= " ORDER BY nome COLLATE NOCASE DESC;";
+                    $sqlStr .= " ORDER BY nome DESC;";
 
                 } else if ($ordenar === "quant-asc") {
-                    $sqlStr .= " ORDER BY quantidade ASC NULLS FIRST;";
+                    $sqlStr .= " ORDER BY quantidade IS NULL DESC, quantidade ASC;";
                 
                 } else if ($ordenar === "quant-desc") {
-                    $sqlStr .= " ORDER BY quantidade DESC NULLS LAST;";
+                    $sqlStr .= " ORDER BY quantidade IS NULL ASC, quantidade DESC;";
 
                 } else if ($ordenar === "valor-asc") {
-                    $sqlStr .= " ORDER BY valor_unitario ASC NULLS FIRST;";
+                    $sqlStr .= " ORDER BY valor_unitario ASC IS NULL DESC, valor_unitario ASC;";
 
                 } else if ($ordenar === "valor-desc") {
-                    $sqlStr .= " ORDER BY valor_unitario DESC NULLS LAST;";
+                    $sqlStr .= " ORDER BY valor_unitario IS NULL ASC, valor_unitario DESC;";
 
                 } 
 
             } else {
-                $sqlStr .= " ORDER BY nome COLLATE NOCASE ASC;";
+                $sqlStr .= " ORDER BY nome ASC;";
 
             }
 

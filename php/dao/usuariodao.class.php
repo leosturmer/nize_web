@@ -158,7 +158,7 @@ class UsuarioDAO
     public function buscarUsuarios()
     {
         try {
-            $sql = $this->conexao->prepare("SELECT id_usuario, login, nome, tipo_usuario FROM usuario ORDER BY nome COLLATE NOCASE ASC");
+            $sql = $this->conexao->prepare("SELECT id_usuario, login, nome, tipo_usuario FROM usuario ORDER BY nome ASC");
             $sql->execute();
             return $sql->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
@@ -189,7 +189,7 @@ class UsuarioDAO
                     $sqlStr .= " ORDER BY login DESC";
                 }
             } else {
-                $sqlStr .= " ORDER BY nome COLLATE NOCASE ASC";
+                $sqlStr .= " ORDER BY nome ASC";
             }
 
             $sql = $this->conexao->prepare($sqlStr);
