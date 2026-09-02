@@ -147,9 +147,9 @@ if (isset($_SESSION['pedidoSelecionado'])) {
             <select id="filtro-order">
               <option value="">Ordenar por</option>
               <option value="numero-asc">Número pedido (crescente)</option>
-              <option value="numero-desc">Número pedido (decrecente)</option>
+              <option value="numero-desc">Número pedido (decrescente)</option>
               <option value="data-asc">Data (crescente)</option>
-              <option value="data-desc">Data (decrecente)</option>
+              <option value="data-desc">Data (decrescente)</option>
             </select>
             <button type="button" id="btn-limpar-filtros"><span class="bi bi-arrow-clockwise"></span>Limpar</button>
           </div>

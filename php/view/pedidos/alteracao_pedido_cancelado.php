@@ -125,7 +125,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
     <div class="internal-nav">
       <div class="internal-nav-links">
-        <h2 class="num-pedido num-pedido-cancelado">Pedido cancelado - <?php echo $numero_pedido = str_pad($infoPedidoBanco['num_pedido'], 4, '0', STR_PAD_LEFT); ?></h2>
+        <h1 class="num-pedido num-pedido-cancelado">Pedido cancelado - <?php echo $numero_pedido = str_pad($infoPedidoBanco['num_pedido'], 4, '0', STR_PAD_LEFT); ?></h1>
         <a href="visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
       </div>
       <div class="texto-pedido-cancelado">

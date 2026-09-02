@@ -125,7 +125,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
     <div class="internal-nav">
       <div class="internal-nav-links" style="display: flex; align-items: center;">
-        <h2 class="num-pedido num-pedido-cancelado">Pedido vendido - <?php echo $numero_pedido = str_pad($infoPedidoBanco['num_pedido'], 4, '0', STR_PAD_LEFT); ?></h2>
+        <h1 class="num-pedido num-pedido-cancelado">Pedido vendido - <?php echo $numero_pedido = str_pad($infoPedidoBanco['num_pedido'], 4, '0', STR_PAD_LEFT); ?></h1>
         <a href="visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
       </div>
       <div class="texto-pedido-cancelado">
@@ -182,7 +182,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
         echo "<div class='total-pedido'><p><b>Total do pedido</b>: R$ " . number_format((float)$infoPedidoBanco['valor_final'], 2, ',', '.') . "</p></div>"; // Aqui tem que mudar
         $dataBanco = $infoPedidoBanco['data'];
         $formatoData = strtotime($dataBanco);
-        $data = date("d/m/Y", $formatoData);
+        $data = date("Y-m-d", $formatoData);
         ?>
         <form action="../../controller/pedidoControle.php" method="get">
           <input type="hidden" name="op" value="alterar">
@@ -191,7 +191,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
               <!-- <div> -->
               <label for="prazopedido">
                 Data
-                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" autocomplete="off" required value="<?php echo $infoPedidoBanco['data'] ?>">
+                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" autocomplete="off" required value="<?php echo $data ?>">
               </label>
               <label for="statusPedido">
                 Status do Pedido
