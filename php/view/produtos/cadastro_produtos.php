@@ -120,7 +120,6 @@ $usuario = unserialize($_SESSION['usuario_logado']);
           <label><strong>Nome do produto</strong>*:</label>
           <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" autocomplete="off" placeholder="o nome do produto vai aqui" maxlength="50" required>
 
-
           <div class="div-inner-products">
             <label><strong>Quantidade</strong>:
               <input type="number"  step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" id="quantidadeProduto" name="quantidadeProduto" class="input-produto " maxlength="3" placeholder="00" autocomplete="off">
@@ -130,9 +129,12 @@ $usuario = unserialize($_SESSION['usuario_logado']);
               <strong>Aceita encomendas</strong>:
               <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto input-checkbox" value='1' autocomplete="off">
             </label>
-
-
           </div>
+          
+          <label class="checkbox-acc" for="">
+            <strong>Disponibilizar para visualização:</strong>
+            <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1' autocomplete="off">
+          </label>
 
           <div class="div-inner-products">
 
@@ -152,10 +154,6 @@ $usuario = unserialize($_SESSION['usuario_logado']);
           </label>
           <textarea maxlength="500" rows="5" cols="40" name="comentarioProduto" id="comentarioProduto" placeholder="Adicione comentarios pessoais sobre o produto" class="input-produto" autocomplete="off"></textarea>
 
-          <label class="checkbox-acc" for="">
-            <strong>Disponibilizar para visualização:</strong>
-            <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1' autocomplete="off">
-          </label>
           
           <label class="descricao-produtos" for="descricaoProduto">
             <strong>Informações públicas do produto:</strong>

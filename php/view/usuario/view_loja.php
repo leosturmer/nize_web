@@ -94,7 +94,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                                 echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
                                 echo "<p>";
                                 echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-                                echo "<b>Unidade</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
+                                echo "<b>Valor unitário</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
                                 echo "<b>Valor total</b>: R$ " . number_format($valor, 2, ',', '.') . "</p>";
                                 echo "</div>";
 

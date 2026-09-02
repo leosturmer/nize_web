@@ -188,7 +188,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
               }
 
               foreach ($dados_pedido['produtos'] as $produto) {
-                echo "<p><strong>" . htmlspecialchars($produto['nome']) . "</strong>: " . htmlspecialchars($produto['quantidade']) . " unidades</p>";
+                echo "<p><strong>" . htmlspecialchars($produto['nome']) . "</strong>: " . htmlspecialchars($produto['quantidade']) . " Valor unitários</p>";
               }
               ?>
               <p><strong>Data: </strong><?php echo $data ?></p>

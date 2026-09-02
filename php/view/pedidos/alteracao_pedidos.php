@@ -248,7 +248,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                             echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
                             echo "<p>";
                             echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-                            echo "<b>Unidade</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
+                            echo "<b>Valor unitário</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
                             echo "<b>Valor total</b>: R$ " . number_format($valor_total_item, 2, ',', '.') . "</p>";
 
                             // Exibir o botão de remoção apenas se for a tela de alteração normal

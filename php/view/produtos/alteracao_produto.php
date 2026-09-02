@@ -139,20 +139,24 @@ $produto = $produtoDAO->buscarPorId($id_produto);
         <div class="inner-products-form">
           <label><strong>Nome do produto</strong>*:</label>
           <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto alt-nome-produto" value="<?php echo htmlspecialchars($produto['nome']); ?>" autocomplete="off" maxlength="50" required>
-
+          
           <div class="div-inner-products">
             <label><strong>Quantidade</strong>:
-              <input type="number"  step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" id="quantidadeProduto" name="quantidadeProduto" class="input-produto" value="<?php echo htmlspecialchars($produto['quantidade']); ?>" maxlength="3" autocomplete="off">
-            </label>
-
-            <label class="checkbox-acc" for="">
-              <strong>Aceita encomendas</strong>:
-              <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto" value="1" <?php echo " $checkEncomenda"; ?>>
-            </label>
-          </div>
-
+            <input type="number"  step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" id="quantidadeProduto" name="quantidadeProduto" class="input-produto" value="<?php echo htmlspecialchars($produto['quantidade']); ?>" maxlength="3" autocomplete="off">
+          </label>
+          
+          <label class="checkbox-acc" for="">
+            <strong>Aceita encomendas</strong>:
+            <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto" value="1" <?php echo " $checkEncomenda"; ?>>
+          </label>
+        </div>
+        
+        <label class="checkbox-acc" for="">
+          <strong>Disponibilizar para visualização</strong>
+            <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" autocomplete="off" <?php echo " $checkVisualizacao";?>>
+        </label>
           <div class="div-inner-products">
-            <label><strong>Unidade</strong>*: R$
+            <label><strong>Valor unitário</strong>*: R$
               <input type="number" min="0" id="valorUnitario" name="valorUnitario" step="0.10" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_unitario']); ?>" autocomplete="off" maxlength="6" required>
             </label>
 
@@ -168,10 +172,6 @@ $produto = $produtoDAO->buscarPorId($id_produto);
           </label>
           <textarea maxlength="500" rows="5" cols="40" name="comentarioProduto" id="comentarioProduto" placeholder="Adicione comentarios pessoais sobre o produto" class="input-produto" autocomplete="off"><?php echo htmlspecialchars($produto['comentario']); ?></textarea>
 
-          <label class="checkbox-acc" for="">
-            <strong>Disponibilizar para visualização</strong>
-              <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" autocomplete="off" <?php echo " $checkVisualizacao";?>>
-          </label>
 
           <label class="descricao-produtos" for="descricaoProduto">
             <strong>Informações do produto</strong>
