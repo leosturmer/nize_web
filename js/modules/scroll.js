@@ -26,19 +26,21 @@ export function navbarScroll() {
   conteudoPagina.addEventListener("scroll", function () {
     let scrollAtual = conteudoPagina.scrollTop;
 
+    if (scrollAtual < 0) return;
+
     if (scrollAtual > scrollAnterior && scrollAtual > 50) {
       headerMobile.classList.add("header-hidden");
       conteudoPagina.style.marginTop = "0px";
-      summaryPedidos.style.top = "10px";
-    } else {
+      if (summaryPedidos) summaryPedidos.style.top = "10px";
+    } else if (scrollAtual < scrollAnterior || scrollAtual <= 50) {
       headerMobile.classList.remove("header-hidden");
+
       if (window.innerWidth > 1280) {
-        conteudoPagina.style.marginTop = "0";
-        summaryPedidos.style.top = "5.5em";
+        conteudoPagina.style.marginTop = "0px";
+        if (summaryPedidos) summaryPedidos.style.top = "5.5em";
       } else {
         conteudoPagina.style.marginTop = "4em";
-        summaryPedidos.style.top = "5.5em";
-
+        if (summaryPedidos) summaryPedidos.style.top = "5.5em";
       }
     }
 
