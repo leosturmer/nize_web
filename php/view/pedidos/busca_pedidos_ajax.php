@@ -57,25 +57,40 @@ if (!empty($listaPedidos)) {
         <div class="texto-pedido">
             <h2>Número do pedido: <?php echo $numero_pedido = str_pad($dados_pedido['num_pedido'], 4, '0', STR_PAD_LEFT); ?></h2>
             <?php
-            foreach ($dados_pedido['produtos'] as $produto) {
-                echo '<p><strong>' . htmlspecialchars($produto['nome']) . '</strong>: ' . htmlspecialchars($produto['quantidade']) . ' Valor unitários</p>';
-            }
+
             ?>
             <p><strong>Data: </strong><?php echo $data ?></p>
             <p><strong>Valor final: </strong> R$ <?php echo number_format((float)$dados_pedido['valor_final'], 2, ',', '.') ?></p>
             <p><strong>Status: </strong><?php echo $statusView ?></p>
-            <p class="p-descricao"><strong>Comentário: </strong><?php if ($comentario) {
-                                                                    echo $comentario;
-                                                                } else {
-                                                                    echo "Nenhum comentário adicionado";
-                                                                } ?></p>
 
-            <?php
-            if ($dados_pedido['mensagem_cliente']):
-            ?>
-                <p><strong>Mensagem do cliente:</strong> <?php echo $dados_pedido['mensagem_cliente']; ?></p>
+            <details class="detalhes-produto">
+                <summary>Expandir produtos</summary>
+                <?php
+                foreach ($dados_pedido['produtos'] as $produto) {
+                    echo '<p><strong>' . htmlspecialchars($produto['nome']) . '</strong>: ' . htmlspecialchars($produto['quantidade']) . ' unidade(s)</p>';
+                }
+                ?>
+            </details>
 
-            <?php endif; ?>
+            <details class="detalhes-produto">
+                <summary>Expandir detalhes</summary>
+                <p class="p-descricao"><strong>Comentário: </strong><?php if ($comentario) {
+                                                                        echo $comentario;
+                                                                    } else {
+                                                                        echo "Nenhum comentário adicionado";
+                                                                    } ?></p>
+
+                <?php
+                if ($dados_pedido['mensagem_cliente']):
+                ?>
+                    <p><strong>Mensagem do cliente:</strong> <?php echo $dados_pedido['mensagem_cliente']; ?></p>
+
+
+                <?php endif; ?>
+            </details>
+
+
+
         </div>
 
         <div class="product-btns pedido-btns">
