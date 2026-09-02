@@ -102,9 +102,9 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
                 <select id="filtro-order">
                     <option value="">Ordenar por</option>
                     <option value="nome-asc">Nome (crescente)</option>
-                    <option value="nome-desc">Nome (descrescente)</option>
+                    <option value="nome-desc">Nome (decrecente)</option>
                     <option value="email-asc">E-mail (crescente)</option>
-                    <option value="email-desc">E-mail (descrescente)</option>
+                    <option value="email-desc">E-mail (decrecente)</option>
                 </select>
                 <button type="button" id="btn-limpar-filtros"><span class="bi bi-arrow-clockwise"></span>Limpar</button>
             </details>

@@ -197,9 +197,9 @@ if (!empty($_SESSION['usuario_logado'])) {
                             <select id="filtro-order">
                                 <option value="nome-asc">Ordenar por</option>
                                 <option value="nome-asc">Nome (crescente)</option>
-                                <option value="nome-desc">Nome (descrescente)</option>
+                                <option value="nome-desc">Nome (decrecente)</option>
                                 <option value="valor-asc">Preço (crescente)</option>
-                                <option value="valor-desc">Preço (descrescente)</option>
+                                <option value="valor-desc">Preço (decrecente)</option>
                             </select>
                             <button type="button" id="btn-limpar-filtros"><span class="bi bi-arrow-clockwise"></span>Limpar</button>
                         </div>

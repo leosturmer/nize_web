@@ -134,9 +134,9 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
             <select id="filtro-order">
               <option value="">Ordenar por</option>
               <option value="nome-asc">Nome (crescente)</option>
-              <option value="nome-desc">Nome (descrescente)</option>
-              <option value="quant-asc">Quantidade (descrescente)</option>
-              <option value="quant-desc">Quantidade (descrescente)</option>
+              <option value="nome-desc">Nome (decrecente)</option>
+              <option value="quant-asc">Quantidade (decrecente)</option>
+              <option value="quant-desc">Quantidade (decrecente)</option>
             </select>
             <button type="button" id="btn-limpar-filtros"><span class="bi bi-arrow-clockwise"></span>Limpar</button>
           </div>
