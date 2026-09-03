@@ -224,8 +224,8 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
             </fieldset>
           </div>
           <div class="form-pedidos-items">
-            <button type="submit" class="btn-alt-pedido"><span class="bi bi-check2"></span>Alterar</button>
-            <a href="../../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');"><span class="bi bi-trash3" class="btn-alt-pedido"></span>Excluir</a>
+            <button type="submit" class="btn-alt-pedido btn-salvar"><span class="bi bi-check2"></span>Alterar</button>
+            <a href="../../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');" class="btn-limpar"><span class="bi bi-trash3" class="btn-alt-pedido"></span>Excluir</a>
             <!-- <a href="../view/visualizacao_pedidos.php" class="btn-alt-pedido">Voltar</a> -->
           </div>
         </form>

@@ -181,7 +181,7 @@
   }
 
   input#quantidadeVendida.input-pedido {
-    width: 50px;
+    width: 120px;
   }
 
   div.produtos-no-pedido {
@@ -402,6 +402,8 @@
   .lista-produtos-pedido .product-view {
     & .btn-add {
       font-size: 12px;
+      padding: 0.5em 1em;
+      margin-right: 0px;
     }
 
     & #quantidadeVendida {
@@ -687,6 +689,7 @@
     max-width: 250px;
     max-height: 150px;
     width: 250px;
+    margin-left: 0px;
   }
 
   div.lista-produtos-loja {

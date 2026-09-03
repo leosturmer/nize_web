@@ -285,8 +285,8 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                         </fieldset>
                     </div>
                     <div class="form-pedidos-items form-pedidos-buttons">
-                        <button type="submit"><span class="bi bi-check2"></span>Salvar</button>
-                        <a href="../../controller/pedidoControle.php?op=limparCarrinho"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
+                        <a href="../../controller/pedidoControle.php?op=limparCarrinho" class="btn-limpar"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
+                        <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Salvar</button>
                     </div>
                 </form>
             </div>
@@ -301,7 +301,6 @@ if (isset($_SESSION['encomendaSelecionada'])) {
 
     <script type="module" src="../../../js/main.js"></script>
     <script src="../../../js/busca_produtos_pedido.js"></script>
-
 
 
     <!-- Acessibilidade -->

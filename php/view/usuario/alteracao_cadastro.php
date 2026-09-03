@@ -98,7 +98,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
   </header>
 
   <main class='conteudo-pagina'>
-        <a id="top"></a>
+    <a id="top"></a>
 
     <?php
     if (isset($_SESSION["msg"])) {
@@ -188,7 +188,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
           </div>
 
           <div class="container-horizontal cadastro-btns">
-            <button type="submit"><span class="bi bi-check2"></span>Alterar</button>
+            <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Alterar</button>
             <button formaction="../../controller/usuarioControle.php?op=excluir" onclick="return confirm('A exclusão deletará todos os dados do banco.\n\nESSA AÇÃO NÃO PODE SER DESFEITA.\n\nDeseja confirmar?')" class="btn-excluir"><span class="bi bi-person-x"></span>Excluir</button>
           </div>
         </form>
@@ -196,13 +196,101 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     </div>
 
     <footer><a href="https://github.com/leosturmer" target="_blank">Leonardo Stürmer &copy; Todos os direitos reservados.</a></footer>
-  <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
-    </main>
+    <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
+  </main>
 
   </div>
 
   <script type="module" src="../../../js/main.js"></script>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const campoNome = document.querySelector("input[name='usuNome']");
+      const campoLoja = document.querySelector("input[name='usuLoja']");
+      const campoEmail = document.querySelector("input[name='usuEmail']");
+      const checkView = document.querySelector("input[name='aceitaVisualizacao']");
+      const campoNomeView = document.querySelector("input[name='usuNomeView']");
+      const campoTelefone = document.querySelector("input[name='usuTelefone']");
+      const formCadastro = document.getElementById("form-cadastro");
+
+      // Verifica se o usuário veio de outra página do site
+      const veioDeOutraPagina = !document.referrer.includes("alterar_usuario.php") && !document.referrer.includes("minha_area.php");
+
+      if (veioDeOutraPagina) {
+        // Se veio de fora (abriu a edição agora), limpa rascunhos anteriores para puxar limpo do banco
+        localStorage.removeItem("alt_usu_nome");
+        localStorage.removeItem("alt_usu_loja");
+        localStorage.removeItem("alt_usu_email");
+        localStorage.removeItem("alt_usu_check");
+        localStorage.removeItem("alt_usu_nomeview");
+        localStorage.removeItem("alt_usu_telefone");
+      } else {
+        // Se apenas recarregou, restaura o que ele digitou por cima
+        if (localStorage.getItem("alt_usu_nome") && campoNome) {
+          campoNome.value = localStorage.getItem("alt_usu_nome");
+        }
+        if (localStorage.getItem("alt_usu_loja") && campoLoja) {
+          campoLoja.value = localStorage.getItem("alt_usu_loja");
+        }
+        if (localStorage.getItem("alt_usu_email") && campoEmail) {
+          campoEmail.value = localStorage.getItem("alt_usu_email");
+        }
+        if (localStorage.getItem("alt_usu_check") !== null && checkView) {
+          checkView.checked = localStorage.getItem("alt_usu_check") === "true";
+        }
+        if (localStorage.getItem("alt_usu_nomeview") && campoNomeView) {
+          campoNomeView.value = localStorage.getItem("alt_usu_nomeview");
+        }
+        if (localStorage.getItem("alt_usu_telefone") && campoTelefone) {
+          campoTelefone.value = localStorage.getItem("alt_usu_telefone");
+        }
+      }
+
+      // Salva os valores em tempo real conforme o usuário digita ou altera
+      if (campoNome) {
+        campoNome.addEventListener("input", function() {
+          localStorage.setItem("alt_usu_nome", campoNome.value);
+        });
+      }
+      if (campoLoja) {
+        campoLoja.addEventListener("input", function() {
+          localStorage.setItem("alt_usu_loja", campoLoja.value);
+        });
+      }
+      if (campoEmail) {
+        campoEmail.addEventListener("input", function() {
+          localStorage.setItem("alt_usu_email", campoEmail.value);
+        });
+      }
+      if (checkView) {
+        checkView.addEventListener("change", function() {
+          localStorage.setItem("alt_usu_check", checkView.checked);
+        });
+      }
+      if (campoNomeView) {
+        campoNomeView.addEventListener("input", function() {
+          localStorage.setItem("alt_usu_nomeview", campoNomeView.value);
+        });
+      }
+      if (campoTelefone) {
+        campoTelefone.addEventListener("input", function() {
+          localStorage.setItem("alt_usu_telefone", campoTelefone.value);
+        });
+      }
+
+      // Limpa o armazenamento quando o formulário for enviado com sucesso
+      if (formCadastro) {
+        formCadastro.addEventListener("submit", function() {
+          localStorage.removeItem("alt_usu_nome");
+          localStorage.removeItem("alt_usu_loja");
+          localStorage.removeItem("alt_usu_email");
+          localStorage.removeItem("alt_usu_check");
+          localStorage.removeItem("alt_usu_nomeview");
+          localStorage.removeItem("alt_usu_telefone");
+        });
+      }
+    });
+  </script>
 
   <!-- Acessibilidade -->
 

@@ -241,6 +241,10 @@ button,
   }
 }
 
+.btn-remover:hover{
+  background-color: brown;
+}
+
 .input-login {
   padding: 0.5em;
   border: var(--border);

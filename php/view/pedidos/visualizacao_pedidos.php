@@ -241,6 +241,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
   <script type="module" src="../../../js/main.js"></script>
   <script src="../../../js/busca_pedidos.js"></script>
 
+
   <!-- Acessibilidade -->
 
   <div vw class="enabled">

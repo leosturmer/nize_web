@@ -208,7 +208,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
         </div>
         <div class="form-pedidos-items">
           <a href="../../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&duplicar=true" class="btn-add"><span class="bi bi-copy"></span>Duplicar</a>
-          <a href="../../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');" class="btn-alt-pedido"><span class="bi bi-trash3"></span>Excluir</a>
+          <a href="../../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');" class="btn-alt-pedido btn-limpar"><span class="bi bi-trash3"></span>Excluir</a>
           <!-- <a href="../../controller/pedidoControle.php?op=limparCarrinho" class="btn-add">Voltar</a> -->
         </div>
       </div>

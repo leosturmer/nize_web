@@ -269,8 +269,8 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                         </fieldset>
                     </div>
                     <div class="form-pedidos-items">
-                        <button type="submit"><span class="bi bi-check2"></span>Salvar</button>
-                        <a href="../../controller/pedidoControle.php?op=limparCarrinho"><span class="bi">✖</span>Cancelar</a>
+                        <a href="../../controller/pedidoControle.php?op=limparCarrinho" class="btn-limpar"><span class="bi">✖</span>Cancelar</a>
+                        <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Salvar</button>
                     </div>
                 </form>
             </div>
@@ -283,6 +283,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
     <script type="module" src="../../../js/main.js"></script>
 
     <script src="../../../js/busca_produtos_pedido.js"></script>
+
 
     <!-- Acessibilidade -->
 
