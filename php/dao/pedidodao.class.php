@@ -23,9 +23,22 @@ class PedidoDAO
         try {
             $this->conexao->beginTransaction();
 
-            $sql_pedido = "INSERT INTO pedidos (id_usuario, status, data, comentario, valor_final, mensagem_cliente) VALUES (?, ?, ?, ?, ?, ?)";
+            $sql_num = "SELECT COALESCE(MAX(num_pedido), 0) + 1 FROM pedidos WHERE id_usuario = ?";
+            $stmt_num = $this->conexao->prepare($sql_num);
+            $stmt_num->execute([$pedido->id_usuario]);
+            $proximo_num_pedido = $stmt_num->fetchColumn();
+
+            $sql_pedido = "INSERT INTO pedidos (id_usuario, num_pedido, status, data, comentario, valor_final, mensagem_cliente) VALUES (?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this->conexao->prepare($sql_pedido);
-            $stmt->execute([$pedido->id_usuario, $pedido->status, $pedido->data, $pedido->comentario, $pedido->valor_final, $pedido->mensagem_cliente]);
+            $stmt->execute([
+                $pedido->id_usuario,
+                $proximo_num_pedido,
+                $pedido->status,
+                $pedido->data,
+                $pedido->comentario,
+                $pedido->valor_final,
+                $pedido->mensagem_cliente
+            ]);
 
             // Pega o ID gerado pelo banco
             $id_pedido = $this->conexao->lastInsertId();
