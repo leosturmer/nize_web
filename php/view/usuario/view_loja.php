@@ -131,7 +131,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                                 <textarea maxlength="500" rows="5" cols="40" name="mensagemCliente" id="mensagemCliente" class="input-pedido" placeholder="Gostaria de adicionar alguma informação?" maxlength="500" rows="5" cols="40"></textarea required>
                             </label>
                             <div class="product-btns">
-                                <button type="submit"><span class="bi bi-check2"></span>Enviar</button>
+                                <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Enviar</button>
                                 <!-- Botão Limpar apenas para a view_loja -->
                                 <a href="../../controller/pedidoControle.php?op=limparCarrinho&origem=loja&loja=<?php echo urlencode($nome_visualizacao); ?>" class="btn-limpar"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
                             </div>

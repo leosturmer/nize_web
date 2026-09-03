@@ -874,6 +874,28 @@ div.produtos-no-pedido h3 {
   }
 }
 
+.btn-limpar {
+  background-color: var(--darkPurple);
+}
+
+.btn-salvar {
+  background-color: var(--lightGreen);
+  color: black;
+}
+
+button.btn-salvar:hover {
+  background-color: var(--normalGreen);
+  color: white;
+}
+
+a.btn-limpar:hover,
+button.btn-limpar:hover {
+  background-color: var(--normalPurple);
+
+}
+
+
+
 button.btn-excluir,
 a.btn-excluir,
 .btn-excluir {
@@ -885,6 +907,14 @@ a.btn-excluir,
   &:hover {
     background-color: brown;
     color: white;
+  }
+}
+
+a.btn-alterar.btn-loja {
+  background-color: var(--darkerPurple);
+
+  &:hover {
+    background-color: var(--darkGreen);
   }
 }
 

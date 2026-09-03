@@ -52,13 +52,13 @@
 
                     <label for="usuEmail">E-mail*</label>
                     <input type="email" placeholder="e-mail" class="input-login" name="usuEmail" autocomplete="off" maxlength="50" required>
-
+                    
                     <label for="usuSenha">Senha*</label>
                     <input type="password" placeholder="senha" class="input-login" name="usuSenha" autocomplete="off" minlength="8" maxlength="26" required>
+                    <p>Mín. 8 caracteres: 1 maiúscula, 1 minúscula e 1 número.</p>
 
-                    <label for="confirmaSenha">Repita a senha*</label>
+                    <label for="confirmaSenha" style="margin-top: 0px;">Repita a senha*</label>
                     <input type="password" placeholder="repita a senha" class="input-login" name="confirmaSenha" autocomplete="off" minlength="8" maxlength="26" required>
-                    <p>8 caracteres (no mínimo 1 maiúscula, 1 minúscula e 1 número)</p>
 
 
                     <button type="submit" id="btn-cad-usuario">Cadastrar</button>

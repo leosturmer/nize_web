@@ -195,7 +195,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
       </fieldset>
 
       <div id="form-products-buttons">
-        <button type="submit"><span class="bi bi-check2"></span>Alterar</button>
+        <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Alterar</button>
         <a href="../../controller/produtoControle.php?op=excluir&id=<?php echo $produto['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');"><span class="bi bi-trash3"></span>Excluir</a>
 
       </div>
