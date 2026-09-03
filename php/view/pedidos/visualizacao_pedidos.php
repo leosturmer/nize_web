@@ -112,7 +112,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
   </header>
 
   <main class='conteudo-pagina'>
-        <a id="top"></a>
+    <a id="top"></a>
     <?php
     if (isset($_SESSION["msg"])) {
       echo "<div id='session-msg'>" . $_SESSION['msg'] .  "</div>";
@@ -147,9 +147,9 @@ if (isset($_SESSION['pedidoSelecionado'])) {
             <select id="filtro-order">
               <option value="">Ordenar por</option>
               <option value="numero-asc">Número pedido (crescente)</option>
-              <option value="numero-desc">Número pedido (descrescente)</option>
+              <option value="numero-desc">Número pedido (decrescente)</option>
               <option value="data-asc">Data (crescente)</option>
-              <option value="data-desc">Data (descrescente)</option>
+              <option value="data-desc">Data (decrescente)</option>
             </select>
             <button type="button" id="btn-limpar-filtros"><span class="bi bi-arrow-clockwise"></span>Limpar</button>
           </div>
@@ -171,13 +171,13 @@ if (isset($_SESSION['pedidoSelecionado'])) {
               $formatoData = strtotime($dataBanco);
               $data = date("d/m/Y", $formatoData);
               $comentario = $dados_pedido['comentario'];
-              $mensagem_cliente = $dados_pedido['mensagem_cliente'];     
+              $mensagem_cliente = $dados_pedido['mensagem_cliente'];
               $status = $dados_pedido['status'];
               $statusView = '';
 
               if ($status == "encomendado") {
                 $statusView = "Encomendado";
-              } else if ($status == "encomenda_online") { 
+              } else if ($status == "encomenda_online") {
                 $statusView = "Encomenda online";
               } else if ($status == "pagamento") {
                 $statusView = "Aguardando pagamento";
@@ -186,27 +186,38 @@ if (isset($_SESSION['pedidoSelecionado'])) {
               } else if ($status == "cancelado") {
                 $statusView = "Cancelado";
               }
-
-              foreach ($dados_pedido['produtos'] as $produto) {
-                echo "<p><strong>" . htmlspecialchars($produto['nome']) . "</strong>: " . htmlspecialchars($produto['quantidade']) . " unidades</p>";
-              }
               ?>
               <p><strong>Data: </strong><?php echo $data ?></p>
               <p><strong>Valor final: </strong> R$ <?php echo number_format((float)$dados_pedido['valor_final'], 2, ',', '.') ?></p>
               <p><strong>Status: </strong><?php echo $statusView ?></p>
-              <p class="p-descricao"><strong>Comentário: </strong>
-              <?php if ($comentario) {
-                      echo $comentario;
-                    } else {
-                      echo "Nenhum comentário adicionado";
-                    } ?></p>
 
-              <?php 
-                if ($mensagem_cliente):             
-              ?>
-              <p><strong>Mensagem do cliente:</strong> <?php echo $mensagem_cliente; ?></p>
 
-              <?php endif; ?>
+
+              <details class="detalhes-produto">
+                <summary>Expandir produtos</summary>
+                <?php
+                foreach ($dados_pedido['produtos'] as $produto) {
+                  echo "<p><strong>" . htmlspecialchars($produto['nome']) . "</strong>: " . htmlspecialchars($produto['quantidade']) . " unidade(s)</p>";
+                }
+                ?>
+              </details>
+
+              <details class="detalhes-produto">
+                <summary>Expandir detalhes</summary>
+                <p class="p-descricao"><strong>Comentário: </strong>
+                  <?php if ($comentario) {
+                    echo $comentario;
+                  } else {
+                    echo "Nenhum comentário adicionado";
+                  } ?></p>
+                <?php
+                if ($mensagem_cliente):
+                ?>
+                  <p><strong>Mensagem do cliente:</strong> <?php echo $mensagem_cliente; ?></p>
+
+                <?php endif; ?>
+              </details>
+
 
             </div>
 
@@ -222,8 +233,8 @@ if (isset($_SESSION['pedidoSelecionado'])) {
 
 
     <footer><a href="https://github.com/leosturmer" target="_blank">Leonardo Stürmer &copy; Todos os direitos reservados.</a></footer>
-  <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
-    </main>
+    <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
+  </main>
 
   </div>
 

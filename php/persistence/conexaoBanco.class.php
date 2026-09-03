@@ -1,4 +1,5 @@
-<!-- class ConexaoBanco extends PDO {
+<?php
+class ConexaoBanco extends PDO {
     private static $instancia = null;
 
     public function __construct($dsn, $user, $pass){
@@ -16,54 +17,38 @@
         }//fecha o if
         return self::$instancia;
     }// fecha o método getInstancia
-}// Fecha a classe -->
+}// Fecha a classe
 
-<!-- SQLite3 -->
+// SQLite3
 
-<?php
+// class ConexaoBanco extends PDO {
+//     private static $instancia = null;
 
-class ConexaoBanco extends PDO {
-    // Armazena a instância única da conexão
-    private static $instancia = null;
+//     public function __construct($dsn, $user, $pass) {
+//         parent::__construct($dsn, $user, $pass);
+//     }
 
-    public $database;
-    public $server;
-    public $username = null;
-    public $password = null;
+//     public static function getInstancia() {
+//         if (!isset(self::$instancia)) {
+//             try {
+//                 // Defina as credenciais do seu servidor MySQL online
+//                 $host = 'localhost'; // Ou o host fornecido pela hospedagem
+//                 $dbname = 'nize_database';
+//                 $user = 'usuario_banco';
+//                 $pass = 'senha_banco';
 
-    // Construtor herdado do PDO
-    public function __construct($dsn, $user, $pass) {
-        parent::__construct($dsn, $user, $pass);
-    }
+//                 $dsn = "mysql:host={$host};dbname={$dbname};charset=utf8mb4";
 
-    /**
-     * Método Singleton que garante apenas uma conexão ativa com o SQLite3
-     */
-    public static function getInstancia() {
-        if (!isset(self::$instancia)) {
-            try {
-                // __DIR__ garante o caminho absoluto até a pasta atual (persistence)
-                // O banco de dados 'nize_database.db' será criado/lido nesta mesma pasta
-                $caminhoBanco = __DIR__ . '/nize_database.db';
-                $dsn = "sqlite:" . $caminhoBanco;
+//                 self::$instancia = new ConexaoBanco($dsn, $user, $pass);
+//                 self::$instancia->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//                 self::$instancia->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-                // Cria a conexão com o SQLite (sem usuário e sem senha)
-                self::$instancia = new ConexaoBanco($dsn, null, null);
-
-                // Configura o PDO para lançar exceções em caso de erros no SQLite
-                self::$instancia->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                
-                // Define o retorno padrão de consultas como array associativo
-                self::$instancia->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
-            } catch (PDOException $e) {
-                // Em caso de erro (ex: pasta sem permissão de escrita), redireciona para a tela de erro
-                // urlencode protege a mensagem para trafegar com segurança na URL
-                $msg_erro = urlencode("Erro ao conectar com o banco SQLite: " . $e->getMessage());
-                header("location:../view/general/erro.php?msg=" . $msg_erro);
-                exit;
-            }
-        }
-        return self::$instancia;
-    }
-}
+//             } catch (PDOException $e) {
+//                 $msg_erro = urlencode("Erro ao conectar com o banco de dados MySQL.");
+//                 header("location:../view/general/erro.php?msg=" . $msg_erro);
+//                 exit;
+//             }
+//         }
+//         return self::$instancia;
+//     }
+// } -->

@@ -127,7 +127,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
         <div class="internal-nav">
             <div class="internal-nav-links">
-                <h2 class="num-pedido">Alteração - Pedido <?php echo str_pad($infoPedidoBanco['num_pedido'], 4, '0', STR_PAD_LEFT); ?></h2>
+                <h1 class="num-pedido">Alteração - Pedido <?php echo str_pad($infoPedidoBanco['num_pedido'], 4, '0', STR_PAD_LEFT); ?></h1>
                 <a href="visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
             </div>
 
@@ -248,7 +248,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                             echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
                             echo "<p>";
                             echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-                            echo "<b>Unidade</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
+                            echo "<b>Valor unitário</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
                             echo "<b>Valor total</b>: R$ " . number_format($valor_total_item, 2, ',', '.') . "</p>";
 
                             // Exibir o botão de remoção apenas se for a tela de alteração normal
@@ -264,6 +264,10 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                 } else {
                     echo "<p>Nenhum produto encontrado no pedido.</p>";
                 }
+
+                $dataBanco = $infoPedidoBanco['data'];
+                $formatoData = strtotime($dataBanco);
+                $data = date("Y-m-d", $formatoData);
                 ?>
             </div>
             <div class="infos-pedido">
@@ -277,7 +281,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                             <!-- <div> -->
                             <label for="prazopedido">
                                 Prazo de entrega*
-                                <input type="date" placeholder="00/00/0000" name="prazoPedido" id="prazoPedido" class="input-pedido" autocomplete="off" required value="<?php echo $infoPedidoBanco['data'] ?>">
+                                <input type="date" placeholder="00/00/0000" name="prazoPedido" id="prazoPedido" class="input-pedido" autocomplete="off" required value="<?php echo $data ?>">
                             </label>
                             <label for="statusPedido">
                                 Status do Pedido

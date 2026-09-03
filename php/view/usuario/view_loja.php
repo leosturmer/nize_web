@@ -94,7 +94,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                                 echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
                                 echo "<p>";
                                 echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-                                echo "<b>Unidade</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
+                                echo "<b>Valor unitário</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
                                 echo "<b>Valor total</b>: R$ " . number_format($valor, 2, ',', '.') . "</p>";
                                 echo "</div>";
 
@@ -197,9 +197,9 @@ if (!empty($_SESSION['usuario_logado'])) {
                             <select id="filtro-order">
                                 <option value="nome-asc">Ordenar por</option>
                                 <option value="nome-asc">Nome (crescente)</option>
-                                <option value="nome-desc">Nome (descrescente)</option>
+                                <option value="nome-desc">Nome (decrescente)</option>
                                 <option value="valor-asc">Preço (crescente)</option>
-                                <option value="valor-desc">Preço (descrescente)</option>
+                                <option value="valor-desc">Preço (decrescente)</option>
                             </select>
                             <button type="button" id="btn-limpar-filtros"><span class="bi bi-arrow-clockwise"></span>Limpar</button>
                         </div>

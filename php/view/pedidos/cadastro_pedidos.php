@@ -239,7 +239,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                             echo "<h3>" . htmlspecialchars($produtoVendido['nome']) . "</h3><br>";
                             echo "<p>";
                             echo "<b>Quantidade</b>: " . $quantidade . "<br>";
-                            echo "<b>Unidade</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
+                            echo "<b>Valor unitário</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
                             echo "<b>Valor total</b>: R$ " . number_format($valor_total_item, 2, ',', '.') . "</p>";
                             echo "<a href='../../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
                             echo "</div>";

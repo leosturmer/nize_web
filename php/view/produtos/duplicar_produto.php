@@ -140,6 +140,11 @@ if (!$produtoData) {
               <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto" value='1' autocomplete="off" <?php echo $produtoData['aceita_encomenda'] == 1 ? 'checked' : ''; ?>>
             </label>
           </div>
+          
+          <label class="checkbox-acc" for="">
+            <strong>Disponibilizar para visualização</strong>:
+            <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" autocomplete="off" <?php echo $produtoData['aceita_visualizacao'] == 1 ? 'checked' : ''; ?>>
+          </label>
 
           <div class="div-inner-products">
             <label><strong>Valor unitário</strong>*: R$
@@ -155,10 +160,6 @@ if (!$produtoData) {
           </label>
           <textarea maxlength="500" rows="5" cols="40" name="comentarioProduto" id="comentarioProduto" placeholder="Adicione comentarios pessoais sobre o produto" class="input-produto" autocomplete="off"><?php echo htmlspecialchars($produtoData['comentario']); ?></textarea>
 
-          <label class="checkbox-acc" for="">
-            <strong>Disponibilizar para visualização</strong>:
-            <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" autocomplete="off" <?php echo $produtoData['aceita_visualizacao'] == 1 ? 'checked' : ''; ?>>
-          </label>
 
 
           <label class="descricao-produtos" for="descricaoProduto">

@@ -178,10 +178,12 @@ class PedidoDAO
     {
         try {
             $sql = $this->conexao->prepare(
-                "SELECT id_pedido, num_pedido, data, nome, quantidade, comentario, mensagem_cliente, status, valor_unitario, valor_final
-                    FROM view_pedidos 
-                    WHERE id_usuario = :id_usuario
-                    ORDER BY id_pedido DESC"
+                "SELECT v.id_pedido, v.num_pedido, v.data, p.nome, vp.quantidade, v.comentario, v.mensagem_cliente, v.status, vp.valor_unitario, v.valor_final
+                    FROM pedidos v
+                    INNER JOIN pedido_produto vp ON v.id_pedido = vp.id_pedido
+                    INNER JOIN produtos p ON vp.id_produto = p.id_produto
+                    WHERE v.id_usuario = :id_usuario
+                    ORDER BY v.id_pedido DESC"
             );
             $sql->bindValue(":id_usuario", $id_usuario);
             $sql->execute();
@@ -221,38 +223,40 @@ class PedidoDAO
         try {
             $busca = "%" . $pesquisa . "%";
 
-            $sqlStr = "SELECT id_pedido, num_pedido, data, nome, quantidade, comentario, mensagem_cliente, status, valor_unitario, valor_final
-            FROM view_pedidos
-            WHERE id_usuario = :id_usuario";
+            $sqlStr = "SELECT v.id_pedido, v.num_pedido, v.data, p.nome, vp.quantidade, v.comentario, v.mensagem_cliente, v.status, vp.valor_unitario, v.valor_final
+            FROM pedidos v
+            INNER JOIN pedido_produto vp ON v.id_pedido = vp.id_pedido
+            INNER JOIN produtos p ON vp.id_produto = p.id_produto
+            WHERE v.id_usuario = :id_usuario";
 
             if (!empty($pesquisa)) {
-                $sqlStr .= " AND (comentario LIKE :busca 
-                OR nome LIKE :busca2 
-                OR num_pedido LIKE :busca3
-                OR mensagem_cliente LIKE :busca4
+                $sqlStr .= " AND (v.comentario LIKE :busca 
+                OR p.nome LIKE :busca2 
+                OR v.num_pedido LIKE :busca3
+                OR v.mensagem_cliente LIKE :busca4
                 )";
             }
 
             if (!empty($data)) {
-                $sqlStr .= " AND DATE(data) = :data_pedido";
+                $sqlStr .= " AND DATE(v.data) = :data_pedido";
             }
 
             if (!empty($status)) {
-                $sqlStr .= " AND status = :status_pedido";
+                $sqlStr .= " AND v.status = :status_pedido";
             }
 
             if (!empty($ordenar)) {
                 if ($ordenar === "numero-asc") {
-                    $sqlStr .= " ORDER BY num_pedido ASC";
+                    $sqlStr .= " ORDER BY v.num_pedido ASC";
                 } else if ($ordenar === "numero-desc") {
-                    $sqlStr .= " ORDER BY num_pedido DESC";
+                    $sqlStr .= " ORDER BY v.num_pedido DESC";
                 } else if ($ordenar === "data-asc") {
-                    $sqlStr .= " ORDER BY data ASC";
+                    $sqlStr .= " ORDER BY v.data ASC";
                 } else if ($ordenar === "data-desc") {
-                    $sqlStr .= " ORDER BY data DESC";
+                    $sqlStr .= " ORDER BY v.data DESC";
                 }
             } else {
-                $sqlStr .= " ORDER BY id_pedido DESC;";
+                $sqlStr .= " ORDER BY v.id_pedido DESC;";
             }
 
             $sql = $this->conexao->prepare($sqlStr);
@@ -312,8 +316,8 @@ class PedidoDAO
     public function buscarPedidoID($id_pedido)
     {
         try {
-            $sql = $this->conexao->prepare("SELECT id_pedido, num_pedido, data, comentario, mensagem_cliente, status, valor_final
-                    FROM view_pedidos WHERE id_pedido = :id_pedido");
+            $sql = $this->conexao->prepare("SELECT v.id_pedido, v.num_pedido, v.data, v.comentario, v.mensagem_cliente, v.status, v.valor_final
+                    FROM pedidos v WHERE v.id_pedido = :id_pedido");
             $sql->bindValue(":id_pedido", $id_pedido);
             $sql->execute();
             $select = $sql->fetch(PDO::FETCH_ASSOC);
