@@ -32,11 +32,6 @@ if (!empty($_SESSION['usuario_logado'])) {
     $logo_link = "../../../index.php";
 }
 
-$rascunhoCliente = $_SESSION['dados_cliente_loja'] ?? [];
-$nomeSalvo     = $rascunhoCliente['nomeCliente'] ?? '';
-$telSalvo      = $rascunhoCliente['telefoneCliente'] ?? '';
-$mensagemSalva = $rascunhoCliente['mensagemCliente'] ?? '';
-
 ?>
 
 <!DOCTYPE html>
@@ -122,25 +117,22 @@ $mensagemSalva = $rascunhoCliente['mensagemCliente'] ?? '';
                 </div>
 
                 <div class="pedido-loja">
-                    <form action="../../controller/pedidoControle.php" method="get" id="form-sacola-cliente">
+                    <form action="../../controller/pedidoControle.php" method="get">
                         <input type="hidden" name="op" value="solicitarPedido">
                         <input type="hidden" name="loja" value="<?php echo htmlspecialchars($nome_visualizacao); ?>">
 
                         <div class="info-btn-sacola">
                             <p>Informações do pedido</p>
-                            <label for="nomeCliente">Nome completo
-                                <input type="text" name="nomeCliente" id="nomeCliente" placeholder="Nome e Sobrenome" class="input-produto" pattern=".*\s+.*" title="Digite pelo menos nome e sobrenome com um espaço" maxlength="50" value="<?php echo htmlspecialchars($nomeSalvo); ?>" required>
-                            </label>
+                            <label for="nomeCliente">Nome completo<input type="text" name="nomeCliente" placeholder="Nome e Sobrenome" class="input-produto" pattern=".*\s+.*" title="Digite pelo menos nome e sobrenome com um espaço" maxlength="50" required></label>
 
-                            <label for="telefoneCliente">Telefone
-                                <input type="tel" name="telefoneCliente" id="telefoneCliente" placeholder="Ex: 55 99999999" class="input-produto" maxlength="16" value="<?php echo htmlspecialchars($telSalvo); ?>" required>
-                            </label>
+                            <label for="telefoneCliente">Telefone<input type="tel" name="telefoneCliente" placeholder="Ex: 55 99999999" class="input-produto" maxlength="16" required></label>
 
                             <label for="mensagemCliente" class="label-column">
-                                <textarea maxlength="500" rows="5" cols="40" name="mensagemCliente" id="mensagemCliente" class="input-pedido" placeholder="Gostaria de adicionar alguma informação?"><?php echo htmlspecialchars($mensagemSalva); ?></textarea>
+                                <textarea maxlength="500" rows="5" cols="40" name="mensagemCliente" id="mensagemCliente" class="input-pedido" placeholder="Gostaria de adicionar alguma informação?" maxlength="500" rows="5" cols="40"></textarea required>
                             </label>
                             <div class="product-btns">
                                 <button type="submit"><span class="bi bi-check2"></span>Enviar</button>
+                                <!-- Botão Limpar apenas para a view_loja -->
                                 <a href="../../controller/pedidoControle.php?op=limparCarrinho&origem=loja&loja=<?php echo urlencode($nome_visualizacao); ?>"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
                             </div>
                         </div>
@@ -191,7 +183,7 @@ $mensagemSalva = $rascunhoCliente['mensagemCliente'] ?? '';
             if ($aceita_visualizacao === 1): ?>
 
                 <?php if (!empty($nome_loja)): ?>
-                    <h1 class="nome-loja"><?php echo $nome_loja; ?></h1>
+                <h1 class="nome-loja"><?php echo $nome_loja; ?></h1>
                 <?php endif; ?>
 
                 <div class="internal-nav-inputs">
@@ -238,23 +230,18 @@ $mensagemSalva = $rascunhoCliente['mensagemCliente'] ?? '';
                         } ?>
 
                         <p class="p-valor"><strong><?php echo $valor_unitario ?></strong></p>
-
+                        
                     </div>
-
+                    
                     <p class="p-descricao"><?php echo htmlspecialchars($item['descricao']) ?></p>
-
+                    
                     <div class="product-img-btn">
-                        <form action="../../controller/pedidoControle.php" method="get" class="product-btns form-add-sacola">
-                            <input type="number" step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
+                        <form action="../../controller/pedidoControle.php" method="get" class="product-btns">
+                            <input type="number"  step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))"
+                            name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
                             <input type="hidden" name="op" value="adicionarSacola">
                             <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
                             <input type="hidden" name="loja" value="<?php echo htmlspecialchars($nome_visualizacao); ?>">
-
-                            <!-- Campos ocultos para preservar a mensagem do cliente da sacola -->
-                            <input type="hidden" name="nomeCliente" class="hdn-nome-cliente">
-                            <input type="hidden" name="telefoneCliente" class="hdn-tel-cliente">
-                            <input type="hidden" name="mensagemCliente" class="hdn-msg-cliente">
-
                             <input type="submit" class="btn-add" value="+ Adicionar">
                         </form>
                     </div>

@@ -24,10 +24,6 @@ if (isset($_SESSION['encomendaSelecionada'])) {
     unset($_SESSION['encomendaSelecionada']);
 }
 
-$dadosRascunho = $_SESSION['dados_pedido'] ?? [];
-$prazoSalvo = $dadosRascunho['prazoPedido'] ?? '';
-$statusSalvo = $dadosRascunho['statusPedido'] ?? 'encomendado';
-$comentarioSalvo = $dadosRascunho['comentarioPedido'] ?? '';
 
 ?>
 
@@ -204,16 +200,10 @@ $comentarioSalvo = $dadosRascunho['comentarioPedido'] ?? '';
                                 } else {
                                     echo "<p class='img-produtos sem-imagem'>Nenhuma imagem cadastrada</p>";
                                 } ?>
-                                <form action="../../controller/pedidoControle.php" method="get" class="product-btns form-add-produto">
-                                    <input type="number" step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" name="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
+                                <form action="../../controller/pedidoControle.php" method="get" class="product-btns">
+                                    <input type="number" step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
                                     <input type="hidden" name="op" value="adicionarQuantidade">
                                     <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
-
-                                    <!-- Inputs ocultos para transportar os dados do formulário principal -->
-                                    <input type="hidden" name="prazoPedido" class="hdn-prazo">
-                                    <input type="hidden" name="statusPedido" class="hdn-status">
-                                    <input type="hidden" name="comentarioPedido" class="hdn-comentario">
-
                                     <input type="submit" class="btn-add" value="+ Adicionar">
                                 </form>
                             </div>
@@ -273,14 +263,14 @@ $comentarioSalvo = $dadosRascunho['comentarioPedido'] ?? '';
                         <fieldset id="pedidos-form">
                             <label for="prazoPedido" class="label-column">
                                 Prazo de entrega*
-                                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" autocomplete="off" value="<?php echo htmlspecialchars($prazoSalvo); ?>" required>
+                                <input type="date" name="prazoPedido" id="prazoPedido" class="input-pedido" autocomplete="off" required>
                             </label>
                             <label for="statusPedido" class="label-column">
                                 Status do pedido
                                 <select name="statusPedido" id="statusPedido">
-                                    <option value="encomendado" <?php echo ($statusSalvo === 'encomendado') ? 'selected' : ''; ?>>Encomendado</option>
-                                    <option value="pagamento" <?php echo ($statusSalvo === 'pagamento') ? 'selected' : ''; ?>>Aguardando pagamento</option>
-                                    <option value="vendido" <?php echo ($statusSalvo === 'vendido') ? 'selected' : ''; ?>>Vendido</option>
+                                    <option value="encomendado">Encomendado</option>
+                                    <option value="pagamento">Aguardando pagamento</option>
+                                    <option value="vendido">Vendido</option>
                                 </select>
                             </label>
                             <div id="containerVendido" style="display: none;">
@@ -290,7 +280,7 @@ $comentarioSalvo = $dadosRascunho['comentarioPedido'] ?? '';
                             </div>
                             <label for="comentarioPedido" class="label-column">
                                 Comentários
-                                <textarea maxlength="500" rows="5" cols="40" name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo htmlspecialchars($comentarioSalvo); ?></textarea>
+                                <textarea maxlength="500" rows="5" cols="40" name="comentarioPedido" id="comentarioPedido" class="input-pedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."></textarea>
                             </label>
                         </fieldset>
                     </div>
@@ -311,6 +301,7 @@ $comentarioSalvo = $dadosRascunho['comentarioPedido'] ?? '';
 
     <script type="module" src="../../../js/main.js"></script>
     <script src="../../../js/busca_produtos_pedido.js"></script>
+
 
 
     <!-- Acessibilidade -->

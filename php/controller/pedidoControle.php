@@ -26,12 +26,7 @@ switch ($opcao) {
         $quantidade = (int)($_GET['quantidadeVendida'] ?? 0);
         $origem = $_GET['origem'] ?? '';
 
-        // Salva as informações do formulário na sessão para não perdê-las ao recarregar
-        $_SESSION['dados_pedido'] = [
-            'prazoPedido' => $_GET['prazoPedido'] ?? '',
-            'statusPedido' => $_GET['statusPedido'] ?? 'encomendado',
-            'comentarioPedido' => $_GET['comentarioPedido'] ?? ''
-        ];
+
 
         if ($id_produto > 0 && $quantidade > 0) {
             $_SESSION['carrinho'][$id_produto] = $quantidade;
@@ -65,12 +60,6 @@ switch ($opcao) {
         $id_produto = (int)($_GET['id'] ?? 0);
         $quantidade = (int)($_GET['quantidadeVendida'] ?? 0);
         $nome_visualizacao = $_GET['loja'] ?? '';
-
-        $_SESSION['dados_cliente_loja'] = [
-            'nomeCliente'     => $_GET['nomeCliente'] ?? '',
-            'telefoneCliente' => $_GET['telefoneCliente'] ?? '',
-            'mensagemCliente' => $_GET['mensagemCliente'] ?? ''
-        ];
 
         if ($id_produto > 0 && $quantidade > 0) {
             $prodAtual = $produtoDAO->buscarPorId($id_produto);
@@ -124,8 +113,7 @@ switch ($opcao) {
     case "limparCarrinho":
         $origem = $_GET['origem'] ?? '';
         $loja   = $_GET['loja'] ?? '';
-        $_SESSION['carrinho'] = [];
-        unset($_SESSION['dados_pedido']);
+
         if ($origem === 'loja') {
             // Limpa apenas a sacola da loja pública
             $_SESSION['sacola'] = [];
@@ -136,7 +124,6 @@ switch ($opcao) {
             $_SESSION['carrinho'] = [];
             if (isset($_SESSION['pedidoSelecionado'])) {
                 unset($_SESSION['pedidoSelecionado']);
-                unset($_SESSION['dados_cliente_loja']);
                 header("location:../view/pedidos/visualizacao_pedidos.php");
             } else {
                 header("location:../view/pedidos/cadastro_pedidos.php");
@@ -219,7 +206,6 @@ switch ($opcao) {
             $_SESSION['total_compra'] = [];
             $_SESSION['msg'] = "<p class='success-msg'>Pedido cadastrado com sucesso.</p>";
             header("Location: ../view/pedidos/visualizacao_pedidos.php");
-            unset($_SESSION['dados_pedido']);
         } catch (Exception $e) {
             $_SESSION['msg'] = "<p class='error-msg'>Algo deu errado! Tente novamente</p>";
             header("Location: ../view/pedidos/cadastro_pedidos.php");
@@ -281,10 +267,8 @@ switch ($opcao) {
             $_SESSION['pedido_sucesso'] = true;
             $_SESSION['ultimo_pedido_num'] = $numero_formatado;
             $_SESSION['msg'] = "<p class='success-msg'>Pedido #{$numero_formatado} enviado com sucesso! Aguarde, você será redirecionado...</p>";
-            unset($_SESSION['dados_cliente_loja']);
 
             header("Location: ../view/usuario/view_loja.php?loja=" . urlencode($loja));
-            
             exit;
         } catch (Exception $e) {
             $_SESSION['msg'] = "<p class='error-msg'>Algo deu errado ao enviar seu pedido! Tente novamente.</p>";

@@ -1,18 +1,7 @@
-import {
-  inicializarSidebar,
-  inicializarHeaderMobile,
-  abrirSidebarLoja,
-} from "./modules/sidebar.js";
+import { inicializarSidebar, inicializarHeaderMobile, abrirSidebarLoja } from "./modules/sidebar.js";
 import { sessionMsg } from "./modules/session_msg.js";
-import {
-  verificarTamanhoImagem,
-  gerenciarCheckboxesVeC,
-  checkboxVendido,
-  fecharFiltro,
-  guardarPedido,
-  guardarSacola,
-} from "./modules/inputs.js";
-import { scrollTop, navbarScroll } from "./modules/scroll.js";
+import { verificarTamanhoImagem, gerenciarCheckboxesVeC, checkboxVendido, fecharFiltro } from "./modules/inputs.js";
+import { scrollTop, navbarScroll } from './modules/scroll.js'
 
 document.addEventListener("DOMContentLoaded", () => {
   // Sidebar
@@ -23,28 +12,26 @@ document.addEventListener("DOMContentLoaded", () => {
     inicializarHeaderMobile();
   }
 
-  if (document.getElementById("total-compra")) {
+  if (document.getElementById("total-compra")){
     abrirSidebarLoja();
   }
 
   // Fechar sidebar
+  
 
   // Mensagem da sessão
-  if (document.getElementById("session-msg")) {
+  if (document.getElementById('session-msg')){
     sessionMsg();
   }
 
   // Input
   // Tamanho da imagem
-  if (document.getElementById("imagemProduto")) {
+  if (document.getElementById('imagemProduto')) {
     verificarTamanhoImagem();
   }
 
   // Checkbox Vendido e Checkbox Cancelado
-  if (
-    document.getElementById("containerVendido") &&
-    document.getElementById("containerCancelado")
-  ) {
+  if (document.getElementById("containerVendido") && document.getElementById("containerCancelado")) {
     gerenciarCheckboxesVeC();
   }
 
@@ -54,11 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
     checkboxVendido();
   }
 
-  guardarPedido();
-  guardarSacola();
-
   // Fechar o filtro ao clicar fora
-  if (document.querySelector("details.filtros-produtos")) {
+  if (document.querySelector('details.filtros-produtos')) {
     fecharFiltro();
   }
 
@@ -69,4 +53,5 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.querySelector("#header-mobile")) {
     navbarScroll();
   }
+
 });
