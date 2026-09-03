@@ -27,6 +27,10 @@ $infoPedidoSession = $_SESSION['pedidoSelecionado'];
 $pedidoDAO = new PedidoDAO();
 $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
+$dadosRascunho   = $_SESSION['dados_pedido'] ?? [];
+$prazoExibicao   = $dadosRascunho['prazoPedido'] ?? $data;
+$statusExibicao  = $dadosRascunho['statusPedido'] ?? $infoPedidoSession['status'];
+$comentExibicao  = $dadosRascunho['comentarioPedido'] ?? $infoPedidoBanco['comentario'];
 ?>
 
 <!DOCTYPE html>
@@ -208,10 +212,17 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                                 } else {
                                     echo "<p class='img-produtos sem-imagem'>Nenhuma imagem cadastrada</p>";
                                 } ?>
-                                <form action="../../controller/pedidoControle.php" method="get" class="product-btns">
+                                <form action="../../controller/pedidoControle.php" method="get" class="product-btns form-add-produto">
                                     <input type="number" step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
                                     <input type="hidden" name="op" value="adicionarQuantidade">
                                     <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
+                                    <input type="hidden" name="id_pedido" value="<?php echo $id_pedido; ?>">
+
+                                    <!-- Inputs ocultos para capturar o formulário de alteração -->
+                                    <input type="hidden" name="prazoPedido" class="hdn-prazo">
+                                    <input type="hidden" name="statusPedido" class="hdn-status">
+                                    <input type="hidden" name="comentarioPedido" class="hdn-comentario">
+
                                     <input type="submit" class="btn-add" value="+ Adicionar">
                                 </form>
                             </div>
@@ -278,19 +289,18 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                     <input type="hidden" name="op" value="alterar">
                     <div class="form-pedidos-items">
                         <fieldset id="pedidos-form">
-                            <!-- <div> -->
-                            <label for="prazopedido">
+                            <label for="prazoPedido">
                                 Prazo de entrega*
-                                <input type="date" placeholder="00/00/0000" name="prazoPedido" id="prazoPedido" class="input-pedido" autocomplete="off" required value="<?php echo $data ?>">
+                                <input type="date" placeholder="00/00/0000" name="prazoPedido" id="prazoPedido" class="input-pedido" autocomplete="off" required value="<?php echo htmlspecialchars($prazoExibicao); ?>">
                             </label>
                             <label for="statusPedido">
                                 Status do Pedido
                                 <select name="statusPedido" id="statusPedido">
-                                    <option value="encomendado" <?= $infoPedidoSession['status'] == 'encomendado' ? 'selected' : '' ?>>Encomendado</option>
-                                    <option value="encomenda_online" <?= $infoPedidoSession['status'] == 'encomenda_online' ? 'selected' : '' ?>>Encomenda online</option>
-                                    <option value="pagamento" <?= $infoPedidoSession['status'] == 'pagamento' ? 'selected' : '' ?>>Aguardando pagamento</option>
-                                    <option value="vendido" <?= $infoPedidoSession['status'] == 'vendido' ? 'selected' : '' ?>>Vendido</option>
-                                    <option value="cancelado" <?= $infoPedidoSession['status'] === 'cancelado' ? 'selected' : '' ?>>Cancelado</option>
+                                    <option value="encomendado" <?= $statusExibicao == 'encomendado' ? 'selected' : '' ?>>Encomendado</option>
+                                    <option value="encomenda_online" <?= $statusExibicao == 'encomenda_online' ? 'selected' : '' ?>>Encomenda online</option>
+                                    <option value="pagamento" <?= $statusExibicao == 'pagamento' ? 'selected' : '' ?>>Aguardando pagamento</option>
+                                    <option value="vendido" <?= $statusExibicao == 'vendido' ? 'selected' : '' ?>>Vendido</option>
+                                    <option value="cancelado" <?= $statusExibicao === 'cancelado' ? 'selected' : '' ?>>Cancelado</option>
                                 </select>
                             </label>
                             <div id="containerVendido" style="display: none;">
@@ -307,24 +317,18 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                                 </label>
                             </div>
 
-
-                            <!-- </div> -->
                             <label for="comentarioPedido">
                                 Comentários
-                                <textarea maxlength="500" rows="5" cols="40" name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo $infoPedidoBanco['comentario'] ?></textarea>
+                                <textarea maxlength="500" rows="5" cols="40" name="comentarioPedido" id="comentarioPedido" placeholder="Detalhes do pedido, dos produtos, da entrega, do cliente, entre outros."><?php echo htmlspecialchars($comentExibicao); ?></textarea>
                             </label>
-                            <?php
-                            if ($infoPedidoBanco['mensagem_cliente']):
-                            ?>
-                                <p><b>Mensagem do cliente</b>: <?php echo $infoPedidoBanco['mensagem_cliente']; ?></p>
-
+                            <?php if ($infoPedidoBanco['mensagem_cliente']): ?>
+                                <p><b>Mensagem do cliente</b>: <?php echo htmlspecialchars($infoPedidoBanco['mensagem_cliente']); ?></p>
                             <?php endif; ?>
                         </fieldset>
                     </div>
                     <div class="form-pedidos-items">
                         <button type="submit" class="btn-alt-pedido"><span class="bi bi-check2"></span>Alterar</button>
-                        <a href="../../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');"><span class="bi bi-trash3" class="btn-alt-pedido"></span>Excluir</a>
-                        <!-- <a href="../view/visualizacao_pedidos.php" class="btn-alt-pedido">Voltar</a> -->
+                        <a href="../../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');"><span class="bi bi-trash3"></span>Excluir</a>
                     </div>
                 </form>
             </div>
