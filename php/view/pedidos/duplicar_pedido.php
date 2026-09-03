@@ -284,6 +284,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
 
     <script src="../../../js/busca_produtos_pedido.js"></script>
 
+
     <!-- Acessibilidade -->
 
     <div vw class="enabled">

@@ -77,7 +77,6 @@
 
     <script type="module" src="../../../js/main.js"></script>
 
-
     <!-- Acessibilidade -->
 
     <div vw class="enabled">

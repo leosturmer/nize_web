@@ -133,7 +133,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                             <div class="product-btns">
                                 <button type="submit"><span class="bi bi-check2"></span>Enviar</button>
                                 <!-- Botão Limpar apenas para a view_loja -->
-                                <a href="../../controller/pedidoControle.php?op=limparCarrinho&origem=loja&loja=<?php echo urlencode($nome_visualizacao); ?>"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
+                                <a href="../../controller/pedidoControle.php?op=limparCarrinho&origem=loja&loja=<?php echo urlencode($nome_visualizacao); ?>" class="btn-limpar"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
                             </div>
                         </div>
                     </form>
@@ -265,6 +265,7 @@ if (!empty($_SESSION['usuario_logado'])) {
 
     <script src="../../../js/busca_produtos.js"></script>
     <script type="module" src="../../../js/main.js"></script>
+
 
     <!-- Acessibilidade -->
 
