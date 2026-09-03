@@ -2,7 +2,7 @@
 
 O **Nize** é uma plataforma desenvolvida como Projeto Integrador do curso Técnico em Desenvolvimento de Sistemas do Senac RS. Projetado especificamente para vendedores autônomos, o sistema permite o gerenciamento completo de produtos, pedidos, estoque e vendas em um único local.
 
-O projeto teve início em 2024, contando primeiramente com uma [versão desktop em Python](https://github.com/leosturmer/Nize_Python_Desktop). Atualmente, a plataforma encontra-se em sua versão web, desenvolvida em PHP, HTML5, CSS3, JavaScript e banco de dados SQLite.
+O projeto teve início em 2024, contando primeiramente com uma [versão desktop em Python](https://github.com/leosturmer/Nize_Python_Desktop). Atualmente, a plataforma encontra-se em sua versão web, desenvolvida em PHP, HTML5, CSS3, JavaScript e banco de dados MySQL.
 
 ---
 
@@ -23,7 +23,7 @@ O desenvolvimento seguiu a metodologia ágil incremental, permitindo constante e
 ### Tecnologias Utilizadas:
 * **Back-end:** PHP
 * **Front-end:** HTML5, CSS3, JavaScript
-* **Banco de Dados:** SQLite
+* **Banco de Dados:** MySQL
 * **Auxílio de IA:** Utilização do Gemini para suporte na lógica de scripts JavaScript e na complexidade do Controller/DAO durante o processamento relacional de produtos e pedidos.
 
 ---
