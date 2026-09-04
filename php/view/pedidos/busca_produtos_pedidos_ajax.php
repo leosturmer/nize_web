@@ -79,7 +79,7 @@ if (!empty($lista)) {
         }
         echo '</p>';
         echo '<p><strong>Aceita encomenda: </strong>' . $aceita_encomenda . '</p>';
-        echo '<p class="p-descricao"><strong>Informações: </strong>' . htmlspecialchars($item['descricao']) . '</p>';
+        echo '<p class="p-descricao"><strong>Descrição: </strong>' . htmlspecialchars($item['descricao']) . '</p>';
         echo '</details> </div>';
 
         echo '<div class="product-img-btn">';

@@ -156,14 +156,14 @@ if (!$produtoData) {
           </div>
 
           <label class="comentario-produtos" for="comentarioProduto">
-            <strong>Comentários</strong>
+            <strong>Comentários:</strong>
           </label>
           <textarea maxlength="500" rows="5" cols="40" name="comentarioProduto" id="comentarioProduto" placeholder="Adicione comentarios pessoais sobre o produto" class="input-produto" autocomplete="off"><?php echo htmlspecialchars($produtoData['comentario']); ?></textarea>
 
 
 
           <label class="descricao-produtos" for="descricaoProduto">
-            <strong>Informações do produto</strong>
+            <strong>Descrição pública do produto:</strong>
             <textarea maxlength="500" rows="5" cols="40" name="descricaoProduto" id="descricaoProduto" class="input-produto" autocomplete="off"><?php echo htmlspecialchars($produtoData['descricao']); ?></textarea>
           </label>
           

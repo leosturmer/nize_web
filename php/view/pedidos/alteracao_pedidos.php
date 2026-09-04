@@ -194,7 +194,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                                         } else {
                                             echo "--";
                                         } ?></p>
-                                    <p class="p-descricao"><strong>Informações:</strong>
+                                    <p class="p-descricao"><strong>Descrição:</strong>
                                         <?php if ($item['descricao']) {
                                             echo htmlspecialchars($item['descricao']);
                                         } else {

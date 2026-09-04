@@ -135,7 +135,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 
     <form action="../../controller/produtoControle.php?op=alterar&id=<?php echo $produto['id_produto'] ?>" method="post" enctype="multipart/form-data" class="form-cadastro-produto">
       <fieldset id="products-form">
-        <legend>Informações do produto</legend>
+        <legend>Descrição do produto</legend>
         <div class="inner-products-form">
           <label><strong>Nome do produto</strong>*:</label>
           <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto alt-nome-produto" value="<?php echo htmlspecialchars($produto['nome']); ?>" autocomplete="off" maxlength="50" required>
@@ -168,13 +168,13 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 
 
           <label class="comentario-produtos" for="comentarioProduto">
-            <strong>Comentários</strong>
+            <strong>Comentários:</strong>
           </label>
           <textarea maxlength="500" rows="5" cols="40" name="comentarioProduto" id="comentarioProduto" placeholder="Adicione comentarios pessoais sobre o produto" class="input-produto" autocomplete="off"><?php echo htmlspecialchars($produto['comentario']); ?></textarea>
 
 
           <label class="descricao-produtos" for="descricaoProduto">
-            <strong>Informações do produto</strong>
+            <strong>Descrição pública do produto:</strong>
             <textarea maxlength="500" rows="5" cols="40" name="descricaoProduto" id="descricaoProduto" class="input-produto" autocomplete="off"><?php echo htmlspecialchars($produto['descricao']); ?></textarea>
           </label>
 
