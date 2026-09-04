@@ -176,7 +176,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
             </label>
             <label for="usuNomeView"><b>Link de visualização</b></label>
             <div class="checkbox-acc">
-              <span>nize.com.br/loja/</span>
+              <span>nizeapp.free.nf/</span>
               <input type="text" name="usuNomeView" pattern="^\S+$" class="input-login input-nome-view" placeholder="nomedaloja" value="<?php echo $usuario->nome_visualizacao ?>" autocomplete="off" title="Link para a loja não deve conter espaços" maxlength="20">
             </div>
             <div class="checkbox-acc" style="margin-top: 1em;">

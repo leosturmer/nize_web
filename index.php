@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (isset($_SESSION['usuario_logado'])){
+    header("location:./php/view/general/tela_inicial.php");
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -9,7 +19,6 @@
     <link rel="shortcut icon" href="./assets/img/favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-
     <link rel="stylesheet" href="./assets/css/variables.css">
     <link rel="stylesheet" href="./assets/css/responsive.css">
     <link rel="stylesheet" href="./assets/css/components.css">
@@ -17,11 +26,8 @@
 
 <body>
     <main id="main-index">
-        
 
         <?php
-        session_start();
-
         if (isset($_SESSION["msg"])) {
             echo "<div id='session-msg' class='msg-deslog'>" . $_SESSION['msg'] .  "</div>";
             unset($_SESSION["msg"]);
@@ -43,9 +49,9 @@
 
         <footer class="footer-index"><a href="https://github.com/leosturmer" target="_blank">Leonardo Stürmer &copy; Todos os direitos reservados.
             </a></footer>
-    <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
+        <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
     </main>
-    
+
 
     <script type="module" src="./js/main.js"></script>
 

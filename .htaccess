@@ -1,0 +1,32 @@
+RewriteEngine On
+Options -Indexes
+
+# -------------------------------------------------------------------------
+# 1. Suas rotas fixas (devem vir SEMPRE antes da regra genérica da loja)
+# -------------------------------------------------------------------------
+RewriteRule ^tela_inicial$ php/view/general/tela_inicial.php [L]
+RewriteRule ^minha_area$ php/view/usuario/minha_area.php [L]
+RewriteRule ^cadastro_usuario$ php/view/general/cadastro_usuario.php [L]
+RewriteRule ^login$ php/view/general/login.php [L]
+
+RewriteRule ^visualizacao_produtos$ php/view/produtos/visualizacao_produtos.php [L]
+RewriteRule ^cadastro_produtos$ php/view/produtos/cadastro_produtos.php [L]
+RewriteRule ^alteracao_produto/([0-9]+)$ php/view/produtos/alteracao_produto.php?id=$1 [L]
+RewriteRule ^duplicar_produto/([0-9]+)$ php/view/produtos/duplicar_produto.php?id=$1 [L]
+
+RewriteRule ^visualizacao_pedidos$ php/view/pedidos/visualizacao_pedidos.php [L]
+RewriteRule ^cadastro_pedidos$ php/view/pedidos/cadastro_pedidos.php [L]
+RewriteRule ^alteracao_pedidos/([0-9]+)$ php/view/pedidos/alteracao_pedidos.php?id=$1 [L]
+RewriteRule ^duplicar_pedido/([0-9]+)$ php/view/pedidos/duplicar_pedido.php?id=$1 [L]
+
+RewriteRule ^alterar_cadastro$ php/view/usuario/alteracao_cadastro.php [L]
+
+# -------------------------------------------------------------------------
+# 2. Regra Dinâmica para a Loja (Fica no final)
+# -------------------------------------------------------------------------
+# Evita interferir em arquivos físicos reais ou pastas existentes no servidor
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Tudo o que sobrar e não caiu nas regras acima vira o parâmetro da loja
+RewriteRule ^([a-zA-Z0-9_-]+)$ php/view/usuario/view_loja.php?loja=$1 [L]

@@ -184,7 +184,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
             <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
           </label>
           <?php if (!empty($produto['imagem'])): ?>
-            <img src='../../persistence/uploads/<?php echo htmlspecialchars($produto['imagem'])?>' alt='imagem do produto' class='img-produtos img-alt-produto'>" ?>
+            <img src='../../persistence/uploads/<?php echo htmlspecialchars($produto['imagem'])?>' alt='imagem do produto' class='img-produtos img-alt-produto'>
             <span class="span-alt-img">(Será mantida se não enviar outra)</span>
           <?php else: ?>
             <span class="sem-imagem">Nenhuma imagem cadastrada</span>
