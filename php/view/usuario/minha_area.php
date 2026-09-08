@@ -180,7 +180,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
       <div class="usuario-btns">
         <a href="./alteracao_cadastro.php" class="btn-alterar"><span class="bi bi-pencil" style="margin-left: 0;"></span>Editar</a>
         <?php if ($usuario->nome_visualizacao && $usuario->aceita_visualizacao == 1 && $usuario->telefone): ?>
-          <a href="./view_loja.php?loja= <?php echo $usuario->nome_visualizacao ?>" target="blank" class="btn-alterar btn-loja">Ver loja<span class="bi bi-box-arrow-up-right"></span></a>
+          <a href="./view_loja.php?loja=<?php echo $usuario->nome_visualizacao ?>" target="blank" class="btn-alterar btn-loja">Ver loja<span class="bi bi-box-arrow-up-right"></span></a>
         <?php endif; ?>
       </div>
     </div>

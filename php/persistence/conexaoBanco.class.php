@@ -1,4 +1,6 @@
 <?php
+define('BASE_URL', '/nize_web/');
+
 class ConexaoBanco extends PDO {
     private static $instancia = null;
 
