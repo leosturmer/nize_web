@@ -12,6 +12,7 @@ header('Content-Type: text/html; charset=utf-8');
 $pesquisa = trim($_GET['pesquisaProdutos'] ?? '');
 $estoqueProduto = trim($_GET['filtroEstoque'] ?? '');
 $encomendaProduto = trim($_GET['filtroEncomenda'] ?? '');
+$visibilidade = trim($_GET['filtroVisivel'] ?? '');
 $ordenar = trim($_GET['ordenarPor'] ?? '');
 
 $produtoDAO = new ProdutoDAO();
@@ -19,7 +20,7 @@ $produtoDAO = new ProdutoDAO();
 $usuario = unserialize($_SESSION['usuario_logado']);
 $idUsuarioLogado = $usuario->id_usuario;
 
-$lista = $produtoDAO->buscarProdutoFiltro($pesquisa, $estoqueProduto, $encomendaProduto, $ordenar, $idUsuarioLogado);
+$lista = $produtoDAO->buscarProdutoFiltro($pesquisa, $estoqueProduto, $encomendaProduto, $visibilidade, $ordenar, $idUsuarioLogado);
 
 if (empty($lista)) {
     echo '<h4>Nenhum produto correspondente foi encontrado!</h4>';

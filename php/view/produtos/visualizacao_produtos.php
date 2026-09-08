@@ -132,6 +132,13 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
               <option value="com-encomenda">Aceita encomenda</option>
               <option value="sem-encomenda">Não aceita encomenda</option>
             </select>
+
+            <select id="filtro-visivel">
+              <option value="">Visibilidade</option>
+              <option value="visivel">Visível na loja</option>
+              <option value="ocultado">Ocultado da loja</option>
+            </select>
+            
             <select id="filtro-order">
               <option value="">Ordenar por</option>
               <option value="nome-asc">Nome (crescente)</option>

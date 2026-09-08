@@ -121,7 +121,7 @@ class ProdutoDAO{
         }
     }
 
-    public function buscarProdutoFiltro($pesquisa, $estoqueProduto, $encomendaProduto, $ordenar, $id_usuario, $apenasVisiveis = false) {
+    public function buscarProdutoFiltro($pesquisa, $estoqueProduto, $encomendaProduto, $visibilidade, $ordenar, $id_usuario, $apenasVisiveis = false) {
         try {
             $busca = "%" . $pesquisa . "%";
 
@@ -147,6 +147,12 @@ class ProdutoDAO{
                 $sqlStr .= " AND aceita_encomenda = 1";
             } else if ($encomendaProduto === 'sem-encomenda') {
                 $sqlStr .= " AND aceita_encomenda = 0";
+            }
+
+            if ($visibilidade === 'visivel'){
+                $sqlStr .= " AND aceita_visualizacao = 1";
+            } else if ($visibilidade === 'ocultado') {
+                $sqlStr .= " AND aceita_visualizacao = 0";
             }
 
             if ($ordenar) {

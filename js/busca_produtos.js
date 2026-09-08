@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const pesquisaProdutos = document.getElementById('pesquisa-produtos');
     const filtroEstoque = document.getElementById('filtro-estoque');
     const filtroEncomenda = document.getElementById('filtro-encomenda');
+    const filtroVisivel = document.getElementById('filtro-visivel');
     const filtroOrder = document.getElementById('filtro-order');
     const btnLimpar = document.getElementById('btn-limpar-filtros'); // Captura o novo botão
     const listaProdutos = document.querySelector('.lista-produtos');
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let termo = pesquisaProdutos ? pesquisaProdutos.value : '';
     let estoque = filtroEstoque ? filtroEstoque.value : '';
     let encomenda = filtroEncomenda ? filtroEncomenda.value : '';
+    let visibilidade = filtroVisivel ? filtroVisivel.value : '';
     let order = filtroOrder ? filtroOrder.value : '';
 
     // Captura o ID da loja se ele estiver presente na URL da página atual
@@ -64,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
             url = `/nize_web/php/view/usuario/busca_produtos_loja_ajax.php?pesquisaProdutos=${encodeURIComponent(termo)}&nome_loja=${encodeURIComponent(nome_loja)}&ordenarPor=${encodeURIComponent(order)}`;
         } else {
             // Caso contrário, mantém o fluxo antigo da área interna (produtos)
-            url = `/nize_web/php/view/produtos/busca_produtos_ajax.php?pesquisaProdutos=${encodeURIComponent(termo)}&filtroEstoque=${encodeURIComponent(estoque)}&filtroEncomenda=${encodeURIComponent(encomenda)}&ordenarPor=${encodeURIComponent(order)}`;
+            url = `/nize_web/php/view/produtos/busca_produtos_ajax.php?pesquisaProdutos=${encodeURIComponent(termo)}&filtroEstoque=${encodeURIComponent(estoque)}&filtroEncomenda=${encodeURIComponent(encomenda)}&filtroVisivel=${encodeURIComponent(visibilidade)}&ordenarPor=${encodeURIComponent(order)}`;
         }
         
         fetch(url)
@@ -92,6 +94,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (filtroEncomenda) {
             filtroEncomenda.addEventListener('change', executarBusca);
         }
+        if (filtroVisivel) {
+            filtroVisivel.addEventListener('change', executarBusca);
+        }
         if (filtroOrder) {
             filtroOrder.addEventListener('change', executarBusca);
         }
@@ -102,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (pesquisaProdutos) pesquisaProdutos.value = ''; // Limpa o texto
                 if (filtroEstoque) filtroEstoque.value = '';       // Reseta o select de estoque
                 if (filtroEncomenda) filtroEncomenda.value = '';   // Reseta o select de encomenda
+                if (filtroVisivel) filtroVisivel.value = '';   // Reseta o select de encomenda
                 if (filtroOrder) filtroOrder.value = '';   
                 
                 executarBusca(); // Recarrega a lista completa
