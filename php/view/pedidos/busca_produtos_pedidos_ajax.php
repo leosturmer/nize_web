@@ -1,4 +1,5 @@
 <?php
+require_once '../../config.php';
 session_start();
 require_once '../../model/produto.class.php';
 require_once '../../model/usuario.class.php';
@@ -85,12 +86,12 @@ if (!empty($lista)) {
         echo '<div class="product-img-btn">';
 
         if ($item['imagem']) {
-            echo "<img src='/nize_web/php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+            echo "<img src='" . BASE_URL . "php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
         } else {
             echo "<p class='img-produtos sem-imagem'>Nenhuma imagem cadastrada</p>";
         }
 ?>
-        <form action="/nize_web/php/controller/pedidoControle.php" method="get" class="product-btns">
+        <form action="<?php echo BASE_URL; ?>php/controller/pedidoControle.php" method="get" class="product-btns">
             <!-- <span class="bi bi-bag-plus"></span> -->
             <input type="number" step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
             <input type="hidden" name="op" value="adicionarQuantidade">

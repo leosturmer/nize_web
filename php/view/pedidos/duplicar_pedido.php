@@ -1,4 +1,5 @@
 <?php
+require_once '../../config.php';
 session_start();
 require_once '../../model/usuario.class.php';
 require_once '../../model/produto.class.php';
@@ -26,7 +27,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/nize_web/assets/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/img/favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/nize_web/assets/css/variables.css">
     <link rel="stylesheet" href="/nize_web/assets/css/sidebar.css">
     <link rel="stylesheet" href="/nize_web/assets/css/components.css">
@@ -185,7 +186,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                             </div>
                             <div class="product-img-btn">
                                 <?php if ($item['imagem']) {
-                                    echo "<img src='/nize_web/php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                                    echo "<img src='" . BASE_URL . "php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
                                 } else {
                                     echo "<p class='img-produtos sem-imagem'>Nenhuma imagem cadastrada</p>";
                                 } ?>

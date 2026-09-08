@@ -1,4 +1,5 @@
 <?php
+require_once '../../config.php';
 require_once '../../model/produto.class.php';
 require_once '../../dao/produtodao.class.php';
 require_once '../../dao/usuariodao.class.php';
@@ -34,7 +35,7 @@ foreach ($lista as $item) {
                     <div class="texto-produto">
                         <h2><strong><?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></strong></h2>
                         <?php if ($item['imagem']) {
-                            echo "<img src='/nize_web/php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                            echo "<img src='" . BASE_URL . "php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
                         } else {
                             echo "<img src='#' alt='Produto sem imagem' class='img-produtos sem-imagem'>";
                         } ?>

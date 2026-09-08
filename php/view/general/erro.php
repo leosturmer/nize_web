@@ -1,12 +1,13 @@
 <?php
+require_once __DIR__ . '/../../config.php';
 session_start();
 
 if (!empty($_SESSION['usuario_logado'])) {
     $estaLogado = true;
-    $logo_link = "/nize_web/tela_inicial";
+    $logo_link = BASE_URL . "tela_inicial";
 } else {
     $estaLogado = false;
-    $logo_link = "/nize_web/";
+    $logo_link = BASE_URL;
 }
 
 ?>
@@ -19,12 +20,12 @@ if (!empty($_SESSION['usuario_logado'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Erro - Nize</title>
 
-    <link rel="shortcut icon" href="/nize_web/assets/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/img/favicon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="/nize_web/assets/css/variables.css">
-    <link rel="stylesheet" href="/nize_web/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/nize_web/assets/css/components.css">
-    <link rel="stylesheet" href="/nize_web/assets/css/responsive.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/variables.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/sidebar.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/components.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/responsive.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 </head>

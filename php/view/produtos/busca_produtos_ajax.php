@@ -1,4 +1,5 @@
 <?php
+require_once '../../config.php';
 session_start();
 require_once '../../model/produto.class.php';
 require_once '../../model/usuario.class.php';
@@ -92,7 +93,7 @@ foreach ($lista as $item) {
 
     <div class="product-img-btn">
         <?php if ($item['imagem']) {
-            echo "<img src='/nize_web/php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+            echo "<img src='" . BASE_URL . "php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
         } else {
             echo "<p class='img-produtos sem-imagem'>Nenhuma imagem cadastrada</p>";
         } ?>

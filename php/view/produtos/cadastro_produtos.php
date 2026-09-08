@@ -18,7 +18,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastro de produto- Nize</title>
 
-  <link rel="shortcut icon" href="/nize_web/assets/img/favicon/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/img/favicon/favicon.ico" type="image/x-icon">
 
   <link rel="stylesheet" href="/nize_web/assets/css/variables.css">
   <link rel="stylesheet" href="/nize_web/assets/css/sidebar.css">

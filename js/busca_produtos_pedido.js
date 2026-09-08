@@ -1,22 +1,28 @@
 // Garante que o código só rode após o HTML estar totalmente carregado
 document.addEventListener('DOMContentLoaded', function() {
     const pesquisaProdutos = document.getElementById('pesquisa-produtos');
-    // Seleciona pela classe .lista-produtos correspondente ao seu HTML
     const listaProdutos = document.querySelector('.lista-produtos-pedido');
+    const formularioPesquisa = document.getElementById('form-pesquisa-produtos');
+    const endpoint = formularioPesquisa?.action;
     
     let temporizador;
 
     // Verifica se os elementos realmente existem na página antes de prosseguir
-    if (pesquisaProdutos && listaProdutos) {
+    if (pesquisaProdutos && listaProdutos && endpoint) {
         pesquisaProdutos.addEventListener('input', function() {
             let termo = pesquisaProdutos.value;
             clearTimeout(temporizador);
 
             temporizador = setTimeout(() => {
-                fetch('/nize_web/php/view/pedidos/busca_produtos_pedidos_ajax.php?pesquisaProdutos=' + encodeURIComponent(termo))
-                    .then(response => {
-                        if (!response.ok) throw new Error('Erro na resposta do servidor');
-                        return response.text();
+                const url = endpoint + '?pesquisaProdutos=' + encodeURIComponent(termo);
+
+                fetch(url, { credentials: 'same-origin' })
+                    .then(async response => {
+                        const resposta = await response.text();
+                        if (!response.ok) {
+                            throw new Error(`HTTP ${response.status}: ${resposta.substring(0, 120)}`);
+                        }
+                        return resposta;
                     })
                     .then(html => {
                         listaProdutos.innerHTML = html;
@@ -28,6 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 250); 
         });
     } else {
-        console.error('Elementos de busca não foram encontrados no DOM.');
+        console.error('Elementos ou endpoint da busca não foram encontrados no DOM.');
     }
 });

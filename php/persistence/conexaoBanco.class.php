@@ -14,15 +14,19 @@ class ConexaoBanco extends PDO
     {
         if (!isset(self::$instancia)) {
             try {
-                self::$instancia = new ConexaoBanco("mysql:host=localhost; dbname=nize_database", "root", "");
-            } catch (Exception $e) {
+                $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4';
+                self::$instancia = new ConexaoBanco($dsn, DB_USER, DB_PASS);
+                self::$instancia->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                self::$instancia->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                error_log('Nize - erro de conexao com o banco: ' . $e->getMessage());
                 header("location:" . BASE_URL . "erro?msg=Erro ao conectar com o banco de dados.");
                 exit;
-            } // fecha o try catch
+            }
         } //fecha o if
         return self::$instancia;
-    } // fecha o método getInstancia
-}// Fecha a classe
+    }
+}
 
 // SQLite3
 

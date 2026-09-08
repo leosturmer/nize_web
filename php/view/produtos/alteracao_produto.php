@@ -1,4 +1,5 @@
 <?php
+require_once '../../config.php';
 session_start();
 require_once '../../model/usuario.class.php';
 require_once '../../model/produto.class.php';
@@ -27,7 +28,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alteração de produto- Nize</title>
 
-  <link rel="shortcut icon" href="/nize_web/assets/img/favicon/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/img/favicon/favicon.ico" type="image/x-icon">
 
   <link rel="stylesheet" href="/nize_web/assets/css/variables.css">
   <link rel="stylesheet" href="/nize_web/assets/css/sidebar.css">
@@ -184,7 +185,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
             <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
           </label>
           <?php if (!empty($produto['imagem'])): ?>
-            <img src='/nize_web/php/persistence/uploads/<?php echo rawurlencode($produto['imagem']) ?>' alt='imagem do produto' class='img-produtos img-alt-produto'>
+            <img src='<?php echo BASE_URL; ?>php/persistence/uploads/<?php echo rawurlencode($produto['imagem']) ?>' alt='imagem do produto' class='img-produtos img-alt-produto'>
             <span class="span-alt-img">(Será mantida se não enviar outra)</span>
           <?php else: ?>
             <span class="sem-imagem">Nenhuma imagem cadastrada</span>

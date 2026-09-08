@@ -7,11 +7,6 @@ require_once '../persistence/conexaoBanco.class.php';
 require_once '../util/validacao.class.php';
 
 
-$nome = $_POST['usuNome'];
-$nome_loja = $_POST['usuLoja'];
-$login = $_POST['usuEmail'];
-$senha = $_POST['usuSenha'];
-
 $opcao = $_GET['op']  ?? '';
 
 switch ($opcao):
@@ -22,7 +17,7 @@ switch ($opcao):
         $senha_digitada = trim($_POST['usuSenha']) ?? "";
         $confirma_senha = trim($_POST['confirmaSenha']) ?? "";
 
-        if (empty($nome) || empty($email) || empty($senha)) {
+        if (empty($nome) || empty($email) || empty($senha_digitada)) {
             $_SESSION['msg'] = '<p class="error-msg">Digite todos os campos obrigatórios!</p>';
             header("location:" . BASE_URL . "cadastro_usuario");
             exit;

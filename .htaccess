@@ -1,6 +1,9 @@
 RewriteEngine On
 Options -Indexes
 
+# Permite manter links antigos quando a aplicacao estiver na raiz publica.
+RewriteRule ^nize_web/(.*)$ $1 [L]
+
 # -------------------------------------------------------------------------
 # 1. Suas rotas fixas (devem vir SEMPRE antes da regra genérica da loja)
 # -------------------------------------------------------------------------
