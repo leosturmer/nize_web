@@ -18,6 +18,11 @@ $dadosView = $usuarioDAO->buscarAceitaView($id_usuario);
 
 $aceita_visualizacao = $dadosView['aceita_visualizacao'];
 
+if ($aceita_visualizacao !== 1) {
+    header("location: /nize_web/tela_inicial ");
+}
+
+
 $dadosNomeLoja = $usuarioDAO->buscarNomeLoja($id_usuario);
 
 $nome_loja = $dadosNomeLoja['nome_loja'];
@@ -159,6 +164,7 @@ if (!empty($_SESSION['usuario_logado'])) {
     <main class='conteudo-pagina conteudo-loja'>
         <div class="internal-nav">
             <?php
+
             if (isset($_SESSION["msg"])) {
                 echo "<div id='session-msg'>" . $_SESSION['msg'] .  "</div>";
                 unset($_SESSION["msg"]);
@@ -265,8 +271,8 @@ if (!empty($_SESSION['usuario_logado'])) {
     <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
     </main>
 
-    <script src="//nize_web/js//busca_produtos.js"></script>
-    <script type="module" src="//nize_web/js//main.js"></script>
+    <script src="/nize_web/js/busca_produtos.js"></script>
+    <script type="module" src="/nize_web/js/main.js"></script>
 
 
     <!-- Acessibilidade -->

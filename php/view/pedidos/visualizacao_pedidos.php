@@ -194,7 +194,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
 
 
               <details class="detalhes-produto">
-                <summary>Expandir produtos</summary>
+                <summary>Ver produtos no pedido</summary>
                 <?php
                 foreach ($dados_pedido['produtos'] as $produto) {
                   echo "<p><strong>" . htmlspecialchars($produto['nome']) . "</strong>: " . htmlspecialchars($produto['quantidade']) . " unidade(s)</p>";
