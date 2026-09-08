@@ -223,7 +223,7 @@ if (!empty($_SESSION['usuario_logado'])) {
             <?php foreach ($lista as $item): ?>
                 <div class="product-view product-view-loja">
                     <div class="texto-produto">
-                        <h2><strong><?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></strong></h2>
+                        <h2><strong><?php echo htmlspecialchars($item['nome'], ENT_QUOTES, 'UTF-8'); ?></strong></h2>
 
                         <?php if ($item['imagem']) {
                             echo "<img src='" . BASE_URL . "php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";

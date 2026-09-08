@@ -36,7 +36,7 @@ if (!empty($lista)) {
     foreach ($lista as $item) {
         echo '<div class="product-view">';
         echo '<div class="texto-produto">';
-        echo '<h2>' . htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")) . '</h2>';
+        echo '<h2>' . htmlspecialchars($item['nome'], ENT_QUOTES, 'UTF-8') . '</h2>';
         
         echo '<p><strong>Quantidade: </strong>' . htmlspecialchars($item['quantidade']) . '</p>';
 
