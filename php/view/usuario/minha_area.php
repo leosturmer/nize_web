@@ -97,7 +97,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
 
   <main class='conteudo-pagina'>
-        <a id="top"></a>
+    <a id="top"></a>
 
 
     <?php
@@ -148,45 +148,46 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         <br>
         <strong>Link de visualização</strong>: <?php echo $nome_visualizacao ?>
         <br>
-        <strong>WhatsApp</strong> (opcional): <?php echo $telefone ?>
+        <strong>WhatsApp</strong>: <?php echo $telefone ?>
         </p>
       </div>
 
       <?php
-      $link_view_loja = '';
-      $target = '';
-      $texto_msg = '';
+      // $link_view_loja = '';
+      // $target = '';
+      // $texto_msg = '';
 
-      if (!$usuario->nome_visualizacao || $usuario->aceita_visualizacao == 0) {
+      // if (!$usuario->nome_visualizacao || $usuario->aceita_visualizacao == 0) {
 
-        if (!$usuario->nome_visualizacao && $usuario->aceita_visualizacao == 0) {
-          $texto_msg = "sem link e sem visualização";
-        } else if (!$usuario->nome_visualizacao && $usuario->aceita_visualizacao == 1) {
-          $texto_msg = "sem link";
-        } else if ($usuario->aceita_visualizacao == 0 && $usuario->nome_visualizacao) {
-          $texto_msg = "sem visualização aberta";
-        }
+      //   if (!$usuario->nome_visualizacao && $usuario->aceita_visualizacao == 0) {
+      //     $texto_msg = "sem link e sem visualização";
+      //   } else if (!$usuario->nome_visualizacao && $usuario->aceita_visualizacao == 1) {
+      //     $texto_msg = "sem link";
+      //   } else if ($usuario->aceita_visualizacao == 0 && $usuario->nome_visualizacao) {
+      //     $texto_msg = "sem visualização aberta";
+      //   }
 
-        $_SESSION['msg'] = "<p class='error-msg'>Loja $texto_msg! </p>";
-        $link_view_loja = "alteracao_cadastro.php";
-        $target = "";
-      } else {
-        $link_view_loja = "./view_loja.php?loja=$usuario->nome_visualizacao";
-        $target = "_blank";
-      }
+      //   $_SESSION['msg'] = "<p class='error-msg'>Loja $texto_msg! </p>";
+      //   $link_view_loja = "alteracao_cadastro.php";
+      //   $target = "";
+      // } else {
+      //   $link_view_loja = "./view_loja.php?loja=$usuario->nome_visualizacao";
+      //   $target = "_blank";
+      // }
       ?>
 
 
       <div class="usuario-btns">
         <a href="./alteracao_cadastro.php" class="btn-alterar"><span class="bi bi-pencil" style="margin-left: 0;"></span>Editar</a>
-        <a href="<?php echo $link_view_loja ?>" target="<?php echo $target ?>" class="btn-alterar btn-loja">Ver loja<span class="bi bi-box-arrow-up-right"></span></a>
-
+        <?php if ($usuario->nome_visualizacao && $usuario->aceita_visualizacao == 1 && $usuario->telefone): ?>
+          <a href="./view_loja.php?loja= <?php echo $usuario->nome_visualizacao ?>" target="blank" class="btn-alterar btn-loja btn-loja-alt-cadastro">Ver loja<span class="bi bi-box-arrow-up-right"></span></a>
+        <?php endif; ?>
       </div>
     </div>
 
     <footer><a href="https://github.com/leosturmer" target="_blank">Leonardo Stürmer &copy; Todos os direitos reservados.</a></footer>
-  <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
-    </main>
+    <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
+  </main>
 
   <script type="module" src="../../../js/main.js"></script>
 

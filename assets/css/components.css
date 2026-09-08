@@ -337,7 +337,8 @@ p.p-inicial {
   margin-bottom: 1em;
 }
 
-details.faq-inicial, details.detalhes-produto {
+details.faq-inicial,
+details.detalhes-produto {
   & > summary::before {
     content: "▶ ";
     font-size: 14px;
@@ -379,7 +380,6 @@ details.detalhes-produto {
 
 .lista-passos-2 {
   padding-left: 1em;
-
 }
 
 .div-cadastro,
@@ -689,7 +689,6 @@ fieldset {
   & > textarea {
     margin-left: 0;
     width: 100%;
-
   }
 
   & input[type="number"] {
@@ -704,7 +703,6 @@ fieldset {
     color: var(--darkGreen);
     font-weight: 700;
   }
-
 }
 
 .div-inner-products {
@@ -891,10 +889,7 @@ button.btn-salvar:hover {
 a.btn-limpar:hover,
 button.btn-limpar:hover {
   background-color: var(--normalPurple);
-
 }
-
-
 
 button.btn-excluir,
 a.btn-excluir,
@@ -916,6 +911,11 @@ a.btn-alterar.btn-loja {
   &:hover {
     background-color: var(--darkGreen);
   }
+}
+
+a.btn-alterar.btn-loja-alt-cadastro {
+  margin: 0.5em auto 0em auto;
+  height: 50px;
 }
 
 .total-pedido {
@@ -1061,12 +1061,11 @@ span.bi-box-arrow-up-right {
   right: 20px;
   bottom: 20px;
   z-index: 999;
-  
-  
+
   & > img {
     width: 100%;
   }
-  
+
   & > a {
     background-color: transparent;
     border: none;
@@ -1075,13 +1074,12 @@ span.bi-box-arrow-up-right {
     margin: 0 0;
     width: fit-content;
   }
-  
+
   & > a:hover {
     background-color: transparent;
     border: none;
     box-shadow: none;
     filter: drop-shadow(0px 0px 20px white);
-    
   }
 }
 

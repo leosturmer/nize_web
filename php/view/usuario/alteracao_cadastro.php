@@ -154,8 +154,12 @@ $usuario = unserialize($_SESSION['usuario_logado']);
           <br>
           <strong>Link de visualização</strong>: <?php echo $nome_visualizacao ?>
           <br>
-          <strong>WhatsApp</strong> (opcional): <?php echo $telefone ?>
+          <strong>WhatsApp</strong>: <?php echo $telefone ?>
+          <?php if ($usuario->nome_visualizacao && $usuario->aceita_visualizacao == 1 && $usuario->telefone): ?>
+            <a href="./view_loja.php?loja= <?php echo $usuario->nome_visualizacao ?>" target="blank" class="btn-alterar btn-loja btn-loja-alt-cadastro">Ver loja<span class="bi bi-box-arrow-up-right"></span></a>
+          <?php endif; ?>
         </p>
+
       </div>
 
       <div id="novos-dados">
@@ -191,8 +195,9 @@ $usuario = unserialize($_SESSION['usuario_logado']);
             <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Alterar</button>
             <button formaction="../../controller/usuarioControle.php?op=excluir" onclick="return confirm('A exclusão deletará todos os dados do banco.\n\nESSA AÇÃO NÃO PODE SER DESFEITA.\n\nDeseja confirmar?')" class="btn-excluir"><span class="bi bi-person-x"></span>Excluir</button>
           </div>
-        </form>
       </div>
+      </form>
+    </div>
     </div>
 
     <footer><a href="https://github.com/leosturmer" target="_blank">Leonardo Stürmer &copy; Todos os direitos reservados.</a></footer>
