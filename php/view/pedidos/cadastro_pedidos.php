@@ -300,8 +300,8 @@ if (isset($_SESSION['encomendaSelecionada'])) {
 
     </div>
 
-    <script type="module" src="/nize_web/js//main.js"></script>
-    <script src="/nize_web/js//busca_produtos_pedido.js"></script>
+    <script type="module" src="<?php echo BASE_URL; ?>js/main.js"></script>
+    <script src="<?php echo BASE_URL; ?>js/busca_produtos_pedido.js?v=2"></script>
 
 
     <!-- Acessibilidade -->

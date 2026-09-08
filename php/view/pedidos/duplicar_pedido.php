@@ -281,9 +281,9 @@ if (isset($_SESSION['pedidoSelecionado'])) {
         <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
     </main>
 
-    <script type="module" src="/nize_web/js//main.js"></script>
+    <script type="module" src="<?php echo BASE_URL; ?>js/main.js"></script>
 
-    <script src="/nize_web/js//busca_produtos_pedido.js"></script>
+    <script src="<?php echo BASE_URL; ?>js/busca_produtos_pedido.js?v=2"></script>
 
 
     <!-- Acessibilidade -->

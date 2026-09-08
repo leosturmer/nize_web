@@ -12,6 +12,7 @@ header('Content-Type: text/html; charset=utf-8');
 $pesquisa = trim($_GET['pesquisaProdutos'] ?? '');
 $estoqueProduto = trim($_GET['filtroEstoque'] ?? '');
 $encomendaProduto = trim($_GET['filtroEncomenda'] ?? '');
+$visibilidade = trim($_GET['filtroVisivel'] ?? '');
 $ordenar = trim($_GET['ordenarPor'] ?? '');
 
 $produtoDAO = new ProdutoDAO();
@@ -20,7 +21,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 $idUsuarioLogado = $usuario->id_usuario;
 
 if (!empty($pesquisa)) {
-    $lista = $produtoDAO->buscarProdutoFiltro($pesquisa, $estoqueProduto, $encomendaProduto, $ordenar, $idUsuarioLogado);
+    $lista = $produtoDAO->buscarProdutoFiltro($pesquisa, $estoqueProduto, $encomendaProduto, $visibilidade, $ordenar, $idUsuarioLogado);
 } else {
     $lista = $produtoDAO->listarTodosProdutos($idUsuarioLogado);
 }

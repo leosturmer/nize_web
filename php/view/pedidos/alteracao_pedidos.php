@@ -138,9 +138,8 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
         <details class="produtos-pedido">
             <summary class="summary-pedido">Adicione os produtos ao pedido</summary>
-            <!-- <div class="adicionar-produtos"> -->
 
-                <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-produto-pedido">
+            <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-produto-pedido">
                 <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição" autocomplete="off" maxlength="50"><span id="search-icon" class="bi bi-search"></span>
             </form>
 
@@ -338,7 +337,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
     <script type="module" src="<?php echo BASE_URL; ?>js/main.js"></script>
 
-    <script src="<?php echo BASE_URL; ?>js/busca_produtos_pedido.js"></script>
+    <script src="<?php echo BASE_URL; ?>js/busca_produtos_pedido.js?v=2"></script>
 
 
     <!-- Acessibilidade -->
