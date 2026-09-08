@@ -5,10 +5,44 @@ document.addEventListener('DOMContentLoaded', function() {
     const filtroOrder = document.getElementById('filtro-order');
     const btnLimpar = document.getElementById('btn-limpar-filtros'); // Captura o novo botão
     const listaProdutos = document.querySelector('.lista-produtos');
+
+    function filtrarProdutosDaLoja() {
+        const termo = pesquisaProdutos ? pesquisaProdutos.value.trim().toLocaleLowerCase() : '';
+        const produtos = listaProdutos.querySelectorAll('.product-view');
+        let encontrados = 0;
+
+        produtos.forEach(function(produto) {
+            const corresponde = produto.textContent.toLocaleLowerCase().includes(termo);
+            produto.style.display = corresponde ? '' : 'flex';
+            if (!corresponde) {
+                produto.style.display = 'none';
+            } else {
+                encontrados++;
+            }
+        });
+
+        let mensagem = listaProdutos.querySelector('.sem-registro');
+        if (encontrados === 0) {
+            if (!mensagem) {
+                mensagem = document.createElement('h4');
+                mensagem.className = 'sem-registro';
+                mensagem.textContent = 'Nenhum produto correspondente foi encontrado!';
+                listaProdutos.appendChild(mensagem);
+            }
+            mensagem.style.display = '';
+        } else if (mensagem) {
+            mensagem.style.display = 'none';
+        }
+    }
     
     let temporizador;
 
     function executarBusca() {
+    if (listaProdutos.classList.contains('lista-produtos-loja')) {
+        filtrarProdutosDaLoja();
+        return;
+    }
+
     let termo = pesquisaProdutos ? pesquisaProdutos.value : '';
     let estoque = filtroEstoque ? filtroEstoque.value : '';
     let encomenda = filtroEncomenda ? filtroEncomenda.value : '';
