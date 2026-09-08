@@ -29,9 +29,9 @@ $telefone = $dadosTelefone['telefone'];
 $lista = $produtoDAO->listarTodosProdutosAbertos($id_usuario);
 
 if (!empty($_SESSION['usuario_logado'])) {
-    $logo_link = "../general/tela_inicial.php";
+    $logo_link = "/nize_web/tela_inicial";
 } else {
-    $logo_link = "../../../index.php";
+    $logo_link = "/nize_web/";
 }
 
 ?>
@@ -101,7 +101,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                                 echo "</div>";
 
                                 // Link de remoção passando origem=loja e nome da loja
-                                echo "<a href='" . BASE_URL . "/controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor&origem=loja&loja=" . urlencode($nome_visualizacao) . "' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
+                                echo "<a href='" . BASE_URL . "php/controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor&origem=loja&loja=" . urlencode($nome_visualizacao) . "' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
                                 echo "</div>";
                                 echo "<hr>";
                             } else {
@@ -119,7 +119,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                 </div>
 
                 <div class="pedido-loja">
-                    <form action="<?php echo BASE_URL ?>controller/pedidoControle.php" method="get">
+                                <form action="<?php echo BASE_URL ?>php/controller/pedidoControle.php" method="get">
                         <input type="hidden" name="op" value="solicitarPedido">
                         <input type="hidden" name="loja" value="<?php echo htmlspecialchars($nome_visualizacao); ?>">
 
@@ -135,7 +135,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                             <div class="product-btns">
                                 <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Enviar</button>
                                 <!-- Botão Limpar apenas para a view_loja -->
-                                <a href="<?php echo BASE_URL ?>controller/pedidoControle.php?op=limparCarrinho&origem=loja&loja=<?php echo urlencode($nome_visualizacao); ?>" class="btn-limpar"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
+                                <a href="<?php echo BASE_URL ?>php/controller/pedidoControle.php?op=limparCarrinho&origem=loja&loja=<?php echo urlencode($nome_visualizacao); ?>" class="btn-limpar"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
                             </div>
                         </div>
                     </form>
@@ -149,7 +149,7 @@ if (!empty($_SESSION['usuario_logado'])) {
             <a href="#" data-resize-btn-mobile class="btn-menu btn-sacola" title="Esconder/expandir menu">
                 <i class="bi bi-bag"></i>
             </a>
-            <a href="../general/tela_inicial.php" class="link-logo-header" title="Tela inicial">
+            <a href="/nize_web/tela_inicial" class="link-logo-header" title="Tela inicial">
                 <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
             </a>
         </div>
@@ -220,7 +220,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                         <h2><strong><?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></strong></h2>
 
                         <?php if ($item['imagem']) {
-                            echo "<img src='". BASE_URL . "persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                            echo "<img src='" . BASE_URL . "php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
                         } else {
                             echo "<img src='#' alt='Produto sem imagem' class='img-produtos sem-imagem'>";
                         } ?>
@@ -238,7 +238,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                     <p class="p-descricao"><?php echo htmlspecialchars($item['descricao']) ?></p>
                     
                     <div class="product-img-btn">
-                        <form action="<?php echo BASE_URL ?>controller/pedidoControle.php" method="get" class="product-btns">
+                        <form action="<?php echo BASE_URL ?>php/controller/pedidoControle.php" method="get" class="product-btns">
                             <input type="number"  step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))"
                             name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
                             <input type="hidden" name="op" value="adicionarSacola">
@@ -265,8 +265,8 @@ if (!empty($_SESSION['usuario_logado'])) {
     <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
     </main>
 
-    <script src="/nize_web/js/busca_produtos.js"></script>
-    <script type="module" src="/nize_web/js/main.js"></script>
+    <script src="//nize_web/js//busca_produtos.js"></script>
+    <script type="module" src="//nize_web/js//main.js"></script>
 
 
     <!-- Acessibilidade -->

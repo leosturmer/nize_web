@@ -27,7 +27,7 @@ if (empty($lista_usuarios)) {
                 </p>
             </div>
             <div class="btns-admin-user">
-                <form action="../../controller/usuarioControle.php?op=excluirUsuario&id=<?php echo $usuarioCadastrado['id_usuario']; ?>" method="post">
+                <form action="/nize_web/php/controller/usuarioControle.php?op=excluirUsuario&id=<?php echo $usuarioCadastrado['id_usuario']; ?>" method="post">
                     <input type="hidden" name="id" value="<?php echo $usuarioCadastrado['id_usuario']; ?>">
                     <button class="btn-excluir" type="submit"><span class="bi bi-trash3"></span>Excluir</button>
                 </form>

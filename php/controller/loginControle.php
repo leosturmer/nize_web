@@ -10,7 +10,7 @@ $login = trim(strtolower($_POST['txtemail'])) ?? '';
 $senha_digitada = trim($_POST['txtsenha']) ?? '';
 
 if (empty($login) || empty($senha_digitada)) {
-    header("location:../view/general/erro.php?msg=Por favor, preencha todos os campos.&$login&$senha_digitada");
+    header("location:" . BASE_URL . "erro?msg=Por favor, preencha todos os campos.&$login&$senha_digitada");
     exit;
 }
 
@@ -47,18 +47,18 @@ if ($dadosUsuario) {
         $_SESSION['msg'] = "<p class='success-msg'>Login realizado com sucesso!</p>";
 
         if ($tipoUsuario === 1) {
-            header("Location: ../view/admin/dashboard_administrador.php");
+            header("Location: " . BASE_URL . "admin");
             exit;
         } else {
             $nomeURL = urlencode($usuario->nome);
             $lojaURL = urlencode($usuario->nome_loja);
 
-            header("Location: ../view/general/tela_inicial.php?nome=$nomeURL&loja=$lojaURL");
+            header("Location: " . BASE_URL . "tela_inicial?nome=$nomeURL&loja=$lojaURL");
             exit;
         }
     }
 }
 
 $_SESSION['msg'] = "<p class='error-msg'>Usuário ou senha inválidos.</p>";
-header("Location: ../view/general/login.php");
+header("Location: " . BASE_URL . "login");
 exit;

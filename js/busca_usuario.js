@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     clearTimeout(temporizador);
 
     temporizador = setTimeout(() => {
-      const url = `busca_usuario_ajax.php?pesquisaUsuario=${encodeURIComponent(
+      const url = `/nize_web/php/view/admin/busca_usuario_ajax.php?pesquisaUsuario=${encodeURIComponent(
         termo
       )}&ordenarPor=${encodeURIComponent(order)}`;
 

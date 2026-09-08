@@ -92,14 +92,14 @@ foreach ($lista as $item) {
 
     <div class="product-img-btn">
         <?php if ($item['imagem']) {
-            echo "<img src='../../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+            echo "<img src='/nize_web/php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
         } else {
             echo "<p class='img-produtos sem-imagem'>Nenhuma imagem cadastrada</p>";
         } ?>
 
         <div class="product-btns">
-            <a href="alteracao_produto.php?id=<?php echo $item['id_produto']; ?>"><span class="bi bi-pencil"></span>Editar</a>
-            <a href="duplicar_produto.php?id=<?php echo $item['id_produto']; ?>" class="btn-duplicar"><span class="bi bi-copy"></span>Duplicar</a>
+            <a href="/nize_web/alteracao_produto/<?php echo $item['id_produto']; ?>"><span class="bi bi-pencil"></span>Editar</a>
+            <a href="/nize_web/duplicar_produto/<?php echo $item['id_produto']; ?>" class="btn-duplicar"><span class="bi bi-copy"></span>Duplicar</a>
         </div>
     </div>
     </div>

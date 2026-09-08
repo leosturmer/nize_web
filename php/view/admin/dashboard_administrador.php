@@ -23,12 +23,12 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="../../../assets/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/nize_web/assets/img/favicon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../../../assets/css/variables.css">
-    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
-    <link rel="stylesheet" href="../../../assets/css/components.css">
-    <link rel="stylesheet" href="../../../assets/css/responsive.css">
+    <link rel="stylesheet" href="/nize_web/assets/css/variables.css">
+    <link rel="stylesheet" href="/nize_web/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/nize_web/assets/css/components.css">
+    <link rel="stylesheet" href="/nize_web/assets/css/responsive.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -50,13 +50,13 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
 
                 <li>
                     <a href="#" class="link-logo" title="Tela inicial">
-                        <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+                        <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
                     </a>
                 </li>
 
 
                 <li>
-                    <a href="../../controller/logout.php" class="btn-sair" title="Sair">
+                    <a href="/nize_web/php/controller/logout.php" class="btn-sair" title="Sair">
                         <i class="bi bi-box-arrow-left"></i>
                         <span>Encerrar sessão</span>
                     </a>
@@ -70,8 +70,8 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
             <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
                 <i class="bi bi-list"></i>
             </a>
-            <a href="../general/tela_inicial.php" class="link-logo-header" title="Tela inicial">
-                <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+            <a href="/nize_web/tela_inicial" class="link-logo-header" title="Tela inicial">
+                <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
             </a>
         </div>
     </header>
@@ -124,7 +124,7 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
                                 </p>
                             </div>
                             <div class="btns-admin-user">
-                                <form action="../../controller/usuarioControle.php?op=excluirUsuario&id=<?php echo $usuarioCadastrado['id_usuario'] ?>" method="post" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');">
+                                <form action="/nize_web/php/controller/usuarioControle.php?op=excluirUsuario&id=<?php echo $usuarioCadastrado['id_usuario'] ?>" method="post" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');">
                                     <input type="hidden" name="id" value="<?php echo $usuarioCadastrado['id_usuario']; ?>" autocomplete="off">
                                     <button class="btn-excluir" type="submit"><span class="bi bi-trash3"></span>Excluir</button>
                                 </form>
@@ -141,8 +141,8 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
         <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
     </main>
 
-    <script type="module" src="../../../js/main.js"></script>
-    <script type="module" src="../../../js/busca_usuario.js"></script>
+    <script type="module" src="/nize_web/js//main.js"></script>
+    <script type="module" src="/nize_web/js//busca_usuario.js"></script>
 
     <!-- Acessibilidade -->
 

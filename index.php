@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['usuario_logado'])){
-    header("location:./php/view/general/tela_inicial.php");
+    header("location:./tela_inicial");
 }
 
 ?>
@@ -41,8 +41,8 @@ if (isset($_SESSION['usuario_logado'])){
             <h1 id="subtitulo-index">Orga<em>nize</em> suas vendas</h1>
 
             <div class="botoes-index">
-                <a href="./php/view/general/login.php">Fazer login</a>
-                <a href="./php/view/general/cadastro_usuario.php">Cadastre-se</a>
+                <a href="./login">Fazer login</a>
+                <a href="./cadastro_usuario">Cadastre-se</a>
             </div>
 
         </div>

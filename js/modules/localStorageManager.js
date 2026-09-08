@@ -15,8 +15,8 @@ export function initLocalStorageManager() {
   }
 
   // 1. Página de Cadastro de Usuário
-  if (path.includes("cadastro_usuario.php")) {
-    limparSeSaiu("cad_", "cadastro_usuario.php");
+  if (path.includes("/cadastro_usuario")) {
+    limparSeSaiu("cad_", "/cadastro_usuario");
 
     const campoNome = document.querySelector("input[name='usuNome']");
     const campoLoja = document.querySelector("input[name='usuLoja']");
@@ -57,8 +57,8 @@ export function initLocalStorageManager() {
   }
 
   // 2. Página de Duplicar Pedido
-  if (path.includes("duplicar_pedidos.php")) {
-    limparSeSaiu("dup_", "duplicar_pedidos.php");
+  if (path.includes("/duplicar_pedido")) {
+    limparSeSaiu("dup_", "/duplicar_pedido");
 
     const campoData = document.getElementById("prazoPedido");
     const campoStatus = document.getElementById("statusPedido");
@@ -99,8 +99,8 @@ export function initLocalStorageManager() {
   }
 
   // 3. Página de Alteração de Pedido
-  if (path.includes("alteracao_pedidos.php")) {
-    limparSeSaiu("alt_", "alteracao_pedidos.php");
+  if (path.includes("/alteracao_pedidos")) {
+    limparSeSaiu("alt_", "/alteracao_pedidos");
 
     const campoData = document.getElementById("prazoPedido");
     const campoStatus = document.getElementById("statusPedido");
@@ -141,8 +141,8 @@ export function initLocalStorageManager() {
   }
 
   // 4. Página de Cadastro de Pedido
-  if (path.includes("cadastro_pedidos.php")) {
-    limparSeSaiu("cad_pedido_", "cadastro_pedidos.php"); // Prefixo ajustado para evitar conflito
+  if (path.includes("/cadastro_pedidos")) {
+    limparSeSaiu("cad_pedido_", "/cadastro_pedidos"); // Prefixo ajustado para evitar conflito
 
     const campoData = document.getElementById("prazoPedido");
     const campoStatus = document.getElementById("statusPedido");
@@ -184,9 +184,9 @@ export function initLocalStorageManager() {
 
   // 5. Página de Visualização da Loja (view_loja.php)
   // 5. Página de Visualização da Loja (view_loja.php)
-  if (path.includes("view_loja.php")) {
+  if (document.querySelector(".html-loja")) {
     const chaveLoja = "loja_" + window.location.search;
-    if (!referrer.includes("view_loja.php")) {
+    if (!referrer.includes("/nize_web/") || !referrer.includes(window.location.pathname)) {
       Object.keys(localStorage).forEach((key) => {
         if (key.startsWith("loja_")) localStorage.removeItem(key);
       });
@@ -244,10 +244,10 @@ export function initLocalStorageManager() {
   }
 
   // 6. Página de Alteração de Cadastro / Minha Área
-  if (path.includes("alterar_usuario.php") || path.includes("minha_area.php")) {
+  if (path.includes("/alterar_cadastro") || path.includes("/minha_area")) {
     if (
-      !referrer.includes("alterar_usuario.php") &&
-      !referrer.includes("minha_area.php")
+      !referrer.includes("/alterar_cadastro") &&
+      !referrer.includes("/minha_area")
     ) {
       localStorage.removeItem("alt_usu_nome");
       localStorage.removeItem("alt_usu_loja");

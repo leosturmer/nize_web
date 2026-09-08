@@ -18,12 +18,12 @@ $usuario = unserialize($_SESSION['usuario_logado']);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastro de produto- Nize</title>
 
-  <link rel="shortcut icon" href="../../../assets/img/favicon/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/nize_web/assets/img/favicon/favicon.ico" type="image/x-icon">
 
-  <link rel="stylesheet" href="../../../assets/css/variables.css">
-  <link rel="stylesheet" href="../../../assets/css/sidebar.css">
-  <link rel="stylesheet" href="../../../assets/css/components.css">
-  <link rel="stylesheet" href="../../../assets/css/responsive.css">
+  <link rel="stylesheet" href="/nize_web/assets/css/variables.css">
+  <link rel="stylesheet" href="/nize_web/assets/css/sidebar.css">
+  <link rel="stylesheet" href="/nize_web/assets/css/components.css">
+  <link rel="stylesheet" href="/nize_web/assets/css/responsive.css">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -44,39 +44,39 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         </li>
 
         <li>
-          <a href="../general/tela_inicial.php" class="link-logo" title="Tela inicial">
-            <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+          <a href="/nize_web/tela_inicial" class="link-logo" title="Tela inicial">
+            <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
           </a>
         </li>
 
         <li>
         <li>
-          <a href="../general/tela_inicial.php" title="Tela inicial">
+          <a href="/nize_web/tela_inicial" title="Tela inicial">
             <i class="bi bi-house"></i>
 
             <span>Tela inicial</span>
 
           </a>
         </li>
-        <a href="visualizacao_produtos.php" class="active" title="Tela de produtos">
+        <a href="/nize_web/visualizacao_produtos" class="active" title="Tela de produtos">
           <i class="bi bi-box-seam"></i>
           <span>Produtos</span>
         </a>
         </li>
         </li>
-        <a href="../pedidos/visualizacao_pedidos.php" title="Tela de pedidos">
+        <a href="/nize_web/visualizacao_pedidos" title="Tela de pedidos">
           <i class="bi bi-clipboard2-check"></i>
           <span>Pedidos</span>
         </a>
         </li>
         </li>
-        <a href="../usuario/minha_area.php" title="Minha área">
+        <a href="/nize_web/minha_area" title="Minha área">
           <i class="bi bi-person-lines-fill"></i>
           <span>Minha área</span>
         </a>
         </li>
         <li>
-          <a href="../../controller/logout.php" class="btn-sair" title="Sair">
+          <a href="/nize_web/php/controller/logout.php" class="btn-sair" title="Sair">
             <i class="bi bi-box-arrow-left"></i>
             <span>Encerrar sessão</span>
           </a>
@@ -90,8 +90,8 @@ $usuario = unserialize($_SESSION['usuario_logado']);
       <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
         <i class="bi bi-list"></i>
       </a>
-      <a href="../general/tela_inicial.php" class="link-logo-header" title="Tela inicial">
-        <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+      <a href="/nize_web/tela_inicial" class="link-logo-header" title="Tela inicial">
+        <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
       </a>
     </div>
   </header>
@@ -102,7 +102,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     <div class="internal-nav">
       <div class="internal-nav-links">
         <h1>Cadastro de produto</h1>
-        <a href="visualizacao_produtos.php" title="Tela de produtos"><span class="bi bi-arrow-left"></span>Voltar</a>
+        <a href="/nize_web/visualizacao_produtos" title="Tela de produtos"><span class="bi bi-arrow-left"></span>Voltar</a>
       </div>
     </div>
 
@@ -168,7 +168,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
       </fieldset>
       <div id="form-products-buttons">
-        <button type="submit" formaction="../../controller/produtoControle.php?op=cadastrar" class="btn-salvar"><span class="bi bi-check2"></span>Salvar</button>
+        <button type="submit" formaction="/nize_web/php/controller/produtoControle.php?op=cadastrar" class="btn-salvar"><span class="bi bi-check2"></span>Salvar</button>
         <button type="reset" class="btn-limpar"><span class="bi bi-arrow-clockwise"></span>Limpar</button>
       </div>
     </form>
@@ -177,7 +177,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
   <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
     </main>
 
-  <script type="module" src="../../../js/main.js"></script>
+  <script type="module" src="/nize_web/js//main.js"></script>
 
   <!-- Acessibilidade -->
 

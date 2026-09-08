@@ -10,7 +10,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 $id_produto = $_GET['id'] ?? null;
 
 if (!$id_produto) {
-  header("location:visualizacao_produtos.php");
+  header("location:/nize_web/visualizacao_produtos");
   exit;
 }
 
@@ -27,12 +27,12 @@ $produto = $produtoDAO->buscarPorId($id_produto);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alteração de produto- Nize</title>
 
-  <link rel="shortcut icon" href="../../../assets/img/favicon/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/nize_web/assets/img/favicon/favicon.ico" type="image/x-icon">
 
-  <link rel="stylesheet" href="../../../assets/css/variables.css">
-  <link rel="stylesheet" href="../../../assets/css/sidebar.css">
-  <link rel="stylesheet" href="../../../assets/css/components.css">
-  <link rel="stylesheet" href="../../../assets/css/responsive.css">
+  <link rel="stylesheet" href="/nize_web/assets/css/variables.css">
+  <link rel="stylesheet" href="/nize_web/assets/css/sidebar.css">
+  <link rel="stylesheet" href="/nize_web/assets/css/components.css">
+  <link rel="stylesheet" href="/nize_web/assets/css/responsive.css">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -53,39 +53,39 @@ $produto = $produtoDAO->buscarPorId($id_produto);
         </li>
 
         <li>
-          <a href="../general/tela_inicial.php" class="link-logo" title="Tela inicial">
-            <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+          <a href="/nize_web/tela_inicial" class="link-logo" title="Tela inicial">
+            <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
           </a>
         </li>
 
         <li>
         <li>
-          <a href="../general/tela_inicial.php" title="Tela inicial">
+          <a href="/nize_web/tela_inicial" title="Tela inicial">
             <i class="bi bi-house"></i>
 
             <span>Tela inicial</span>
 
           </a>
         </li>
-        <a href="visualizacao_produtos.php" class="active" title="Tela de produtos">
+        <a href="/nize_web/visualizacao_produtos" class="active" title="Tela de produtos">
           <i class="bi bi-box-seam"></i>
           <span>Produtos</span>
         </a>
         </li>
         </li>
-        <a href="../pedidos/visualizacao_pedidos.php" title="Tela de pedidos">
+        <a href="/nize_web/visualizacao_pedidos" title="Tela de pedidos">
           <i class="bi bi-clipboard2-check"></i>
           <span>Pedidos</span>
         </a>
         </li>
         </li>
-        <a href="../usuario/minha_area.php" title="Minha área">
+        <a href="/nize_web/minha_area" title="Minha área">
           <i class="bi bi-person-lines-fill"></i>
           <span>Minha área</span>
         </a>
         </li>
         <li>
-          <a href="../../controller/logout.php" class="btn-sair" title="Sair">
+          <a href="/nize_web/php/controller/logout.php" class="btn-sair" title="Sair">
             <i class="bi bi-box-arrow-left"></i>
             <span>Encerrar sessão</span>
           </a>
@@ -99,8 +99,8 @@ $produto = $produtoDAO->buscarPorId($id_produto);
       <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
         <i class="bi bi-list"></i>
       </a>
-      <a href="../general/tela_inicial.php" class="link-logo-header" title="Tela inicial">
-        <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+      <a href="/nize_web/tela_inicial" class="link-logo-header" title="Tela inicial">
+        <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
       </a>
     </div>
   </header>
@@ -110,7 +110,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
     <div class="internal-nav">
       <div class="internal-nav-links">
         <h1>Alteração de produto</h1>
-        <a href="visualizacao_produtos.php" title="Tela de produtos"><span class="bi bi-arrow-left"></span>Voltar</a>
+        <a href="/nize_web/visualizacao_produtos" title="Tela de produtos"><span class="bi bi-arrow-left"></span>Voltar</a>
       </div>
     </div>
 
@@ -133,7 +133,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
     }
     ?>
 
-    <form action="../../controller/produtoControle.php?op=alterar&id=<?php echo $produto['id_produto'] ?>" method="post" enctype="multipart/form-data" class="form-cadastro-produto">
+    <form action="/nize_web/php/controller/produtoControle.php?op=alterar&id=<?php echo $produto['id_produto'] ?>" method="post" enctype="multipart/form-data" class="form-cadastro-produto">
       <fieldset id="products-form">
         <legend>Descrição do produto</legend>
         <div class="inner-products-form">
@@ -184,7 +184,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
             <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg">
           </label>
           <?php if (!empty($produto['imagem'])): ?>
-            <img src='../../persistence/uploads/<?php echo htmlspecialchars($produto['imagem'])?>' alt='imagem do produto' class='img-produtos img-alt-produto'>
+            <img src='/nize_web/php/persistence/uploads/<?php echo rawurlencode($produto['imagem']) ?>' alt='imagem do produto' class='img-produtos img-alt-produto'>
             <span class="span-alt-img">(Será mantida se não enviar outra)</span>
           <?php else: ?>
             <span class="sem-imagem">Nenhuma imagem cadastrada</span>
@@ -196,7 +196,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 
       <div id="form-products-buttons">
         <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Alterar</button>
-        <a href="../../controller/produtoControle.php?op=excluir&id=<?php echo $produto['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');"><span class="bi bi-trash3"></span>Excluir</a>
+        <a href="/nize_web/php/controller/produtoControle.php?op=excluir&id=<?php echo $produto['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');"><span class="bi bi-trash3"></span>Excluir</a>
 
       </div>
     </form>
@@ -207,7 +207,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 
   </div>
 
-  <script type="module" src="../../../js/main.js"></script>
+  <script type="module" src="/nize_web/js//main.js"></script>
 
   <!-- Acessibilidade -->
 

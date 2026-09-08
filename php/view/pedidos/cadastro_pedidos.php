@@ -34,12 +34,12 @@ if (isset($_SESSION['encomendaSelecionada'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="../../../assets/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/nize_web/assets/img/favicon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../../../assets/css/variables.css">
-    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
-    <link rel="stylesheet" href="../../../assets/css/components.css">
-    <link rel="stylesheet" href="../../../assets/css/responsive.css">
+    <link rel="stylesheet" href="/nize_web/assets/css/variables.css">
+    <link rel="stylesheet" href="/nize_web/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/nize_web/assets/css/components.css">
+    <link rel="stylesheet" href="/nize_web/assets/css/responsive.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -61,39 +61,39 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                 </li>
 
                 <li>
-                    <a href="../general/tela_inicial.php" class="link-logo" title="Tela inicial">
-                        <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+                    <a href="/nize_web/tela_inicial" class="link-logo" title="Tela inicial">
+                        <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
                     </a>
                 </li>
 
                 <li>
                 <li>
-                    <a href="../general/tela_inicial.php" title="Tela inicial">
+                    <a href="/nize_web/tela_inicial" title="Tela inicial">
                         <i class="bi bi-house"></i>
 
                         <span>Tela inicial</span>
 
                     </a>
                 </li>
-                <a href="../produtos/visualizacao_produtos.php" title="Tela de produtos">
+                <a href="/nize_web/visualizacao_produtos" title="Tela de produtos">
                     <i class="bi bi-box-seam"></i>
                     <span>Produtos</span>
                 </a>
                 </li>
                 </li>
-                <a href="visualizacao_pedidos.php" class="active" title="Tela de pedidos">
+                <a href="/nize_web/visualizacao_pedidos" class="active" title="Tela de pedidos">
                     <i class="bi bi-clipboard2-check"></i>
                     <span>Pedidos</span>
                 </a>
                 </li>
                 </li>
-                <a href="../usuario/minha_area.php" title="Minha área">
+                <a href="/nize_web/minha_area" title="Minha área">
                     <i class="bi bi-person-lines-fill"></i>
                     <span>Minha área</span>
                 </a>
                 </li>
                 <li>
-                    <a href="../../controller/logout.php" class="btn-sair" title="Sair">
+                    <a href="/nize_web/php/controller/logout.php" class="btn-sair" title="Sair">
                         <i class="bi bi-box-arrow-left"></i>
                         <span>Encerrar sessão</span>
                     </a>
@@ -107,8 +107,8 @@ if (isset($_SESSION['encomendaSelecionada'])) {
             <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
                 <i class="bi bi-list"></i>
             </a>
-            <a href="../general/tela_inicial.php" class="link-logo-header" title="Tela inicial">
-                <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+            <a href="/nize_web/tela_inicial" class="link-logo-header" title="Tela inicial">
+                <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
             </a>
         </div>
     </header>
@@ -125,7 +125,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
         <div class="internal-nav">
             <div class="internal-nav-links">
                 <h1>Cadastro de pedido</h1>
-                <a href="visualizacao_pedidos.php"><span class="bi bi-arrow-left"></span>Voltar</a>
+                <a href="/nize_web/visualizacao_pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
             </div>
         </div>
 
@@ -196,11 +196,11 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                             </div>
                             <div class="product-img-btn">
                                 <?php if ($item['imagem']) {
-                                    echo "<img src='../../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                                    echo "<img src='/nize_web/php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
                                 } else {
                                     echo "<p class='img-produtos sem-imagem'>Nenhuma imagem cadastrada</p>";
                                 } ?>
-                                <form action="../../controller/pedidoControle.php" method="get" class="product-btns">
+                                <form action="/nize_web/php/controller/pedidoControle.php" method="get" class="product-btns">
                                     <input type="number" step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
                                     <input type="hidden" name="op" value="adicionarQuantidade">
                                     <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
@@ -241,7 +241,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                             echo "<b>Quantidade</b>: " . $quantidade . "<br>";
                             echo "<b>Valor unitário</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
                             echo "<b>Valor total</b>: R$ " . number_format($valor_total_item, 2, ',', '.') . "</p>";
-                            echo "<a href='../../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
+                            echo "<a href='/nize_web/php/controller/pedidoControle.php?op=removerQuantidade&id=$id_produto' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
                             echo "</div>";
                         } else {
                             echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
@@ -257,7 +257,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                 <div class='total-pedido'>
                     <p><b>Total do pedido</b>: R$ <?php echo number_format($_SESSION['total_compra'], 2, ',', '.')  ?> </p>
                 </div>
-                <form action="../../controller/pedidoControle.php" method="get">
+                        <form action="/nize_web/php/controller/pedidoControle.php" method="get">
                     <input type="hidden" name="op" value="cadastrar">
                     <div class="form-pedidos-items">
                         <fieldset id="pedidos-form">
@@ -285,8 +285,8 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                         </fieldset>
                     </div>
                     <div class="form-pedidos-items form-pedidos-buttons">
-                        <a href="../../controller/pedidoControle.php?op=limparCarrinho" class="btn-limpar"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
                         <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Salvar</button>
+                        <a href="/nize_web/php/controller/pedidoControle.php?op=limparCarrinho" class="btn-limpar"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
                     </div>
                 </form>
             </div>
@@ -299,8 +299,8 @@ if (isset($_SESSION['encomendaSelecionada'])) {
 
     </div>
 
-    <script type="module" src="../../../js/main.js"></script>
-    <script src="../../../js/busca_produtos_pedido.js"></script>
+    <script type="module" src="/nize_web/js//main.js"></script>
+    <script src="/nize_web/js//busca_produtos_pedido.js"></script>
 
 
     <!-- Acessibilidade -->

@@ -16,7 +16,7 @@ class PedidoDAO
     {
         if (empty($_SESSION['carrinho'])) {
             $_SESSION['msg'] = "<p class='error-msg'>Nenhum produto adicionado ao pedido</p>";
-            header("Location: ../view/pedidos/cadastro_pedidos.php");
+            header("Location: " . BASE_URL . "cadastro_pedidos");
             exit;
         }
 
@@ -75,7 +75,7 @@ class PedidoDAO
                     if ($sql_subtrai->rowCount() === 0) {
                         $_SESSION['msg'] = "<p class='error-msg'>Estoque insuficiente para um ou mais produtos.</p>";
                         $this->conexao->rollBack();
-                        header("Location: ../view/pedidos/cadastro_pedidos.php");
+                        header("Location: " . BASE_URL . "cadastro_pedidos");
                         exit;
                     }
                 }
@@ -94,7 +94,7 @@ class PedidoDAO
     {
         if (empty($_SESSION['carrinho'])) {
             $_SESSION['msg'] = "<p class='error-msg'>Nenhum produto adicionado ao pedido.</p>";
-            header("Location: ../view/pedidos/visualizacao_pedidos.php");
+            header("Location: " . BASE_URL . "visualizacao_pedidos");
             exit;
         }
 
@@ -127,7 +127,7 @@ class PedidoDAO
                     if ($sql_subtrai->rowCount() === 0) {
                         $_SESSION['msg'] = "<p class='error-msg'>Estoque insuficiente para um ou mais produtos.</p>";
                         $this->conexao->rollBack(); // Desfaz alterações caso falhe
-                        header("Location: ../view/pedidos/alteracao_pedidos.php?id=$pedido->id_pedido");
+                        header("Location: " . BASE_URL . "alteracao_pedidos/$pedido->id_pedido");
                         exit;
                     }
                 }
@@ -321,7 +321,7 @@ class PedidoDAO
             return $pedidosDict;
         } catch (Exception $e) {
             echo $e;
-            header("location:../view/general/erro.php?msg=Erro ao realizar a busca avançada.");
+            header("location:" . BASE_URL . "erro?msg=Erro ao realizar a busca avançada.");
             exit;
         }
     }

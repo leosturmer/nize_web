@@ -94,8 +94,8 @@ if (!empty($listaPedidos)) {
         </div>
 
         <div class="product-btns pedido-btns">
-            <a href="../../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido ?>"><span class="bi bi-pencil"></span>Editar</a>
-            <a href="../../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&duplicar=true" class="btn-alt-pedido"><span class="bi bi-copy"></span>Duplicar</a>
+            <a href="/nize_web/php/controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido ?>"><span class="bi bi-pencil"></span>Editar</a>
+            <a href="/nize_web/php/controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&duplicar=true" class="btn-alt-pedido"><span class="bi bi-copy"></span>Duplicar</a>
         </div>
         </div>
 <?php }

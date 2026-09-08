@@ -876,6 +876,15 @@ div.produtos-no-pedido h3 {
   background-color: var(--darkPurple);
 }
 
+.btn-alt-pedido.btn-limpar {
+  background-color: brown;
+
+  &:hover {
+    background-color: white;
+    color: brown;
+  }
+}
+
 .btn-salvar {
   background-color: var(--lightGreen);
   color: black;

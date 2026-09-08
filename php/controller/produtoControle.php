@@ -46,7 +46,7 @@ switch ($opcao){
     case "cadastrar":
         if (empty($nomeProduto)){
             $_SESSION['msg'] = "<p class='error-msg'>Insira os dados obrigatórios</p>";
-            header("location:../view/produtos/cadastro_produtos.php");
+            header("location:" . BASE_URL . "cadastro_produtos");
             exit;
         }
 
@@ -67,7 +67,7 @@ switch ($opcao){
             $arquivoTmp = $_FILES['imagemProduto']['tmp_name']; 
             $nomeOriginal = $_FILES['imagemProduto']['name'];   
             
-            $pastaDestino = '../persistence/uploads/';
+            $pastaDestino = __DIR__ . '/../persistence/uploads/';
             
             if (!is_dir($pastaDestino)) {
                 mkdir($pastaDestino, 0755, true);
@@ -92,11 +92,11 @@ switch ($opcao){
         
         if ($produtoDAO->cadastrarProduto($produto)){
             $_SESSION['msg'] = '<p class="success-msg">Produto cadastrado com sucesso!</p>';
-            header("location:../view/produtos/visualizacao_produtos.php");
+            header("location:" . BASE_URL . "visualizacao_produtos");
             exit;
         } else {
             $_SESSION['msg'] = '<p class="error-msg">Erro desconhecido ao salvar no banco.</p>';
-            header("location:../view/produtos/cadastro_produtos.php");
+            header("location:" . BASE_URL . "cadastro_produtos");
             exit;
         }
 
@@ -105,7 +105,7 @@ switch ($opcao){
     case "alterar":
         if (empty($nomeProduto)){
             $_SESSION['msg'] = "<p class='error-msg'>Ops! Insira os dados obrigatórios</p>";
-            header("location:../view/produtos/visualizacao_produtos.php");
+            header("location:" . BASE_URL . "visualizacao_produtos");
             exit;
         }
         
@@ -128,7 +128,7 @@ switch ($opcao){
             $arquivoTmp = $_FILES['imagemProduto']['tmp_name']; 
             $nomeOriginal = $_FILES['imagemProduto']['name'];   
             
-            $pastaDestino = '../persistence/uploads/';
+            $pastaDestino = __DIR__ . '/../persistence/uploads/';
             
             if (!is_dir($pastaDestino)) {
                 mkdir($pastaDestino, 0755, true);
@@ -153,11 +153,14 @@ switch ($opcao){
         
         if ($produtoDAO->alterarProduto($produto)){
             $_SESSION['msg'] = "<p class='success-msg'>Produto alterado com sucesso!</p>";
+            header("location:" . BASE_URL . "visualizacao_produtos");
+            exit;
+
         } else {
             $_SESSION['msg'] = "<p class='error-msg'>Erro ao atualizar produto!</p>";   
         }
 
-        header("location:../view/produtos/alteracao_produto.php");
+        header("location:" . BASE_URL . "alteracao_produto/" . $produto->id_produto);
         exit;
 
     case "excluir":
@@ -171,7 +174,7 @@ switch ($opcao){
             }
         }  
         
-        header("location:../view/produtos/visualizacao_produtos.php");
+        header("location:" . BASE_URL . "visualizacao_produtos");
         exit;
 
 

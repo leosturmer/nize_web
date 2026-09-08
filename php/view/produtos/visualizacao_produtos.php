@@ -21,12 +21,12 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="shortcut icon" href="../../../assets/img/favicon/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/nize_web/assets/img/favicon/favicon.ico" type="image/x-icon">
 
-  <link rel="stylesheet" href="../../../assets/css/variables.css">
-  <link rel="stylesheet" href="../../../assets/css/sidebar.css">
-  <link rel="stylesheet" href="../../../assets/css/components.css">
-  <link rel="stylesheet" href="../../../assets/css/responsive.css">
+  <link rel="stylesheet" href="/nize_web/assets/css/variables.css">
+  <link rel="stylesheet" href="/nize_web/assets/css/sidebar.css">
+  <link rel="stylesheet" href="/nize_web/assets/css/components.css">
+  <link rel="stylesheet" href="/nize_web/assets/css/responsive.css">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -50,39 +50,39 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
         </li>
 
         <li>
-          <a href="../general/tela_inicial.php" class="link-logo" title="Tela inicial">
-            <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+          <a href="/nize_web/tela_inicial" class="link-logo" title="Tela inicial">
+            <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
           </a>
         </li>
 
         <li>
         <li>
-          <a href="../general/tela_inicial.php" title="Tela inicial">
+          <a href="/nize_web/tela_inicial" title="Tela inicial">
             <i class="bi bi-house"></i>
 
             <span>Tela inicial</span>
 
           </a>
         </li>
-        <a href="visualizacao_produtos.php" class="active" title="Tela de produtos">
+        <a href="/nize_web/visualizacao_produtos" class="active" title="Tela de produtos">
           <i class="bi bi-box-seam"></i>
           <span>Produtos</span>
         </a>
         </li>
         </li>
-        <a href="../pedidos/visualizacao_pedidos.php" title="Tela de pedidos">
+        <a href="/nize_web/visualizacao_pedidos" title="Tela de pedidos">
           <i class="bi bi-clipboard2-check"></i>
           <span>Pedidos</span>
         </a>
         </li>
         </li>
-        <a href="../usuario/minha_area.php" title="Minha área">
+        <a href="/nize_web/minha_area" title="Minha área">
           <i class="bi bi-person-lines-fill"></i>
           <span>Minha área</span>
         </a>
         </li>
         <li>
-          <a href="../../controller/logout.php" class="btn-sair" title="Sair">
+          <a href="/nize_web/php/controller/logout.php" class="btn-sair" title="Sair">
             <i class="bi bi-box-arrow-left"></i>
             <span>Encerrar sessão</span>
           </a>
@@ -96,8 +96,8 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
       <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
         <i class="bi bi-list"></i>
       </a>
-      <a href="../general/tela_inicial.php" class="link-logo-header" title="Tela inicial">
-        <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+      <a href="/nize_web/tela_inicial" class="link-logo-header" title="Tela inicial">
+        <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
       </a>
     </div>
   </header>
@@ -110,7 +110,7 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 
       <div class="internal-nav-links">
         <h1>Lista de produtos</h1>
-        <a href="cadastro_produtos.php"><span class="bi bi-plus-lg"></span>Produto</a>
+        <a href="/nize_web/cadastro_produtos"><span class="bi bi-plus-lg"></span>Produto</a>
       </div>
 
       <div class="internal-nav-inputs">
@@ -216,13 +216,13 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 
             <div class="product-img-btn">
               <?php if ($item['imagem']) {
-                echo "<img src='../../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                echo "<img src='/nize_web/php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
                 } else {
                   echo "<p class='img-produtos sem-imagem'>Nenhuma imagem cadastrada</p>";
               } ?>
               <div class="product-btns">
-                <a href="alteracao_produto.php?id=<?php echo $item['id_produto']; ?>"><span class="bi bi-pencil"></span>Editar</a>
-                <a href="duplicar_produto.php?id=<?php echo $item['id_produto']; ?>" class="btn-duplicar"><span class="bi bi-copy"></span>Duplicar</a>
+                <a href="/nize_web/alteracao_produto/<?php echo $item['id_produto']; ?>"><span class="bi bi-pencil"></span>Editar</a>
+                <a href="/nize_web/duplicar_produto/<?php echo $item['id_produto']; ?>" class="btn-duplicar"><span class="bi bi-copy"></span>Duplicar</a>
                 </div>
             </div>
           </div>
@@ -235,8 +235,8 @@ $lista = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
   <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
     </main>
 
-  <script type="module" src="../../../js/main.js"></script>
-  <script src="../../../js/busca_produtos.js"></script>
+  <script type="module" src="/nize_web/js//main.js"></script>
+  <script src="/nize_web/js//busca_produtos.js"></script>
 
   <!-- Acessibilidade -->
 

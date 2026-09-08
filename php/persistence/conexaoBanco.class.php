@@ -1,24 +1,27 @@
 <?php
-define('BASE_URL', '/nize_web/');
+require_once __DIR__ . '/../config.php';
 
-class ConexaoBanco extends PDO {
+class ConexaoBanco extends PDO
+{
     private static $instancia = null;
 
-    public function __construct($dsn, $user, $pass){
+    public function __construct($dsn, $user, $pass)
+    {
         parent::__construct($dsn, $user, $pass);
     }
 
-    public static function getInstancia(){
-        if(!isset(self::$instancia)){
+    public static function getInstancia()
+    {
+        if (!isset(self::$instancia)) {
             try {
-                self::$instancia = new ConexaoBanco("mysql:host=localhost; dbname=nize_database","root", "");
-            }catch (Exception $e){
-                header("location:../view/general/erro.php?msg=Erro ao conectar com o banco de dados.");
+                self::$instancia = new ConexaoBanco("mysql:host=localhost; dbname=nize_database", "root", "");
+            } catch (Exception $e) {
+                header("location:" . BASE_URL . "erro?msg=Erro ao conectar com o banco de dados.");
                 exit;
-            }// fecha o try catch
-        }//fecha o if
+            } // fecha o try catch
+        } //fecha o if
         return self::$instancia;
-    }// fecha o método getInstancia
+    } // fecha o método getInstancia
 }// Fecha a classe
 
 // SQLite3

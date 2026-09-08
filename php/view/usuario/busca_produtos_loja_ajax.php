@@ -34,7 +34,7 @@ foreach ($lista as $item) {
                     <div class="texto-produto">
                         <h2><strong><?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></strong></h2>
                         <?php if ($item['imagem']) {
-                            echo "<img src='../../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                            echo "<img src='/nize_web/php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
                         } else {
                             echo "<img src='#' alt='Produto sem imagem' class='img-produtos sem-imagem'>";
                         } ?>
@@ -51,7 +51,7 @@ foreach ($lista as $item) {
                     <p class="p-descricao"><?php echo htmlspecialchars($item['descricao']) ?></p>
                     
                     <div class="product-img-btn">
-                        <form action="../../controller/pedidoControle.php" method="get" class="product-btns">
+                        <form action="/nize_web/php/controller/pedidoControle.php" method="get" class="product-btns">
                             <input type="number"  step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))"
                             name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
                             <input type="hidden" name="op" value="adicionarSacola">
