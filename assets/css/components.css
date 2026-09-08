@@ -906,10 +906,10 @@ a.btn-excluir,
 }
 
 a.btn-alterar.btn-loja {
-  background-color: var(--darkerPurple);
+  background-color: var(--lighterPurple);
 
   &:hover {
-    background-color: var(--darkGreen);
+    background-color: var(--normalGreen);
   }
 }
 
