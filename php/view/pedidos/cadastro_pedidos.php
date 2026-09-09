@@ -242,7 +242,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                             echo "<b>Quantidade</b>: " . $quantidade . "<br>";
                             echo "<b>Valor unitário</b>: R$ " . number_format($valor_unitario, 2, ',', '.') . "<br>";
                             echo "<b>Valor total</b>: R$ " . number_format($valor_total_item, 2, ',', '.') . "</p>";
-                            echo "<a href='<?php echo BASE_URL; ?>php/controller/pedidoControle.php?op=removerQuantidade&id=$id_produto' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
+                            echo "<a href='" . BASE_URL . "php/controller/pedidoControle.php?op=removerQuantidade&id=$id_produto' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
                             echo "</div>";
                         } else {
                             echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";

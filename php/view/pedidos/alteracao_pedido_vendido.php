@@ -166,7 +166,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
               // Exibir o botão de remoção apenas se for a tela de alteração normal
               if (basename($_SERVER['PHP_SELF']) == 'alteracao_pedidos.php') {
-                echo "<a href='<?php echo BASE_URL; ?>php/controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'><span class='bi bi-x-square'>Remover</a>";
+                echo "<a href='" . BASE_URL . "php/controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'><span class='bi bi-x-square'>Remover</a>";
               }
 
               echo "</div>";
