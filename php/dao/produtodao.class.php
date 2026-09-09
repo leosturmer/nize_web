@@ -22,7 +22,7 @@ class ProdutoDAO{
         } catch (Exception $e){
             $_SESSION['msg'] = "<p class='error-msg'> Erro ao cadastrar produto. Tente novamente. </p>";
 
-            header("location:../view/produtos/cadastro_produtos.php");
+            header("location:" . BASE_URL . "cadastro_produtos");
             exit;
         }
 
@@ -89,7 +89,7 @@ class ProdutoDAO{
 
         } catch (Exception $e){
             $_SESSION['msg'] = "Erro ao listar produtos";
-            header("location:../view/produtos/visualizacao_produtos.php");
+            header("location:" . BASE_URL . "visualizacao_produtos");
             exit;
         }
     }
@@ -103,7 +103,7 @@ class ProdutoDAO{
 
         } catch (Exception $e){
             $_SESSION['msg'] = "Erro ao listar produtos";
-            header("location:../view/produtos/visualizacao_produtos.php");
+            header("location:" . BASE_URL . "visualizacao_produtos");
             exit;
         }
     }
@@ -121,7 +121,7 @@ class ProdutoDAO{
         }
     }
 
-    public function buscarProdutoFiltro($pesquisa, $estoqueProduto, $encomendaProduto, $ordenar, $id_usuario, $apenasVisiveis = false) {
+    public function buscarProdutoFiltro($pesquisa, $estoqueProduto, $encomendaProduto, $visibilidade, $ordenar, $id_usuario, $apenasVisiveis = false) {
         try {
             $busca = "%" . $pesquisa . "%";
 
@@ -149,6 +149,12 @@ class ProdutoDAO{
                 $sqlStr .= " AND aceita_encomenda = 0";
             }
 
+            if ($visibilidade === 'visivel'){
+                $sqlStr .= " AND aceita_visualizacao = 1";
+            } else if ($visibilidade === 'ocultado') {
+                $sqlStr .= " AND aceita_visualizacao = 0";
+            }
+
             if ($ordenar) {
                 if ($ordenar === "nome-asc") {
                     $sqlStr .= " ORDER BY nome ASC;";
@@ -163,7 +169,7 @@ class ProdutoDAO{
                     $sqlStr .= " ORDER BY quantidade IS NULL ASC, quantidade DESC;";
 
                 } else if ($ordenar === "valor-asc") {
-                    $sqlStr .= " ORDER BY valor_unitario ASC IS NULL DESC, valor_unitario ASC;";
+                    $sqlStr .= " ORDER BY valor_unitario IS NULL DESC, valor_unitario ASC;";
 
                 } else if ($ordenar === "valor-desc") {
                     $sqlStr .= " ORDER BY valor_unitario IS NULL ASC, valor_unitario DESC;";

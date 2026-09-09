@@ -1,4 +1,5 @@
 <?php
+require_once '../../config.php';
 session_start();
 require_once '../../model/produto.class.php';
 require_once '../../model/usuario.class.php';
@@ -11,6 +12,7 @@ header('Content-Type: text/html; charset=utf-8');
 $pesquisa = trim($_GET['pesquisaProdutos'] ?? '');
 $estoqueProduto = trim($_GET['filtroEstoque'] ?? '');
 $encomendaProduto = trim($_GET['filtroEncomenda'] ?? '');
+$visibilidade = trim($_GET['filtroVisivel'] ?? '');
 $ordenar = trim($_GET['ordenarPor'] ?? '');
 
 $produtoDAO = new ProdutoDAO();
@@ -19,7 +21,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 $idUsuarioLogado = $usuario->id_usuario;
 
 if (!empty($pesquisa)) {
-    $lista = $produtoDAO->buscarProdutoFiltro($pesquisa, $estoqueProduto, $encomendaProduto, $ordenar, $idUsuarioLogado);
+    $lista = $produtoDAO->buscarProdutoFiltro($pesquisa, $estoqueProduto, $encomendaProduto, $visibilidade, $ordenar, $idUsuarioLogado);
 } else {
     $lista = $produtoDAO->listarTodosProdutos($idUsuarioLogado);
 }
@@ -34,7 +36,7 @@ if (!empty($lista)) {
     foreach ($lista as $item) {
         echo '<div class="product-view">';
         echo '<div class="texto-produto">';
-        echo '<h2>' . htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")) . '</h2>';
+        echo '<h2>' . htmlspecialchars($item['nome'], ENT_QUOTES, 'UTF-8') . '</h2>';
         
         echo '<p><strong>Quantidade: </strong>' . htmlspecialchars($item['quantidade']) . '</p>';
 
@@ -85,12 +87,12 @@ if (!empty($lista)) {
         echo '<div class="product-img-btn">';
 
         if ($item['imagem']) {
-            echo "<img src='../../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+            echo "<img src='" . BASE_URL . "php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
         } else {
             echo "<p class='img-produtos sem-imagem'>Nenhuma imagem cadastrada</p>";
         }
 ?>
-        <form action="../../controller/pedidoControle.php" method="get" class="product-btns">
+        <form action="<?php echo BASE_URL; ?>php/controller/pedidoControle.php" method="get" class="product-btns">
             <!-- <span class="bi bi-bag-plus"></span> -->
             <input type="number" step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
             <input type="hidden" name="op" value="adicionarQuantidade">

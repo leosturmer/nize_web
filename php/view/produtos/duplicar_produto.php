@@ -1,4 +1,5 @@
 <?php
+require_once '../../config.php';
 session_start();
 require_once '../../model/usuario.class.php';
 require_once '../../model/produto.class.php';
@@ -21,7 +22,7 @@ if ($id_produto) {
 // Se não achar o produto, redireciona de volta
 if (!$produtoData) {
   $_SESSION['msg'] = "<p class='error-msg'>Produto não encontrado para clonagem.</p>";
-  header("location:visualizacao_produtos.php");
+  header("location:" . BASE_URL . "visualizacao_produtos");
   exit;
 }
 ?>
@@ -33,11 +34,11 @@ if (!$produtoData) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Duplicar produto- Nize</title>
-  <link rel="shortcut icon" href="../../../assets/img/favicon/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="../../../assets/css/variables.css">
-  <link rel="stylesheet" href="../../../assets/css/sidebar.css">
-  <link rel="stylesheet" href="../../../assets/css/components.css">
-  <link rel="stylesheet" href="../../../assets/css/responsive.css">
+  <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/img/favicon/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/variables.css">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/sidebar.css">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/components.css">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/responsive.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
@@ -55,39 +56,39 @@ if (!$produtoData) {
         </li>
 
         <li>
-          <a href="../general/tela_inicial.php" class="link-logo" title="Tela inicial">
-            <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+          <a href="<?php echo BASE_URL; ?>tela_inicial" class="link-logo" title="Tela inicial">
+            <img src="<?php echo BASE_URL; ?>assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
           </a>
         </li>
 
         <li>
         <li>
-          <a href="../general/tela_inicial.php" title="Tela inicial">
+          <a href="<?php echo BASE_URL; ?>tela_inicial" title="Tela inicial">
             <i class="bi bi-house"></i>
 
             <span>Tela inicial</span>
 
           </a>
         </li>
-        <a href="visualizacao_produtos.php" class="active" title="Tela de produtos">
+        <a href="<?php echo BASE_URL; ?>visualizacao_produtos" class="active" title="Tela de produtos">
           <i class="bi bi-box-seam"></i>
           <span>Produtos</span>
         </a>
         </li>
         </li>
-        <a href="../pedidos/visualizacao_pedidos.php" title="Tela de pedidos">
+        <a href="<?php echo BASE_URL; ?>visualizacao_pedidos" title="Tela de pedidos">
           <i class="bi bi-clipboard2-check"></i>
           <span>Pedidos</span>
         </a>
         </li>
         </li>
-        <a href="../usuario/minha_area.php" title="Minha área">
+        <a href="<?php echo BASE_URL; ?>minha_area" title="Minha área">
           <i class="bi bi-person-lines-fill"></i>
           <span>Minha área</span>
         </a>
         </li>
         <li>
-          <a href="../../controller/logout.php" class="btn-sair" title="Sair">
+          <a href="<?php echo BASE_URL; ?>php/controller/logout.php" class="btn-sair" title="Sair">
             <i class="bi bi-box-arrow-left"></i>
             <span>Encerrar sessão</span>
           </a>
@@ -101,8 +102,8 @@ if (!$produtoData) {
       <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
         <i class="bi bi-list"></i>
       </a>
-      <a href="../general/tela_inicial.php" class="link-logo-header" title="Tela inicial">
-        <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+      <a href="<?php echo BASE_URL; ?>tela_inicial" class="link-logo-header" title="Tela inicial">
+        <img src="<?php echo BASE_URL; ?>assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
       </a>
     </div>
   </header>
@@ -112,7 +113,7 @@ if (!$produtoData) {
     <div class="internal-nav">
       <div class="internal-nav-links">
         <h1>Duplicar Produto</h1>
-        <a href="visualizacao_produtos.php" title="Tela de produtos"><span class="bi bi-arrow-left"></span>Voltar</a>
+        <a href="<?php echo BASE_URL; ?>visualizacao_produtos" title="Tela de produtos"><span class="bi bi-arrow-left"></span>Voltar</a>
       </div>
     </div>
 
@@ -123,7 +124,7 @@ if (!$produtoData) {
     }
     ?>
 
-    <form action="../../controller/produtoControle.php?op=cadastrar" method="post" enctype="multipart/form-data" class="form-cadastro-produto">
+    <form action="<?php echo BASE_URL; ?>php/controller/produtoControle.php?op=cadastrar" method="post" enctype="multipart/form-data" class="form-cadastro-produto">
       <fieldset id="products-form">
         <legend>Informações do Novo Produto (Cópia)</legend>
 
@@ -173,7 +174,7 @@ if (!$produtoData) {
             <input type="file" name="imagemProduto" id="imagemProduto" class="input-produto" accept=".png, .jpg" autocomplete="off">
           </label>
           <?php if (!empty($produtoData['imagem'])): ?>
-            <?php echo "<img src='../../persistence/uploads/" . htmlspecialchars($produtoData['imagem']) . "' alt='imagem do produto' class='img-produtos img-alt-produto'>" ?>
+            <?php echo "<img src='" . BASE_URL . "php/persistence/uploads/" . rawurlencode($produtoData['imagem']) . "' alt='imagem do produto' class='img-produtos img-alt-produto'>" ?>
             <span class="span-alt-img">(Será mantida se não enviar outra)</span>
           <?php else: ?>
             <span class="sem-imagem">Nenhuma imagem cadastrada</span>
@@ -191,7 +192,7 @@ if (!$produtoData) {
   <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
     </main>
 
-  <script type="module" src="../../../js/main.js"></script>
+  <script type="module" src="<?php echo BASE_URL; ?>js/main.js"></script>
 
   <!-- Acessibilidade -->
 

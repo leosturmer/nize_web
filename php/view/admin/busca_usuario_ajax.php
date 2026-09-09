@@ -1,4 +1,6 @@
 <?php
+require_once '../../config.php';
+session_start();
 require_once '../../model/produto.class.php';
 require_once '../../model/usuario.class.php';
 require_once '../../dao/usuariodao.class.php';
@@ -27,7 +29,7 @@ if (empty($lista_usuarios)) {
                 </p>
             </div>
             <div class="btns-admin-user">
-                <form action="../../controller/usuarioControle.php?op=excluirUsuario&id=<?php echo $usuarioCadastrado['id_usuario']; ?>" method="post">
+                <form action="<?php echo BASE_URL; ?>php/controller/usuarioControle.php?op=excluirUsuario&id=<?php echo $usuarioCadastrado['id_usuario']; ?>" method="post">
                     <input type="hidden" name="id" value="<?php echo $usuarioCadastrado['id_usuario']; ?>">
                     <button class="btn-excluir" type="submit"><span class="bi bi-trash3"></span>Excluir</button>
                 </form>

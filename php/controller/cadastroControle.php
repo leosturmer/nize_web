@@ -7,11 +7,6 @@ require_once '../persistence/conexaoBanco.class.php';
 require_once '../util/validacao.class.php';
 
 
-$nome = $_POST['usuNome'];
-$nome_loja = $_POST['usuLoja'];
-$login = $_POST['usuEmail'];
-$senha = $_POST['usuSenha'];
-
 $opcao = $_GET['op']  ?? '';
 
 switch ($opcao):
@@ -22,27 +17,27 @@ switch ($opcao):
         $senha_digitada = trim($_POST['usuSenha']) ?? "";
         $confirma_senha = trim($_POST['confirmaSenha']) ?? "";
 
-        if (empty($nome) || empty($email) || empty($senha)) {
+        if (empty($nome) || empty($email) || empty($senha_digitada)) {
             $_SESSION['msg'] = '<p class="error-msg">Digite todos os campos obrigatórios!</p>';
-            header("location:../view/general/cadastro_usuario.php");
+            header("location:" . BASE_URL . "cadastro_usuario");
             exit;
         }
 
         if (!Validacao::validarEmail($email)){
             $_SESSION['msg'] = '<p class="error-msg">E-mail em formato inválido!</p>';
-            header("location:../view/general/cadastro_usuario.php");
+            header("location:" . BASE_URL . "cadastro_usuario");
             exit;
         }
 
         if (!Validacao::validarSenha($senha_digitada)){
             $_SESSION['msg'] = '<p class="error-msg">Senha precisa ter no mínimo 8 caracteres, 1 maiúscula, 1 minúscula e 1 número!</p>';
-            header("location:../view/general/cadastro_usuario.php");
+            header("location:" . BASE_URL . "cadastro_usuario");
             exit;
         }
 
         if ($senha_digitada !== $confirma_senha){
             $_SESSION['msg'] = '<p class="error-msg">As senhas não coincidem!</p>';
-            header("location:../view/general/cadastro_usuario.php");
+            header("location:" . BASE_URL . "cadastro_usuario");
             exit;
         }
 
@@ -64,11 +59,11 @@ switch ($opcao):
 
         if ($usuarioDAO->cadastrarUsuario($novoUsuario)) {
             $_SESSION['msg'] = '<p class="success-msg">Oba! Tudo certo com o seu cadastro!</p>';
-            header("location:../view/general/login.php");
+            header("location:" . BASE_URL . "login");
             exit;
         } else {
             $_SESSION['msg'] = '<p class="error-msg">E-mail já cadastrado!</p>';
-            header("location:../view/general/cadastro_usuario.php");
+            header("location:" . BASE_URL . "cadastro_usuario");
             exit;
         }
 

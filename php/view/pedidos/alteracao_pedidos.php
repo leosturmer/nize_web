@@ -1,4 +1,5 @@
 <?php
+require_once '../../config.php';
 session_start();
 require_once '../../model/usuario.class.php';
 require_once '../../model/produto.class.php';
@@ -17,7 +18,7 @@ $listaProdutos = $produtoDAO->listarTodosProdutos($usuario->id_usuario);
 if (empty($_SESSION['pedidoSelecionado'])) {
     $_SESSION['msg'] = "<p class='error-msg'>Nenhum pedido selecionado!</p>";
     echo $_SESSION['msg'];
-    header("location:visualizacao_pedidos.php");
+    header("location:" . BASE_URL . "visualizacao_pedidos");
     exit;
 }
 
@@ -36,12 +37,12 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="../../../assets/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/img/favicon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../../../assets/css/variables.css">
-    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
-    <link rel="stylesheet" href="../../../assets/css/components.css">
-    <link rel="stylesheet" href="../../../assets/css/responsive.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/variables.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/sidebar.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/components.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/responsive.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -64,39 +65,39 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                 </li>
 
                 <li>
-                    <a href="../general/tela_inicial.php" class="link-logo" title="Tela inicial">
-                        <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+                    <a href="<?php echo BASE_URL; ?>tela_inicial" class="link-logo" title="Tela inicial">
+                        <img src="<?php echo BASE_URL; ?>assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
                     </a>
                 </li>
 
                 <li>
                 <li>
-                    <a href="../general/tela_inicial.php" title="Tela inicial">
+                    <a href="<?php echo BASE_URL; ?>tela_inicial" title="Tela inicial">
                         <i class="bi bi-house"></i>
 
                         <span>Tela inicial</span>
 
                     </a>
                 </li>
-                <a href="../produtos/visualizacao_produtos.php" title="Tela de produtos">
+                <a href="<?php echo BASE_URL; ?>visualizacao_produtos" title="Tela de produtos">
                     <i class="bi bi-box-seam"></i>
                     <span>Produtos</span>
                 </a>
                 </li>
                 </li>
-                <a href="visualizacao_pedidos.php" class="active" title="Tela de pedidos">
+                <a href="<?php echo BASE_URL; ?>visualizacao_pedidos" class="active" title="Tela de pedidos">
                     <i class="bi bi-clipboard2-check"></i>
                     <span>Pedidos</span>
                 </a>
                 </li>
                 </li>
-                <a href="../usuario/minha_area.php" title="Minha área">
+                <a href="<?php echo BASE_URL; ?>minha_area" title="Minha área">
                     <i class="bi bi-person-lines-fill"></i>
                     <span>Minha área</span>
                 </a>
                 </li>
                 <li>
-                    <a href="../../controller/logout.php" class="btn-sair" title="Sair">
+                    <a href="<?php echo BASE_URL; ?>php/controller/logout.php" class="btn-sair" title="Sair">
                         <i class="bi bi-box-arrow-left"></i>
                         <span>Encerrar sessão</span>
                     </a>
@@ -110,8 +111,8 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
             <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
                 <i class="bi bi-list"></i>
             </a>
-            <a href="../general/tela_inicial.php" class="link-logo-header" title="Tela inicial">
-                <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+            <a href="<?php echo BASE_URL; ?>tela_inicial" class="link-logo-header" title="Tela inicial">
+                <img src="<?php echo BASE_URL; ?>assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
             </a>
         </div>
     </header>
@@ -128,7 +129,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
         <div class="internal-nav">
             <div class="internal-nav-links">
                 <h1 class="num-pedido">Alteração - Pedido <?php echo str_pad($infoPedidoBanco['num_pedido'], 4, '0', STR_PAD_LEFT); ?></h1>
-                <a href="visualizacao_pedidos.php" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
+                <a href="<?php echo BASE_URL; ?>visualizacao_pedidos" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
             </div>
 
         </div>
@@ -137,19 +138,17 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
         <details class="produtos-pedido">
             <summary class="summary-pedido">Adicione os produtos ao pedido</summary>
-            <!-- <div class="adicionar-produtos"> -->
 
             <form onsubmit="return false;" id="form-pesquisa-produtos" class="form-produto-pedido">
                 <input type="text" id="pesquisa-produtos" placeholder="Busque pelo nome ou descrição" autocomplete="off" maxlength="50"><span id="search-icon" class="bi bi-search"></span>
             </form>
 
-            </div>
             <div class="lista-produtos-pedido">
                 <?php if (!empty($listaProdutos)): ?>
                     <?php foreach ($listaProdutos as $item): ?>
                         <div class="product-view">
                             <div class="texto-produto">
-                                <h2><?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></h2>
+                                <h2><?php echo htmlspecialchars($item['nome'], ENT_QUOTES, 'UTF-8'); ?></h2>
                                 <p><strong>Quantidade:</strong> <?php if ($item['quantidade'] === 0 || $item['quantidade'] == null) {
                                                                     echo "Sem estoque";
                                                                 } else {
@@ -204,11 +203,11 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                             </div>
                             <div class="product-img-btn">
                                 <?php if ($item['imagem']) {
-                                    echo "<img src='../../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                                    echo "<img src='" . BASE_URL . "php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
                                 } else {
                                     echo "<p class='img-produtos sem-imagem'>Nenhuma imagem cadastrada</p>";
                                 } ?>
-                                <form action="../../controller/pedidoControle.php" method="get" class="product-btns">
+                                <form action="<?php echo BASE_URL; ?>php/controller/pedidoControle.php" method="get" class="product-btns">
                                     <input type="number" step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
                                     <input type="hidden" name="op" value="adicionarQuantidade">
                                     <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
@@ -253,7 +252,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
                             // Exibir o botão de remoção apenas se for a tela de alteração normal
                             if (basename($_SERVER['PHP_SELF']) == 'alteracao_pedidos.php') {
-                                echo "<a href='../../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
+                                echo "<a href='" . BASE_URL . "php/controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&id_pedido=$id_pedido' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
                             }
 
                             echo "</div>";
@@ -274,7 +273,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                 <div class='total-pedido'>
                     <p><b>Total do pedido</b>: R$ <?php echo number_format($_SESSION['total_compra'], 2, ',', '.') ?> </p>
                 </div>
-                <form action="../../controller/pedidoControle.php" method="get">
+                <form action="<?php echo BASE_URL; ?>php/controller/pedidoControle.php" method="get">
                     <input type="hidden" name="op" value="alterar">
                     <div class="form-pedidos-items">
                         <fieldset id="pedidos-form">
@@ -323,8 +322,7 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
                     </div>
                     <div class="form-pedidos-items">
                         <button type="submit" class="btn-alt-pedido btn-salvar"><span class="bi bi-check2"></span>Alterar</button>
-                        <a href="../../controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');" class="btn-limpar"><span class="bi bi-trash3" class="btn-alt-pedido"></span>Excluir</a>
-                        <!-- <a href="../view/visualizacao_pedidos.php" class="btn-alt-pedido">Voltar</a> -->
+                        <a href="<?php echo BASE_URL; ?>php/controller/pedidoControle.php?op=excluir&id=<?php echo $id_pedido ?>" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');" class="btn-alt-pedido btn-limpar"><span class="bi bi-trash3"></span>Excluir</a>
                     </div>
                 </form>
             </div>
@@ -337,9 +335,13 @@ $infoPedidoBanco = $pedidoDAO->buscarPedidoID($id_pedido);
 
     </div>
 
-    <script type="module" src="../../../js/main.js"></script>
+    <script>
+        const BASE_URL = "<?php echo BASE_URL; ?>";
+    </script>
 
-    <script src="../../../js/busca_produtos_pedido.js"></script>
+    <script type="module" src="<?php echo BASE_URL; ?>js/main.js"></script>
+
+    <script src="<?php echo BASE_URL; ?>js/busca_produtos_pedido.js?v=2"></script>
 
 
     <!-- Acessibilidade -->

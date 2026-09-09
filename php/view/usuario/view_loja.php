@@ -4,7 +4,9 @@ require_once '../../model/usuario.class.php';
 require_once '../../model/produto.class.php';
 require_once '../../dao/produtodao.class.php';
 require_once '../../dao/usuariodao.class.php';
+require_once '../../persistence/conexaoBanco.class.php';
 
+// Defina a URL base do seu projeto localmente
 
 $nome_visualizacao = trim($_GET['loja']);
 
@@ -15,6 +17,11 @@ $id_usuario = (int)$usuarioDAO->buscarId($nome_visualizacao);
 $dadosView = $usuarioDAO->buscarAceitaView($id_usuario);
 
 $aceita_visualizacao = $dadosView['aceita_visualizacao'];
+
+if ($aceita_visualizacao !== 1) {
+    header("location:" . BASE_URL . "tela_inicial ");
+}
+
 
 $dadosNomeLoja = $usuarioDAO->buscarNomeLoja($id_usuario);
 
@@ -27,9 +34,9 @@ $telefone = $dadosTelefone['telefone'];
 $lista = $produtoDAO->listarTodosProdutosAbertos($id_usuario);
 
 if (!empty($_SESSION['usuario_logado'])) {
-    $logo_link = "../general/tela_inicial.php";
+    $logo_link = BASE_URL . "tela_inicial";
 } else {
-    $logo_link = "../../../index.php";
+    $logo_link = BASE_URL . "index.php";
 }
 
 ?>
@@ -41,12 +48,12 @@ if (!empty($_SESSION['usuario_logado'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="../../../assets/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/img/favicon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../../../assets/css/variables.css">
-    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
-    <link rel="stylesheet" href="../../../assets/css/components.css">
-    <link rel="stylesheet" href="../../../assets/css/responsive.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/variables.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/sidebar.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/components.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/responsive.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -68,7 +75,7 @@ if (!empty($_SESSION['usuario_logado'])) {
 
             <li class="li-img-sidenav">
                 <a href="<?php echo $logo_link ?>" class="link-logo" title="Tela inicial">
-                    <img src="../../../assets/img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
+                    <img src="<?php echo BASE_URL; ?>assets/img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
                 </a>
             </li>
 
@@ -99,7 +106,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                                 echo "</div>";
 
                                 // Link de remoção passando origem=loja e nome da loja
-                                echo "<a href='../../controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor&origem=loja&loja=" . urlencode($nome_visualizacao) . "' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
+                                echo "<a href='" . BASE_URL . "php/controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor&origem=loja&loja=" . urlencode($nome_visualizacao) . "' class='btn-remover'><span class='bi bi-x-square'></span>Remover</a>";
                                 echo "</div>";
                                 echo "<hr>";
                             } else {
@@ -117,7 +124,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                 </div>
 
                 <div class="pedido-loja">
-                    <form action="../../controller/pedidoControle.php" method="get">
+                    <form action="<?php echo BASE_URL ?>php/controller/pedidoControle.php" method="get">
                         <input type="hidden" name="op" value="solicitarPedido">
                         <input type="hidden" name="loja" value="<?php echo htmlspecialchars($nome_visualizacao); ?>">
 
@@ -133,7 +140,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                             <div class="product-btns">
                                 <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Enviar</button>
                                 <!-- Botão Limpar apenas para a view_loja -->
-                                <a href="../../controller/pedidoControle.php?op=limparCarrinho&origem=loja&loja=<?php echo urlencode($nome_visualizacao); ?>" class="btn-limpar"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
+                                <a href="<?php echo BASE_URL ?>php/controller/pedidoControle.php?op=limparCarrinho&origem=loja&loja=<?php echo urlencode($nome_visualizacao); ?>" class="btn-limpar"><span class="bi bi-arrow-clockwise"></span>Limpar</a>
                             </div>
                         </div>
                     </form>
@@ -147,8 +154,8 @@ if (!empty($_SESSION['usuario_logado'])) {
             <a href="#" data-resize-btn-mobile class="btn-menu btn-sacola" title="Esconder/expandir menu">
                 <i class="bi bi-bag"></i>
             </a>
-            <a href="../general/tela_inicial.php" class="link-logo-header" title="Tela inicial">
-                <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+            <a href="<?php echo BASE_URL; ?>tela_inicial" class="link-logo-header" title="Tela inicial">
+                <img src="<?php echo BASE_URL; ?>assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
             </a>
         </div>
     </header>
@@ -157,6 +164,7 @@ if (!empty($_SESSION['usuario_logado'])) {
     <main class='conteudo-pagina conteudo-loja'>
         <div class="internal-nav">
             <?php
+
             if (isset($_SESSION["msg"])) {
                 echo "<div id='session-msg'>" . $_SESSION['msg'] .  "</div>";
                 unset($_SESSION["msg"]);
@@ -208,17 +216,15 @@ if (!empty($_SESSION['usuario_logado'])) {
         </div>
     <?php endif; ?>
 
-    <div class="lista-produtos lista-produtos-loja">
-
-
+    <div class="lista-produtos lista-produtos-loja" data-nome-loja="<?php echo htmlspecialchars($nome_visualizacao, ENT_QUOTES, 'UTF-8'); ?>">
         <?php if (!empty($lista) && $aceita_visualizacao === 1): ?>
             <?php foreach ($lista as $item): ?>
                 <div class="product-view product-view-loja">
                     <div class="texto-produto">
-                        <h2><strong><?php echo htmlspecialchars(mb_convert_encoding($item['nome'], "UTF-8", "AUTO")); ?></strong></h2>
+                        <h2><strong><?php echo htmlspecialchars($item['nome'], ENT_QUOTES, 'UTF-8'); ?></strong></h2>
 
                         <?php if ($item['imagem']) {
-                            echo "<img src='../../persistence/uploads/" . htmlspecialchars($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+                            echo "<img src='" . BASE_URL . "php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
                         } else {
                             echo "<img src='#' alt='Produto sem imagem' class='img-produtos sem-imagem'>";
                         } ?>
@@ -236,7 +242,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                     <p class="p-descricao"><?php echo htmlspecialchars($item['descricao']) ?></p>
                     
                     <div class="product-img-btn">
-                        <form action="../../controller/pedidoControle.php" method="get" class="product-btns">
+                        <form action="<?php echo BASE_URL ?>php/controller/pedidoControle.php" method="get" class="product-btns">
                             <input type="number"  step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))"
                             name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
                             <input type="hidden" name="op" value="adicionarSacola">
@@ -255,7 +261,7 @@ if (!empty($_SESSION['usuario_logado'])) {
     </div>
     <div class="div-btn-wpp">
         <?php if ($aceita_visualizacao === 1 && !empty($telefone)): ?>
-            <a href="https://wa.me/<?php echo "55" . $telefone; ?>" target="_blank"><img src="../../../assets/img/icons/whatsapp64.png" alt="botão whatsapp"></a>
+            <a href="https://wa.me/<?php echo "55" . $telefone; ?>" target="_blank"><img src="<?php echo BASE_URL; ?>assets/img/icons/whatsapp64.png" alt="botão whatsapp"></a>
         <?php endif; ?>
     </div>
 
@@ -263,8 +269,11 @@ if (!empty($_SESSION['usuario_logado'])) {
     <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
     </main>
 
-    <script src="../../../js/busca_produtos.js"></script>
-    <script type="module" src="../../../js/main.js"></script>
+    <script>
+        const BASE_URL = "<?php echo BASE_URL; ?>";
+    </script>
+    <script src="<?php echo BASE_URL; ?>js/busca_produtos.js"></script>
+    <script type="module" src="<?php echo BASE_URL; ?>js/main.js"></script>
 
 
     <!-- Acessibilidade -->

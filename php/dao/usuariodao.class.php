@@ -94,10 +94,8 @@ class UsuarioDAO
 
             return $sql->execute([$usuario->login, $usuario->nome, $usuario->nome_loja, $usuario->senha]);
         } catch (PDOException $e) {
-            if ($e->getCode() === '23000') {
-                echo "Erro ao cadastrar.";
-                return false;
-            }
+            error_log('Nize - erro ao cadastrar usuario: ' . $e->getMessage());
+            return false;
         }
     }
 

@@ -32,12 +32,12 @@ if (isset($_SESSION['pedidoSelecionado'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="shortcut icon" href="../../../assets/img/favicon/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/img/favicon/favicon.ico" type="image/x-icon">
 
-  <link rel="stylesheet" href="../../../assets/css/variables.css">
-  <link rel="stylesheet" href="../../../assets/css/sidebar.css">
-  <link rel="stylesheet" href="../../../assets/css/components.css">
-  <link rel="stylesheet" href="../../../assets/css/responsive.css">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/variables.css">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/sidebar.css">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/components.css">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/responsive.css">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -59,39 +59,39 @@ if (isset($_SESSION['pedidoSelecionado'])) {
         </li>
 
         <li>
-          <a href="../general/tela_inicial.php" class="link-logo" title="Tela inicial">
-            <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+          <a href="<?php echo BASE_URL; ?>tela_inicial" class="link-logo" title="Tela inicial">
+            <img src="<?php echo BASE_URL; ?>assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
           </a>
         </li>
 
         <li>
         <li>
-          <a href="../general/tela_inicial.php" title="Tela inicial">
+          <a href="<?php echo BASE_URL; ?>tela_inicial" title="Tela inicial">
             <i class="bi bi-house"></i>
 
             <span>Tela inicial</span>
 
           </a>
         </li>
-        <a href="../produtos/visualizacao_produtos.php" title="Tela de produtos">
+        <a href="<?php echo BASE_URL; ?>visualizacao_produtos" title="Tela de produtos">
           <i class="bi bi-box-seam"></i>
           <span>Produtos</span>
         </a>
         </li>
         </li>
-        <a href="visualizacao_pedidos.php" class="active" title="Tela de pedidos">
+        <a href="<?php echo BASE_URL; ?>visualizacao_pedidos" class="active" title="Tela de pedidos">
           <i class="bi bi-clipboard2-check"></i>
           <span>Pedidos</span>
         </a>
         </li>
         </li>
-        <a href="../usuario/minha_area.php" title="Minha área">
+        <a href="<?php echo BASE_URL; ?>minha_area" title="Minha área">
           <i class="bi bi-person-lines-fill"></i>
           <span>Minha área</span>
         </a>
         </li>
         <li>
-          <a href="../../controller/logout.php" class="btn-sair" title="Sair">
+          <a href="<?php echo BASE_URL; ?>php/controller/logout.php" class="btn-sair" title="Sair">
             <i class="bi bi-box-arrow-left"></i>
             <span>Encerrar sessão</span>
           </a>
@@ -105,8 +105,8 @@ if (isset($_SESSION['pedidoSelecionado'])) {
       <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
         <i class="bi bi-list"></i>
       </a>
-      <a href="../general/tela_inicial.php" class="link-logo-header" title="Tela inicial">
-        <img src="../../../assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+      <a href="<?php echo BASE_URL; ?>tela_inicial" class="link-logo-header" title="Tela inicial">
+        <img src="<?php echo BASE_URL; ?>assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
       </a>
     </div>
   </header>
@@ -123,7 +123,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
     <div class="internal-nav">
       <div class="internal-nav-links">
         <h1>Lista de Pedidos</h1>
-        <a href="cadastro_pedidos.php"><span class="bi bi-plus-lg"></span>Pedido</a>
+        <a href="<?php echo BASE_URL; ?>cadastro_pedidos"><span class="bi bi-plus-lg"></span>Pedido</a>
       </div>
 
       <div class="internal-nav-inputs">
@@ -194,7 +194,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
 
 
               <details class="detalhes-produto">
-                <summary>Expandir produtos</summary>
+                <summary>Ver produtos no pedido</summary>
                 <?php
                 foreach ($dados_pedido['produtos'] as $produto) {
                   echo "<p><strong>" . htmlspecialchars($produto['nome']) . "</strong>: " . htmlspecialchars($produto['quantidade']) . " unidade(s)</p>";
@@ -222,8 +222,8 @@ if (isset($_SESSION['pedidoSelecionado'])) {
             </div>
 
             <div class="product-btns pedido-btns">
-              <a href="../../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido ?>"><span class="bi bi-pencil"></span>Editar</a>
-              <a href="../../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&duplicar=true" class="btn-alt-pedido"><span class="bi bi-copy"></span>Duplicar</a>
+              <a href="<?php echo BASE_URL; ?>php/controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido ?>"><span class="bi bi-pencil"></span>Editar</a>
+              <a href="<?php echo BASE_URL; ?>php/controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&duplicar=true" class="btn-alt-pedido"><span class="bi bi-copy"></span>Duplicar</a>
             </div>
           </div> <?php endforeach; ?>
       <?php else: ?>
@@ -238,8 +238,12 @@ if (isset($_SESSION['pedidoSelecionado'])) {
 
   </div>
 
-  <script type="module" src="../../../js/main.js"></script>
-  <script src="../../../js/busca_pedidos.js"></script>
+  <script>
+    const BASE_URL = "<?php echo BASE_URL; ?>";
+  </script>
+
+  <script type="module" src="<?php echo BASE_URL; ?>js/main.js"></script>
+  <script src="<?php echo BASE_URL; ?>js/busca_pedidos.js"></script>
 
 
   <!-- Acessibilidade -->

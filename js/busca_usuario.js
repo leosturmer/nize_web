@@ -13,14 +13,18 @@ document.addEventListener("DOMContentLoaded", function () {
     clearTimeout(temporizador);
 
     temporizador = setTimeout(() => {
-      const url = `busca_usuario_ajax.php?pesquisaUsuario=${encodeURIComponent(
+      const url = `${BASE_URL}php/view/admin/busca_usuario_ajax.php?pesquisaUsuario=${encodeURIComponent(
         termo
       )}&ordenarPor=${encodeURIComponent(order)}`;
 
       fetch(url)
         .then((response) => {
-          if (!response.ok) throw new Error("Erro na resposta do servidor");
-          return response.text();
+          return response.text().then((html) => {
+            if (!response.ok) {
+              throw new Error(`Erro HTTP ${response.status}: ${html.slice(0, 200)}`);
+            }
+            return html;
+          });
         })
         .then((html) => {
           if (listaUsuario) {

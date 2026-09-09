@@ -18,12 +18,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         temporizador = setTimeout(() => {
             // CRÍTICO: Verifique se os nomes batem exatamente com o $_GET do PHP
-            const url = `busca_pedidos_ajax.php?pesquisaPedidos=${encodeURIComponent(termo)}&dataPedido=${encodeURIComponent(data)}&statusPedido=${encodeURIComponent(status)}&ordenarPor=${encodeURIComponent(order)}`;
+            const url = `${BASE_URL}php/view/pedidos/busca_pedidos_ajax.php?pesquisaPedidos=${encodeURIComponent(termo)}&dataPedido=${encodeURIComponent(data)}&statusPedido=${encodeURIComponent(status)}&ordenarPor=${encodeURIComponent(order)}`;
             
             fetch(url)
                 .then(response => {
-                    if (!response.ok) throw new Error('Erro na resposta do servidor');
-                    return response.text();
+                    return response.text().then(html => {
+                        if (!response.ok) {
+                            throw new Error(`Erro HTTP ${response.status}: ${html.slice(0, 200)}`);
+                        }
+                        return html;
+                    });
                 })
                 .then(html => {
                     listaPedidos.innerHTML = html;

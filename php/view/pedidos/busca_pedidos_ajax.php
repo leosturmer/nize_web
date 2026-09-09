@@ -1,4 +1,5 @@
 <?php
+require_once '../../config.php';
 session_start();
 require_once '../../model/usuario.class.php';
 require_once '../../model/pedido.class.php';
@@ -64,7 +65,7 @@ if (!empty($listaPedidos)) {
             <p><strong>Status: </strong><?php echo $statusView ?></p>
 
             <details class="detalhes-produto">
-                <summary>Expandir produtos</summary>
+                <summary>Ver produtos no pedido</summary>
                 <?php
                 foreach ($dados_pedido['produtos'] as $produto) {
                     echo '<p><strong>' . htmlspecialchars($produto['nome']) . '</strong>: ' . htmlspecialchars($produto['quantidade']) . ' unidade(s)</p>';
@@ -94,8 +95,8 @@ if (!empty($listaPedidos)) {
         </div>
 
         <div class="product-btns pedido-btns">
-            <a href="../../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido ?>"><span class="bi bi-pencil"></span>Editar</a>
-            <a href="../../controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&duplicar=true" class="btn-alt-pedido"><span class="bi bi-copy"></span>Duplicar</a>
+            <a href="<?php echo BASE_URL; ?>php/controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido ?>"><span class="bi bi-pencil"></span>Editar</a>
+            <a href="<?php echo BASE_URL; ?>php/controller/pedidoControle.php?op=carregarQuantidade&id=<?php echo $id_pedido; ?>&duplicar=true" class="btn-alt-pedido"><span class="bi bi-copy"></span>Duplicar</a>
         </div>
         </div>
 <?php }

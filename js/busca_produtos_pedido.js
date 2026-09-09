@@ -1,31 +1,33 @@
-// Garante que o código só rode após o HTML estar totalmente carregado
 document.addEventListener('DOMContentLoaded', function() {
     const pesquisaProdutos = document.getElementById('pesquisa-produtos');
-    // Seleciona pela classe .lista-produtos correspondente ao seu HTML
     const listaProdutos = document.querySelector('.lista-produtos-pedido');
-    
-    let temporizador;
 
-    // Verifica se os elementos realmente existem na página antes de prosseguir
     if (pesquisaProdutos && listaProdutos) {
-        pesquisaProdutos.addEventListener('input', function() {
-            let termo = pesquisaProdutos.value;
-            clearTimeout(temporizador);
+        const produtos = Array.from(listaProdutos.querySelectorAll('.product-view'));
 
-            temporizador = setTimeout(() => {
-                fetch('busca_produtos_pedidos_ajax.php?pesquisaProdutos=' + encodeURIComponent(termo))
-                    .then(response => {
-                        if (!response.ok) throw new Error('Erro na resposta do servidor');
-                        return response.text();
-                    })
-                    .then(html => {
-                        listaProdutos.innerHTML = html;
-                    })
-                    .catch(erro => {
-                        console.error('Erro na busca:', erro);
-                        listaProdutos.innerHTML = '<h4 class="sem-registro">Erro ao processar a busca.</h4>';
-                    });
-            }, 250); 
+        pesquisaProdutos.addEventListener('input', function() {
+            const termo = pesquisaProdutos.value.trim().toLocaleLowerCase();
+            let encontrados = 0;
+
+            produtos.forEach(function(produto) {
+                const textoProduto = produto.textContent.toLocaleLowerCase();
+                const corresponde = textoProduto.includes(termo);
+                produto.style.display = corresponde ? '' : 'none';
+                encontrados += corresponde ? 1 : 0;
+            });
+
+            let mensagem = listaProdutos.querySelector('.sem-registro');
+            if (encontrados === 0) {
+                if (!mensagem) {
+                    mensagem = document.createElement('h4');
+                    mensagem.className = 'sem-registro';
+                    mensagem.textContent = 'Nenhum produto correspondente foi encontrado!';
+                    listaProdutos.appendChild(mensagem);
+                }
+                mensagem.style.display = '';
+            } else if (mensagem) {
+                mensagem.style.display = 'none';
+            }
         });
     } else {
         console.error('Elementos de busca não foram encontrados no DOM.');

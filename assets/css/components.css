@@ -137,6 +137,7 @@
 #filtro-estoque,
 #filtro-encomenda,
 #filtro-status,
+#filtro-visivel,
 #filtro-order,
 #btn-limpar-filtros,
 #filtro-data {
@@ -493,9 +494,9 @@ div.lista-pedidos h4 {
   }
 }
 
-.product-view-loja {
-  width: 500px;
-  max-width: 500px;
+.product-view.product-view-loja {
+  width: 100%;
+  /* max-width: 500px; */
   display: flex;
   flex-direction: column;
 
@@ -874,6 +875,15 @@ div.produtos-no-pedido h3 {
 
 .btn-limpar {
   background-color: var(--darkPurple);
+}
+
+.btn-alt-pedido.btn-limpar {
+  background-color: brown;
+
+  &:hover {
+    background-color: white;
+    color: brown;
+  }
 }
 
 .btn-salvar {

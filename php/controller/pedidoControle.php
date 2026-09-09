@@ -48,11 +48,11 @@ switch ($opcao) {
         }
 
         if ($origem === 'duplicar') {
-            header("location:../view/pedidos/duplicar_pedido.php");
+            header("location:" . BASE_URL . "duplicar_pedido");
         } else if (isset($_SESSION['pedidoSelecionado'])) {
-            header("location:../view/pedidos/alteracao_pedidos.php?id=" . $_SESSION['pedidoSelecionado']['id_pedido']);
+            header("location:" . BASE_URL . "alteracao_pedidos/" . $_SESSION['pedidoSelecionado']['id_pedido']);
         } else {
-            header("location:../view/pedidos/cadastro_pedidos.php");
+            header("location:" . BASE_URL . "cadastro_pedidos");
         }
         exit;
 
@@ -75,7 +75,7 @@ switch ($opcao) {
             $_SESSION['msg'] = "<p class='error-msg'>Insira uma quantidade válida!</p>";
         }
 
-        header("Location: ../view/usuario/view_loja.php?loja=" . urlencode($nome_visualizacao));
+        header("Location:" . BASE_URL . urlencode($nome_visualizacao));
         exit;
 
     case "removerQuantidade":
@@ -90,7 +90,7 @@ switch ($opcao) {
                 unset($_SESSION['sacola'][$id_produto]);
                 $_SESSION['msg'] = "<p class='success-msg'>Produto removido da sacola.</p>";
             }
-            header("Location: ../view/usuario/view_loja.php?loja=" . urlencode($loja));
+            header("Location:" . BASE_URL . urlencode($loja));
             exit;
         } else {
             // Remoção do carrinho interno do gestor
@@ -101,11 +101,11 @@ switch ($opcao) {
             }
 
             if ($origem === 'duplicar') {
-                header("location:../view/pedidos/duplicar_pedido.php");
+                header("location:" . BASE_URL . "duplicar_pedido");
             } else if (isset($_SESSION['pedidoSelecionado'])) {
-                header("location:../view/pedidos/alteracao_pedidos.php?id=" . $_SESSION['pedidoSelecionado']['id_pedido']);
+                header("location:" . BASE_URL . "alteracao_pedidos/" . $_SESSION['pedidoSelecionado']['id_pedido']);
             } else {
-                header("location:../view/pedidos/cadastro_pedidos.php");
+                header("location:" . BASE_URL . "cadastro_pedidos");
             }
             exit;
         }
@@ -117,16 +117,16 @@ switch ($opcao) {
         if ($origem === 'loja') {
             // Limpa apenas a sacola da loja pública
             $_SESSION['sacola'] = [];
-            header("Location: ../view/usuario/view_loja.php?loja=" . urlencode($loja));
+            header("Location:" . BASE_URL . urlencode($loja));
         } else {
             // Limpa o carrinho administrativo
             Seguranca::verificarAcesso();
             $_SESSION['carrinho'] = [];
             if (isset($_SESSION['pedidoSelecionado'])) {
                 unset($_SESSION['pedidoSelecionado']);
-                header("location:../view/pedidos/visualizacao_pedidos.php");
+                header("location:" . BASE_URL . "visualizacao_pedidos");
             } else {
-                header("location:../view/pedidos/cadastro_pedidos.php");
+                header("location:" . BASE_URL . "cadastro_pedidos");
             }
         }
         exit;
@@ -152,7 +152,7 @@ switch ($opcao) {
                     unset($_SESSION['pedidoSelecionado']);
                 }
                 $_SESSION['msg'] = "<p class='success-msg'>Itens clonados com sucesso! Revise e finalize o novo pedido.</p>";
-                header("location:../view/pedidos/duplicar_pedido.php");
+                header("location:" . BASE_URL . "duplicar_pedido");
                 exit;
             }
 
@@ -165,15 +165,15 @@ switch ($opcao) {
             ];
 
             if ($pedido['status'] != "cancelado" && $pedido['status'] != 'vendido') {
-                header("location:../view/pedidos/alteracao_pedidos.php");
+                header("location:" . BASE_URL . "alteracao_pedidos/" . $pedido['id_pedido']);
             } else if ($pedido['status'] == "cancelado") {
-                header("location:../view/pedidos/alteracao_pedido_cancelado.php");
+                header("location:" . BASE_URL . "alteracao_pedido_cancelado");
             } else if ($pedido['status'] == "vendido") {
-                header("location:../view/pedidos/alteracao_pedido_vendido.php");
+                header("location:" . BASE_URL . "alteracao_pedido_vendido");
             }
         } else {
             $_SESSION['msg'] = "<p class='error-msg'>Algo deu errado ao carregar o pedido!</p>";
-            header("location:../view/pedidos/visualizacao_pedidos.php");
+            header("location:" . BASE_URL . "visualizacao_pedidos");
         }
         exit;
 
@@ -205,10 +205,10 @@ switch ($opcao) {
             $_SESSION['carrinho'] = [];
             $_SESSION['total_compra'] = [];
             $_SESSION['msg'] = "<p class='success-msg'>Pedido cadastrado com sucesso.</p>";
-            header("Location: ../view/pedidos/visualizacao_pedidos.php");
+            header("Location:" . BASE_URL . "visualizacao_pedidos");
         } catch (Exception $e) {
             $_SESSION['msg'] = "<p class='error-msg'>Algo deu errado! Tente novamente</p>";
-            header("Location: ../view/pedidos/cadastro_pedidos.php");
+            header("Location:" . BASE_URL . "cadastro_pedidos");
         }
         exit;
 
@@ -221,7 +221,7 @@ switch ($opcao) {
 
             if (!Validacao::validarTelefone($telefoneCliente) && $telefoneCliente !== '') {
                 $_SESSION['msg'] = '<p class="error-msg">Telefone em formato inválido!</p>';
-                header("location:../view/usuario/view_loja.php?loja=" . urlencode($loja));
+                header("location:" . BASE_URL . urlencode($loja));
                 exit;
             }
 
@@ -234,7 +234,7 @@ switch ($opcao) {
 
             if (empty($_SESSION['sacola'])) {
                 $_SESSION['msg'] = "<p class='error-msg'>Sua sacola está vazia!</p>";
-                header("Location: ../view/usuario/view_loja.php?loja=" . urlencode($loja));
+                header("Location:" . BASE_URL . urlencode($loja));
                 exit;
             }
 
@@ -268,11 +268,11 @@ switch ($opcao) {
             $_SESSION['ultimo_pedido_num'] = $numero_formatado;
             $_SESSION['msg'] = "<p class='success-msg'>Pedido #{$numero_formatado} enviado com sucesso! Aguarde, você será redirecionado...</p>";
 
-            header("Location: ../view/usuario/view_loja.php?loja=" . urlencode($loja));
+            header("Location:" . BASE_URL . urlencode($loja));
             exit;
         } catch (Exception $e) {
             $_SESSION['msg'] = "<p class='error-msg'>Algo deu errado ao enviar seu pedido! Tente novamente.</p>";
-            header("Location: ../view/usuario/view_loja.php?loja=" . urlencode($loja));
+            header("Location:" . BASE_URL . urlencode($loja));
             exit;
         }
 
@@ -321,10 +321,10 @@ switch ($opcao) {
 
             unset($_SESSION['pedidoSelecionado']);
             $_SESSION['msg'] = "<p class='success-msg'>Pedido alterado com sucesso.</p>";
-            header("Location: ../view/pedidos/visualizacao_pedidos.php");
+            header("Location:" . BASE_URL . "visualizacao_pedidos");
         } catch (Exception $e) {
             $_SESSION['msg'] = "<p class='error-msg'>Algo deu errado! Tente novamente</p>";
-            header("Location: ../view/pedidos/alteracao_pedidos.php?id=$id_pedido");
+            header("Location:" . BASE_URL . "alteracao_pedidos/$id_pedido");
         }
         exit;
 
@@ -338,6 +338,6 @@ switch ($opcao) {
                 $_SESSION['msg'] = "<p class='error-msg'>Erro ao excluir pedido.</p>";
             }
         }
-        header("location:../view/pedidos/visualizacao_pedidos.php");
+        header("location:" . BASE_URL . "visualizacao_pedidos");
         exit;
 }

@@ -1,6 +1,9 @@
 RewriteEngine On
 Options -Indexes
 
+# Permite manter links antigos quando a aplicacao estiver na raiz publica.
+RewriteRule ^nize_web/(.*)$ $1 [L]
+
 # -------------------------------------------------------------------------
 # 1. Suas rotas fixas (devem vir SEMPRE antes da regra genérica da loja)
 # -------------------------------------------------------------------------
@@ -18,8 +21,14 @@ RewriteRule ^visualizacao_pedidos$ php/view/pedidos/visualizacao_pedidos.php [L]
 RewriteRule ^cadastro_pedidos$ php/view/pedidos/cadastro_pedidos.php [L]
 RewriteRule ^alteracao_pedidos/([0-9]+)$ php/view/pedidos/alteracao_pedidos.php?id=$1 [L]
 RewriteRule ^duplicar_pedido/([0-9]+)$ php/view/pedidos/duplicar_pedido.php?id=$1 [L]
+RewriteRule ^duplicar_pedido$ php/view/pedidos/duplicar_pedido.php [L]
 
 RewriteRule ^alterar_cadastro$ php/view/usuario/alteracao_cadastro.php [L]
+RewriteRule ^alteracao_pedido_cancelado$ php/view/pedidos/alteracao_pedido_cancelado.php [L]
+RewriteRule ^alteracao_pedido_vendido$ php/view/pedidos/alteracao_pedido_vendido.php [L]
+RewriteRule ^admin$ php/view/admin/dashboard_administrador.php [L]
+RewriteRule ^erro$ php/view/general/erro.php [L]
+RewriteRule ^guia_utilizacao$ php/view/general/guia_utilizacao.php [L]
 
 # -------------------------------------------------------------------------
 # 2. Regra Dinâmica para a Loja (Fica no final)
@@ -30,3 +39,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 # Tudo o que sobrar e não caiu nas regras acima vira o parâmetro da loja
 RewriteRule ^([a-zA-Z0-9_-]+)$ php/view/usuario/view_loja.php?loja=$1 [L]
+RewriteRule ^logout$ php/controller/logout.php [L]
