@@ -1,11 +1,7 @@
 <?php
-// 1. Iniciar a sessão
 session_start();
-
-// 2. Limpar as variáveis
 $_SESSION = array();
 
-// 3. Matar a sessão e limpar os cookie da sessão
 if (ini_get("session.use_cookies")){
     $params = session_get_cookie_params();
     setcookie(session_name(), '', time() - 42000,
@@ -14,10 +10,17 @@ if (ini_get("session.use_cookies")){
 );
 }
 
-// 4. Destruir a sessão no servidor
 session_destroy();
 
-// 5. Redirecionar para raiz
-header("location:" . BASE_URL . "login");
+// 5. Descobrir a URL base do site automaticamente pelo servidor (funciona igual em qualquer hospedagem)
+$protocolo = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https://" : "http://";
+$servidor = $_SERVER['HTTP_HOST'];
+
+// Se estiver no XAMPP ($servidor é localhost), a raiz tem o /nize_web/. Se estiver no InfinityFree, é só o domínio.
+$raizProjeto = ($servidor === 'localhost') ? $protocolo . $servidor . '/nize_web/' : $protocolo . $servidor . '/';
+
+// 6. Redirecionar direto para a página de login física ou limpa
+header("Location: " . $raizProjeto . "php/view/general/login.php"); 
+// Nota: Se você preferir usar a rota limpa de login, basta trocar para:
+// header("Location: " . $raizProjeto . "login");
 exit;
-?>

@@ -217,8 +217,6 @@ if (!empty($_SESSION['usuario_logado'])) {
     <?php endif; ?>
 
     <div class="lista-produtos lista-produtos-loja">
-
-
         <?php if (!empty($lista) && $aceita_visualizacao === 1): ?>
             <?php foreach ($lista as $item): ?>
                 <div class="product-view product-view-loja">

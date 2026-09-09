@@ -22,7 +22,7 @@ if (empty($idLoja)) {
 
 $produtoDAO = new ProdutoDAO();
 
-$lista = $produtoDAO->buscarProdutoFiltro($pesquisa, '', '', $ordenar, $idLoja, true);
+$lista = $produtoDAO->buscarProdutoFiltro($pesquisa, '', '', 1, $ordenar, $idLoja, true);
 
 if (empty($lista)) {
     echo '<h4>Nenhum produto correspondente foi encontrado!</h4>';
@@ -32,35 +32,38 @@ if (empty($lista)) {
 foreach ($lista as $item) {
 ?>
     <div class="product-view product-view-loja">
-                    <div class="texto-produto">
-                        <h2><strong><?php echo htmlspecialchars($item['nome'], ENT_QUOTES, 'UTF-8'); ?></strong></h2>
-                        <?php if ($item['imagem']) {
-                            echo "<img src='" . BASE_URL . "php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
-                        } else {
-                            echo "<img src='#' alt='Produto sem imagem' class='img-produtos sem-imagem'>";
-                        } ?>
-                        <?php if ($item['valor_unitario']) {
-                            $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.');
-                        } else {
-                            $valor_unitario = "Não informado";
-                        } ?>
-                        <p class="p-valor"><strong><?php echo $valor_unitario ?></strong></p>
+        <div class="texto-produto">
+            <h2><strong><?php echo htmlspecialchars($item['nome'], ENT_QUOTES, 'UTF-8'); ?></strong></h2>
 
-                        
-                    </div>
-                    
-                    <p class="p-descricao"><?php echo htmlspecialchars($item['descricao']) ?></p>
-                    
-                    <div class="product-img-btn">
-                        <form action="<?php echo BASE_URL; ?>php/controller/pedidoControle.php" method="get" class="product-btns">
-                            <input type="number"  step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))"
-                            name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
-                            <input type="hidden" name="op" value="adicionarSacola">
-                            <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
-                            <input type="hidden" name="loja" value="<?php echo htmlspecialchars($nome_loja); ?>">
-                            <input type="submit" class="btn-add" value="+ Adicionar">
-                        </form>
-                    </div>
+            <?php if ($item['imagem']) {
+                echo "<img src='" . BASE_URL . "php/persistence/uploads/" . rawurlencode($item['imagem']) . "' alt='imagem do produto' class='img-produtos'>";
+            } else {
+                echo "<img src='#' alt='Produto sem imagem' class='img-produtos sem-imagem'>";
+            } ?>
+
+            <?php if ($item['valor_unitario']) {
+                $valor_unitario = "R$ " . number_format($item['valor_unitario'], 2, ',', '.');
+            } else {
+                $valor_unitario = "Não informado";
+            } ?>
+
+            <p class="p-valor"><strong><?php echo $valor_unitario ?></strong></p>
+
+        </div>
+
+        <p class="p-descricao"><?php echo htmlspecialchars($item['descricao']) ?></p>
+
+        <div class="product-img-btn">
+            <form action="<?php echo BASE_URL ?>php/controller/pedidoControle.php" method="get" class="product-btns">
+                <input type="number" step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))"
+                    name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
+                <input type="hidden" name="op" value="adicionarSacola">
+                <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
+                <input type="hidden" name="loja" value="<?php echo htmlspecialchars($nome_loja); ?>">
+                <input type="submit" class="btn-add" value="+ Adicionar">
+            </form>
+        </div>
+
     </div>
 
 <?php

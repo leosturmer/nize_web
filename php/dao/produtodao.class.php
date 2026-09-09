@@ -169,7 +169,7 @@ class ProdutoDAO{
                     $sqlStr .= " ORDER BY quantidade IS NULL ASC, quantidade DESC;";
 
                 } else if ($ordenar === "valor-asc") {
-                    $sqlStr .= " ORDER BY valor_unitario ASC IS NULL DESC, valor_unitario ASC;";
+                    $sqlStr .= " ORDER BY valor_unitario IS NULL DESC, valor_unitario ASC;";
 
                 } else if ($ordenar === "valor-desc") {
                     $sqlStr .= " ORDER BY valor_unitario IS NULL ASC, valor_unitario DESC;";

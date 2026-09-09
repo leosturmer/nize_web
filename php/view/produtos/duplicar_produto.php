@@ -88,7 +88,7 @@ if (!$produtoData) {
         </a>
         </li>
         <li>
-          <a href="<?php echo BASE_URL; ?>logout" class="btn-sair" title="Sair">
+          <a href="<?php echo BASE_URL; ?>php/controller/logout.php" class="btn-sair" title="Sair">
             <i class="bi bi-box-arrow-left"></i>
             <span>Encerrar sessão</span>
           </a>
