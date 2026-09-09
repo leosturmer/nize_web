@@ -1,4 +1,6 @@
 <?php
+require_once '../../config.php';
+session_start();
 require_once '../../model/produto.class.php';
 require_once '../../model/usuario.class.php';
 require_once '../../dao/usuariodao.class.php';

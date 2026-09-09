@@ -19,8 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       fetch(url)
         .then((response) => {
-          if (!response.ok) throw new Error("Erro na resposta do servidor");
-          return response.text();
+          return response.text().then((html) => {
+            if (!response.ok) {
+              throw new Error(`Erro HTTP ${response.status}: ${html.slice(0, 200)}`);
+            }
+            return html;
+          });
         })
         .then((html) => {
           if (listaUsuario) {
