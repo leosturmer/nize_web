@@ -24,7 +24,7 @@ O desenvolvimento seguiu a metodologia ágil incremental, permitindo constante e
 * **Back-end:** PHP
 * **Front-end:** HTML5, CSS3, JavaScript
 * **Banco de Dados:** MySQL
-* **Auxílio de IA:** Utilização do Gemini para suporte na lógica de scripts JavaScript e na complexidade do Controller/DAO durante o processamento relacional de produtos e pedidos.
+* **Auxílio de IA:** Utilização do Gemini e do Github Copilot para suporte na lógica de scripts JavaScript e na complexidade do Controller/DAO durante o processamento relacional de produtos e pedidos. Na fase final, foram utilizados agentes para auxiliar com o .htaccess e para solucionar alguns problemas pontuais de JavaScript
 
 ---
 
