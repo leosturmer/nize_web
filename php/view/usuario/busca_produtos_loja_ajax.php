@@ -22,12 +22,12 @@ if (empty($idLoja)) {
 
 $produtoDAO = new ProdutoDAO();
 
-$lista = $produtoDAO->buscarProdutoFiltro($pesquisa, '', '', 1, $ordenar, $idLoja, true);
+$lista = $produtoDAO->buscarProdutoFiltro($pesquisa, '', '', '', $ordenar, $idLoja, true);
 
 if (empty($lista)) {
     echo '<h4>Nenhum produto correspondente foi encontrado!</h4>';
     exit;
-}
+} 
 
 foreach ($lista as $item) {
 ?>

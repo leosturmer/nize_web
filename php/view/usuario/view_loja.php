@@ -34,9 +34,9 @@ $telefone = $dadosTelefone['telefone'];
 $lista = $produtoDAO->listarTodosProdutosAbertos($id_usuario);
 
 if (!empty($_SESSION['usuario_logado'])) {
-    $logo_link = "<?php echo BASE_URL; ?>tela_inicial";
+    $logo_link = BASE_URL . "tela_inicial";
 } else {
-    $logo_link = "<?php echo BASE_URL; ?>";
+    $logo_link = BASE_URL . "index";
 }
 
 ?>
@@ -124,7 +124,7 @@ if (!empty($_SESSION['usuario_logado'])) {
                 </div>
 
                 <div class="pedido-loja">
-                                <form action="<?php echo BASE_URL ?>php/controller/pedidoControle.php" method="get">
+                    <form action="<?php echo BASE_URL ?>php/controller/pedidoControle.php" method="get">
                         <input type="hidden" name="op" value="solicitarPedido">
                         <input type="hidden" name="loja" value="<?php echo htmlspecialchars($nome_visualizacao); ?>">
 
