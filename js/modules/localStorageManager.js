@@ -183,10 +183,11 @@ export function initLocalStorageManager() {
   }
 
   // 5. Página de Visualização da Loja (view_loja.php)
-  // 5. Página de Visualização da Loja (view_loja.php)
   if (document.querySelector(".html-loja")) {
-    const chaveLoja = "loja_" + window.location.search;
-    if (!referrer.includes("${BASE_URL}") || !referrer.includes(window.location.pathname)) {
+    const chaveLoja = "loja_" + window.location.pathname;
+    const mesmaLoja = referrer && new URL(referrer, window.location.origin).pathname === window.location.pathname;
+
+    if (!mesmaLoja) {
       Object.keys(localStorage).forEach((key) => {
         if (key.startsWith("loja_")) localStorage.removeItem(key);
       });

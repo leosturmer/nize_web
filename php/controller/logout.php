@@ -16,7 +16,6 @@ session_destroy();
 $protocolo = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https://" : "http://";
 $servidor = $_SERVER['HTTP_HOST'];
 
-// Se estiver no XAMPP ($servidor é localhost), a raiz tem o /nize_web/. Se estiver no InfinityFree, é só o domínio.
 $raizProjeto = ($servidor === 'localhost') ? $protocolo . $servidor . '/nize_web/' : $protocolo . $servidor . '/';
 
 // 6. Redirecionar direto para a página de login física ou limpa

@@ -494,9 +494,9 @@ div.lista-pedidos h4 {
   }
 }
 
-.product-view-loja {
-  width: 500px;
-  max-width: 500px;
+.product-view.product-view-loja {
+  width: 100%;
+  /* max-width: 500px; */
   display: flex;
   flex-direction: column;
 

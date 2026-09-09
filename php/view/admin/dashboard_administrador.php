@@ -141,6 +141,9 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
         <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
     </main>
 
+    <script>
+        const BASE_URL = "<?php echo BASE_URL; ?>";
+    </script>
     <script type="module" src="<?php echo BASE_URL; ?>js/main.js"></script>
     <script type="module" src="<?php echo BASE_URL; ?>js/busca_usuario.js"></script>
 

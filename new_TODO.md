@@ -1,6 +1,6 @@
 - Não está ficando salvo o que digita na view_loja se atualiza a página
 
-- filtros não funcionando na view_loja
+<!-- - filtros não funcionando na view_loja -->
 <!-- - logout não está indo -->
 
 

@@ -19,7 +19,7 @@ $dadosView = $usuarioDAO->buscarAceitaView($id_usuario);
 $aceita_visualizacao = $dadosView['aceita_visualizacao'];
 
 if ($aceita_visualizacao !== 1) {
-    header("location: <?php echo BASE_URL; ?>tela_inicial ");
+    header("location:" . BASE_URL . "tela_inicial ");
 }
 
 
@@ -36,7 +36,7 @@ $lista = $produtoDAO->listarTodosProdutosAbertos($id_usuario);
 if (!empty($_SESSION['usuario_logado'])) {
     $logo_link = BASE_URL . "tela_inicial";
 } else {
-    $logo_link = BASE_URL . "index";
+    $logo_link = BASE_URL . "index.php";
 }
 
 ?>
@@ -216,7 +216,7 @@ if (!empty($_SESSION['usuario_logado'])) {
         </div>
     <?php endif; ?>
 
-    <div class="lista-produtos lista-produtos-loja">
+    <div class="lista-produtos lista-produtos-loja" data-nome-loja="<?php echo htmlspecialchars($nome_visualizacao, ENT_QUOTES, 'UTF-8'); ?>">
         <?php if (!empty($lista) && $aceita_visualizacao === 1): ?>
             <?php foreach ($lista as $item): ?>
                 <div class="product-view product-view-loja">
