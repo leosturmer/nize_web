@@ -19,7 +19,7 @@ $dadosView = $usuarioDAO->buscarAceitaView($id_usuario);
 $aceita_visualizacao = $dadosView['aceita_visualizacao'];
 
 if ($aceita_visualizacao !== 1) {
-    header("location: /nize_web/tela_inicial ");
+    header("location: <?php echo BASE_URL; ?>tela_inicial ");
 }
 
 
@@ -34,9 +34,9 @@ $telefone = $dadosTelefone['telefone'];
 $lista = $produtoDAO->listarTodosProdutosAbertos($id_usuario);
 
 if (!empty($_SESSION['usuario_logado'])) {
-    $logo_link = "/nize_web/tela_inicial";
+    $logo_link = "<?php echo BASE_URL; ?>tela_inicial";
 } else {
-    $logo_link = "/nize_web/";
+    $logo_link = "<?php echo BASE_URL; ?>";
 }
 
 ?>
@@ -50,10 +50,10 @@ if (!empty($_SESSION['usuario_logado'])) {
 
     <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/img/favicon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="/nize_web/assets/css/variables.css">
-    <link rel="stylesheet" href="/nize_web/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/nize_web/assets/css/components.css">
-    <link rel="stylesheet" href="/nize_web/assets/css/responsive.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/variables.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/sidebar.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/components.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/responsive.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -75,7 +75,7 @@ if (!empty($_SESSION['usuario_logado'])) {
 
             <li class="li-img-sidenav">
                 <a href="<?php echo $logo_link ?>" class="link-logo" title="Tela inicial">
-                    <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
+                    <img src="<?php echo BASE_URL; ?>assets/img/logo/nize_new.png" alt="Nize" id="logo-sidenav-view">
                 </a>
             </li>
 
@@ -154,8 +154,8 @@ if (!empty($_SESSION['usuario_logado'])) {
             <a href="#" data-resize-btn-mobile class="btn-menu btn-sacola" title="Esconder/expandir menu">
                 <i class="bi bi-bag"></i>
             </a>
-            <a href="/nize_web/tela_inicial" class="link-logo-header" title="Tela inicial">
-                <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+            <a href="<?php echo BASE_URL; ?>tela_inicial" class="link-logo-header" title="Tela inicial">
+                <img src="<?php echo BASE_URL; ?>assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
             </a>
         </div>
     </header>
@@ -263,7 +263,7 @@ if (!empty($_SESSION['usuario_logado'])) {
     </div>
     <div class="div-btn-wpp">
         <?php if ($aceita_visualizacao === 1 && !empty($telefone)): ?>
-            <a href="https://wa.me/<?php echo "55" . $telefone; ?>" target="_blank"><img src="/nize_web/assets/img/icons/whatsapp64.png" alt="botão whatsapp"></a>
+            <a href="https://wa.me/<?php echo "55" . $telefone; ?>" target="_blank"><img src="<?php echo BASE_URL; ?>assets/img/icons/whatsapp64.png" alt="botão whatsapp"></a>
         <?php endif; ?>
     </div>
 
@@ -271,8 +271,11 @@ if (!empty($_SESSION['usuario_logado'])) {
     <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
     </main>
 
-    <script src="/nize_web/js/busca_produtos.js"></script>
-    <script type="module" src="/nize_web/js/main.js"></script>
+    <script>
+        const BASE_URL = "<?php echo BASE_URL; ?>";
+    </script>
+    <script src="<?php echo BASE_URL; ?>js/busca_produtos.js"></script>
+    <script type="module" src="<?php echo BASE_URL; ?>js/main.js"></script>
 
 
     <!-- Acessibilidade -->

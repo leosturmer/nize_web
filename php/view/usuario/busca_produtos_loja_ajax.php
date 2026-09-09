@@ -52,7 +52,7 @@ foreach ($lista as $item) {
                     <p class="p-descricao"><?php echo htmlspecialchars($item['descricao']) ?></p>
                     
                     <div class="product-img-btn">
-                        <form action="/nize_web/php/controller/pedidoControle.php" method="get" class="product-btns">
+                        <form action="<?php echo BASE_URL; ?>php/controller/pedidoControle.php" method="get" class="product-btns">
                             <input type="number"  step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))"
                             name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
                             <input type="hidden" name="op" value="adicionarSacola">

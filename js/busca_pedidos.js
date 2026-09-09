@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         temporizador = setTimeout(() => {
             // CRÍTICO: Verifique se os nomes batem exatamente com o $_GET do PHP
-            const url = `/nize_web/php/view/pedidos/busca_pedidos_ajax.php?pesquisaPedidos=${encodeURIComponent(termo)}&dataPedido=${encodeURIComponent(data)}&statusPedido=${encodeURIComponent(status)}&ordenarPor=${encodeURIComponent(order)}`;
+            const url = `${BASE_URL}php/view/pedidos/busca_pedidos_ajax.php?pesquisaPedidos=${encodeURIComponent(termo)}&dataPedido=${encodeURIComponent(data)}&statusPedido=${encodeURIComponent(status)}&ordenarPor=${encodeURIComponent(order)}`;
             
             fetch(url)
                 .then(response => {

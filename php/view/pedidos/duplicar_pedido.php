@@ -28,10 +28,10 @@ if (isset($_SESSION['pedidoSelecionado'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/img/favicon/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/nize_web/assets/css/variables.css">
-    <link rel="stylesheet" href="/nize_web/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/nize_web/assets/css/components.css">
-    <link rel="stylesheet" href="/nize_web/assets/css/responsive.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/variables.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/sidebar.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/components.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/responsive.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 
@@ -52,39 +52,39 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                 </li>
 
                 <li>
-                    <a href="/nize_web/tela_inicial" class="link-logo" title="Tela inicial">
-                        <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+                    <a href="<?php echo BASE_URL; ?>tela_inicial" class="link-logo" title="Tela inicial">
+                        <img src="<?php echo BASE_URL; ?>assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
                     </a>
                 </li>
 
                 <li>
                 <li>
-                    <a href="/nize_web/tela_inicial" title="Tela inicial">
+                    <a href="<?php echo BASE_URL; ?>tela_inicial" title="Tela inicial">
                         <i class="bi bi-house"></i>
 
                         <span>Tela inicial</span>
 
                     </a>
                 </li>
-                <a href="/nize_web/visualizacao_produtos" title="Tela de produtos">
+                <a href="<?php echo BASE_URL; ?>visualizacao_produtos" title="Tela de produtos">
                     <i class="bi bi-box-seam"></i>
                     <span>Produtos</span>
                 </a>
                 </li>
                 </li>
-                <a href="/nize_web/visualizacao_pedidos" class="active" title="Tela de pedidos">
+                <a href="<?php echo BASE_URL; ?>visualizacao_pedidos" class="active" title="Tela de pedidos">
                     <i class="bi bi-clipboard2-check"></i>
                     <span>Pedidos</span>
                 </a>
                 </li>
                 </li>
-                <a href="/nize_web/minha_area" title="Minha área">
+                <a href="<?php echo BASE_URL; ?>minha_area" title="Minha área">
                     <i class="bi bi-person-lines-fill"></i>
                     <span>Minha área</span>
                 </a>
                 </li>
                 <li>
-                    <a href="/nize_web/php/controller/logout.php" class="btn-sair" title="Sair">
+                    <a href="<?php echo BASE_URL; ?>logout" class="btn-sair" title="Sair">
                         <i class="bi bi-box-arrow-left"></i>
                         <span>Encerrar sessão</span>
                     </a>
@@ -98,8 +98,8 @@ if (isset($_SESSION['pedidoSelecionado'])) {
             <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
                 <i class="bi bi-list"></i>
             </a>
-            <a href="/nize_web/tela_inicial" class="link-logo-header" title="Tela inicial">
-                <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+            <a href="<?php echo BASE_URL; ?>tela_inicial" class="link-logo-header" title="Tela inicial">
+                <img src="<?php echo BASE_URL; ?>assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
             </a>
         </div>
     </header>
@@ -115,7 +115,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
         <div class="internal-nav">
             <div class="internal-nav-links">
                 <h1>Duplicar Pedido</h1>
-                <a href="/nize_web/visualizacao_pedidos" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
+                <a href="<?php echo BASE_URL; ?>visualizacao_pedidos" title="Tela de pedidos"><span class="bi bi-arrow-left"></span>Voltar</a>
             </div>
         </div>
 
@@ -190,7 +190,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                                 } else {
                                     echo "<p class='img-produtos sem-imagem'>Nenhuma imagem cadastrada</p>";
                                 } ?>
-                                <form action="/nize_web/php/controller/pedidoControle.php" method="get" class="product-btns">
+                                <form action="<?php echo BASE_URL; ?>php/controller/pedidoControle.php" method="get" class="product-btns">
                                     <input type="number" step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" name="quantidadeVendida" id="quantidadeVendida" class="input-pedido" maxlength="3" placeholder="Quantidade" autocomplete="off">
                                     <input type="hidden" name="op" value="adicionarQuantidade">
                                     <input type="hidden" name="id" value="<?php echo $item['id_produto']; ?>">
@@ -225,7 +225,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                             $valor_total = (float)$produtoVendido['valor_unitario'];
                             $valor_total = $valor_unitario * $quantidade;
                             echo "<b>Valor total</b>: R$ " . (number_format((float)$valor_total, 2, ',', '.')) . "</p>";
-                            echo "<a href='/nize_web/php/controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor&origem=duplicar' class='btn-remover'><span class='bi bi-x'></span>Remover</a>";
+                            echo "<a href='<?php echo BASE_URL; ?>php/controller/pedidoControle.php?op=removerQuantidade&id=$id_produto&valor=$valor&origem=duplicar' class='btn-remover'><span class='bi bi-x'></span>Remover</a>";
                             echo "</div>";
                         } else {
                             echo "<p><b>Produto ID $id_produto</b> não foi encontrado no estoque.</p>";
@@ -242,7 +242,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                     <p><b>Total do pedido</b>: R$ <?php echo number_format($_SESSION['total_compra'], 2, ',', '.') ?> </p>
                 </div>
 
-                <form action="/nize_web/php/controller/pedidoControle.php" method="get">
+                <form action="<?php echo BASE_URL; ?>php/controller/pedidoControle.php" method="get">
                     <input type="hidden" name="op" value="cadastrar">
                     <div class="form-pedidos-items">
                         <fieldset id="pedidos-form">
@@ -271,7 +271,7 @@ if (isset($_SESSION['pedidoSelecionado'])) {
                     </div>
                     <div class="form-pedidos-items">
                         <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Salvar</button>
-                        <a href="/nize_web/php/controller/pedidoControle.php?op=limparCarrinho" class="btn-limpar"><span class="bi">✖</span>Cancelar</a>
+                        <a href="<?php echo BASE_URL; ?>php/controller/pedidoControle.php?op=limparCarrinho" class="btn-limpar"><span class="bi">✖</span>Cancelar</a>
                     </div>
                 </form>
             </div>
@@ -281,6 +281,9 @@ if (isset($_SESSION['pedidoSelecionado'])) {
         <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
     </main>
 
+    <script>
+        const BASE_URL = "<?php echo BASE_URL; ?>";
+    </script>
     <script type="module" src="<?php echo BASE_URL; ?>js/main.js"></script>
 
     <script src="<?php echo BASE_URL; ?>js/busca_produtos_pedido.js?v=2"></script>

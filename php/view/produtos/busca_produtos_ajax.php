@@ -100,8 +100,8 @@ foreach ($lista as $item) {
         } ?>
 
         <div class="product-btns">
-            <a href="/nize_web/alteracao_produto/<?php echo $item['id_produto']; ?>"><span class="bi bi-pencil"></span>Editar</a>
-            <a href="/nize_web/duplicar_produto/<?php echo $item['id_produto']; ?>" class="btn-duplicar"><span class="bi bi-copy"></span>Duplicar</a>
+            <a href="<?php echo BASE_URL; ?>alteracao_produto/<?php echo $item['id_produto']; ?>"><span class="bi bi-pencil"></span>Editar</a>
+            <a href="<?php echo BASE_URL; ?>duplicar_produto/<?php echo $item['id_produto']; ?>" class="btn-duplicar"><span class="bi bi-copy"></span>Duplicar</a>
         </div>
     </div>
     </div>

@@ -11,7 +11,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 $id_produto = $_GET['id'] ?? null;
 
 if (!$id_produto) {
-  header("location:/nize_web/visualizacao_produtos");
+  header("location:" . BASE_URL . "visualizacao_produtos");
   exit;
 }
 
@@ -30,10 +30,10 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 
   <link rel="shortcut icon" href="<?php echo BASE_URL; ?>assets/img/favicon/favicon.ico" type="image/x-icon">
 
-  <link rel="stylesheet" href="/nize_web/assets/css/variables.css">
-  <link rel="stylesheet" href="/nize_web/assets/css/sidebar.css">
-  <link rel="stylesheet" href="/nize_web/assets/css/components.css">
-  <link rel="stylesheet" href="/nize_web/assets/css/responsive.css">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/variables.css">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/sidebar.css">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/components.css">
+  <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/responsive.css">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -54,39 +54,39 @@ $produto = $produtoDAO->buscarPorId($id_produto);
         </li>
 
         <li>
-          <a href="/nize_web/tela_inicial" class="link-logo" title="Tela inicial">
-            <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
+          <a href="<?php echo BASE_URL; ?>tela_inicial" class="link-logo" title="Tela inicial">
+            <img src="<?php echo BASE_URL; ?>assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
           </a>
         </li>
 
         <li>
         <li>
-          <a href="/nize_web/tela_inicial" title="Tela inicial">
+          <a href="<?php echo BASE_URL; ?>tela_inicial" title="Tela inicial">
             <i class="bi bi-house"></i>
 
             <span>Tela inicial</span>
 
           </a>
         </li>
-        <a href="/nize_web/visualizacao_produtos" class="active" title="Tela de produtos">
+        <a href="<?php echo BASE_URL; ?>visualizacao_produtos" class="active" title="Tela de produtos">
           <i class="bi bi-box-seam"></i>
           <span>Produtos</span>
         </a>
         </li>
         </li>
-        <a href="/nize_web/visualizacao_pedidos" title="Tela de pedidos">
+        <a href="<?php echo BASE_URL; ?>visualizacao_pedidos" title="Tela de pedidos">
           <i class="bi bi-clipboard2-check"></i>
           <span>Pedidos</span>
         </a>
         </li>
         </li>
-        <a href="/nize_web/minha_area" title="Minha área">
+        <a href="<?php echo BASE_URL; ?>minha_area" title="Minha área">
           <i class="bi bi-person-lines-fill"></i>
           <span>Minha área</span>
         </a>
         </li>
         <li>
-          <a href="/nize_web/php/controller/logout.php" class="btn-sair" title="Sair">
+          <a href="<?php echo BASE_URL; ?>logout" class="btn-sair" title="Sair">
             <i class="bi bi-box-arrow-left"></i>
             <span>Encerrar sessão</span>
           </a>
@@ -100,8 +100,8 @@ $produto = $produtoDAO->buscarPorId($id_produto);
       <a href="#" data-resize-btn-mobile class="btn-menu" title="Esconder/expandir menu">
         <i class="bi bi-list"></i>
       </a>
-      <a href="/nize_web/tela_inicial" class="link-logo-header" title="Tela inicial">
-        <img src="/nize_web/assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
+      <a href="<?php echo BASE_URL; ?>tela_inicial" class="link-logo-header" title="Tela inicial">
+        <img src="<?php echo BASE_URL; ?>assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-header">
       </a>
     </div>
   </header>
@@ -111,7 +111,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
     <div class="internal-nav">
       <div class="internal-nav-links">
         <h1>Alteração de produto</h1>
-        <a href="/nize_web/visualizacao_produtos" title="Tela de produtos"><span class="bi bi-arrow-left"></span>Voltar</a>
+        <a href="<?php echo BASE_URL; ?>visualizacao_produtos" title="Tela de produtos"><span class="bi bi-arrow-left"></span>Voltar</a>
       </div>
     </div>
 
@@ -134,7 +134,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
     }
     ?>
 
-    <form action="/nize_web/php/controller/produtoControle.php?op=alterar&id=<?php echo $produto['id_produto'] ?>" method="post" enctype="multipart/form-data" class="form-cadastro-produto">
+    <form action="<?php echo BASE_URL; ?>php/controller/produtoControle.php?op=alterar&id=<?php echo $produto['id_produto'] ?>" method="post" enctype="multipart/form-data" class="form-cadastro-produto">
       <fieldset id="products-form">
         <legend>Descrição do produto</legend>
         <div class="inner-products-form">
@@ -197,7 +197,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 
       <div id="form-products-buttons">
         <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Alterar</button>
-        <a href="/nize_web/php/controller/produtoControle.php?op=excluir&id=<?php echo $produto['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');"><span class="bi bi-trash3"></span>Excluir</a>
+        <a href="<?php echo BASE_URL; ?>php/controller/produtoControle.php?op=excluir&id=<?php echo $produto['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');"><span class="bi bi-trash3"></span>Excluir</a>
 
       </div>
     </form>
@@ -208,7 +208,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
 
   </div>
 
-  <script type="module" src="/nize_web/js//main.js"></script>
+  <script type="module" src="<?php echo BASE_URL; ?>js/main.js"></script>
 
   <!-- Acessibilidade -->
 

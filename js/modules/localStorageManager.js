@@ -186,7 +186,7 @@ export function initLocalStorageManager() {
   // 5. Página de Visualização da Loja (view_loja.php)
   if (document.querySelector(".html-loja")) {
     const chaveLoja = "loja_" + window.location.search;
-    if (!referrer.includes("/nize_web/") || !referrer.includes(window.location.pathname)) {
+    if (!referrer.includes("${BASE_URL}") || !referrer.includes(window.location.pathname)) {
       Object.keys(localStorage).forEach((key) => {
         if (key.startsWith("loja_")) localStorage.removeItem(key);
       });

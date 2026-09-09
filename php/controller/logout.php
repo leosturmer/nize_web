@@ -18,6 +18,6 @@ if (ini_get("session.use_cookies")){
 session_destroy();
 
 // 5. Redirecionar para raiz
-header("location:/nize_web/");
+header("location:" . BASE_URL . "login");
 exit;
 ?>

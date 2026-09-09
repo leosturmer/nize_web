@@ -63,10 +63,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Se houver idLoja na URL, significa que estamos na view_loja.php (pública)
         if (nome_loja) {
-            url = `/nize_web/php/view/usuario/busca_produtos_loja_ajax.php?pesquisaProdutos=${encodeURIComponent(termo)}&nome_loja=${encodeURIComponent(nome_loja)}&ordenarPor=${encodeURIComponent(order)}`;
+            url = `${BASE_URL}php/view/usuario/busca_produtos_loja_ajax.php?pesquisaProdutos=${encodeURIComponent(termo)}&nome_loja=${encodeURIComponent(nome_loja)}&ordenarPor=${encodeURIComponent(order)}`;
         } else {
             // Caso contrário, mantém o fluxo antigo da área interna (produtos)
-            url = `/nize_web/php/view/produtos/busca_produtos_ajax.php?pesquisaProdutos=${encodeURIComponent(termo)}&filtroEstoque=${encodeURIComponent(estoque)}&filtroEncomenda=${encodeURIComponent(encomenda)}&filtroVisivel=${encodeURIComponent(visibilidade)}&ordenarPor=${encodeURIComponent(order)}`;
+            url = `${BASE_URL}php/view/produtos/busca_produtos_ajax.php?pesquisaProdutos=${encodeURIComponent(termo)}&filtroEstoque=${encodeURIComponent(estoque)}&filtroEncomenda=${encodeURIComponent(encomenda)}&filtroVisivel=${encodeURIComponent(visibilidade)}&ordenarPor=${encodeURIComponent(order)}`;
         }
         
         fetch(url)
