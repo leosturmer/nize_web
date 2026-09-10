@@ -431,7 +431,7 @@ details.detalhes-produto {
 }
 
 div.container-horizontal.cadastro-btns {
-  margin-top: 0.8em;
+  margin: 0.8em auto 0 auto;
 
   & span.bi-box-arrow-up-right {
     margin-left: 0.5em;
@@ -846,20 +846,21 @@ div.produtos-no-pedido h3 {
     padding: 0.2em;
   }
 
-  & .btn-remover {
+  /* & .btn-remover {
     padding: 0.3em 0.8em;
-  }
+  } */
 }
 
-.btn-remover {
+a.btn-remover,
+a.btn-remover-imagem {
   font-size: 14px;
   margin: 0 auto;
   padding: 0.3em 0.8em;
   width: fit-content;
-  background-color: whitesmoke;
+  background-color: transparent;
   color: brown;
   box-shadow: none;
-  border: var(--border-hover);
+  border: none;
   display: flex;
   align-items: center;
 
@@ -868,11 +869,18 @@ div.produtos-no-pedido h3 {
   }
 
   &:hover {
-    background-color: brown;
-    box-shadow: none;
-    color: white;
+    background-color: transparent;
+    border: 1px solid brown;
+    box-shadow: -2px 2px 0px brown;
+
+
+    /* background-color: brown;
+    box-shadow: var(--box-shadow);
+    border: var(--border-thin);
+    color: white; */
   }
 }
+
 
 .btn-limpar {
   background-color: var(--darkPurple);
@@ -880,11 +888,21 @@ div.produtos-no-pedido h3 {
 
 .btn-alt-pedido.btn-limpar {
   background-color: brown;
+  color: white;
 
   &:hover {
     background-color: white;
     color: brown;
   }
+
+
+  /* background-color: white;
+  color: brown;
+
+  &:hover {
+    background-color: brown;
+    color: white;
+  } */
 }
 
 .btn-salvar {

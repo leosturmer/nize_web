@@ -194,7 +194,7 @@ $_SESSION['produto_selecionado'] = $produto;
             <img src='<?php echo BASE_URL; ?>php/persistence/uploads/<?php echo rawurlencode($produto['imagem']) ?>' alt='imagem do produto' class='img-produtos img-alt-produto'>
             <span class="span-alt-img">(Será mantida se não enviar outra)</span>
 
-            <a href="<?php echo BASE_URL; ?>php/controller/produtoControle.php?op=removerImagem&id=<?php echo $produto['id_produto']; ?>" class="btn-remover" onclick="return confirm('Deseja mesmo remover?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');">Remover imagem</a>
+            <a href="<?php echo BASE_URL; ?>php/controller/produtoControle.php?op=removerImagem&id=<?php echo $produto['id_produto']; ?>" class="btn-remover-imagem" onclick="return confirm('Deseja mesmo remover?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');"><span class="bi bi-x-square"></span>Remover imagem</a>
           <?php else: ?>
             <span class="sem-imagem">Nenhuma imagem cadastrada</span>
           <?php endif; ?>
@@ -205,7 +205,7 @@ $_SESSION['produto_selecionado'] = $produto;
 
       <div id="form-products-buttons">
         <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Alterar</button>
-        <a href="<?php echo BASE_URL; ?>php/controller/produtoControle.php?op=excluir&id=<?php echo $produto['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');"><span class="bi bi-trash3"></span>Excluir</a>
+        <a href="<?php echo BASE_URL; ?>php/controller/produtoControle.php?op=excluir&id=<?php echo $produto['id_produto'] ?>" onclick="return confirm('Deseja mesmo excluir?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');" class="btn-alt-pedido btn-limpar"><span class="bi bi-trash3"></span>Excluir</a>
 
       </div>
     </form>

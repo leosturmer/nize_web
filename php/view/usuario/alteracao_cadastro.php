@@ -193,7 +193,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
           <div class="container-horizontal cadastro-btns">
             <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Alterar</button>
-            <button formaction="<?php echo BASE_URL; ?>php/controller/usuarioControle.php?op=excluir" onclick="return confirm('A exclusão deletará todos os dados do banco.\n\nESSA AÇÃO NÃO PODE SER DESFEITA.\n\nDeseja confirmar?')" class="btn-excluir"><span class="bi bi-person-x"></span>Excluir</button>
+            <button formaction="<?php echo BASE_URL; ?>php/controller/usuarioControle.php?op=excluir" onclick="return confirm('A exclusão deletará todos os dados do banco.\n\nESSA AÇÃO NÃO PODE SER DESFEITA.\n\nDeseja confirmar?')" class="btn-alt-pedido btn-limpar"><span class="bi bi-person-x"></span>Excluir</button>
           </div>
       </div>
       </form>
