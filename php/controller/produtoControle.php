@@ -18,33 +18,34 @@ $opcao = $_GET['op'] ?? '';
 $usuario = unserialize($_SESSION['usuario_logado']);
 $idUsuarioLogado = $usuario->id_usuario;
 
-$nomeProduto = trim($_POST['nomeProduto']) ?? '';
-$quantidadeProduto = $_POST['quantidadeProduto'] ?? 0;
-$valorUnitario = trim($_POST['valorUnitario']) ?? '';
-$valorCusto = trim($_POST['valorCusto']) ?? 0;
-$imagemProduto = $_POST['imagemProduto'] ?? null;
-$comentarioProduto = trim($_POST['comentarioProduto']) ?? '';
-$descricaoProduto = trim($_POST['descricaoProduto']) ?? '';
+if ($opcao !== 'removerImagem') {
+    $nomeProduto = trim($_POST['nomeProduto']) ?? '';
+    $quantidadeProduto = $_POST['quantidadeProduto'] ?? 0;
+    $valorUnitario = trim($_POST['valorUnitario']) ?? '';
+    $valorCusto = trim($_POST['valorCusto']) ?? 0;
+    $imagemProduto = $_POST['imagemProduto'] ?? null;
+    $comentarioProduto = trim($_POST['comentarioProduto']) ?? '';
+    $descricaoProduto = trim($_POST['descricaoProduto']) ?? '';
 
-if ($_POST['aceitaEncomenda'] != "1" || $_POST['aceitaEncomenda'] === null){
-    $aceitaEncomenda = "0";
-} else {
-    $aceitaEncomenda = $_POST['aceitaEncomenda'];
+    if ($_POST['aceitaEncomenda'] != "1" || $_POST['aceitaEncomenda'] === null) {
+        $aceitaEncomenda = "0";
+    } else {
+        $aceitaEncomenda = $_POST['aceitaEncomenda'];
+    }
+
+    if ($_POST['aceitaVisualizacao'] != "1" || $_POST['aceitaVisualizacao'] === null) {
+        $aceitaVisualizacao = "0";
+    } else {
+        $aceitaVisualizacao = $_POST['aceitaVisualizacao'];
+    }
 }
-
-if ($_POST['aceitaVisualizacao'] != "1" || $_POST['aceitaVisualizacao'] === null){
-    $aceitaVisualizacao = "0";
-} else {
-    $aceitaVisualizacao = $_POST['aceitaVisualizacao'];
-}
-
 
 
 $produtoDAO = new ProdutoDAO();
 
-switch ($opcao){
+switch ($opcao) {
     case "cadastrar":
-        if (empty($nomeProduto)){
+        if (empty($nomeProduto)) {
             $_SESSION['msg'] = "<p class='error-msg'>Insira os dados obrigatórios</p>";
             header("location:" . BASE_URL . "cadastro_produtos");
             exit;
@@ -61,36 +62,35 @@ switch ($opcao){
         $produto->comentario = $comentarioProduto;
         $produto->descricao = $descricaoProduto;
         $produto->imagem = $_POST['imagem_clonada'] ?? null;
-        
+
         // Verifica se o arquivo foi enviado sem erros de upload
-        if (isset($_FILES["imagemProduto"]) && $_FILES["imagemProduto"]['error'] === 0){
-            $arquivoTmp = $_FILES['imagemProduto']['tmp_name']; 
-            $nomeOriginal = $_FILES['imagemProduto']['name'];   
-            
+        if (isset($_FILES["imagemProduto"]) && $_FILES["imagemProduto"]['error'] === 0) {
+            $arquivoTmp = $_FILES['imagemProduto']['tmp_name'];
+            $nomeOriginal = $_FILES['imagemProduto']['name'];
+
             $pastaDestino = __DIR__ . '/../persistence/uploads/';
-            
+
             if (!is_dir($pastaDestino)) {
                 mkdir($pastaDestino, 0755, true);
             }
-            
+
             $extensao = strtolower(pathinfo($nomeOriginal, PATHINFO_EXTENSION));
             $novoNomeImagem = md5(uniqid(rand(), true)) . '.' . $extensao;
-            
+
             $caminhoFinal = $pastaDestino . $novoNomeImagem;
-            
+
             if (move_uploaded_file($arquivoTmp, $caminhoFinal)) {
                 $produto->imagem = $novoNomeImagem;
             } else {
                 $_SESSION['msg'] = "<p class='error-msg'>Erro ao mover a imagem para o servidor.</p>";
             }
-            
         } else {
             if (isset($_FILES['imagemProduto']['error']) && $_FILES['imagemProduto']['error'] !== 4) {
                 $_SESSION['msg'] = "<p class='error-msg'>Erro no arquivo de imagem. Código: " . $_FILES['imagemProduto']['error'] . "</p>";
             }
         }
-        
-        if ($produtoDAO->cadastrarProduto($produto)){
+
+        if ($produtoDAO->cadastrarProduto($produto)) {
             $_SESSION['msg'] = '<p class="success-msg">Produto cadastrado com sucesso!</p>';
             header("location:" . BASE_URL . "visualizacao_produtos");
             exit;
@@ -103,15 +103,15 @@ switch ($opcao){
         break;
 
     case "alterar":
-        if (empty($nomeProduto)){
+        if (empty($nomeProduto)) {
             $_SESSION['msg'] = "<p class='error-msg'>Ops! Insira os dados obrigatórios</p>";
             header("location:" . BASE_URL . "visualizacao_produtos");
             exit;
         }
-        
+
         $produto = new Produto();
 
-        $produto->id_produto = $_GET['id'] ?? null;  
+        $produto->id_produto = $_GET['id'] ?? null;
         $produto->id_usuario = $idUsuarioLogado;
 
         $produto->nome = $nomeProduto;
@@ -124,58 +124,75 @@ switch ($opcao){
         $produto->descricao = $descricaoProduto;
         $produto->imagem = $_POST['imagem_atual'] ?? null;
 
-        if (isset($_FILES["imagemProduto"]) && $_FILES["imagemProduto"]['error'] === 0){
-            $arquivoTmp = $_FILES['imagemProduto']['tmp_name']; 
-            $nomeOriginal = $_FILES['imagemProduto']['name'];   
-            
+        if (isset($_FILES["imagemProduto"]) && $_FILES["imagemProduto"]['error'] === 0) {
+            $arquivoTmp = $_FILES['imagemProduto']['tmp_name'];
+            $nomeOriginal = $_FILES['imagemProduto']['name'];
+
             $pastaDestino = __DIR__ . '/../persistence/uploads/';
-            
+
             if (!is_dir($pastaDestino)) {
                 mkdir($pastaDestino, 0755, true);
             }
-            
+
             $extensao = strtolower(pathinfo($nomeOriginal, PATHINFO_EXTENSION));
             $novoNomeImagem = md5(uniqid(rand(), true)) . '.' . $extensao;
-            
+
             $caminhoFinal = $pastaDestino . $novoNomeImagem;
-            
+
             if (move_uploaded_file($arquivoTmp, $caminhoFinal)) {
                 $produto->imagem = $novoNomeImagem;
             } else {
                 $_SESSION['msg'] = "<p class='error-msg'>Erro ao mover a imagem para o servidor.</p>";
             }
-            
         } else {
             if (isset($_FILES['imagemProduto']['error']) && $_FILES['imagemProduto']['error'] !== 4) {
                 $_SESSION['msg'] = "<p class='error-msg'>Erro no arquivo de imagem. Código: " . $_FILES['imagemProduto']['error'] . "</p>";
             }
         }
-        
-        if ($produtoDAO->alterarProduto($produto)){
+
+        if ($produtoDAO->alterarProduto($produto)) {
             $_SESSION['msg'] = "<p class='success-msg'>Produto alterado com sucesso!</p>";
             header("location:" . BASE_URL . "visualizacao_produtos");
             exit;
-
         } else {
-            $_SESSION['msg'] = "<p class='error-msg'>Erro ao atualizar produto!</p>";   
+            $_SESSION['msg'] = "<p class='error-msg'>Erro ao atualizar produto!</p>";
         }
 
         header("location:" . BASE_URL . "alteracao_produto/" . $produto->id_produto);
         exit;
 
+
+
+    case "removerImagem":
+
+        $produto = new Produto();
+
+        $id_produto = $_GET['id'];
+
+        if ($produtoDAO->removerImagem($id_produto, $idUsuarioLogado)) {
+            $_SESSION['msg'] = "<p class='success-msg'>Produto alterado com sucesso!</p>";
+            unset($_SESSION["produto_selecionado"]);
+            header("location:" . BASE_URL . "alteracao_produto/" . $id_produto);
+            exit;
+        } else {
+            $_SESSION['msg'] = "<p class='error-msg'>Erro ao atualizar produto!</p>";
+        }
+
+        header("location:" . BASE_URL . "alteracao_produto/" . $id_produto);
+        exit;
+
+
     case "excluir":
         $id = $_GET['id'] ?? null;
 
         if ($id) {
-            if ($produtoDAO->excluirProduto($id)){
+            if ($produtoDAO->excluirProduto($id)) {
                 $_SESSION['msg'] = "<p class='success-msg'>Produto removido com sucesso.</p>";
             } else {
                 $_SESSION['msg'] = "<p class='error-msg'>Erro ao excluir produto.</p>";
             }
-        }  
-        
+        }
+
         header("location:" . BASE_URL . "visualizacao_produtos");
         exit;
-
-
 }

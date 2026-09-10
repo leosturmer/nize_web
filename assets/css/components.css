@@ -550,6 +550,7 @@ div.texto-produto {
   height: auto;
   text-align: center;
   border: var(--border);
+  margin: 0 auto;
 }
 
 .img-alt-produto {

@@ -18,6 +18,12 @@ if (!$id_produto) {
 $produtoDAO = new ProdutoDAO();
 
 $produto = $produtoDAO->buscarPorId($id_produto);
+
+
+
+$_SESSION['produto_selecionado'] = $produto;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -107,7 +113,7 @@ $produto = $produtoDAO->buscarPorId($id_produto);
   </header>
 
   <main class='conteudo-pagina'>
-        <a id="top"></a>
+    <a id="top"></a>
     <div class="internal-nav">
       <div class="internal-nav-links">
         <h1>Alteração de produto</h1>
@@ -140,22 +146,22 @@ $produto = $produtoDAO->buscarPorId($id_produto);
         <div class="inner-products-form">
           <label><strong>Nome do produto</strong>*:</label>
           <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto alt-nome-produto" value="<?php echo htmlspecialchars($produto['nome']); ?>" autocomplete="off" maxlength="50" required>
-          
+
           <div class="div-inner-products">
             <label><strong>Quantidade</strong>:
-            <input type="number"  step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" id="quantidadeProduto" name="quantidadeProduto" class="input-produto" value="<?php echo htmlspecialchars($produto['quantidade']); ?>" maxlength="3" autocomplete="off">
-          </label>
-          
+              <input type="number" step="1" min="0" onkeydown="return ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key) || !isNaN(Number(event.key))" id="quantidadeProduto" name="quantidadeProduto" class="input-produto" value="<?php echo htmlspecialchars($produto['quantidade']); ?>" maxlength="3" autocomplete="off">
+            </label>
+
+            <label class="checkbox-acc" for="">
+              <strong>Aceita encomendas</strong>:
+              <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto" value="1" <?php echo " $checkEncomenda"; ?>>
+            </label>
+          </div>
+
           <label class="checkbox-acc" for="">
-            <strong>Aceita encomendas</strong>:
-            <input type="checkbox" id="aceitaEncomenda" name="aceitaEncomenda" class="input-produto" value="1" <?php echo " $checkEncomenda"; ?>>
+            <strong>Disponibilizar para visualização</strong>
+            <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" autocomplete="off" <?php echo " $checkVisualizacao"; ?>>
           </label>
-        </div>
-        
-        <label class="checkbox-acc" for="">
-          <strong>Disponibilizar para visualização</strong>
-            <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" autocomplete="off" <?php echo " $checkVisualizacao";?>>
-        </label>
           <div class="div-inner-products">
             <label><strong>Valor unitário</strong>*: R$
               <input type="number" min="0" id="valorUnitario" name="valorUnitario" step="0.10" class="input-produto" value="<?php echo htmlspecialchars($produto['valor_unitario']); ?>" autocomplete="off" maxlength="6" required>
@@ -187,6 +193,8 @@ $produto = $produtoDAO->buscarPorId($id_produto);
           <?php if (!empty($produto['imagem'])): ?>
             <img src='<?php echo BASE_URL; ?>php/persistence/uploads/<?php echo rawurlencode($produto['imagem']) ?>' alt='imagem do produto' class='img-produtos img-alt-produto'>
             <span class="span-alt-img">(Será mantida se não enviar outra)</span>
+
+            <a href="<?php echo BASE_URL; ?>php/controller/produtoControle.php?op=removerImagem&id=<?php echo $produto['id_produto']; ?>" class="btn-remover" onclick="return confirm('Deseja mesmo remover?\n\nESSA AÇÃO NÃO PODE SER DESFEITA.');">Remover imagem</a>
           <?php else: ?>
             <span class="sem-imagem">Nenhuma imagem cadastrada</span>
           <?php endif; ?>
@@ -203,8 +211,8 @@ $produto = $produtoDAO->buscarPorId($id_produto);
     </form>
 
     <footer><a href="https://github.com/leosturmer" target="_blank">Leonardo Stürmer &copy; Todos os direitos reservados.</a></footer>
-  <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
-    </main>
+    <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
+  </main>
 
   </div>
 

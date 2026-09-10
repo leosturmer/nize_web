@@ -28,6 +28,28 @@ class ProdutoDAO{
 
     }
 
+    public function removerImagem($id_produto, $id_usuario){
+        try {
+            $sql = "
+            UPDATE produtos SET
+            imagem = null
+            WHERE id_produto = :id_produto
+            AND id_usuario = :id_usuario;
+            ";
+
+            $sql = ConexaoBanco::getInstancia()->prepare($sql);
+
+            $sql->bindValue(":id_produto", $id_produto);
+            $sql->bindValue(":id_usuario", $id_usuario);
+
+            return $sql->execute();
+
+        } catch (PDOException $e) {
+            echo "Erro ao alterar.";
+            exit;
+        }
+    }
+
     public function alterarProduto($produtoModificado){
         try {
             $sql = "
