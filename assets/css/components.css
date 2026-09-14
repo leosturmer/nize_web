@@ -557,7 +557,7 @@ div.texto-produto {
   border: var(--border);
   box-shadow: var(--box-shadow);
   align-self: center;
-  width: 70%;
+  max-width: 70%;
   max-height: 300px;
 }
 
