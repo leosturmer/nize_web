@@ -557,8 +557,9 @@ div.texto-produto {
   border: var(--border);
   box-shadow: var(--box-shadow);
   align-self: center;
-  max-width: 70%;
-  max-height: 300px;
+  width: 70%;
+  height: 250px;
+  object-fit: cover;
 }
 
 .span-alt-img {
