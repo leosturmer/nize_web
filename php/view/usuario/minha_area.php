@@ -146,14 +146,14 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         <br>
         <strong>Exibição da loja</strong>: <?php echo $view_loja ?>
         <br>
-        <strong>Link de exibição</strong>: <span style="text-decoration: underline;">nizeapp.free.nf/<?php echo $nome_visualizacao ?></span>
-        <br>
         <strong>WhatsApp</strong>: <?php echo $telefone ?>
-        </p>
+        <br>
+        <strong>Link de exibição</strong>: <br>
+        <a id="link-loja" target="_blank" href="https://nizeapp.free.nf/<?php echo $nome_visualizacao ?>">nizeapp.free.nf/<?php echo $nome_visualizacao ?></a> <i class="bi bi-copy" onclick="copyLink('https://nizeapp.free.nf/<?php echo $nome_visualizacao ?>')"></i>
       </div>
 
       <div class="usuario-btns">
-          <a href="<?php echo BASE_URL; ?>alterar_cadastro" class="btn-alterar"><span class="bi bi-pencil" style="margin-left: 0;"></span>Editar</a>
+        <a href="<?php echo BASE_URL; ?>alterar_cadastro" class="btn-alterar"><span class="bi bi-pencil" style="margin-left: 0;"></span>Editar</a>
         <?php if ($usuario->nome_visualizacao && $usuario->aceita_visualizacao == 1 && $usuario->telefone): ?>
           <a href="<?php echo BASE_URL . $usuario->nome_visualizacao ?>" target="blank" class="btn-alterar btn-loja">Ver loja<span class="bi bi-box-arrow-up-right"></span></a>
         <?php endif; ?>
@@ -165,6 +165,18 @@ $usuario = unserialize($_SESSION['usuario_logado']);
   </main>
 
   <script type="module" src="<?php echo BASE_URL; ?>js/main.js"></script>
+
+  <script>
+    function copyLink(url) {
+      navigator.clipboard.writeText(url)
+        .then(() => {
+          alert("Link copiado!");
+        })
+        .catch(err => {
+          console.error("Falha ao copiar: ", err);
+        });
+    }
+  </script>
 
   <!-- Acessibilidade -->
 

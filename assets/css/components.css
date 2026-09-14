@@ -873,14 +873,12 @@ a.btn-remover-imagem {
     border: 1px solid brown;
     box-shadow: -2px 2px 0px brown;
 
-
     /* background-color: brown;
     box-shadow: var(--box-shadow);
     border: var(--border-thin);
     color: white; */
   }
 }
-
 
 .btn-limpar {
   background-color: var(--darkPurple);
@@ -894,7 +892,6 @@ a.btn-remover-imagem {
     background-color: white;
     color: brown;
   }
-
 
   /* background-color: white;
   color: brown;
@@ -1057,6 +1054,37 @@ input#prazoPedido {
   max-height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
+
+  & strong {
+    color: var(--darkGreen);
+  }
+}
+
+#link-loja {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: black;
+  text-decoration: underline;
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
+
+.link-exibicao {
+  display: flex;
+  flex-direction: column;
+}
+
+i.bi-copy {
+  margin-left: 0.5em;
+  font-size: 20px;
+  color: var(--normalPurple);
+
+  &:hover {
+    cursor: pointer;
+    color: var(--lighterPurple);
+  }
 }
 
 #novos-dados {

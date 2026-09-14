@@ -152,9 +152,11 @@ $usuario = unserialize($_SESSION['usuario_logado']);
           <br>
           <strong>Exibição da loja</strong>: <?php echo $view_loja ?>
           <br>
-          <strong>Link de exibição</strong>: <span style="text-decoration: underline;">nizeapp.free.nf/<?php echo $nome_visualizacao ?></span>
-          <br>
           <strong>WhatsApp</strong>: <?php echo $telefone ?>
+          <br>
+          <strong>Link de exibição</strong>: <br>
+          <a id="link-loja" target="_blank" href="https://nizeapp.free.nf/<?php echo $nome_visualizacao ?>">nizeapp.free.nf/<?php echo $nome_visualizacao ?></a> <i class="bi bi-copy" onclick="copyLink('https://nizeapp.free.nf/<?php echo $nome_visualizacao ?>')"></i>
+
           <?php if ($usuario->nome_visualizacao && $usuario->aceita_visualizacao == 1 && $usuario->telefone): ?>
             <a href="<?php echo BASE_URL; ?><?php echo urlencode($usuario->nome_visualizacao); ?>" target="blank" class="btn-alterar btn-loja btn-loja-alt-cadastro">Ver loja<span class="bi bi-box-arrow-up-right"></span></a>
           <?php endif; ?>
@@ -209,93 +211,17 @@ $usuario = unserialize($_SESSION['usuario_logado']);
   <script type="module" src="<?php echo BASE_URL; ?>js/main.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const campoNome = document.querySelector("input[name='usuNome']");
-      const campoLoja = document.querySelector("input[name='usuLoja']");
-      const campoEmail = document.querySelector("input[name='usuEmail']");
-      const checkView = document.querySelector("input[name='aceitaVisualizacao']");
-      const campoNomeView = document.querySelector("input[name='usuNomeView']");
-      const campoTelefone = document.querySelector("input[name='usuTelefone']");
-      const formCadastro = document.getElementById("form-cadastro");
-
-      // Verifica se o usuário veio de outra página do site
-      const veioDeOutraPagina = !document.referrer.includes("alterar_usuario.php") && !document.referrer.includes("minha_area.php");
-
-      if (veioDeOutraPagina) {
-        // Se veio de fora (abriu a edição agora), limpa rascunhos anteriores para puxar limpo do banco
-        localStorage.removeItem("alt_usu_nome");
-        localStorage.removeItem("alt_usu_loja");
-        localStorage.removeItem("alt_usu_email");
-        localStorage.removeItem("alt_usu_check");
-        localStorage.removeItem("alt_usu_nomeview");
-        localStorage.removeItem("alt_usu_telefone");
-      } else {
-        // Se apenas recarregou, restaura o que ele digitou por cima
-        if (localStorage.getItem("alt_usu_nome") && campoNome) {
-          campoNome.value = localStorage.getItem("alt_usu_nome");
-        }
-        if (localStorage.getItem("alt_usu_loja") && campoLoja) {
-          campoLoja.value = localStorage.getItem("alt_usu_loja");
-        }
-        if (localStorage.getItem("alt_usu_email") && campoEmail) {
-          campoEmail.value = localStorage.getItem("alt_usu_email");
-        }
-        if (localStorage.getItem("alt_usu_check") !== null && checkView) {
-          checkView.checked = localStorage.getItem("alt_usu_check") === "true";
-        }
-        if (localStorage.getItem("alt_usu_nomeview") && campoNomeView) {
-          campoNomeView.value = localStorage.getItem("alt_usu_nomeview");
-        }
-        if (localStorage.getItem("alt_usu_telefone") && campoTelefone) {
-          campoTelefone.value = localStorage.getItem("alt_usu_telefone");
-        }
-      }
-
-      // Salva os valores em tempo real conforme o usuário digita ou altera
-      if (campoNome) {
-        campoNome.addEventListener("input", function() {
-          localStorage.setItem("alt_usu_nome", campoNome.value);
+    function copyLink(url) {
+      navigator.clipboard.writeText(url)
+        .then(() => {
+          alert("Link copiado!");
+        })
+        .catch(err => {
+          console.error("Falha ao copiar: ", err);
         });
-      }
-      if (campoLoja) {
-        campoLoja.addEventListener("input", function() {
-          localStorage.setItem("alt_usu_loja", campoLoja.value);
-        });
-      }
-      if (campoEmail) {
-        campoEmail.addEventListener("input", function() {
-          localStorage.setItem("alt_usu_email", campoEmail.value);
-        });
-      }
-      if (checkView) {
-        checkView.addEventListener("change", function() {
-          localStorage.setItem("alt_usu_check", checkView.checked);
-        });
-      }
-      if (campoNomeView) {
-        campoNomeView.addEventListener("input", function() {
-          localStorage.setItem("alt_usu_nomeview", campoNomeView.value);
-        });
-      }
-      if (campoTelefone) {
-        campoTelefone.addEventListener("input", function() {
-          localStorage.setItem("alt_usu_telefone", campoTelefone.value);
-        });
-      }
-
-      // Limpa o armazenamento quando o formulário for enviado com sucesso
-      if (formCadastro) {
-        formCadastro.addEventListener("submit", function() {
-          localStorage.removeItem("alt_usu_nome");
-          localStorage.removeItem("alt_usu_loja");
-          localStorage.removeItem("alt_usu_email");
-          localStorage.removeItem("alt_usu_check");
-          localStorage.removeItem("alt_usu_nomeview");
-          localStorage.removeItem("alt_usu_telefone");
-        });
-      }
-    });
+    }
   </script>
+
 
   <!-- Acessibilidade -->
 
