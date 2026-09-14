@@ -171,11 +171,11 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         </p>
         <p>Passos necessários para ativar:</p>
         <ul class="lista-passos-1">
-          <li><strong>Nos Produtos</strong>: Marque a opção <span>Disponibilizar para visualização</span> nos produtos que deseja exibir na loja.</li>
+          <li><strong>Nos Produtos</strong>: Marque a opção <span>Disponibilizar para exibição</span> nos produtos que deseja exibir na loja.</li>
           <li><strong>Na tela Minha Área</strong>:
             <ul class="lista-passos-2">
-              <li>Marque a opção <b>Abrir visualização da loja?</b>.</li>
-              <li>Insira o seu <b>Link de visualização</b>.</li>
+              <li>Marque a opção <b>Abrir exibição da loja?</b>.</li>
+              <li>Insira o seu <b>Link de exibição</b>.</li>
               <li>Adicione o seu <b>Número de WhatsApp</b>.</li>
             </ul>
           </li>

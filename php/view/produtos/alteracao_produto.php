@@ -159,7 +159,7 @@ $_SESSION['produto_selecionado'] = $produto;
           </div>
 
           <label class="checkbox-acc" for="">
-            <strong>Disponibilizar para visualização</strong>
+            <strong>Disponibilizar para exibição</strong>
             <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" autocomplete="off" <?php echo " $checkVisualizacao"; ?>>
           </label>
           <div class="div-inner-products">

@@ -82,7 +82,7 @@ Utilize os recursos no topo da tela para localizar itens rapidamente:
 ### Cadastrar Produto
 1. Na tela **Produtos**, clique no botão **+ Produto** (canto superior direito).
 2. Preencha as informações do produto (**\*** indica campo obrigatório).
-   * **Disponibilizar para visualização:** Marque esta opção caso deseje que o produto fique visível para clientes na sua loja online.
+   * **Disponibilizar para exibição:** Marque esta opção caso deseje que o produto fique visível para clientes na sua loja online.
 3. Utilize o botão **Limpar** se desejar reiniciar o preenchimento do formulário.
 4. Clique em **Salvar**.
 5. Uma mensagem de sucesso será exibida e o produto constará na sua lista.
@@ -174,10 +174,10 @@ O comportamento da edição de um pedido varia de acordo com o **Status** em que
 Para disponibilizar sua loja online para clientes externos, você precisa realizar as seguintes configurações:
 
 1. **Nos Produtos:**
-   - Garanta que os produtos que deseja exibir estejam cadastrados com a opção **Disponibilizar para visualização** marcada.
+   - Garanta que os produtos que deseja exibir estejam cadastrados com a opção **Disponibilizar para exibição** marcada.
 2. **Na página Minha Área:**
-   - Marque a opção **Abrir visualização da loja?**.
-   - Insira o seu **Link de visualização**.
+   - Marque a opção **Abrir exibição da loja?**.
+   - Insira o seu **Link de exibição**.
    - Informe o seu **Número de WhatsApp** para contato dos clientes.
 
 ### Excluir Conta

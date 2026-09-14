@@ -132,7 +132,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
           </div>
           
           <label class="checkbox-acc" for="">
-            <strong>Disponibilizar para visualização:</strong>
+            <strong>Disponibilizar para exibição:</strong>
             <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1' autocomplete="off">
           </label>
 

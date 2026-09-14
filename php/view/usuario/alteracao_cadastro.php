@@ -150,9 +150,9 @@ $usuario = unserialize($_SESSION['usuario_logado']);
           <br>
           <strong>E-mail</strong>: <?php echo $usuario->login ?>
           <br>
-          <strong>Visualização da loja</strong>: <?php echo $view_loja ?>
+          <strong>Exibição da loja</strong>: <?php echo $view_loja ?>
           <br>
-          <strong>Link de visualização</strong>: <?php echo $nome_visualizacao ?>
+          <strong>Link de exibição</strong>: <?php echo $nome_visualizacao ?>
           <br>
           <strong>WhatsApp</strong>: <?php echo $telefone ?>
           <?php if ($usuario->nome_visualizacao && $usuario->aceita_visualizacao == 1 && $usuario->telefone): ?>
@@ -175,10 +175,10 @@ $usuario = unserialize($_SESSION['usuario_logado']);
           <div class="pedidos-online">
             <hr>
             <p class="p-info-pedidos-online">Para permitir pedidos online, os três campos abaixo são obrigatórios</p>
-            <label for="aceitaVisualizacao" class="checkbox-acc">Abrir visualização da loja?
+            <label for="aceitaVisualizacao" class="checkbox-acc">Abrir exibição da loja?
               <input type="checkbox" name="aceitaVisualizacao" class="input-produto input-checkbox" value='1' autocomplete="off" <?php echo $checkViewLoja ?>>
             </label>
-            <label for="usuNomeView"><b>Link de visualização</b></label>
+            <label for="usuNomeView"><b>Link de exibição</b></label>
             <div class="checkbox-acc">
               <span>nizeapp.free.nf/</span>
               <input type="text" name="usuNomeView" pattern="^\S+$" class="input-login input-nome-view" placeholder="nomedaloja" value="<?php echo $usuario->nome_visualizacao ?>" autocomplete="off" title="Link para a loja não deve conter espaços" maxlength="20">

@@ -144,9 +144,9 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         <br>
         <strong>E-mail</strong>: <?php echo $usuario->login ?>
         <br>
-        <strong>Visualização da loja</strong>: <?php echo $view_loja ?>
+        <strong>Exibição da loja</strong>: <?php echo $view_loja ?>
         <br>
-        <strong>Link de visualização</strong>: <?php echo $nome_visualizacao ?>
+        <strong>Link de exibição</strong>: <?php echo $nome_visualizacao ?>
         <br>
         <strong>WhatsApp</strong>: <?php echo $telefone ?>
         </p>

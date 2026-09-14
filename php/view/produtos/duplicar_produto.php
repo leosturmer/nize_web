@@ -143,7 +143,7 @@ if (!$produtoData) {
           </div>
           
           <label class="checkbox-acc" for="">
-            <strong>Disponibilizar para visualização</strong>:
+            <strong>Disponibilizar para exibição</strong>:
             <input type="checkbox" id="aceitaVisualizacao" name="aceitaVisualizacao" class="input-produto" value="1" autocomplete="off" <?php echo $produtoData['aceita_visualizacao'] == 1 ? 'checked' : ''; ?>>
           </label>
 

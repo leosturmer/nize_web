@@ -54,7 +54,7 @@ if (!empty($lista)) {
             $aceita_visualizacao = "Não";
           }
 
-        echo '<p><strong>Disponível para visualização: </strong>' . $aceita_visualizacao . '</p>';
+        echo '<p><strong>Disponível para exibição: </strong>' . $aceita_visualizacao . '</p>';
 
         echo '<details class="detalhes-produto">
                 <summary>Mais detalhes</summary>';

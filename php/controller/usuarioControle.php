@@ -56,7 +56,7 @@ switch ($opcao) {
         if ($usuario->nome_visualizacao !== $novoNomeView) {
             if ($usuarioDAO->buscarNomeView($novoNomeView)) {
                 // if (in_array($novoNomeView, $usuarioDAO->buscarNomeView($novoNomeView)))
-                $_SESSION['msg'] = '<p class="error-msg">Nome para visualização já utilizado!</p>';
+                $_SESSION['msg'] = '<p class="error-msg">Nome para exibição já utilizado!</p>';
                 header("location:" . BASE_URL . "alterar_cadastro");
                 exit;
             }

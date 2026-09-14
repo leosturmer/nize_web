@@ -167,7 +167,7 @@ if (isset($_SESSION['encomendaSelecionada'])) {
                                 }
 
                                 ?>
-                                <p><strong>Disponível para visualização:</strong> <?php echo $aceita_visualizacao; ?></p>
+                                <p><strong>Disponível para exibição:</strong> <?php echo $aceita_visualizacao; ?></p>
 
                                 <details class="detalhes-produto">
                                     <summary>Mais detalhes</summary>
