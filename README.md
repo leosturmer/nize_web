@@ -51,7 +51,7 @@ Para instruções detalhadas de operação e navegação no sistema, consulte o 
 
 | Área do Usuário | Alterar Cadastro | Vitrine Pública da Loja |
 | :---: | :---: | :---: |
-| ![Área do usuário](./github_img/telas/16_minha_area.png) | ![Alteração de dados de cadastro](./github_img/telas/17_alterar_cadastro.png) | ![Visualização pública de loja](./github_img/telas/18_view_loja.png) |
+| ![Área do usuário](./github_img/telas/16_minha_area.png) | ![Alteração de dados de cadastro](./github_img/telas/17_alterar_cadastro.png) | ![Exibição pública de loja](./github_img/telas/18_view_loja.png) |
 
 ---
 
