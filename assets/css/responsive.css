@@ -715,6 +715,24 @@
       overflow-x: hidden;
     }
   }
+
+  div.div-senha {
+    flex-direction: column;
+    align-items: start;
+  }
+  
+  div.div-senha.div-senha-eye {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  #senha.input-login,
+  #senha-2.input-login,
+  #senha-3.input-login {
+    width: 100%;
+  }
+
 }
 
 @media (max-width: 550px) {

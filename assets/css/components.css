@@ -1093,9 +1093,15 @@ input#prazoPedido {
   }
 }
 
-#minha-area.alt-senha {
+.alt-senha {
   margin: 0 auto;
-  
+  line-height: 2.5em;
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+  background-color: white;
+  padding: 1em;
+  /* width: 50%; */
+
 }
 
 #link-loja {

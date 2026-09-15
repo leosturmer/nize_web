@@ -114,13 +114,13 @@ $usuario = unserialize($_SESSION['usuario_logado']);
             </div>
         </div>
 
-        <div id="minha-area" class="alt-senha">
+        <div class="alt-senha">
             <h3>Altere sua senha</h3>
-            <p>Mínimo de 8 caracteres: 1 maiúscula, 1 minúscula e 1 número.</p>
+            <p class="p-inicial">Mínimo de 8 caracteres: 1 maiúscula, 1 minúscula e 1 número.</p>
             <hr>
             <form action="<?php echo BASE_URL; ?>php/controller/usuarioControle.php?op=alterarSenha" class="alterar-senha" method="post">
                 <div class="div-senha">
-                    <div class="div-senha">
+                    <div class="div-senha div-senha-eye">
                         <label for="senhaAtual">Senha atual</label>
                         <i class="bi bi-eye-fill" id="eye-senha" onclick="mostrarSenha()"></i>
                     </div>
