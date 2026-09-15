@@ -164,7 +164,10 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
           <?php if ($usuario->nome_visualizacao && $usuario->aceita_visualizacao == 1 && $usuario->telefone): ?>
             <a href="<?php echo BASE_URL; ?><?php echo urlencode($usuario->nome_visualizacao); ?>" target="blank" class="btn-alterar btn-loja btn-loja-alt-cadastro">Ver loja<span class="bi bi-box-arrow-up-right"></span></a>
-          <?php endif; ?>
+            <?php endif; ?>
+            
+            <a href="php/view/usuario/alteracao_senha.php" target="blank" class="btn-alterar btn-loja btn-loja-alt-cadastro">Alterar senha<span class="bi bi-box-arrow-up-right"></span></a>
+
         </p>
 
       </div>

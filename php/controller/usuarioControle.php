@@ -83,6 +83,19 @@ switch ($opcao) {
         header("location:" . BASE_URL . "alterar_cadastro");
         exit;
 
+    case "alterarSenha":
+        $senhaAtual = trim($_POST["usuSenha"]);
+        $novaSenha = trim($_POST["usuNovaSenha"]);
+        $novaSenha2 = trim($_POST["usuNovaSenha2"]);
+
+        
+
+
+
+
+
+
+
     case "excluir":
         $usuario = unserialize($_SESSION['usuario_logado']);
 
