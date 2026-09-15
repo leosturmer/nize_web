@@ -122,6 +122,88 @@ switch ($opcao) {
             exit;
         }
 
+    case "altSenhaAdmin":
+        $senhaAtual = trim($_POST["senhaAtual"]) ?? "";
+        $novaSenha = trim($_POST["novaSenha"]) ?? "";
+        $novaSenha2 = trim($_POST["repNovaSenha"]) ?? "";
+
+        $dadosBanco = $usuarioDAO->buscarSenha($usuario->id_usuario);
+
+        $senhaValida = password_verify($senhaAtual, $dadosBanco['senha']);
+
+        if (!$senhaValida) {
+            $_SESSION['msg'] = "<p class='error-msg'>Erro ao validar. Tente novamente.</p>";
+            header("location:" . BASE_URL . "alt_dados_admin");
+            exit;
+        }
+
+        if ($novaSenha !== $novaSenha2) {
+            $_SESSION['msg'] = "<p class='error-msg'>Senhas não coincidem!</p>";
+            header("location:" . BASE_URL . "alt_dados_admin");
+            exit;
+        }
+
+        if (!Validacao::validarSenha($novaSenha)) {
+            $_SESSION['msg'] = "<p class='error-msg'>Senha precisa ter no mínimo 8 caracteres, 1 maiúscula, 1 minúscula e 1 número!</p>";
+            header("location:" . BASE_URL . "alt_dados_admin");
+            exit;
+        }
+
+        $senhaCriptografada = password_hash($novaSenha, PASSWORD_DEFAULT);
+
+        if ($usuarioDAO->alterarSenha($senhaCriptografada, $usuario->id_usuario)) {
+            $_SESSION['msg'] = "<p class='success-msg'>Senha alterada com sucesso!</p>";
+            header("location:" . BASE_URL . "area_admin");
+            exit;
+        } else {
+            $_SESSION['msg'] = "<p class='error-msg'>Erro ao alterar. Tente novamente.</p>";
+            header("location:" . BASE_URL . "alt_dados_admin");
+            exit;
+        }
+
+    case "altDadosAdmin":
+        $usuario = unserialize($_SESSION['usuario_logado']);
+
+        $novoNome = trim($_POST['usuNome']);
+        $novoEmail = trim(strtolower($_POST['usuEmail']));
+
+        if (empty($novoNome) || empty($novoEmail)) {
+            $_SESSION['msg'] = "<p class='error-msg'>Ops! Insira os dados obrigatórios</p>";
+            header("location:" . BASE_URL . "alt_dados_admin");
+            exit;
+        }
+
+        if (!Validacao::validarEmail($novoEmail)) {
+            $_SESSION['msg'] = '<p class="error-msg">E-mail em formato inválido!</p>';
+            header("location:" . BASE_URL . "alt_dados_admin");
+            exit;
+        }
+
+        if ($usuario->login !== $novoEmail) {
+            if ($usuarioDAO->buscarEmail($novoEmail)) {
+                $_SESSION['msg'] = '<p class="error-msg">E-mail já cadastrado!</p>';
+                header("location:" . BASE_URL . "alt_dados_admin");
+                exit;
+            }
+        }
+
+        $novoUsuario = new Usuario();
+
+        $novoUsuario->id_usuario = $usuario->id_usuario;
+        $novoUsuario->nome = $novoNome;
+        $novoUsuario->login = $novoEmail;
+
+
+        if ($usuarioDAO->alterarDados($novoUsuario)) {
+            $_SESSION['usuario_logado'] = serialize($novoUsuario);
+            $_SESSION['msg'] = "<p class='success-msg'>Dados alterados com sucesso!</p>";
+        } else {
+            $_SESSION['msg'] = "<p class='error-msg'>Erro ao atualizar dados!</p>";
+        }
+
+        header("location:" . BASE_URL . "area_admin");
+        exit;
+
     case "excluir":
         $usuario = unserialize($_SESSION['usuario_logado']);
 

@@ -28,7 +28,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 
-    <title>Alteração de senha - Nize</title>
+    <title>Alteração de cadastro- Nize</title>
 </head>
 
 
@@ -45,37 +45,29 @@ $usuario = unserialize($_SESSION['usuario_logado']);
                 </li>
 
                 <li>
-                    <a href="<?php echo BASE_URL; ?>tela_inicial" class="link-logo" title="Tela inicial">
+                    <a href="<?php echo BASE_URL; ?>admin" class="link-logo" title="Tela inicial">
                         <img src="<?php echo BASE_URL; ?>assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
                     </a>
                 </li>
 
                 <li>
-                <li>
-                    <a href="<?php echo BASE_URL; ?>tela_inicial" title="Tela inicial">
-                        <i class="bi bi-house"></i>
+                    <a href="<?php echo BASE_URL; ?>admin" title="Gerenciar usuários">
+                        <i class="bi bi-person-gear"></i>
 
-                        <span>Tela inicial</span>
+                        <span>Dashboard</span>
 
                     </a>
                 </li>
-                <a href="<?php echo BASE_URL; ?>visualizacao_produtos" title="Tela de produtos">
-                    <i class="bi bi-box-seam"></i>
-                    <span>Produtos</span>
-                </a>
+
+                <li>
+                    <a href="<?php echo BASE_URL; ?>area_admin" title="Dados do admin">
+                        <i class="bi bi-person-lines-fill"></i>
+
+                        <span>Dados do admin</span>
+
+                    </a>
                 </li>
-                </li>
-                <a href="<?php echo BASE_URL; ?>visualizacao_pedidos" title="Tela de pedidos">
-                    <i class="bi bi-clipboard2-check"></i>
-                    <span>Pedidos</span>
-                </a>
-                </li>
-                </li>
-                <a href="<?php echo BASE_URL; ?>minha_area" class="active" title="Minha área">
-                    <i class="bi bi-person-lines-fill"></i>
-                    <span>Minha área</span>
-                </a>
-                </li>
+
                 <li>
                     <a href="<?php echo BASE_URL; ?>php/controller/logout.php" class="btn-sair" title="Sair">
                         <i class="bi bi-box-arrow-left"></i>
@@ -110,41 +102,49 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         <div class="internal-nav">
             <div class="internal-nav-links">
                 <h1>Alteração de senha</h1>
-                <a href="<?php echo BASE_URL; ?>alterar_cadastro" title="Tela Minha Área"><span class="bi bi-arrow-left"></span>Voltar</a>
+                <a href="<?php echo BASE_URL; ?>admin" title="Tela Minha Área"><span class="bi bi-arrow-left"></span>Voltar</a>
             </div>
         </div>
 
-        <div class="alt-senha">
-            <h3>Altere sua senha</h3>
-            <p class="p-inicial">Mínimo de 8 caracteres: 1 maiúscula, 1 minúscula e 1 número.</p>
-            <hr>
-            <form action="<?php echo BASE_URL; ?>php/controller/usuarioControle.php?op=alterarSenha" class="alterar-senha" method="post">
-                <div class="div-senha">
-                    <div class="div-senha div-senha-eye">
-                        <label for="senhaAtual">Senha atual</label>
-                        <i class="bi bi-eye-fill" id="eye-senha" onclick="mostrarSenha()"></i>
+        <div class="container-horizontal">
+            <div id="novos-dados" class="alt-senha">
+                <h3>Alterar dados</h3>
+                <form action="<?php echo BASE_URL; ?>php/controller/usuarioControle.php?op=altDadosAdmin" method="post" id="form-cadastro">
+                    <label for="usuNome">Nome completo*</label>
+                    <input type="text" placeholder="digite seu nome" class="input-login" name="usuNome" value="<?php echo $usuario->nome ?>" autocomplete="off" maxlength="50" required>
+                    <label for="usuEmail">E-mail*</label>
+                    <input type="email" placeholder="e-mail" class="input-login" name="usuEmail" value=<?php echo $usuario->login ?> autocomplete="off" maxlength="50" required>
+                    <div class="container-horizontal cadastro-btns">
+                        <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Alterar</button>
                     </div>
-                    <input type="password" placeholder="sua senha atual" class="input-login" id="senha" name="senhaAtual" autocomplete="off" minlength="8" maxlength="26" required>
-                </div>
-
-
-                <div class="div-senha">
-                    <label for="novaSenha">Nova senha</label>
-                    <input type="password" placeholder="nova senha" class="input-login" id="senha-2" name="novaSenha" autocomplete="off" minlength="8" maxlength="26" required>
-                </div>
-
-
-                <div class="div-senha">
-                    <label for="repNovaSenha">Confirmar nova senha</label>
-                    <input type="password" placeholder="nova senha" class="input-login" id="senha-3" name="repNovaSenha" autocomplete="off" minlength="8" maxlength="26" required>
-                </div>
-
-                <div class="container-horizontal cadastro-btns">
-                    <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Alterar</button>
-                    <button type="reset"><span class="bi bi-arrow-clockwise"></span>Limpar</button>
-                </div>
-            </form>
-
+                </form>
+            </div>
+            <div class="alt-senha">
+                <h3>Altere sua senha</h3>
+                <p class="p-inicial">Mínimo de 8 caracteres: 1 maiúscula, 1 minúscula e 1 número.</p>
+                <hr>
+                <form action="<?php echo BASE_URL; ?>php/controller/usuarioControle.php?op=altSenhaAdmin" class="alterar-senha" method="post">
+                    <div class="div-senha">
+                        <div class="div-senha div-senha-eye">
+                            <label for="senhaAtual">Senha atual</label>
+                            <i class="bi bi-eye-fill" id="eye-senha" onclick="mostrarSenha()"></i>
+                        </div>
+                        <input type="password" placeholder="sua senha atual" class="input-login" id="senha" name="senhaAtual" autocomplete="off" minlength="8" maxlength="26" required>
+                    </div>
+                    <div class="div-senha">
+                        <label for="novaSenha">Nova senha</label>
+                        <input type="password" placeholder="nova senha" class="input-login" id="senha-2" name="novaSenha" autocomplete="off" minlength="8" maxlength="26" required>
+                    </div>
+                    <div class="div-senha">
+                        <label for="repNovaSenha">Confirmar nova senha</label>
+                        <input type="password" placeholder="nova senha" class="input-login" id="senha-3" name="repNovaSenha" autocomplete="off" minlength="8" maxlength="26" required>
+                    </div>
+                    <div class="container-horizontal cadastro-btns">
+                        <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Alterar</button>
+                        <button type="reset"><span class="bi bi-arrow-clockwise"></span>Limpar</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
         <footer><a href="https://github.com/leosturmer" target="_blank">Leonardo Stürmer &copy; Todos os direitos reservados.</a></footer>

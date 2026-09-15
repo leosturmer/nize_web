@@ -28,6 +28,8 @@ RewriteRule ^alterar_senha$ php/view/usuario/alteracao_senha.php [L]
 RewriteRule ^alteracao_pedido_cancelado$ php/view/pedidos/alteracao_pedido_cancelado.php [L]
 RewriteRule ^alteracao_pedido_vendido$ php/view/pedidos/alteracao_pedido_vendido.php [L]
 RewriteRule ^admin$ php/view/admin/dashboard_administrador.php [L]
+RewriteRule ^area_admin$ php/view/admin/area_administrador.php [L]
+RewriteRule ^alt_dados_admin$ php/view/admin/alteracao_dados_admin.php [L]
 RewriteRule ^erro$ php/view/general/erro.php [L]
 RewriteRule ^guia_utilizacao$ php/view/general/guia_utilizacao.php [L]
 

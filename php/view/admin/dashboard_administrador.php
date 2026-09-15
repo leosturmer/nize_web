@@ -49,11 +49,28 @@ $lista_usuarios = $usuarioDAO->buscarUsuarios();
                 </li>
 
                 <li>
-                    <a href="#" class="link-logo" title="Tela inicial">
+                    <a href="<?php echo BASE_URL; ?>admin" class="link-logo" title="Tela inicial">
                         <img src="<?php echo BASE_URL; ?>assets/img/logo/nize_new.png" alt="Nize logotipo" id="logo-sidenav">
                     </a>
                 </li>
 
+                <li>
+                    <a href="<?php echo BASE_URL; ?>admin" title="Gerenciar usuários">
+                        <i class="bi bi-person-gear"></i>
+
+                        <span>Dashboard</span>
+
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="<?php echo BASE_URL; ?>area_admin" title="Dados do admin">
+                        <i class="bi bi-person-lines-fill"></i>
+
+                        <span>Dados do admin</span>
+
+                    </a>
+                </li>
 
                 <li>
                     <a href="<?php echo BASE_URL; ?>php/controller/logout.php" class="btn-sair" title="Sair">
