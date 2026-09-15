@@ -84,17 +84,43 @@ switch ($opcao) {
         exit;
 
     case "alterarSenha":
-        $senhaAtual = trim($_POST["usuSenha"]);
-        $novaSenha = trim($_POST["usuNovaSenha"]);
-        $novaSenha2 = trim($_POST["usuNovaSenha2"]);
+        $senhaAtual = trim($_POST["senhaAtual"]) ?? "";
+        $novaSenha = trim($_POST["novaSenha"]) ?? "";
+        $novaSenha2 = trim($_POST["repNovaSenha"]) ?? "";
 
-        
+        $dadosBanco = $usuarioDAO->buscarSenha($usuario->id_usuario);
 
+        $senhaValida = password_verify($senhaAtual, $dadosBanco['senha']);
 
+        if (!$senhaValida) {
+            $_SESSION['msg'] = "<p class='error-msg'>Erro ao validar. Tente novamente.</p>";
+            header("location:" . BASE_URL . "alterar_senha");
+            exit;
+        }
 
+        if ($novaSenha !== $novaSenha2) {
+            $_SESSION['msg'] = "<p class='error-msg'>Senhas não coincidem!</p>";
+            header("location:" . BASE_URL . "alterar_senha");
+            exit;
+        }
 
+        if (!Validacao::validarSenha($novaSenha)) {
+            $_SESSION['msg'] = "<p class='error-msg'>Senha precisa ter no mínimo 8 caracteres, 1 maiúscula, 1 minúscula e 1 número!</p>";
+            header("location:" . BASE_URL . "alterar_senha");
+            exit;
+        }
 
+        $senhaCriptografada = password_hash($novaSenha, PASSWORD_DEFAULT);
 
+        if ($usuarioDAO->alterarSenha($senhaCriptografada, $usuario->id_usuario)) {
+            $_SESSION['msg'] = "<p class='success-msg'>Senha alterada com sucesso!</p>";
+            header("location:" . BASE_URL . "minha_area");
+            exit;
+        } else {
+            $_SESSION['msg'] = "<p class='error-msg'>Erro ao alterar. Tente novamente.</p>";
+            header("location:" . BASE_URL . "minha_area");
+            exit;
+        }
 
     case "excluir":
         $usuario = unserialize($_SESSION['usuario_logado']);

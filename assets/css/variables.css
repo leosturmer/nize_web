@@ -267,6 +267,10 @@ button,
   }
 }
 
+#senha.input-login {
+  height: fit-content;
+}
+
 .input-pedido,
 .input-produto,
 input[type="date"],

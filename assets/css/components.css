@@ -436,6 +436,7 @@ details.detalhes-produto {
   flex-direction: row;
   justify-content: space-between;
   font-size: 18px;
+  align-items: center;
 }
 
 #eye-senha, #eye-senha-2 {
@@ -452,6 +453,7 @@ details.detalhes-produto {
 
 div.container-horizontal.cadastro-btns {
   margin: 0.8em auto 0 auto;
+  justify-content: center;
 
   & span.bi-box-arrow-up-right {
     margin-left: 0.5em;
@@ -965,6 +967,16 @@ a.btn-alterar.btn-loja-alt-cadastro {
   height: 50px;
 }
 
+a.btn-alt-senha {
+  width: max-content;
+  background-color: var(--softGreen);
+  color: black;
+
+  &:hover {
+    color: white;
+  }
+}
+
 .total-pedido {
   padding: 0.5em 0.8em;
   border: var(--border-thin);
@@ -1079,6 +1091,11 @@ input#prazoPedido {
   & strong {
     color: var(--darkGreen);
   }
+}
+
+#minha-area.alt-senha {
+  margin: 0 auto;
+  
 }
 
 #link-loja {

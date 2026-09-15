@@ -24,6 +24,7 @@ RewriteRule ^duplicar_pedido/([0-9]+)$ php/view/pedidos/duplicar_pedido.php?id=$
 RewriteRule ^duplicar_pedido$ php/view/pedidos/duplicar_pedido.php [L]
 
 RewriteRule ^alterar_cadastro$ php/view/usuario/alteracao_cadastro.php [L]
+RewriteRule ^alterar_senha$ php/view/usuario/alteracao_senha.php [L]
 RewriteRule ^alteracao_pedido_cancelado$ php/view/pedidos/alteracao_pedido_cancelado.php [L]
 RewriteRule ^alteracao_pedido_vendido$ php/view/pedidos/alteracao_pedido_vendido.php [L]
 RewriteRule ^admin$ php/view/admin/dashboard_administrador.php [L]

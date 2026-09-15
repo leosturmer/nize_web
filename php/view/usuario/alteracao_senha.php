@@ -110,36 +110,34 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         <div class="internal-nav">
             <div class="internal-nav-links">
                 <h1>Alteração de senha</h1>
-                <a href="<?php echo BASE_URL; ?>minha_area" title="Tela Minha Área"><span class="bi bi-arrow-left"></span>Voltar</a>
+                <a href="<?php echo BASE_URL; ?>alterar_cadastro" title="Tela Minha Área"><span class="bi bi-arrow-left"></span>Voltar</a>
             </div>
         </div>
 
-        <div id="minha-area">
+        <div id="minha-area" class="alt-senha">
             <h3>Altere sua senha</h3>
             <p>Mínimo de 8 caracteres: 1 maiúscula, 1 minúscula e 1 número.</p>
-
             <hr>
-            <p>
             <form action="<?php echo BASE_URL; ?>php/controller/usuarioControle.php?op=alterarSenha" class="alterar-senha" method="post">
-                <p>
                 <div class="div-senha">
-                    <label for="usuSenha">Senha atual</label>
-                    <i class="bi bi-eye-fill" id="eye-senha" onclick="mostrarSenha()"></i>
-                </div>
-                <input type="password" placeholder="sua senha atual" class="input-login" id="senha" name="usuSenha" autocomplete="off" minlength="8" maxlength="26" required>
-
-
-                <div class="div-senha">
-                    <label for="usuNovaSenha">Nova senha</label>
-                    <input type="password" placeholder="nova senha" class="input-login" id="senha-2" name="usuNovaSenha" autocomplete="off" minlength="8" maxlength="26" required>
+                    <div class="div-senha">
+                        <label for="senhaAtual">Senha atual</label>
+                        <i class="bi bi-eye-fill" id="eye-senha" onclick="mostrarSenha()"></i>
+                    </div>
+                    <input type="password" placeholder="sua senha atual" class="input-login" id="senha" name="senhaAtual" autocomplete="off" minlength="8" maxlength="26" required>
                 </div>
 
 
                 <div class="div-senha">
-                    <label for="usuNovaSenha2">Confirmar nova senha</label>
-                    <input type="password" placeholder="nova senha" class="input-login" id="senha-3" name="usuNovaSenha2" autocomplete="off" minlength="8" maxlength="26" required>
+                    <label for="novaSenha">Nova senha</label>
+                    <input type="password" placeholder="nova senha" class="input-login" id="senha-2" name="novaSenha" autocomplete="off" minlength="8" maxlength="26" required>
                 </div>
-                </p>
+
+
+                <div class="div-senha">
+                    <label for="repNovaSenha">Confirmar nova senha</label>
+                    <input type="password" placeholder="nova senha" class="input-login" id="senha-3" name="repNovaSenha" autocomplete="off" minlength="8" maxlength="26" required>
+                </div>
 
                 <div class="container-horizontal cadastro-btns">
                     <button type="submit" class="btn-salvar"><span class="bi bi-check2"></span>Alterar</button>
@@ -147,10 +145,6 @@ $usuario = unserialize($_SESSION['usuario_logado']);
                 </div>
             </form>
 
-        </div>
-
-        </form>
-        </div>
         </div>
 
         <footer><a href="https://github.com/leosturmer" target="_blank">Leonardo Stürmer &copy; Todos os direitos reservados.</a></footer>

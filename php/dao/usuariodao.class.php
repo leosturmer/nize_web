@@ -89,12 +89,27 @@ class UsuarioDAO
         try {
             $sql = $this->conexao->prepare(
                 "INSERT INTO usuario (login, nome, nome_loja, senha)
-            VALUES (?, ?, ?, ?)"
+                VALUES (?, ?, ?, ?)"
             );
 
             return $sql->execute([$usuario->login, $usuario->nome, $usuario->nome_loja, $usuario->senha]);
         } catch (PDOException $e) {
             error_log('Nize - erro ao cadastrar usuario: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function buscarSenha($id_usuario) {
+        try {
+            $sql = $this->conexao->prepare(
+                "SELECT senha FROM usuario WHERE id_usuario = ?"
+            );
+            $sql->execute([$id_usuario]);
+            
+            return $sql->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            error_log('Erro ao buscar senha: ' . $e->getMessage());
             return false;
         }
     }
@@ -122,6 +137,22 @@ class UsuarioDAO
             $sql->bindValue(":aceita_visualizacao", $usuarioModificado->aceita_visualizacao);
             $sql->bindValue(":nome_visualizacao", $usuarioModificado->nome_visualizacao);
             $sql->bindValue(":telefone", $usuarioModificado->telefone);
+
+            return $sql->execute();
+        } catch (PDOException $e) {
+            echo "Erro ao alterar.";
+            exit;
+        }
+    }
+
+    public function alterarSenha($senha, $id_usuario)
+    {
+        try {
+            $sql = "UPDATE usuario SET senha = :senha WHERE id_usuario = :id_usuario";
+            $sql = ConexaoBanco::getInstancia()->prepare($sql);
+
+            $sql->bindValue(":senha", $senha);
+            $sql->bindValue(":id_usuario", $id_usuario);
 
             return $sql->execute();
         } catch (PDOException $e) {
