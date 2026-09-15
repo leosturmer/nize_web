@@ -115,7 +115,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
 
     <form action="#" method="post" enctype="multipart/form-data" class="form-cadastro-produto">
       <fieldset id="products-form">
-        <legend>Descrição do produto</legend>
+        <legend>Informações do produto</legend>
         <div class="inner-products-form">
           <label><strong>Nome do produto</strong>*:</label>
           <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto" autocomplete="off" placeholder="o nome do produto vai aqui" maxlength="50" required>

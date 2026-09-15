@@ -142,7 +142,7 @@ $_SESSION['produto_selecionado'] = $produto;
 
     <form action="<?php echo BASE_URL; ?>php/controller/produtoControle.php?op=alterar&id=<?php echo $produto['id_produto'] ?>" method="post" enctype="multipart/form-data" class="form-cadastro-produto">
       <fieldset id="products-form">
-        <legend>Descrição do produto</legend>
+        <legend>Informações do produto</legend>
         <div class="inner-products-form">
           <label><strong>Nome do produto</strong>*:</label>
           <input type="text" id="nomeProduto" name="nomeProduto" class="input-produto alt-nome-produto" value="<?php echo htmlspecialchars($produto['nome']); ?>" autocomplete="off" maxlength="50" required>
@@ -182,7 +182,7 @@ $_SESSION['produto_selecionado'] = $produto;
 
           <label class="descricao-produtos" for="descricaoProduto">
             <strong>Descrição pública do produto:</strong>
-            <textarea maxlength="500" rows="5" cols="40" name="descricaoProduto" id="descricaoProduto" class="input-produto" autocomplete="off"><?php echo htmlspecialchars($produto['descricao']); ?></textarea>
+            <textarea maxlength="500" rows="5" cols="40" name="descricaoProduto" id="descricaoProduto" class="input-produto" autocomplete="off" placeholder="Adicione Descrição para a loja pública"><?php echo htmlspecialchars($produto['descricao']); ?></textarea>
           </label>
 
 

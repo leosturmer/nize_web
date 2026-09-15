@@ -165,7 +165,7 @@ if (!$produtoData) {
 
           <label class="descricao-produtos" for="descricaoProduto">
             <strong>Descrição pública do produto:</strong>
-            <textarea maxlength="500" rows="5" cols="40" name="descricaoProduto" id="descricaoProduto" class="input-produto" autocomplete="off"><?php echo htmlspecialchars($produtoData['descricao']); ?></textarea>
+            <textarea maxlength="500" rows="5" cols="40" name="descricaoProduto" id="descricaoProduto" class="input-produto" autocomplete="off" placeholder="Adicione Descrição para a loja pública"><?php echo htmlspecialchars($produtoData['descricao']); ?></textarea>
           </label>
           
           

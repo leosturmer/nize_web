@@ -148,8 +148,14 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         <br>
         <strong>WhatsApp</strong>: <?php echo $telefone ?>
         <br>
-        <strong>Link de exibição</strong>: <br>
-        <a id="link-loja" target="_blank" href="https://nizeapp.free.nf/<?php echo $nome_visualizacao ?>">nizeapp.free.nf/<?php echo $nome_visualizacao ?></a> <i class="bi bi-copy" onclick="copyLink('https://nizeapp.free.nf/<?php echo $nome_visualizacao ?>')"></i>
+        
+        <?php if ($usuario->nome_visualizacao): ?>
+          <strong>Link de exibição</strong>: <br>
+          <a id="link-loja" target="_blank" href="https://nizeapp.free.nf/<?php echo $nome_visualizacao ?>">nizeapp.free.nf/<?php echo $nome_visualizacao ?></a> <i class="bi bi-copy" onclick="copyLink('https://nizeapp.free.nf/<?php echo $nome_visualizacao ?>')"></i>
+
+        <?php else: ?>
+          <strong>Link de exibição</strong>: <?php echo $nome_visualizacao ?>
+        <?php endif; ?>
       </div>
 
       <div class="usuario-btns">
