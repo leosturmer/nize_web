@@ -4,6 +4,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br" style="background-color: #99d669;">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@ session_start();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <title>Cadastro- Nize</title>
 </head>
+
 <body>
     <main id="main-index">
         <?php
@@ -36,11 +38,16 @@ session_start();
                     <input type="text" placeholder="nome  da loja" class="input-login" name="usuLoja" autocomplete="off" maxlength="50">
                     <label for="usuEmail">E-mail*</label>
                     <input type="email" placeholder="e-mail" class="input-login" name="usuEmail" autocomplete="off" maxlength="50" required>
-                    <label for="usuSenha">Senha*</label>
-                    <input type="password" placeholder="senha" class="input-login" name="usuSenha" autocomplete="off" minlength="8" maxlength="26" required>
+
+                    <div class="div-senha">
+                        <label for="usuSenha">Senha*</label>
+                        <i class="bi bi-eye-fill" id="eye-senha" onclick="mostrarSenha()"></i>
+                    </div>
+
+                    <input type="password" placeholder="senha" class="input-login" id="senha" name="usuSenha" autocomplete="off" minlength="8" maxlength="26" required>
                     <p>Mín. 8 caracteres: 1 maiúscula, 1 minúscula e 1 número.</p>
                     <label for="confirmaSenha" style="margin-top: 0px;">Repita a senha*</label>
-                    <input type="password" placeholder="repita a senha" class="input-login" name="confirmaSenha" autocomplete="off" minlength="8" maxlength="26" required>
+                    <input type="password" placeholder="repita a senha" class="input-login" id="senha-2" name="confirmaSenha" autocomplete="off" minlength="8" maxlength="26" required>
                     <button type="submit" id="btn-cad-usuario">Cadastrar</button>
                 </form>
             </div>
@@ -50,11 +57,38 @@ session_start();
         <div id="scrollTop"><a href="#top"><span class="bi bi-chevron-up"></span></a></div>
     </main>
     <script type="module" src="<?php echo BASE_URL; ?>js/main.js"></script>
+
+    <script>
+        function mostrarSenha() {
+            var inputPass = document.getElementById("senha")
+            var inputPass2 = document.getElementById("senha-2")
+            var btnShowPass = document.getElementById("eye-senha")
+
+            if (inputPass.type === "password") {
+                inputPass.setAttribute("type", "text")
+                inputPass2.setAttribute("type", "text")
+                btnShowPass.classList.replace("bi-eye-fill", "bi-eye-slash-fill")
+            } else {
+                inputPass.setAttribute("type", "password")
+                inputPass2.setAttribute("type", "password")
+                btnShowPass.classList.replace("bi-eye-slash-fill", "bi-eye-fill")
+            }
+        }
+    </script>
+
+
+
+
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
     </div>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 </body>
+
 </html>

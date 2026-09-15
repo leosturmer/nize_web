@@ -430,6 +430,26 @@ details.detalhes-produto {
   width: 200px;
 }
 
+.div-senha {
+  margin: 0.8em 0 0.5em 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 18px;
+}
+
+#eye-senha, #eye-senha-2 {
+  margin-left: 0.5em;
+  padding-right: 0.2em;
+  font-size: 20px;
+  color: grey;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--normalPurple);
+  }
+}
+
 div.container-horizontal.cadastro-btns {
   margin: 0.8em auto 0 auto;
 
