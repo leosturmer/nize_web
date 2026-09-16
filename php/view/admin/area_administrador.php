@@ -117,7 +117,7 @@ $usuario = unserialize($_SESSION['usuario_logado']);
         <br>
 
       <div class="container-horizontal cadastro-btns">
-        <a href="<?php echo BASE_URL; ?>alt_dados_admin" class="btn-alterar btn-loja-alt-cadastro"><span class="bi bi-pencil-fill"></span>Alterar</a>
+        <a href="<?php echo BASE_URL; ?>alt_dados_admin" class="btn-alterar btn-loja-alt-cadastro"><span class="bi bi-pencil-fill"></span>Editar</a>
       </div>
       </p>
 
