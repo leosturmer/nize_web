@@ -60,3 +60,10 @@ Para instruções detalhadas de operação e navegação no sistema, consulte o 
 | **Diagrama de Casos de Uso** | **Banco de Dados Conceitual** | **Banco de Dados Lógico** |
 | :--- | :--- | :--- |
 | ![Diagrama de casos de uso](./github_img/diagramas/diagrama_casos_uso.png) | ![Banco de Dados Conceitual](./github_img/diagramas/banco_dados_conceitual.png) | ![Banco de Dados Lógico](./github_img/diagramas/banco_dados_logico.png) 
+
+---
+
+## Documentação
+
+O projeto foi desenvolvido durante o curso Técnico em Desenvolvimento de Sistemas do Senac. Na documentação, há maiores informações sobre o desenvolvimento do projeto, bem como especificações técnicas do sistema. [Clique aqui para acessar]([https://github.com/leosturmer/Nize_Python_Desktop](https://github.com/leosturmer/nize_web/blob/main/Documento_t%C3%A9cnico_PI_Leonardo%20St%C3%BCrmer_Nize.pdf)).
+
